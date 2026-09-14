@@ -2,418 +2,366 @@
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉCHANGE SERVICE</title>
 
-<title>ÉCHANGE SERVICE</title>
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
 
-<style>
+        :root {
+            --bleu-fonce: #102a43;
+            --bleu: #1769aa;
+            --gris: #f3f6f8;
+            --vert: #167242;
+            --rouge: #c0392b;
+            --orange: #856404;
+        }
 
-/* =========================
-   COULEURS
-========================= */
+        * {
+            box-sizing: border-box;
+        }
 
-:root {
-    --bleu-fonce: #102a43;
-    --bleu: #1769aa;
-    --gris: #f3f6f8;
-    --vert: #167242;
-    --rouge: #c0392b;
-    --orange: #856404;
-}
+        body {
+            margin: 0;
 
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
 
-/* =========================
-   GENERAL
-========================= */
+            background: var(--gris);
+            color: #17212b;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        /* =====================
+           HEADER
+        ===================== */
 
-body {
-    margin: 0;
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--bleu-fonce),
+                    var(--bleu)
+                );
 
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+            color: white;
 
-    background: var(--gris);
-    color: #17212b;
-}
+            padding: 25px 20px 35px;
 
+            text-align: center;
+        }
 
-/* =========================
-   HEADER
-========================= */
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
 
-header {
+        header p {
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--bleu-fonce),
-            var(--bleu)
-        );
+        /* =====================
+           CONTENU
+        ===================== */
 
-    color: white;
+        main {
+            max-width: 650px;
 
-    padding: 25px 20px 35px;
+            margin: -15px auto 100px;
 
-    text-align: center;
-}
+            padding: 0 15px;
+        }
 
-header h1 {
-    margin: 0;
-    font-size: 28px;
-}
+        .card {
+            background: white;
 
-header p {
-    margin-bottom: 0;
-    opacity: 0.9;
-}
+            border-radius: 18px;
 
+            padding: 20px;
 
-/* =========================
-   CONTENU
-========================= */
+            margin-top: 15px;
 
-main {
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+        }
 
-    max-width: 650px;
+        .hidden {
+            display: none !important;
+        }
 
-    margin: -15px auto 100px;
+        /* =====================
+           CHOIX MÉTIER
+        ===================== */
 
-    padding: 0 15px;
-}
+        .choice {
+            width: 100%;
 
+            padding: 22px;
 
-/* =========================
-   CARTES
-========================= */
+            margin-top: 15px;
 
-.card {
+            border-radius: 16px;
 
-    background: white;
+            border:
+                1px solid #e0e6eb;
 
-    border-radius: 18px;
+            background: white;
 
-    padding: 20px;
+            font-size: 19px;
 
-    margin-top: 15px;
+            font-weight: bold;
 
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,0.08);
-}
+            text-align: left;
 
-.hidden {
-    display: none !important;
-}
+            cursor: pointer;
+        }
 
+        .choice small {
+            display: block;
 
-/* =========================
-   CHOIX METIER
-========================= */
+            margin-top: 5px;
 
-.choice {
+            font-size: 14px;
 
-    width: 100%;
+            font-weight: normal;
 
-    padding: 22px;
+            color: #687887;
+        }
 
-    margin-top: 15px;
+        /* =====================
+           BOUTONS
+        ===================== */
 
-    border-radius: 16px;
+        button {
+            cursor: pointer;
+        }
 
-    border:
-        1px solid #e0e6eb;
+        .btn {
+            width: 100%;
 
-    background: white;
+            padding: 15px;
 
-    font-size: 19px;
+            margin-top: 10px;
 
-    font-weight: bold;
+            border: none;
 
-    text-align: left;
+            border-radius: 12px;
 
-    cursor: pointer;
-}
+            background: var(--bleu);
 
-.choice small {
+            color: white;
 
-    display: block;
+            font-size: 16px;
 
-    margin-top: 5px;
+            font-weight: bold;
+        }
 
-    font-size: 14px;
+        .btn-secondaire {
+            background: #e8eef4;
+            color: #17212b;
+        }
 
-    font-weight: normal;
+        .btn-interesse {
+            background: var(--vert);
+        }
 
-    color: #687887;
-}
+        .btn-danger {
+            background: var(--rouge);
+            color: white;
+        }
 
+        /* =====================
+           FORMULAIRES
+        ===================== */
 
-/* =========================
-   BOUTONS
-========================= */
+        label {
+            display: block;
 
-button {
-    cursor: pointer;
-}
+            font-size: 14px;
 
-.btn {
+            font-weight: bold;
 
-    width: 100%;
+            margin-top: 10px;
 
-    padding: 15px;
+            color: #526273;
+        }
 
-    margin-top: 10px;
+        input,
+        textarea {
+            width: 100%;
 
-    border: none;
+            padding: 13px;
 
-    border-radius: 12px;
+            margin-top: 5px;
 
-    background: var(--bleu);
+            border-radius: 10px;
 
-    color: white;
+            border:
+                1px solid #ccd6df;
 
-    font-size: 16px;
+            font-size: 16px;
+        }
 
-    font-weight: bold;
-}
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
 
-.btn:hover {
-    opacity: 0.9;
-}
+        .row {
+            display: grid;
 
-.btn-secondaire {
-    background: #e8eef4;
-    color: #17212b;
-}
+            grid-template-columns:
+                1fr 1fr;
 
-.btn-interesse {
-    background: var(--vert);
-}
+            gap: 10px;
+        }
 
-.btn-danger {
-    background: var(--rouge);
-}
+        /* =====================
+           BADGE
+        ===================== */
 
+        .badge {
+            display: inline-block;
 
-/* =========================
-   FORMULAIRES
-========================= */
+            background: #e7f5ec;
 
-label {
+            color: var(--vert);
 
-    display: block;
+            padding: 6px 10px;
 
-    font-size: 14px;
+            border-radius: 20px;
 
-    font-weight: bold;
+            font-size: 12px;
 
-    margin-top: 10px;
+            font-weight: bold;
+        }
 
-    color: #526273;
-}
+        /* =====================
+           ÉCHANGES
+        ===================== */
 
-input,
-textarea {
+        .item {
+            background: #f8fafc;
 
-    width: 100%;
+            border-left:
+                5px solid var(--bleu);
 
-    padding: 13px;
+            padding: 18px;
 
-    margin-top: 5px;
+            margin-top: 12px;
 
-    border-radius: 10px;
+            border-radius: 10px;
+        }
 
-    border: 1px solid #ccd6df;
+        .item strong {
+            font-size: 17px;
+        }
 
-    font-size: 16px;
-}
+        .item-info {
+            margin-top: 5px;
+            line-height: 1.5;
+        }
 
-textarea {
+        /* =====================
+           STATUTS
+        ===================== */
 
-    min-height: 80px;
+        .statut-disponible {
+            display: inline-block;
 
-    resize: vertical;
-}
+            margin-top: 10px;
 
+            padding: 5px 10px;
 
-/* =========================
-   LIGNE HORAIRES
-========================= */
+            border-radius: 20px;
 
-.row {
+            background: #e7f5ec;
 
-    display: grid;
+            color: var(--vert);
 
-    grid-template-columns: 1fr 1fr;
+            font-size: 12px;
 
-    gap: 10px;
-}
+            font-weight: bold;
+        }
 
+        .statut-interesse {
+            display: inline-block;
 
-/* =========================
-   BADGE
-========================= */
+            margin-top: 10px;
 
-.badge {
+            padding: 5px 10px;
 
-    display: inline-block;
+            border-radius: 20px;
 
-    background: #e7f5ec;
+            background: #fff3cd;
 
-    color: var(--vert);
+            color: var(--orange);
 
-    padding: 6px 10px;
+            font-size: 12px;
 
-    border-radius: 20px;
+            font-weight: bold;
+        }
 
-    font-size: 12px;
+        /* =====================
+           MENU BAS
+        ===================== */
 
-    font-weight: bold;
-}
+        nav {
+            position: fixed;
 
+            bottom: 0;
+            left: 0;
+            right: 0;
 
-/* =========================
-   CARTE ECHANGE
-========================= */
+            background: white;
 
-.item {
+            border-top:
+                1px solid #dfe6ec;
 
-    background: #f8fafc;
+            padding: 8px;
 
-    border-left:
-        5px solid var(--bleu);
+            display: flex;
 
-    padding: 18px;
+            justify-content: space-around;
 
-    margin-top: 12px;
+            z-index: 100;
+        }
 
-    border-radius: 10px;
-}
+        nav button {
+            border: none;
 
-.item strong {
-    font-size: 17px;
-}
+            background: none;
 
-.item-info {
+            color: var(--bleu);
 
-    margin-top: 5px;
+            font-size: 12px;
 
-    line-height: 1.5;
-}
+            padding: 8px;
+        }
 
+        /* =====================
+           MOBILE
+        ===================== */
 
-/* =========================
-   STATUTS
-========================= */
+        @media (max-width: 500px) {
 
-.statut-disponible {
+            .row {
+                grid-template-columns: 1fr;
+            }
 
-    display: inline-block;
+        }
 
-    margin-top: 10px;
-
-    padding: 5px 10px;
-
-    border-radius: 20px;
-
-    background: #e7f5ec;
-
-    color: var(--vert);
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-.statut-interesse {
-
-    display: inline-block;
-
-    margin-top: 10px;
-
-    padding: 5px 10px;
-
-    border-radius: 20px;
-
-    background: #fff3cd;
-
-    color: var(--orange);
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   MENU BAS
-========================= */
-
-nav {
-
-    position: fixed;
-
-    bottom: 0;
-
-    left: 0;
-
-    right: 0;
-
-    background: white;
-
-    border-top:
-        1px solid #dfe6ec;
-
-    padding: 8px;
-
-    display: flex;
-
-    justify-content: space-around;
-
-    z-index: 100;
-}
-
-nav button {
-
-    border: none;
-
-    background: none;
-
-    color: var(--bleu);
-
-    font-size: 12px;
-
-    padding: 8px;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 500px) {
-
-    .row {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -421,26 +369,25 @@ nav button {
 <body>
 
 
-<!-- =========================
+<!-- =====================
      HEADER
-========================= -->
+===================== -->
 
 <header>
 
-<h1>🚆 ÉCHANGE SERVICE</h1>
+    <h1>🚆 ÉCHANGE SERVICE</h1>
 
-<p>Échange de journées entre agents</p>
+    <p>Échange de journées entre agents</p>
 
 </header>
-
 
 
 <main>
 
 
-<!-- =========================
+<!-- =====================
      ACCUEIL
-========================= -->
+===================== -->
 
 <section id="accueil">
 
@@ -485,10 +432,9 @@ nav button {
 </section>
 
 
-
-<!-- =========================
-     PROPOSER UNE JOURNEE
-========================= -->
+<!-- =====================
+     PROPOSER
+===================== -->
 
 <section
     id="proposer"
@@ -496,7 +442,6 @@ nav button {
 >
 
     <div class="card">
-
 
         <span
             id="metier"
@@ -531,7 +476,6 @@ nav button {
 
         <div class="row">
 
-
             <div>
 
                 <label>
@@ -559,7 +503,6 @@ nav button {
 
             </div>
 
-
         </div>
 
 
@@ -569,7 +512,7 @@ nav button {
 
         <textarea
             id="commentaire"
-            placeholder="Exemple : TER, réserve, numéro de train..."
+            placeholder="Exemple : TER, réserve..."
         ></textarea>
 
 
@@ -588,16 +531,14 @@ nav button {
             🔎 VOIR LES ÉCHANGES
         </button>
 
-
     </div>
 
 </section>
 
 
-
-<!-- =========================
-     ECHANGES DISPONIBLES
-========================= -->
+<!-- =====================
+     ÉCHANGES DISPONIBLES
+===================== -->
 
 <section
     id="echanges"
@@ -605,7 +546,6 @@ nav button {
 >
 
     <div class="card">
-
 
         <h2>
             🔎 Échanges disponibles
@@ -628,16 +568,14 @@ nav button {
             ➕ PROPOSER UNE JOURNÉE
         </button>
 
-
     </div>
 
 </section>
 
 
-
-<!-- =========================
-     JOURNEES INTERESSEES
-========================= -->
+<!-- =====================
+     INTÉRÊTS
+===================== -->
 
 <section
     id="interets"
@@ -645,7 +583,6 @@ nav button {
 >
 
     <div class="card">
-
 
         <h2>
             ⭐ Journées avec intérêt
@@ -662,7 +599,6 @@ nav button {
             🔎 RETOUR AUX ÉCHANGES
         </button>
 
-
     </div>
 
 </section>
@@ -671,10 +607,9 @@ nav button {
 </main>
 
 
-
-<!-- =========================
+<!-- =====================
      MENU BAS
-========================= -->
+===================== -->
 
 <nav
     id="menu"
@@ -715,17 +650,16 @@ nav button {
 </nav>
 
 
-
-<!-- =========================
+<!-- =====================
      JAVASCRIPT
-========================= -->
+===================== -->
 
 <script>
 
 
-/* =========================
+/* =====================
    SUPABASE
-========================= */
+===================== */
 
 const SUPABASE_URL =
     "https://nptwpoguokbjuzdyxach.supabase.co";
@@ -742,21 +676,18 @@ const supabaseClient =
     );
 
 
-
-/* =========================
-   METIER ACTUEL
-========================= */
+/* =====================
+   MÉTIER ACTUEL
+===================== */
 
 let metierActuel = "";
 
 
-
-/* =========================
+/* =====================
    AFFICHER UNE PAGE
-========================= */
+===================== */
 
 function afficher(page) {
-
 
     document
         .querySelectorAll("main section")
@@ -770,7 +701,6 @@ function afficher(page) {
     document
         .getElementById(page)
         .classList.remove("hidden");
-
 
 
     if (page === "echanges") {
@@ -789,13 +719,11 @@ function afficher(page) {
 }
 
 
-
-/* =========================
-   CHOISIR METIER
-========================= */
+/* =====================
+   CHOISIR MÉTIER
+===================== */
 
 function choisirMetier(metier) {
-
 
     metierActuel = metier;
 
@@ -820,13 +748,11 @@ function choisirMetier(metier) {
 }
 
 
-
-/* =========================
-   CHANGER METIER
-========================= */
+/* =====================
+   CHANGER MÉTIER
+===================== */
 
 function changerMetier() {
-
 
     metierActuel = "";
 
@@ -841,13 +767,11 @@ function changerMetier() {
 }
 
 
-
-/* =========================
-   PUBLIER UNE JOURNEE
-========================= */
+/* =====================
+   PUBLIER UNE JOURNÉE
+===================== */
 
 async function publier() {
-
 
     const nom =
         document
@@ -881,9 +805,6 @@ async function publier() {
             .trim();
 
 
-
-    /* VERIFICATION */
-
     if (
         !nom ||
         !date ||
@@ -900,47 +821,24 @@ async function publier() {
     }
 
 
-
-    /* ENVOI SUPABASE */
-
     const { error } =
         await supabaseClient
             .from("echanges")
             .insert([
 
                 {
-
-                    metier:
-                        metierActuel,
-
-                    nom:
-                        nom,
-
-                    date_service:
-                        date,
-
-                    prise_service:
-                        prise,
-
-                    fin_service:
-                        fin,
-
-                    commentaire:
-                        commentaire,
-
-                    statut:
-                        "disponible",
-
-                    agent_interesse:
-                        null
-
+                    metier: metierActuel,
+                    nom: nom,
+                    date_service: date,
+                    prise_service: prise,
+                    fin_service: fin,
+                    commentaire: commentaire,
+                    statut: "disponible",
+                    agent_interesse: null
                 }
 
             ]);
 
-
-
-    /* ERREUR */
 
     if (error) {
 
@@ -956,33 +854,25 @@ async function publier() {
     }
 
 
-
-    /* VIDER LE FORMULAIRE */
-
     document
         .getElementById("nom")
         .value = "";
-
 
     document
         .getElementById("date")
         .value = "";
 
-
     document
         .getElementById("prise")
         .value = "";
-
 
     document
         .getElementById("fin")
         .value = "";
 
-
     document
         .getElementById("commentaire")
         .value = "";
-
 
 
     alert(
@@ -995,13 +885,11 @@ async function publier() {
 }
 
 
-
-/* =========================
-   AFFICHER LES ECHANGES
-========================= */
+/* =====================
+   AFFICHER LES ÉCHANGES
+===================== */
 
 async function afficherEchanges() {
-
 
     const zone =
         document.getElementById(
@@ -1013,47 +901,31 @@ async function afficherEchanges() {
         .getElementById(
             "metierEchanges"
         )
-        .innerText =
-            metierActuel;
+        .innerText = metierActuel;
 
 
     zone.innerHTML =
         "<p>Chargement...</p>";
 
 
-
     const { data, error } =
         await supabaseClient
             .from("echanges")
             .select("*")
-            .eq(
-                "metier",
-                metierActuel
-            )
-            .eq(
-                "statut",
-                "disponible"
-            )
-            .order(
-                "date_service",
-                {
-                    ascending: true
-                }
-            );
+            .eq("metier", metierActuel)
+            .eq("statut", "disponible")
+            .order("date_service", {
+                ascending: true
+            });
 
-
-
-    /* ERREUR */
 
     if (error) {
 
         console.error(error);
 
         zone.innerHTML =
-            "<p>❌ Erreur lors du chargement : "
-            +
-            error.message
-            +
+            "<p>❌ Erreur : " +
+            error.message +
             "</p>";
 
         return;
@@ -1061,17 +933,10 @@ async function afficherEchanges() {
     }
 
 
-
     zone.innerHTML = "";
 
 
-
-    /* AUCUN ECHANGE */
-
-    if (
-        !data ||
-        data.length === 0
-    ) {
+    if (!data || data.length === 0) {
 
         zone.innerHTML =
             "<p>Aucune journée proposée pour le moment.</p>";
@@ -1081,28 +946,20 @@ async function afficherEchanges() {
     }
 
 
-
-    /* CREATION DES CARTES */
-
     data.forEach(echange => {
-
 
         const bloc =
             document.createElement("div");
 
 
-        bloc.className =
-            "item";
+        bloc.className = "item";
 
 
         bloc.innerHTML =
 
-            "<strong>"
-            +
-            echange.nom
-            +
+            "<strong>" +
+            echange.nom +
             "</strong>"
-
 
             +
 
@@ -1110,8 +967,7 @@ async function afficherEchanges() {
 
             +
 
-            "📅 "
-            +
+            "📅 " +
             echange.date_service
 
             +
@@ -1120,8 +976,7 @@ async function afficherEchanges() {
 
             +
 
-            "⏰ "
-            +
+            "⏰ " +
             formatHeure(
                 echange.prise_service
             )
@@ -1140,7 +995,6 @@ async function afficherEchanges() {
 
             "</div>"
 
-
             +
 
             (
@@ -1149,10 +1003,8 @@ async function afficherEchanges() {
 
                 ?
 
-                "<div class='item-info'>💬 "
-                +
-                echange.commentaire
-                +
+                "<div class='item-info'>💬 " +
+                echange.commentaire +
                 "</div>"
 
                 :
@@ -1161,19 +1013,13 @@ async function afficherEchanges() {
 
             )
 
+            +
+
+            "<br>"
 
             +
 
-            "<span class='statut-disponible'>"
-
-            +
-
-            "🟢 Disponible"
-
-            +
-
-            "</span>"
-
+            "<span class='statut-disponible'>🟢 Disponible</span>"
 
             +
 
@@ -1185,14 +1031,8 @@ async function afficherEchanges() {
 
             +
 
-            "onclick='jeSuisInteresse("
-
-            +
-
-            echange.id
-
-            +
-
+            "onclick='jeSuisInteresse(" +
+            echange.id +
             ")'"
 
             +
@@ -1207,7 +1047,6 @@ async function afficherEchanges() {
 
             "</button>"
 
-
             +
 
             "<button "
@@ -1218,14 +1057,8 @@ async function afficherEchanges() {
 
             +
 
-            "onclick='supprimerDemande("
-
-            +
-
-            echange.id
-
-            +
-
+            "onclick='supprimerDemande(" +
+            echange.id +
             ")'"
 
             +
@@ -1241,28 +1074,23 @@ async function afficherEchanges() {
             "</button>";
 
 
-
         zone.appendChild(bloc);
-
 
     });
 
 }
 
 
-
-/* =========================
-   JE SUIS INTERESSE
-========================= */
+/* =====================
+   JE SUIS INTÉRESSÉ
+===================== */
 
 async function jeSuisInteresse(id) {
-
 
     let agent =
         prompt(
             "Indiquez votre nom et prénom :"
         );
-
 
 
     if (agent === null) {
@@ -1286,24 +1114,17 @@ async function jeSuisInteresse(id) {
     }
 
 
-
     const { error } =
         await supabaseClient
             .from("echanges")
             .update({
 
-                statut:
-                    "interesse",
+                statut: "interesse",
 
-                agent_interesse:
-                    agent
+                agent_interesse: agent
 
             })
-            .eq(
-                "id",
-                id
-            );
-
+            .eq("id", id);
 
 
     if (error) {
@@ -1311,15 +1132,13 @@ async function jeSuisInteresse(id) {
         console.error(error);
 
         alert(
-            "❌ Erreur : "
-            +
+            "❌ Erreur : " +
             error.message
         );
 
         return;
 
     }
-
 
 
     alert(
@@ -1332,19 +1151,16 @@ async function jeSuisInteresse(id) {
 }
 
 
-
-/* =========================
+/* =====================
    SUPPRIMER UNE DEMANDE
-========================= */
+===================== */
 
 async function supprimerDemande(id) {
-
 
     const confirmation =
         confirm(
             "⚠️ Voulez-vous vraiment supprimer cette demande ?"
         );
-
 
 
     if (!confirmation) {
@@ -1354,16 +1170,11 @@ async function supprimerDemande(id) {
     }
 
 
-
     const { error } =
         await supabaseClient
             .from("echanges")
             .delete()
-            .eq(
-                "id",
-                id
-            );
-
+            .eq("id", id);
 
 
     if (error) {
@@ -1371,8 +1182,7 @@ async function supprimerDemande(id) {
         console.error(error);
 
         alert(
-            "❌ Erreur lors de la suppression : "
-            +
+            "❌ Erreur lors de la suppression : " +
             error.message
         );
 
@@ -1381,24 +1191,23 @@ async function supprimerDemande(id) {
     }
 
 
-
     alert(
         "🗑️ La demande a été supprimée."
     );
 
+
+    /* Actualisation */
 
     afficherEchanges();
 
 }
 
 
-
-/* =========================
-   AFFICHER LES INTERETS
-========================= */
+/* =====================
+   AFFICHER LES INTÉRÊTS
+===================== */
 
 async function afficherInterets() {
-
 
     const zone =
         document.getElementById(
@@ -1410,26 +1219,15 @@ async function afficherInterets() {
         "<p>Chargement...</p>";
 
 
-
     const { data, error } =
         await supabaseClient
             .from("echanges")
             .select("*")
-            .eq(
-                "metier",
-                metierActuel
-            )
-            .eq(
-                "statut",
-                "interesse"
-            )
-            .order(
-                "date_service",
-                {
-                    ascending: true
-                }
-            );
-
+            .eq("metier", metierActuel)
+            .eq("statut", "interesse")
+            .order("date_service", {
+                ascending: true
+            });
 
 
     if (error) {
@@ -1437,10 +1235,8 @@ async function afficherInterets() {
         console.error(error);
 
         zone.innerHTML =
-            "<p>❌ Erreur : "
-            +
-            error.message
-            +
+            "<p>❌ Erreur : " +
+            error.message +
             "</p>";
 
         return;
@@ -1448,15 +1244,10 @@ async function afficherInterets() {
     }
 
 
-
     zone.innerHTML = "";
 
 
-
-    if (
-        !data ||
-        data.length === 0
-    ) {
+    if (!data || data.length === 0) {
 
         zone.innerHTML =
             "<p>Aucune journée avec un agent intéressé pour le moment.</p>";
@@ -1466,26 +1257,20 @@ async function afficherInterets() {
     }
 
 
-
     data.forEach(echange => {
-
 
         const bloc =
             document.createElement("div");
 
 
-        bloc.className =
-            "item";
+        bloc.className = "item";
 
 
         bloc.innerHTML =
 
-            "<strong>"
-            +
-            echange.nom
-            +
+            "<strong>" +
+            echange.nom +
             "</strong>"
-
 
             +
 
@@ -1493,8 +1278,7 @@ async function afficherInterets() {
 
             +
 
-            "📅 "
-            +
+            "📅 " +
             echange.date_service
 
             +
@@ -1503,8 +1287,7 @@ async function afficherInterets() {
 
             +
 
-            "⏰ "
-            +
+            "⏰ " +
             formatHeure(
                 echange.prise_service
             )
@@ -1523,7 +1306,6 @@ async function afficherInterets() {
 
             "</div>"
 
-
             +
 
             (
@@ -1532,10 +1314,8 @@ async function afficherInterets() {
 
                 ?
 
-                "<div class='item-info'>💬 "
-                +
-                echange.commentaire
-                +
+                "<div class='item-info'>💬 " +
+                echange.commentaire +
                 "</div>"
 
                 :
@@ -1543,7 +1323,6 @@ async function afficherInterets() {
                 ""
 
             )
-
 
             +
 
@@ -1555,24 +1334,16 @@ async function afficherInterets() {
 
             +
 
-            "<strong>"
-
-            +
-
+            "<strong>" +
             (
-                echange.agent_interesse
-                ||
+                echange.agent_interesse ||
                 "Non renseigné"
-            )
-
-            +
-
+            ) +
             "</strong>"
 
             +
 
             "</div>"
-
 
             +
 
@@ -1586,7 +1357,6 @@ async function afficherInterets() {
 
             "</span>"
 
-
             +
 
             "<button "
@@ -1597,14 +1367,8 @@ async function afficherInterets() {
 
             +
 
-            "onclick='supprimerDemande("
-
-            +
-
-            echange.id
-
-            +
-
+            "onclick='supprimerDemande(" +
+            echange.id +
             ")'"
 
             +
@@ -1620,22 +1384,18 @@ async function afficherInterets() {
             "</button>";
 
 
-
         zone.appendChild(bloc);
-
 
     });
 
 }
 
 
-
-/* =========================
+/* =====================
    FORMAT HEURE
-========================= */
+===================== */
 
 function formatHeure(heure) {
-
 
     if (!heure) {
 
@@ -1643,15 +1403,11 @@ function formatHeure(heure) {
 
     }
 
-
     return heure.substring(0, 5);
 
 }
 
-
 </script>
 
-
 </body>
-
 </html>
