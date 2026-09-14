@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>ÉCHANGE SERVICE</title>
 
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
-
 
 /* =====================================================
    VARIABLES
@@ -29,46 +23,38 @@ content="width=device-width, initial-scale=1.0">
 
 :root {
 
-    --bleu-nuit: #071b2b;
+    --navy: #061b2b;
+    --navy-light: #0b3048;
 
-    --bleu-profond: #0a2940;
+    --blue: #1678b7;
+    --blue-light: #55bce8;
 
-    --bleu-ferroviaire: #075d91;
+    --cyan: #47d7dc;
 
-    --bleu: #087db9;
+    --white: #ffffff;
 
-    --bleu-clair: #42b8ec;
+    --background: #edf3f7;
 
-    --cyan: #65d5f4;
+    --text: #182c3d;
+    --text-light: #637384;
 
-    --blanc: #ffffff;
+    --green: #25a66e;
+    --orange: #f2a72f;
+    --red: #dc5050;
 
-    --gris-fond: #edf3f7;
-
-    --gris-clair: #f7fafc;
-
-    --texte: #172b3a;
-
-    --texte-secondaire: #667789;
-
-    --vert: #21a36d;
-
-    --orange: #ef9c18;
-
-    --rouge: #dc4a4a;
+    --shadow:
+        0 20px 50px rgba(7, 31, 48, .15);
 
 }
 
 
 /* =====================================================
-   GENERAL
+   RESET
 ===================================================== */
 
 * {
 
     box-sizing: border-box;
-
-    -webkit-tap-highlight-color: transparent;
 
 }
 
@@ -88,44 +74,79 @@ body {
 
     font-family:
 
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
 
-    color: var(--texte);
+    color: var(--text);
 
     background:
 
-    radial-gradient(
-        circle at 50% 0%,
-        #d7f0fb 0%,
-        #eaf2f6 35%,
-        #dce7ee 100%
-    );
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(77, 190, 232, .25),
+            transparent 30%
+        ),
 
-    padding-bottom: 90px;
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(51, 169, 221, .18),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            180deg,
+            #dce8ef 0%,
+            #edf3f7 45%,
+            #f5f8fa 100%
+        );
 
 }
 
 
+button,
+input,
+textarea {
+
+    font-family: inherit;
+
+}
+
+
+button {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+
 /* =====================================================
-   HEADER MODERNE
+   HEADER
 ===================================================== */
 
 header {
 
     position: relative;
 
-    min-height: 360px;
+    min-height: 400px;
 
     overflow: hidden;
 
     padding:
 
-    42px 20px
-    115px;
+        35px 20px
+        120px;
 
     text-align: center;
 
@@ -133,18 +154,30 @@ header {
 
     background:
 
-    linear-gradient(
-        135deg,
-        #061a29 0%,
-        #0b3856 42%,
-        #09638f 100%
-    );
+        radial-gradient(
+            circle at 85% 5%,
+            rgba(49, 185, 231, .55),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(44, 135, 182, .28),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #041725 0%,
+            #092a40 48%,
+            #0d4e70 100%
+        );
 
 }
 
 
 /* =====================================================
-   LUMIERES DE FOND
+   DECORATIONS
 ===================================================== */
 
 header::before {
@@ -159,21 +192,14 @@ header::before {
 
     border-radius: 50%;
 
-    top: -350px;
+    border:
 
-    left: -230px;
+        1px solid
+        rgba(255,255,255,.10);
 
-    background:
+    top: -430px;
 
-    radial-gradient(
-
-        circle,
-
-        rgba(66,184,236,.30),
-
-        transparent 65%
-
-    );
+    left: -220px;
 
 }
 
@@ -190,95 +216,37 @@ header::after {
 
     border-radius: 50%;
 
-    right: -250px;
-
-    bottom: -320px;
-
-    background:
-
-    radial-gradient(
-
-        circle,
-
-        rgba(67,190,235,.22),
-
-        transparent 68%
-
-    );
-
-}
-
-
-/* =====================================================
-   LIGNES DECORATIVES
-===================================================== */
-
-.header-line {
-
-    position: absolute;
-
-    border-radius: 100%;
-
     border:
 
-    1px solid
-    rgba(255,255,255,.08);
+        1px solid
+        rgba(102, 215, 255, .18);
 
-    pointer-events: none;
+    top: -300px;
 
-}
-
-
-.line-1 {
-
-    width: 700px;
-
-    height: 700px;
-
-    top: -510px;
-
-    left: -250px;
+    right: -180px;
 
 }
 
-
-.line-2 {
-
-    width: 650px;
-
-    height: 650px;
-
-    right: -340px;
-
-    top: -400px;
-
-}
 
 
 /* =====================================================
    CONTENU HEADER
 ===================================================== */
 
-.header-content {
+.hero-content {
 
     position: relative;
 
     z-index: 5;
 
-    max-width: 900px;
+    max-width: 1000px;
 
     margin: auto;
 
 }
 
 
-/* =====================================================
-   LOGO TRAIN
-===================================================== */
-
-.train-logo {
-
-    position: relative;
+.logo-train {
 
     width: 76px;
 
@@ -286,576 +254,8 @@ header::after {
 
     margin:
 
-    0 auto
-    16px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 40px;
-
-    border-radius: 24px;
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.22),
-        rgba(255,255,255,.07)
-    );
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.25);
-
-    box-shadow:
-
-    0 18px 45px
-    rgba(0,0,0,.30),
-
-    inset
-    0 1px 1px
-    rgba(255,255,255,.20);
-
-    backdrop-filter:
-
-    blur(12px);
-
-}
-
-
-/* =====================================================
-   TITRE
-===================================================== */
-
-header h1 {
-
-    margin: 0;
-
-    font-size:
-
-    clamp(
-        36px,
-        8vw,
-        58px
-    );
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    line-height: 1.05;
-
-    text-shadow:
-
-    0 10px 30px
-    rgba(0,0,0,.30);
-
-}
-
-
-.header-subtitle {
-
-    display: inline-block;
-
-    margin-top: 16px;
-
-    padding:
-
-    11px 22px;
-
-    border-radius: 30px;
-
-    font-size:
-
-    clamp(
-        14px,
-        3.5vw,
-        18px
-    );
-
-    color:
-
-    rgba(255,255,255,.92);
-
-    background:
-
-    rgba(255,255,255,.08);
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.10);
-
-    backdrop-filter:
-
-    blur(10px);
-
-}
-
-
-.header-subtitle strong {
-
-    color: #8ee1fa;
-
-}
-
-
-/* =====================================================
-   TRAIN STYLISE
-===================================================== */
-
-.train-visual {
-
-    position: absolute;
-
-    z-index: 3;
-
-    bottom: 34px;
-
-    left: 50%;
-
-    transform:
-
-    translateX(-50%);
-
-    width: min(600px, 88vw);
-
-    height: 58px;
-
-}
-
-
-.train-body {
-
-    position: absolute;
-
-    left: 50%;
-
-    transform:
-
-    translateX(-50%);
-
-    bottom: 12px;
-
-    width: 88%;
-
-    height: 34px;
-
-    border-radius:
-
-    50px
-    18px
-    18px
-    50px;
-
-    background:
-
-    linear-gradient(
-        180deg,
-        #e9f7fc 0%,
-        #b9dce9 18%,
-        #207ca9 22%,
-        #12618e 65%,
-        #083a5a 100%
-    );
-
-    box-shadow:
-
-    0 8px 20px
-    rgba(0,0,0,.30);
-
-}
-
-
-.train-front {
-
-    position: absolute;
-
-    left: 3%;
-
-    bottom: 10px;
-
-    width: 85px;
-
-    height: 42px;
-
-    border-radius:
-
-    50px
-    15px
-    15px
-    50px;
-
-    background:
-
-    linear-gradient(
-        180deg,
-        #dff4fb,
-        #3186b0 45%,
-        #0c4668
-    );
-
-    border:
-
-    2px solid
-    rgba(255,255,255,.35);
-
-    box-shadow:
-
-    0 6px 15px
-    rgba(0,0,0,.25);
-
-}
-
-
-.train-window {
-
-    position: absolute;
-
-    left: 19px;
-
-    top: 8px;
-
-    width: 45px;
-
-    height: 14px;
-
-    border-radius: 8px;
-
-    background:
-
-    linear-gradient(
-        180deg,
-        #132f43,
-        #235a78
-    );
-
-}
-
-
-.train-light {
-
-    position: absolute;
-
-    left: 20px;
-
-    bottom: 7px;
-
-    width: 7px;
-
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #fff5b0;
-
-    box-shadow:
-
-    28px 0 0 #fff5b0,
-
-    0 0 10px #fff6a0;
-
-}
-
-
-.train-stripe {
-
-    position: absolute;
-
-    left: 15%;
-
-    right: 8%;
-
-    top: 9px;
-
-    height: 5px;
-
-    border-radius: 10px;
-
-    background:
-
-    rgba(255,255,255,.75);
-
-}
-
-
-/* =====================================================
-   RAILS
-===================================================== */
-
-.rails {
-
-    position: absolute;
-
-    z-index: 2;
-
-    bottom: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 82px;
-
-    overflow: hidden;
-
-}
-
-
-.rail {
-
-    position: absolute;
-
-    left: -5%;
-
-    width: 110%;
-
-    height: 5px;
-
-    border-radius: 10px;
-
-    background:
-
-    linear-gradient(
-        90deg,
-        rgba(210,230,238,.55),
-        rgba(255,255,255,.90),
-        rgba(210,230,238,.55)
-    );
-
-    box-shadow:
-
-    0 2px 8px
-    rgba(0,0,0,.20);
-
-}
-
-
-.rail.one {
-
-    bottom: 48px;
-
-}
-
-
-.rail.two {
-
-    bottom: 18px;
-
-}
-
-
-/* =====================================================
-   TRAVERSES
-===================================================== */
-
-.sleepers {
-
-    position: absolute;
-
-    bottom: 6px;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 62px;
-
-    opacity: .65;
-
-    background:
-
-    repeating-linear-gradient(
-
-        90deg,
-
-        transparent 0px,
-
-        transparent 23px,
-
-        rgba(220,235,240,.75)
-        23px,
-
-        rgba(220,235,240,.75)
-        31px
-
-    );
-
-}
-
-
-/* =====================================================
-   CONTENU
-===================================================== */
-
-main {
-
-    position: relative;
-
-    z-index: 10;
-
-    width: 100%;
-
-    max-width: 780px;
-
-    margin:
-
-    -65px auto
-    80px;
-
-    padding:
-
-    0 16px;
-
-}
-
-
-/* =====================================================
-   MASQUAGE
-===================================================== */
-
-.hidden {
-
-    display: none !important;
-
-}
-
-
-/* =====================================================
-   CARTE
-===================================================== */
-
-.card {
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-
-    rgba(255,255,255,.94);
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.85);
-
-    border-radius: 30px;
-
-    padding: 26px;
-
-    margin-bottom: 18px;
-
-    box-shadow:
-
-    0 20px 55px
-    rgba(11,50,73,.16);
-
-    backdrop-filter:
-
-    blur(15px);
-
-}
-
-
-/* =====================================================
-   CARTE BIENVENUE
-===================================================== */
-
-.welcome-card {
-
-    text-align: center;
-
-    padding:
-
-    34px
-    30px
-    30px;
-
-}
-
-
-.welcome-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 250px;
-
-    height: 250px;
-
-    border-radius: 50%;
-
-    top: -160px;
-
-    left: -100px;
-
-    background:
-
-    radial-gradient(
-
-        circle,
-
-        rgba(71,185,234,.16),
-
-        transparent 70%
-
-    );
-
-}
-
-
-.welcome-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-
-    height: 180px;
-
-    border-radius: 50%;
-
-    bottom: -130px;
-
-    right: -80px;
-
-    background:
-
-    radial-gradient(
-
-        circle,
-
-        rgba(16,119,181,.10),
-
-        transparent 70%
-
-    );
-
-}
-
-
-.welcome-train {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: 76px;
-
-    height: 76px;
-
-    margin:
-
-    0 auto
-    16px;
+        0 auto
+        15px;
 
     display: flex;
 
@@ -869,16 +269,447 @@ main {
 
     background:
 
-    linear-gradient(
-        135deg,
-        #d8f1fb,
-        #b7e0f0
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.04)
+        );
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.25);
 
     box-shadow:
 
-    0 10px 30px
-    rgba(22,118,184,.18);
+        0 15px 40px
+        rgba(0,0,0,.30);
+
+    backdrop-filter:
+
+        blur(15px);
+
+}
+
+
+header h1 {
+
+    margin: 0;
+
+    font-size:
+
+        clamp(
+            38px,
+            7vw,
+            72px
+        );
+
+    font-weight: 900;
+
+    letter-spacing:
+
+        clamp(
+            1px,
+            .5vw,
+            5px
+        );
+
+    line-height: 1;
+
+    text-shadow:
+
+        0 10px 30px
+        rgba(0,0,0,.25);
+
+}
+
+
+.hero-subtitle {
+
+    margin:
+
+        20px 0 0;
+
+    font-size:
+
+        clamp(
+            18px,
+            3vw,
+            27px
+        );
+
+    font-weight: 400;
+
+    color:
+
+        rgba(255,255,255,.86);
+
+}
+
+
+.hero-subtitle strong {
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-weight: 700;
+
+    font-size:
+
+        clamp(
+            16px,
+            2.5vw,
+            22px
+        );
+
+    color:
+
+        #9dddf4;
+
+}
+
+
+
+/* =====================================================
+   TRAIN DECORATIF
+===================================================== */
+
+.train-visual {
+
+    position: absolute;
+
+    z-index: 2;
+
+    width: 620px;
+
+    height: 115px;
+
+    right: -90px;
+
+    bottom: 42px;
+
+    border-radius:
+
+        60px
+        0
+        0
+        60px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(222,241,249,.95),
+            rgba(118,171,198,.90)
+        );
+
+    box-shadow:
+
+        0 20px 35px
+        rgba(0,0,0,.25);
+
+    opacity: .90;
+
+}
+
+
+.train-visual::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 35px;
+
+    top: 22px;
+
+    width: 390px;
+
+    height: 34px;
+
+    border-radius: 20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #123146,
+            #092233,
+            #1b506c
+        );
+
+    box-shadow:
+
+        inset
+        0 3px 7px
+        rgba(255,255,255,.10);
+
+}
+
+
+.train-visual::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+
+    top: 10px;
+
+    width: 130px;
+
+    height: 95px;
+
+    border-radius:
+
+        50px
+        0
+        0
+        50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #e6f3f8,
+            #9ac3d8
+        );
+
+}
+
+
+
+/* =====================================================
+   RAILS
+===================================================== */
+
+.rails {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 85px;
+
+    opacity: .75;
+
+}
+
+
+.rail {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 5px;
+
+    background:
+
+        rgba(230,240,245,.90);
+
+    box-shadow:
+
+        0 2px 4px
+        rgba(0,0,0,.20);
+
+}
+
+
+.rail-one {
+
+    bottom: 48px;
+
+}
+
+
+.rail-two {
+
+    bottom: 18px;
+
+}
+
+
+.sleepers {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 70px;
+
+    bottom: 0;
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+            transparent 0px,
+
+            transparent 25px,
+
+            rgba(220,235,242,.72)
+            25px,
+
+            rgba(220,235,242,.72)
+            32px
+
+        );
+
+}
+
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+
+        -75px auto
+        120px;
+
+    padding:
+
+        0 20px;
+
+}
+
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+
+    background:
+
+        rgba(255,255,255,.92);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.85);
+
+    border-radius: 30px;
+
+    padding: 30px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter:
+
+        blur(20px);
+
+}
+
+
+
+/* =====================================================
+   ACCUEIL
+===================================================== */
+
+.welcome-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    padding:
+
+        38px 30px
+        34px;
+
+}
+
+
+.welcome-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(78,192,232,.16),
+            transparent 70%
+        );
+
+    top: -100px;
+
+    left: -80px;
+
+}
+
+
+.welcome-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 88px;
+
+    height: 88px;
+
+    margin:
+
+        -72px auto
+        18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 45px;
+
+    border-radius: 28px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #dff4fb,
+            #b9e0ef
+        );
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(29,117,157,.20);
 
 }
 
@@ -891,17 +722,17 @@ main {
 
     margin:
 
-    0 0 14px;
+        0 0 16px;
 
     font-size:
 
-    clamp(
-        28px,
-        6vw,
-        38px
-    );
+        clamp(
+            30px,
+            5vw,
+            42px
+        );
 
-    color: #163348;
+    color: #173147;
 
 }
 
@@ -912,43 +743,89 @@ main {
 
     z-index: 2;
 
+    max-width: 800px;
+
     margin:
 
-    0 auto;
-
-    max-width: 620px;
+        0 auto;
 
     font-size:
 
-    17px;
+        clamp(
+            16px,
+            2.5vw,
+            20px
+        );
 
-    line-height: 1.7;
+    line-height: 1.65;
 
-    color:
-
-    var(--texte-secondaire);
+    color: #5c6d7b;
 
 }
 
 
-.welcome-choice {
+.choose-label {
 
     position: relative;
 
     z-index: 2;
 
-    margin-top: 20px !important;
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 24px;
+
+    padding:
+
+        12px 24px;
+
+    border-radius: 50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #e0f2f8,
+            #c7e6f1
+        );
+
+    color: #25465c;
+
+    font-size:
+
+        clamp(
+            15px,
+            2vw,
+            18px
+        );
 
     font-weight: 800;
-
-    color: #23465d !important;
 
 }
 
 
+
 /* =====================================================
-   CHOIX METIER
+   CHOIX METIERS
 ===================================================== */
+
+.metiers {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 22px;
+
+}
+
 
 .choice {
 
@@ -956,15 +833,13 @@ main {
 
     padding: 0;
 
-    margin:
-
-    0 0 14px;
-
     border: none;
 
     background: transparent;
 
     cursor: pointer;
+
+    text-align: left;
 
 }
 
@@ -973,42 +848,38 @@ main {
 
     position: relative;
 
+    min-height: 125px;
+
     overflow: hidden;
 
     display: flex;
 
     align-items: center;
 
-    gap: 16px;
+    gap: 18px;
 
-    width: 100%;
+    padding: 20px;
 
-    min-height: 96px;
-
-    padding:
-
-    14px 22px;
-
-    border-radius: 25px;
+    border-radius: 26px;
 
     background:
 
-    rgba(255,255,255,.96);
+        rgba(255,255,255,.94);
 
     border:
 
-    1px solid
-    rgba(255,255,255,.85);
+        1px solid
+        rgba(255,255,255,.90);
 
     box-shadow:
 
-    0 15px 35px
-    rgba(10,49,72,.13);
+        0 14px 35px
+        rgba(10,45,65,.12);
 
     transition:
 
-    transform .20s ease,
-    box-shadow .20s ease;
+        transform .20s ease,
+        box-shadow .20s ease;
 
 }
 
@@ -1025,15 +896,29 @@ main {
 
     bottom: 0;
 
-    width: 5px;
+    width: 6px;
 
     background:
 
-    linear-gradient(
-        180deg,
-        var(--bleu-clair),
-        var(--bleu-ferroviaire)
-    );
+        linear-gradient(
+            180deg,
+            #2293c9,
+            #44d1d4
+        );
+
+}
+
+
+.choice:hover .choice-content {
+
+    transform:
+
+        translateY(-4px);
+
+    box-shadow:
+
+        0 22px 45px
+        rgba(10,45,65,.18);
 
 }
 
@@ -1042,22 +927,18 @@ main {
 
     transform:
 
-    scale(.985);
+        scale(.98);
 
 }
 
 
 .choice-icon {
 
-    position: relative;
+    flex-shrink: 0;
 
-    z-index: 2;
+    width: 70px;
 
-    min-width: 64px;
-
-    width: 64px;
-
-    height: 64px;
+    height: 70px;
 
     display: flex;
 
@@ -1065,35 +946,29 @@ main {
 
     justify-content: center;
 
-    font-size: 32px;
+    font-size: 37px;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     background:
 
-    linear-gradient(
-        135deg,
-        #e2f4fb,
-        #bfe2f1
-    );
+        linear-gradient(
+            135deg,
+            #e1f4fa,
+            #b7ddea
+        );
 
     box-shadow:
 
-    inset
-    0 1px 2px
-    rgba(255,255,255,.90),
-
-    0 7px 18px
-    rgba(20,103,148,.12);
+        0 10px 20px
+        rgba(24,105,143,.12);
 
 }
 
 
 .choice-text {
 
-    flex: 1;
-
-    text-align: left;
+    padding-right: 28px;
 
 }
 
@@ -1106,11 +981,13 @@ main {
 
     font-size:
 
-    25px;
+        clamp(
+            24px,
+            3vw,
+            30px
+        );
 
-    font-weight: 850;
-
-    color: #173449;
+    color: #173147;
 
 }
 
@@ -1121,36 +998,38 @@ main {
 
     font-size:
 
-    15px;
+        clamp(
+            14px,
+            2vw,
+            17px
+        );
 
-    color: #71808c;
+    line-height: 1.35;
+
+    color: #667785;
 
 }
 
 
 .choice-arrow {
 
-    margin-left: auto;
+    position: absolute;
 
-    font-size: 30px;
+    right: 22px;
+
+    font-size: 34px;
 
     font-weight: 300;
 
-    color: var(--bleu-ferroviaire);
+    color: #2180b3;
 
 }
+
 
 
 /* =====================================================
-   TITRES
+   PAGE TITLE
 ===================================================== */
-
-h2 {
-
-    margin-top: 0;
-
-}
-
 
 .page-title {
 
@@ -1160,13 +1039,19 @@ h2 {
 
     gap: 10px;
 
-    margin-bottom: 8px;
+    margin:
+
+        0 0 10px;
 
     font-size:
 
-    28px;
+        clamp(
+            26px,
+            4vw,
+            34px
+        );
 
-    color: #173449;
+    color: #173147;
 
 }
 
@@ -1175,24 +1060,25 @@ h2 {
 
     margin:
 
-    0 0 20px;
+        0 0 20px;
 
-    font-size: 16px;
+    color: #647482;
 
-    color: #657686;
+    line-height: 1.5;
 
 }
 
 
 .metier-info strong {
 
-    color: var(--bleu-ferroviaire);
+    color: var(--blue);
 
 }
 
 
+
 /* =====================================================
-   BADGE METIER
+   BADGE
 ===================================================== */
 
 .badge {
@@ -1203,123 +1089,104 @@ h2 {
 
     gap: 7px;
 
+    margin-bottom: 18px;
+
     padding:
 
-    9px 15px;
-
-    margin-bottom: 15px;
+        9px 15px;
 
     border-radius: 30px;
 
     background:
 
-    linear-gradient(
-        135deg,
-        #e0f4fb,
-        #d2ecf7
-    );
+        linear-gradient(
+            135deg,
+            #e0f3fa,
+            #c6e7f2
+        );
 
-    color:
+    color: #17628c;
 
-    #12618d;
-
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 800;
 
 }
 
 
+
 /* =====================================================
-   FORMULAIRES
+   FORMULAIRE
 ===================================================== */
 
 label {
 
     display: block;
 
-    margin-top: 15px;
+    margin:
 
-    margin-bottom: 7px;
+        16px 0 7px;
 
     font-size: 14px;
 
-    font-weight: 750;
+    font-weight: 800;
 
-    color: #405565;
+    color: #405568;
 
 }
 
 
 input,
-
 textarea {
 
     width: 100%;
 
+    padding: 15px;
+
     border:
 
-    1px solid
-    #d7e2e9;
+        1px solid
+        #d8e3e9;
 
     border-radius: 15px;
 
-    padding: 14px;
+    background: #f9fbfc;
+
+    color: #172c3d;
 
     font-size: 16px;
 
-    font-family: inherit;
-
-    background:
-
-    #f9fbfc;
-
-    color:
-
-    #172a3a;
-
     transition:
 
-    border .20s ease,
-    box-shadow .20s ease;
+        border .2s ease,
+        box-shadow .2s ease;
 
 }
 
 
 input:focus,
-
 textarea:focus {
 
     outline: none;
 
-    border-color:
-
-    var(--bleu);
-
-    background:
-
-    white;
+    border-color: #2a95c8;
 
     box-shadow:
 
-    0 0 0 4px
-    rgba(22,118,184,.12);
+        0 0 0 4px
+        rgba(42,149,200,.12);
 
 }
 
 
 textarea {
 
-    min-height: 95px;
+    min-height: 100px;
 
     resize: vertical;
 
 }
 
-
-/* =====================================================
-   HORAIRES
-===================================================== */
 
 .row {
 
@@ -1327,15 +1194,16 @@ textarea {
 
     grid-template-columns:
 
-    1fr 1fr;
+        1fr 1fr;
 
-    gap: 12px;
+    gap: 14px;
 
 }
 
 
+
 /* =====================================================
-   BOUTONS PRINCIPAUX
+   BOUTONS
 ===================================================== */
 
 .btn {
@@ -1346,7 +1214,7 @@ textarea {
 
     padding:
 
-    16px;
+        16px 20px;
 
     border: none;
 
@@ -1354,19 +1222,17 @@ textarea {
 
     cursor: pointer;
 
-    font-family: inherit;
-
     background:
 
-    linear-gradient(
-        135deg,
-        #075d91,
-        #168ac7
-    );
+        linear-gradient(
+            135deg,
+            #12699b,
+            #259ed1
+        );
 
     color: white;
 
-    font-size: 15px;
+    font-size: 16px;
 
     font-weight: 800;
 
@@ -1374,12 +1240,27 @@ textarea {
 
     box-shadow:
 
-    0 10px 24px
-    rgba(8,104,160,.24);
+        0 12px 25px
+        rgba(18,105,155,.22);
 
     transition:
 
-    transform .20s ease;
+        transform .18s ease,
+        box-shadow .18s ease;
+
+}
+
+
+.btn:hover {
+
+    transform:
+
+        translateY(-2px);
+
+    box-shadow:
+
+        0 16px 30px
+        rgba(18,105,155,.28);
 
 }
 
@@ -1388,7 +1269,7 @@ textarea {
 
     transform:
 
-    scale(.98);
+        scale(.98);
 
 }
 
@@ -1397,15 +1278,14 @@ textarea {
 
     background:
 
-    #edf3f6;
+        #e8f0f4;
 
-    color:
-
-    #304757;
+    color: #294354;
 
     box-shadow: none;
 
 }
+
 
 
 /* =====================================================
@@ -1418,36 +1298,34 @@ textarea {
 
     overflow: hidden;
 
-    margin-top: 15px;
+    margin-top: 16px;
 
-    padding:
+    padding: 22px;
 
-    20px;
-
-    border-radius: 21px;
+    border-radius: 22px;
 
     background:
 
-    linear-gradient(
-        135deg,
-        #ffffff,
-        #f4f8fa
-    );
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f4f8fa
+        );
 
     border:
 
-    1px solid
-    #dce6ec;
+        1px solid
+        #dbe6eb;
 
     border-left:
 
-    6px solid
-    var(--bleu);
+        6px solid
+        #208cc3;
 
     box-shadow:
 
-    0 8px 22px
-    rgba(10,40,60,.08);
+        0 10px 25px
+        rgba(10,45,65,.08);
 
 }
 
@@ -1460,7 +1338,7 @@ textarea {
 
     justify-content: space-between;
 
-    gap: 10px;
+    gap: 15px;
 
 }
 
@@ -1469,79 +1347,90 @@ textarea {
 
     font-size:
 
-    20px;
+        clamp(
+            20px,
+            3vw,
+            24px
+        );
 
-    font-weight: 850;
+    font-weight: 900;
 
-    color: #19364a;
+    color: #173147;
 
 }
 
 
 .item-details {
 
-    margin-top: 10px;
+    display: grid;
 
-    line-height: 1.8;
+    gap: 8px;
+
+    margin-top: 14px;
+
+    padding:
+
+        14px 16px;
+
+    border-radius: 16px;
+
+    background:
+
+        #edf6fa;
+
+    color: #345266;
 
     font-size: 16px;
 
-    color: #3f5667;
+    line-height: 1.5;
 
 }
 
 
 .item-commentaire {
 
-    margin-top: 10px;
+    margin-top: 13px;
 
-    padding:
+    padding-top: 12px;
 
-    10px 12px;
+    border-top:
 
-    border-radius: 12px;
+        1px solid
+        #e0e8ec;
 
-    background:
-
-    #eef5f8;
-
-    font-size: 14px;
+    color: #667785;
 
     line-height: 1.5;
-
-    color: #5d6f7d;
 
 }
 
 
 .interesse {
 
-    margin-top: 14px;
+    margin-top: 15px;
 
     padding:
 
-    13px;
+        14px 16px;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
     background:
 
-    linear-gradient(
-        135deg,
-        #fff6df,
-        #ffedbf
-    );
+        linear-gradient(
+            135deg,
+            #fff4d8,
+            #ffedc2
+        );
 
     border:
 
-    1px solid
-    #f4d995;
+        1px solid
+        #f3d48b;
 
-    color:
+    color: #805500;
 
-    #7c570d;
-
-    font-size: 14px;
+    font-size: 15px;
 
     font-weight: 700;
 
@@ -1550,9 +1439,10 @@ textarea {
 
 .interesse strong {
 
-    color: #654400;
+    color: #654300;
 
 }
+
 
 
 /* =====================================================
@@ -1565,11 +1455,11 @@ textarea {
 
     grid-template-columns:
 
-    1fr 1fr;
+        1fr 1fr;
 
-    gap: 9px;
+    gap: 10px;
 
-    margin-top: 15px;
+    margin-top: 17px;
 
 }
 
@@ -1580,17 +1470,15 @@ textarea {
 
     padding:
 
-    12px 8px;
+        13px 10px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
     cursor: pointer;
 
-    font-family: inherit;
-
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 800;
 
@@ -1601,11 +1489,11 @@ textarea {
 
     background:
 
-    #fff0cd;
+        #fff0cb;
 
     color:
 
-    #895900;
+        #865800;
 
 }
 
@@ -1614,13 +1502,14 @@ textarea {
 
     background:
 
-    #ffe7e7;
+        #ffe5e5;
 
     color:
 
-    #b83030;
+        #b53737;
 
 }
+
 
 
 /* =====================================================
@@ -1629,15 +1518,13 @@ textarea {
 
 .empty {
 
-    text-align: center;
-
     padding:
 
-    42px 20px;
+        45px 20px;
 
-    color:
+    text-align: center;
 
-    #71808c;
+    color: #697a88;
 
 }
 
@@ -1646,58 +1533,66 @@ textarea {
 
     display: block;
 
-    font-size: 52px;
-
     margin-bottom: 15px;
+
+    font-size: 55px;
 
 }
 
 
+
 /* =====================================================
-   NAVIGATION BASSE
+   NAVIGATION
 ===================================================== */
 
 nav {
 
     position: fixed;
 
-    z-index: 100;
+    z-index: 1000;
 
-    bottom: 0;
+    left: 50%;
 
-    left: 0;
+    transform:
 
-    right: 0;
+        translateX(-50%);
+
+    bottom:
+
+        calc(
+            12px + env(safe-area-inset-bottom)
+        );
 
     display: flex;
 
-    align-items: center;
+    width:
 
-    justify-content: space-around;
+        min(
+            550px,
+            calc(100% - 24px)
+        );
 
-    padding:
+    padding: 7px;
 
-    7px
-    6px
-    calc(7px + env(safe-area-inset-bottom));
+    border-radius: 22px;
 
     background:
 
-    rgba(255,255,255,.94);
+        rgba(255,255,255,.94);
 
-    border-top:
+    border:
 
-    1px solid
-    rgba(205,220,229,.90);
+        1px solid
+        rgba(255,255,255,.9);
 
     box-shadow:
 
-    0 -10px 30px
-    rgba(10,40,60,.10);
+        0 15px 40px
+        rgba(0,0,0,.18);
 
     backdrop-filter:
 
-    blur(18px);
+        blur(20px);
 
 }
 
@@ -1708,19 +1603,26 @@ nav button {
 
     padding:
 
-    8px 5px;
+        9px 4px;
 
     border: none;
 
+    border-radius: 16px;
+
     background: transparent;
 
-    color: #526574;
-
-    font-family: inherit;
+    color: #536675;
 
     font-size: 12px;
 
     cursor: pointer;
+
+}
+
+
+nav button:active {
+
+    background: #e6f1f5;
 
 }
 
@@ -1736,81 +1638,95 @@ nav button {
 }
 
 
+
 /* =====================================================
-   MOBILE
+   TABLETTE / IPAD
 ===================================================== */
 
 @media
-(max-width: 500px) {
+(max-width: 900px) {
+
+    .metiers {
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+
+    .train-visual {
+
+        width: 430px;
+
+        right: -160px;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SMARTPHONE
+===================================================== */
+
+@media
+(max-width: 600px) {
 
 
     header {
 
-        min-height: 330px;
+        min-height: 340px;
 
         padding:
 
-        34px 15px
-        100px;
+            28px 16px
+            100px;
 
     }
 
 
-    .train-logo {
+    .logo-train {
 
-        width: 66px;
+        width: 64px;
 
-        height: 66px;
+        height: 64px;
 
-        font-size: 35px;
+        font-size: 34px;
 
-        border-radius: 21px;
-
-    }
-
-
-    header h1 {
-
-        font-size:
-
-        clamp(
-            32px,
-            10vw,
-            45px
-        );
-
-        letter-spacing: 1px;
+        border-radius: 22px;
 
     }
 
 
-    .header-subtitle {
+    .hero-subtitle {
 
-        padding:
+        margin-top: 15px;
 
-        9px 15px;
+    }
 
-        line-height: 1.5;
+
+    .train-visual {
+
+        display: none;
 
     }
 
 
     main {
 
-        margin-top:
-
-        -55px;
+        margin-top: -55px;
 
         padding:
 
-        0 13px;
+            0 14px;
 
     }
 
 
     .card {
 
-        padding: 21px;
+        padding: 22px 18px;
 
         border-radius: 25px;
 
@@ -1821,84 +1737,98 @@ nav button {
 
         padding:
 
-        28px 20px
-        25px;
+            34px 18px
+            25px;
 
     }
 
 
-    .welcome-card h2 {
+    .welcome-icon {
 
-        font-size: 30px;
+        width: 72px;
 
-    }
+        height: 72px;
 
+        margin:
 
-    .welcome-card p {
-
-        font-size: 16px;
-
-    }
-
-
-    .welcome-train {
-
-        width: 66px;
-
-        height: 66px;
+            -60px auto
+            15px;
 
         font-size: 36px;
 
-        border-radius: 22px;
+        border-radius: 23px;
+
+    }
+
+
+    .choose-label {
+
+        width: 100%;
+
+        justify-content: center;
+
+        padding:
+
+            11px 15px;
+
+    }
+
+
+    .metiers {
+
+        gap: 14px;
+
+        margin-top: 17px;
 
     }
 
 
     .choice-content {
 
-        min-height: 88px;
+        min-height: 105px;
 
-        padding:
+        padding: 17px;
 
-        12px 16px;
-
-        border-radius: 22px;
+        border-radius: 23px;
 
     }
 
 
     .choice-icon {
 
-        min-width: 58px;
+        width: 60px;
 
-        width: 58px;
+        height: 60px;
 
-        height: 58px;
+        font-size: 31px;
 
-        font-size: 28px;
-
-        border-radius: 18px;
+        border-radius: 19px;
 
     }
 
 
     .choice-text strong {
 
-        font-size: 23px;
-
-    }
-
-
-    .choice-text small {
-
-        font-size: 14px;
+        font-size: 24px;
 
     }
 
 
     .choice-arrow {
 
-        font-size: 27px;
+        right: 17px;
+
+        font-size: 30px;
+
+    }
+
+
+    .row {
+
+        grid-template-columns:
+        1fr;
+
+        gap: 0;
 
     }
 
@@ -1906,18 +1836,16 @@ nav button {
     .actions {
 
         grid-template-columns:
-
         1fr;
 
     }
 
 
-    .row {
+    .item {
 
-        gap: 9px;
+        padding: 18px;
 
     }
-
 
 }
 
@@ -1925,6 +1853,7 @@ nav button {
 </style>
 
 </head>
+
 
 
 <body>
@@ -1938,15 +1867,10 @@ nav button {
 <header>
 
 
-<div class="header-line line-1"></div>
-
-<div class="header-line line-2"></div>
+<div class="hero-content">
 
 
-<div class="header-content">
-
-
-<div class="train-logo">
+<div class="logo-train">
 
 🚆
 
@@ -1960,11 +1884,9 @@ nav button {
 </h1>
 
 
-<div class="header-subtitle">
+<div class="hero-subtitle">
 
 Échange de journées entre agents
-
-•
 
 <strong>
 
@@ -1979,48 +1901,21 @@ si congés refusés
 
 
 
-<!-- =====================================================
-     TRAIN VISUEL
-===================================================== -->
+<!-- TRAIN DECORATIF -->
 
-<div class="train-visual">
-
-
-<div class="train-body">
-
-<div class="train-stripe"></div>
-
-</div>
-
-
-<div class="train-front">
-
-<div class="train-window"></div>
-
-<div class="train-light"></div>
-
-</div>
-
-
-</div>
+<div class="train-visual"></div>
 
 
 
-<!-- =====================================================
-     RAILS
-===================================================== -->
+<!-- RAILS -->
 
 <div class="rails">
 
+<div class="rail rail-one"></div>
+
+<div class="rail rail-two"></div>
 
 <div class="sleepers"></div>
-
-
-<div class="rail one"></div>
-
-
-<div class="rail two"></div>
-
 
 </div>
 
@@ -2047,9 +1942,9 @@ si congés refusés
 <div class="card welcome-card">
 
 
-<div class="welcome-train">
+<div class="welcome-icon">
 
-🚆
+🤝
 
 </div>
 
@@ -2069,11 +1964,13 @@ un collègue intéressé pour un éventuel échange.
 </p>
 
 
-<p class="welcome-choice">
+<div class="choose-label">
 
-Choisissez votre métier pour commencer.
+🚆
 
-</p>
+Choisissez votre métier pour commencer
+
+</div>
 
 
 </div>
@@ -2081,12 +1978,21 @@ Choisissez votre métier pour commencer.
 
 
 <!-- =====================================================
-     ADC
+     METIERS
 ===================================================== -->
 
+<div class="metiers">
+
+
+<!-- ADC -->
+
 <button
+
 class="choice"
-onclick="choisirMetier('ADC')">
+
+onclick="choisirMetier('ADC')"
+
+>
 
 
 <div class="choice-content">
@@ -2133,13 +2039,15 @@ Conducteurs de train
 
 
 
-<!-- =====================================================
-     ASCT
-===================================================== -->
+<!-- ASCT -->
 
 <button
+
 class="choice"
-onclick="choisirMetier('ASCT')">
+
+onclick="choisirMetier('ASCT')"
+
+>
 
 
 <div class="choice-content">
@@ -2185,6 +2093,9 @@ Agents du Service Commercial Train
 </button>
 
 
+</div>
+
+
 </section>
 
 
@@ -2194,16 +2105,24 @@ Agents du Service Commercial Train
 ===================================================== -->
 
 <section
+
 id="proposer"
-class="hidden">
+
+class="hidden"
+
+>
 
 
 <div class="card">
 
 
 <span
+
 id="metier"
-class="badge">
+
+class="badge"
+
+>
 
 🚆 Métier
 
@@ -2234,9 +2153,14 @@ Nom et prénom
 
 
 <input
+
 id="nom"
+
 placeholder="Exemple : Jean DUPONT"
-autocomplete="name">
+
+autocomplete="name"
+
+>
 
 
 
@@ -2248,8 +2172,12 @@ Date de la journée
 
 
 <input
+
 id="date"
-type="date">
+
+type="date"
+
+>
 
 
 
@@ -2267,8 +2195,12 @@ Prise de service
 
 
 <input
+
 id="prise"
-type="time">
+
+type="time"
+
+>
 
 
 </div>
@@ -2286,8 +2218,12 @@ Fin de service
 
 
 <input
+
 id="fin"
-type="time">
+
+type="time"
+
+>
 
 
 </div>
@@ -2305,14 +2241,22 @@ Commentaire
 
 
 <textarea
+
 id="commentaire"
-placeholder="Exemple : TER, réserve, numéro de train..."></textarea>
+
+placeholder="Exemple : TER, réserve, numéro de train..."
+
+></textarea>
 
 
 
 <button
+
 class="btn"
-onclick="publier()">
+
+onclick="publier()"
+
+>
 
 🚆 PUBLIER MA JOURNÉE
 
@@ -2321,8 +2265,12 @@ onclick="publier()">
 
 
 <button
+
 class="btn btn-secondaire"
-onclick="afficher('echanges')">
+
+onclick="afficher('echanges')"
+
+>
 
 🔎 VOIR LES ÉCHANGES
 
@@ -2341,8 +2289,12 @@ onclick="afficher('echanges')">
 ===================================================== -->
 
 <section
+
 id="echanges"
-class="hidden">
+
+class="hidden"
+
+>
 
 
 <div class="card">
@@ -2369,13 +2321,19 @@ Métier :
 
 
 
-<div id="listeEchanges"></div>
+<div id="listeEchanges">
+
+</div>
 
 
 
 <button
+
 class="btn btn-secondaire"
-onclick="afficher('proposer')">
+
+onclick="afficher('proposer')"
+
+>
 
 ➕ PROPOSER UNE JOURNÉE
 
@@ -2397,12 +2355,19 @@ onclick="afficher('proposer')">
 ===================================================== -->
 
 <nav
+
 id="menu"
-class="hidden">
+
+class="hidden"
+
+>
 
 
 <button
-onclick="afficher('proposer')">
+
+onclick="afficher('proposer')"
+
+>
 
 
 <span class="nav-icon">
@@ -2410,7 +2375,6 @@ onclick="afficher('proposer')">
 ➕
 
 </span>
-
 
 Ma journée
 
@@ -2420,7 +2384,10 @@ Ma journée
 
 
 <button
-onclick="afficher('echanges')">
+
+onclick="afficher('echanges')"
+
+>
 
 
 <span class="nav-icon">
@@ -2428,7 +2395,6 @@ onclick="afficher('echanges')">
 🔎
 
 </span>
-
 
 Échanges
 
@@ -2438,7 +2404,10 @@ onclick="afficher('echanges')">
 
 
 <button
-onclick="changerMetier()">
+
+onclick="changerMetier()"
+
+>
 
 
 <span class="nav-icon">
@@ -2446,7 +2415,6 @@ onclick="changerMetier()">
 🚆
 
 </span>
-
 
 Métier
 
@@ -2465,24 +2433,19 @@ Métier
 <script>
 
 
+
 /* =====================================================
    SUPABASE
 ===================================================== */
 
-
 const SUPABASE_URL =
+
 "https://nptwpoguokbjuzdyxach.supabase.co";
 
 
-/*
-
-IMPORTANT :
-
-Remets ici ta clé Publishable Supabase.
-
-*/
 
 const SUPABASE_KEY =
+
 "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 
@@ -2524,15 +2487,9 @@ function afficher(page) {
 
         section => {
 
-
             section
-
             .classList
-
-            .add(
-                "hidden"
-            );
-
+            .add("hidden");
 
         }
 
@@ -2542,15 +2499,11 @@ function afficher(page) {
 
     document
 
-    .getElementById(
-        page
-    )
+    .getElementById(page)
 
     .classList
 
-    .remove(
-        "hidden"
-    );
+    .remove("hidden");
 
 
 
@@ -2560,9 +2513,7 @@ function afficher(page) {
 
     ) {
 
-
         afficherEchanges();
-
 
     }
 
@@ -2592,31 +2543,43 @@ function choisirMetier(metier) {
 
 
 
+    if (
+
+        metier === "ADC"
+
+    ) {
+
+
+        document
+
+        .getElementById("metier")
+
+        .innerHTML =
+
+        "🚆 ADC – Conducteurs";
+
+
+    }
+
+    else {
+
+
+        document
+
+        .getElementById("metier")
+
+        .innerHTML =
+
+        "👨‍✈️ ASCT – Service Commercial Train";
+
+
+    }
+
+
+
     document
 
-    .getElementById(
-        "metier"
-    )
-
-    .innerHTML =
-
-    metier === "ADC"
-
-    ?
-
-    "🚆 ADC – Conducteurs"
-
-    :
-
-    "👨‍✈️ ASCT – Service Commercial Train";
-
-
-
-    document
-
-    .getElementById(
-        "metierEchanges"
-    )
+    .getElementById("metierEchanges")
 
     .innerText =
 
@@ -2626,21 +2589,15 @@ function choisirMetier(metier) {
 
     document
 
-    .getElementById(
-        "menu"
-    )
+    .getElementById("menu")
 
     .classList
 
-    .remove(
-        "hidden"
-    );
+    .remove("hidden");
 
 
 
-    afficher(
-        "proposer"
-    );
+    afficher("proposer");
 
 
 }
@@ -2660,21 +2617,15 @@ function changerMetier() {
 
     document
 
-    .getElementById(
-        "menu"
-    )
+    .getElementById("menu")
 
     .classList
 
-    .add(
-        "hidden"
-    );
+    .add("hidden");
 
 
 
-    afficher(
-        "accueil"
-    );
+    afficher("accueil");
 
 
 }
@@ -2691,13 +2642,8 @@ async function publier() {
     const nom =
 
     document
-
-    .getElementById(
-        "nom"
-    )
-
+    .getElementById("nom")
     .value
-
     .trim();
 
 
@@ -2705,11 +2651,7 @@ async function publier() {
     const date =
 
     document
-
-    .getElementById(
-        "date"
-    )
-
+    .getElementById("date")
     .value;
 
 
@@ -2717,11 +2659,7 @@ async function publier() {
     const prise =
 
     document
-
-    .getElementById(
-        "prise"
-    )
-
+    .getElementById("prise")
     .value;
 
 
@@ -2729,11 +2667,7 @@ async function publier() {
     const fin =
 
     document
-
-    .getElementById(
-        "fin"
-    )
-
+    .getElementById("fin")
     .value;
 
 
@@ -2741,18 +2675,14 @@ async function publier() {
     const commentaire =
 
     document
-
-    .getElementById(
-        "commentaire"
-    )
-
+    .getElementById("commentaire")
     .value
-
     .trim();
 
 
 
     /* VERIFICATION */
+
 
     if (
 
@@ -2776,12 +2706,12 @@ async function publier() {
 
         return;
 
-
     }
 
 
 
     /* VERIFICATION METIER */
+
 
     if (
 
@@ -2792,19 +2722,19 @@ async function publier() {
 
         alert(
 
-            "Veuillez sélectionner un métier."
+            "Merci de choisir un métier."
 
         );
 
 
         return;
 
-
     }
 
 
 
     /* ENVOI SUPABASE */
+
 
     const {
 
@@ -2816,64 +2746,44 @@ async function publier() {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
     .insert([
 
-
         {
 
-
             metier:
-
             metierActuel,
 
-
             nom:
-
             nom,
 
-
             date_service:
-
             date,
 
-
             prise_service:
-
             prise,
 
-
             fin_service:
-
             fin,
 
-
             commentaire:
-
             commentaire,
 
-
             statut:
-
             "disponible",
 
-
             agent_interesse:
-
             null
 
-
         }
-
 
     ]);
 
 
 
     /* ERREUR */
+
 
     if (
 
@@ -2882,9 +2792,8 @@ async function publier() {
     ) {
 
 
-        console.error(
-            error
-        );
+        console.error(error);
+
 
 
         alert(
@@ -2900,59 +2809,35 @@ async function publier() {
 
         return;
 
-
     }
 
 
 
     /* REINITIALISATION */
 
+
     document
-
-    .getElementById(
-        "nom"
-    )
-
+    .getElementById("nom")
     .value = "";
 
 
-
     document
-
-    .getElementById(
-        "date"
-    )
-
+    .getElementById("date")
     .value = "";
 
 
-
     document
-
-    .getElementById(
-        "prise"
-    )
-
+    .getElementById("prise")
     .value = "";
 
 
-
     document
-
-    .getElementById(
-        "fin"
-    )
-
+    .getElementById("fin")
     .value = "";
 
 
-
     document
-
-    .getElementById(
-        "commentaire"
-    )
-
+    .getElementById("commentaire")
     .value = "";
 
 
@@ -2965,9 +2850,7 @@ async function publier() {
 
 
 
-    afficher(
-        "echanges"
-    );
+    afficher("echanges");
 
 
 }
@@ -2999,33 +2882,33 @@ async function afficherEchanges() {
 
     .innerText =
 
-    metierActuel;
+    metierActuel || "-";
 
 
 
     /* CHARGEMENT */
 
-    zone.innerHTML =
 
-    `
+    zone.innerHTML = `
 
-    <div class="empty">
+        <div class="empty">
 
-        <span class="empty-icon">
+            <span class="empty-icon">
 
-            🚆
+                🚆
 
-        </span>
+            </span>
 
-        Chargement des échanges...
+            Chargement des échanges...
 
-    </div>
+        </div>
 
     `;
 
 
 
     /* RECUPERATION SUPABASE */
+
 
     const {
 
@@ -3039,27 +2922,28 @@ async function afficherEchanges() {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
-    .select(
-        "*"
-    )
+    .select("*")
 
     .eq(
+
         "metier",
 
         metierActuel
+
     )
 
     .eq(
+
         "statut",
 
         "disponible"
+
     )
 
     .order(
+
         "date_service",
 
         {
@@ -3074,6 +2958,7 @@ async function afficherEchanges() {
 
     /* ERREUR */
 
+
     if (
 
         error
@@ -3081,44 +2966,40 @@ async function afficherEchanges() {
     ) {
 
 
-        console.error(
-            error
-        );
+        console.error(error);
 
 
-        zone.innerHTML =
 
-        `
+        zone.innerHTML = `
 
-        <div class="empty">
+            <div class="empty">
 
-            <span class="empty-icon">
+                <span class="empty-icon">
 
-                ❌
+                    ❌
 
-            </span>
+                </span>
 
-            <strong>
+                <strong>
 
-                Erreur lors du chargement.
+                    Erreur lors du chargement.
 
-            </strong>
+                </strong>
 
-            <br><br>
+                <br><br>
 
-            <small>
+                <small>
 
-                ${escapeHTML(error.message)}
+                    ${escapeHTML(error.message)}
 
-            </small>
+                </small>
 
-        </div>
+            </div>
 
         `;
 
 
         return;
-
 
     }
 
@@ -3126,11 +3007,13 @@ async function afficherEchanges() {
 
     /* NETTOYAGE */
 
+
     zone.innerHTML = "";
 
 
 
     /* AUCUN RESULTAT */
+
 
     if (
 
@@ -3141,42 +3024,42 @@ async function afficherEchanges() {
     ) {
 
 
-        zone.innerHTML =
+        zone.innerHTML = `
 
-        `
+            <div class="empty">
 
-        <div class="empty">
+                <span class="empty-icon">
 
-            <span class="empty-icon">
+                    🚆
 
-                🚆
+                </span>
 
-            </span>
+                <strong>
 
-            <strong>
+                    Aucune journée proposée
 
-                Aucune journée proposée
+                </strong>
 
-            </strong>
+                <br><br>
 
-            <br><br>
+                Soyez le premier à proposer
+                une journée !
 
-            Soyez le premier à proposer
-            une journée !
-
-        </div>
+            </div>
 
         `;
 
 
         return;
 
-
     }
 
 
 
-    /* AFFICHAGE */
+    /* =================================================
+       AFFICHAGE DES ECHANGES
+    ================================================= */
+
 
     data.forEach(
 
@@ -3186,51 +3069,89 @@ async function afficherEchanges() {
 
             const bloc =
 
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
+
+
+            bloc.className = "item";
 
 
 
-            bloc.className =
-
-            "item";
+            /* NOM */
 
 
+            const nom =
 
-            /* AGENT INTERESSE */
-
-            const agentInteresse =
-
-            echange.agent_interesse
+            echange.nom
 
             ?
 
-            `
-
-            <div class="interesse">
-
-                🙋 Agent intéressé :
-
-                <strong>
-
-                    ${escapeHTML(
-                        echange.agent_interesse
-                    )}
-
-                </strong>
-
-            </div>
-
-            `
+            escapeHTML(echange.nom)
 
             :
 
-            "";
+            "Agent non renseigné";
+
+
+
+            /* DATE */
+
+
+            const date =
+
+            echange.date_service
+
+            ?
+
+            formatDate(
+                echange.date_service
+            )
+
+            :
+
+            "Date non renseignée";
+
+
+
+            /* HEURE DE PRISE */
+
+
+            const prise =
+
+            echange.prise_service
+
+            ?
+
+            formatTime(
+                echange.prise_service
+            )
+
+            :
+
+            "--:--";
+
+
+
+            /* HEURE DE FIN */
+
+
+            const fin =
+
+            echange.fin_service
+
+            ?
+
+            formatTime(
+                echange.fin_service
+            )
+
+            :
+
+            "--:--";
 
 
 
             /* COMMENTAIRE */
+
 
             const commentaire =
 
@@ -3240,15 +3161,15 @@ async function afficherEchanges() {
 
             `
 
-            <div class="item-commentaire">
+                <div class="item-commentaire">
 
-                💬
+                    💬
 
-                ${escapeHTML(
-                    echange.commentaire
-                )}
+                    ${escapeHTML(
+                        echange.commentaire
+                    )}
 
-            </div>
+                </div>
 
             `
 
@@ -3258,113 +3179,210 @@ async function afficherEchanges() {
 
 
 
-            /* CONTENU */
+            /* AGENT INTERESSE */
 
-            bloc.innerHTML =
+
+            const agentInteresse =
+
+            echange.agent_interesse
+
+            ?
 
             `
 
-            <div class="item-header">
+                <div class="interesse">
+
+                    🙋 Agent intéressé :
+
+                    <strong>
+
+                        ${escapeHTML(
+                            echange.agent_interesse
+                        )}
+
+                    </strong>
+
+                </div>
+
+            `
+
+            :
+
+            "";
 
 
-                <div class="item-nom">
 
-                    ${escapeHTML(
-                        echange.nom
-                    )}
+            /* =================================================
+               CONTENU
+            ================================================= */
+
+
+            bloc.innerHTML = `
+
+
+                <div class="item-header">
+
+
+                    <div class="item-nom">
+
+                        👤 ${nom}
+
+                    </div>
+
 
                 </div>
 
 
-            </div>
+
+                <div class="item-details">
+
+
+                    <div>
+
+                        📅
+
+                        <strong>
+
+                            ${date}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        ⏰
+
+                        <strong>
+
+                            ${prise}
+                            →
+                            ${fin}
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
 
 
 
-            <div class="item-details">
-
-
-                📅
-
-                <strong>
-
-                    ${formatDate(
-                        echange.date_service
-                    )}
-
-                </strong>
-
-
-                <br>
-
-
-                ⏰
-
-                <strong>
-
-                    ${formatTime(
-                        echange.prise_service
-                    )}
-
-                    →
-
-                    ${formatTime(
-                        echange.fin_service
-                    )}
-
-                </strong>
-
-
-            </div>
+                ${commentaire}
 
 
 
-            ${commentaire}
+                ${agentInteresse}
 
 
 
-            ${agentInteresse}
+                <div class="actions">
+
+
+                    <button
+
+                        class="btn-small btn-interet"
+
+                        data-id="${echange.id}"
+
+                        data-action="interesse"
+
+                    >
+
+                        🙋 JE SUIS INTÉRESSÉ
+
+                    </button>
 
 
 
-            <div class="actions">
+                    <button
+
+                        class="btn-small btn-delete"
+
+                        data-id="${echange.id}"
+
+                        data-action="supprimer"
+
+                    >
+
+                        🗑️ SUPPRIMER
+
+                    </button>
 
 
-                <button
+                </div>
 
-                class="btn-small btn-interet"
-
-                onclick="interesse(${echange.id})"
-
-                >
-
-                    🙋 JE SUIS INTÉRESSÉ
-
-                </button>
-
-
-
-                <button
-
-                class="btn-small btn-delete"
-
-                onclick="supprimer(${echange.id})"
-
-                >
-
-                    🗑️ SUPPRIMER
-
-                </button>
-
-
-            </div>
 
             `;
 
 
 
-            zone.appendChild(
-                bloc
+            /* =================================================
+               BOUTON INTERESSE
+            ================================================= */
+
+
+            const boutonInteresse =
+
+            bloc.querySelector(
+
+                '[data-action="interesse"]'
+
             );
+
+
+            boutonInteresse.addEventListener(
+
+                "click",
+
+                function() {
+
+
+                    interesse(
+                        echange.id
+                    );
+
+
+                }
+
+            );
+
+
+
+            /* =================================================
+               BOUTON SUPPRIMER
+            ================================================= */
+
+
+            const boutonSupprimer =
+
+            bloc.querySelector(
+
+                '[data-action="supprimer"]'
+
+            );
+
+
+            boutonSupprimer.addEventListener(
+
+                "click",
+
+                function() {
+
+
+                    supprimer(
+                        echange.id
+                    );
+
+
+                }
+
+            );
+
+
+
+            zone.appendChild(bloc);
 
 
         }
@@ -3400,9 +3418,7 @@ async function interesse(id) {
 
     ) {
 
-
         return;
-
 
     }
 
@@ -3424,12 +3440,23 @@ async function interesse(id) {
 
         return;
 
-
     }
 
 
 
-    /* MISE A JOUR */
+    /* =================================================
+       IMPORTANT
+
+       ON MET A JOUR UNIQUEMENT
+       LE NOM DE L'AGENT INTERESSE.
+
+       LE STATUT RESTE :
+
+       disponible
+
+       LA DEMANDE NE DISPARAIT DONC PAS.
+    ================================================= */
+
 
     const {
 
@@ -3441,28 +3468,28 @@ async function interesse(id) {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
     .update({
-
 
         agent_interesse:
 
         nomAgent.trim()
 
-
     })
 
     .eq(
+
         "id",
+
         id
+
     );
 
 
 
     /* ERREUR */
+
 
     if (
 
@@ -3471,9 +3498,8 @@ async function interesse(id) {
     ) {
 
 
-        console.error(
-            error
-        );
+        console.error(error);
+
 
 
         alert(
@@ -3489,7 +3515,6 @@ async function interesse(id) {
 
         return;
 
-
     }
 
 
@@ -3502,15 +3527,7 @@ async function interesse(id) {
 
 
 
-    /*
-       IMPORTANT :
-
-       LA DEMANDE RESTE VISIBLE.
-
-       LE STATUT RESTE :
-
-       disponible
-    */
+    /* RECHARGEMENT */
 
 
     await afficherEchanges();
@@ -3543,15 +3560,11 @@ async function supprimer(id) {
 
     ) {
 
-
         return;
-
 
     }
 
 
-
-    /* SUPPRESSION SUPABASE */
 
     const {
 
@@ -3563,20 +3576,19 @@ async function supprimer(id) {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
     .delete()
 
     .eq(
+
         "id",
+
         id
+
     );
 
 
-
-    /* ERREUR */
 
     if (
 
@@ -3585,9 +3597,8 @@ async function supprimer(id) {
     ) {
 
 
-        console.error(
-            error
-        );
+        console.error(error);
+
 
 
         alert(
@@ -3603,7 +3614,6 @@ async function supprimer(id) {
 
         return;
 
-
     }
 
 
@@ -3614,13 +3624,6 @@ async function supprimer(id) {
 
     );
 
-
-
-    /*
-       RECHARGEMENT COMPLET
-
-       DEPUIS SUPABASE
-    */
 
 
     await afficherEchanges();
@@ -3643,9 +3646,7 @@ function formatDate(date) {
 
     ) {
 
-
         return "";
-
 
     }
 
@@ -3653,7 +3654,7 @@ function formatDate(date) {
 
     const morceaux =
 
-    date.split("-");
+    String(date).split("-");
 
 
 
@@ -3663,9 +3664,7 @@ function formatDate(date) {
 
     ) {
 
-
         return date;
-
 
     }
 
@@ -3673,23 +3672,23 @@ function formatDate(date) {
 
     return
 
-    morceaux[2]
+        morceaux[2]
 
-    +
+        +
 
-    "/"
+        "/"
 
-    +
+        +
 
-    morceaux[1]
+        morceaux[1]
 
-    +
+        +
 
-    "/"
+        "/"
 
-    +
+        +
 
-    morceaux[0];
+        morceaux[0];
 
 
 }
@@ -3709,9 +3708,7 @@ function formatTime(heure) {
 
     ) {
 
-
         return "";
-
 
     }
 
@@ -3719,7 +3716,7 @@ function formatTime(heure) {
 
     return
 
-    heure.substring(
+    String(heure).substring(
         0,
         5
     );
@@ -3730,7 +3727,7 @@ function formatTime(heure) {
 
 
 /* =====================================================
-   SECURITE AFFICHAGE
+   SECURITE HTML
 ===================================================== */
 
 function escapeHTML(texte) {
@@ -3744,9 +3741,7 @@ function escapeHTML(texte) {
 
     ) {
 
-
         return "";
-
 
     }
 
@@ -3754,21 +3749,15 @@ function escapeHTML(texte) {
 
     const div =
 
-    document.createElement(
-        "div"
-    );
+    document.createElement("div");
 
 
 
-    div.innerText =
-
-    texte;
+    div.innerText = texte;
 
 
 
-    return
-
-    div.innerHTML;
+    return div.innerHTML;
 
 
 }
