@@ -2,265 +2,263 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>ÉCHANGE SERVICE</title>
-
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <style>
-
-        :root {
-            --bleu-fonce: #102a43;
-            --bleu: #1769aa;
-            --gris: #f3f6f8;
-            --blanc: #ffffff;
-            --vert: #167242;
-            --orange: #b86b00;
-            --rouge: #c62828;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
-            background: var(--gris);
-            color: #17212b;
-        }
-
-        header {
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--bleu-fonce),
-                    var(--bleu)
-                );
-
-            color: white;
-            padding: 25px 20px 35px;
-            text-align: center;
-        }
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ÉCHANGE SERVICE</title>
+
+<!-- Bibliothèque Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root {
+    --bleu-fonce: #102a43;
+    --bleu: #1769aa;
+    --gris: #f3f6f8;
+    --vert: #167242;
+    --orange: #b86b00;
+    --rouge: #c62828;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: var(--gris);
+    color: #17212b;
+}
+
+header {
+    background: linear-gradient(
+        135deg,
+        var(--bleu-fonce),
+        var(--bleu)
+    );
+
+    color: white;
+    padding: 25px 20px 35px;
+    text-align: center;
+}
 
-        header p {
-            margin-bottom: 0;
-            opacity: 0.9;
-        }
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
 
-        main {
-            max-width: 650px;
-            margin: -15px auto 90px;
-            padding: 0 15px;
-        }
+header p {
+    margin-bottom: 0;
+    opacity: 0.9;
+}
 
-        .card {
-            background: white;
-            border-radius: 18px;
-            padding: 20px;
-            margin-top: 15px;
+main {
+    max-width: 650px;
+    margin: -15px auto 100px;
+    padding: 0 15px;
+}
 
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.08);
-        }
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-        .hidden {
-            display: none !important;
-        }
+.hidden {
+    display: none !important;
+}
 
-        .choice {
-            width: 100%;
-            padding: 22px;
-            margin-top: 15px;
+/* ACCUEIL */
 
-            border-radius: 16px;
-            border: 1px solid #e0e6eb;
+.choice {
+    width: 100%;
+    padding: 22px;
+    margin-top: 15px;
 
-            background: white;
+    border-radius: 16px;
+    border: 1px solid #e0e6eb;
 
-            font-size: 19px;
-            font-weight: bold;
+    background: white;
 
-            text-align: left;
-        }
+    font-size: 19px;
+    font-weight: bold;
 
-        .choice small {
-            display: block;
-            margin-top: 5px;
+    text-align: left;
+    cursor: pointer;
+}
 
-            font-size: 14px;
-            font-weight: normal;
+.choice small {
+    display: block;
+    margin-top: 5px;
 
-            color: #687887;
-        }
+    font-size: 14px;
+    font-weight: normal;
 
-        button {
-            cursor: pointer;
-        }
+    color: #687887;
+}
 
-        .btn {
-            width: 100%;
+/* BOUTONS */
 
-            padding: 15px;
-            margin-top: 10px;
+button {
+    cursor: pointer;
+}
 
-            border: none;
-            border-radius: 12px;
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
 
-            background: var(--bleu);
+    border: none;
+    border-radius: 12px;
 
-            color: white;
+    background: var(--bleu);
+    color: white;
 
-            font-size: 16px;
-            font-weight: bold;
-        }
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        .btn-secondaire {
-            background: #e8eef4;
-            color: #17212b;
-        }
+.btn-secondaire {
+    background: #e8eef4;
+    color: #17212b;
+}
 
-        .btn-interesse {
-            background: #167242;
-        }
+.btn-interesse {
+    background: var(--vert);
+}
 
-        .btn-supprimer {
-            background: #c62828;
-        }
+.btn-supprimer {
+    background: var(--rouge);
+}
 
-        label {
-            display: block;
+/* FORMULAIRE */
 
-            font-size: 14px;
-            font-weight: bold;
+label {
+    display: block;
 
-            margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
 
-            color: #526273;
-        }
+    margin-top: 10px;
 
-        input,
-        textarea {
-            width: 100%;
+    color: #526273;
+}
 
-            padding: 13px;
+input,
+textarea {
+    width: 100%;
 
-            margin-top: 5px;
+    padding: 13px;
+    margin-top: 5px;
 
-            border-radius: 10px;
+    border-radius: 10px;
 
-            border: 1px solid #ccd6df;
+    border: 1px solid #ccd6df;
 
-            font-size: 16px;
-        }
+    font-size: 16px;
+}
 
-        .row {
-            display: grid;
+textarea {
+    min-height: 80px;
+}
 
-            grid-template-columns:
-                1fr 1fr;
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
 
-            gap: 10px;
-        }
+/* ECHANGE */
 
-        .item {
-            background: #f8fafc;
+.item {
+    background: #f8fafc;
 
-            border-left:
-                5px solid var(--bleu);
+    border-left: 5px solid var(--bleu);
 
-            padding: 15px;
+    padding: 16px;
+    margin-top: 12px;
 
-            margin-top: 12px;
+    border-radius: 10px;
+}
 
-            border-radius: 8px;
-        }
+.badge {
+    display: inline-block;
 
-        .badge {
-            display: inline-block;
+    padding: 6px 10px;
 
-            padding: 6px 10px;
+    border-radius: 20px;
 
-            border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-            font-size: 12px;
-            font-weight: bold;
-        }
+.badge-disponible {
+    background: #e7f5ec;
+    color: var(--vert);
+}
 
-        .badge-disponible {
-            background: #e7f5ec;
-            color: #167242;
-        }
+.badge-interesse {
+    background: #fff1db;
+    color: var(--orange);
+}
 
-        .badge-interesse {
-            background: #fff1db;
-            color: #b86b00;
-        }
+.interesse-info {
+    margin-top: 12px;
 
-        .interesse {
-            margin-top: 12px;
+    padding: 10px;
 
-            padding: 10px;
+    background: #fff1db;
 
-            background: #fff1db;
+    border-radius: 8px;
 
-            border-radius: 8px;
+    color: #7a4700;
+}
 
-            color: #7a4700;
-        }
+/* MENU */
 
-        nav {
-            position: fixed;
+nav {
+    position: fixed;
 
-            bottom: 0;
-            left: 0;
-            right: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
-            background: white;
+    background: white;
 
-            border-top:
-                1px solid #dfe6ec;
+    border-top: 1px solid #dfe6ec;
 
-            padding: 8px;
+    padding: 8px;
 
-            display: flex;
+    display: flex;
+    justify-content: space-around;
 
-            justify-content:
-                space-around;
+    z-index: 100;
+}
 
-            z-index: 100;
-        }
+nav button {
+    border: none;
+    background: none;
 
-        nav button {
-            border: none;
+    color: #17212b;
 
-            background: none;
+    font-size: 12px;
+    padding: 8px;
+}
 
-            font-size: 12px;
+@media (max-width: 500px) {
 
-            padding: 8px;
+    .row {
+        grid-template-columns: 1fr;
+    }
 
-            color: #17212b;
-        }
+}
 
-    </style>
+</style>
 
 </head>
 
@@ -268,11 +266,15 @@
 <body>
 
 
+<!-- =========================
+     EN-TÊTE
+========================= -->
+
 <header>
 
-    <h1>🚆 ÉCHANGE SERVICE</h1>
+<h1>🚆 ÉCHANGE SERVICE</h1>
 
-    <p>Échange de journées entre agents</p>
+<p>Échange de journées entre agents</p>
 
 </header>
 
@@ -280,213 +282,200 @@
 <main>
 
 
-    <!-- =========================
-         ACCUEIL
-    ========================== -->
+<!-- =========================
+     ACCUEIL
+========================= -->
 
-    <section id="accueil">
+<section id="accueil">
 
-        <div class="card">
+<div class="card">
 
-            <h2>Bienvenue 👋</h2>
+<h2>Bienvenue 👋</h2>
 
-            <p>
-                Choisissez votre métier
-                pour commencer.
-            </p>
+<p>
+Choisissez votre métier pour commencer.
+</p>
 
-        </div>
+</div>
 
 
-        <button
-            class="choice"
-            onclick="choisirMetier('ADC')"
-        >
+<button
+class="choice"
+onclick="choisirMetier('ADC')">
 
-            🚆 ADC
+🚆 ADC
 
-            <small>
-                Conducteurs de train
-            </small>
+<small>
+Conducteurs de train
+</small>
 
-        </button>
+</button>
 
 
-        <button
-            class="choice"
-            onclick="choisirMetier('ASCT')"
-        >
+<button
+class="choice"
+onclick="choisirMetier('ASCT')">
 
-            👤 ASCT
+👤 ASCT
 
-            <small>
-                Agents du Service
-                Commercial Train
-            </small>
+<small>
+Agents du Service Commercial Train
+</small>
 
-        </button>
+</button>
 
-    </section>
 
+</section>
 
 
-    <!-- =========================
-         PROPOSER UNE JOURNÉE
-    ========================== -->
 
-    <section
-        id="proposer"
-        class="hidden"
-    >
+<!-- =========================
+     PROPOSER
+========================= -->
 
-        <div class="card">
+<section
+id="proposer"
+class="hidden">
 
+<div class="card">
 
-            <span
-                id="metier"
-                class="badge badge-disponible"
-            >
-            </span>
 
+<span
+id="metier"
+class="badge badge-disponible">
+</span>
 
-            <h2>
-                ➕ Ma journée à échanger
-            </h2>
 
+<h2>
+➕ Ma journée à échanger
+</h2>
 
-            <label>
-                Nom et prénom
-            </label>
 
-            <input
-                id="nom"
-                placeholder="Exemple : Jean DUPONT"
-            >
+<label>
+Nom et prénom
+</label>
 
+<input
+id="nom"
+placeholder="Exemple : Jean DUPONT">
 
-            <label>
-                Date de la journée
-            </label>
 
-            <input
-                id="date"
-                type="date"
-            >
+<label>
+Date de la journée
+</label>
 
+<input
+id="date"
+type="date">
 
-            <div class="row">
 
+<div class="row">
 
-                <div>
 
-                    <label>
-                        Prise de service
-                    </label>
+<div>
 
-                    <input
-                        id="prise"
-                        type="time"
-                    >
+<label>
+Prise de service
+</label>
 
-                </div>
+<input
+id="prise"
+type="time">
 
+</div>
 
-                <div>
 
-                    <label>
-                        Fin de service
-                    </label>
+<div>
 
-                    <input
-                        id="fin"
-                        type="time"
-                    >
+<label>
+Fin de service
+</label>
 
-                </div>
+<input
+id="fin"
+type="time">
 
+</div>
 
-            </div>
 
+</div>
 
-            <label>
-                Commentaire facultatif
-            </label>
 
+<label>
+Commentaire facultatif
+</label>
 
-            <textarea
-                id="commentaire"
-                placeholder="Exemple : TER, réserve..."
-            ></textarea>
+<textarea
+id="commentaire"
+placeholder="Exemple : TER, réserve..."></textarea>
 
 
-            <button
-                class="btn"
-                onclick="publier()"
-            >
+<button
+class="btn"
+onclick="publier()">
 
-                🚆 PUBLIER MA JOURNÉE
+🚆 PUBLIER MA JOURNÉE
 
-            </button>
+</button>
 
 
-            <button
-                class="btn btn-secondaire"
-                onclick="afficher('echanges')"
-            >
+<button
+class="btn btn-secondaire"
+onclick="afficher('echanges')">
 
-                🔎 VOIR LES ÉCHANGES
+🔎 VOIR LES ÉCHANGES
 
-            </button>
+</button>
 
 
-        </div>
+</div>
 
-    </section>
+</section>
 
 
 
-    <!-- =========================
-         ÉCHANGES
-    ========================== -->
+<!-- =========================
+     ECHANGES
+========================= -->
 
-    <section
-        id="echanges"
-        class="hidden"
-    >
+<section
+id="echanges"
+class="hidden">
 
-        <div class="card">
+<div class="card">
 
 
-            <h2>
-                🔎 Échanges disponibles
-            </h2>
+<h2>
+🔎 Échanges
+</h2>
 
 
-            <p>
-                Métier :
-                <strong id="metierEchanges"></strong>
-            </p>
+<p>
 
+Métier :
 
-            <div
-                id="listeEchanges"
-            >
-            </div>
+<strong id="metierEchanges"></strong>
 
+</p>
 
-            <button
-                class="btn btn-secondaire"
-                onclick="afficher('proposer')"
-            >
 
-                ➕ PROPOSER UNE JOURNÉE
+<div id="listeEchanges">
 
-            </button>
+</div>
 
 
-        </div>
+<button
+class="btn btn-secondaire"
+onclick="afficher('proposer')">
 
-    </section>
+➕ PROPOSER UNE JOURNÉE
+
+</button>
+
+
+</div>
+
+</section>
 
 
 </main>
@@ -494,49 +483,39 @@
 
 
 <!-- =========================
-     MENU BAS
-========================== -->
+     MENU
+========================= -->
 
 <nav
-    id="menu"
-    class="hidden"
->
+id="menu"
+class="hidden">
 
 
-    <button
-        onclick="afficher('proposer')"
-    >
+<button
+onclick="afficher('proposer')">
 
-        ➕
-        <br>
+➕<br>
+Ma journée
 
-        Ma journée
-
-    </button>
+</button>
 
 
-    <button
-        onclick="afficher('echanges')"
-    >
+<button
+onclick="afficher('echanges')">
 
-        🔎
-        <br>
+🔎<br>
+Échanges
 
-        Échanges
-
-    </button>
+</button>
 
 
-    <button
-        onclick="changerMetier()"
-    >
+<button
+onclick="changerMetier()">
 
-        🚆
-        <br>
+🚆<br>
+Métier
 
-        Métier
-
-    </button>
+</button>
 
 
 </nav>
@@ -550,27 +529,30 @@
    CONFIGURATION SUPABASE
 ========================= */
 
-
 const SUPABASE_URL =
-    "https://nptwpoguokbjuzdyxach.supabase.co";
+"https://nptwpoguokbjuzdyxach.supabase.co";
 
+
+/*
+   CONSERVE TA VRAIE
+   PUBLISHABLE KEY ICI
+*/
 
 const SUPABASE_KEY =
-    "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+"sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 
 const supabaseClient =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 
 
 /* =========================
-   VARIABLES
+   VARIABLE METIER
 ========================= */
-
 
 let metierActuel = "";
 
@@ -580,388 +562,309 @@ let metierActuel = "";
    NAVIGATION
 ========================= */
 
-
-function afficher(page) {
-
-
-    document
-        .querySelectorAll("main section")
-        .forEach(section => {
-
-
-            section
-                .classList
-                .add("hidden");
-
-
-        });
+async function afficher(page) {
 
 
     document
-        .getElementById(page)
-        .classList
-        .remove("hidden");
+    .querySelectorAll("main section")
+    .forEach(section => {
 
+        section.classList.add("hidden");
+
+    });
+
+
+    document
+    .getElementById(page)
+    .classList
+    .remove("hidden");
 
 
     if (page === "echanges") {
 
-
         document
-            .getElementById(
-                "metierEchanges"
-            )
-            .innerText =
-            metierActuel;
+        .getElementById("metierEchanges")
+        .innerText =
+        metierActuel;
 
 
-        afficherEchanges();
-
+        await afficherEchanges();
 
     }
-
 
 }
 
 
 
 /* =========================
-   CHOISIR MÉTIER
+   CHOISIR METIER
 ========================= */
-
 
 function choisirMetier(metier) {
 
 
     metierActuel =
-        metier;
-
-
-
-    document
-        .getElementById("metier")
-        .innerText =
-        metier;
-
+    metier;
 
 
     document
-        .getElementById("menu")
-        .classList
-        .remove("hidden");
+    .getElementById("metier")
+    .innerText =
+    metier;
 
+
+    document
+    .getElementById("menu")
+    .classList
+    .remove("hidden");
 
 
     afficher("proposer");
 
-
 }
 
 
 
 /* =========================
-   CHANGER MÉTIER
+   CHANGER METIER
 ========================= */
-
 
 function changerMetier() {
 
 
-    metierActuel = "";
-
+    metierActuel =
+    "";
 
 
     document
-        .getElementById("menu")
-        .classList
-        .add("hidden");
-
+    .getElementById("menu")
+    .classList
+    .add("hidden");
 
 
     afficher("accueil");
-
 
 }
 
 
 
 /* =========================
-   PUBLIER UNE JOURNÉE
+   PUBLIER UNE JOURNEE
 ========================= */
-
 
 async function publier() {
 
 
-    let nom =
-        document
-        .getElementById("nom")
-        .value
-        .trim();
+    const nom =
+    document
+    .getElementById("nom")
+    .value
+    .trim();
 
 
-    let date =
-        document
-        .getElementById("date")
-        .value;
+    const date =
+    document
+    .getElementById("date")
+    .value;
 
 
-    let prise =
-        document
-        .getElementById("prise")
-        .value;
+    const prise =
+    document
+    .getElementById("prise")
+    .value;
 
 
-    let fin =
-        document
-        .getElementById("fin")
-        .value;
+    const fin =
+    document
+    .getElementById("fin")
+    .value;
 
 
-    let commentaire =
-        document
-        .getElementById("commentaire")
-        .value
-        .trim();
-
+    const commentaire =
+    document
+    .getElementById("commentaire")
+    .value
+    .trim();
 
 
     if (
 
         !nom ||
-
         !date ||
-
         !prise ||
-
         !fin
 
     ) {
 
-
         alert(
-            "Merci de remplir le nom, la date et les horaires."
+        "Merci de remplir le nom, la date et les horaires."
         );
-
 
         return;
 
-
     }
 
 
-
-    const {
-
-        error
-
-    }
-
-    =
-
+    const { error } =
     await supabaseClient
 
-        .from("echanges")
+    .from("echanges")
 
-        .insert([
+    .insert([
 
-            {
+        {
 
+            metier:
+            metierActuel,
 
-                metier:
-                    metierActuel,
+            nom:
+            nom,
 
+            date_service:
+            date,
 
-                nom:
-                    nom,
+            prise_service:
+            prise,
 
+            fin_service:
+            fin,
 
-                date_service:
-                    date,
+            commentaire:
+            commentaire,
 
+            statut:
+            "disponible",
 
-                prise_service:
-                    prise,
+            agent_interesse:
+            null
 
+        }
 
-                fin_service:
-                    fin,
-
-
-                commentaire:
-                    commentaire,
-
-
-                statut:
-                    "disponible",
-
-
-                agent_interesse:
-                    null
-
-
-            }
-
-        ]);
-
+    ]);
 
 
     if (error) {
 
-
         console.error(error);
 
-
         alert(
-            "Erreur : " +
-            error.message
+        "❌ Erreur : " +
+        error.message
         );
 
-
         return;
-
 
     }
 
 
-
     document
-        .getElementById("nom")
-        .value =
-        "";
-
-
-    document
-        .getElementById("date")
-        .value =
-        "";
+    .getElementById("nom")
+    .value =
+    "";
 
 
     document
-        .getElementById("prise")
-        .value =
-        "";
+    .getElementById("date")
+    .value =
+    "";
 
 
     document
-        .getElementById("fin")
-        .value =
-        "";
+    .getElementById("prise")
+    .value =
+    "";
 
 
     document
-        .getElementById("commentaire")
-        .value =
-        "";
+    .getElementById("fin")
+    .value =
+    "";
 
+
+    document
+    .getElementById("commentaire")
+    .value =
+    "";
 
 
     alert(
-        "Votre journée est publiée !"
+    "✅ Votre journée est publiée !"
     );
 
 
-
-    afficher("echanges");
-
+    await afficher("echanges");
 
 }
 
 
 
 /* =========================
-   AFFICHER LES ÉCHANGES
+   AFFICHER LES ECHANGES
 ========================= */
-
 
 async function afficherEchanges() {
 
 
-    let zone =
-
-        document
-        .getElementById(
-            "listeEchanges"
-        );
-
+    const zone =
+    document
+    .getElementById(
+    "listeEchanges"
+    );
 
 
     zone.innerHTML =
-
-        "<p>Chargement...</p>";
-
+    "<p>Chargement...</p>";
 
 
     /*
-       IMPORTANT :
+    IMPORTANT :
 
-       On ne filtre PLUS avec :
+    AUCUN FILTRE SUR STATUT.
 
-       .eq("statut", "disponible")
+    On récupère toutes les demandes
+    du métier sélectionné.
 
-       afin que les demandes
-       avec un agent intéressé
-       restent visibles.
+    Donc une demande avec un agent
+    intéressé RESTE VISIBLE.
     */
 
 
-    const {
-
-        data,
-
-        error
-
-    }
-
-    =
-
+    const { data, error } =
     await supabaseClient
 
-        .from("echanges")
+    .from("echanges")
 
-        .select("*")
+    .select("*")
 
-        .eq(
-            "metier",
-            metierActuel
-        )
+    .eq(
+    "metier",
+    metierActuel
+    )
 
-        .order(
-            "date_service",
-            {
-                ascending: true
-            }
-        );
-
+    .order(
+    "date_service",
+    {
+        ascending: true
+    }
+    );
 
 
     if (error) {
 
-
         console.error(error);
 
-
         zone.innerHTML =
-
-            "<p>❌ Erreur lors du chargement : "
-            +
-
-            error.message
-
-            +
-
-            "</p>";
-
+        "<p>❌ Erreur : " +
+        error.message +
+        "</p>";
 
         return;
-
 
     }
 
 
-
-    zone.innerHTML = "";
-
+    zone.innerHTML =
+    "";
 
 
     if (
@@ -972,353 +875,25 @@ async function afficherEchanges() {
 
     ) {
 
-
         zone.innerHTML =
-
-            "<p>Aucune journée proposée pour le moment.</p>";
-
+        "<p>Aucune journée proposée pour le moment.</p>";
 
         return;
-
 
     }
 
 
-
     data.forEach(
-        echange => {
+    echange => {
 
 
-            let bloc =
+        creerCarteEchange(
+        echange,
+        zone
+        );
 
-                document.createElement(
-                    "div"
-                );
 
-
-
-            bloc.className =
-                "item";
-
-
-
-            /* =========================
-               STATUT
-            ========================= */
-
-
-            let statutHTML = "";
-
-
-
-            if (
-
-                echange.agent_interesse
-
-                &&
-
-                echange.agent_interesse.trim() !== ""
-
-            ) {
-
-
-                statutHTML =
-
-                    '<span class="badge badge-interesse">'
-
-                    +
-
-                    "🟠 AGENT INTÉRESSÉ"
-
-                    +
-
-                    "</span>";
-
-
-            }
-
-            else {
-
-
-                statutHTML =
-
-                    '<span class="badge badge-disponible">'
-
-                    +
-
-                    "🟢 DISPONIBLE"
-
-                    +
-
-                    "</span>";
-
-
-            }
-
-
-
-            /* =========================
-               AGENT INTÉRESSÉ
-            ========================= */
-
-
-            let interesseHTML = "";
-
-
-
-            if (
-
-                echange.agent_interesse
-
-                &&
-
-                echange.agent_interesse.trim() !== ""
-
-            ) {
-
-
-                interesseHTML =
-
-                    '<div class="interesse">'
-
-                    +
-
-                    "👤 Agent intéressé : "
-
-                    +
-
-                    "<strong>"
-
-                    +
-
-                    echange.agent_interesse
-
-                    +
-
-                    "</strong>"
-
-                    +
-
-                    "</div>";
-
-
-            }
-
-
-
-            /* =========================
-               BOUTON INTÉRESSÉ
-            ========================= */
-
-
-            let boutonInteresse = "";
-
-
-
-            if (
-
-                !echange.agent_interesse
-
-                ||
-
-                echange.agent_interesse.trim() === ""
-
-            ) {
-
-
-                boutonInteresse =
-
-                    '<button '
-
-                    +
-
-                    'class="btn btn-interesse" '
-
-                    +
-
-                    'onclick="interesse('
-
-                    +
-
-                    echange.id
-
-                    +
-
-                    ')"'
-
-                    +
-
-                    '>'
-
-                    +
-
-                    "👤 JE SUIS INTÉRESSÉ"
-
-                    +
-
-                    "</button>";
-
-
-            }
-
-
-
-            /* =========================
-               AFFICHAGE
-            ========================= */
-
-
-            bloc.innerHTML =
-
-
-                statutHTML
-
-
-                +
-
-                "<br><br>"
-
-
-                +
-
-                "<strong>"
-
-
-                +
-
-                echange.nom
-
-
-                +
-
-                "</strong>"
-
-
-                +
-
-                "<br>"
-
-
-                +
-
-                "📅 "
-
-
-                +
-
-                echange.date_service
-
-
-                +
-
-                "<br>"
-
-
-                +
-
-                "⏰ "
-
-
-                +
-
-                echange.prise_service
-
-
-                +
-
-                " → "
-
-
-                +
-
-                echange.fin_service;
-
-
-            if (
-
-                echange.commentaire
-
-            ) {
-
-
-                bloc.innerHTML +=
-
-
-                    "<br>"
-
-
-                    +
-
-                    "<small>"
-
-
-                    +
-
-                    echange.commentaire
-
-
-                    +
-
-                    "</small>";
-
-
-            }
-
-
-
-            bloc.innerHTML +=
-
-
-                interesseHTML
-
-
-                +
-
-                boutonInteresse
-
-
-                +
-
-                '<button '
-
-                +
-
-                'class="btn btn-supprimer" '
-
-                +
-
-                'onclick="supprimerEchange('
-
-                +
-
-                echange.id
-
-                +
-
-                ')"'
-
-                +
-
-                '>'
-
-                +
-
-                "🗑️ SUPPRIMER"
-
-                +
-
-                "</button>";
-
-
-
-            zone.appendChild(
-                bloc
-            );
-
-
-        }
-
-    );
+    });
 
 
 }
@@ -1326,38 +901,302 @@ async function afficherEchanges() {
 
 
 /* =========================
-   JE SUIS INTÉRESSÉ
+   CREER UNE CARTE
 ========================= */
 
-
-async function interesse(id) {
-
-
-    let nomInteresse =
-
-        prompt(
-            "Quel est votre nom et prénom ?"
-        );
+function creerCarteEchange(
+echange,
+zone
+) {
 
 
-
-    if (
-
-        !nomInteresse
-
-    ) {
+    const bloc =
+    document.createElement(
+    "div"
+    );
 
 
-        return;
+    bloc.className =
+    "item";
+
+
+    /*
+    Vérification :
+
+    Est-ce qu'un agent
+    est déjà intéressé ?
+    */
+
+
+    const dejaInteresse =
+
+    echange.agent_interesse
+
+    &&
+
+    echange.agent_interesse
+    .trim() !== "";
+
+
+    /*
+    STATUT
+    */
+
+
+    let statutHTML =
+    "";
+
+
+    if (dejaInteresse) {
+
+
+        statutHTML =
+
+        '<span class="badge badge-interesse">' +
+
+        "🟠 AGENT INTÉRESSÉ" +
+
+        "</span>";
 
 
     }
 
+    else {
+
+
+        statutHTML =
+
+        '<span class="badge badge-disponible">' +
+
+        "🟢 DISPONIBLE" +
+
+        "</span>";
+
+    }
+
+
+    /*
+    AGENT INTERESSE
+    */
+
+
+    let agentHTML =
+    "";
+
+
+    if (dejaInteresse) {
+
+
+        agentHTML =
+
+        '<div class="interesse-info">' +
+
+        "👤 Agent intéressé : " +
+
+        "<strong>" +
+
+        echange.agent_interesse +
+
+        "</strong>" +
+
+        "</div>";
+
+    }
+
+
+    /*
+    BOUTON INTERESSE
+
+    Il apparaît UNIQUEMENT
+    s'il n'y a pas encore
+    d'agent intéressé.
+    */
+
+
+    let boutonInteresse =
+    "";
+
+
+    if (!dejaInteresse) {
+
+
+        boutonInteresse =
+
+        '<button ' +
+
+        'class="btn btn-interesse" ' +
+
+        'onclick="jeSuisInteresse(' +
+
+        echange.id +
+
+        ')"' +
+
+        '>' +
+
+        "🤝 JE SUIS INTÉRESSÉ" +
+
+        "</button>";
+
+    }
+
+
+    /*
+    COMMENTAIRE
+    */
+
+
+    let commentaireHTML =
+    "";
+
+
+    if (echange.commentaire) {
+
+
+        commentaireHTML =
+
+        "<br>" +
+
+        "<small>💬 " +
+
+        echange.commentaire +
+
+        "</small>";
+
+    }
+
+
+    /*
+    CONTENU CARTE
+    */
+
+
+    bloc.innerHTML =
+
+
+    statutHTML
+
+
+    +
+
+    "<br><br>"
+
+
+    +
+
+    "<strong>" +
+
+    echange.nom +
+
+    "</strong>"
+
+
+    +
+
+    "<br>"
+
+
+    +
+
+    "📅 " +
+
+    echange.date_service
+
+
+    +
+
+    "<br>"
+
+
+    +
+
+    "⏰ " +
+
+    formatHeure(
+    echange.prise_service
+    )
+
+
+    +
+
+    " → "
+
+
+    +
+
+    formatHeure(
+    echange.fin_service
+    )
+
+
+    +
+
+    commentaireHTML
+
+
+    +
+
+    agentHTML
+
+
+    +
+
+    boutonInteresse
+
+
+    +
+
+    '<button ' +
+
+    'class="btn btn-supprimer" ' +
+
+    'onclick="supprimerEchange(' +
+
+    echange.id +
+
+    ')"' +
+
+    '>' +
+
+    "🗑️ SUPPRIMER" +
+
+    "</button>";
+
+
+    zone.appendChild(
+    bloc
+    );
+
+}
+
+
+
+/* =========================
+   JE SUIS INTERESSE
+========================= */
+
+async function jeSuisInteresse(id) {
+
+
+    let nomInteresse =
+    prompt(
+    "Indiquez votre nom et prénom :"
+    );
+
+
+    if (
+
+        nomInteresse === null
+
+    ) {
+
+        return;
+
+    }
 
 
     nomInteresse =
-        nomInteresse.trim();
-
+    nomInteresse.trim();
 
 
     if (
@@ -1366,85 +1205,77 @@ async function interesse(id) {
 
     ) {
 
+        alert(
+        "Merci d'indiquer votre nom."
+        );
 
         return;
 
-
     }
 
 
+    /*
+    IMPORTANT :
 
-    const {
+    On modifie UNIQUEMENT
+    agent_interesse.
 
-        error
+    On ne modifie PAS
+    le statut.
 
-    }
+    La demande reste donc :
 
-    =
+    statut = disponible
+    */
 
+
+    const { error } =
     await supabaseClient
 
-        .from("echanges")
+    .from("echanges")
 
-        .update({
+    .update({
 
-            agent_interesse:
-                nomInteresse
+        agent_interesse:
+        nomInteresse
 
+    })
 
-        })
-
-        .eq(
-            "id",
-            id
-        );
-
+    .eq(
+    "id",
+    id
+    );
 
 
     if (error) {
 
-
         console.error(error);
 
-
         alert(
-
-            "Erreur : "
-
-            +
-
-            error.message
-
+        "❌ Erreur : " +
+        error.message
         );
 
-
         return;
-
 
     }
 
 
-
     alert(
-
-        "Votre intérêt a été enregistré !"
-
+    "✅ Votre intérêt a été enregistré !"
     );
 
 
-
     /*
-       On recharge la liste.
+    Rechargement.
 
-       La demande reste visible,
-       car afficherEchanges()
-       n'utilise plus le filtre
-       statut = disponible.
+    La demande sera récupérée
+    à nouveau car afficherEchanges()
+    récupère TOUTES les demandes.
     */
 
 
     await afficherEchanges();
-
 
 }
 
@@ -1454,95 +1285,84 @@ async function interesse(id) {
    SUPPRIMER UNE DEMANDE
 ========================= */
 
-
 async function supprimerEchange(id) {
 
 
-    let confirmation =
-
-        confirm(
-
-            "Voulez-vous vraiment supprimer cette demande ?"
-
-        );
+    const confirmation =
+    confirm(
+    "⚠️ Voulez-vous vraiment supprimer cette demande ?"
+    );
 
 
-
-    if (
-
-        !confirmation
-
-    ) {
-
+    if (!confirmation) {
 
         return;
 
-
     }
 
 
-
-    const {
-
-        error
-
-    }
-
-    =
-
+    const { error } =
     await supabaseClient
 
-        .from("echanges")
+    .from("echanges")
 
-        .delete()
+    .delete()
 
-        .eq(
-            "id",
-            id
-        );
-
+    .eq(
+    "id",
+    id
+    );
 
 
     if (error) {
 
-
         console.error(error);
 
-
         alert(
-
-            "Erreur lors de la suppression : "
-
-            +
-
-            error.message
-
+        "❌ Erreur lors de la suppression : " +
+        error.message
         );
 
-
         return;
-
 
     }
 
 
-
     alert(
-
-        "La demande a été supprimée."
-
+    "🗑️ La demande a été supprimée."
     );
 
 
-
     /*
-       Rechargement complet
-       de la liste Supabase
+    Rechargement complet
+    depuis Supabase
     */
 
 
     await afficherEchanges();
 
+}
+
+
+
+/* =========================
+   FORMAT HEURE
+========================= */
+
+function formatHeure(heure) {
+
+
+    if (!heure) {
+
+        return "";
+
+    }
+
+
+    return heure.substring(
+    0,
+    5
+    );
 
 }
 
