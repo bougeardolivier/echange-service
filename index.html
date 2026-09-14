@@ -21,19 +21,19 @@
 
 :root {
 
-    --bleu-nuit: #061b2b;
-    --bleu-fonce: #0b3859;
-    --bleu: #1676b8;
-    --bleu-clair: #55b7e9;
+    --bleu-principal: #0879b8;
+    --bleu-fonce: #07517e;
+    --bleu-ciel: #55c4ee;
+    --bleu-tres-clair: #eaf8fd;
+
+    --texte: #173042;
+    --texte-clair: #607384;
 
     --blanc: #ffffff;
-    --gris: #eef3f7;
 
-    --texte: #172a3a;
-
-    --vert: #22a06b;
-    --orange: #e99418;
-    --rouge: #d94343;
+    --vert: #20a56b;
+    --orange: #f4a62a;
+    --rouge: #d94a4a;
 
 }
 
@@ -68,19 +68,19 @@ body {
     color: var(--texte);
 
     background:
+
         linear-gradient(
             180deg,
-            #09263a 0%,
-            #174c6c 25%,
-            #dce8ef 60%,
-            #eef3f7 100%
+            #dff5fc 0%,
+            #f5fbfd 35%,
+            #edf3f6 100%
         );
 
 }
 
 
 /* =====================================================
-   HEADER / UNIVERS FERROVIAIRE
+   HEADER MODERNE
 ===================================================== */
 
 header {
@@ -89,11 +89,11 @@ header {
 
     overflow: hidden;
 
-    min-height: 330px;
+    min-height: 290px;
 
     padding:
-        45px 20px
-        100px;
+        38px 20px
+        95px;
 
     text-align: center;
 
@@ -102,28 +102,28 @@ header {
     background:
 
         radial-gradient(
-            circle at 20% 15%,
-            rgba(84,181,232,.35),
-            transparent 28%
+            circle at 15% 15%,
+            rgba(255,255,255,.35),
+            transparent 22%
         ),
 
         radial-gradient(
-            circle at 80% 20%,
-            rgba(255,255,255,.12),
-            transparent 25%
+            circle at 85% 20%,
+            rgba(99,210,245,.55),
+            transparent 28%
         ),
 
         linear-gradient(
             135deg,
-            #041522,
-            #0b3859,
-            #1874a4
+            #0b6fa8 0%,
+            #159bd3 48%,
+            #42bce9 100%
         );
 
 }
 
 
-/* DECORATION */
+/* FORMES DECORATIVES */
 
 header::before {
 
@@ -136,12 +136,12 @@ header::before {
 
     border-radius: 50%;
 
-    border:
-        1px solid
-        rgba(255,255,255,.10);
+    background:
+
+        rgba(255,255,255,.08);
 
     top: -180px;
-    left: -130px;
+    left: -100px;
 
 }
 
@@ -152,159 +152,18 @@ header::after {
 
     position: absolute;
 
-    width: 500px;
-    height: 250px;
+    width: 450px;
+    height: 180px;
 
     border-radius: 50%;
 
     border:
-        1px solid
-        rgba(255,255,255,.10);
 
-    bottom: -180px;
-    right: -150px;
+        2px solid
+        rgba(255,255,255,.15);
 
-}
-
-
-/* =====================================================
-   TRAIN
-===================================================== */
-
-.train-illustration {
-
-    position: absolute;
-
-    z-index: 1;
-
-    bottom: 35px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: min(650px, 110%);
-
-    height: 70px;
-
-    opacity: .22;
-
-}
-
-
-.train-body {
-
-    position: absolute;
-
-    bottom: 20px;
-
-    left: 5%;
-
-    width: 90%;
-    height: 30px;
-
-    border-radius: 20px 35px 10px 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.75),
-            rgba(120,205,245,.85),
-            rgba(255,255,255,.65)
-        );
-
-}
-
-
-.train-window {
-
-    position: absolute;
-
-    bottom: 30px;
-
-    left: 15%;
-
-    width: 70%;
-    height: 9px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(5,35,55,.8);
-
-}
-
-
-/* =====================================================
-   RAILS
-===================================================== */
-
-.rails {
-
-    position: absolute;
-
-    z-index: 1;
-
-    bottom: 0;
-
-    left: 0;
-
-    width: 100%;
-    height: 60px;
-
-    opacity: .65;
-
-}
-
-
-.rail {
-
-    position: absolute;
-
-    width: 100%;
-    height: 4px;
-
-    background:
-        rgba(230,240,245,.9);
-
-}
-
-
-.rail.one {
-    bottom: 34px;
-}
-
-
-.rail.two {
-    bottom: 10px;
-}
-
-
-.sleepers {
-
-    position: absolute;
-
-    bottom: 0;
-
-    width: 100%;
-    height: 55px;
-
-    background:
-
-        repeating-linear-gradient(
-
-            90deg,
-
-            transparent 0px,
-            transparent 18px,
-
-            rgba(230,240,245,.55)
-            18px,
-
-            rgba(230,240,245,.55)
-            23px
-
-        );
+    bottom: -130px;
+    right: -130px;
 
 }
 
@@ -317,41 +176,40 @@ header::after {
 
     position: relative;
 
-    z-index: 3;
+    z-index: 5;
 
-    width: 72px;
-    height: 72px;
+    width: 62px;
+    height: 62px;
 
     margin:
         0 auto
-        12px;
+        10px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    font-size: 38px;
+    font-size: 34px;
 
-    border-radius: 22px;
+    border-radius: 19px;
 
     background:
 
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.22),
-            rgba(255,255,255,.06)
-        );
+        rgba(255,255,255,.18);
 
     border:
+
         1px solid
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.30);
 
     box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.30);
+
+        0 10px 25px
+        rgba(0,60,90,.20);
 
     backdrop-filter:
+
         blur(10px);
 
 }
@@ -365,20 +223,26 @@ header h1 {
 
     position: relative;
 
-    z-index: 3;
+    z-index: 5;
 
     margin: 0;
 
     font-size:
-        clamp(30px, 7vw, 50px);
 
-    font-weight: 800;
+        clamp(
+            30px,
+            7vw,
+            48px
+        );
 
-    letter-spacing: 3px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
 
     text-shadow:
-        0 5px 20px
-        rgba(0,0,0,.35);
+
+        0 3px 10px
+        rgba(0,60,90,.25);
 
 }
 
@@ -387,15 +251,183 @@ header p {
 
     position: relative;
 
-    z-index: 3;
+    z-index: 5;
 
-    margin: 10px 0 0;
+    max-width: 500px;
+
+    margin:
+        10px auto
+        0;
 
     font-size:
-        clamp(16px, 4vw, 20px);
+
+        clamp(
+            15px,
+            3.8vw,
+            19px
+        );
+
+    line-height: 1.4;
 
     color:
-        rgba(255,255,255,.85);
+
+        rgba(255,255,255,.92);
+
+}
+
+
+/* =====================================================
+   LIGNES DE MOUVEMENT
+===================================================== */
+
+.motion {
+
+    position: absolute;
+
+    z-index: 2;
+
+    bottom: 30px;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 90px;
+
+    opacity: .25;
+
+}
+
+
+.motion-line {
+
+    position: absolute;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background: white;
+
+}
+
+
+.motion-line.one {
+
+    width: 45%;
+
+    left: -5%;
+
+    bottom: 55px;
+
+    transform: rotate(-5deg);
+
+}
+
+
+.motion-line.two {
+
+    width: 55%;
+
+    right: -10%;
+
+    bottom: 35px;
+
+    transform: rotate(4deg);
+
+}
+
+
+.motion-line.three {
+
+    width: 70%;
+
+    left: 10%;
+
+    bottom: 10px;
+
+}
+
+
+/* =====================================================
+   RAILS
+===================================================== */
+
+.rails {
+
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 55px;
+
+    opacity: .65;
+
+}
+
+
+.rail {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 4px;
+
+    background:
+
+        rgba(255,255,255,.8);
+
+}
+
+
+.rail.one {
+
+    bottom: 34px;
+
+}
+
+
+.rail.two {
+
+    bottom: 10px;
+
+}
+
+
+.sleepers {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 50px;
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+            transparent 0px,
+
+            transparent 18px,
+
+            rgba(255,255,255,.45)
+            18px,
+
+            rgba(255,255,255,.45)
+            23px
+
+        );
 
 }
 
@@ -413,10 +445,12 @@ main {
     max-width: 760px;
 
     margin:
-        -60px auto
+
+        -55px auto
         100px;
 
     padding:
+
         0 16px;
 
 }
@@ -432,30 +466,30 @@ main {
 
 
 /* =====================================================
-   CARTES
+   CARTE
 ===================================================== */
 
 .card {
 
     background:
+
         rgba(255,255,255,.96);
 
     border:
+
         1px solid
-        rgba(255,255,255,.80);
+        rgba(255,255,255,.9);
 
-    border-radius: 25px;
+    border-radius: 24px;
 
-    padding: 24px;
+    padding: 23px;
 
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 
     box-shadow:
-        0 18px 45px
-        rgba(5,30,50,.18);
 
-    backdrop-filter:
-        blur(18px);
+        0 15px 40px
+        rgba(25,90,120,.14);
 
 }
 
@@ -469,16 +503,40 @@ main {
     text-align: center;
 
     padding:
-        28px 24px;
+
+        25px 22px;
 
 }
 
 
 .welcome-icon {
 
-    font-size: 42px;
+    width: 58px;
 
-    margin-bottom: 8px;
+    height: 58px;
+
+    margin:
+
+        0 auto
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    border-radius: 18px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #d8f3fc,
+            #bce8f7
+        );
 
 }
 
@@ -486,9 +544,10 @@ main {
 .welcome-card h2 {
 
     margin:
-        0 0 12px;
 
-    font-size: 28px;
+        0 0 10px;
+
+    font-size: 27px;
 
 }
 
@@ -497,29 +556,29 @@ main {
 
     margin: 0;
 
-    font-size: 16px;
+    font-size: 15px;
 
     line-height: 1.6;
 
-    color: #526273;
+    color: var(--texte-clair);
 
 }
 
 
 /* =====================================================
-   CHOIX METIER
-   VERSION PLUS COMPACTE
+   BOUTONS METIERS
+   VERSION COMPACTE
 ===================================================== */
 
 .choice {
 
     width: 100%;
 
-    border: none;
-
     padding: 0;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+
+    border: none;
 
     background: transparent;
 
@@ -532,30 +591,35 @@ main {
 
     position: relative;
 
-    overflow: hidden;
-
     display: flex;
 
     align-items: center;
 
-    gap: 14px;
+    gap: 12px;
 
     width: 100%;
 
-    min-height: 88px;
+    min-height: 68px;
 
-    padding: 15px 20px;
+    padding:
 
-    border-radius: 20px;
+        10px 16px;
+
+    border-radius: 18px;
 
     background:
 
         rgba(255,255,255,.97);
 
+    border:
+
+        1px solid
+        rgba(20,140,195,.10);
+
     box-shadow:
 
-        0 10px 25px
-        rgba(5,30,50,.14);
+        0 8px 20px
+        rgba(25,90,120,.10);
 
     transition:
 
@@ -565,42 +629,63 @@ main {
 }
 
 
+.choice-content:hover {
+
+    transform:
+
+        translateY(-2px);
+
+    box-shadow:
+
+        0 12px 25px
+        rgba(25,90,120,.15);
+
+}
+
+
 .choice-content:active {
 
     transform:
+
         scale(.98);
 
 }
 
 
+/* ICONES */
+
 .choice-icon {
 
-    min-width: 58px;
+    width: 46px;
+    height: 46px;
 
-    width: 58px;
-    height: 58px;
+    min-width: 46px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    font-size: 30px;
+    font-size: 25px;
 
-    border-radius: 18px;
+    border-radius: 14px;
 
     background:
 
         linear-gradient(
             135deg,
-            #d9f0fb,
-            #b9ddec
+            #d9f3fc,
+            #bde7f6
         );
 
 }
 
 
+/* TEXTE */
+
 .choice-text {
+
+    flex: 1;
 
     text-align: left;
 
@@ -611,11 +696,13 @@ main {
 
     display: block;
 
-    font-size: 23px;
+    font-size: 19px;
 
-    margin-bottom: 3px;
+    margin-bottom: 1px;
 
-    color: #153247;
+    color:
+
+        #163448;
 
 }
 
@@ -624,22 +711,24 @@ main {
 
     display: block;
 
-    font-size: 14px;
+    font-size: 12px;
 
-    color: #687887;
+    color:
+
+        #718190;
 
 }
 
 
+/* FLECHE */
+
 .choice-arrow {
 
-    position: absolute;
+    font-size: 25px;
 
-    right: 20px;
+    color:
 
-    font-size: 26px;
-
-    color: var(--bleu);
+        var(--bleu-principal);
 
 }
 
@@ -654,7 +743,7 @@ main {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 8px;
 
     margin-top: 0;
 
@@ -668,16 +757,21 @@ main {
 .metier-info {
 
     margin:
+
         0 0 20px;
 
-    color: #526273;
+    color:
+
+        var(--texte-clair);
 
 }
 
 
 .metier-info strong {
 
-    color: var(--bleu-fonce);
+    color:
+
+        var(--bleu-fonce);
 
 }
 
@@ -691,17 +785,20 @@ main {
     display: inline-flex;
 
     padding:
-        8px 14px;
+
+        8px 13px;
 
     margin-bottom: 15px;
 
-    border-radius: 30px;
+    border-radius: 25px;
 
     background:
-        #e2f3fb;
+
+        #e1f5fc;
 
     color:
-        #12618d;
+
+        #0872a8;
 
     font-size: 13px;
 
@@ -711,7 +808,7 @@ main {
 
 
 /* =====================================================
-   FORMULAIRE
+   FORMULAIRES
 ===================================================== */
 
 label {
@@ -726,7 +823,9 @@ label {
 
     font-weight: 700;
 
-    color: #425466;
+    color:
+
+        #425466;
 
 }
 
@@ -739,14 +838,17 @@ textarea {
     padding: 14px;
 
     border:
-        1px solid #d6e0e8;
+
+        1px solid #d7e3e9;
 
     border-radius: 14px;
 
     background:
-        #f9fbfc;
+
+        #f9fcfd;
 
     color:
+
         var(--texte);
 
     font-size: 16px;
@@ -760,11 +862,13 @@ textarea:focus {
     outline: none;
 
     border-color:
-        var(--bleu);
+
+        var(--bleu-principal);
 
     box-shadow:
+
         0 0 0 4px
-        rgba(22,118,184,.12);
+        rgba(8,121,184,.12);
 
 }
 
@@ -783,6 +887,7 @@ textarea {
     display: grid;
 
     grid-template-columns:
+
         1fr 1fr;
 
     gap: 12px;
@@ -812,19 +917,20 @@ textarea {
 
         linear-gradient(
             135deg,
-            #12659b,
-            #1d8dcc
+            #0879b8,
+            #22a8df
         );
 
     color: white;
 
-    font-size: 16px;
+    font-size: 15px;
 
     font-weight: 800;
 
     box-shadow:
-        0 8px 20px
-        rgba(18,101,155,.20);
+
+        0 8px 18px
+        rgba(8,121,184,.20);
 
 }
 
@@ -832,6 +938,7 @@ textarea {
 .btn:active {
 
     transform:
+
         scale(.98);
 
 }
@@ -840,10 +947,12 @@ textarea {
 .btn-secondaire {
 
     background:
-        #e8eff4;
+
+        #eaf1f5;
 
     color:
-        #243746;
+
+        #2d4352;
 
     box-shadow: none;
 
@@ -856,29 +965,33 @@ textarea {
 
 .item {
 
-    margin-top: 15px;
+    margin-top: 14px;
 
-    padding: 20px;
+    padding: 18px;
 
-    border-radius: 20px;
+    border-radius: 19px;
 
     background:
 
         linear-gradient(
             135deg,
             #ffffff,
-            #f2f7fa
+            #f4fafc
         );
 
     border:
-        1px solid #dce6ed;
+
+        1px solid #dce8ed;
 
     border-left:
-        6px solid var(--bleu);
+
+        5px solid
+        var(--bleu-principal);
 
     box-shadow:
-        0 8px 20px
-        rgba(10,40,60,.08);
+
+        0 6px 18px
+        rgba(10,60,90,.08);
 
 }
 
@@ -889,48 +1002,52 @@ textarea {
 
     align-items: center;
 
-    gap: 10px;
-
 }
 
 
 .item-nom {
 
-    font-size: 21px;
+    font-size: 20px;
 
     font-weight: 800;
 
-    color: #19354a;
+    color:
+
+        #19384a;
 
 }
 
 
 /* =====================================================
-   DETAILS
+   DETAILS JOURNEE
 ===================================================== */
 
 .item-details {
 
-    margin-top: 14px;
+    margin-top: 13px;
 
-    padding: 14px;
+    padding: 12px 14px;
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
-        #eaf4f9;
+
+        #eaf7fc;
 
     color:
-        #18384c;
+
+        #183b4f;
 
     line-height: 1.9;
 
-    font-size: 16px;
-
-    font-weight: 600;
+    font-size: 15px;
 
 }
 
+
+/* =====================================================
+   COMMENTAIRE
+===================================================== */
 
 .item-commentaire {
 
@@ -939,11 +1056,14 @@ textarea {
     padding-top: 10px;
 
     border-top:
+
         1px solid #dce6ed;
 
     font-size: 14px;
 
-    color: #687887;
+    color:
+
+        #687887;
 
 }
 
@@ -954,16 +1074,18 @@ textarea {
 
 .interesse {
 
-    margin-top: 15px;
+    margin-top: 14px;
 
-    padding: 13px;
+    padding: 12px;
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
+
         #fff4dc;
 
     color:
+
         #855900;
 
     font-size: 14px;
@@ -976,6 +1098,7 @@ textarea {
 .interesse strong {
 
     color:
+
         #704900;
 
 }
@@ -990,11 +1113,12 @@ textarea {
     display: grid;
 
     grid-template-columns:
+
         1fr;
 
     gap: 8px;
 
-    margin-top: 15px;
+    margin-top: 14px;
 
 }
 
@@ -1011,7 +1135,7 @@ textarea {
 
     cursor: pointer;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 800;
 
@@ -1021,9 +1145,11 @@ textarea {
 .btn-interet {
 
     background:
+
         #fff0cf;
 
     color:
+
         #915d00;
 
 }
@@ -1032,9 +1158,11 @@ textarea {
 .btn-delete {
 
     background:
+
         #ffe5e5;
 
     color:
+
         #b72d2d;
 
 }
@@ -1049,9 +1177,12 @@ textarea {
     text-align: center;
 
     padding:
-        40px 20px;
 
-    color: #687887;
+        35px 20px;
+
+    color:
+
+        #687887;
 
 }
 
@@ -1060,15 +1191,15 @@ textarea {
 
     display: block;
 
-    font-size: 55px;
+    font-size: 50px;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
 }
 
 
 /* =====================================================
-   MENU BAS
+   NAVIGATION
 ===================================================== */
 
 nav {
@@ -1085,21 +1216,30 @@ nav {
     display: flex;
 
     justify-content:
+
         space-around;
 
     padding:
+
         8px 5px
         calc(8px + env(safe-area-inset-bottom));
 
     background:
+
         rgba(255,255,255,.97);
 
     border-top:
+
         1px solid #dce6ed;
 
     box-shadow:
-        0 -8px 30px
+
+        0 -6px 25px
         rgba(0,0,0,.08);
+
+    backdrop-filter:
+
+        blur(12px);
 
 }
 
@@ -1114,7 +1254,9 @@ nav button {
 
     padding: 8px 5px;
 
-    color: #526273;
+    color:
+
+        #526273;
 
     font-size: 12px;
 
@@ -1129,7 +1271,7 @@ nav button {
 
     font-size: 20px;
 
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 
 }
 
@@ -1142,46 +1284,45 @@ nav button {
 
     header {
 
-        min-height: 300px;
+        min-height: 275px;
 
-        padding-top: 35px;
+        padding-top: 32px;
 
     }
 
     .card {
 
-        padding: 20px;
+        padding: 19px;
 
-        border-radius: 22px;
+        border-radius: 21px;
 
     }
 
     .choice-content {
 
-        min-height: 82px;
-
-        padding: 13px 16px;
+        min-height: 64px;
 
     }
 
     .choice-icon {
 
-        width: 54px;
-        height: 54px;
+        width: 43px;
+        height: 43px;
 
-        min-width: 54px;
+        min-width: 43px;
 
-        font-size: 27px;
+        font-size: 22px;
 
     }
 
     .choice-text strong {
 
-        font-size: 21px;
+        font-size: 18px;
 
     }
 
 }
+
 
 </style>
 
@@ -1199,28 +1340,43 @@ nav button {
 
 
 <div class="train-logo">
+
 🚆
+
 </div>
 
 
 <h1>
+
 ÉCHANGE SERVICE
+
 </h1>
 
 
 <p>
-Échange de journées entre agents
+
+Échange de journées entre agents<br>
+<strong>si congés refusés</strong>
+
 </p>
 
 
-<div class="train-illustration">
 
-    <div class="train-body"></div>
+<!-- LIGNES DE MOUVEMENT -->
 
-    <div class="train-window"></div>
+<div class="motion">
+
+    <div class="motion-line one"></div>
+
+    <div class="motion-line two"></div>
+
+    <div class="motion-line three"></div>
 
 </div>
 
+
+
+<!-- RAILS -->
 
 <div class="rails">
 
@@ -1253,28 +1409,40 @@ nav button {
 
 <div class="card welcome-card">
 
+
 <div class="welcome-icon">
-🚆
+
+🤝
+
 </div>
 
+
 <h2>
+
 Bienvenue
+
 </h2>
+
 
 <p>
 
 Proposez une journée de service et trouvez
-un collègue intéressé pour un éventuel échange.
+un collègue intéressé pour organiser
+un éventuel échange.
 
 </p>
+
 
 <p style="margin-top:15px;">
 
 <strong>
+
 Choisissez votre métier pour commencer.
+
 </strong>
 
 </p>
+
 
 </div>
 
@@ -1286,29 +1454,46 @@ Choisissez votre métier pour commencer.
 class="choice"
 onclick="choisirMetier('ADC')">
 
+
 <div class="choice-content">
 
+
 <div class="choice-icon">
+
 🚆
+
 </div>
+
 
 <div class="choice-text">
 
+
 <strong>
+
 ADC
+
 </strong>
 
+
 <small>
+
 Conducteurs de train
+
 </small>
 
+
 </div>
+
 
 <div class="choice-arrow">
+
 ›
-</div>
 
 </div>
+
+
+</div>
+
 
 </button>
 
@@ -1320,29 +1505,46 @@ Conducteurs de train
 class="choice"
 onclick="choisirMetier('ASCT')">
 
+
 <div class="choice-content">
 
+
 <div class="choice-icon">
+
 👨‍✈️
+
 </div>
+
 
 <div class="choice-text">
 
+
 <strong>
+
 ASCT
+
 </strong>
 
+
 <small>
-Agents du Service Commercial Train
+
+Service Commercial Train
+
 </small>
 
+
 </div>
+
 
 <div class="choice-arrow">
+
 ›
-</div>
 
 </div>
+
+
+</div>
+
 
 </button>
 
@@ -1352,7 +1554,7 @@ Agents du Service Commercial Train
 
 
 <!-- =====================================================
-     PROPOSER
+     PROPOSER UNE JOURNEE
 ===================================================== -->
 
 <section
@@ -1388,17 +1590,24 @@ un collègue intéressé.
 
 
 <label>
+
 Nom et prénom
+
 </label>
+
 
 <input
 id="nom"
-placeholder="Exemple : Jean DUPONT">
+placeholder="Exemple : Jean DUPONT"
+autocomplete="name">
 
 
 <label>
+
 Date de la journée
+
 </label>
+
 
 <input
 id="date"
@@ -1410,40 +1619,56 @@ type="date">
 
 <div>
 
+
 <label>
+
 Prise de service
+
 </label>
+
 
 <input
 id="prise"
 type="time">
 
+
 </div>
+
 
 
 <div>
 
+
 <label>
+
 Fin de service
+
 </label>
+
 
 <input
 id="fin"
 type="time">
 
+
 </div>
 
 
 </div>
+
 
 
 <label>
+
 Commentaire
+
 </label>
+
 
 <textarea
 id="commentaire"
 placeholder="Exemple : TER, réserve, numéro de train..."></textarea>
+
 
 
 <button
@@ -1453,6 +1678,7 @@ onclick="publier()">
 🚆 PUBLIER MA JOURNÉE
 
 </button>
+
 
 
 <button
@@ -1465,6 +1691,7 @@ onclick="afficher('echanges')">
 
 
 </div>
+
 
 </section>
 
@@ -1494,15 +1721,19 @@ class="hidden">
 Métier :
 
 <strong id="metierEchanges">
+
 -
+
 </strong>
 
 </p>
 
 
+
 <div id="listeEchanges">
 
 </div>
+
 
 
 <button
@@ -1515,6 +1746,7 @@ onclick="afficher('proposer')">
 
 
 </div>
+
 
 </section>
 
@@ -1535,35 +1767,52 @@ class="hidden">
 <button
 onclick="afficher('proposer')">
 
+
 <span class="nav-icon">
+
 ➕
+
 </span>
+
 
 Ma journée
 
+
 </button>
+
 
 
 <button
 onclick="afficher('echanges')">
 
+
 <span class="nav-icon">
+
 🔎
+
 </span>
+
 
 Échanges
 
+
 </button>
+
 
 
 <button
 onclick="changerMetier()">
 
+
 <span class="nav-icon">
+
 🚆
+
 </span>
 
+
 Métier
+
 
 </button>
 
@@ -1593,8 +1842,10 @@ const SUPABASE_KEY =
 
 const supabaseClient =
 supabase.createClient(
+
     SUPABASE_URL,
     SUPABASE_KEY
+
 );
 
 
@@ -1606,7 +1857,7 @@ let metierActuel = "";
 
 
 /* =====================================================
-   AFFICHER PAGE
+   AFFICHER UNE PAGE
 ===================================================== */
 
 function afficher(page) {
@@ -1654,20 +1905,20 @@ function choisirMetier(metier) {
     metierActuel = metier;
 
 
-    const badge =
-    document.getElementById("metier");
-
-
     if (metier === "ADC") {
 
-        badge.innerHTML =
+        document
+        .getElementById("metier")
+        .innerHTML =
         "🚆 ADC – Conducteurs";
 
     }
 
     else {
 
-        badge.innerHTML =
+        document
+        .getElementById("metier")
+        .innerHTML =
         "👨‍✈️ ASCT – Service Commercial Train";
 
     }
@@ -1675,7 +1926,8 @@ function choisirMetier(metier) {
 
     document
     .getElementById("metierEchanges")
-    .innerText = metier;
+    .innerText =
+    metier;
 
 
     document
@@ -1709,7 +1961,7 @@ function changerMetier() {
 
 
 /* =====================================================
-   PUBLIER
+   PUBLIER UNE JOURNEE
 ===================================================== */
 
 async function publier() {
@@ -1747,6 +1999,8 @@ async function publier() {
     .trim();
 
 
+    /* VERIFICATION */
+
     if (
 
         !nom ||
@@ -1765,7 +2019,10 @@ async function publier() {
     }
 
 
+    /* ENVOI SUPABASE */
+
     const { error } =
+
     await supabaseClient
     .from("echanges")
     .insert([
@@ -1815,29 +2072,13 @@ async function publier() {
     }
 
 
-    document
-    .getElementById("nom")
-    .value = "";
+    /* REINITIALISATION */
 
-
-    document
-    .getElementById("date")
-    .value = "";
-
-
-    document
-    .getElementById("prise")
-    .value = "";
-
-
-    document
-    .getElementById("fin")
-    .value = "";
-
-
-    document
-    .getElementById("commentaire")
-    .value = "";
+    document.getElementById("nom").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("prise").value = "";
+    document.getElementById("fin").value = "";
+    document.getElementById("commentaire").value = "";
 
 
     alert(
@@ -1851,7 +2092,7 @@ async function publier() {
 
 
 /* =====================================================
-   AFFICHER ECHANGES
+   AFFICHER LES ECHANGES
 ===================================================== */
 
 async function afficherEchanges() {
@@ -1869,6 +2110,8 @@ async function afficherEchanges() {
     metierActuel;
 
 
+    /* CHARGEMENT */
+
     zone.innerHTML = `
 
         <div class="empty">
@@ -1883,6 +2126,8 @@ async function afficherEchanges() {
 
     `;
 
+
+    /* RECUPERATION SUPABASE */
 
     const {
 
@@ -1917,6 +2162,8 @@ async function afficherEchanges() {
     );
 
 
+    /* ERREUR */
+
     if (error) {
 
         console.error(error);
@@ -1936,7 +2183,9 @@ async function afficherEchanges() {
 
                 <br><br>
 
+                <small>
                 ${escapeHTML(error.message)}
+                </small>
 
             </div>
 
@@ -1949,6 +2198,8 @@ async function afficherEchanges() {
 
     zone.innerHTML = "";
 
+
+    /* AUCUN RESULTAT */
 
     if (!data || data.length === 0) {
 
@@ -1978,9 +2229,7 @@ async function afficherEchanges() {
     }
 
 
-    /* =================================================
-       CREATION DES CARTES
-    ================================================= */
+    /* AFFICHAGE */
 
     data.forEach(echange => {
 
@@ -2008,15 +2257,13 @@ async function afficherEchanges() {
         : "Date non renseignée";
 
 
-        /* PRISE */
+        /* HEURES */
 
         const prise =
         echange.prise_service
         ? formatTime(echange.prise_service)
         : "--:--";
 
-
-        /* FIN */
 
         const fin =
         echange.fin_service
@@ -2026,132 +2273,130 @@ async function afficherEchanges() {
 
         /* COMMENTAIRE */
 
-        let commentaireHTML = "";
+        const commentaire =
+        echange.commentaire
 
+        ?
 
-        if (
+        `
 
-            echange.commentaire &&
-            echange.commentaire.trim() !== ""
+        <div class="item-commentaire">
 
-        ) {
+        💬
 
-            commentaireHTML = `
+        ${escapeHTML(echange.commentaire)}
 
-                <div class="item-commentaire">
+        </div>
 
-                    💬
-                    ${escapeHTML(
-                        echange.commentaire
-                    )}
+        `
 
-                </div>
+        :
 
-            `;
-
-        }
+        "";
 
 
         /* AGENT INTERESSE */
 
-        let interesseHTML = "";
+        const agentInteresse =
+        echange.agent_interesse
+
+        ?
+
+        `
+
+        <div class="interesse">
+
+        🙋 Agent intéressé :
+
+        <strong>
+
+        ${escapeHTML(
+            echange.agent_interesse
+        )}
+
+        </strong>
+
+        </div>
+
+        `
+
+        :
+
+        "";
 
 
-        if (
-
-            echange.agent_interesse &&
-            echange.agent_interesse.trim() !== ""
-
-        ) {
-
-            interesseHTML = `
-
-                <div class="interesse">
-
-                    🙋 Agent intéressé :
-
-                    <strong>
-
-                        ${escapeHTML(
-                            echange.agent_interesse
-                        )}
-
-                    </strong>
-
-                </div>
-
-            `;
-
-        }
-
-
-        /* CARTE COMPLETE */
+        /* CARTE */
 
         bloc.innerHTML = `
 
 
-            <div class="item-header">
+        <div class="item-header">
 
-                <div class="item-nom">
+            <div class="item-nom">
 
-                    👤 ${nom}
-
-                </div>
+                👤 ${nom}
 
             </div>
 
-
-            <div class="item-details">
-
-                📅 <strong>
-                ${date}
-                </strong>
-
-                <br>
-
-                ⏰ <strong>
-                ${prise} → ${fin}
-                </strong>
-
-            </div>
+        </div>
 
 
-            ${commentaireHTML}
+        <div class="item-details">
+
+            📅
+
+            <strong>
+            ${date}
+            </strong>
+
+            <br>
+
+            ⏰
+
+            <strong>
+            ${prise} → ${fin}
+            </strong>
+
+        </div>
 
 
-            ${interesseHTML}
+        ${commentaire}
 
 
-            <div class="actions">
+        ${agentInteresse}
 
 
-                <button
-
-                    class="btn-small btn-interet"
-
-                    onclick="interesse(${echange.id})"
-
-                >
-
-                    🙋 JE SUIS INTÉRESSÉ
-
-                </button>
+        <div class="actions">
 
 
-                <button
+            <button
 
-                    class="btn-small btn-delete"
+                class="btn-small btn-interet"
 
-                    onclick="supprimer(${echange.id})"
+                onclick="interesse(${echange.id})"
 
-                >
+            >
 
-                    🗑️ SUPPRIMER
+                🙋 JE SUIS INTÉRESSÉ
 
-                </button>
+            </button>
 
 
-            </div>
+
+            <button
+
+                class="btn-small btn-delete"
+
+                onclick="supprimer(${echange.id})"
+
+            >
+
+                🗑️ SUPPRIMER
+
+            </button>
+
+
+        </div>
 
 
         `;
@@ -2173,6 +2418,7 @@ async function interesse(id) {
 
 
     const nomAgent =
+
     prompt(
         "Indiquez votre nom et prénom :"
     );
@@ -2234,7 +2480,10 @@ async function interesse(id) {
     );
 
 
-    /* LA DEMANDE RESTE DISPONIBLE */
+    /*
+       IMPORTANT :
+       LA DEMANDE RESTE VISIBLE
+    */
 
     await afficherEchanges();
 
@@ -2249,6 +2498,7 @@ async function supprimer(id) {
 
 
     const confirmation =
+
     confirm(
         "Voulez-vous vraiment supprimer cette demande ?"
     );
@@ -2327,9 +2577,13 @@ function formatDate(date) {
     return
 
         morceaux[2]
+
         + "/"
+
         + morceaux[1]
+
         + "/"
+
         + morceaux[0];
 
 }
