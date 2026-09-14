@@ -3,518 +3,251 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ÉCHANGE SERVICE</title>
-
-    <!-- SUPABASE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-    <style>
-
-        /* =====================
-           COULEURS
-        ===================== */
-
-        :root {
-            --bleu-fonce: #102a43;
-            --bleu: #1769aa;
-            --gris: #f3f6f8;
-            --vert: #167242;
-            --rouge: #c0392b;
-            --orange: #856404;
-        }
-
-
-        /* =====================
-           GENERAL
-        ===================== */
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        body {
-
-            margin: 0;
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
-            background: var(--gris);
-
-            color: #17212b;
-
-        }
-
-
-        /* =====================
-           HEADER
-        ===================== */
-
-        header {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--bleu-fonce),
-                    var(--bleu)
-                );
-
-            color: white;
-
-            padding: 25px 20px 35px;
-
-            text-align: center;
-
-        }
-
-
-        header h1 {
-
-            margin: 0;
-
-            font-size: 28px;
-
-        }
-
-
-        header p {
-
-            margin-bottom: 0;
-
-            opacity: 0.9;
-
-        }
-
-
-        /* =====================
-           CONTENU
-        ===================== */
-
-        main {
-
-            max-width: 650px;
-
-            margin: -15px auto 100px;
-
-            padding: 0 15px;
-
-        }
-
-
-        /* =====================
-           CARTES
-        ===================== */
-
-        .card {
-
-            background: white;
-
-            border-radius: 18px;
-
-            padding: 20px;
-
-            margin-top: 15px;
-
-            box-shadow:
-                0 5px 20px
-                rgba(0, 0, 0, 0.08);
-
-        }
-
-
-        .hidden {
-
-            display: none !important;
-
-        }
-
-
-        /* =====================
-           CHOIX METIER
-        ===================== */
-
-        .choice {
-
-            width: 100%;
-
-            padding: 22px;
-
-            margin-top: 15px;
-
-            border-radius: 16px;
-
-            border:
-                1px solid #e0e6eb;
-
-            background: white;
-
-            font-size: 19px;
-
-            font-weight: bold;
-
-            text-align: left;
-
-            cursor: pointer;
-
-        }
-
-
-        .choice small {
-
-            display: block;
-
-            margin-top: 5px;
-
-            font-size: 14px;
-
-            font-weight: normal;
-
-            color: #687887;
-
-        }
-
-
-        /* =====================
-           BOUTONS
-        ===================== */
-
-        button {
-
-            cursor: pointer;
-
-        }
-
-
-        .btn {
-
-            width: 100%;
-
-            padding: 15px;
-
-            margin-top: 10px;
-
-            border: none;
-
-            border-radius: 12px;
-
-            background: var(--bleu);
-
-            color: white;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
-        }
-
-
-        .btn:hover {
-
-            opacity: 0.9;
-
-        }
-
-
-        .btn-secondaire {
-
-            background: #e8eef4;
-
-            color: #17212b;
-
-        }
-
-
-        .btn-interesse {
-
-            background: var(--vert);
-
-        }
-
-
-        .btn-danger {
-
-            background: var(--rouge);
-
-            color: white;
-
-        }
-
-
-        /* =====================
-           FORMULAIRES
-        ===================== */
-
-        label {
-
-            display: block;
-
-            font-size: 14px;
-
-            font-weight: bold;
-
-            margin-top: 10px;
-
-            color: #526273;
-
-        }
-
-
-        input,
-        textarea {
-
-            width: 100%;
-
-            padding: 13px;
-
-            margin-top: 5px;
-
-            border-radius: 10px;
-
-            border:
-                1px solid #ccd6df;
-
-            font-size: 16px;
-
-        }
-
-
-        textarea {
-
-            min-height: 80px;
-
-            resize: vertical;
-
-        }
-
-
-        .row {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 10px;
-
-        }
-
-
-        /* =====================
-           BADGE
-        ===================== */
-
-        .badge {
-
-            display: inline-block;
-
-            background: #e7f5ec;
-
-            color: var(--vert);
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-        }
-
-
-        /* =====================
-           CARTE ECHANGE
-        ===================== */
-
-        .item {
-
-            background: #f8fafc;
-
-            border-left:
-                5px solid var(--bleu);
-
-            padding: 18px;
-
-            margin-top: 12px;
-
-            border-radius: 10px;
-
-        }
-
-
-        .item strong {
-
-            font-size: 17px;
-
-        }
-
-
-        .item-info {
-
-            margin-top: 5px;
-
-            line-height: 1.5;
-
-        }
-
-
-        /* =====================
-           STATUTS
-        ===================== */
-
-        .statut-disponible {
-
-            display: inline-block;
-
-            margin-top: 10px;
-
-            padding: 5px 10px;
-
-            border-radius: 20px;
-
-            background: #e7f5ec;
-
-            color: var(--vert);
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-        }
-
-
-        .statut-interesse {
-
-            display: inline-block;
-
-            margin-top: 10px;
-
-            padding: 5px 10px;
-
-            border-radius: 20px;
-
-            background: #fff3cd;
-
-            color: var(--orange);
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-        }
-
-
-        /* =====================
-           MENU BAS
-        ===================== */
-
-        nav {
-
-            position: fixed;
-
-            bottom: 0;
-
-            left: 0;
-
-            right: 0;
-
-            background: white;
-
-            border-top:
-                1px solid #dfe6ec;
-
-            padding: 8px;
-
-            display: flex;
-
-            justify-content: space-around;
-
-            z-index: 100;
-
-        }
-
-
-        nav button {
-
-            border: none;
-
-            background: none;
-
-            color: var(--bleu);
-
-            font-size: 12px;
-
-            padding: 8px;
-
-        }
-
-
-        /* =====================
-           MOBILE
-        ===================== */
-
-        @media (max-width: 500px) {
-
-            .row {
-
-                grid-template-columns: 1fr;
-
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ÉCHANGE SERVICE</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root {
+    --bleu-fonce: #102a43;
+    --bleu: #1769aa;
+    --gris: #f3f6f8;
+    --vert: #167242;
+    --rouge: #c0392b;
+    --orange: #856404;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: var(--gris);
+    color: #17212b;
+}
+
+header {
+    background: linear-gradient(135deg, var(--bleu-fonce), var(--bleu));
+    color: white;
+    padding: 25px 20px 35px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+main {
+    max-width: 650px;
+    margin: -15px auto 100px;
+    padding: 0 15px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.choice {
+    width: 100%;
+    padding: 22px;
+    margin-top: 15px;
+    border-radius: 16px;
+    border: 1px solid #e0e6eb;
+    background: white;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+.choice small {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #687887;
+}
+
+button {
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 12px;
+    background: var(--bleu);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-secondaire {
+    background: #e8eef4;
+    color: #17212b;
+}
+
+.btn-interesse {
+    background: var(--vert);
+}
+
+.btn-danger {
+    background: var(--rouge);
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #526273;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccd6df;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 80px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.item {
+    background: #f8fafc;
+    border-left: 5px solid var(--bleu);
+    padding: 18px;
+    margin-top: 12px;
+    border-radius: 10px;
+}
+
+.item-info {
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.badge {
+    display: inline-block;
+    background: #e7f5ec;
+    color: var(--vert);
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.statut-disponible {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #e7f5ec;
+    color: var(--vert);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.statut-interesse {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #fff3cd;
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #dfe6ec;
+    padding: 8px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 100;
+}
+
+nav button {
+    border: none;
+    background: none;
+    color: var(--bleu);
+    font-size: 12px;
+    padding: 8px;
+}
+
+@media (max-width: 500px) {
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
 
 </head>
-
 
 
 <body>
 
 
-<!-- =====================
-     HEADER
-===================== -->
-
 <header>
 
-    <h1>
-        🚆 ÉCHANGE SERVICE
-    </h1>
+<h1>🚆 ÉCHANGE SERVICE</h1>
 
-    <p>
-        Échange de journées entre agents
-    </p>
+<p>Échange de journées entre agents</p>
 
 </header>
-
 
 
 <main>
 
 
-<!-- =====================
+<!-- =========================
      ACCUEIL
-===================== -->
+========================= -->
 
 <section id="accueil">
 
-
     <div class="card">
 
-        <h2>
-            Bienvenue 👋
-        </h2>
+        <h2>Bienvenue 👋</h2>
 
         <p>
             Choisissez votre métier pour commencer.
@@ -523,11 +256,9 @@
     </div>
 
 
-
     <button
         class="choice"
-        onclick="choisirMetier('ADC')"
-    >
+        onclick="choisirMetier('ADC')">
 
         🚆 ADC
 
@@ -538,11 +269,9 @@
     </button>
 
 
-
     <button
         class="choice"
-        onclick="choisirMetier('ASCT')"
-    >
+        onclick="choisirMetier('ASCT')">
 
         👤 ASCT
 
@@ -557,30 +286,24 @@
 
 
 
-
-<!-- =====================
+<!-- =========================
      PROPOSER UNE JOURNEE
-===================== -->
+========================= -->
 
 <section
     id="proposer"
-    class="hidden"
->
-
+    class="hidden">
 
     <div class="card">
 
 
         <span
             id="metier"
-            class="badge"
-        ></span>
+            class="badge">
+        </span>
 
 
-        <h2>
-            ➕ Ma journée à échanger
-        </h2>
-
+        <h2>➕ Ma journée à échanger</h2>
 
 
         <label>
@@ -589,9 +312,7 @@
 
         <input
             id="nom"
-            placeholder="Exemple : Jean DUPONT"
-        >
-
+            placeholder="Exemple : Jean DUPONT">
 
 
         <label>
@@ -600,9 +321,7 @@
 
         <input
             id="date"
-            type="date"
-        >
-
+            type="date">
 
 
         <div class="row">
@@ -616,11 +335,9 @@
 
                 <input
                     id="prise"
-                    type="time"
-                >
+                    type="time">
 
             </div>
-
 
 
             <div>
@@ -631,8 +348,7 @@
 
                 <input
                     id="fin"
-                    type="time"
-                >
+                    type="time">
 
             </div>
 
@@ -640,34 +356,28 @@
         </div>
 
 
-
         <label>
             Commentaire facultatif
         </label>
 
-
         <textarea
             id="commentaire"
-            placeholder="Exemple : TER, réserve..."
-        ></textarea>
-
+            placeholder="Exemple : TER, réserve...">
+        </textarea>
 
 
         <button
             class="btn"
-            onclick="publier()"
-        >
+            onclick="publier()">
 
             🚆 PUBLIER MA JOURNÉE
 
         </button>
 
 
-
         <button
             class="btn btn-secondaire"
-            onclick="afficher('echanges')"
-        >
+            onclick="afficher('echanges')">
 
             🔎 VOIR LES ÉCHANGES
 
@@ -676,20 +386,17 @@
 
     </div>
 
-
 </section>
 
 
 
-
-<!-- =====================
-     ECHANGES DISPONIBLES
-===================== -->
+<!-- =========================
+     ECHANGES
+========================= -->
 
 <section
     id="echanges"
-    class="hidden"
->
+    class="hidden">
 
 
     <div class="card">
@@ -704,24 +411,17 @@
 
             Métier :
 
-            <strong
-                id="metierEchanges"
-            ></strong>
+            <strong id="metierEchanges"></strong>
 
         </p>
 
 
-
-        <div
-            id="listeEchanges"
-        ></div>
-
+        <div id="listeEchanges"></div>
 
 
         <button
             class="btn btn-secondaire"
-            onclick="afficher('proposer')"
-        >
+            onclick="afficher('proposer')">
 
             ➕ PROPOSER UNE JOURNÉE
 
@@ -735,15 +435,13 @@
 
 
 
-
-<!-- =====================
+<!-- =========================
      INTERETS
-===================== -->
+========================= -->
 
 <section
     id="interets"
-    class="hidden"
->
+    class="hidden">
 
 
     <div class="card">
@@ -754,17 +452,12 @@
         </h2>
 
 
-
-        <div
-            id="listeInterets"
-        ></div>
-
+        <div id="listeInterets"></div>
 
 
         <button
             class="btn btn-secondaire"
-            onclick="afficher('echanges')"
-        >
+            onclick="afficher('echanges')">
 
             🔎 RETOUR AUX ÉCHANGES
 
@@ -781,63 +474,42 @@
 
 
 
-
-<!-- =====================
-     MENU BAS
-===================== -->
+<!-- =========================
+     MENU
+========================= -->
 
 <nav
     id="menu"
-    class="hidden"
->
+    class="hidden">
 
 
-    <button
-        onclick="afficher('proposer')"
-    >
+    <button onclick="afficher('proposer')">
 
-        ➕
-        <br>
-
+        ➕<br>
         Ma journée
 
     </button>
 
 
+    <button onclick="afficher('echanges')">
 
-    <button
-        onclick="afficher('echanges')"
-    >
-
-        🔎
-        <br>
-
+        🔎<br>
         Échanges
 
     </button>
 
 
+    <button onclick="afficher('interets')">
 
-    <button
-        onclick="afficher('interets')"
-    >
-
-        ⭐
-        <br>
-
+        ⭐<br>
         Intérêts
 
     </button>
 
 
+    <button onclick="changerMetier()">
 
-    <button
-        onclick="changerMetier()"
-    >
-
-        🚆
-        <br>
-
+        🚆<br>
         Métier
 
     </button>
@@ -847,17 +519,12 @@
 
 
 
-
-<!-- =====================
-     JAVASCRIPT
-===================== -->
-
 <script>
 
 
-/* =====================
+/* =========================
    SUPABASE
-===================== */
+========================= */
 
 const SUPABASE_URL =
     "https://nptwpoguokbjuzdyxach.supabase.co";
@@ -874,18 +541,16 @@ const supabaseClient =
     );
 
 
-
-/* =====================
-   METIER ACTUEL
-===================== */
+/* =========================
+   VARIABLES
+========================= */
 
 let metierActuel = "";
 
 
-
-/* =====================
-   AFFICHER UNE PAGE
-===================== */
+/* =========================
+   AFFICHER PAGE
+========================= */
 
 function afficher(page) {
 
@@ -894,19 +559,15 @@ function afficher(page) {
         .querySelectorAll("main section")
         .forEach(section => {
 
-            section
-                .classList
-                .add("hidden");
+            section.classList.add("hidden");
 
         });
-
 
 
     document
         .getElementById(page)
         .classList
         .remove("hidden");
-
 
 
     if (page === "echanges") {
@@ -916,22 +577,18 @@ function afficher(page) {
     }
 
 
-
     if (page === "interets") {
 
         afficherInterets();
 
     }
 
-
 }
 
 
-
-
-/* =====================
+/* =========================
    CHOISIR METIER
-===================== */
+========================= */
 
 function choisirMetier(metier) {
 
@@ -939,17 +596,14 @@ function choisirMetier(metier) {
     metierActuel = metier;
 
 
-
     document
         .getElementById("metier")
         .innerText = metier;
 
 
-
     document
         .getElementById("metierEchanges")
         .innerText = metier;
-
 
 
     document
@@ -958,24 +612,19 @@ function choisirMetier(metier) {
         .remove("hidden");
 
 
-
     afficher("proposer");
-
 
 }
 
 
-
-
-/* =====================
+/* =========================
    CHANGER METIER
-===================== */
+========================= */
 
 function changerMetier() {
 
 
     metierActuel = "";
-
 
 
     document
@@ -984,168 +633,111 @@ function changerMetier() {
         .add("hidden");
 
 
-
     afficher("accueil");
-
 
 }
 
 
-
-
-/* =====================
-   PUBLIER UNE JOURNEE
-===================== */
+/* =========================
+   PUBLIER
+========================= */
 
 async function publier() {
 
 
     const nom =
-
         document
-            .getElementById("nom")
-            .value
-            .trim();
-
+        .getElementById("nom")
+        .value
+        .trim();
 
 
     const date =
-
         document
-            .getElementById("date")
-            .value;
-
+        .getElementById("date")
+        .value;
 
 
     const prise =
-
         document
-            .getElementById("prise")
-            .value;
-
+        .getElementById("prise")
+        .value;
 
 
     const fin =
-
         document
-            .getElementById("fin")
-            .value;
-
+        .getElementById("fin")
+        .value;
 
 
     const commentaire =
-
         document
-            .getElementById("commentaire")
-            .value
-            .trim();
+        .getElementById("commentaire")
+        .value
+        .trim();
 
-
-
-    /* VERIFICATION */
 
     if (
-
         !nom ||
-
         !date ||
-
         !prise ||
-
         !fin
-
     ) {
 
-
         alert(
-
             "Merci de remplir le nom, la date et les horaires."
-
         );
 
-
         return;
-
 
     }
 
 
-
-    /* ENVOI SUPABASE */
-
     const { error } =
-
         await supabaseClient
+        .from("echanges")
+        .insert([
 
-            .from("echanges")
+            {
 
-            .insert([
+                metier: metierActuel,
 
-                {
+                nom: nom,
 
-                    metier:
-                        metierActuel,
+                date_service: date,
 
-                    nom:
-                        nom,
+                prise_service: prise,
 
-                    date_service:
-                        date,
+                fin_service: fin,
 
-                    prise_service:
-                        prise,
+                commentaire: commentaire,
 
-                    fin_service:
-                        fin,
+                statut: "disponible",
 
-                    commentaire:
-                        commentaire,
+                agent_interesse: null
 
-                    statut:
-                        "disponible",
+            }
 
-                    agent_interesse:
-                        null
+        ]);
 
-                }
-
-            ]);
-
-
-
-    /* ERREUR */
 
     if (error) {
 
-
         console.error(error);
 
-
-
         alert(
-
-            "❌ Erreur : "
-
-            +
-
+            "❌ Erreur : " +
             error.message
-
         );
-
 
         return;
 
-
     }
 
-
-
-    /* VIDER FORMULAIRE */
 
     document
         .getElementById("nom")
         .value = "";
-
 
 
     document
@@ -1153,11 +745,9 @@ async function publier() {
         .value = "";
 
 
-
     document
         .getElementById("prise")
         .value = "";
-
 
 
     document
@@ -1165,1002 +755,193 @@ async function publier() {
         .value = "";
 
 
-
     document
         .getElementById("commentaire")
         .value = "";
 
 
-
     alert(
-
         "✅ Votre journée est publiée !"
-
     );
-
-
-
-    afficher("echanges");
-
-
-}
-
-
-
-
-/* =====================
-   AFFICHER ECHANGES
-===================== */
-
-async function afficherEchanges() {
-
-
-    const zone =
-
-        document
-            .getElementById(
-                "listeEchanges"
-            );
-
-
-
-    document
-        .getElementById(
-            "metierEchanges"
-        )
-        .innerText =
-            metierActuel;
-
-
-
-    zone.innerHTML =
-
-        "<p>Chargement...</p>";
-
-
-
-    const { data, error } =
-
-        await supabaseClient
-
-            .from("echanges")
-
-            .select("*")
-
-            .eq(
-
-                "metier",
-
-                metierActuel
-
-            )
-
-            .eq(
-
-                "statut",
-
-                "disponible"
-
-            )
-
-            .order(
-
-                "date_service",
-
-                {
-
-                    ascending: true
-
-                }
-
-            );
-
-
-
-    /* ERREUR */
-
-    if (error) {
-
-
-        console.error(error);
-
-
-
-        zone.innerHTML =
-
-            "<p>❌ Erreur : "
-
-            +
-
-            error.message
-
-            +
-
-            "</p>";
-
-
-        return;
-
-
-    }
-
-
-
-    zone.innerHTML = "";
-
-
-
-    /* AUCUN ECHANGE */
-
-    if (
-
-        !data ||
-
-        data.length === 0
-
-    ) {
-
-
-        zone.innerHTML =
-
-            "<p>Aucune journée proposée pour le moment.</p>";
-
-
-        return;
-
-
-    }
-
-
-
-    /* CREATION DES CARTES */
-
-    data.forEach(echange => {
-
-
-        const bloc =
-
-            document
-                .createElement("div");
-
-
-
-        bloc.className =
-
-            "item";
-
-
-
-        bloc.innerHTML =
-
-
-            "<strong>"
-
-            +
-
-            echange.nom
-
-            +
-
-            "</strong>"
-
-
-            +
-
-
-            "<div class='item-info'>"
-
-
-            +
-
-
-            "📅 "
-
-            +
-
-            echange.date_service
-
-
-            +
-
-
-            "<br>"
-
-
-            +
-
-
-            "⏰ "
-
-            +
-
-            formatHeure(
-
-                echange.prise_service
-
-            )
-
-
-            +
-
-
-            " → "
-
-
-            +
-
-
-            formatHeure(
-
-                echange.fin_service
-
-            )
-
-
-            +
-
-
-            "</div>"
-
-
-            +
-
-
-            (
-
-                echange.commentaire
-
-
-                ?
-
-
-                "<div class='item-info'>💬 "
-
-                +
-
-                echange.commentaire
-
-                +
-
-                "</div>"
-
-
-                :
-
-
-                ""
-
-            )
-
-
-            +
-
-
-            "<span class='statut-disponible'>"
-
-
-            +
-
-
-            "🟢 Disponible"
-
-
-            +
-
-
-            "</span>"
-
-
-            +
-
-
-            "<button "
-
-
-            +
-
-
-            "class='btn btn-interesse' "
-
-
-            +
-
-
-            "onclick='jeSuisInteresse("
-
-
-            +
-
-
-            echange.id
-
-
-            +
-
-
-            ")'"
-
-
-            +
-
-
-            ">"
-
-
-            +
-
-
-            "🤝 JE SUIS INTÉRESSÉ"
-
-
-            +
-
-
-            "</button>"
-
-
-            +
-
-
-            "<button "
-
-
-            +
-
-
-            "class='btn btn-danger' "
-
-
-            +
-
-
-            "onclick='supprimerDemande("
-
-
-            +
-
-
-            echange.id
-
-
-            +
-
-
-            ")'"
-
-
-            +
-
-
-            ">"
-
-
-            +
-
-
-            "🗑️ SUPPRIMER"
-
-
-            +
-
-
-            "</button>";
-
-
-
-        zone.appendChild(bloc);
-
-
-    });
-
-
-}
-
-
-
-
-/* =====================
-   JE SUIS INTERESSE
-===================== */
-
-async function jeSuisInteresse(id) {
-
-
-    let agent =
-
-        prompt(
-
-            "Indiquez votre nom et prénom :"
-
-        );
-
-
-
-    if (
-
-        agent === null
-
-    ) {
-
-
-        return;
-
-
-    }
-
-
-
-    agent =
-
-        agent.trim();
-
-
-
-    if (
-
-        !agent
-
-    ) {
-
-
-        alert(
-
-            "Merci d'indiquer votre nom."
-
-        );
-
-
-        return;
-
-
-    }
-
-
-
-    const { error } =
-
-        await supabaseClient
-
-            .from("echanges")
-
-            .update({
-
-                statut:
-                    "interesse",
-
-                agent_interesse:
-                    agent
-
-            })
-
-            .eq(
-
-                "id",
-
-                id
-
-            );
-
-
-
-    if (error) {
-
-
-        console.error(error);
-
-
-
-        alert(
-
-            "❌ Erreur : "
-
-            +
-
-            error.message
-
-        );
-
-
-        return;
-
-
-    }
-
-
-
-    alert(
-
-        "✅ Votre intérêt a été enregistré !"
-
-    );
-
 
 
     await afficherEchanges();
 
 
-}
-
-
-
-
-/* =====================
-   SUPPRIMER UNE DEMANDE
-===================== */
-
-async function supprimerDemande(id) {
-
-
-    const confirmation =
-
-        confirm(
-
-            "⚠️ Voulez-vous vraiment supprimer cette demande ?"
-
-        );
-
-
-
-    if (
-
-        !confirmation
-
-    ) {
-
-
-        return;
-
-
-    }
-
-
-
-    /* SUPPRESSION SUPABASE */
-
-    const { error } =
-
-        await supabaseClient
-
-            .from("echanges")
-
-            .delete()
-
-            .eq(
-
-                "id",
-
-                id
-
-            );
-
-
-
-    /* ERREUR */
-
-    if (error) {
-
-
-        console.error(error);
-
-
-
-        alert(
-
-            "❌ Erreur lors de la suppression : "
-
-            +
-
-            error.message
-
-        );
-
-
-        return;
-
-
-    }
-
-
-
-    alert(
-
-        "🗑️ La demande a été supprimée."
-
-    );
-
-
-
-    /* =====================
-       ACTUALISATION
-    ===================== */
-
-
-    const pageInterets =
-
-        document
-
-            .getElementById("interets")
-
-            .classList
-
-            .contains("hidden")
-
-            === false;
-
-
-
-    if (pageInterets) {
-
-
-        await afficherInterets();
-
-
-    }
-
-
-    else {
-
-
-        await afficherEchanges();
-
-
-    }
-
+    afficher("echanges");
 
 }
 
 
+/* =========================
+   AFFICHER ECHANGES
+========================= */
 
-
-/* =====================
-   AFFICHER INTERETS
-===================== */
-
-async function afficherInterets() {
+async function afficherEchanges() {
 
 
     const zone =
-
         document
-
-            .getElementById(
-
-                "listeInterets"
-
-            );
-
+        .getElementById("listeEchanges");
 
 
     zone.innerHTML =
-
         "<p>Chargement...</p>";
 
 
-
     const { data, error } =
-
         await supabaseClient
+        .from("echanges")
+        .select("*")
+        .eq(
+            "metier",
+            metierActuel
+        )
+        .eq(
+            "statut",
+            "disponible"
+        )
+        .order(
+            "date_service",
+            {
+                ascending: true
+            }
+        );
 
-            .from("echanges")
-
-            .select("*")
-
-            .eq(
-
-                "metier",
-
-                metierActuel
-
-            )
-
-            .eq(
-
-                "statut",
-
-                "interesse"
-
-            )
-
-            .order(
-
-                "date_service",
-
-                {
-
-                    ascending: true
-
-                }
-
-            );
-
-
-
-    /* ERREUR */
 
     if (error) {
 
-
         console.error(error);
 
-
-
         zone.innerHTML =
-
-            "<p>❌ Erreur : "
-
-            +
-
-            error.message
-
-            +
-
+            "<p>❌ Erreur : " +
+            error.message +
             "</p>";
-
 
         return;
 
-
     }
-
 
 
     zone.innerHTML = "";
 
 
-
-    /* AUCUN INTERET */
-
     if (
-
         !data ||
-
         data.length === 0
-
     ) {
 
-
         zone.innerHTML =
-
-            "<p>Aucune journée avec un agent intéressé pour le moment.</p>";
-
+            "<p>Aucune journée proposée pour le moment.</p>";
 
         return;
 
-
     }
 
-
-
-    /* CREATION DES CARTES */
 
     data.forEach(echange => {
 
 
         const bloc =
-
             document
-
-                .createElement("div");
-
+            .createElement("div");
 
 
-        bloc.className =
+        bloc.className = "item";
 
-            "item";
 
+        /* ID UNIQUE POUR SUPPRESSION */
+
+        bloc.id =
+            "echange-" +
+            echange.id;
 
 
         bloc.innerHTML =
 
+            "<strong>" +
 
-            "<strong>"
+            echange.nom +
 
-            +
-
-            echange.nom
-
-            +
-
-            "</strong>"
+            "</strong>" +
 
 
-            +
+            "<div class='item-info'>" +
+
+            "📅 " +
+
+            echange.date_service +
+
+            "<br>" +
 
 
-            "<div class='item-info'>"
-
-
-            +
-
-
-            "📅 "
-
-            +
-
-            echange.date_service
-
-
-            +
-
-
-            "<br>"
-
-
-            +
-
-
-            "⏰ "
-
-            +
+            "⏰ " +
 
             formatHeure(
-
                 echange.prise_service
+            ) +
 
-            )
-
-
-            +
-
-
-            " → "
-
-
-            +
-
+            " → " +
 
             formatHeure(
-
                 echange.fin_service
+            ) +
 
-            )
-
-
-            +
-
-
-            "</div>"
-
-
-            +
+            "</div>" +
 
 
             (
-
                 echange.commentaire
-
 
                 ?
 
+                "<div class='item-info'>💬 " +
 
-                "<div class='item-info'>💬 "
-
-                +
-
-                echange.commentaire
-
-                +
+                echange.commentaire +
 
                 "</div>"
 
-
                 :
 
-
                 ""
+            ) +
 
-            )
 
+            "<span class='statut-disponible'>" +
 
-            +
+            "🟢 Disponible" +
 
+            "</span>" +
 
-            "<div class='item-info'>"
 
+            "<button " +
 
-            +
+            "class='btn btn-interesse' " +
 
+            "onclick='jeSuisInteresse(" +
 
-            "🤝 Intéressé : "
+            echange.id +
 
+            ")'>" +
 
-            +
+            "🤝 JE SUIS INTÉRESSÉ" +
 
+            "</button>" +
 
-            "<strong>"
 
+            "<button " +
 
-            +
+            "class='btn btn-danger' " +
 
+            "onclick='supprimerDemande(" +
 
-            (
+            echange.id +
 
-                echange.agent_interesse
+            ")'>" +
 
-                ||
-
-                "Non renseigné"
-
-            )
-
-
-            +
-
-
-            "</strong>"
-
-
-            +
-
-
-            "</div>"
-
-
-            +
-
-
-            "<span class='statut-interesse'>"
-
-
-            +
-
-
-            "🟠 Agent intéressé"
-
-
-            +
-
-
-            "</span>"
-
-
-            +
-
-
-            "<button "
-
-
-            +
-
-
-            "class='btn btn-danger' "
-
-
-            +
-
-
-            "onclick='supprimerDemande("
-
-
-            +
-
-
-            echange.id
-
-
-            +
-
-
-            ")'"
-
-
-            +
-
-
-            ">"
-
-
-            +
-
-
-            "🗑️ SUPPRIMER"
-
-
-            +
-
+            "🗑️ SUPPRIMER" +
 
             "</button>";
-
 
 
         zone.appendChild(bloc);
@@ -2168,35 +949,394 @@ async function afficherInterets() {
 
     });
 
-
 }
 
 
+/* =========================
+   JE SUIS INTERESSE
+========================= */
+
+async function jeSuisInteresse(id) {
 
 
-/* =====================
-   FORMAT HEURE
-===================== */
-
-function formatHeure(heure) {
-
-
-    if (
-
-        !heure
-
-    ) {
+    let agent =
+        prompt(
+            "Indiquez votre nom et prénom :"
+        );
 
 
-        return "";
+    if (agent === null) {
 
+        return;
 
     }
 
 
+    agent =
+        agent.trim();
+
+
+    if (!agent) {
+
+        alert(
+            "Merci d'indiquer votre nom."
+        );
+
+        return;
+
+    }
+
+
+    const { error } =
+        await supabaseClient
+        .from("echanges")
+        .update({
+
+            statut: "interesse",
+
+            agent_interesse: agent
+
+        })
+        .eq(
+            "id",
+            id
+        );
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur : " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "✅ Votre intérêt a été enregistré !"
+    );
+
+
+    await afficherEchanges();
+
+}
+
+
+/* =========================
+   SUPPRIMER DEMANDE
+========================= */
+
+async function supprimerDemande(id) {
+
+
+    const confirmation =
+        confirm(
+            "⚠️ Voulez-vous vraiment supprimer cette demande ?"
+        );
+
+
+    if (!confirmation) {
+
+        return;
+
+    }
+
+
+    console.log(
+        "Suppression de :",
+        id
+    );
+
+
+    /*
+    SUPPRESSION SUPABASE
+    */
+
+    const { data, error } =
+        await supabaseClient
+        .from("echanges")
+        .delete()
+        .eq(
+            "id",
+            id
+        )
+        .select();
+
+
+    if (error) {
+
+        console.error(
+            "Erreur suppression :",
+            error
+        );
+
+
+        alert(
+            "❌ Erreur lors de la suppression : " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    console.log(
+        "Résultat suppression :",
+        data
+    );
+
+
+    /*
+    SUPPRESSION IMMEDIATE
+    */
+
+    const element =
+        document
+        .getElementById(
+            "echange-" + id
+        );
+
+
+    if (element) {
+
+        element.remove();
+
+    }
+
+
+    alert(
+        "🗑️ La demande a été supprimée."
+    );
+
+
+    /*
+    RECHARGEMENT COMPLET
+    DEPUIS SUPABASE
+    */
+
+    const pageInterets =
+        !document
+        .getElementById("interets")
+        .classList
+        .contains("hidden");
+
+
+    if (pageInterets) {
+
+        await afficherInterets();
+
+    }
+
+    else {
+
+        await afficherEchanges();
+
+    }
+
+}
+
+
+/* =========================
+   AFFICHER INTERETS
+========================= */
+
+async function afficherInterets() {
+
+
+    const zone =
+        document
+        .getElementById("listeInterets");
+
+
+    zone.innerHTML =
+        "<p>Chargement...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("echanges")
+        .select("*")
+        .eq(
+            "metier",
+            metierActuel
+        )
+        .eq(
+            "statut",
+            "interesse"
+        )
+        .order(
+            "date_service",
+            {
+                ascending: true
+            }
+        );
+
+
+    if (error) {
+
+        console.error(error);
+
+        zone.innerHTML =
+            "<p>❌ Erreur : " +
+            error.message +
+            "</p>";
+
+        return;
+
+    }
+
+
+    zone.innerHTML = "";
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        zone.innerHTML =
+            "<p>Aucune journée avec intérêt pour le moment.</p>";
+
+        return;
+
+    }
+
+
+    data.forEach(echange => {
+
+
+        const bloc =
+            document
+            .createElement("div");
+
+
+        bloc.className = "item";
+
+
+        /* ID UNIQUE */
+
+        bloc.id =
+            "echange-" +
+            echange.id;
+
+
+        bloc.innerHTML =
+
+            "<strong>" +
+
+            echange.nom +
+
+            "</strong>" +
+
+
+            "<div class='item-info'>" +
+
+            "📅 " +
+
+            echange.date_service +
+
+            "<br>" +
+
+
+            "⏰ " +
+
+            formatHeure(
+                echange.prise_service
+            ) +
+
+            " → " +
+
+            formatHeure(
+                echange.fin_service
+            ) +
+
+            "</div>" +
+
+
+            (
+                echange.commentaire
+
+                ?
+
+                "<div class='item-info'>💬 " +
+
+                echange.commentaire +
+
+                "</div>"
+
+                :
+
+                ""
+            ) +
+
+
+            "<div class='item-info'>" +
+
+            "🤝 Agent intéressé : " +
+
+            "<strong>" +
+
+            (
+                echange.agent_interesse ||
+                "Non renseigné"
+            ) +
+
+            "</strong>" +
+
+            "</div>" +
+
+
+            "<span class='statut-interesse'>" +
+
+            "🟠 Agent intéressé" +
+
+            "</span>" +
+
+
+            "<button " +
+
+            "class='btn btn-danger' " +
+
+            "onclick='supprimerDemande(" +
+
+            echange.id +
+
+            ")'>" +
+
+            "🗑️ SUPPRIMER" +
+
+            "</button>";
+
+
+        zone.appendChild(bloc);
+
+
+    });
+
+}
+
+
+/* =========================
+   FORMAT HEURE
+========================= */
+
+function formatHeure(heure) {
+
+
+    if (!heure) {
+
+        return "";
+
+    }
+
 
     return heure.substring(0, 5);
-
 
 }
 
