@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -14,40 +15,57 @@
 
 <meta name="theme-color" content="#071c2c">
 
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
+
 <title>ÉCHANGE SERVICE</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <style>
 
 /* =========================================================
    ÉCHANGE SERVICE — V4.4
-   Design moderne train / mobile / iPad
+   DESIGN MODERNE — TRAIN
+   SMARTPHONE / IPHONE / IPAD / DESKTOP
    ========================================================= */
 
 :root{
-  --navy:#071c2c;
-  --navy2:#0b2d44;
 
-  --blue:#0c83bd;
-  --blue2:#19a8d8;
-  --cyan:#62dff5;
+  --navy:#061a2b;
+  --navy2:#0a2c43;
 
-  --teal:#29b9ad;
+  --blue:#087db5;
+  --blue2:#13a4d5;
+  --cyan:#61ddf4;
+
+  --teal:#25b8aa;
 
   --white:#ffffff;
-  --glass:rgba(255,255,255,.90);
 
-  --text:#142f44;
-  --muted:#687b89;
+  --glass:rgba(255,255,255,.94);
 
-  --line:#dbe7ed;
+  --text:#17334a;
+  --muted:#697c8b;
 
-  --success:#198754;
-  --warning:#a56a00;
-  --danger:#c23a45;
+  --line:#dce8ee;
 
-  --shadow:0 18px 45px rgba(4,30,47,.18);
+  --success:#168653;
+  --warning:#9c6500;
+  --danger:#c53d48;
+
+  --shadow:
+    0 18px 45px
+    rgba(4,30,47,.20);
+
 }
 
 
@@ -56,15 +74,24 @@
    ========================================================= */
 
 *{
+
   box-sizing:border-box;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
 }
 
 html{
+
   scroll-behavior:smooth;
+
 }
 
 body{
+
   margin:0;
+
   min-height:100vh;
 
   font-family:
@@ -78,93 +105,120 @@ body{
 
   color:var(--text);
 
-  background:#071c2c;
+  background:
+    #071c2c;
 
   overflow-x:hidden;
 
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:
+    antialiased;
+
 }
 
 
 /* =========================================================
-   ARRIÈRE-PLAN TRAIN
+   FOND D'ÉCRAN TRAIN
    ========================================================= */
 
 .bg{
+
   position:fixed;
+
   inset:0;
 
-  z-index:-10;
+  z-index:-20;
 
   overflow:hidden;
 
   pointer-events:none;
 
-  background:
+  background-image:
+
     linear-gradient(
       180deg,
-      rgba(3,20,34,.20) 0%,
-      rgba(3,24,40,.20) 35%,
-      rgba(5,38,57,.30) 58%,
-      rgba(235,245,249,.72) 100%
+      rgba(3,20,34,.12) 0%,
+      rgba(3,25,42,.10) 30%,
+      rgba(5,38,57,.16) 55%,
+      rgba(226,241,247,.72) 100%
     ),
-    url("fond-train-v44.jpg")
-    center center /
-    cover
+
+    url("fond-train-v44.jpg");
+
+  background-position:
+    center center;
+
+  background-size:
+    cover;
+
+  background-repeat:
     no-repeat;
+
 }
 
 
-/* voile principal */
+/* voile supérieur */
 
 .bg::before{
+
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
+
     linear-gradient(
       180deg,
-      rgba(3,19,32,.78) 0%,
-      rgba(5,31,48,.42) 32%,
-      rgba(10,54,75,.12) 55%,
-      rgba(237,246,250,.82) 100%
+      rgba(3,20,34,.78) 0%,
+      rgba(5,31,48,.38) 27%,
+      rgba(7,47,67,.08) 52%,
+      rgba(237,247,250,.82) 100%
     );
+
 }
 
 
-/* halo lumineux */
+/* lumière moderne */
 
 .bg::after{
+
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
+
     radial-gradient(
-      circle at 12% 10%,
-      rgba(90,220,245,.22),
-      transparent 26%
+      circle at 8% 10%,
+      rgba(76,218,244,.24),
+      transparent 27%
     ),
+
     radial-gradient(
-      circle at 88% 18%,
-      rgba(31,160,207,.24),
-      transparent 30%
+      circle at 91% 14%,
+      rgba(35,169,215,.22),
+      transparent 29%
     ),
+
     linear-gradient(
-      115deg,
+      120deg,
       transparent 0%,
-      rgba(255,255,255,.06) 48%,
-      transparent 70%
+      rgba(255,255,255,.07) 45%,
+      transparent 72%
     );
+
 }
 
 
-/* lignes décoratives */
+/* =========================================================
+   LIGNES DÉCORATIVES
+   ========================================================= */
 
 .speed{
+
   position:absolute;
 
   height:2px;
@@ -172,26 +226,34 @@ body{
   border-radius:999px;
 
   background:
+
     linear-gradient(
       90deg,
       transparent,
-      rgba(110,225,247,.65),
+      rgba(107,225,246,.65),
       transparent
     );
 
-  filter:blur(.2px);
 }
 
 .s1{
+
   width:34%;
-  top:16%;
-  left:4%;
+
+  top:17%;
+
+  left:3%;
+
 }
 
 .s2{
-  width:27%;
-  top:25%;
-  right:4%;
+
+  width:28%;
+
+  top:28%;
+
+  right:3%;
+
 }
 
 
@@ -200,124 +262,174 @@ body{
    ========================================================= */
 
 .hero{
+
   position:relative;
 
   min-height:255px;
 
   padding:
-    calc(16px + env(safe-area-inset-top))
+
+    calc(
+      14px +
+      env(safe-area-inset-top)
+    )
+
     16px
-    54px;
+
+    55px;
 
   text-align:center;
 
-  color:white;
+  color:#fff;
 
   overflow:hidden;
+
 }
 
 .hero-inner{
+
   position:relative;
 
-  z-index:2;
+  z-index:3;
 
-  width:min(1080px,100%);
+  width:
+    min(1120px,100%);
 
   margin:auto;
+
 }
 
 
-/* logo train */
+/* =========================================================
+   ICÔNE TRAIN
+   ========================================================= */
 
 .mark{
-  width:58px;
-  height:58px;
+
+  width:56px;
+
+  height:56px;
 
   margin:
-    0 auto 9px;
+    0 auto 8px;
 
   display:grid;
+
   place-items:center;
 
   border:
     1px solid
-    rgba(255,255,255,.32);
+    rgba(255,255,255,.35);
 
-  border-radius:19px;
+  border-radius:18px;
 
   background:
-    rgba(4,31,49,.50);
+    rgba(4,31,49,.54);
 
   box-shadow:
     0 12px 30px
-    rgba(0,0,0,.25);
+    rgba(0,0,0,.28);
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:
+    blur(15px);
 
-  font-size:30px;
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  font-size:29px;
+
 }
 
 
-/* titre */
+/* =========================================================
+   TITRE
+   ========================================================= */
 
 .hero h1{
+
   margin:0;
 
   font-size:
-    clamp(35px,7vw,66px);
+    clamp(
+      34px,
+      7vw,
+      68px
+    );
 
   line-height:.98;
 
-  font-weight:900;
+  font-weight:950;
 
   letter-spacing:
-    clamp(1px,1vw,4px);
+    clamp(
+      1px,
+      1vw,
+      4px
+    );
 
   text-shadow:
-    0 8px 25px
-    rgba(0,0,0,.45);
+    0 8px 28px
+    rgba(0,0,0,.48);
+
 }
 
 .hero h1 span{
-  color:var(--cyan);
+
+  color:
+    var(--cyan);
+
 }
 
 
-/* sous-titre */
+/* =========================================================
+   SOUS-TITRE
+   ========================================================= */
 
 .sub{
+
   margin-top:12px;
 
   font-size:
-    clamp(14px,3vw,22px);
+    clamp(
+      14px,
+      3vw,
+      22px
+    );
 
   line-height:1.35;
 
   color:
-    rgba(255,255,255,.96);
+    rgba(255,255,255,.97);
 
   text-shadow:
-    0 3px 14px
-    rgba(0,0,0,.40);
+    0 3px 15px
+    rgba(0,0,0,.45);
+
 }
 
 .sub strong{
-  display:inline-block;
+
+  display:block;
 
   margin-top:4px;
 
-  color:#8cecff;
+  color:#8beaff;
 
-  font-weight:850;
+  font-weight:900;
+
 }
 
 
-/* trait lumineux */
+/* =========================================================
+   TRAIT LUMINEUX
+   ========================================================= */
 
 .glow{
-  height:4px;
 
-  width:min(460px,70%);
+  width:
+    min(460px,72%);
+
+  height:4px;
 
   margin:
     15px auto 0;
@@ -325,16 +437,18 @@ body{
   border-radius:999px;
 
   background:
+
     linear-gradient(
       90deg,
       transparent,
-      #5bdcf1,
+      #5cdef3,
       transparent
     );
 
   box-shadow:
-    0 0 24px
-    rgba(85,214,238,.48);
+    0 0 25px
+    rgba(85,214,238,.52);
+
 }
 
 
@@ -343,18 +457,23 @@ body{
    ========================================================= */
 
 main{
-  width:min(1120px,100%);
+
+  width:
+    min(1120px,100%);
 
   margin:
-    -35px auto
-    100px;
+    -36px auto
+    110px;
 
   padding:
     0 14px;
+
 }
 
 .hidden{
+
   display:none !important;
+
 }
 
 
@@ -363,6 +482,7 @@ main{
    ========================================================= */
 
 .welcome{
+
   position:relative;
 
   overflow:hidden;
@@ -375,105 +495,138 @@ main{
 
   border:
     1px solid
-    rgba(255,255,255,.88);
+    rgba(255,255,255,.94);
 
   border-radius:28px;
 
   background:
-    rgba(255,255,255,.91);
+    rgba(255,255,255,.92);
 
-  box-shadow:var(--shadow);
+  box-shadow:
+    var(--shadow);
 
-  backdrop-filter:blur(20px);
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
 }
 
-
-/* formes décoratives */
-
 .welcome::before{
+
   content:"";
 
   position:absolute;
 
   width:250px;
+
   height:250px;
 
   left:-150px;
+
   top:-160px;
 
   border-radius:50%;
 
   background:
     rgba(74,205,235,.13);
+
 }
 
 .welcome::after{
+
   content:"";
 
   position:absolute;
 
   width:220px;
+
   height:220px;
 
   right:-120px;
+
   bottom:-150px;
 
   border-radius:50%;
 
   background:
     rgba(42,188,174,.11);
+
 }
 
 
-/* icône accueil */
+/* =========================================================
+   ICÔNE BIENVENUE
+   ========================================================= */
 
 .welcome-icon{
-  position:relative;
-  z-index:1;
 
-  width:58px;
-  height:58px;
+  position:relative;
+
+  z-index:2;
+
+  width:56px;
+
+  height:56px;
 
   margin:
     0 auto 8px;
 
   display:grid;
+
   place-items:center;
 
-  border-radius:19px;
+  border-radius:18px;
 
   background:
+
     linear-gradient(
       145deg,
-      #e9faff,
-      #c7eaf4
+      #e8faff,
+      #c7eaf5
     );
 
-  font-size:30px;
+  font-size:29px;
 
   box-shadow:
     0 10px 25px
     rgba(35,141,181,.18);
+
 }
 
 
+/* =========================================================
+   BIENVENUE
+   ========================================================= */
+
 .welcome h2{
+
   position:relative;
-  z-index:1;
+
+  z-index:2;
 
   margin:
     0 0 7px;
 
   font-size:
-    clamp(28px,5vw,40px);
+    clamp(
+      27px,
+      5vw,
+      40px
+    );
 
-  font-weight:900;
+  line-height:1;
+
+  font-weight:950;
+
 }
 
-
 .welcome p{
+
   position:relative;
-  z-index:1;
+
+  z-index:2;
 
   max-width:850px;
 
@@ -482,17 +635,26 @@ main{
   color:var(--muted);
 
   font-size:
-    clamp(14px,2.3vw,18px);
+    clamp(
+      14px,
+      2.3vw,
+      18px
+    );
 
   line-height:1.42;
+
 }
 
 
-/* bandeau */
+/* =========================================================
+   PILL
+   ========================================================= */
 
 .pill{
+
   position:relative;
-  z-index:1;
+
+  z-index:2;
 
   display:inline-flex;
 
@@ -508,6 +670,7 @@ main{
   border-radius:999px;
 
   background:
+
     linear-gradient(
       135deg,
       #e0f6fb,
@@ -518,7 +681,8 @@ main{
 
   font-size:13px;
 
-  font-weight:800;
+  font-weight:850;
+
 }
 
 
@@ -527,16 +691,20 @@ main{
    ========================================================= */
 
 .choices{
+
   display:grid;
 
-  grid-template-columns:1fr;
+  grid-template-columns:
+    1fr;
 
   gap:11px;
 
   margin-top:13px;
+
 }
 
 .choice{
+
   border:0;
 
   padding:0;
@@ -546,14 +714,16 @@ main{
   text-align:left;
 
   cursor:pointer;
+
 }
 
 .choice-card{
+
   position:relative;
 
   overflow:hidden;
 
-  min-height:90px;
+  min-height:88px;
 
   display:flex;
 
@@ -567,7 +737,7 @@ main{
   border-radius:23px;
 
   background:
-    rgba(255,255,255,.94);
+    rgba(255,255,255,.95);
 
   border:
     1px solid
@@ -575,57 +745,75 @@ main{
 
   box-shadow:
     0 13px 30px
-    rgba(8,40,58,.15);
+    rgba(8,40,58,.16);
 
   transition:
     transform .16s ease,
     box-shadow .16s ease;
+
 }
 
-
 .choice-card:hover{
-  transform:translateY(-2px);
+
+  transform:
+    translateY(-2px);
 
   box-shadow:
     0 18px 35px
-    rgba(8,40,58,.20);
+    rgba(8,40,58,.21);
+
 }
 
 .choice-card:active{
-  transform:scale(.985);
+
+  transform:
+    scale(.985);
+
 }
 
 
-/* accents */
+/* =========================================================
+   ACCENTS
+   ========================================================= */
 
 .adc .choice-card{
+
   border-left:
     5px solid
     #2ba7dc;
+
 }
 
 .asct .choice-card{
+
   border-left:
     5px solid
     #32b9ae;
+
 }
 
 
-/* icônes */
+/* =========================================================
+   ICÔNE MÉTIER
+   ========================================================= */
 
 .choice-icon{
-  flex:
-    0 0 56px;
 
-  width:56px;
-  height:56px;
+  flex:
+    0 0 55px;
+
+  width:55px;
+
+  height:55px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:18px;
 
   background:
+
     linear-gradient(
       145deg,
       #e5f8fd,
@@ -633,26 +821,34 @@ main{
     );
 
   font-size:28px;
+
 }
 
 
-/* texte */
+/* =========================================================
+   TEXTE MÉTIER
+   ========================================================= */
 
 .choice-text{
+
   min-width:0;
+
 }
 
 .choice-text strong{
+
   display:block;
 
   margin-bottom:3px;
 
   font-size:21px;
 
-  font-weight:900;
+  font-weight:950;
+
 }
 
 .choice-text small{
+
   display:block;
 
   color:#748391;
@@ -660,48 +856,65 @@ main{
   font-size:13px;
 
   line-height:1.25;
-}
 
-
-/* flèche */
-
-.arrow{
-  margin-left:auto;
-
-  font-size:28px;
-
-  color:#1683b8;
-
-  flex-shrink:0;
 }
 
 
 /* =========================================================
-   CARTES PAGES
+   FLÈCHE
+   ========================================================= */
+
+.arrow{
+
+  margin-left:auto;
+
+  font-size:29px;
+
+  color:#1683b8;
+
+  flex-shrink:0;
+
+}
+
+
+/* =========================================================
+   CARTES
    ========================================================= */
 
 .card{
+
   padding:20px;
 
   border-radius:27px;
 
   background:
-    rgba(255,255,255,.94);
+    rgba(255,255,255,.95);
 
   border:
     1px solid
     rgba(255,255,255,.95);
 
-  box-shadow:var(--shadow);
+  box-shadow:
+    var(--shadow);
 
-  backdrop-filter:blur(20px);
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
 }
 
 
-/* badge métier */
+/* =========================================================
+   BADGE MÉTIER
+   ========================================================= */
 
 .badge{
+
   display:inline-flex;
+
+  align-items:center;
 
   padding:
     7px 12px;
@@ -714,28 +927,40 @@ main{
 
   font-size:12px;
 
-  font-weight:800;
+  font-weight:850;
+
 }
 
 
-/* titres */
+/* =========================================================
+   TITRES
+   ========================================================= */
 
 .page-title{
+
   margin:
     10px 0 6px;
 
-  font-size:27px;
+  font-size:
+    clamp(
+      25px,
+      5vw,
+      31px
+    );
 
-  font-weight:900;
+  font-weight:950;
+
 }
 
 .info{
+
   margin:
     0 0 15px;
 
   color:var(--muted);
 
   line-height:1.5;
+
 }
 
 
@@ -744,6 +969,7 @@ main{
    ========================================================= */
 
 label{
+
   display:block;
 
   margin:
@@ -753,12 +979,13 @@ label{
 
   font-size:13px;
 
-  font-weight:800;
-}
+  font-weight:850;
 
+}
 
 input,
 textarea{
+
   width:100%;
 
   padding:
@@ -779,10 +1006,12 @@ textarea{
   font-size:16px;
 
   appearance:none;
+
 }
 
 input:focus,
 textarea:focus{
+
   outline:none;
 
   border-color:#2091c7;
@@ -790,21 +1019,26 @@ textarea:focus{
   box-shadow:
     0 0 0 4px
     rgba(32,145,199,.11);
+
 }
 
 textarea{
+
   min-height:82px;
 
   resize:vertical;
+
 }
 
 .row{
+
   display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
   gap:10px;
+
 }
 
 
@@ -813,6 +1047,7 @@ textarea{
    ========================================================= */
 
 .btn{
+
   width:100%;
 
   border:0;
@@ -825,6 +1060,7 @@ textarea{
   margin-top:14px;
 
   background:
+
     linear-gradient(
       135deg,
       #086b9f,
@@ -835,33 +1071,41 @@ textarea{
 
   font:inherit;
 
-  font-weight:850;
+  font-weight:900;
 
   cursor:pointer;
 
   box-shadow:
     0 9px 20px
-    rgba(8,107,159,.18);
+    rgba(8,107,159,.19);
 
   transition:
     transform .15s ease,
     opacity .15s ease;
+
 }
 
 .btn:hover{
+
   opacity:.94;
+
 }
 
 .btn:active{
-  transform:scale(.985);
+
+  transform:
+    scale(.985);
+
 }
 
 .secondary{
+
   background:#eaf1f5;
 
   color:#294252;
 
   box-shadow:none;
+
 }
 
 
@@ -870,18 +1114,26 @@ textarea{
    ========================================================= */
 
 .list{
+
   display:grid;
 
-  gap:12px;
+  gap:13px;
+
 }
 
 
+/* =========================================================
+   CARTE D'ÉCHANGE
+   ========================================================= */
+
 .item{
+
   padding:15px;
 
-  border-radius:20px;
+  border-radius:21px;
 
   background:
+
     linear-gradient(
       145deg,
       #ffffff,
@@ -898,65 +1150,79 @@ textarea{
 
   box-shadow:
     0 9px 23px
-    rgba(10,42,62,.08);
+    rgba(10,42,62,.09);
+
 }
 
 
-/* nom */
+/* =========================================================
+   NOM
+   ========================================================= */
 
 .name{
-  font-size:18px;
 
-  font-weight:900;
+  font-size:19px;
+
+  font-weight:950;
 
   color:#17364c;
+
 }
 
 
 /* =========================================================
    DATE ET HEURE DE LA DEMANDE
+   IMPORTANT
    ========================================================= */
 
 .request-date{
-  display:block;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
 
   width:max-content;
 
   max-width:100%;
 
-  margin-top:7px;
+  margin-top:8px;
 
   padding:
-    6px 9px;
+    7px 10px;
 
-  border-radius:9px;
+  border-radius:10px;
 
   background:
+
     linear-gradient(
       135deg,
-      #eaf4f8,
+      #e8f4f8,
       #f2f7f9
     );
 
-  color:#526c7a;
+  color:#466676;
 
   font-size:12px;
 
   line-height:1.35;
 
-  font-weight:800;
+  font-weight:850;
 
   border:
     1px solid
-    #dce9ee;
+    #d5e6ec;
+
 }
 
 
 /* =========================================================
-   DATE SERVICE + HORAIRES
+   SERVICE
    ========================================================= */
 
 .service{
+
   display:grid;
 
   grid-template-columns:
@@ -965,9 +1231,11 @@ textarea{
   gap:8px;
 
   margin-top:11px;
+
 }
 
 .chip{
+
   padding:10px;
 
   border-radius:13px;
@@ -975,9 +1243,11 @@ textarea{
   background:#eef7fa;
 
   min-width:0;
+
 }
 
 .chip span{
+
   display:block;
 
   color:#71818e;
@@ -988,17 +1258,20 @@ textarea{
 
   letter-spacing:.4px;
 
-  font-weight:800;
+  font-weight:850;
 
   margin-bottom:3px;
+
 }
 
 .chip strong{
+
   font-size:14px;
 
   color:#20455e;
 
   word-break:break-word;
+
 }
 
 
@@ -1007,6 +1280,7 @@ textarea{
    ========================================================= */
 
 .comment{
+
   margin-top:9px;
 
   padding:
@@ -1021,6 +1295,7 @@ textarea{
   font-size:13px;
 
   line-height:1.4;
+
 }
 
 
@@ -1029,6 +1304,7 @@ textarea{
    ========================================================= */
 
 .interest{
+
   margin-top:10px;
 
   padding:
@@ -1042,7 +1318,8 @@ textarea{
 
   font-size:13px;
 
-  font-weight:700;
+  font-weight:750;
+
 }
 
 
@@ -1051,6 +1328,7 @@ textarea{
    ========================================================= */
 
 .actions{
+
   display:grid;
 
   grid-template-columns:
@@ -1059,9 +1337,11 @@ textarea{
   gap:8px;
 
   margin-top:11px;
+
 }
 
 .small{
+
   border:0;
 
   border-radius:12px;
@@ -1073,28 +1353,36 @@ textarea{
 
   font-size:12px;
 
-  font-weight:850;
+  font-weight:900;
 
   cursor:pointer;
 
   transition:
     transform .15s ease;
+
 }
 
 .small:active{
-  transform:scale(.98);
+
+  transform:
+    scale(.98);
+
 }
 
 .interet{
+
   background:#fff0cf;
 
   color:#8b5b00;
+
 }
 
 .delete{
+
   background:#ffe5e5;
 
   color:#b72e2e;
+
 }
 
 
@@ -1103,20 +1391,24 @@ textarea{
    ========================================================= */
 
 .empty{
+
   text-align:center;
 
   padding:
-    28px 15px;
+    30px 15px;
 
   color:#71808c;
+
 }
 
 .empty-icon{
+
   display:block;
 
   font-size:40px;
 
   margin-bottom:7px;
+
 }
 
 
@@ -1125,6 +1417,7 @@ textarea{
    ========================================================= */
 
 nav{
+
   position:fixed;
 
   z-index:100;
@@ -1132,6 +1425,7 @@ nav{
   left:50%;
 
   bottom:
+
     calc(
       8px +
       env(safe-area-inset-bottom)
@@ -1154,22 +1448,27 @@ nav{
 
   border:
     1px solid
-    rgba(255,255,255,.85);
+    rgba(255,255,255,.86);
 
   border-radius:21px;
 
   background:
-    rgba(255,255,255,.90);
+    rgba(255,255,255,.91);
 
   box-shadow:
     0 12px 35px
-    rgba(8,40,58,.22);
+    rgba(8,40,58,.23);
 
   backdrop-filter:
     blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
 }
 
 nav button{
+
   flex:1;
 
   border:0;
@@ -1187,21 +1486,26 @@ nav button{
 
   font-size:11px;
 
-  font-weight:800;
+  font-weight:850;
 
   cursor:pointer;
+
 }
 
 nav button:active{
+
   background:#edf6f9;
+
 }
 
 .nav-icon{
+
   display:block;
 
   font-size:18px;
 
   margin-bottom:1px;
+
 }
 
 
@@ -1212,34 +1516,45 @@ nav button:active{
 @media(min-width:700px){
 
   .hero{
+
     min-height:275px;
 
     padding-top:24px;
+
   }
 
   main{
+
     padding:
       0 22px;
+
   }
 
   .choices{
+
     grid-template-columns:
       1fr 1fr;
 
     gap:14px;
+
   }
 
   .welcome{
+
     padding:
       24px 28px 21px;
+
   }
 
   .choice-card{
+
     min-height:106px;
 
     padding:
       15px 18px;
+
   }
+
 }
 
 
@@ -1250,29 +1565,41 @@ nav button:active{
 @media(min-width:1000px){
 
   .hero{
+
     min-height:300px;
+
   }
 
   main{
+
     margin-top:-42px;
+
   }
 
   .choices{
+
     gap:18px;
+
   }
 
   .choice-card{
+
     min-height:115px;
+
   }
 
   .choice-icon{
+
     width:64px;
+
     height:64px;
 
     flex-basis:64px;
 
     font-size:33px;
+
   }
+
 }
 
 
@@ -1283,129 +1610,121 @@ nav button:active{
 @media(max-width:380px){
 
   .hero{
+
     min-height:225px;
 
     padding-bottom:50px;
+
   }
 
   .hero h1{
+
     font-size:31px;
+
   }
 
   .sub{
+
     font-size:13px;
+
   }
 
   main{
+
     margin-top:-31px;
 
     padding:
       0 11px;
+
   }
 
   .welcome{
+
     padding:
       18px 13px 16px;
+
   }
 
   .welcome-icon{
+
     width:53px;
+
     height:53px;
 
     font-size:28px;
+
   }
 
   .welcome h2{
+
     font-size:27px;
+
   }
 
   .welcome p{
+
     font-size:13px;
+
   }
 
   .pill{
+
     font-size:11px;
 
     padding:
       7px 10px;
+
   }
 
   .choice-card{
+
     min-height:83px;
 
     padding:
       10px 11px;
 
     gap:9px;
+
   }
 
   .choice-icon{
+
     width:49px;
+
     height:49px;
 
     flex-basis:49px;
 
     font-size:25px;
+
   }
 
   .choice-text strong{
+
     font-size:18px;
+
   }
 
   .choice-text small{
+
     font-size:11px;
+
   }
 
   .service{
+
     grid-template-columns:
       1fr;
+
   }
 
   .actions{
+
     grid-template-columns:
       1fr;
-  }
-}
 
-
-/* =========================================================
-   ACCESSIBILITÉ / IPAD PORTRAIT
-   ========================================================= */
-
-@media(
-  min-width:700px
-) and (
-  max-width:1100px
-){
-
-  .welcome{
-    max-width:100%;
   }
 
-  .choice-text small{
-    font-size:14px;
-  }
-}
-
-
-/* =========================================================
-   ÉCRANS TRÈS HAUTS
-   ========================================================= */
-
-@media(
-  min-height:800px
-) and (
-  max-width:699px
-){
-
-  .hero{
-    min-height:270px;
-  }
-
-  .welcome{
-    padding-top:23px;
-    padding-bottom:20px;
-  }
 }
 
 
@@ -1413,17 +1732,20 @@ nav button:active{
    RÉDUCTION DES ANIMATIONS
    ========================================================= */
 
-@media(
-  prefers-reduced-motion:reduce
-){
+@media(prefers-reduced-motion:reduce){
 
   *{
+
     scroll-behavior:auto !important;
+
     transition:none !important;
+
   }
+
 }
 
 </style>
+
 </head>
 
 
@@ -1431,12 +1753,13 @@ nav button:active{
 
 
 <!-- =======================================================
-     FOND
+     FOND D'ÉCRAN
      ======================================================= -->
 
 <div class="bg">
 
   <div class="speed s1"></div>
+
   <div class="speed s2"></div>
 
 </div>
@@ -1460,8 +1783,13 @@ nav button:active{
     </h1>
 
     <div class="sub">
+
       Échange de journées entre agents
-      <strong>• si congés refusés</strong>
+
+      <strong>
+        • si congés refusés
+      </strong>
+
     </div>
 
     <div class="glow"></div>
@@ -1472,7 +1800,7 @@ nav button:active{
 
 
 <!-- =======================================================
-     CONTENU
+     CONTENU PRINCIPAL
      ======================================================= -->
 
 <main>
@@ -1508,7 +1836,10 @@ nav button:active{
 
   <div class="choices">
 
-    <!-- ADC -->
+
+    <!-- ===================================================
+         ADC
+         =================================================== -->
 
     <button
       class="choice adc"
@@ -1542,7 +1873,9 @@ nav button:active{
     </button>
 
 
-    <!-- ASCT -->
+    <!-- ===================================================
+         ASCT
+         =================================================== -->
 
     <button
       class="choice asct"
@@ -1605,10 +1938,14 @@ nav button:active{
 
 
     <p class="info">
+
       Proposez votre journée afin de trouver
       un collègue intéressé.
+
     </p>
 
+
+    <!-- NOM -->
 
     <label for="nom">
       Nom et prénom
@@ -1622,6 +1959,8 @@ nav button:active{
     >
 
 
+    <!-- DATE SERVICE -->
+
     <label for="date">
       Date de la journée
     </label>
@@ -1631,6 +1970,8 @@ nav button:active{
       type="date"
     >
 
+
+    <!-- HORAIRES -->
 
     <div class="row">
 
@@ -1664,6 +2005,8 @@ nav button:active{
     </div>
 
 
+    <!-- COMMENTAIRE -->
+
     <label for="commentaire">
       Commentaire
     </label>
@@ -1674,6 +2017,8 @@ nav button:active{
     ></textarea>
 
 
+    <!-- PUBLICATION -->
+
     <button
       class="btn"
       onclick="publier()"
@@ -1681,6 +2026,8 @@ nav button:active{
       🚆 PUBLIER MA JOURNÉE
     </button>
 
+
+    <!-- ÉCHANGES -->
 
     <button
       class="btn secondary"
@@ -1711,10 +2058,12 @@ nav button:active{
 
 
     <p class="info">
+
       Métier :
       <strong id="metierEchanges">
         -
       </strong>
+
     </p>
 
 
@@ -1751,30 +2100,39 @@ nav button:active{
   <button
     onclick="afficher('proposer')"
   >
+
     <span class="nav-icon">
       ➕
     </span>
+
     Ma journée
+
   </button>
 
 
   <button
     onclick="afficher('echanges')"
   >
+
     <span class="nav-icon">
       🔎
     </span>
+
     Échanges
+
   </button>
 
 
   <button
     onclick="changerMetier()"
   >
+
     <span class="nav-icon">
       🚆
     </span>
+
     Métier
+
   </button>
 
 </nav>
@@ -1794,8 +2152,9 @@ nav button:active{
 const SUPABASE_URL =
   "https://nptwpoguokbjuzdyxach.supabase.co";
 
+
 const SUPABASE_KEY =
-  "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+  "sb_publishable_VxIiVyGPVxipQx8j5njxA_YxaFOnAF";
 
 
 const supabaseClient =
@@ -1805,7 +2164,9 @@ const supabaseClient =
   );
 
 
-/* métier actuellement sélectionné */
+/* =========================================================
+   MÉTIER ACTUEL
+   ========================================================= */
 
 let metierActuel = "";
 
@@ -1817,24 +2178,33 @@ let metierActuel = "";
 function afficher(page){
 
   document
-    .querySelectorAll("main section")
+    .querySelectorAll(
+      "main section"
+    )
     .forEach(
-      s => s.classList.add("hidden")
+      section =>
+        section.classList.add(
+          "hidden"
+        )
     );
 
 
-  const el =
+  const element =
     document.getElementById(page);
 
 
-  if(el){
+  if(element){
 
-    el.classList.remove("hidden");
+    element.classList.remove(
+      "hidden"
+    );
 
   }
 
 
-  if(page === "echanges"){
+  if(
+    page === "echanges"
+  ){
 
     afficherEchanges();
 
@@ -1842,27 +2212,35 @@ function afficher(page){
 
 
   window.scrollTo({
+
     top:0,
+
     behavior:"smooth"
+
   });
 
 }
 
 
 /* =========================================================
-   CHOIX DU MÉTIER
+   CHOISIR LE MÉTIER
    ========================================================= */
 
 function choisirMetier(metier){
 
-  metierActuel = metier;
+  metierActuel =
+    metier;
 
 
   const badge =
-    document.getElementById("metier");
+    document.getElementById(
+      "metier"
+    );
 
 
-  if(metier === "ADC"){
+  if(
+    metier === "ADC"
+  ){
 
     badge.innerHTML =
       "🚆 ADC – Conducteurs";
@@ -1877,16 +2255,26 @@ function choisirMetier(metier){
 
 
   document
-    .getElementById("metierEchanges")
-    .innerText = metier;
+    .getElementById(
+      "metierEchanges"
+    )
+    .innerText =
+      metier;
 
 
   document
-    .getElementById("menu")
-    .classList.remove("hidden");
+    .getElementById(
+      "menu"
+    )
+    .classList
+    .remove(
+      "hidden"
+    );
 
 
-  afficher("proposer");
+  afficher(
+    "proposer"
+  );
 
 }
 
@@ -1897,15 +2285,23 @@ function choisirMetier(metier){
 
 function changerMetier(){
 
-  metierActuel = "";
+  metierActuel =
+    "";
 
 
   document
-    .getElementById("menu")
-    .classList.add("hidden");
+    .getElementById(
+      "menu"
+    )
+    .classList
+    .add(
+      "hidden"
+    );
 
 
-  afficher("accueil");
+  afficher(
+    "accueil"
+  );
 
 }
 
@@ -1918,39 +2314,53 @@ async function publier(){
 
   const nom =
     document
-      .getElementById("nom")
+      .getElementById(
+        "nom"
+      )
       .value
       .trim();
 
 
   const date =
     document
-      .getElementById("date")
+      .getElementById(
+        "date"
+      )
       .value;
 
 
   const prise =
     document
-      .getElementById("prise")
+      .getElementById(
+        "prise"
+      )
       .value;
 
 
   const fin =
     document
-      .getElementById("fin")
+      .getElementById(
+        "fin"
+      )
       .value;
 
 
   const commentaire =
     document
-      .getElementById("commentaire")
+      .getElementById(
+        "commentaire"
+      )
       .value
       .trim();
 
 
-  /* vérification métier */
+  /* -------------------------------------------------------
+     VÉRIFICATION MÉTIER
+     ------------------------------------------------------- */
 
-  if(!metierActuel){
+  if(
+    !metierActuel
+  ){
 
     alert(
       "Merci de choisir votre métier."
@@ -1961,7 +2371,9 @@ async function publier(){
   }
 
 
-  /* vérification formulaire */
+  /* -------------------------------------------------------
+     VÉRIFICATION FORMULAIRE
+     ------------------------------------------------------- */
 
   if(
     !nom ||
@@ -1979,9 +2391,22 @@ async function publier(){
   }
 
 
-  /* insertion Supabase */
+  /* -------------------------------------------------------
+     DATE ET HEURE EXACTES DE LA DEMANDE
+     ------------------------------------------------------- */
 
-  const { error } =
+  const dateDemande =
+    new Date()
+      .toISOString();
+
+
+  /* -------------------------------------------------------
+     INSERTION SUPABASE
+     ------------------------------------------------------- */
+
+  const {
+    error
+  } =
     await supabaseClient
       .from("echanges")
       .insert([{
@@ -2008,18 +2433,28 @@ async function publier(){
           "disponible",
 
         agent_interesse:
-          null
+          null,
+
+        created_at:
+          dateDemande
 
       }]);
 
 
+  /* -------------------------------------------------------
+     ERREUR
+     ------------------------------------------------------- */
+
   if(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     alert(
       "Erreur lors de la publication : "
-      + error.message
+      +
+      error.message
     );
 
     return;
@@ -2027,31 +2462,48 @@ async function publier(){
   }
 
 
-  /* nettoyage */
+  /* -------------------------------------------------------
+     NETTOYAGE
+     ------------------------------------------------------- */
 
   document
-    .getElementById("nom")
-    .value = "";
-
-
-  document
-    .getElementById("date")
-    .value = "";
-
-
-  document
-    .getElementById("prise")
-    .value = "";
+    .getElementById(
+      "nom"
+    )
+    .value =
+      "";
 
 
   document
-    .getElementById("fin")
-    .value = "";
+    .getElementById(
+      "date"
+    )
+    .value =
+      "";
 
 
   document
-    .getElementById("commentaire")
-    .value = "";
+    .getElementById(
+      "prise"
+    )
+    .value =
+      "";
+
+
+  document
+    .getElementById(
+      "fin"
+    )
+    .value =
+      "";
+
+
+  document
+    .getElementById(
+      "commentaire"
+    )
+    .value =
+      "";
 
 
   alert(
@@ -2059,7 +2511,9 @@ async function publier(){
   );
 
 
-  afficher("echanges");
+  afficher(
+    "echanges"
+  );
 
 }
 
@@ -2077,12 +2531,16 @@ async function afficherEchanges(){
 
 
   document
-    .getElementById("metierEchanges")
+    .getElementById(
+      "metierEchanges"
+    )
     .innerText =
-      metierActuel || "-";
+      metierActuel ||
+      "-";
 
 
   zone.innerHTML = `
+
     <div class="empty">
 
       <span class="empty-icon">
@@ -2092,17 +2550,22 @@ async function afficherEchanges(){
       Chargement des échanges...
 
     </div>
+
   `;
 
 
-  if(!metierActuel){
+  if(
+    !metierActuel
+  ){
 
     zone.innerHTML = `
+
       <div class="empty">
 
         Choisissez d’abord un métier.
 
       </div>
+
     `;
 
     return;
@@ -2110,25 +2573,32 @@ async function afficherEchanges(){
   }
 
 
-  /* =======================================================
-     RÉCUPÉRATION DES DONNÉES
-     ======================================================= */
+  /* -------------------------------------------------------
+     RÉCUPÉRATION
+     ------------------------------------------------------- */
 
   const {
     data,
     error
   } =
     await supabaseClient
-      .from("echanges")
+
+      .from(
+        "echanges"
+      )
+
       .select("*")
+
       .eq(
         "metier",
         metierActuel
       )
+
       .eq(
         "statut",
         "disponible"
       )
+
       .order(
         "date_service",
         {
@@ -2137,12 +2607,19 @@ async function afficherEchanges(){
       );
 
 
+  /* -------------------------------------------------------
+     ERREUR
+     ------------------------------------------------------- */
+
   if(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
 
     zone.innerHTML = `
+
       <div class="empty">
 
         <span class="empty-icon">
@@ -2156,10 +2633,13 @@ async function afficherEchanges(){
         <br><br>
 
         <small>
-          ${escapeHTML(error.message)}
+          ${escapeHTML(
+            error.message
+          )}
         </small>
 
       </div>
+
     `;
 
     return;
@@ -2167,8 +2647,13 @@ async function afficherEchanges(){
   }
 
 
-  zone.innerHTML = "";
+  zone.innerHTML =
+    "";
 
+
+  /* -------------------------------------------------------
+     AUCUN ÉCHANGE
+     ------------------------------------------------------- */
 
   if(
     !data ||
@@ -2176,6 +2661,7 @@ async function afficherEchanges(){
   ){
 
     zone.innerHTML = `
+
       <div class="empty">
 
         <span class="empty-icon">
@@ -2192,6 +2678,7 @@ async function afficherEchanges(){
         une journée !
 
       </div>
+
     `;
 
     return;
@@ -2199,203 +2686,248 @@ async function afficherEchanges(){
   }
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      CRÉATION DES CARTES
-     ======================================================= */
+     ------------------------------------------------------- */
 
-  data.forEach(e => {
-
-    const bloc =
-      document.createElement("div");
+  data.forEach(
+    e => {
 
 
-    bloc.className = "item";
+      const bloc =
+        document.createElement(
+          "div"
+        );
 
 
-    /* =====================================================
-       DATE / HEURE DE PUBLICATION
-       ===================================================== */
-
-    const created =
-      e.created_at ||
-      e.date_demande ||
-      e.date_creation ||
-      e.createdAt;
+      bloc.className =
+        "item";
 
 
-    let request;
+      /* =====================================================
+         DATE / HEURE DE LA DEMANDE
+         ===================================================== */
+
+      const created =
+        e.created_at
+        ||
+        e.date_demande
+        ||
+        e.date_creation
+        ||
+        e.createdAt;
 
 
-    if(created){
-
-      request = `
-        <div class="request-date">
-          🕒 Demande publiée le
-          ${formatDateTime(created)}
-        </div>
-      `;
-
-    }
-    else{
-
-      request = `
-        <div class="request-date">
-          🕒 Date et heure de demande
-          non disponible
-        </div>
-      `;
-
-    }
+      let requestHTML;
 
 
-    /* =====================================================
-       AGENT INTÉRESSÉ
-       ===================================================== */
+      if(created){
 
-    const interest =
-      e.agent_interesse
+        requestHTML = `
 
-      ?
+          <div class="request-date">
 
-      `
-        <div class="interest">
-          🙋 Agent intéressé :
-          <strong>
+            🕒
+
+            Demande publiée le
+
+            <strong>
+              ${formatDateTime(
+                created
+              )}
+            </strong>
+
+          </div>
+
+        `;
+
+      }
+      else{
+
+        requestHTML = `
+
+          <div class="request-date">
+
+            🕒
+
+            Date et heure de demande
+            non disponibles
+
+          </div>
+
+        `;
+
+      }
+
+
+      /* =====================================================
+         AGENT INTÉRESSÉ
+         ===================================================== */
+
+      const interest =
+        e.agent_interesse
+
+        ?
+
+        `
+
+          <div class="interest">
+
+            🙋 Agent intéressé :
+
+            <strong>
+              ${escapeHTML(
+                e.agent_interesse
+              )}
+            </strong>
+
+          </div>
+
+        `
+
+        :
+
+        "";
+
+
+      /* =====================================================
+         COMMENTAIRE
+         ===================================================== */
+
+      const comment =
+        e.commentaire
+
+        ?
+
+        `
+
+          <div class="comment">
+
+            💬
+
             ${escapeHTML(
-              e.agent_interesse
+              e.commentaire
             )}
-          </strong>
-        </div>
-      `
 
-      :
+          </div>
 
-      "";
+        `
+
+        :
+
+        "";
 
 
-    /* =====================================================
-       COMMENTAIRE
-       ===================================================== */
+      /* =====================================================
+         CARTE
+         ===================================================== */
 
-    const comment =
-      e.commentaire
+      bloc.innerHTML = `
 
-      ?
+        <div class="name">
 
-      `
-        <div class="comment">
-          💬
+          👤
+
           ${escapeHTML(
-            e.commentaire
+            e.nom
           )}
-        </div>
-      `
-
-      :
-
-      "";
-
-
-    /* =====================================================
-       CARTE COMPLÈTE
-       ===================================================== */
-
-    bloc.innerHTML = `
-
-      <div class="name">
-
-        👤
-        ${escapeHTML(
-          e.nom
-        )}
-
-      </div>
-
-
-      ${request}
-
-
-      <div class="service">
-
-
-        <div class="chip">
-
-          <span>
-            Journée de service
-          </span>
-
-          <strong>
-            📅
-            ${formatDate(
-              e.date_service
-            )}
-          </strong>
 
         </div>
 
 
-        <div class="chip">
+        ${requestHTML}
 
-          <span>
-            Horaires
-          </span>
 
-          <strong>
-            ⏰
-            ${formatTime(
-              e.prise_service
-            )}
+        <div class="service">
 
-            →
 
-            ${formatTime(
-              e.fin_service
-            )}
-          </strong>
+          <div class="chip">
+
+            <span>
+              Journée de service
+            </span>
+
+            <strong>
+
+              📅
+
+              ${formatDate(
+                e.date_service
+              )}
+
+            </strong>
+
+          </div>
+
+
+          <div class="chip">
+
+            <span>
+              Horaires
+            </span>
+
+            <strong>
+
+              ⏰
+
+              ${formatTime(
+                e.prise_service
+              )}
+
+              →
+
+              ${formatTime(
+                e.fin_service
+              )}
+
+            </strong>
+
+          </div>
+
 
         </div>
 
 
-      </div>
+        ${comment}
 
 
-      ${comment}
+        ${interest}
 
 
-      ${interest}
+        <div class="actions">
 
 
-      <div class="actions">
+          <button
+            class="small interet"
+            onclick="interesse(${Number(e.id)})"
+          >
+
+            🙋 JE SUIS INTÉRESSÉ
+
+          </button>
 
 
-        <button
-          class="small interet"
-          onclick="interesse(${Number(e.id)})"
-        >
+          <button
+            class="small delete"
+            onclick="supprimer(${Number(e.id)})"
+          >
 
-          🙋 JE SUIS INTÉRESSÉ
+            🗑️ SUPPRIMER
 
-        </button>
-
-
-        <button
-          class="small delete"
-          onclick="supprimer(${Number(e.id)})"
-        >
-
-          🗑️ SUPPRIMER
-
-        </button>
+          </button>
 
 
-      </div>
+        </div>
 
-    `;
+      `;
 
 
-    zone.appendChild(bloc);
+      zone.appendChild(
+        bloc
+      );
 
-  });
+    }
+  );
 
 }
 
@@ -2434,15 +2966,22 @@ async function interesse(id){
   }
 
 
-  const { error } =
+  const {
+    error
+  } =
     await supabaseClient
-      .from("echanges")
+
+      .from(
+        "echanges"
+      )
+
       .update({
 
         agent_interesse:
           nomAgent.trim()
 
       })
+
       .eq(
         "id",
         id
@@ -2451,11 +2990,14 @@ async function interesse(id){
 
   if(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     alert(
       "Erreur : "
-      + error.message
+      +
+      error.message
     );
 
     return;
@@ -2474,7 +3016,7 @@ async function interesse(id){
 
 
 /* =========================================================
-   SUPPRIMER UNE DEMANDE
+   SUPPRIMER
    ========================================================= */
 
 async function supprimer(id){
@@ -2490,10 +3032,17 @@ async function supprimer(id){
   }
 
 
-  const { error } =
+  const {
+    error
+  } =
     await supabaseClient
-      .from("echanges")
+
+      .from(
+        "echanges"
+      )
+
       .delete()
+
       .eq(
         "id",
         id
@@ -2502,11 +3051,14 @@ async function supprimer(id){
 
   if(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     alert(
       "Erreur : "
-      + error.message
+      +
+      error.message
     );
 
     return;
@@ -2538,7 +3090,8 @@ function formatDate(date){
 
 
   const p =
-    String(date).split("-");
+    String(date)
+      .split("-");
 
 
   if(
@@ -2546,17 +3099,25 @@ function formatDate(date){
   ){
 
     return (
+
       p[2]
-      + "/"
-      + p[1]
-      + "/"
-      + p[0]
+      +
+      "/"
+      +
+      p[1]
+      +
+      "/"
+      +
+      p[0]
+
     );
 
   }
 
 
-  return String(date);
+  return String(
+    date
+  );
 
 }
 
@@ -2575,13 +3136,16 @@ function formatTime(h){
 
 
   return String(h)
-    .substring(0,5);
+    .substring(
+      0,
+      5
+    );
 
 }
 
 
 /* =========================================================
-   FORMAT DATE + HEURE DE LA DEMANDE
+   FORMAT DATE + HEURE DEMANDE
    ========================================================= */
 
 function formatDateTime(value){
@@ -2603,7 +3167,9 @@ function formatDateTime(value){
     )
   ){
 
-    return String(value);
+    return String(
+      value
+    );
 
   }
 
@@ -2612,9 +3178,16 @@ function formatDateTime(value){
     d.toLocaleDateString(
       "fr-FR",
       {
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric"
+
+        day:
+          "2-digit",
+
+        month:
+          "2-digit",
+
+        year:
+          "numeric"
+
       }
     );
 
@@ -2623,16 +3196,25 @@ function formatDateTime(value){
     d.toLocaleTimeString(
       "fr-FR",
       {
-        hour:"2-digit",
-        minute:"2-digit"
+
+        hour:
+          "2-digit",
+
+        minute:
+          "2-digit"
+
       }
     );
 
 
   return (
+
     date
-    + " à "
-    + time
+    +
+    " à "
+    +
+    time
+
   );
 
 }
@@ -2642,11 +3224,11 @@ function formatDateTime(value){
    PROTECTION HTML
    ========================================================= */
 
-function escapeHTML(t){
+function escapeHTML(value){
 
   if(
-    t === null ||
-    t === undefined
+    value === null ||
+    value === undefined
   ){
 
     return "";
@@ -2654,21 +3236,23 @@ function escapeHTML(t){
   }
 
 
-  const d =
+  const div =
     document.createElement(
       "div"
     );
 
 
-  d.innerText =
-    String(t);
+  div.innerText =
+    String(value);
 
 
-  return d.innerHTML;
+  return div.innerHTML;
 
 }
 
 </script>
 
+
 </body>
+
 </html>
