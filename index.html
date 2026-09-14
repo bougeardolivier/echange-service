@@ -2,9 +2,7 @@
 <html lang="fr">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ÉCHANGE SERVICE</title>
@@ -17,6 +15,7 @@
     --gris: #f3f6f8;
     --vert: #167242;
     --orange: #c96f00;
+    --blanc: #ffffff;
 }
 
 * {
@@ -43,7 +42,7 @@ header h1 {
 }
 
 header p {
-    margin-bottom: 0;
+    margin: 8px 0 0;
     opacity: 0.9;
 }
 
@@ -62,7 +61,7 @@ main {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .choice {
@@ -92,7 +91,7 @@ button {
 .btn {
     width: 100%;
     padding: 15px;
-    margin-top: 10px;
+    margin-top: 12px;
     border: none;
     border-radius: 12px;
     background: var(--bleu);
@@ -114,7 +113,7 @@ label {
     display: block;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 12px;
     color: #526273;
 }
 
@@ -126,6 +125,12 @@ textarea {
     border-radius: 10px;
     border: 1px solid #ccd6df;
     font-size: 16px;
+    background: white;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
 .row {
@@ -137,9 +142,9 @@ textarea {
 .item {
     background: #f8fafc;
     border-left: 5px solid var(--bleu);
-    padding: 15px;
-    margin-top: 12px;
-    border-radius: 8px;
+    padding: 16px;
+    margin-top: 15px;
+    border-radius: 10px;
 }
 
 .badge {
@@ -158,6 +163,13 @@ textarea {
 .badge-encours {
     background: #fff0d8;
     color: var(--orange);
+}
+
+.agent-interesse {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff0d8;
+    border-radius: 10px;
 }
 
 nav {
@@ -180,7 +192,6 @@ nav button {
 }
 
 </style>
-
 </head>
 
 
@@ -200,7 +211,9 @@ nav button {
 <main>
 
 
-<!-- ACCUEIL -->
+<!-- =========================
+     ACCUEIL
+========================= -->
 
 <section id="accueil">
 
@@ -213,7 +226,10 @@ nav button {
 </div>
 
 
-<button class="choice" onclick="choisirMetier('ADC')">
+<button
+class="choice"
+onclick="choisirMetier('ADC')"
+>
 
 🚆 ADC
 
@@ -222,7 +238,10 @@ nav button {
 </button>
 
 
-<button class="choice" onclick="choisirMetier('ASCT')">
+<button
+class="choice"
+onclick="choisirMetier('ASCT')"
+>
 
 👤 ASCT
 
@@ -230,31 +249,44 @@ nav button {
 
 </button>
 
-
 </section>
 
 
 
-<!-- PROPOSER UNE JOURNÉE -->
+<!-- =========================
+     PROPOSER
+========================= -->
 
-<section id="proposer" class="hidden">
+<section
+id="proposer"
+class="hidden"
+>
 
 <div class="card">
 
-<span id="metier" class="badge badge-disponible"></span>
+<span
+id="metier"
+class="badge badge-disponible"
+></span>
+
 
 <h2>➕ Ma journée à échanger</h2>
 
 
-<label>Nom et prénom</label>
+<label for="nom">
+Nom et prénom
+</label>
 
 <input
 id="nom"
 placeholder="Exemple : Jean DUPONT"
+autocomplete="name"
 >
 
 
-<label>Date de la journée</label>
+<label for="date">
+Date de la journée
+</label>
 
 <input
 id="date"
@@ -264,9 +296,12 @@ type="date"
 
 <div class="row">
 
+
 <div>
 
-<label>Prise de service</label>
+<label for="prise">
+Prise de service
+</label>
 
 <input
 id="prise"
@@ -278,7 +313,9 @@ type="time"
 
 <div>
 
-<label>Fin de service</label>
+<label for="fin">
+Fin de service
+</label>
 
 <input
 id="fin"
@@ -287,10 +324,13 @@ type="time"
 
 </div>
 
+
 </div>
 
 
-<label>Commentaire facultatif</label>
+<label for="commentaire">
+Commentaire facultatif
+</label>
 
 <textarea
 id="commentaire"
@@ -324,13 +364,21 @@ onclick="afficher('echanges')"
 
 
 
-<!-- ÉCHANGES -->
+<!-- =========================
+     ÉCHANGES
+========================= -->
 
-<section id="echanges" class="hidden">
+<section
+id="echanges"
+class="hidden"
+>
 
 <div class="card">
 
 <h2>🔎 Échanges disponibles</h2>
+
+<p id="infoMetier"></p>
+
 
 <div id="listeEchanges"></div>
 
@@ -354,23 +402,37 @@ onclick="afficher('proposer')"
 
 
 
-<nav id="menu" class="hidden">
+<!-- =========================
+     MENU BAS
+========================= -->
 
-<button onclick="afficher('proposer')">
+<nav
+id="menu"
+class="hidden"
+>
+
+
+<button
+onclick="afficher('proposer')"
+>
 
 ➕ Ma journée
 
 </button>
 
 
-<button onclick="afficher('echanges')">
+<button
+onclick="afficher('echanges')"
+>
 
 🔎 Échanges
 
 </button>
 
 
-<button onclick="changerMetier()">
+<button
+onclick="changerMetier()"
+>
 
 🚆 Métier
 
@@ -381,7 +443,9 @@ onclick="afficher('proposer')"
 
 
 
-<!-- SUPABASE -->
+<!-- =========================
+     SUPABASE
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -389,9 +453,9 @@ onclick="afficher('proposer')"
 <script>
 
 
-/* =========================
+/* =========================================
    CONFIGURATION SUPABASE
-========================= */
+========================================= */
 
 const SUPABASE_URL =
 "https://nptwpoguokbjuzdyxach.supabase.co";
@@ -403,39 +467,45 @@ const SUPABASE_KEY =
 
 const supabaseClient =
 supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
+    SUPABASE_URL,
+    SUPABASE_KEY
 );
 
 
 
-/* =========================
-   MÉTIER ACTUEL
-========================= */
+/* =========================================
+   VARIABLES
+========================================= */
 
 let metierActuel = "";
 
 
 
-/* =========================
+/* =========================================
    NAVIGATION
-========================= */
+========================================= */
 
 function afficher(page) {
 
 
     document
     .querySelectorAll("main section")
-    .forEach(section => {
+    .forEach(function(section) {
 
         section.classList.add("hidden");
 
     });
 
 
-    document
-    .getElementById(page)
-    .classList.remove("hidden");
+    const section =
+    document.getElementById(page);
+
+
+    if (section) {
+
+        section.classList.remove("hidden");
+
+    }
 
 
     if (page === "echanges") {
@@ -448,9 +518,9 @@ function afficher(page) {
 
 
 
-/* =========================
-   CHOISIR MÉTIER
-========================= */
+/* =========================================
+   CHOIX DU MÉTIER
+========================================= */
 
 function choisirMetier(metier) {
 
@@ -474,9 +544,9 @@ function choisirMetier(metier) {
 
 
 
-/* =========================
-   CHANGER MÉTIER
-========================= */
+/* =========================================
+   CHANGER DE MÉTIER
+========================================= */
 
 function changerMetier() {
 
@@ -495,43 +565,55 @@ function changerMetier() {
 
 
 
-/* =========================
+/* =========================================
    PUBLIER UNE JOURNÉE
-========================= */
+========================================= */
 
 async function publier() {
 
 
-    let nom =
+    const nom =
     document
     .getElementById("nom")
     .value
     .trim();
 
 
-    let date =
+    const date =
     document
     .getElementById("date")
     .value;
 
 
-    let prise =
+    const prise =
     document
     .getElementById("prise")
     .value;
 
 
-    let fin =
+    const fin =
     document
     .getElementById("fin")
     .value;
 
 
-    let commentaire =
+    const commentaire =
     document
     .getElementById("commentaire")
     .value
     .trim();
+
+
+
+    if (!metierActuel) {
+
+        alert(
+        "Veuillez choisir votre métier."
+        );
+
+        return;
+
+    }
 
 
 
@@ -549,7 +631,6 @@ async function publier() {
         "Merci de remplir le nom, la date et les horaires."
         );
 
-
         return;
 
     }
@@ -566,21 +647,29 @@ async function publier() {
 
         {
 
-            metier: metierActuel,
+            metier:
+            metierActuel,
 
-            nom: nom,
+            nom:
+            nom,
 
-            date_service: date,
+            date_service:
+            date,
 
-            prise_service: prise,
+            prise_service:
+            prise,
 
-            fin_service: fin,
+            fin_service:
+            fin,
 
-            commentaire: commentaire,
+            commentaire:
+            commentaire,
 
-            statut: "disponible",
+            statut:
+            "disponible",
 
-            agent_interesse: null
+            agent_interesse:
+            null
 
         }
 
@@ -591,13 +680,18 @@ async function publier() {
     if (error) {
 
 
-        console.error(error);
+        console.error(
+        "Erreur Supabase :",
+        error
+        );
 
 
         alert(
-        "Erreur lors de la publication : "
-        +
+
+        "Erreur lors de la publication : " +
+
         error.message
+
         );
 
 
@@ -606,6 +700,8 @@ async function publier() {
     }
 
 
+
+    /* VIDER LE FORMULAIRE */
 
     document
     .getElementById("nom")
@@ -644,11 +740,14 @@ async function publier() {
 
 
 
-/* =========================
-   AGENT INTÉRESSÉ
-========================= */
+/* =========================================
+   JE SUIS INTÉRESSÉ
+========================================= */
 
-async function interesser(id, nomProposant) {
+async function interesser(
+    id,
+    nomProposant
+) {
 
 
     let nomAgent = prompt(
@@ -658,14 +757,18 @@ async function interesser(id, nomProposant) {
     );
 
 
+    if (!nomAgent) {
 
-    if (
+        return;
 
-        !nomAgent ||
-        nomAgent.trim() === ""
+    }
 
-    ) {
 
+    nomAgent =
+    nomAgent.trim();
+
+
+    if (nomAgent === "") {
 
         return;
 
@@ -673,21 +776,26 @@ async function interesser(id, nomProposant) {
 
 
 
-    nomAgent = nomAgent.trim();
-
-
+    /* EMPÊCHER DE RÉPONDRE
+       À SA PROPRE JOURNÉE */
 
     if (
 
         nomAgent.toLowerCase()
+
         ===
-        nomProposant.toLowerCase()
+
+        nomProposant
+        .toLowerCase()
+        .trim()
 
     ) {
 
 
         alert(
+
         "Vous ne pouvez pas répondre à votre propre proposition."
+
         );
 
 
@@ -697,6 +805,8 @@ async function interesser(id, nomProposant) {
 
 
 
+    /* MODIFIER LA JOURNÉE */
+
     const { error } =
 
     await supabaseClient
@@ -705,26 +815,41 @@ async function interesser(id, nomProposant) {
 
     .update({
 
-        agent_interesse: nomAgent,
+        agent_interesse:
+        nomAgent,
 
-        statut: "en_cours"
+        statut:
+        "en_cours"
 
     })
 
-    .eq("id", id);
+    .eq(
+        "id",
+        id
+    )
+
+    .eq(
+        "statut",
+        "disponible"
+    );
 
 
 
     if (error) {
 
 
-        console.error(error);
+        console.error(
+        "Erreur Supabase :",
+        error
+        );
 
 
         alert(
-        "Erreur : "
-        +
+
+        "Erreur lors de la réponse : " +
+
         error.message
+
         );
 
 
@@ -736,198 +861,428 @@ async function interesser(id, nomProposant) {
 
     alert(
 
-        "Votre intérêt pour cet échange a été enregistré !"
+    "Votre intérêt pour cet échange a été enregistré !"
 
     );
 
 
     afficherEchanges();
+
+}
+
+
+
+/* =========================================
+   AFFICHER LES ÉCHANGES
+========================================= */
+
 async function afficherEchanges() {
 
-    let zone = document.getElementById("listeEchanges");
 
-    zone.innerHTML = "<p>Chargement...</p>";
+    const zone =
+
+    document.getElementById(
+        "listeEchanges"
+    );
 
 
-    const { data, error } = await supabaseClient
-        .from("echanges")
-        .select("*")
-        .eq("metier", metierActuel)
-        .order("date_service", {
+    const infoMetier =
+
+    document.getElementById(
+        "infoMetier"
+    );
+
+
+    infoMetier.innerHTML =
+
+    "<strong>Métier : " +
+
+    metierActuel +
+
+    "</strong>";
+
+
+
+    zone.innerHTML =
+
+    "<p>Chargement...</p>";
+
+
+
+    const { data, error } =
+
+    await supabaseClient
+
+    .from("echanges")
+
+    .select("*")
+
+    .eq(
+        "metier",
+        metierActuel
+    )
+
+    .order(
+        "date_service",
+        {
             ascending: true
-        });
+        }
+    )
+
+    .order(
+        "created_at",
+        {
+            ascending: false
+        }
+    );
+
 
 
     if (error) {
 
-        console.error(error);
+
+        console.error(
+        "Erreur Supabase :",
+        error
+        );
+
 
         zone.innerHTML =
-            "<p>Erreur lors du chargement : " +
-            error.message +
-            "</p>";
+
+        "<p>❌ Erreur lors du chargement : " +
+
+        error.message +
+
+        "</p>";
+
 
         return;
+
     }
+
 
 
     zone.innerHTML = "";
 
 
-    if (!data || data.length === 0) {
+
+    if (
+
+        !data ||
+
+        data.length === 0
+
+    ) {
+
 
         zone.innerHTML =
-            "<p>Aucune journée proposée pour le moment.</p>";
+
+        "<p>Aucune journée proposée pour le moment.</p>";
+
 
         return;
+
     }
 
 
-    data.forEach(echange => {
+
+    data.forEach(function(echange) {
 
 
-        let bloc = document.createElement("div");
+        const bloc =
 
-        bloc.className = "item";
-
-
-        let statut =
-
-            (echange.statut || "disponible")
-            .toLowerCase()
-            .trim();
+        document.createElement("div");
 
 
-        let badge = "";
+        bloc.className =
+        "item";
 
 
-        if (statut === "disponible") {
 
-            badge =
-                '<span class="badge badge-disponible">' +
-                '🟢 Disponible' +
-                '</span>';
+        /* NORMALISER LE STATUT */
 
-        } else {
+        const statut =
 
-            badge =
-                '<span class="badge badge-encours">' +
-                '🟠 Échange en cours' +
-                '</span>';
+        String(
+            echange.statut || "disponible"
+        )
+
+        .toLowerCase()
+
+        .trim();
+
+
+
+        /* BADGE */
+
+        const badge =
+
+        document.createElement("span");
+
+
+        badge.className =
+        "badge";
+
+
+
+        if (
+
+            statut === "disponible"
+
+        ) {
+
+
+            badge.classList.add(
+                "badge-disponible"
+            );
+
+
+            badge.innerText =
+            "🟢 Disponible";
+
+
+        }
+
+        else {
+
+
+            badge.classList.add(
+                "badge-encours"
+            );
+
+
+            badge.innerText =
+            "🟠 Échange en cours";
+
 
         }
 
 
-        bloc.innerHTML =
 
-            badge +
-
-            "<br><br>" +
-
-            "<strong>👤 Proposé par : " +
-
-            echange.nom +
-
-            "</strong>" +
-
-            "<br>" +
-
-            "📅 " +
-
-            echange.date_service +
-
-            "<br>" +
-
-            "⏰ " +
-
-            echange.prise_service +
-
-            " → " +
-
-            echange.fin_service +
-
-            "<br><br>" +
-
-            "<small>" +
-
-            (echange.commentaire || "") +
-
-            "</small>";
+        bloc.appendChild(
+            badge
+        );
 
 
-        /* BOUTON SI DISPONIBLE */
 
-        if (statut === "disponible") {
+        /* ESPACEMENT */
+
+        bloc.appendChild(
+            document.createElement("br")
+        );
+
+        bloc.appendChild(
+            document.createElement("br")
+        );
 
 
-            let bouton =
-                document.createElement("button");
+
+        /* NOM */
+
+        const nom =
+
+        document.createElement("strong");
+
+
+        nom.innerText =
+
+        "👤 Proposé par : " +
+
+        (echange.nom || "");
+
+
+        bloc.appendChild(nom);
+
+
+
+        bloc.appendChild(
+            document.createElement("br")
+        );
+
+
+
+        /* DATE */
+
+        const date =
+
+        document.createElement("div");
+
+
+        date.innerText =
+
+        "📅 " +
+
+        (echange.date_service || "");
+
+
+        bloc.appendChild(date);
+
+
+
+        /* HORAIRES */
+
+        const horaires =
+
+        document.createElement("div");
+
+
+        horaires.innerText =
+
+        "⏰ " +
+
+        (echange.prise_service || "")
+
+        +
+
+        " → "
+
+        +
+
+        (echange.fin_service || "");
+
+
+        bloc.appendChild(horaires);
+
+
+
+        /* COMMENTAIRE */
+
+        if (
+
+            echange.commentaire
+
+        ) {
+
+
+            const commentaire =
+
+            document.createElement("small");
+
+
+            commentaire.style.display =
+            "block";
+
+
+            commentaire.style.marginTop =
+            "10px";
+
+
+            commentaire.innerText =
+            echange.commentaire;
+
+
+            bloc.appendChild(
+                commentaire
+            );
+
+        }
+
+
+
+        /* =================================
+           BOUTON JE SUIS INTÉRESSÉ
+        ================================= */
+
+        if (
+
+            statut === "disponible"
+
+        ) {
+
+
+            const bouton =
+
+            document.createElement("button");
 
 
             bouton.className =
-                "btn btn-interesse";
+
+            "btn btn-interesse";
 
 
             bouton.innerText =
-                "🤝 JE SUIS INTÉRESSÉ";
+
+            "🤝 JE SUIS INTÉRESSÉ";
 
 
             bouton.onclick = function() {
 
+
                 interesser(
+
                     echange.id,
-                    echange.nom
+
+                    echange.nom || ""
+
                 );
 
             };
 
 
-            bloc.appendChild(bouton);
+            bloc.appendChild(
+                bouton
+            );
 
         }
 
 
-        /* AGENT INTÉRESSÉ */
+
+        /* =================================
+           AGENT INTÉRESSÉ
+        ================================= */
 
         if (
 
-            statut === "en_cours" &&
+            statut === "en_cours"
+
+            &&
 
             echange.agent_interesse
 
         ) {
 
 
-            let info =
-                document.createElement("p");
+            const agentInteresse =
+
+            document.createElement("div");
 
 
-            info.innerHTML =
-                "<strong>🤝 Agent intéressé : " +
+            agentInteresse.className =
 
-                echange.agent_interesse +
-
-                "</strong>";
+            "agent-interesse";
 
 
-            bloc.appendChild(info);
+            agentInteresse.innerHTML =
+
+            "<strong>🤝 Agent intéressé :</strong><br>" +
+
+            echange.agent_interesse;
+
+
+            bloc.appendChild(
+                agentInteresse
+            );
 
         }
 
 
-        zone.appendChild(bloc);
+
+        /* AJOUT À LA LISTE */
+
+        zone.appendChild(
+            bloc
+        );
 
 
     });
 
 
 }
-}
 
 
+</script>
 
-/* =========================
-   AFFICHER LES ÉCHANGES
-========================= */
 
-async function afficherEchanges() {
+</body>
+
+</html>
