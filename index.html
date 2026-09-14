@@ -12,7 +12,9 @@ content="width=device-width, initial-scale=1.0">
 <title>ÉCHANGE SERVICE</title>
 
 
-<!-- SUPABASE -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -26,25 +28,18 @@ content="width=device-width, initial-scale=1.0">
 
 :root {
 
-    --bleu-nuit: #071c2c;
-
-    --bleu-fonce: #0c2f4b;
-
+    --bleu-nuit: #061827;
+    --bleu-fonce: #0a2f4a;
     --bleu: #1676b8;
-
-    --bleu-clair: #54b5e8;
+    --bleu-clair: #58b8e8;
 
     --blanc: #ffffff;
-
     --gris: #eef3f7;
-
     --texte: #172a3a;
 
     --vert: #22a06b;
-
-    --rouge: #d94343;
-
     --orange: #f39c12;
+    --rouge: #d94343;
 
 }
 
@@ -75,23 +70,22 @@ body {
 
     font-family:
 
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     color: var(--texte);
 
     background:
 
-    linear-gradient(
-        180deg,
-        #061927 0%,
-        #123d5c 28%,
-        #dce7ef 65%,
-        #eef3f7 100%
-    );
+        linear-gradient(
+            180deg,
+            #dce8ef 0%,
+            #eef3f7 45%,
+            #f5f7f9 100%
+        );
 
 }
 
@@ -106,43 +100,33 @@ header {
 
     overflow: hidden;
 
-    min-height: 340px;
+    min-height: 430px;
 
     padding:
 
-    55px 20px
-    80px;
+        55px 20px
+        120px;
 
     text-align: center;
 
     color: white;
 
-
     background:
 
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(70,170,220,.30),
-        transparent 30%
-    ),
-
-    radial-gradient(
-        circle at 80% 15%,
-        rgba(255,255,255,.12),
-        transparent 25%
-    ),
-
-    linear-gradient(
-        135deg,
-        #061927,
-        #0b3859,
-        #176d9d
-    );
+        linear-gradient(
+            135deg,
+            #041827 0%,
+            #082b44 40%,
+            #12608d 75%,
+            #2b91c7 100%
+        );
 
 }
 
 
-/* CERCLES DECORATIFS */
+/* =====================================================
+   CIEL / LUMIERES
+===================================================== */
 
 header::before {
 
@@ -150,20 +134,23 @@ header::before {
 
     position: absolute;
 
-    width: 420px;
+    width: 500px;
 
-    height: 420px;
+    height: 500px;
 
     border-radius: 50%;
 
-    border:
+    top: -250px;
 
-    1px solid
-    rgba(255,255,255,.10);
+    left: -150px;
 
-    top: -220px;
+    background:
 
-    left: -120px;
+        radial-gradient(
+            circle,
+            rgba(90,190,235,.25),
+            transparent 65%
+        );
 
 }
 
@@ -174,42 +161,86 @@ header::after {
 
     position: absolute;
 
-    width: 600px;
+    width: 500px;
 
-    height: 250px;
+    height: 500px;
 
     border-radius: 50%;
 
-    border:
-
-    1px solid
-    rgba(255,255,255,.10);
-
-    bottom: -180px;
+    bottom: -350px;
 
     right: -100px;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.12),
+            transparent 70%
+        );
 
 }
 
 
 /* =====================================================
-   LOGO TRAIN
+   LIGNES DECORATIVES
+===================================================== */
+
+.header-lines {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .18;
+
+    background:
+
+        repeating-linear-gradient(
+
+            -45deg,
+
+            transparent 0px,
+
+            transparent 35px,
+
+            rgba(255,255,255,.2)
+            36px,
+
+            transparent 37px
+
+        );
+
+}
+
+
+/* =====================================================
+   CONTENU HEADER
+===================================================== */
+
+.header-content {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+/* =====================================================
+   LOGO
 ===================================================== */
 
 .train-logo {
 
-    position: relative;
+    width: 88px;
 
-    z-index: 2;
-
-    width: 78px;
-
-    height: 78px;
+    height: 88px;
 
     margin:
 
-    0 auto
-    15px;
+        0 auto
+        20px;
 
     display: flex;
 
@@ -217,31 +248,31 @@ header::after {
 
     justify-content: center;
 
-    font-size: 44px;
+    font-size: 48px;
 
-    border-radius: 25px;
+    border-radius: 30px;
 
     background:
 
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.20),
-        rgba(255,255,255,.05)
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.24),
+            rgba(255,255,255,.07)
+        );
 
     border:
 
-    1px solid
-    rgba(255,255,255,.25);
+        1px solid
+        rgba(255,255,255,.25);
 
     box-shadow:
 
-    0 15px 35px
-    rgba(0,0,0,.30);
+        0 20px 40px
+        rgba(0,0,0,.30);
 
     backdrop-filter:
 
-    blur(10px);
+        blur(12px);
 
 }
 
@@ -252,66 +283,63 @@ header::after {
 
 header h1 {
 
-    position: relative;
-
-    z-index: 2;
-
     margin: 0;
 
     font-size:
 
-    clamp(
-        32px,
-        7vw,
-        52px
-    );
+        clamp(
+            34px,
+            8vw,
+            56px
+        );
 
-    font-weight: 800;
+    font-weight: 900;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
     text-shadow:
 
-    0 5px 20px
-    rgba(0,0,0,.30);
+        0 5px 25px
+        rgba(0,0,0,.35);
 
 }
 
 
 header p {
 
-    position: relative;
-
-    z-index: 2;
-
     margin:
 
-    12px 0 0;
+        15px auto
+        0;
+
+    max-width: 500px;
 
     font-size:
 
-    clamp(
-        17px,
-        4vw,
-        21px
-    );
+        clamp(
+            16px,
+            4vw,
+            20px
+        );
+
+    line-height: 1.5;
 
     color:
 
-    rgba(255,255,255,.82);
+        rgba(255,255,255,.85);
 
 }
 
 
 /* =====================================================
-   RAILS
+   DECOR TRAIN
 ===================================================== */
 
-.rails {
+.train-scene {
 
     position: absolute;
 
-    z-index: 1;
+    z-index: 2;
 
     bottom: 0;
 
@@ -319,9 +347,198 @@ header p {
 
     width: 100%;
 
-    height: 70px;
+    height: 130px;
 
-    opacity: .70;
+    pointer-events: none;
+
+}
+
+
+/* HORIZON */
+
+.horizon {
+
+    position: absolute;
+
+    bottom: 70px;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 60px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(2,20,30,.25)
+        );
+
+}
+
+
+/* TRAIN */
+
+.train {
+
+    position: absolute;
+
+    bottom: 48px;
+
+    left: 50%;
+
+    transform:
+
+        translateX(-50%);
+
+    width: min(
+        620px,
+        110%
+    );
+
+    height: 48px;
+
+    border-radius:
+
+        35px
+        12px
+        12px
+        35px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #f5f8fa 0%,
+            #dce6ec 55%,
+            #a9bdc9 100%
+        );
+
+    box-shadow:
+
+        0 8px 20px
+        rgba(0,0,0,.35);
+
+}
+
+
+/* NEZ DU TRAIN */
+
+.train::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -25px;
+
+    top: 0;
+
+    width: 55px;
+
+    height: 48px;
+
+    border-radius:
+
+        50%
+        15px
+        15px
+        50%;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #b9ccd7
+        );
+
+}
+
+
+/* VITRES */
+
+.train-windows {
+
+    position: absolute;
+
+    top: 9px;
+
+    left: 55px;
+
+    right: 20px;
+
+    height: 18px;
+
+    border-radius: 5px;
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+            #123e59 0px,
+
+            #123e59 32px,
+
+            #e5edf1 33px,
+
+            #e5edf1 42px
+
+        );
+
+}
+
+
+/* BANDE BLEUE */
+
+.train-stripe {
+
+    position: absolute;
+
+    bottom: 7px;
+
+    left: 20px;
+
+    right: 0;
+
+    height: 7px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #1684c3,
+            #42b7e9
+        );
+
+}
+
+
+/* RAILS */
+
+.rails {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 55px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #263844,
+            #14232d
+        );
 
 }
 
@@ -330,27 +547,34 @@ header p {
 
     position: absolute;
 
+    left: 0;
+
     width: 100%;
 
-    height: 5px;
+    height: 4px;
 
     background:
 
-    rgba(230,240,245,.8);
+        #c4d0d6;
+
+    box-shadow:
+
+        0 2px 4px
+        rgba(0,0,0,.35);
 
 }
 
 
 .rail.one {
 
-    bottom: 38px;
+    top: 12px;
 
 }
 
 
 .rail.two {
 
-    bottom: 12px;
+    bottom: 10px;
 
 }
 
@@ -361,53 +585,53 @@ header p {
 
     position: absolute;
 
-    bottom: 0;
-
-    width: 100%;
-
-    height: 55px;
+    inset: 0;
 
     background:
 
-    repeating-linear-gradient(
+        repeating-linear-gradient(
 
-        90deg,
+            90deg,
 
-        transparent 0px,
+            transparent 0px,
 
-        transparent 18px,
+            transparent 18px,
 
-        rgba(230,240,245,.55)
-        18px,
+            rgba(100,80,60,.8)
+            19px,
 
-        rgba(230,240,245,.55)
-        23px
+            rgba(100,80,60,.8)
+            28px,
 
-    );
+            transparent 29px,
+
+            transparent 48px
+
+        );
 
 }
 
 
 /* =====================================================
-   CONTENU
+   CONTENU PRINCIPAL
 ===================================================== */
 
 main {
 
     position: relative;
 
-    z-index: 5;
+    z-index: 10;
 
     max-width: 780px;
 
     margin:
 
-    -55px auto
-    100px;
+        -80px auto
+        110px;
 
     padding:
 
-    0 16px;
+        0 16px;
 
 }
 
@@ -431,12 +655,12 @@ main {
 
     background:
 
-    rgba(255,255,255,.94);
+        rgba(255,255,255,.96);
 
     border:
 
-    1px solid
-    rgba(255,255,255,.75);
+        1px solid
+        rgba(255,255,255,.8);
 
     border-radius: 28px;
 
@@ -446,12 +670,12 @@ main {
 
     box-shadow:
 
-    0 20px 50px
-    rgba(5,30,50,.18);
+        0 20px 55px
+        rgba(5,30,50,.16);
 
     backdrop-filter:
 
-    blur(18px);
+        blur(18px);
 
 }
 
@@ -462,27 +686,66 @@ main {
 
 .welcome-card {
 
+    position: relative;
+
+    overflow: hidden;
+
     padding:
 
-    32px 28px;
+        32px 28px;
+
+}
+
+
+.welcome-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+
+    height: 160px;
+
+    border-radius: 50%;
+
+    right: -70px;
+
+    top: -70px;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(88,184,232,.18),
+            transparent 70%
+        );
 
 }
 
 
 .welcome-icon {
 
-    font-size: 48px;
+    position: relative;
 
-    margin-bottom: 15px;
+    z-index: 2;
+
+    font-size: 52px;
+
+    margin-bottom: 12px;
 
 }
 
 
 .welcome-card h2 {
 
+    position: relative;
+
+    z-index: 2;
+
     margin:
 
-    0 0 15px;
+        0 0 15px;
 
     font-size: 32px;
 
@@ -491,9 +754,13 @@ main {
 
 .welcome-card p {
 
+    position: relative;
+
+    z-index: 2;
+
     margin: 0;
 
-    font-size: 17px;
+    font-size: 16px;
 
     line-height: 1.7;
 
@@ -510,11 +777,11 @@ main {
 
     width: 100%;
 
-    border: none;
-
     padding: 0;
 
     margin-bottom: 18px;
+
+    border: none;
 
     background: transparent;
 
@@ -537,7 +804,7 @@ main {
 
     width: 100%;
 
-    min-height: 125px;
+    min-height: 130px;
 
     padding: 22px;
 
@@ -545,17 +812,40 @@ main {
 
     background:
 
-    rgba(255,255,255,.95);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.98),
+            rgba(241,248,252,.96)
+        );
+
+    border:
+
+        1px solid
+        rgba(220,230,237,.9);
 
     box-shadow:
 
-    0 15px 35px
-    rgba(5,30,50,.14);
+        0 15px 35px
+        rgba(5,30,50,.14);
 
     transition:
 
-    transform .20s ease,
-    box-shadow .20s ease;
+        transform .20s ease,
+        box-shadow .20s ease;
+
+}
+
+
+.choice-content:hover {
+
+    transform:
+
+        translateY(-3px);
+
+    box-shadow:
+
+        0 22px 45px
+        rgba(5,30,50,.18);
 
 }
 
@@ -564,18 +854,47 @@ main {
 
     transform:
 
-    scale(.98);
+        scale(.98);
 
 }
 
 
+/* LIGNE DECORATIVE */
+
+.choice-content::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 5px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #1676b8,
+            #54b5e8
+        );
+
+}
+
+
+/* ICON */
+
 .choice-icon {
 
-    min-width: 78px;
+    min-width: 80px;
 
-    width: 78px;
+    width: 80px;
 
-    height: 78px;
+    height: 80px;
 
     display: flex;
 
@@ -583,26 +902,31 @@ main {
 
     justify-content: center;
 
-    font-size: 40px;
+    font-size: 42px;
 
-    border-radius: 24px;
+    border-radius: 26px;
 
     background:
 
-    linear-gradient(
-        135deg,
-        #d8effb,
-        #b7d9eb
-    );
+        linear-gradient(
+            135deg,
+            #d9f0fb,
+            #b7dceb
+        );
 
     box-shadow:
 
-    inset
-    0 1px 2px
-    rgba(255,255,255,.9);
+        inset
+        0 1px 2px
+        rgba(255,255,255,.9),
+
+        0 8px 20px
+        rgba(22,118,184,.12);
 
 }
 
+
+/* TEXTE */
 
 .choice-text {
 
@@ -615,9 +939,11 @@ main {
 
     display: block;
 
-    font-size: 28px;
-
     margin-bottom: 7px;
+
+    font-size: 29px;
+
+    font-weight: 900;
 
     color: #152d42;
 
@@ -630,18 +956,24 @@ main {
 
     font-size: 16px;
 
+    line-height: 1.4;
+
     color: #687887;
 
 }
 
 
+/* FLECHE */
+
 .choice-arrow {
 
     position: absolute;
 
-    right: 25px;
+    right: 24px;
 
-    font-size: 28px;
+    font-size: 32px;
+
+    font-weight: 300;
 
     color: var(--bleu);
 
@@ -678,7 +1010,7 @@ h2 {
 
     margin:
 
-    0 0 20px;
+        0 0 20px;
 
     font-size: 16px;
 
@@ -708,7 +1040,7 @@ h2 {
 
     padding:
 
-    8px 14px;
+        8px 14px;
 
     margin-bottom: 15px;
 
@@ -716,11 +1048,11 @@ h2 {
 
     background:
 
-    #e2f3fb;
+        #e2f3fb;
 
     color:
 
-    #12618d;
+        #12618d;
 
     font-size: 13px;
 
@@ -758,7 +1090,8 @@ textarea {
 
     border:
 
-    1px solid #d6e0e8;
+        1px solid
+        #d6e0e8;
 
     border-radius: 14px;
 
@@ -783,8 +1116,8 @@ textarea:focus {
 
     box-shadow:
 
-    0 0 0 4px
-    rgba(22,118,184,.12);
+        0 0 0 4px
+        rgba(22,118,184,.12);
 
 }
 
@@ -808,7 +1141,7 @@ textarea {
 
     grid-template-columns:
 
-    1fr 1fr;
+        1fr 1fr;
 
     gap: 12px;
 
@@ -835,11 +1168,11 @@ textarea {
 
     background:
 
-    linear-gradient(
-        135deg,
-        #12659b,
-        #1d8dcc
-    );
+        linear-gradient(
+            135deg,
+            #12659b,
+            #1d8dcc
+        );
 
     color: white;
 
@@ -849,8 +1182,8 @@ textarea {
 
     box-shadow:
 
-    0 10px 20px
-    rgba(18,101,155,.20);
+        0 10px 20px
+        rgba(18,101,155,.20);
 
 }
 
@@ -859,7 +1192,7 @@ textarea {
 
     transform:
 
-    scale(.98);
+        scale(.98);
 
 }
 
@@ -868,39 +1201,13 @@ textarea {
 
     background:
 
-    #e8eff4;
+        #e8eff4;
 
     color:
 
-    #243746;
+        #243746;
 
     box-shadow: none;
-
-}
-
-
-.btn-interesse {
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #e78916,
-        #f3b332
-    );
-
-}
-
-
-.btn-supprimer {
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #b52f2f,
-        #e24d4d
-    );
 
 }
 
@@ -923,26 +1230,26 @@ textarea {
 
     background:
 
-    linear-gradient(
-        135deg,
-        #ffffff,
-        #f2f7fa
-    );
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f2f7fa
+        );
 
     border:
 
-    1px solid
-    #dce6ed;
+        1px solid
+        #dce6ed;
 
     border-left:
 
-    6px solid
-    var(--bleu);
+        6px solid
+        var(--bleu);
 
     box-shadow:
 
-    0 8px 20px
-    rgba(10,40,60,.08);
+        0 8px 20px
+        rgba(10,40,60,.08);
 
 }
 
@@ -953,11 +1260,11 @@ textarea {
 
     justify-content:
 
-    space-between;
+        space-between;
 
     align-items:
 
-    flex-start;
+        flex-start;
 
     gap: 10px;
 
@@ -979,7 +1286,7 @@ textarea {
 
     margin-top: 10px;
 
-    line-height: 1.7;
+    line-height: 1.8;
 
     color: #425466;
 
@@ -988,7 +1295,14 @@ textarea {
 
 .item-commentaire {
 
-    margin-top: 8px;
+    margin-top: 10px;
+
+    padding-top: 10px;
+
+    border-top:
+
+        1px solid
+        #e5edf2;
 
     font-size: 14px;
 
@@ -1001,17 +1315,26 @@ textarea {
 
     margin-top: 15px;
 
-    padding: 12px;
+    padding: 13px;
 
     border-radius: 14px;
 
     background:
 
-    #fff4dc;
+        linear-gradient(
+            135deg,
+            #fff6e4,
+            #ffefcc
+        );
+
+    border:
+
+        1px solid
+        #f5d99b;
 
     color:
 
-    #855900;
+        #855900;
 
     font-size: 14px;
 
@@ -1028,7 +1351,7 @@ textarea {
 
 
 /* =====================================================
-   ACTIONS ECHANGE
+   ACTIONS
 ===================================================== */
 
 .actions {
@@ -1037,7 +1360,7 @@ textarea {
 
     grid-template-columns:
 
-    1fr;
+        1fr;
 
     gap: 8px;
 
@@ -1050,7 +1373,7 @@ textarea {
 
     width: 100%;
 
-    padding: 12px;
+    padding: 13px;
 
     border: none;
 
@@ -1060,14 +1383,20 @@ textarea {
 
     font-size: 14px;
 
-    font-weight: 700;
+    font-weight: 800;
 
 }
 
 
 .btn-interet {
 
-    background: #fff0cf;
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff0cf,
+            #ffe3a8
+        );
 
     color: #915d00;
 
@@ -1076,7 +1405,13 @@ textarea {
 
 .btn-delete {
 
-    background: #ffe5e5;
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffe5e5,
+            #ffd4d4
+        );
 
     color: #b72d2d;
 
@@ -1093,7 +1428,7 @@ textarea {
 
     padding:
 
-    40px 20px;
+        40px 20px;
 
     color: #687887;
 
@@ -1131,33 +1466,33 @@ nav {
 
     justify-content:
 
-    space-around;
+        space-around;
 
     align-items: center;
 
     padding:
 
-    8px
-    5px
-    calc(8px + env(safe-area-inset-bottom));
+        8px
+        5px
+        calc(8px + env(safe-area-inset-bottom));
 
     background:
 
-    rgba(255,255,255,.96);
+        rgba(255,255,255,.96);
 
     border-top:
 
-    1px solid
-    #dce6ed;
+        1px solid
+        #dce6ed;
 
     box-shadow:
 
-    0 -8px 30px
-    rgba(0,0,0,.08);
+        0 -8px 30px
+        rgba(0,0,0,.08);
 
     backdrop-filter:
 
-    blur(15px);
+        blur(15px);
 
 }
 
@@ -1172,7 +1507,7 @@ nav button {
 
     padding:
 
-    9px 5px;
+        9px 5px;
 
     color: #526273;
 
@@ -1198,15 +1533,25 @@ nav button {
    MOBILE
 ===================================================== */
 
-@media
-(max-width: 500px) {
+@media (max-width: 500px) {
 
 
     header {
 
-        min-height: 310px;
+        min-height: 390px;
 
         padding-top: 40px;
+
+    }
+
+
+    .train-logo {
+
+        width: 78px;
+
+        height: 78px;
+
+        font-size: 42px;
 
     }
 
@@ -1229,22 +1574,22 @@ nav button {
 
     .choice-content {
 
-        min-height: 110px;
+        min-height: 115px;
 
     }
 
 
     .choice-icon {
 
-        width: 65px;
+        width: 68px;
 
-        min-width: 65px;
+        min-width: 68px;
 
-        height: 65px;
+        height: 68px;
 
-        font-size: 32px;
+        font-size: 34px;
 
-        border-radius: 20px;
+        border-radius: 21px;
 
     }
 
@@ -1256,11 +1601,21 @@ nav button {
     }
 
 
-    .choice-arrow {
+    .choice-text small {
 
-        right: 18px;
+        font-size: 14px;
+
+        max-width: 180px;
 
     }
+
+
+    .choice-arrow {
+
+        right: 17px;
+
+    }
+
 
 }
 
@@ -1280,6 +1635,12 @@ nav button {
 <header>
 
 
+<div class="header-lines"></div>
+
+
+<div class="header-content">
+
+
 <div class="train-logo">
 
 🚆
@@ -1296,21 +1657,52 @@ nav button {
 
 <p>
 
-Échange de journées entre agents
+La plateforme d'échange de journées
+entre agents ferroviaires
 
 </p>
 
 
+</div>
 
-<!-- RAILS -->
+
+
+<!-- =====================================================
+     DECOR FERROVIAIRE
+===================================================== -->
+
+<div class="train-scene">
+
+
+<div class="horizon"></div>
+
+
+<div class="train">
+
+
+<div class="train-windows"></div>
+
+
+<div class="train-stripe"></div>
+
+
+</div>
+
 
 <div class="rails">
 
+
 <div class="rail one"></div>
+
 
 <div class="rail two"></div>
 
+
 <div class="sleepers"></div>
+
+
+</div>
+
 
 </div>
 
@@ -1331,8 +1723,7 @@ nav button {
      ACCUEIL
 ===================================================== -->
 
-<section
-id="accueil">
+<section id="accueil">
 
 
 <div class="card welcome-card">
@@ -1361,10 +1752,13 @@ disponibles pour un éventuel échange.
 </p>
 
 
-<p
-style="margin-top:18px;">
+<p style="margin-top:18px;">
+
+<strong>
 
 Choisissez votre métier pour commencer.
+
+</strong>
 
 </p>
 
@@ -1373,7 +1767,9 @@ Choisissez votre métier pour commencer.
 
 
 
-<!-- ADC -->
+<!-- =====================================================
+     ADC
+===================================================== -->
 
 <button
 
@@ -1428,7 +1824,9 @@ Conducteurs de train
 
 
 
-<!-- ASCT -->
+<!-- =====================================================
+     ASCT
+===================================================== -->
 
 <button
 
@@ -1498,7 +1896,6 @@ id="proposer"
 
 class="hidden"
 
-
 >
 
 
@@ -1518,17 +1915,14 @@ class="badge"
 </span>
 
 
-
-<h2
-class="page-title">
+<h2 class="page-title">
 
 ➕ Ma journée
 
 </h2>
 
 
-<p
-class="metier-info">
+<p class="metier-info">
 
 Proposez votre journée afin de trouver
 un collègue intéressé.
@@ -1552,7 +1946,6 @@ placeholder="Exemple : Jean DUPONT"
 
 autocomplete="name"
 
-
 >
 
 
@@ -1570,13 +1963,11 @@ id="date"
 
 type="date"
 
-
 >
 
 
 
-<div
-class="row">
+<div class="row">
 
 
 <div>
@@ -1594,7 +1985,6 @@ Prise de service
 id="prise"
 
 type="time"
-
 
 >
 
@@ -1618,7 +2008,6 @@ Fin de service
 id="fin"
 
 type="time"
-
 
 >
 
@@ -1699,21 +2088,18 @@ class="hidden"
 <div class="card">
 
 
-<h2
-class="page-title">
+<h2 class="page-title">
 
 🔎 Échanges disponibles
 
 </h2>
 
 
-<p
-class="metier-info">
+<p class="metier-info">
 
 Métier :
 
-<strong
-id="metierEchanges">
+<strong id="metierEchanges">
 
 -
 
@@ -1723,14 +2109,7 @@ id="metierEchanges">
 
 
 
-<div
-
-id="listeEchanges"
-
->
-
-
-</div>
+<div id="listeEchanges"></div>
 
 
 
@@ -1779,8 +2158,7 @@ onclick="afficher('proposer')"
 >
 
 
-<span
-class="nav-icon">
+<span class="nav-icon">
 
 ➕
 
@@ -1801,8 +2179,7 @@ onclick="afficher('echanges')"
 >
 
 
-<span
-class="nav-icon">
+<span class="nav-icon">
 
 🔎
 
@@ -1823,8 +2200,7 @@ onclick="changerMetier()"
 >
 
 
-<span
-class="nav-icon">
+<span class="nav-icon">
 
 🚆
 
@@ -1850,36 +2226,23 @@ Métier
 <script>
 
 
-
 /* =====================================================
    SUPABASE
 ===================================================== */
 
 
-/*
-   CONSERVE TON URL SUPABASE
-*/
-
 const SUPABASE_URL =
+
 "https://nptwpoguokbjuzdyxach.supabase.co";
 
 
-/*
-   COLLE ICI TA PUBLISHABLE KEY
+const SUPABASE_KEY =
 
-   Exemple :
-
-   const SUPABASE_KEY =
-   "sb_publishable_XXXXXXXXXXXXXXXX";
-*/
-
-
-const 
-   "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
-
+"sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 
 const supabaseClient =
+
 supabase.createClient(
 
     SUPABASE_URL,
@@ -1897,6 +2260,7 @@ supabase.createClient(
 
 
 let metierActuel = "";
+
 
 
 
@@ -2663,8 +3027,7 @@ async function afficherEchanges() {
             <div class="item-header">
 
 
-            <div
-            class="item-nom">
+            <div class="item-nom">
 
             ${escapeHTML(
                 echange.nom
@@ -2677,8 +3040,7 @@ async function afficherEchanges() {
 
 
 
-            <div
-            class="item-details">
+            <div class="item-details">
 
 
             📅
@@ -2713,8 +3075,7 @@ async function afficherEchanges() {
             ${agentInteresse}
 
 
-            <div
-            class="actions">
+            <div class="actions">
 
 
             <button
@@ -2902,11 +3263,9 @@ async function interesse(id) {
 
 
     /*
-       IMPORTANT :
-
        LA DEMANDE RESTE DISPONIBLE.
 
-       ON NE MODIFIE PAS LE STATUT.
+       LE STATUT N'EST PAS MODIFIE.
 
     */
 
@@ -3023,11 +3382,7 @@ async function supprimer(id) {
 
 
 
-    /*
-       RECHARGEMENT COMPLET
-
-       DE LA LISTE DEPUIS SUPABASE
-    */
+    /* RECHARGEMENT */
 
 
     await afficherEchanges();
