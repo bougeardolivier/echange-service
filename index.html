@@ -7,7 +7,7 @@
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+content="width=device-width, initial-scale=1.0">
 
 <title>ÉCHANGE SERVICE</title>
 
@@ -27,33 +27,32 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 :root {
 
-    --navy: #071827;
-    --navy-light: #102b42;
+    --navy: #071b2d;
+    --navy-2: #0b2b43;
+    --blue: #187fc2;
+    --blue-light: #4bb7ed;
+    --cyan: #27c4c7;
 
-    --blue: #1685c5;
-    --blue-light: #52b7ea;
-
-    --cyan: #4ed4d1;
+    --text: #183047;
+    --text-soft: #657789;
 
     --white: #ffffff;
 
-    --background: #edf3f7;
+    --background: #e7f0f6;
 
-    --text: #172b3a;
-    --text-light: #657686;
-
-    --green: #1da66a;
-    --orange: #f39a1d;
-    --red: #dc4c4c;
+    --green: #2bb673;
+    --orange: #f3a72b;
+    --red: #dc4d4d;
 
     --shadow:
-        0 15px 40px rgba(8, 32, 48, .12);
+    0 18px 45px
+    rgba(11, 40, 62, .15);
 
 }
 
 
 /* =====================================================
-   GENERAL
+   RESET
 ===================================================== */
 
 * {
@@ -78,32 +77,137 @@ body {
 
     font-family:
 
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
     color: var(--text);
 
+    overflow-x: hidden;
+
+
+    /*
+       FOND MODERNE
+    */
+
     background:
 
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(66, 173, 218, .20),
-            transparent 30%
-        ),
+    radial-gradient(
+        circle at 50% 15%,
+        rgba(64, 180, 225, .22),
+        transparent 25%
+    ),
 
-        linear-gradient(
-            180deg,
-            #0b2437 0px,
-            #163f59 380px,
-            #dfe9ef 720px,
-            #eef3f6 100%
-        );
+    linear-gradient(
+        180deg,
+        #0a2033 0%,
+        #123c59 25%,
+        #dce9f1 55%,
+        #edf4f8 100%
+    );
 
-    padding-bottom: 100px;
+}
+
+
+/* =====================================================
+   ARRIERE-PLAN FERROVIAIRE
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    z-index: -2;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 72%;
+
+    pointer-events: none;
+
+
+    background:
+
+    /*
+       PERSPECTIVE DES VOIES
+    */
+
+    linear-gradient(
+        72deg,
+
+        transparent 0%,
+        transparent 38%,
+
+        rgba(255,255,255,.34) 38.2%,
+        rgba(255,255,255,.34) 38.5%,
+
+        transparent 38.8%,
+        transparent 48%,
+
+        rgba(255,255,255,.42) 48.2%,
+        rgba(255,255,255,.42) 48.5%,
+
+        transparent 48.8%,
+        transparent 51.2%,
+
+        rgba(255,255,255,.42) 51.5%,
+        rgba(255,255,255,.42) 51.8%,
+
+        transparent 52%,
+        transparent 61%,
+
+        rgba(255,255,255,.34) 61.3%,
+        rgba(255,255,255,.34) 61.6%,
+
+        transparent 62%
+    );
+
+
+    opacity: .55;
+
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    z-index: -3;
+
+    inset: 0;
+
+    pointer-events: none;
+
+
+    background:
+
+    repeating-linear-gradient(
+
+        168deg,
+
+        transparent 0px,
+
+        transparent 62px,
+
+        rgba(255,255,255,.08)
+        63px,
+
+        rgba(255,255,255,.08)
+        66px,
+
+        transparent 67px,
+
+        transparent 125px
+
+    );
 
 }
 
@@ -116,24 +220,45 @@ header {
 
     position: relative;
 
-    min-height: 360px;
-
     overflow: hidden;
+
+    min-height: 235px;
 
     padding:
 
-        45px 20px
-        100px;
-
-    text-align: center;
+    25px 25px
+    55px;
 
     color: white;
+
+
+    background:
+
+    radial-gradient(
+
+        circle at 80% 20%,
+
+        rgba(50,180,230,.28),
+
+        transparent 25%
+
+    ),
+
+    linear-gradient(
+
+        135deg,
+
+        #061725,
+        #0a2b43,
+        #104969
+
+    );
 
 }
 
 
 /* =====================================================
-   FOND TECHNOLOGIQUE
+   FORMES MODERNES HEADER
 ===================================================== */
 
 header::before {
@@ -142,71 +267,63 @@ header::before {
 
     position: absolute;
 
-    inset: 0;
+    width: 600px;
 
-    background:
+    height: 600px;
 
-        radial-gradient(
-            circle at 20% 15%,
-            rgba(81, 190, 235, .18),
-            transparent 25%
-        ),
+    border-radius: 50%;
 
-        radial-gradient(
-            circle at 85% 25%,
-            rgba(37, 132, 190, .25),
-            transparent 30%
-        ),
+    border:
 
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.04),
-            transparent 50%
-        );
+    1px solid
+    rgba(255,255,255,.10);
 
-    pointer-events: none;
+    top: -480px;
+
+    left: -280px;
+
+}
+
+
+header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border-radius: 50%;
+
+    border:
+
+    1px solid
+    rgba(72,190,235,.20);
+
+    top: -400px;
+
+    right: -200px;
 
 }
 
 
 /* =====================================================
-   LIGNES DECORATIVES
+   CONTENU HEADER
 ===================================================== */
 
-.header-line {
+.header-content {
 
-    position: absolute;
+    position: relative;
 
-    border:
+    z-index: 5;
 
-        1px solid
-        rgba(126, 204, 239, .16);
+    width: 100%;
 
-    border-radius: 999px;
+    max-width: 1180px;
 
-    pointer-events: none;
-
-}
-
-
-.line-one {
-
-    width: 600px;
-    height: 300px;
-
-    top: -170px;
-    left: -200px;
-
-}
-
-
-.line-two {
-
-    width: 650px;
-    height: 350px;
-
-    top: -120px;
-    right: -260px;
+    margin: auto;
 
 }
 
@@ -215,20 +332,22 @@ header::before {
    LOGO
 ===================================================== */
 
-.train-logo {
+.brand {
 
-    position: relative;
+    display: flex;
 
-    z-index: 3;
+    align-items: center;
 
-    width: 72px;
+    gap: 14px;
 
-    height: 72px;
+}
 
-    margin:
 
-        0 auto
-        18px;
+.brand-icon {
+
+    width: 62px;
+
+    height: 62px;
 
     display: flex;
 
@@ -236,93 +355,83 @@ header::before {
 
     justify-content: center;
 
-    font-size: 38px;
+    flex-shrink: 0;
 
-    border-radius: 24px;
+    font-size: 34px;
+
+    border-radius: 20px;
 
     background:
 
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.05)
-        );
+    linear-gradient(
+        145deg,
+        rgba(50,160,220,.35),
+        rgba(15,45,70,.75)
+    );
 
     border:
 
-        1px solid
-        rgba(255,255,255,.22);
+    1px solid
+    rgba(130,220,255,.45);
 
     box-shadow:
 
-        0 15px 35px
-        rgba(0,0,0,.25);
+    0 10px 30px
+    rgba(0,0,0,.22);
 
-    backdrop-filter:
+}
 
-        blur(15px);
+
+.brand-text {
+
+    font-size:
+
+    clamp(
+        30px,
+        5vw,
+        52px
+    );
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    line-height: 1;
+
+}
+
+
+.brand-text span {
+
+    color: #53c6f3;
 
 }
 
 
 /* =====================================================
-   TITRE
+   SOUS-TITRE
 ===================================================== */
-
-header h1 {
-
-    position: relative;
-
-    z-index: 3;
-
-    margin: 0;
-
-    font-size:
-
-        clamp(
-            36px,
-            7vw,
-            60px
-        );
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    line-height: 1;
-
-    text-shadow:
-
-        0 10px 30px
-        rgba(0,0,0,.30);
-
-}
-
 
 .header-subtitle {
 
-    position: relative;
-
-    z-index: 3;
-
     margin:
 
-        20px auto
-        0;
+    15px 0 0
+    76px;
 
-    max-width: 600px;
+    margin-left: 76px;
 
     font-size:
 
-        clamp(
-            16px,
-            3vw,
-            21px
-        );
+    clamp(
+        16px,
+        2.5vw,
+        22px
+    );
 
     color:
 
-        rgba(255,255,255,.82);
+    rgba(235,247,255,.85);
 
     line-height: 1.5;
 
@@ -331,154 +440,278 @@ header h1 {
 
 .header-subtitle strong {
 
-    color: #7dd6f5;
+    display: block;
+
+    margin-top: 2px;
+
+    color: #78cef2;
 
 }
 
 
 /* =====================================================
-   TRAIN MODERNE
+   BADGE SERVICE ACTIF
 ===================================================== */
 
-.train-decoration {
+.service-status {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 10px;
+
+    right: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+
+    10px 16px;
+
+    border-radius: 30px;
+
+    background:
+
+    rgba(5,25,40,.70);
+
+    border:
+
+    1px solid
+    rgba(255,255,255,.12);
+
+    color: white;
+
+    font-size: 14px;
+
+    backdrop-filter:
+
+    blur(12px);
+
+}
+
+
+.status-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #34d17d;
+
+    box-shadow:
+
+    0 0 12px
+    #34d17d;
+
+}
+
+
+/* =====================================================
+   TRAIN MODERNE CSS
+===================================================== */
+
+.train-scene {
 
     position: absolute;
 
     z-index: 2;
 
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    bottom: 58px;
-
-    width: min(680px, 90%);
-
-    height: 74px;
-
-    border-radius:
-
-        42px
-        42px
-        20px
-        20px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(137, 205, 235, .50),
-            rgba(19, 72, 104, .80)
-        );
-
-    border:
-
-        1px solid
-        rgba(164, 221, 245, .25);
-
-    box-shadow:
-
-        0 15px 35px
-        rgba(0,0,0,.20);
-
-    overflow: hidden;
-
-    opacity: .9;
-
-}
-
-
-/* VITRES */
-
-.train-decoration::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 14%;
-
-    right: 14%;
-
-    top: 17px;
-
-    height: 20px;
-
-    border-radius: 15px;
-
-    background:
-
-        repeating-linear-gradient(
-
-            90deg,
-
-            #102d43 0px,
-            #102d43 45px,
-
-            #315e78 45px,
-            #315e78 52px
-
-        );
-
-}
-
-
-/* BANDE BLEUE */
-
-.train-decoration::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 22%;
-
-    right: 22%;
-
-    bottom: 14px;
-
-    height: 6px;
-
-    border-radius: 10px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #4cc7e6,
-            #197fb9,
-            #4cc7e6
-        );
-
-}
-
-
-/* =====================================================
-   RAILS
-===================================================== */
-
-.rails {
-
-    position: absolute;
-
-    z-index: 1;
+    right: 0;
 
     bottom: 0;
 
-    left: 0;
+    width: 42%;
 
-    width: 100%;
+    min-width: 380px;
 
-    height: 80px;
-
-    opacity: .55;
+    height: 160px;
 
     pointer-events: none;
 
 }
 
 
-.rail {
+/* HALO */
+
+.train-scene::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 150px;
+
+    right: -40px;
+
+    bottom: 0;
+
+    background:
+
+    radial-gradient(
+
+        ellipse,
+
+        rgba(40,170,230,.30),
+
+        transparent 65%
+
+    );
+
+}
+
+
+/* TRAIN */
+
+.modern-train {
+
+    position: absolute;
+
+    right: 30px;
+
+    bottom: 22px;
+
+    width: 430px;
+
+    height: 92px;
+
+    border-radius:
+
+    45px
+    90px
+    25px
+    20px;
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        #eef8ff 0%,
+        #c6d9e6 42%,
+        #5d839d 43%,
+        #2b526c 100%
+
+    );
+
+    box-shadow:
+
+    0 12px 30px
+    rgba(0,0,0,.35);
+
+}
+
+
+/* NEZ DU TRAIN */
+
+.modern-train::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 95px;
+
+    height: 92px;
+
+    right: -15px;
+
+    top: 0;
+
+    border-radius:
+
+    50%
+    70%
+    45%
+    30%;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #dcecf5,
+        #9eb8c9,
+        #55778e
+
+    );
+
+}
+
+
+/* FENETRES */
+
+.train-windows {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 20px;
+
+    left: 35px;
+
+    right: 80px;
+
+    height: 30px;
+
+    border-radius: 18px;
+
+    background:
+
+    repeating-linear-gradient(
+
+        90deg,
+
+        #102b42 0px,
+        #102b42 48px,
+
+        #315f7b 48px,
+        #315f7b 53px
+
+    );
+
+    box-shadow:
+
+    inset
+    0 2px 4px
+    rgba(255,255,255,.25);
+
+}
+
+
+/* =====================================================
+   RAILS HEADER
+===================================================== */
+
+.header-rails {
+
+    position: absolute;
+
+    z-index: 1;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 60px;
+
+    opacity: .55;
+
+}
+
+
+.header-rail {
 
     position: absolute;
 
@@ -490,80 +723,86 @@ header h1 {
 
     background:
 
-        rgba(220, 239, 247, .75);
+    rgba(210,235,245,.85);
 
 }
 
 
-.rail.one {
+.header-rail.one {
 
-    bottom: 44px;
-
-}
-
-
-.rail.two {
-
-    bottom: 15px;
+    bottom: 42px;
 
 }
 
 
-.sleepers {
+.header-rail.two {
+
+    bottom: 16px;
+
+}
+
+
+.header-sleepers {
 
     position: absolute;
+
+    left: 0;
 
     bottom: 0;
 
     width: 100%;
 
-    height: 70px;
+    height: 55px;
+
 
     background:
 
-        repeating-linear-gradient(
+    repeating-linear-gradient(
 
-            90deg,
+        90deg,
 
-            transparent 0px,
-            transparent 22px,
+        transparent 0px,
+        transparent 25px,
 
-            rgba(210,230,240,.60) 22px,
-            rgba(210,230,240,.60) 28px
+        rgba(210,235,245,.65)
+        25px,
 
-        );
+        rgba(210,235,245,.65)
+        31px
+
+    );
 
 }
 
 
 /* =====================================================
-   CONTENU
+   CONTENU PRINCIPAL
 ===================================================== */
 
 main {
 
-    position: relative;
-
-    z-index: 10;
-
     width: 100%;
 
-    max-width: 950px;
+    max-width: 1380px;
 
     margin:
 
-        -45px auto
-        50px;
+    -15px auto
+    130px;
 
     padding:
 
-        0 16px;
+    0 22px;
+
+    position: relative;
+
+    z-index: 20;
 
 }
 
 
 /* =====================================================
-   MASQUAGE
+   HIDDEN
 ===================================================== */
 
 .hidden {
@@ -574,128 +813,76 @@ main {
 
 
 /* =====================================================
-   CARTE GENERALE
+   PAGE ACCUEIL
 ===================================================== */
 
-.card {
+#accueil {
 
-    background:
-
-        rgba(255,255,255,.96);
-
-    border:
-
-        1px solid
-        rgba(255,255,255,.90);
-
-    border-radius: 28px;
-
-    padding: 26px;
-
-    margin-bottom: 18px;
-
-    box-shadow:
-
-        var(--shadow);
+    padding-top: 20px;
 
 }
 
 
 /* =====================================================
-   ACCUEIL
+   WELCOME CARD
 ===================================================== */
 
 .welcome-card {
 
-    position: relative;
+    width: 100%;
 
-    overflow: hidden;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
 
     padding:
 
-        35px
-        28px;
+    26px 35px;
 
-    text-align: center;
-
-}
-
-
-/* DECORATION */
-
-.welcome-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 240px;
-
-    height: 240px;
-
-    border-radius: 50%;
+    border-radius: 28px;
 
     background:
 
-        radial-gradient(
-            circle,
-            rgba(76,199,230,.12),
-            transparent 70%
-        );
+    rgba(255,255,255,.91);
 
-    top: -120px;
+    border:
 
-    left: -100px;
+    1px solid
+    rgba(255,255,255,.85);
 
-}
+    box-shadow:
 
+    var(--shadow);
 
-.welcome-card::after {
+    backdrop-filter:
 
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-
-    height: 220px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(28,135,197,.10),
-            transparent 70%
-        );
-
-    right: -90px;
-
-    bottom: -120px;
+    blur(20px);
 
 }
 
 
-.welcome-content {
+.welcome-left {
 
-    position: relative;
+    display: flex;
 
-    z-index: 2;
+    align-items: center;
+
+    gap: 22px;
 
 }
 
 
 .welcome-icon {
 
-    width: 80px;
+    width: 94px;
 
-    height: 80px;
+    height: 94px;
 
-    margin:
-
-        0 auto
-        18px;
+    flex-shrink: 0;
 
     display: flex;
 
@@ -703,103 +890,104 @@ main {
 
     justify-content: center;
 
-    font-size: 42px;
+    font-size: 45px;
 
-    border-radius: 26px;
+    border-radius: 28px;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #e2f6fc,
-            #c8e6f2
-        );
+    linear-gradient(
+
+        145deg,
+
+        #d9f2ff,
+        #b8dcf0
+
+    );
 
     box-shadow:
 
-        0 12px 25px
-        rgba(22,118,184,.15);
+    inset
+    0 1px 2px
+    rgba(255,255,255,.9);
 
 }
 
 
-.welcome-card h2 {
+.welcome-text h2 {
 
-    margin:
-
-        0 0 15px;
+    margin: 0 0 7px;
 
     font-size:
 
-        clamp(
-            30px,
-            5vw,
-            40px
-        );
-
-    color: #162e43;
+    clamp(
+        28px,
+        4vw,
+        38px
+    );
 
 }
 
 
-.welcome-card p {
+.welcome-text p {
+
+    margin: 0;
 
     max-width: 700px;
 
-    margin:
-
-        0 auto;
+    color: var(--text-soft);
 
     font-size:
 
-        clamp(
-            16px,
-            2.5vw,
-            19px
-        );
+    clamp(
+        15px,
+        2vw,
+        19px
+    );
 
-    line-height: 1.65;
-
-    color: #5b6c7a;
-
-}
-
-
-.welcome-start {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: 25px;
-
-    padding:
-
-        12px 20px;
-
-    border-radius: 999px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #d9f0f8,
-            #c8e6f3
-        );
-
-    color: #24465c;
-
-    font-size: 16px;
-
-    font-weight: 800;
+    line-height: 1.5;
 
 }
 
 
 /* =====================================================
-   CHOIX METIER
+   BADGE CHOIX METIER
+===================================================== */
+
+.choose-badge {
+
+    flex-shrink: 0;
+
+    padding:
+
+    17px 25px;
+
+    border-radius: 50px;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(50,170,225,.17),
+        rgba(80,205,220,.14)
+
+    );
+
+    color: #245071;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   METIERS
 ===================================================== */
 
 .metiers-grid {
@@ -808,31 +996,26 @@ main {
 
     grid-template-columns:
 
-        repeat(
-            2,
-            minmax(0, 1fr)
-        );
+    1fr 1fr;
 
-    gap: 16px;
+    gap: 22px;
+
+    margin-top: 22px;
 
 }
 
 
 .choice {
 
-    width: 100%;
-
-    border: none;
-
     padding: 0;
 
-    margin: 0;
+    border: none;
 
     background: transparent;
 
     cursor: pointer;
 
-    font-family: inherit;
+    text-align: left;
 
 }
 
@@ -843,52 +1026,54 @@ main {
 
     overflow: hidden;
 
+    width: 100%;
+
+    min-height: 145px;
+
     display: flex;
 
     align-items: center;
 
-    gap: 15px;
+    gap: 22px;
 
-    min-height: 112px;
+    padding: 22px 28px;
 
-    padding: 18px;
-
-    border-radius: 25px;
-
-    text-align: left;
+    border-radius: 26px;
 
     background:
 
-        rgba(255,255,255,.96);
+    rgba(255,255,255,.93);
 
     border:
 
-        1px solid
-        rgba(255,255,255,.90);
+    1px solid
+    rgba(255,255,255,.9);
 
     box-shadow:
 
-        0 12px 30px
-        rgba(8,32,48,.12);
+    0 14px 35px
+    rgba(10,45,70,.13);
 
     transition:
 
-        transform .20s ease,
-        box-shadow .20s ease;
+    transform .2s ease,
+    box-shadow .2s ease;
 
 }
 
+
+/* EFFET HOVER */
 
 .choice-content:hover {
 
     transform:
 
-        translateY(-3px);
+    translateY(-4px);
 
     box-shadow:
 
-        0 18px 35px
-        rgba(8,32,48,.17);
+    0 22px 40px
+    rgba(10,45,70,.20);
 
 }
 
@@ -897,10 +1082,12 @@ main {
 
     transform:
 
-        scale(.98);
+    scale(.98);
 
 }
 
+
+/* DECORATION */
 
 .choice-content::after {
 
@@ -908,23 +1095,50 @@ main {
 
     position: absolute;
 
-    width: 150px;
+    width: 180px;
 
-    height: 150px;
+    height: 180px;
 
-    border-radius: 50%;
+    right: -80px;
+
+    bottom: -100px;
+
+    transform: rotate(35deg);
 
     background:
 
-        radial-gradient(
-            circle,
-            rgba(76,199,230,.14),
-            transparent 70%
-        );
+    linear-gradient(
 
-    right: -65px;
+        135deg,
 
-    bottom: -70px;
+        rgba(40,180,230,.16),
+        rgba(35,200,195,.10)
+
+    );
+
+}
+
+
+/* ADC */
+
+.choice.adc .choice-content {
+
+    border-left:
+
+    5px solid
+    #247cc0;
+
+}
+
+
+/* ASCT */
+
+.choice.asct .choice-content {
+
+    border-left:
+
+    5px solid
+    #26aeb5;
 
 }
 
@@ -935,11 +1149,11 @@ main {
 
     z-index: 2;
 
-    flex-shrink: 0;
+    width: 88px;
 
-    width: 65px;
+    min-width: 88px;
 
-    height: 65px;
+    height: 88px;
 
     display: flex;
 
@@ -947,22 +1161,20 @@ main {
 
     justify-content: center;
 
-    font-size: 32px;
+    font-size: 43px;
 
-    border-radius: 21px;
+    border-radius: 26px;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #e2f4fa,
-            #bee1ef
-        );
+    linear-gradient(
 
-    box-shadow:
+        145deg,
 
-        0 8px 20px
-        rgba(22,118,184,.13);
+        #d9f1fc,
+        #b9ddec
+
+    );
 
 }
 
@@ -982,11 +1194,17 @@ main {
 
     display: block;
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 
-    font-size: 25px;
+    font-size:
 
-    color: #183146;
+    clamp(
+        25px,
+        3vw,
+        34px
+    );
+
+    color: #18364e;
 
 }
 
@@ -995,11 +1213,15 @@ main {
 
     display: block;
 
-    font-size: 15px;
+    font-size:
 
-    line-height: 1.35;
+    clamp(
+        15px,
+        2vw,
+        19px
+    );
 
-    color: #697987;
+    color: #627486;
 
 }
 
@@ -1010,11 +1232,90 @@ main {
 
     z-index: 2;
 
-    color: #197bb3;
+    color: #2780b3;
 
-    font-size: 30px;
+    font-size: 40px;
 
-    font-weight: 400;
+    font-weight: 300;
+
+}
+
+
+/* =====================================================
+   CARTE GENERALE
+===================================================== */
+
+.card {
+
+    background:
+
+    rgba(255,255,255,.95);
+
+    border:
+
+    1px solid
+    rgba(255,255,255,.90);
+
+    border-radius: 28px;
+
+    padding: 28px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+
+    var(--shadow);
+
+    backdrop-filter:
+
+    blur(18px);
+
+}
+
+
+/* =====================================================
+   TITRES
+===================================================== */
+
+.page-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin:
+
+    0 0 8px;
+
+    font-size:
+
+    clamp(
+        25px,
+        4vw,
+        32px
+    );
+
+}
+
+
+.metier-info {
+
+    margin:
+
+    0 0 20px;
+
+    color: var(--text-soft);
+
+    line-height: 1.5;
+
+}
+
+
+.metier-info strong {
+
+    color: var(--blue);
 
 }
 
@@ -1029,74 +1330,29 @@ main {
 
     align-items: center;
 
-    gap: 8px;
+    gap: 7px;
 
     padding:
 
-        9px 14px;
+    9px 15px;
 
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 
-    border-radius: 999px;
+    border-radius: 30px;
 
     background:
 
-        linear-gradient(
-            90deg,
-            #e0f4fb,
-            #cbe9f5
-        );
+    linear-gradient(
+        135deg,
+        #dff4fc,
+        #c9e7f4
+    );
 
-    color: #17638e;
+    color: #155d86;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 800;
-
-}
-
-
-/* =====================================================
-   TITRES
-===================================================== */
-
-.page-title {
-
-    margin:
-
-        0 0 8px;
-
-    font-size:
-
-        clamp(
-            26px,
-            5vw,
-            34px
-        );
-
-    color: #172f43;
-
-}
-
-
-.metier-info {
-
-    margin:
-
-        0 0 22px;
-
-    color: #657686;
-
-    font-size: 16px;
-
-    line-height: 1.5;
-
-}
-
-
-.metier-info strong {
-
-    color: #17638e;
 
 }
 
@@ -1111,13 +1367,13 @@ label {
 
     margin:
 
-        16px 0 7px;
+    16px 0 7px;
 
     font-size: 14px;
 
     font-weight: 800;
 
-    color: #405464;
+    color: #41586b;
 
 }
 
@@ -1129,19 +1385,26 @@ textarea {
 
     border:
 
-        1px solid #d7e2e8;
+    1px solid #d7e2e9;
 
-    border-radius: 14px;
+    border-radius: 15px;
 
-    padding: 14px;
+    padding: 15px;
 
     font-family: inherit;
 
     font-size: 16px;
 
-    color: #172b3a;
+    background:
 
-    background: #f8fbfc;
+    #f8fbfd;
+
+    color: #183047;
+
+    transition:
+
+    border .2s,
+    box-shadow .2s;
 
 }
 
@@ -1151,26 +1414,28 @@ textarea:focus {
 
     outline: none;
 
-    border-color: #208bc7;
-
-    background: white;
+    border-color: #2397d1;
 
     box-shadow:
 
-        0 0 0 4px
-        rgba(32,139,199,.12);
+    0 0 0 4px
+    rgba(35,151,209,.12);
 
 }
 
 
 textarea {
 
-    min-height: 100px;
+    min-height: 95px;
 
     resize: vertical;
 
 }
 
+
+/* =====================================================
+   HORAIRES
+===================================================== */
 
 .row {
 
@@ -1178,9 +1443,9 @@ textarea {
 
     grid-template-columns:
 
-        1fr 1fr;
+    1fr 1fr;
 
-    gap: 12px;
+    gap: 14px;
 
 }
 
@@ -1197,7 +1462,7 @@ textarea {
 
     padding:
 
-        16px;
+    16px 18px;
 
     border: none;
 
@@ -1205,32 +1470,38 @@ textarea {
 
     cursor: pointer;
 
-    font-family: inherit;
+    background:
 
-    font-size: 15px;
-
-    font-weight: 900;
-
-    letter-spacing: .3px;
+    linear-gradient(
+        135deg,
+        #1677b5,
+        #2ca8df
+    );
 
     color: white;
 
-    background:
+    font-size: 16px;
 
-        linear-gradient(
-            135deg,
-            #12669a,
-            #2099d5
-        );
+    font-weight: 800;
 
     box-shadow:
 
-        0 10px 22px
-        rgba(18,101,155,.22);
+    0 10px 22px
+    rgba(20,120,180,.22);
 
     transition:
 
-        transform .15s ease;
+    transform .2s,
+    box-shadow .2s;
+
+}
+
+
+.btn:hover {
+
+    transform:
+
+    translateY(-2px);
 
 }
 
@@ -1239,7 +1510,7 @@ textarea {
 
     transform:
 
-        scale(.98);
+    scale(.98);
 
 }
 
@@ -1248,11 +1519,11 @@ textarea {
 
     background:
 
-        #edf2f5;
+    #e8f0f5;
 
     color:
 
-        #314858;
+    #294254;
 
     box-shadow: none;
 
@@ -1260,7 +1531,7 @@ textarea {
 
 
 /* =====================================================
-   LISTE DES ECHANGES
+   ECHANGES
 ===================================================== */
 
 .item {
@@ -1269,7 +1540,7 @@ textarea {
 
     overflow: hidden;
 
-    margin-top: 16px;
+    margin-top: 15px;
 
     padding: 20px;
 
@@ -1277,213 +1548,129 @@ textarea {
 
     background:
 
-        white;
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #f2f8fb
+    );
 
     border:
 
-        1px solid #dce7ed;
+    1px solid
+    #dce7ed;
+
+    border-left:
+
+    6px solid
+    #2588c5;
 
     box-shadow:
 
-        0 10px 25px
-        rgba(9,35,52,.08);
+    0 10px 24px
+    rgba(10,40,60,.08);
 
 }
 
 
-/* BANDE LATERALE */
-
-.item::before {
+.item::after {
 
     content: "";
 
     position: absolute;
 
-    left: 0;
+    width: 120px;
 
-    top: 0;
+    height: 120px;
 
-    bottom: 0;
+    right: -55px;
 
-    width: 6px;
+    top: -60px;
+
+    border-radius: 50%;
 
     background:
 
-        linear-gradient(
-            180deg,
-            #28a7dc,
-            #1673ae
-        );
+    rgba(54,190,220,.08);
 
 }
 
 
 .item-header {
 
-    display: flex;
+    position: relative;
 
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 16px;
-
-}
-
-
-/* AVATAR */
-
-.agent-avatar {
-
-    width: 48px;
-
-    height: 48px;
-
-    flex-shrink: 0;
+    z-index: 2;
 
     display: flex;
 
-    align-items: center;
+    justify-content:
 
-    justify-content: center;
+    space-between;
 
-    border-radius: 16px;
+    align-items:
 
-    font-size: 22px;
+    flex-start;
 
-    background:
-
-        linear-gradient(
-            135deg,
-            #dff2f9,
-            #c3e4f0
-        );
+    gap: 10px;
 
 }
 
 
 .item-nom {
 
-    font-size: 20px;
+    font-size: 21px;
 
     font-weight: 900;
 
-    color: #172f43;
+    color: #18364e;
 
 }
 
 
 /* =====================================================
-   INFORMATIONS DATE / HEURES
+   DETAILS DATE HEURE
    IMPORTANT : TOUJOURS VISIBLES
 ===================================================== */
 
-.service-infos {
+.item-details {
+
+    position: relative;
+
+    z-index: 2;
 
     display: grid;
 
-    grid-template-columns:
+    gap: 9px;
 
-        1fr;
-
-    gap: 10px;
-
-    margin-top: 5px;
-
-}
-
-
-.service-info {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
+    margin-top: 15px;
 
     padding:
 
-        13px 14px;
+    14px 16px;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
     background:
 
-        #f4f8fa;
+    #edf6fa;
 
-    border:
+    color: #294c63;
 
-        1px solid #e0e9ee;
+    font-size: 16px;
+
+    font-weight: 600;
 
 }
 
 
-/* ICONE */
-
-.info-icon {
-
-    width: 38px;
-
-    height: 38px;
-
-    flex-shrink: 0;
+.date-line,
+.time-line {
 
     display: flex;
 
     align-items: center;
 
-    justify-content: center;
-
-    border-radius: 12px;
-
-    font-size: 18px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #d8f0f8,
-            #bfe1ef
-        );
-
-}
-
-
-/* TEXTE */
-
-.info-text {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 3px;
-
-}
-
-
-.info-label {
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    color: #71818d;
-
-    text-transform: uppercase;
-
-    letter-spacing: .4px;
-
-}
-
-
-.info-value {
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-    color: #19364a;
+    gap: 8px;
 
 }
 
@@ -1494,19 +1681,23 @@ textarea {
 
 .item-commentaire {
 
-    margin-top: 14px;
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 13px;
 
     padding:
 
-        13px;
+    12px 14px;
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
 
-        #f7fafb;
+    #f8fafc;
 
-    color: #566a79;
+    color: #607283;
 
     font-size: 14px;
 
@@ -1521,38 +1712,38 @@ textarea {
 
 .interesse {
 
+    position: relative;
+
+    z-index: 2;
+
     margin-top: 14px;
 
     padding:
 
-        14px;
+    13px 15px;
 
     border-radius: 15px;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #fff3d7,
-            #fff8e9
-        );
+    linear-gradient(
+        135deg,
+        #fff3d8,
+        #fff8e8
+    );
 
-    border:
-
-        1px solid #f4d890;
-
-    color: #78520a;
+    color: #805c14;
 
     font-size: 14px;
 
-    line-height: 1.5;
+    font-weight: 700;
 
 }
 
 
 .interesse strong {
 
-    color: #5d3d00;
+    color: #694500;
 
 }
 
@@ -1563,11 +1754,15 @@ textarea {
 
 .actions {
 
+    position: relative;
+
+    z-index: 2;
+
     display: grid;
 
     grid-template-columns:
 
-        1fr 1fr;
+    1fr 1fr;
 
     gap: 10px;
 
@@ -1578,21 +1773,23 @@ textarea {
 
 .btn-small {
 
-    border: none;
-
-    border-radius: 13px;
+    width: 100%;
 
     padding:
 
-        13px 10px;
+    13px 10px;
+
+    border: none;
+
+    border-radius: 13px;
 
     cursor: pointer;
 
     font-family: inherit;
 
-    font-size: 13px;
+    font-size: 14px;
 
-    font-weight: 900;
+    font-weight: 800;
 
 }
 
@@ -1601,11 +1798,11 @@ textarea {
 
     background:
 
-        #fff0cf;
+    #fff0ce;
 
     color:
 
-        #865600;
+    #8b5a00;
 
 }
 
@@ -1614,11 +1811,11 @@ textarea {
 
     background:
 
-        #ffe5e5;
+    #ffe5e5;
 
     color:
 
-        #ad3030;
+    #b92d2d;
 
 }
 
@@ -1629,15 +1826,13 @@ textarea {
 
 .empty {
 
-    padding:
-
-        45px 20px;
-
     text-align: center;
 
-    color: #687987;
+    padding:
 
-    line-height: 1.6;
+    40px 20px;
+
+    color: var(--text-soft);
 
 }
 
@@ -1646,9 +1841,9 @@ textarea {
 
     display: block;
 
-    margin-bottom: 15px;
-
     font-size: 55px;
+
+    margin-bottom: 15px;
 
 }
 
@@ -1665,21 +1860,23 @@ nav {
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+
+    translateX(-50%);
 
     bottom:
 
-        calc(
-            10px +
-            env(safe-area-inset-bottom)
-        );
+    calc(
+        15px +
+        env(safe-area-inset-bottom)
+    );
 
     width:
 
-        min(
-            620px,
-            calc(100% - 24px)
-        );
+    min(
+        700px,
+        calc(100% - 28px)
+    );
 
     display: flex;
 
@@ -1689,27 +1886,27 @@ nav {
 
     padding:
 
-        7px;
+    8px;
 
-    border-radius: 22px;
+    border-radius: 28px;
 
     background:
 
-        rgba(255,255,255,.94);
+    rgba(255,255,255,.88);
 
     border:
 
-        1px solid
-        rgba(255,255,255,.9);
+    1px solid
+    rgba(255,255,255,.95);
 
     box-shadow:
 
-        0 15px 40px
-        rgba(0,0,0,.18);
+    0 15px 40px
+    rgba(10,35,55,.18);
 
     backdrop-filter:
 
-        blur(20px);
+    blur(22px);
 
 }
 
@@ -1720,19 +1917,19 @@ nav button {
 
     border: none;
 
-    border-radius: 15px;
+    background: transparent;
 
     padding:
 
-        9px 5px;
+    9px 6px;
 
-    background: transparent;
-
-    color: #566a79;
+    color: #536a7c;
 
     font-family: inherit;
 
-    font-size: 12px;
+    font-size: 13px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
@@ -1741,11 +1938,28 @@ nav button {
 
 .nav-icon {
 
-    display: block;
+    display: flex;
 
-    margin-bottom: 3px;
+    align-items: center;
+
+    justify-content: center;
+
+    width: 38px;
+
+    height: 38px;
+
+    margin:
+
+    0 auto
+    4px;
+
+    border-radius: 14px;
 
     font-size: 20px;
+
+    background:
+
+    rgba(70,170,220,.10);
 
 }
 
@@ -1755,13 +1969,30 @@ nav button {
 ===================================================== */
 
 @media
-(max-width: 800px) {
+(max-width: 900px) {
 
-    .metiers-grid {
 
-        grid-template-columns:
+    .train-scene {
 
-            1fr;
+        opacity: .55;
+
+        right: -150px;
+
+    }
+
+
+    .welcome-card {
+
+        align-items:
+
+        flex-start;
+
+    }
+
+
+    .choose-badge {
+
+        display: none;
 
     }
 
@@ -1769,147 +2000,162 @@ nav button {
 
 
 /* =====================================================
-   SMARTPHONE
+   MOBILE
 ===================================================== */
 
 @media
-(max-width: 550px) {
-
-    body {
-
-        padding-bottom: 110px;
-
-    }
+(max-width: 650px) {
 
 
     header {
 
-        min-height: 310px;
+        min-height: 185px;
 
         padding:
 
-            35px 16px
-            90px;
+        18px 18px
+        42px;
 
     }
 
 
-    .train-logo {
+    .brand {
 
-        width: 62px;
-
-        height: 62px;
-
-        font-size: 32px;
-
-        border-radius: 20px;
-
-        margin-bottom: 16px;
+        gap: 10px;
 
     }
 
 
-    header h1 {
+    .brand-icon {
 
-        font-size: 36px;
+        width: 48px;
 
-        letter-spacing: 1px;
+        height: 48px;
+
+        border-radius: 16px;
+
+        font-size: 26px;
+
+    }
+
+
+    .brand-text {
+
+        font-size: 29px;
 
     }
 
 
     .header-subtitle {
 
-        margin-top: 14px;
+        margin:
 
-        font-size: 16px;
+        13px 0 20px;
 
-    }
-
-
-    .train-decoration {
-
-        width: 88%;
-
-        height: 55px;
-
-        bottom: 50px;
+        font-size: 15px;
 
     }
 
 
-    .train-decoration::before {
+    .service-status {
 
-        top: 13px;
+        display: none;
 
-        height: 16px;
+    }
+
+
+    .train-scene {
+
+        display: none;
 
     }
 
 
     main {
 
-        margin-top: -35px;
-
         padding:
 
-            0 12px;
+        0 13px;
+
+        margin:
+
+        -5px auto
+        115px;
 
     }
 
 
-    .card {
+    #accueil {
 
-        padding: 22px;
-
-        border-radius: 24px;
+        padding-top: 13px;
 
     }
 
+
+    /* WELCOME COMPACT */
 
     .welcome-card {
 
+        display: block;
+
         padding:
 
-            28px 20px;
+        18px 20px;
+
+        border-radius: 23px;
+
+    }
+
+
+    .welcome-left {
+
+        gap: 14px;
 
     }
 
 
     .welcome-icon {
 
-        width: 68px;
+        width: 60px;
 
-        height: 68px;
+        height: 60px;
 
-        font-size: 35px;
+        border-radius: 19px;
 
-        border-radius: 22px;
-
-    }
-
-
-    .welcome-card h2 {
-
-        font-size: 30px;
+        font-size: 28px;
 
     }
 
 
-    .welcome-card p {
+    .welcome-text h2 {
 
-        font-size: 16px;
+        margin-bottom: 5px;
+
+        font-size: 25px;
 
     }
 
 
-    .welcome-start {
+    .welcome-text p {
 
         font-size: 14px;
 
-        padding:
+        line-height: 1.45;
 
-            11px 15px;
+    }
+
+
+    /* METIERS */
+
+    .metiers-grid {
+
+        grid-template-columns:
+
+        1fr;
+
+        gap: 12px;
+
+        margin-top: 13px;
 
     }
 
@@ -1918,29 +2164,37 @@ nav button {
 
         min-height: 92px;
 
-        padding: 14px;
+        padding:
 
-        border-radius: 22px;
+        14px 17px;
+
+        gap: 14px;
+
+        border-radius: 21px;
 
     }
 
 
     .choice-icon {
 
-        width: 55px;
+        width: 60px;
 
-        height: 55px;
+        min-width: 60px;
 
-        font-size: 28px;
+        height: 60px;
 
-        border-radius: 18px;
+        border-radius: 19px;
+
+        font-size: 30px;
 
     }
 
 
     .choice-text strong {
 
-        font-size: 22px;
+        margin-bottom: 2px;
+
+        font-size: 23px;
 
     }
 
@@ -1954,7 +2208,16 @@ nav button {
 
     .choice-arrow {
 
-        font-size: 25px;
+        font-size: 30px;
+
+    }
+
+
+    .card {
+
+        padding: 20px;
+
+        border-radius: 22px;
 
     }
 
@@ -1963,7 +2226,7 @@ nav button {
 
         grid-template-columns:
 
-            1fr;
+        1fr;
 
         gap: 0;
 
@@ -1974,14 +2237,64 @@ nav button {
 
         grid-template-columns:
 
-            1fr;
+        1fr;
 
     }
 
 
-    .item {
+    .item-nom {
 
-        padding: 17px;
+        font-size: 19px;
+
+    }
+
+
+    nav {
+
+        bottom:
+
+        calc(
+            8px +
+            env(safe-area-inset-bottom)
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TRES PETITS ECRANS
+===================================================== */
+
+@media
+(max-width: 380px) {
+
+
+    .brand-text {
+
+        font-size: 25px;
+
+    }
+
+
+    .header-subtitle {
+
+        font-size: 14px;
+
+    }
+
+
+    .choice-content {
+
+        min-height: 84px;
+
+    }
+
+
+    .welcome-text p {
+
+        font-size: 13px;
 
     }
 
@@ -2003,30 +2316,43 @@ nav button {
 <header>
 
 
-<div class="header-line line-one"></div>
-
-<div class="header-line line-two"></div>
+<div class="header-content">
 
 
-<div class="train-logo">
+<div class="service-status">
+
+<span class="status-dot"></span>
+
+Service actif
+
+</div>
+
+
+
+<div class="brand">
+
+
+<div class="brand-icon">
 
 🚆
 
 </div>
 
 
-<h1>
+<div class="brand-text">
 
-ÉCHANGE SERVICE
+ÉCHANGE <span>SERVICE</span>
 
-</h1>
+</div>
+
+
+</div>
+
 
 
 <div class="header-subtitle">
 
 Échange de journées entre agents
-
-<br>
 
 <strong>
 
@@ -2037,16 +2363,33 @@ si congés refusés
 </div>
 
 
-<div class="train-decoration"></div>
+</div>
 
 
-<div class="rails">
 
-<div class="rail one"></div>
+<!-- TRAIN MODERNE -->
 
-<div class="rail two"></div>
+<div class="train-scene">
 
-<div class="sleepers"></div>
+<div class="modern-train">
+
+<div class="train-windows"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- RAILS -->
+
+<div class="header-rails">
+
+<div class="header-rail one"></div>
+
+<div class="header-rail two"></div>
+
+<div class="header-sleepers"></div>
 
 </div>
 
@@ -2066,14 +2409,15 @@ si congés refusés
      ACCUEIL
 ===================================================== -->
 
-<section
-id="accueil">
+<section id="accueil">
 
 
-<div class="card welcome-card">
+<!-- BIENVENUE -->
+
+<div class="welcome-card">
 
 
-<div class="welcome-content">
+<div class="welcome-left">
 
 
 <div class="welcome-icon">
@@ -2081,6 +2425,9 @@ id="accueil">
 🤝
 
 </div>
+
+
+<div class="welcome-text">
 
 
 <h2>
@@ -2098,14 +2445,16 @@ intéressé pour un éventuel échange.
 </p>
 
 
-<div class="welcome-start">
+</div>
 
-🚆
-
-Choisissez votre métier pour commencer
 
 </div>
 
+
+<div class="choose-badge">
+
+🚆 Choisissez votre métier<br>
+pour commencer
 
 </div>
 
@@ -2115,7 +2464,7 @@ Choisissez votre métier pour commencer
 
 
 <!-- =====================================================
-     METIERS
+     CHOIX DES METIERS
 ===================================================== -->
 
 <div class="metiers-grid">
@@ -2124,8 +2473,12 @@ Choisissez votre métier pour commencer
 <!-- ADC -->
 
 <button
-class="choice"
-onclick="choisirMetier('ADC')">
+
+class="choice adc"
+
+onclick="choisirMetier('ADC')"
+
+>
 
 
 <div class="choice-content">
@@ -2175,8 +2528,12 @@ Conducteurs de train
 <!-- ASCT -->
 
 <button
-class="choice"
-onclick="choisirMetier('ASCT')">
+
+class="choice asct"
+
+onclick="choisirMetier('ASCT')"
+
+>
 
 
 <div class="choice-content">
@@ -2230,24 +2587,34 @@ Agents du Service Commercial Train
 
 
 <!-- =====================================================
-     PROPOSER
+     PROPOSER UNE JOURNEE
 ===================================================== -->
 
 <section
+
 id="proposer"
-class="hidden">
+
+class="hidden"
+
+
+>
 
 
 <div class="card">
 
 
 <span
+
 id="metier"
-class="badge">
+
+class="badge"
+
+>
 
 🚆 Métier
 
 </span>
+
 
 
 <h2 class="page-title">
@@ -2274,9 +2641,15 @@ Nom et prénom
 
 
 <input
+
 id="nom"
+
 placeholder="Exemple : Jean DUPONT"
-autocomplete="name">
+
+autocomplete="name"
+
+
+>
 
 
 
@@ -2288,8 +2661,13 @@ Date de la journée
 
 
 <input
+
 id="date"
-type="date">
+
+type="date"
+
+
+>
 
 
 
@@ -2307,8 +2685,13 @@ Prise de service
 
 
 <input
+
 id="prise"
-type="time">
+
+type="time"
+
+
+>
 
 
 </div>
@@ -2326,8 +2709,13 @@ Fin de service
 
 
 <input
+
 id="fin"
-type="time">
+
+type="time"
+
+
+>
 
 
 </div>
@@ -2345,14 +2733,22 @@ Commentaire
 
 
 <textarea
+
 id="commentaire"
-placeholder="Exemple : TER, réserve, numéro de train..."></textarea>
+
+placeholder="Exemple : TER, réserve, numéro de train..."
+
+></textarea>
 
 
 
 <button
+
 class="btn"
-onclick="publier()">
+
+onclick="publier()"
+
+>
 
 🚆 PUBLIER MA JOURNÉE
 
@@ -2361,8 +2757,12 @@ onclick="publier()">
 
 
 <button
+
 class="btn btn-secondaire"
-onclick="afficher('echanges')">
+
+onclick="afficher('echanges')"
+
+>
 
 🔎 VOIR LES ÉCHANGES
 
@@ -2381,8 +2781,12 @@ onclick="afficher('echanges')">
 ===================================================== -->
 
 <section
+
 id="echanges"
-class="hidden">
+
+class="hidden"
+
+>
 
 
 <div class="card">
@@ -2399,8 +2803,7 @@ class="hidden">
 
 Métier :
 
-<strong
-id="metierEchanges">
+<strong id="metierEchanges">
 
 -
 
@@ -2410,16 +2813,19 @@ id="metierEchanges">
 
 
 
-<div
-id="listeEchanges">
+<div id="listeEchanges">
 
 </div>
 
 
 
 <button
+
 class="btn btn-secondaire"
-onclick="afficher('proposer')">
+
+onclick="afficher('proposer')"
+
+>
 
 ➕ PROPOSER UNE JOURNÉE
 
@@ -2441,12 +2847,19 @@ onclick="afficher('proposer')">
 ===================================================== -->
 
 <nav
+
 id="menu"
-class="hidden">
+
+class="hidden"
+
+>
 
 
 <button
-onclick="afficher('proposer')">
+
+onclick="afficher('proposer')"
+
+>
 
 
 <span class="nav-icon">
@@ -2464,7 +2877,10 @@ Ma journée
 
 
 <button
-onclick="afficher('echanges')">
+
+onclick="afficher('echanges')"
+
+>
 
 
 <span class="nav-icon">
@@ -2482,7 +2898,10 @@ onclick="afficher('echanges')">
 
 
 <button
-onclick="changerMetier()">
+
+onclick="changerMetier()"
+
+>
 
 
 <span class="nav-icon">
@@ -2513,15 +2932,9 @@ Métier
    SUPABASE
 ===================================================== */
 
+
 const SUPABASE_URL =
 "https://nptwpoguokbjuzdyxach.supabase.co";
-
-
-/*
-   IMPORTANT
-
-   COLLE ICI TA CLE PUBLISHABLE SUPABASE
-*/
 
 
 const SUPABASE_KEY =
@@ -2538,8 +2951,6 @@ supabase.createClient(
 );
 
 
-
-
 /* =====================================================
    VARIABLES
 ===================================================== */
@@ -2547,27 +2958,22 @@ supabase.createClient(
 let metierActuel = "";
 
 
-
 /* =====================================================
-   AFFICHER PAGE
+   AFFICHER UNE PAGE
 ===================================================== */
 
 function afficher(page) {
 
 
     document
-    .querySelectorAll(
-        "main section"
-    )
+    .querySelectorAll("main section")
     .forEach(
 
         section => {
 
             section
             .classList
-            .add(
-                "hidden"
-            );
+            .add("hidden");
 
         }
 
@@ -2577,9 +2983,7 @@ function afficher(page) {
     document
     .getElementById(page)
     .classList
-    .remove(
-        "hidden"
-    );
+    .remove("hidden");
 
 
     if (
@@ -2601,9 +3005,7 @@ function afficher(page) {
 
     });
 
-
 }
-
 
 
 /* =====================================================
@@ -2616,61 +3018,35 @@ function choisirMetier(metier) {
     metierActuel = metier;
 
 
-    const badge =
-    document.getElementById(
-        "metier"
-    );
+    document
+    .getElementById("metier")
+    .innerHTML =
 
+    metier === "ADC"
 
-    if (
+    ?
 
-        metier === "ADC"
+    "🚆 ADC – Conducteurs"
 
-    ) {
+    :
 
-
-        badge.innerHTML =
-
-        "🚆 ADC – Conducteurs";
-
-
-    }
-
-    else {
-
-
-        badge.innerHTML =
-
-        "👨‍✈️ ASCT – Service Commercial Train";
-
-
-    }
+    "👨‍✈️ ASCT – Service Commercial Train";
 
 
     document
-    .getElementById(
-        "metierEchanges"
-    )
+    .getElementById("metierEchanges")
     .innerText = metier;
 
 
     document
-    .getElementById(
-        "menu"
-    )
+    .getElementById("menu")
     .classList
-    .remove(
-        "hidden"
-    );
+    .remove("hidden");
 
 
-    afficher(
-        "proposer"
-    );
-
+    afficher("proposer");
 
 }
-
 
 
 /* =====================================================
@@ -2684,22 +3060,14 @@ function changerMetier() {
 
 
     document
-    .getElementById(
-        "menu"
-    )
+    .getElementById("menu")
     .classList
-    .add(
-        "hidden"
-    );
+    .add("hidden");
 
 
-    afficher(
-        "accueil"
-    );
-
+    afficher("accueil");
 
 }
-
 
 
 /* =====================================================
@@ -2710,6 +3078,7 @@ async function publier() {
 
 
     const nom =
+
     document
     .getElementById("nom")
     .value
@@ -2717,39 +3086,44 @@ async function publier() {
 
 
     const date =
+
     document
     .getElementById("date")
     .value;
 
 
     const prise =
+
     document
     .getElementById("prise")
     .value;
 
 
     const fin =
+
     document
     .getElementById("fin")
     .value;
 
 
     const commentaire =
+
     document
     .getElementById("commentaire")
     .value
     .trim();
 
 
-
     /* VERIFICATION */
-
 
     if (
 
         !nom ||
+
         !date ||
+
         !prise ||
+
         !fin
 
     ) {
@@ -2764,13 +3138,31 @@ async function publier() {
 
         return;
 
+    }
+
+
+    /* VERIFICATION METIER */
+
+    if (
+
+        !metierActuel
+
+    ) {
+
+
+        alert(
+
+            "Merci de choisir votre métier."
+
+        );
+
+
+        return;
 
     }
 
 
-
     /* ENVOI SUPABASE */
-
 
     const {
 
@@ -2778,7 +3170,9 @@ async function publier() {
 
     }
 
-    = await supabaseClient
+    =
+
+    await supabaseClient
 
     .from("echanges")
 
@@ -2787,52 +3181,35 @@ async function publier() {
         {
 
             metier:
-
-                metierActuel,
-
+            metierActuel,
 
             nom:
-
-                nom,
-
+            nom,
 
             date_service:
-
-                date,
-
+            date,
 
             prise_service:
-
-                prise,
-
+            prise,
 
             fin_service:
-
-                fin,
-
+            fin,
 
             commentaire:
-
-                commentaire,
-
+            commentaire,
 
             statut:
-
-                "disponible",
-
+            "disponible",
 
             agent_interesse:
-
-                null
+            null
 
         }
 
     ]);
 
 
-
     /* ERREUR */
-
 
     if (
 
@@ -2847,7 +3224,9 @@ async function publier() {
         alert(
 
             "Erreur lors de la publication : "
+
             +
+
             error.message
 
         );
@@ -2855,13 +3234,10 @@ async function publier() {
 
         return;
 
-
     }
 
 
-
     /* REINITIALISATION */
-
 
     document
     .getElementById("nom")
@@ -2895,17 +3271,13 @@ async function publier() {
     );
 
 
-    afficher(
-        "echanges"
-    );
-
+    afficher("echanges");
 
 }
 
 
-
 /* =====================================================
-   AFFICHER ECHANGES
+   AFFICHER LES ECHANGES
 ===================================================== */
 
 async function afficherEchanges() {
@@ -2913,21 +3285,16 @@ async function afficherEchanges() {
 
     const zone =
 
-    document.getElementById(
-        "listeEchanges"
-    );
+    document
+    .getElementById("listeEchanges");
 
 
     document
-    .getElementById(
-        "metierEchanges"
-    )
+    .getElementById("metierEchanges")
     .innerText = metierActuel;
 
 
-
     /* CHARGEMENT */
-
 
     zone.innerHTML =
 
@@ -2937,7 +3304,7 @@ async function afficherEchanges() {
 
         <span class="empty-icon">
 
-            🚆
+        🚆
 
         </span>
 
@@ -2948,9 +3315,7 @@ async function afficherEchanges() {
     `;
 
 
-
     /* RECUPERATION SUPABASE */
-
 
     const {
 
@@ -2960,7 +3325,9 @@ async function afficherEchanges() {
 
     }
 
-    = await supabaseClient
+    =
+
+    await supabaseClient
 
     .from("echanges")
 
@@ -2995,9 +3362,7 @@ async function afficherEchanges() {
     );
 
 
-
     /* ERREUR */
-
 
     if (
 
@@ -3017,21 +3382,17 @@ async function afficherEchanges() {
 
             <span class="empty-icon">
 
-                ❌
+            ❌
 
             </span>
 
-            <strong>
-
-                Erreur lors du chargement.
-
-            </strong>
+            Erreur lors du chargement.
 
             <br><br>
 
             <small>
 
-                ${escapeHTML(error.message)}
+            ${escapeHTML(error.message)}
 
             </small>
 
@@ -3042,24 +3403,20 @@ async function afficherEchanges() {
 
         return;
 
-
     }
-
 
 
     /* NETTOYAGE */
 
-
     zone.innerHTML = "";
-
 
 
     /* AUCUN RESULTAT */
 
-
     if (
 
         !data ||
+
         data.length === 0
 
     ) {
@@ -3073,13 +3430,13 @@ async function afficherEchanges() {
 
             <span class="empty-icon">
 
-                🚆
+            🚆
 
             </span>
 
             <strong>
 
-                Aucune journée proposée
+            Aucune journée proposée
 
             </strong>
 
@@ -3095,15 +3452,10 @@ async function afficherEchanges() {
 
         return;
 
-
     }
 
 
-
-    /* =====================================================
-       AFFICHAGE DES DEMANDES
-    ===================================================== */
-
+    /* AFFICHAGE */
 
     data.forEach(
 
@@ -3113,21 +3465,44 @@ async function afficherEchanges() {
 
             const bloc =
 
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
-            bloc.className =
-
-            "item";
+            bloc.className = "item";
 
 
+            /* AGENT INTERESSE */
 
-            /* =====================================================
-               COMMENTAIRE
-            ===================================================== */
+            const agentInteresse =
 
+            echange.agent_interesse
+
+            ?
+
+            `
+
+            <div class="interesse">
+
+                🙋 Agent intéressé :
+
+                <strong>
+
+                ${escapeHTML(
+                    echange.agent_interesse
+                )}
+
+                </strong>
+
+            </div>
+
+            `
+
+            :
+
+            "";
+
+
+            /* COMMENTAIRE */
 
             const commentaire =
 
@@ -3154,82 +3529,32 @@ async function afficherEchanges() {
             "";
 
 
+            /*
+               AFFICHAGE COMPLET
 
-            /* =====================================================
-               AGENT INTERESSE
-            ===================================================== */
+               NOM
+               DATE
+               HEURES
 
-
-            const agentInteresse =
-
-            echange.agent_interesse
-
-            ?
-
-            `
-
-            <div class="interesse">
-
-                🙋
-
-                <strong>
-
-                    Agent intéressé :
-
-                </strong>
-
-                ${escapeHTML(
-                    echange.agent_interesse
-                )}
-
-                <br>
-
-                La demande reste disponible afin que
-                les agents puissent se contacter.
-
-            </div>
-
-            `
-
-            :
-
-            "";
-
-
-
-            /* =====================================================
-               CARTE
-            ===================================================== */
-
+               IMPORTANT :
+               CES INFORMATIONS
+               RESTENT VISIBLES
+            */
 
             bloc.innerHTML =
 
             `
 
-
-            <!-- AGENT -->
-
             <div class="item-header">
 
 
-                <div class="agent-avatar">
+                <div class="item-nom">
 
                     👤
 
-                </div>
-
-
-                <div>
-
-
-                    <div class="item-nom">
-
-                        ${escapeHTML(
-                            echange.nom
-                        )}
-
-                    </div>
-
+                    ${escapeHTML(
+                        echange.nom
+                    )}
 
                 </div>
 
@@ -3238,97 +3563,42 @@ async function afficherEchanges() {
 
 
 
-            <!-- =====================================================
-                 DATE ET HEURES
-
-                 IMPORTANT :
-                 CES INFORMATIONS SONT AFFICHÉES
-                 DANS DES BLOCS DISTINCTS
-            ===================================================== -->
+            <div class="item-details">
 
 
-            <div class="service-infos">
+                <div class="date-line">
 
+                    📅
 
-                <!-- DATE -->
+                    <span>
 
+                    ${formatDate(
+                        echange.date_service
+                    )}
 
-                <div class="service-info">
-
-
-                    <div class="info-icon">
-
-                        📅
-
-                    </div>
-
-
-                    <div class="info-text">
-
-
-                        <span class="info-label">
-
-                            Date de la journée
-
-                        </span>
-
-
-                        <span class="info-value">
-
-                            ${formatDate(
-                                echange.date_service
-                            )}
-
-                        </span>
-
-
-                    </div>
-
+                    </span>
 
                 </div>
 
 
 
-                <!-- HORAIRES -->
+                <div class="time-line">
 
+                    ⏰
 
-                <div class="service-info">
+                    <span>
 
+                    ${formatTime(
+                        echange.prise_service
+                    )}
 
-                    <div class="info-icon">
+                    →
 
-                        ⏰
+                    ${formatTime(
+                        echange.fin_service
+                    )}
 
-                    </div>
-
-
-                    <div class="info-text">
-
-
-                        <span class="info-label">
-
-                            Horaires de service
-
-                        </span>
-
-
-                        <span class="info-value">
-
-                            ${formatTime(
-                                echange.prise_service
-                            )}
-
-                            →
-
-                            ${formatTime(
-                                echange.fin_service
-                            )}
-
-                        </span>
-
-
-                    </div>
-
+                    </span>
 
                 </div>
 
@@ -3344,21 +3614,20 @@ async function afficherEchanges() {
 
 
 
-            <!-- ACTIONS -->
-
-
             <div class="actions">
 
 
                 <button
 
-                    class="btn-small btn-interet"
+                class="btn-small btn-interet"
 
-                    onclick="interesse(${echange.id})"
+                onclick="interesse(
+                    ${echange.id}
+                )"
 
                 >
 
-                    🙋 JE SUIS INTÉRESSÉ
+                🙋 JE SUIS INTÉRESSÉ
 
                 </button>
 
@@ -3366,37 +3635,32 @@ async function afficherEchanges() {
 
                 <button
 
-                    class="btn-small btn-delete"
+                class="btn-small btn-delete"
 
-                    onclick="supprimer(${echange.id})"
+                onclick="supprimer(
+                    ${echange.id}
+                )"
 
                 >
 
-                    🗑️ SUPPRIMER
+                🗑️ SUPPRIMER
 
                 </button>
 
 
             </div>
 
-
             `;
 
 
-
-            zone.appendChild(
-                bloc
-            );
+            zone.appendChild(bloc);
 
 
         }
 
-
     );
 
-
 }
-
 
 
 /* =====================================================
@@ -3415,7 +3679,6 @@ async function interesse(id) {
     );
 
 
-
     if (
 
         nomAgent === null
@@ -3425,7 +3688,6 @@ async function interesse(id) {
         return;
 
     }
-
 
 
     if (
@@ -3444,27 +3706,10 @@ async function interesse(id) {
 
         return;
 
-
     }
 
 
-
-    /* =====================================================
-       MISE A JOUR
-
-       IMPORTANT :
-
-       ON MODIFIE UNIQUEMENT
-       agent_interesse.
-
-       LE STATUT RESTE :
-
-       disponible
-
-       LA DEMANDE RESTE DONC
-       VISIBLE DANS LA LISTE.
-    ===================================================== */
-
+    /* MISE A JOUR */
 
     const {
 
@@ -3472,7 +3717,9 @@ async function interesse(id) {
 
     }
 
-    = await supabaseClient
+    =
+
+    await supabaseClient
 
     .from("echanges")
 
@@ -3480,7 +3727,7 @@ async function interesse(id) {
 
         agent_interesse:
 
-            nomAgent.trim()
+        nomAgent.trim()
 
     })
 
@@ -3491,7 +3738,6 @@ async function interesse(id) {
         id
 
     );
-
 
 
     if (
@@ -3507,7 +3753,9 @@ async function interesse(id) {
         alert(
 
             "Erreur : "
+
             +
+
             error.message
 
         );
@@ -3515,9 +3763,7 @@ async function interesse(id) {
 
         return;
 
-
     }
-
 
 
     alert(
@@ -3527,11 +3773,23 @@ async function interesse(id) {
     );
 
 
+    /*
+       IMPORTANT :
+
+       LA DEMANDE
+       RESTE DISPONIBLE.
+
+       LE STATUT
+       N'EST PAS MODIFIE.
+
+       LA DEMANDE
+       NE DISPARAIT PAS.
+    */
+
+
     await afficherEchanges();
 
-
 }
-
 
 
 /* =====================================================
@@ -3561,14 +3819,15 @@ async function supprimer(id) {
     }
 
 
-
     const {
 
         error
 
     }
 
-    = await supabaseClient
+    =
+
+    await supabaseClient
 
     .from("echanges")
 
@@ -3581,7 +3840,6 @@ async function supprimer(id) {
         id
 
     );
-
 
 
     if (
@@ -3597,7 +3855,9 @@ async function supprimer(id) {
         alert(
 
             "Erreur lors de la suppression : "
+
             +
+
             error.message
 
         );
@@ -3605,9 +3865,7 @@ async function supprimer(id) {
 
         return;
 
-
     }
-
 
 
     alert(
@@ -3619,9 +3877,7 @@ async function supprimer(id) {
 
     await afficherEchanges();
 
-
 }
-
 
 
 /* =====================================================
@@ -3637,16 +3893,14 @@ function formatDate(date) {
 
     ) {
 
-        return "Date non renseignée";
+        return "";
 
     }
 
 
     const morceaux =
 
-    String(date)
-    .substring(0, 10)
-    .split("-");
+    date.split("-");
 
 
     if (
@@ -3662,19 +3916,25 @@ function formatDate(date) {
 
     return
 
-        morceaux[2]
-        +
-        "/"
-        +
-        morceaux[1]
-        +
-        "/"
-        +
-        morceaux[0];
+    morceaux[2]
 
+    +
+
+    "/"
+
+    +
+
+    morceaux[1]
+
+    +
+
+    "/"
+
+    +
+
+    morceaux[0];
 
 }
-
 
 
 /* =====================================================
@@ -3690,15 +3950,12 @@ function formatTime(heure) {
 
     ) {
 
-        return "--:--";
+        return "";
 
     }
 
 
-    return
-
-    String(heure)
-    .substring(
+    return heure.substring(
 
         0,
 
@@ -3706,9 +3963,7 @@ function formatTime(heure) {
 
     );
 
-
 }
-
 
 
 /* =====================================================
@@ -3733,16 +3988,13 @@ function escapeHTML(texte) {
 
     const div =
 
-    document.createElement(
-        "div"
-    );
+    document.createElement("div");
 
 
     div.innerText = texte;
 
 
     return div.innerHTML;
-
 
 }
 
