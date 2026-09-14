@@ -742,302 +742,177 @@ async function interesser(id, nomProposant) {
 
 
     afficherEchanges();
-
-}
-
-
-
-/* =========================
-   AFFICHER LES ÉCHANGES
-========================= */
-
 async function afficherEchanges() {
 
+    let zone = document.getElementById("listeEchanges");
 
-    let zone =
-
-    document.getElementById(
-        "listeEchanges"
-    );
+    zone.innerHTML = "<p>Chargement...</p>";
 
 
-    zone.innerHTML =
-    "<p>Chargement...</p>";
-
-
-
-    const { data, error } =
-
-    await supabaseClient
-
-    .from("echanges")
-
-    .select("*")
-
-    .eq(
-        "metier",
-        metierActuel
-    )
-
-    .order(
-        "date_service",
-        {
+    const { data, error } = await supabaseClient
+        .from("echanges")
+        .select("*")
+        .eq("metier", metierActuel)
+        .order("date_service", {
             ascending: true
-        }
-    );
-
+        });
 
 
     if (error) {
 
-
         console.error(error);
 
-
         zone.innerHTML =
-
-        "<p>Erreur lors du chargement : "
-
-        +
-
-        error.message
-
-        +
-
-        "</p>";
-
+            "<p>Erreur lors du chargement : " +
+            error.message +
+            "</p>";
 
         return;
-
     }
-
 
 
     zone.innerHTML = "";
 
 
-
-    if (
-
-        !data ||
-        data.length === 0
-
-    ) {
-
+    if (!data || data.length === 0) {
 
         zone.innerHTML =
-
-        "<p>Aucune journée proposée pour le moment.</p>";
-
+            "<p>Aucune journée proposée pour le moment.</p>";
 
         return;
-
     }
-
 
 
     data.forEach(echange => {
 
 
-        let bloc =
-
-        document.createElement("div");
-
+        let bloc = document.createElement("div");
 
         bloc.className = "item";
 
 
+        let statut =
 
-        let statutHTML = "";
+            (echange.statut || "disponible")
+            .toLowerCase()
+            .trim();
 
 
-        if (
+        let badge = "";
 
-            echange.statut === "disponible"
 
-        ) {
+        if (statut === "disponible") {
 
+            badge =
+                '<span class="badge badge-disponible">' +
+                '🟢 Disponible' +
+                '</span>';
 
-            statutHTML =
+        } else {
 
-            '<span class="badge badge-disponible">🟢 Disponible</span>';
-
-
-        }
-
-        else {
-
-
-            statutHTML =
-
-            '<span class="badge badge-encours">🟠 Échange en cours</span>';
-
-        }
-
-
-
-        let html =
-
-
-        statutHTML
-
-
-        +
-
-        "<br><br>"
-
-
-        +
-
-        "<strong>👤 Proposé par : "
-
-        +
-
-        echange.nom
-
-        +
-
-        "</strong>"
-
-
-        +
-
-        "<br>"
-
-
-        +
-
-        "📅 "
-
-        +
-
-        echange.date_service
-
-
-        +
-
-        "<br>"
-
-
-        +
-
-        "⏰ "
-
-        +
-
-        echange.prise_service
-
-        +
-
-        " → "
-
-        +
-
-        echange.fin_service
-
-
-        +
-
-        "<br><br>"
-
-
-        +
-
-        "<small>"
-
-        +
-
-        (echange.commentaire || "")
-
-        +
-
-        "</small>";
-
-
-
-        if (
-
-            echange.statut === "disponible"
-
-        ) {
-
-
-            html +=
-
-
-            '<button class="btn btn-interesse" '
-
-            +
-
-            'onclick="interesser('
-
-            +
-
-            echange.id
-
-            +
-
-            ', '
-
-            +
-
-            '\''
-
-            +
-
-            echange.nom.replace(/'/g, "\\'")
-
-            +
-
-            '\''
-
-            +
-
-            ')"'
-
-            +
-
-            '>🤝 JE SUIS INTÉRESSÉ</button>';
+            badge =
+                '<span class="badge badge-encours">' +
+                '🟠 Échange en cours' +
+                '</span>';
 
         }
 
 
+        bloc.innerHTML =
+
+            badge +
+
+            "<br><br>" +
+
+            "<strong>👤 Proposé par : " +
+
+            echange.nom +
+
+            "</strong>" +
+
+            "<br>" +
+
+            "📅 " +
+
+            echange.date_service +
+
+            "<br>" +
+
+            "⏰ " +
+
+            echange.prise_service +
+
+            " → " +
+
+            echange.fin_service +
+
+            "<br><br>" +
+
+            "<small>" +
+
+            (echange.commentaire || "") +
+
+            "</small>";
+
+
+        /* BOUTON SI DISPONIBLE */
+
+        if (statut === "disponible") {
+
+
+            let bouton =
+                document.createElement("button");
+
+
+            bouton.className =
+                "btn btn-interesse";
+
+
+            bouton.innerText =
+                "🤝 JE SUIS INTÉRESSÉ";
+
+
+            bouton.onclick = function() {
+
+                interesser(
+                    echange.id,
+                    echange.nom
+                );
+
+            };
+
+
+            bloc.appendChild(bouton);
+
+        }
+
+
+        /* AGENT INTÉRESSÉ */
 
         if (
 
-            echange.statut === "en_cours"
-
-            &&
+            statut === "en_cours" &&
 
             echange.agent_interesse
 
         ) {
 
 
-            html +=
+            let info =
+                document.createElement("p");
 
 
-            "<br><br>"
+            info.innerHTML =
+                "<strong>🤝 Agent intéressé : " +
+
+                echange.agent_interesse +
+
+                "</strong>";
 
 
-            +
-
-            "<strong>🤝 Agent intéressé : "
-
-            +
-
-            echange.agent_interesse
-
-            +
-
-            "</strong>";
+            bloc.appendChild(info);
 
         }
-
-
-
-        bloc.innerHTML = html;
-
 
 
         zone.appendChild(bloc);
@@ -1047,11 +922,12 @@ async function afficherEchanges() {
 
 
 }
+}
 
 
-</script>
 
+/* =========================
+   AFFICHER LES ÉCHANGES
+========================= */
 
-</body>
-
-</html>
+async function afficherEchanges() {
