@@ -1,33 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>ÉCHANGE SERVICE</title>
 
+
 <!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
 
+
 :root {
+
     --bleu-fonce: #102a43;
     --bleu: #1769aa;
     --gris: #f3f6f8;
     --blanc: #ffffff;
+
 }
+
 
 * {
+
     box-sizing: border-box;
+
 }
 
+
 body {
+
     margin: 0;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -36,17 +51,21 @@ body {
         sans-serif;
 
     background: var(--gris);
+
     color: #17212b;
+
 }
 
 
 /* =========================
-   EN-TÊTE
+   HEADER
 ========================= */
+
 
 header {
 
     background:
+
         linear-gradient(
             135deg,
             var(--bleu-fonce),
@@ -61,6 +80,7 @@ header {
 
 }
 
+
 header h1 {
 
     margin: 0;
@@ -68,6 +88,7 @@ header h1 {
     font-size: 28px;
 
 }
+
 
 header p {
 
@@ -81,6 +102,7 @@ header p {
 /* =========================
    CONTENU
 ========================= */
+
 
 main {
 
@@ -104,6 +126,7 @@ main {
     margin-top: 15px;
 
     box-shadow:
+
         0 5px 20px
         rgba(0,0,0,0.08);
 
@@ -118,8 +141,9 @@ main {
 
 
 /* =========================
-   CHOIX MÉTIER
+   CHOIX METIER
 ========================= */
+
 
 .choice {
 
@@ -132,7 +156,9 @@ main {
     border-radius: 16px;
 
     border:
-        1px solid #e0e6eb;
+
+        1px solid
+        #e0e6eb;
 
     background: white;
 
@@ -160,16 +186,17 @@ main {
 }
 
 
+/* =========================
+   BOUTONS
+========================= */
+
+
 button {
 
     cursor: pointer;
 
 }
 
-
-/* =========================
-   BOUTONS
-========================= */
 
 .btn {
 
@@ -203,9 +230,17 @@ button {
 }
 
 
+.btn-interesse {
+
+    background: #167242;
+
+}
+
+
 /* =========================
-   FORMULAIRE
+   FORMULAIRES
 ========================= */
+
 
 label {
 
@@ -223,6 +258,7 @@ label {
 
 
 input,
+
 textarea {
 
     width: 100%;
@@ -234,7 +270,9 @@ textarea {
     border-radius: 10px;
 
     border:
-        1px solid #ccd6df;
+
+        1px solid
+        #ccd6df;
 
     font-size: 16px;
 
@@ -243,7 +281,9 @@ textarea {
 
 textarea {
 
-    min-height: 90px;
+    min-height: 80px;
+
+    resize: vertical;
 
 }
 
@@ -261,15 +301,18 @@ textarea {
 
 
 /* =========================
-   ÉCHANGES
+   ECHANGES
 ========================= */
+
 
 .item {
 
     background: #f8fafc;
 
     border-left:
-        5px solid var(--bleu);
+
+        5px solid
+        var(--bleu);
 
     padding: 15px;
 
@@ -303,6 +346,7 @@ textarea {
    MENU BAS
 ========================= */
 
+
 nav {
 
     position: fixed;
@@ -316,13 +360,16 @@ nav {
     background: white;
 
     border-top:
-        1px solid #dfe6ec;
+
+        1px solid
+        #dfe6ec;
 
     padding: 8px;
 
     display: flex;
 
-    justify-content: space-around;
+    justify-content:
+        space-around;
 
 }
 
@@ -337,38 +384,23 @@ nav button {
 
     padding: 8px;
 
-    color: #17212b;
+    color: #1769aa;
 
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media
-(max-width: 500px) {
-
-    header h1 {
-
-        font-size: 24px;
-
-    }
-
-}
 
 </style>
 
 </head>
 
 
-
 <body>
 
 
 <!-- =========================
-     EN-TÊTE
+     HEADER
 ========================= -->
+
 
 <header>
 
@@ -376,17 +408,15 @@ nav button {
 🚆 ÉCHANGE SERVICE
 </h1>
 
+
 <p>
 Échange de journées entre agents
 </p>
 
+
 </header>
 
 
-
-<!-- =========================
-     CONTENU PRINCIPAL
-========================= -->
 
 <main>
 
@@ -395,20 +425,22 @@ nav button {
      ACCUEIL
 ========================= -->
 
-<section
-id="accueil"
->
+
+<section id="accueil">
 
 
 <div class="card">
+
 
 <h2>
 Bienvenue 👋
 </h2>
 
+
 <p>
 Choisissez votre métier pour commencer.
 </p>
+
 
 </div>
 
@@ -448,8 +480,9 @@ Agents du Service Commercial Train
 
 
 <!-- =========================
-     PROPOSER UNE JOURNÉE
+     PROPOSER UNE JOURNEE
 ========================= -->
+
 
 <section
 id="proposer"
@@ -463,8 +496,7 @@ class="hidden"
 <span
 id="metier"
 class="badge"
->
-</span>
+></span>
 
 
 
@@ -480,9 +512,12 @@ Nom et prénom
 
 
 <input
+
 id="nom"
+
 placeholder="Exemple : Jean DUPONT"
-/>
+
+>
 
 
 
@@ -492,9 +527,12 @@ Date de la journée
 
 
 <input
+
 id="date"
+
 type="date"
-/>
+
+>
 
 
 
@@ -503,15 +541,20 @@ type="date"
 
 <div>
 
+
 <label>
 Prise de service
 </label>
 
 
 <input
+
 id="prise"
+
 type="time"
-/>
+
+>
+
 
 </div>
 
@@ -519,15 +562,20 @@ type="time"
 
 <div>
 
+
 <label>
 Fin de service
 </label>
 
 
 <input
+
 id="fin"
+
 type="time"
-/>
+
+>
+
 
 </div>
 
@@ -542,15 +590,21 @@ Commentaire facultatif
 
 
 <textarea
+
 id="commentaire"
+
 placeholder="Exemple : TER, réserve..."
+
 ></textarea>
 
 
 
 <button
+
 class="btn"
+
 onclick="publier()"
+
 >
 
 🚆 PUBLIER MA JOURNÉE
@@ -560,8 +614,11 @@ onclick="publier()"
 
 
 <button
+
 class="btn btn-secondaire"
+
 onclick="afficher('echanges')"
+
 >
 
 🔎 VOIR LES ÉCHANGES
@@ -577,12 +634,16 @@ onclick="afficher('echanges')"
 
 
 <!-- =========================
-     LISTE DES ÉCHANGES
+     ECHANGES
 ========================= -->
 
+
 <section
+
 id="echanges"
+
 class="hidden"
+
 >
 
 
@@ -594,29 +655,35 @@ class="hidden"
 </h2>
 
 
+
 <p>
 
 Métier :
 
 <strong
 id="metierEchanges"
->
-</strong>
+></strong>
 
 </p>
 
 
 
 <div
+
 id="listeEchanges"
+
 >
+
 </div>
 
 
 
 <button
+
 class="btn btn-secondaire"
+
 onclick="afficher('proposer')"
+
 >
 
 ➕ PROPOSER UNE JOURNÉE
@@ -635,21 +702,27 @@ onclick="afficher('proposer')"
 
 
 <!-- =========================
-     MENU BAS
+     MENU
 ========================= -->
 
+
 <nav
+
 id="menu"
+
 class="hidden"
+
 >
 
 
 <button
+
 onclick="afficher('proposer')"
+
 >
 
-➕
-<br>
+➕<br>
+
 Ma journée
 
 </button>
@@ -657,11 +730,13 @@ Ma journée
 
 
 <button
+
 onclick="afficher('echanges')"
+
 >
 
-🔎
-<br>
+🔎<br>
+
 Échanges
 
 </button>
@@ -669,11 +744,13 @@ onclick="afficher('echanges')"
 
 
 <button
+
 onclick="changerMetier()"
+
 >
 
-🚆
-<br>
+🚆<br>
+
 Métier
 
 </button>
@@ -687,37 +764,44 @@ Métier
      JAVASCRIPT
 ========================= -->
 
+
 <script>
 
 
 /* =========================
-   CONFIGURATION SUPABASE
+   CONNEXION SUPABASE
 ========================= */
 
 
 const SUPABASE_URL =
+
 "https://nptwpoguokbjuzdyxach.supabase.co";
 
 
 const SUPABASE_KEY =
+
 "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 
+
 const supabaseClient =
+
 supabase.createClient(
+
     SUPABASE_URL,
+
     SUPABASE_KEY
+
 );
 
 
 
 /* =========================
-   MÉTIER ACTUEL
+   METIER ACTUEL
 ========================= */
 
 
 let metierActuel = "";
-
 
 
 /* =========================
@@ -729,8 +813,13 @@ function afficher(page) {
 
 
     document
-        .querySelectorAll("main section")
+
+        .querySelectorAll(
+            "main section"
+        )
+
         .forEach(
+
             section => {
 
                 section
@@ -738,29 +827,29 @@ function afficher(page) {
                     .add("hidden");
 
             }
+
         );
 
 
     document
+
         .getElementById(page)
+
         .classList
+
         .remove("hidden");
 
 
 
     if (
-        page === "echanges"
-    ) {
 
-        document
-            .getElementById(
-                "metierEchanges"
-            )
-            .innerText =
-            metierActuel;
+        page === "echanges"
+
+    ) {
 
 
         afficherEchanges();
+
 
     }
 
@@ -770,7 +859,7 @@ function afficher(page) {
 
 
 /* =========================
-   CHOISIR LE MÉTIER
+   CHOISIR UN METIER
 ========================= */
 
 
@@ -782,19 +871,33 @@ function choisirMetier(metier) {
 
 
     document
-        .getElementById(
-            "metier"
-        )
+
+        .getElementById("metier")
+
         .innerText =
+
         metier;
 
 
 
     document
+
         .getElementById(
-            "menu"
+            "metierEchanges"
         )
+
+        .innerText =
+
+        metier;
+
+
+
+    document
+
+        .getElementById("menu")
+
         .classList
+
         .remove("hidden");
 
 
@@ -807,7 +910,7 @@ function choisirMetier(metier) {
 
 
 /* =========================
-   CHANGER DE MÉTIER
+   CHANGER DE METIER
 ========================= */
 
 
@@ -819,10 +922,11 @@ function changerMetier() {
 
 
     document
-        .getElementById(
-            "menu"
-        )
+
+        .getElementById("menu")
+
         .classList
+
         .add("hidden");
 
 
@@ -835,67 +939,83 @@ function changerMetier() {
 
 
 /* =========================
-   PUBLIER UNE JOURNÉE
+   PUBLIER UNE JOURNEE
 ========================= */
 
 
 async function publier() {
 
 
-    const nom =
+    let nom =
 
         document
-        .getElementById("nom")
-        .value
-        .trim();
+
+            .getElementById("nom")
+
+            .value
+
+            .trim();
 
 
 
-    const date =
-
-        document
-        .getElementById("date")
-        .value;
-
-
-
-    const prise =
+    let date =
 
         document
-        .getElementById("prise")
-        .value;
+
+            .getElementById("date")
+
+            .value;
 
 
 
-    const fin =
-
-        document
-        .getElementById("fin")
-        .value;
-
-
-
-    const commentaire =
+    let prise =
 
         document
-        .getElementById("commentaire")
-        .value
-        .trim();
+
+            .getElementById("prise")
+
+            .value;
 
 
 
-    /* =====================
-       VÉRIFICATION
-    ===================== */
+    let fin =
+
+        document
+
+            .getElementById("fin")
+
+            .value;
+
+
+
+    let commentaire =
+
+        document
+
+            .getElementById("commentaire")
+
+            .value
+
+            .trim();
+
+
+
+    /* VERIFICATION */
 
 
     if (
 
-        !nom ||
+        !nom
 
-        !date ||
+        ||
 
-        !prise ||
+        !date
+
+        ||
+
+        !prise
+
+        ||
 
         !fin
 
@@ -916,72 +1036,90 @@ async function publier() {
 
 
 
-    /* =====================
-       ENVOI SUPABASE
-    ===================== */
+    /* ENVOI VERS SUPABASE */
 
 
     const {
 
         error
 
-    } = await supabaseClient
+    } =
+
+    await supabaseClient
 
         .from("echanges")
 
-        .insert([
+        .insert(
 
-            {
+            [
 
-                metier:
-                metierActuel,
+                {
 
+                    metier:
 
-                nom:
-                nom,
-
-
-                date_service:
-                date,
+                        metierActuel,
 
 
-                prise_service:
-                prise,
+                    nom:
+
+                        nom,
 
 
-                fin_service:
-                fin,
+                    date_service:
+
+                        date,
 
 
-                commentaire:
-                commentaire,
+                    prise_service:
+
+                        prise,
 
 
-                statut:
-                "disponible"
+                    fin_service:
+
+                        fin,
 
 
-            }
+                    commentaire:
 
-        ]);
-
-
-
-    /* =====================
-       ERREUR
-    ===================== */
+                        commentaire,
 
 
-    if (error) {
+                    statut:
+
+                        "disponible",
+
+
+                    agent_interesse:
+
+                        null
+
+                }
+
+            ]
+
+        );
+
+
+
+    /* ERREUR */
+
+
+    if (
+
+        error
+
+    ) {
 
 
         console.error(error);
 
 
+
         alert(
 
-            "❌ Erreur : "
-            +
+            "Erreur : " +
+
             error.message
 
         );
@@ -994,57 +1132,64 @@ async function publier() {
 
 
 
-    /* =====================
-       NETTOYAGE FORMULAIRE
-    ===================== */
+    /* NETTOYAGE FORMULAIRE */
 
 
     document
+
         .getElementById("nom")
+
         .value = "";
 
 
 
     document
+
         .getElementById("date")
+
         .value = "";
 
 
 
     document
+
         .getElementById("prise")
+
         .value = "";
 
 
 
     document
+
         .getElementById("fin")
+
         .value = "";
 
 
 
     document
+
         .getElementById("commentaire")
+
         .value = "";
 
 
 
-    /* =====================
-       CONFIRMATION
-    ===================== */
+    /* MESSAGE */
 
 
     alert(
 
-        "✅ Votre journée est publiée !"
+        "Votre journée est publiée !"
 
     );
 
 
 
-    afficher(
-        "echanges"
-    );
+    /* AFFICHER LES ECHANGES */
+
+
+    afficher("echanges");
 
 
 }
@@ -1052,25 +1197,36 @@ async function publier() {
 
 
 /* =========================
-   AFFICHER LES ÉCHANGES
+   AFFICHER LES ECHANGES
 ========================= */
 
 
 async function afficherEchanges() {
 
 
-    const zone =
+    let zone =
 
         document
+
+            .getElementById(
+                "listeEchanges"
+            );
+
+
+
+    document
+
         .getElementById(
-            "listeEchanges"
-        );
+            "metierEchanges"
+        )
+
+        .innerText =
+
+        metierActuel;
 
 
 
-    /* =====================
-       CHARGEMENT
-    ===================== */
+    /* MESSAGE CHARGEMENT */
 
 
     zone.innerHTML =
@@ -1079,9 +1235,7 @@ async function afficherEchanges() {
 
 
 
-    /* =====================
-       LECTURE SUPABASE
-    ===================== */
+    /* RECUPERATION SUPABASE */
 
 
     const {
@@ -1090,43 +1244,56 @@ async function afficherEchanges() {
 
         error
 
-    } = await supabaseClient
+    } =
+
+    await supabaseClient
 
         .from("echanges")
 
         .select("*")
 
         .eq(
+
             "metier",
+
             metierActuel
+
         )
 
         .eq(
+
             "statut",
+
             "disponible"
+
         )
 
         .order(
+
             "date_service",
+
             {
 
-                ascending:
-                true
+                ascending: true
 
             }
+
         );
 
 
 
-    /* =====================
-       ERREUR
-    ===================== */
+    /* ERREUR */
 
 
-    if (error) {
+    if (
+
+        error
+
+    ) {
 
 
         console.error(error);
+
 
 
         zone.innerHTML =
@@ -1149,14 +1316,21 @@ async function afficherEchanges() {
 
 
 
-    /* =====================
-       AUCUN ÉCHANGE
-    ===================== */
+    /* NETTOYAGE */
+
+
+    zone.innerHTML = "";
+
+
+
+    /* AUCUN ECHANGE */
 
 
     if (
 
-        !data ||
+        !data
+
+        ||
 
         data.length === 0
 
@@ -1175,25 +1349,19 @@ async function afficherEchanges() {
 
 
 
-    /* =====================
-       AFFICHAGE
-    ===================== */
-
-
-    zone.innerHTML = "";
-
+    /* AFFICHAGE */
 
 
     data.forEach(
+
         echange => {
 
 
-            const bloc =
+            let bloc =
 
                 document
-                .createElement(
-                    "div"
-                );
+
+                    .createElement("div");
 
 
 
@@ -1203,8 +1371,17 @@ async function afficherEchanges() {
 
 
 
-            bloc.innerHTML =
+            let commentaire =
 
+                echange.commentaire
+
+                ||
+
+                "";
+
+
+
+            bloc.innerHTML =
 
                 "<strong>"
 
@@ -1226,7 +1403,6 @@ async function afficherEchanges() {
 
                 "📅 "
 
-
                 +
 
                 echange.date_service
@@ -1240,7 +1416,6 @@ async function afficherEchanges() {
                 +
 
                 "⏰ "
-
 
                 +
 
@@ -1266,30 +1441,202 @@ async function afficherEchanges() {
 
                 "<small>"
 
-
                 +
 
-                (
-                    echange.commentaire
-                    ||
-                    ""
-                )
+                commentaire
 
 
                 +
 
-                "</small>";
+                "</small>"
+
+
+                +
+
+                "<button "
+
+                +
+
+                'class="btn btn-interesse" '
+
+                +
+
+                'onclick="jeSuisInteresse('
+
+                +
+
+                echange.id
+
+                +
+
+                ')">'
+
+                +
+
+                "🤝 JE SUIS INTÉRESSÉ"
+
+                +
+
+                "</button>";
 
 
 
             zone
-                .appendChild(
-                    bloc
-                );
+
+                .appendChild(bloc);
 
 
         }
+
     );
+
+
+}
+
+
+
+/* =========================
+   JE SUIS INTERESSE
+========================= */
+
+
+async function jeSuisInteresse(id) {
+
+
+    let nomAgent =
+
+        prompt(
+
+            "Indique ton nom et prénom :"
+
+        );
+
+
+
+    /* ANNULATION */
+
+
+    if (
+
+        !nomAgent
+
+    ) {
+
+
+        return;
+
+
+    }
+
+
+
+    nomAgent =
+
+        nomAgent.trim();
+
+
+
+    if (
+
+        nomAgent === ""
+
+    ) {
+
+
+        return;
+
+
+    }
+
+
+
+    /* MISE A JOUR SUPABASE */
+
+
+    const {
+
+        error
+
+    } =
+
+    await supabaseClient
+
+        .from("echanges")
+
+        .update(
+
+            {
+
+                statut:
+
+                    "interesse",
+
+
+                agent_interesse:
+
+                    nomAgent
+
+            }
+
+        )
+
+        .eq(
+
+            "id",
+
+            id
+
+        );
+
+
+
+    /* ERREUR */
+
+
+    if (
+
+        error
+
+    ) {
+
+
+        console.error(error);
+
+
+
+        alert(
+
+            "Erreur : "
+
+            +
+
+            error.message
+
+        );
+
+
+        return;
+
+
+    }
+
+
+
+    /* CONFIRMATION */
+
+
+    alert(
+
+        "Votre intérêt a été enregistré !"
+
+    );
+
+
+
+    /* ACTUALISATION */
+
+
+    afficherEchanges();
 
 
 }
@@ -1298,7 +1645,7 @@ async function afficherEchanges() {
 </script>
 
 
-
 </body>
+
 
 </html>
