@@ -2,2634 +2,1736 @@
 <html lang="fr">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  name="viewport"
+  content="width=device-width,
+           initial-scale=1,
+           maximum-scale=1,
+           viewport-fit=cover"
 >
 
-<meta name="theme-color" content="#071d2d">
+<meta name="theme-color" content="#071c2c">
 
 <title>ÉCHANGE SERVICE</title>
 
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <style>
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* =========================================================
+   ÉCHANGE SERVICE — V4.4
+   Design moderne train / mobile / iPad
+   ========================================================= */
 
-:root {
+:root{
+  --navy:#071c2c;
+  --navy2:#0b2d44;
 
-    --navy: #071c2c;
-    --navy2: #0b3048;
-    --blue: #1686c5;
-    --blue2: #42b9e8;
-    --cyan: #62d4ed;
+  --blue:#0c83bd;
+  --blue2:#19a8d8;
+  --cyan:#62dff5;
 
-    --white: #ffffff;
+  --teal:#29b9ad;
 
-    --text: #173149;
-    --text-soft: #647587;
+  --white:#ffffff;
+  --glass:rgba(255,255,255,.90);
 
-    --background: #eaf3f8;
+  --text:#142f44;
+  --muted:#687b89;
 
-    --green: #25b77a;
-    --orange: #f3a51b;
-    --red: #dc4b4b;
+  --line:#dbe7ed;
 
-    --shadow:
-        0 18px 45px rgba(5,35,55,.14);
+  --success:#198754;
+  --warning:#a56a00;
+  --danger:#c23a45;
 
-    --radius:
-        24px;
-
+  --shadow:0 18px 45px rgba(4,30,47,.18);
 }
 
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+   ========================================================= */
 
-* {
+*{
+  box-sizing:border-box;
+}
 
-    box-sizing: border-box;
+html{
+  scroll-behavior:smooth;
+}
 
-    -webkit-tap-highlight-color:
-        transparent;
+body{
+  margin:0;
+  min-height:100vh;
 
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  color:var(--text);
+
+  background:#071c2c;
+
+  overflow-x:hidden;
+
+  -webkit-font-smoothing:antialiased;
 }
 
 
-html {
+/* =========================================================
+   ARRIÈRE-PLAN TRAIN
+   ========================================================= */
 
-    scroll-behavior:
-        smooth;
+.bg{
+  position:fixed;
+  inset:0;
 
+  z-index:-10;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3,20,34,.20) 0%,
+      rgba(3,24,40,.20) 35%,
+      rgba(5,38,57,.30) 58%,
+      rgba(235,245,249,.72) 100%
+    ),
+    url("fond-train-v44.jpg")
+    center center /
+    cover
+    no-repeat;
 }
 
 
-body {
+/* voile principal */
 
-    margin: 0;
+.bg::before{
+  content:"";
 
-    min-height: 100vh;
+  position:absolute;
+  inset:0;
 
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color:
-        var(--text);
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #071d2d 0%,
-            #0b405e 34%,
-            #b9d2df 55%,
-            #edf5f9 76%,
-            #edf5f9 100%
-        );
-
-    overflow-x:
-        hidden;
-
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3,19,32,.78) 0%,
+      rgba(5,31,48,.42) 32%,
+      rgba(10,54,75,.12) 55%,
+      rgba(237,246,250,.82) 100%
+    );
 }
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* halo lumineux */
 
-button,
-input,
-textarea {
+.bg::after{
+  content:"";
 
-    font-family:
-        inherit;
+  position:absolute;
+  inset:0;
 
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(90,220,245,.22),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(31,160,207,.24),
+      transparent 30%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,.06) 48%,
+      transparent 70%
+    );
 }
 
 
-button {
+/* lignes décoratives */
 
-    cursor:
-        pointer;
+.speed{
+  position:absolute;
 
+  height:2px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(110,225,247,.65),
+      transparent
+    );
+
+  filter:blur(.2px);
+}
+
+.s1{
+  width:34%;
+  top:16%;
+  left:4%;
+}
+
+.s2{
+  width:27%;
+  top:25%;
+  right:4%;
 }
 
 
-.hidden {
-
-    display:
-        none !important;
-
-}
-
-
-/* =====================================================
-   FOND FERROVIAIRE
-===================================================== */
-
-.background-railway {
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        0;
-
-    pointer-events:
-        none;
-
-    overflow:
-        hidden;
-
-}
-
-
-/* lumière principale */
-
-.background-railway::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        900px;
-
-    height:
-        900px;
-
-    top:
-        -450px;
-
-    right:
-        -220px;
-
-    border-radius:
-        50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(56,186,231,.28),
-            transparent 68%
-        );
-
-}
-
-
-/* deuxième lumière */
-
-.background-railway::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        650px;
-
-    height:
-        650px;
-
-    top:
-        60px;
-
-    left:
-        -330px;
-
-    border-radius:
-        50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(36,122,166,.25),
-            transparent 70%
-        );
-
-}
-
-
-/* =====================================================
-   CERCLES DÉCORATIFS
-===================================================== */
-
-.circle {
-
-    position:
-        absolute;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    border-radius:
-        50%;
-
-}
-
-
-.circle.one {
-
-    width:
-        520px;
-
-    height:
-        520px;
-
-    top:
-        -360px;
-
-    left:
-        -180px;
-
-}
-
-
-.circle.two {
-
-    width:
-        700px;
-
-    height:
-        700px;
-
-    top:
-        -420px;
-
-    right:
-        -300px;
-
-}
-
-
-.circle.three {
-
-    width:
-        320px;
-
-    height:
-        320px;
-
-    top:
-        210px;
-
-    left:
-        18%;
-
-    border-color:
-        rgba(255,255,255,.06);
-
-}
-
-
-/* =====================================================
-   TRAIN DANS LE FOND
-===================================================== */
-
-.train {
-
-    position:
-        absolute;
-
-    top:
-        105px;
-
-    right:
-        -40px;
-
-    width:
-        480px;
-
-    height:
-        155px;
-
-    opacity:
-        .90;
-
-    filter:
-        drop-shadow(
-            0 18px 18px
-            rgba(0,0,0,.18)
-        );
-
-}
-
-
-/* caisse */
-
-.train-body {
-
-    position:
-        absolute;
-
-    left:
-        0;
-
-    bottom:
-        22px;
-
-    width:
-        430px;
-
-    height:
-        90px;
-
-    border-radius:
-        22px 55px 16px 16px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #eaf8fc 0%,
-            #c7e4ef 43%,
-            #78abc1 100%
-        );
-
-    box-shadow:
-        inset 0 3px 0
-        rgba(255,255,255,.65);
-
-}
-
-
-/* nez du train */
-
-.train-front {
-
-    position:
-        absolute;
-
-    right:
-        0;
-
-    bottom:
-        22px;
-
-    width:
-        90px;
-
-    height:
-        90px;
-
-    border-radius:
-        50px 60px 18px 18px;
-
-    background:
-
-        linear-gradient(
-            160deg,
-            #f4fbfd,
-            #b9d9e6
-        );
-
-}
-
-
-/* vitrage */
-
-.train-window {
-
-    position:
-        absolute;
-
-    top:
-        18px;
-
-    left:
-        55px;
-
-    width:
-        285px;
-
-    height:
-        38px;
-
-    border-radius:
-        22px;
-
-    background:
-        #0a273d;
-
-    box-shadow:
-        inset 0 3px 7px
-        rgba(255,255,255,.10);
-
-}
-
-
-/* séparations fenêtres */
-
-.train-window::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 48px,
-            rgba(72,157,193,.65) 49px,
-            rgba(72,157,193,.65) 54px
-        );
-
-    border-radius:
-        inherit;
-
-}
-
-
-/* bande bleue */
-
-.train-line {
-
-    position:
-        absolute;
-
-    left:
-        0;
-
-    bottom:
-        42px;
-
-    width:
-        370px;
-
-    height:
-        8px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #1d79ae,
-            #52c9e8
-        );
-
-}
-
-
-/* roues */
-
-.train-wheel {
-
-    position:
-        absolute;
-
-    bottom:
-        0;
-
-    width:
-        30px;
-
-    height:
-        30px;
-
-    border-radius:
-        50%;
-
-    background:
-        #142c3c;
-
-    border:
-        6px solid
-        #7994a2;
-
-}
-
-
-.train-wheel.one {
-
-    left:
-        85px;
-
-}
-
-
-.train-wheel.two {
-
-    left:
-        305px;
-
-}
-
-
-/* =====================================================
-   VOIES FERRÉES
-===================================================== */
-
-.railway {
-
-    position:
-        absolute;
-
-    left:
-        0;
-
-    right:
-        0;
-
-    top:
-        260px;
-
-    height:
-        82px;
-
-}
-
-
-.rail {
-
-    position:
-        absolute;
-
-    left:
-        0;
-
-    width:
-        100%;
-
-    height:
-        5px;
-
-    background:
-        rgba(235,248,252,.72);
-
-    box-shadow:
-        0 1px 0
-        rgba(0,0,0,.12);
-
-}
-
-
-.rail.top {
-
-    top:
-        20px;
-
-}
-
-
-.rail.bottom {
-
-    top:
-        63px;
-
-}
-
-
-.sleepers {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 24px,
-            rgba(215,237,245,.52) 25px,
-            rgba(215,237,245,.52) 31px,
-            transparent 32px,
-            transparent 58px
-        );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+   ========================================================= */
 
-header {
+.hero{
+  position:relative;
 
-    position:
-        relative;
+  min-height:255px;
 
-    z-index:
-        2;
+  padding:
+    calc(16px + env(safe-area-inset-top))
+    16px
+    54px;
 
-    min-height:
-        315px;
+  text-align:center;
 
-    padding:
-        30px 18px 85px;
+  color:white;
 
-    color:
-        white;
+  overflow:hidden;
+}
 
-    text-align:
-        center;
+.hero-inner{
+  position:relative;
 
+  z-index:2;
+
+  width:min(1080px,100%);
+
+  margin:auto;
 }
 
 
-/* =====================================================
-   LOGO
-===================================================== */
+/* logo train */
 
-.logo {
+.mark{
+  width:58px;
+  height:58px;
 
-    width:
-        64px;
+  margin:
+    0 auto 9px;
 
-    height:
-        64px;
+  display:grid;
+  place-items:center;
 
-    margin:
-        0 auto 13px;
+  border:
+    1px solid
+    rgba(255,255,255,.32);
 
-    display:
-        flex;
+  border-radius:19px;
 
-    align-items:
-        center;
+  background:
+    rgba(4,31,49,.50);
 
-    justify-content:
-        center;
+  box-shadow:
+    0 12px 30px
+    rgba(0,0,0,.25);
 
-    border-radius:
-        20px;
+  backdrop-filter:blur(14px);
 
-    background:
-        rgba(255,255,255,.10);
-
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
-    box-shadow:
-        0 12px 35px
-        rgba(0,0,0,.20);
-
-    backdrop-filter:
-        blur(12px);
-
-    font-size:
-        34px;
-
+  font-size:30px;
 }
 
 
-/* =====================================================
-   TITRE
-===================================================== */
+/* titre */
 
-header h1 {
+.hero h1{
+  margin:0;
 
-    margin:
-        0;
+  font-size:
+    clamp(35px,7vw,66px);
 
-    font-size:
-        clamp(
-            34px,
-            7vw,
-            58px
-        );
+  line-height:.98;
 
-    line-height:
-        1;
+  font-weight:900;
 
-    letter-spacing:
-        2px;
+  letter-spacing:
+    clamp(1px,1vw,4px);
 
-    font-weight:
-        900;
+  text-shadow:
+    0 8px 25px
+    rgba(0,0,0,.45);
+}
 
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 8px 30px
-        rgba(0,0,0,.28);
-
+.hero h1 span{
+  color:var(--cyan);
 }
 
 
-header h1 span {
+/* sous-titre */
 
-    color:
-        #59d4f2;
+.sub{
+  margin-top:12px;
 
+  font-size:
+    clamp(14px,3vw,22px);
+
+  line-height:1.35;
+
+  color:
+    rgba(255,255,255,.96);
+
+  text-shadow:
+    0 3px 14px
+    rgba(0,0,0,.40);
+}
+
+.sub strong{
+  display:inline-block;
+
+  margin-top:4px;
+
+  color:#8cecff;
+
+  font-weight:850;
 }
 
 
-/* =====================================================
-   SOUS-TITRE
-===================================================== */
+/* trait lumineux */
 
-.subtitle {
+.glow{
+  height:4px;
 
-    margin:
-        17px 0 0;
+  width:min(460px,70%);
 
-    font-size:
-        clamp(
-            16px,
-            3vw,
-            22px
-        );
+  margin:
+    15px auto 0;
 
-    color:
-        rgba(255,255,255,.86);
+  border-radius:999px;
 
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #5bdcf1,
+      transparent
+    );
+
+  box-shadow:
+    0 0 24px
+    rgba(85,214,238,.48);
 }
 
 
-.subtitle strong {
-
-    display:
-        block;
-
-    margin-top:
-        5px;
-
-    color:
-        #65d6f4;
-
-}
-
-
-/* =====================================================
-   BADGE SERVICE
-===================================================== */
-
-.status {
-
-    position:
-        absolute;
-
-    top:
-        22px;
-
-    right:
-        22px;
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        7px;
-
-    padding:
-        8px 13px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(4,28,43,.45);
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    font-size:
-        12px;
-
-    color:
-        white;
-
-}
-
-
-.status-dot {
-
-    width:
-        8px;
-
-    height:
-        8px;
-
-    border-radius:
-        50%;
-
-    background:
-        #28d98b;
-
-    box-shadow:
-        0 0 12px
-        rgba(40,217,139,.8);
-
-}
-
-
-/* =====================================================
+/* =========================================================
    CONTENU
-===================================================== */
+   ========================================================= */
 
-main {
+main{
+  width:min(1120px,100%);
 
-    position:
-        relative;
+  margin:
+    -35px auto
+    100px;
 
-    z-index:
-        5;
+  padding:
+    0 14px;
+}
 
-    width:
-        min(1180px, calc(100% - 28px));
-
-    margin:
-        -38px auto 110px;
-
+.hidden{
+  display:none !important;
 }
 
 
-/* =====================================================
-   CARDS
-===================================================== */
-
-.card {
-
-    position:
-        relative;
-
-    background:
-        rgba(255,255,255,.94);
-
-    border:
-        1px solid
-        rgba(255,255,255,.8);
-
-    border-radius:
-        var(--radius);
-
-    box-shadow:
-        var(--shadow);
-
-    backdrop-filter:
-        blur(20px);
-
-}
-
-
-/* =====================================================
+/* =========================================================
    ACCUEIL
-===================================================== */
+   ========================================================= */
 
-.welcome {
+.welcome{
+  position:relative;
 
-    padding:
-        25px 25px 22px;
+  overflow:hidden;
 
-    margin-bottom:
-        16px;
+  text-align:center;
 
-    text-align:
-        center;
+  padding:
+    20px 18px
+    18px;
 
+  border:
+    1px solid
+    rgba(255,255,255,.88);
+
+  border-radius:28px;
+
+  background:
+    rgba(255,255,255,.91);
+
+  box-shadow:var(--shadow);
+
+  backdrop-filter:blur(20px);
 }
 
 
-.welcome-icon {
+/* formes décoratives */
 
-    width:
-        56px;
+.welcome::before{
+  content:"";
 
-    height:
-        56px;
+  position:absolute;
 
-    margin:
-        0 auto 8px;
+  width:250px;
+  height:250px;
 
-    display:
-        flex;
+  left:-150px;
+  top:-160px;
 
-    align-items:
-        center;
+  border-radius:50%;
 
-    justify-content:
-        center;
+  background:
+    rgba(74,205,235,.13);
+}
 
-    border-radius:
-        18px;
+.welcome::after{
+  content:"";
 
-    background:
-        linear-gradient(
-            145deg,
-            #d9f3fc,
-            #c3e7f4
-        );
+  position:absolute;
 
-    font-size:
-        30px;
+  width:220px;
+  height:220px;
 
-    box-shadow:
-        0 8px 22px
-        rgba(36,145,190,.16);
+  right:-120px;
+  bottom:-150px;
 
+  border-radius:50%;
+
+  background:
+    rgba(42,188,174,.11);
 }
 
 
-.welcome h2 {
+/* icône accueil */
 
-    margin:
-        0 0 7px;
+.welcome-icon{
+  position:relative;
+  z-index:1;
 
-    font-size:
-        clamp(
-            26px,
-            4vw,
-            36px
-        );
+  width:58px;
+  height:58px;
 
-    font-weight:
-        900;
+  margin:
+    0 auto 8px;
 
+  display:grid;
+  place-items:center;
+
+  border-radius:19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e9faff,
+      #c7eaf4
+    );
+
+  font-size:30px;
+
+  box-shadow:
+    0 10px 25px
+    rgba(35,141,181,.18);
 }
 
 
-.welcome p {
+.welcome h2{
+  position:relative;
+  z-index:1;
 
-    max-width:
-        820px;
+  margin:
+    0 0 7px;
 
-    margin:
-        0 auto;
+  font-size:
+    clamp(28px,5vw,40px);
 
-    color:
-        var(--text-soft);
-
-    font-size:
-        15px;
-
-    line-height:
-        1.5;
-
+  font-weight:900;
 }
 
 
-.choose {
+.welcome p{
+  position:relative;
+  z-index:1;
 
-    display:
-        inline-flex;
+  max-width:850px;
 
-    align-items:
-        center;
+  margin:auto;
 
-    gap:
-        7px;
+  color:var(--muted);
 
-    margin-top:
-        12px;
+  font-size:
+    clamp(14px,2.3vw,18px);
 
-    padding:
-        8px 15px;
-
-    border-radius:
-        999px;
-
-    background:
-        #e1f3fa;
-
-    color:
-        #24506c;
-
-    font-weight:
-        800;
-
-    font-size:
-        13px;
-
+  line-height:1.42;
 }
 
 
-/* =====================================================
-   METIERS
-===================================================== */
+/* bandeau */
 
-.choices {
+.pill{
+  position:relative;
+  z-index:1;
 
-    display:
-        grid;
+  display:inline-flex;
 
-    grid-template-columns:
-        repeat(2, 1fr);
+  align-items:center;
 
-    gap:
-        16px;
+  justify-content:center;
 
+  margin-top:13px;
+
+  padding:
+    8px 15px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e0f6fb,
+      #c9eaf5
+    );
+
+  color:#24536c;
+
+  font-size:13px;
+
+  font-weight:800;
 }
 
 
-.choice {
+/* =========================================================
+   CHOIX MÉTIER
+   ========================================================= */
 
-    border:
-        none;
+.choices{
+  display:grid;
 
-    padding:
-        0;
+  grid-template-columns:1fr;
 
-    background:
-        transparent;
+  gap:11px;
 
-    text-align:
-        left;
+  margin-top:13px;
+}
 
+.choice{
+  border:0;
+
+  padding:0;
+
+  background:transparent;
+
+  text-align:left;
+
+  cursor:pointer;
+}
+
+.choice-card{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:90px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:13px;
+
+  padding:
+    12px 15px;
+
+  border-radius:23px;
+
+  background:
+    rgba(255,255,255,.94);
+
+  border:
+    1px solid
+    rgba(255,255,255,.95);
+
+  box-shadow:
+    0 13px 30px
+    rgba(8,40,58,.15);
+
+  transition:
+    transform .16s ease,
+    box-shadow .16s ease;
 }
 
 
-.choice-content {
+.choice-card:hover{
+  transform:translateY(-2px);
 
-    position:
-        relative;
+  box-shadow:
+    0 18px 35px
+    rgba(8,40,58,.20);
+}
 
-    min-height:
-        104px;
-
-    padding:
-        18px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        15px;
-
-    overflow:
-        hidden;
-
-    border-radius:
-        22px;
-
-    background:
-        rgba(255,255,255,.96);
-
-    border:
-        1px solid
-        rgba(255,255,255,.9);
-
-    box-shadow:
-        0 12px 30px
-        rgba(5,35,55,.12);
-
-    transition:
-        transform .18s ease,
-        box-shadow .18s ease;
-
+.choice-card:active{
+  transform:scale(.985);
 }
 
 
-.choice-content:hover {
+/* accents */
 
-    transform:
-        translateY(-2px);
+.adc .choice-card{
+  border-left:
+    5px solid
+    #2ba7dc;
+}
 
-    box-shadow:
-        0 17px 35px
-        rgba(5,35,55,.16);
-
+.asct .choice-card{
+  border-left:
+    5px solid
+    #32b9ae;
 }
 
 
-.choice-content:active {
+/* icônes */
 
-    transform:
-        scale(.985);
+.choice-icon{
+  flex:
+    0 0 56px;
 
+  width:56px;
+  height:56px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e5f8fd,
+      #c6e9f4
+    );
+
+  font-size:28px;
 }
 
 
-.choice.adc .choice-content {
+/* texte */
 
-    border-left:
-        5px solid
-        #289bd2;
+.choice-text{
+  min-width:0;
+}
 
+.choice-text strong{
+  display:block;
+
+  margin-bottom:3px;
+
+  font-size:21px;
+
+  font-weight:900;
+}
+
+.choice-text small{
+  display:block;
+
+  color:#748391;
+
+  font-size:13px;
+
+  line-height:1.25;
 }
 
 
-.choice.asct .choice-content {
+/* flèche */
 
-    border-left:
-        5px solid
-        #35b8ae;
+.arrow{
+  margin-left:auto;
 
+  font-size:28px;
+
+  color:#1683b8;
+
+  flex-shrink:0;
 }
 
 
-.choice-icon {
+/* =========================================================
+   CARTES PAGES
+   ========================================================= */
 
-    flex:
-        0 0 62px;
+.card{
+  padding:20px;
 
-    width:
-        62px;
+  border-radius:27px;
 
-    height:
-        62px;
+  background:
+    rgba(255,255,255,.94);
 
-    display:
-        flex;
+  border:
+    1px solid
+    rgba(255,255,255,.95);
 
-    align-items:
-        center;
+  box-shadow:var(--shadow);
 
-    justify-content:
-        center;
-
-    border-radius:
-        18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #dff5fc,
-            #c5eaf5
-        );
-
-    font-size:
-        32px;
-
+  backdrop-filter:blur(20px);
 }
 
 
-.choice-text strong {
+/* badge métier */
 
-    display:
-        block;
+.badge{
+  display:inline-flex;
 
-    font-size:
-        24px;
+  padding:
+    7px 12px;
 
-    font-weight:
-        900;
+  border-radius:999px;
 
+  background:#e2f5fb;
+
+  color:#12658e;
+
+  font-size:12px;
+
+  font-weight:800;
 }
 
 
-.choice-text small {
+/* titres */
 
-    display:
-        block;
+.page-title{
+  margin:
+    10px 0 6px;
 
-    margin-top:
-        3px;
+  font-size:27px;
 
-    color:
-        var(--text-soft);
+  font-weight:900;
+}
 
-    font-size:
-        14px;
+.info{
+  margin:
+    0 0 15px;
 
-    line-height:
-        1.35;
+  color:var(--muted);
 
+  line-height:1.5;
 }
 
 
-.arrow {
-
-    position:
-        absolute;
-
-    right:
-        18px;
-
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    color:
-        var(--blue);
-
-    font-size:
-        27px;
-
-}
-
-
-/* =====================================================
-   TITRES PAGES
-===================================================== */
-
-.page-card {
-
-    padding:
-        24px;
-
-}
-
-
-.page-title {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
-    margin:
-        0;
-
-    font-size:
-        clamp(
-            25px,
-            4vw,
-            34px
-        );
-
-    font-weight:
-        900;
-
-}
-
-
-.page-subtitle {
-
-    margin:
-        8px 0 20px;
-
-    color:
-        var(--text-soft);
-
-}
-
-
-.badge {
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        6px;
-
-    padding:
-        7px 12px;
-
-    margin-bottom:
-        11px;
-
-    border-radius:
-        999px;
-
-    background:
-        #e2f3fa;
-
-    color:
-        #17648d;
-
-    font-size:
-        12px;
-
-    font-weight:
-        900;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    FORMULAIRE
-===================================================== */
+   ========================================================= */
 
-label {
+label{
+  display:block;
 
-    display:
-        block;
+  margin:
+    13px 0 6px;
 
-    margin:
-        15px 0 6px;
+  color:#405666;
 
-    color:
-        #425668;
+  font-size:13px;
 
-    font-size:
-        13px;
-
-    font-weight:
-        800;
-
+  font-weight:800;
 }
 
 
 input,
-textarea {
+textarea{
+  width:100%;
 
-    width:
-        100%;
+  padding:
+    12px 13px;
 
-    border:
-        1px solid
-        #d5e1e8;
+  border:
+    1px solid
+    #d5e2e9;
 
-    border-radius:
-        14px;
+  border-radius:14px;
 
-    padding:
-        13px;
+  background:#f9fbfc;
 
-    background:
-        #f8fbfd;
+  color:var(--text);
 
-    color:
-        var(--text);
+  font:inherit;
 
-    font-size:
-        16px;
+  font-size:16px;
 
-    outline:
-        none;
-
-    transition:
-        border .18s ease,
-        box-shadow .18s ease;
-
+  appearance:none;
 }
-
 
 input:focus,
-textarea:focus {
+textarea:focus{
+  outline:none;
 
-    border-color:
-        var(--blue);
+  border-color:#2091c7;
 
-    box-shadow:
-        0 0 0 4px
-        rgba(22,134,197,.11);
+  box-shadow:
+    0 0 0 4px
+    rgba(32,145,199,.11);
+}
 
+textarea{
+  min-height:82px;
+
+  resize:vertical;
+}
+
+.row{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:10px;
 }
 
 
-textarea {
-
-    min-height:
-        90px;
-
-    resize:
-        vertical;
-
-}
-
-
-.row {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap:
-        12px;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    BOUTONS
-===================================================== */
+   ========================================================= */
 
-.btn {
+.btn{
+  width:100%;
 
-    width:
-        100%;
+  border:0;
 
-    border:
-        none;
+  border-radius:15px;
 
-    border-radius:
-        14px;
+  padding:
+    13px 15px;
 
-    padding:
-        14px;
+  margin-top:14px;
 
-    margin-top:
-        17px;
+  background:
+    linear-gradient(
+      135deg,
+      #086b9f,
+      #1699ce
+    );
 
-    font-size:
-        15px;
+  color:white;
 
-    font-weight:
-        900;
+  font:inherit;
 
-    color:
-        white;
+  font-weight:850;
 
-    background:
-        linear-gradient(
-            135deg,
-            #116a9d,
-            #1b99d2
-        );
+  cursor:pointer;
 
-    box-shadow:
-        0 9px 20px
-        rgba(18,113,164,.20);
+  box-shadow:
+    0 9px 20px
+    rgba(8,107,159,.18);
 
-    transition:
-        transform .15s ease;
+  transition:
+    transform .15s ease,
+    opacity .15s ease;
+}
 
+.btn:hover{
+  opacity:.94;
+}
+
+.btn:active{
+  transform:scale(.985);
+}
+
+.secondary{
+  background:#eaf1f5;
+
+  color:#294252;
+
+  box-shadow:none;
 }
 
 
-.btn:active {
+/* =========================================================
+   LISTE DES ÉCHANGES
+   ========================================================= */
 
-    transform:
-        scale(.98);
+.list{
+  display:grid;
 
+  gap:12px;
 }
 
 
-.btn-secondary {
+.item{
+  padding:15px;
 
-    color:
-        #284355;
+  border-radius:20px;
 
-    background:
-        #e9f1f5;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f5f9fb
+    );
 
-    box-shadow:
-        none;
+  border:
+    1px solid
+    var(--line);
 
+  border-left:
+    5px solid
+    #1587bb;
+
+  box-shadow:
+    0 9px 23px
+    rgba(10,42,62,.08);
 }
 
 
-.btn-interest {
+/* nom */
 
-    color:
-        #885c08;
+.name{
+  font-size:18px;
 
-    background:
-        #fff0cf;
+  font-weight:900;
 
-    box-shadow:
-        none;
-
+  color:#17364c;
 }
 
 
-.btn-delete {
+/* =========================================================
+   DATE ET HEURE DE LA DEMANDE
+   ========================================================= */
 
-    color:
-        #b53131;
+.request-date{
+  display:block;
 
-    background:
-        #ffe5e5;
+  width:max-content;
 
-    box-shadow:
-        none;
+  max-width:100%;
 
+  margin-top:7px;
+
+  padding:
+    6px 9px;
+
+  border-radius:9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eaf4f8,
+      #f2f7f9
+    );
+
+  color:#526c7a;
+
+  font-size:12px;
+
+  line-height:1.35;
+
+  font-weight:800;
+
+  border:
+    1px solid
+    #dce9ee;
 }
 
 
-/* =====================================================
-   ÉCHANGES
-===================================================== */
+/* =========================================================
+   DATE SERVICE + HORAIRES
+   ========================================================= */
 
-.exchange {
+.service{
+  display:grid;
 
-    position:
-        relative;
+  grid-template-columns:
+    1fr 1fr;
 
-    margin-top:
-        14px;
+  gap:8px;
 
-    padding:
-        18px;
+  margin-top:11px;
+}
 
-    border-radius:
-        20px;
+.chip{
+  padding:10px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #f2f8fb
-        );
+  border-radius:13px;
 
-    border:
-        1px solid
-        #dce8ee;
+  background:#eef7fa;
 
-    border-left:
-        5px solid
-        var(--blue);
+  min-width:0;
+}
 
-    box-shadow:
-        0 9px 24px
-        rgba(9,46,68,.08);
+.chip span{
+  display:block;
 
+  color:#71818e;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.4px;
+
+  font-weight:800;
+
+  margin-bottom:3px;
+}
+
+.chip strong{
+  font-size:14px;
+
+  color:#20455e;
+
+  word-break:break-word;
 }
 
 
-.exchange-name {
+/* =========================================================
+   COMMENTAIRE
+   ========================================================= */
 
-    display:
-        flex;
+.comment{
+  margin-top:9px;
 
-    align-items:
-        center;
+  padding:
+    9px 10px;
 
-    gap:
-        8px;
+  border-radius:12px;
 
-    font-size:
-        19px;
+  background:#f5f7f8;
 
-    font-weight:
-        900;
+  color:#667784;
 
-    color:
-        #19354a;
+  font-size:13px;
 
+  line-height:1.4;
 }
 
 
-.exchange-date {
+/* =========================================================
+   AGENT INTÉRESSÉ
+   ========================================================= */
 
-    margin-top:
-        12px;
+.interest{
+  margin-top:10px;
 
-    padding:
-        13px;
+  padding:
+    9px 11px;
 
-    border-radius:
-        14px;
+  border-radius:12px;
 
-    background:
-        #eaf6fa;
+  background:#fff3d9;
 
-    color:
-        #294b61;
+  color:#835700;
 
+  font-size:13px;
+
+  font-weight:700;
 }
 
 
-.date-line {
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
-    display:
-        flex;
+.actions{
+  display:grid;
 
-    align-items:
-        center;
+  grid-template-columns:
+    1fr 1fr;
 
-    gap:
-        8px;
+  gap:8px;
 
-    font-size:
-        15px;
+  margin-top:11px;
+}
 
-    font-weight:
-        800;
+.small{
+  border:0;
 
+  border-radius:12px;
+
+  padding:
+    10px 8px;
+
+  font:inherit;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  cursor:pointer;
+
+  transition:
+    transform .15s ease;
+}
+
+.small:active{
+  transform:scale(.98);
+}
+
+.interet{
+  background:#fff0cf;
+
+  color:#8b5b00;
+}
+
+.delete{
+  background:#ffe5e5;
+
+  color:#b72e2e;
 }
 
 
-.time-line {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    margin-top:
-        7px;
-
-    font-size:
-        18px;
-
-    font-weight:
-        900;
-
-    color:
-        #1b4b68;
-
-}
-
-
-.exchange-comment {
-
-    margin-top:
-        10px;
-
-    padding:
-        11px 13px;
-
-    border-radius:
-        13px;
-
-    background:
-        #f7f9fb;
-
-    color:
-        #68798a;
-
-    font-size:
-        14px;
-
-}
-
-
-.interested {
-
-    margin-top:
-        10px;
-
-    padding:
-        11px 13px;
-
-    border-radius:
-        13px;
-
-    background:
-        #fff3d8;
-
-    color:
-        #805b18;
-
-    font-size:
-        14px;
-
-    font-weight:
-        800;
-
-}
-
-
-.exchange-actions {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap:
-        9px;
-
-    margin-top:
-        12px;
-
-}
-
-
-.small-btn {
-
-    border:
-        none;
-
-    border-radius:
-        12px;
-
-    padding:
-        12px 8px;
-
-    font-size:
-        13px;
-
-    font-weight:
-        900;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    ÉTAT VIDE
-===================================================== */
+   ========================================================= */
 
-.empty {
+.empty{
+  text-align:center;
 
+  padding:
+    28px 15px;
+
+  color:#71808c;
+}
+
+.empty-icon{
+  display:block;
+
+  font-size:40px;
+
+  margin-bottom:7px;
+}
+
+
+/* =========================================================
+   NAVIGATION BASSE
+   ========================================================= */
+
+nav{
+  position:fixed;
+
+  z-index:100;
+
+  left:50%;
+
+  bottom:
+    calc(
+      8px +
+      env(safe-area-inset-bottom)
+    );
+
+  transform:
+    translateX(-50%);
+
+  width:
+    min(
+      430px,
+      calc(100% - 20px)
+    );
+
+  display:flex;
+
+  gap:4px;
+
+  padding:6px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.85);
+
+  border-radius:21px;
+
+  background:
+    rgba(255,255,255,.90);
+
+  box-shadow:
+    0 12px 35px
+    rgba(8,40,58,.22);
+
+  backdrop-filter:
+    blur(20px);
+}
+
+nav button{
+  flex:1;
+
+  border:0;
+
+  border-radius:15px;
+
+  padding:
+    6px 5px;
+
+  background:transparent;
+
+  color:#5c6e7c;
+
+  font:inherit;
+
+  font-size:11px;
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+nav button:active{
+  background:#edf6f9;
+}
+
+.nav-icon{
+  display:block;
+
+  font-size:18px;
+
+  margin-bottom:1px;
+}
+
+
+/* =========================================================
+   TABLET / IPAD
+   ========================================================= */
+
+@media(min-width:700px){
+
+  .hero{
+    min-height:275px;
+
+    padding-top:24px;
+  }
+
+  main{
     padding:
-        38px 15px;
+      0 22px;
+  }
 
-    text-align:
-        center;
-
-    color:
-        var(--text-soft);
-
-}
-
-
-.empty-icon {
-
-    display:
-        block;
-
-    margin-bottom:
-        10px;
-
-    font-size:
-        42px;
-
-}
-
-
-/* =====================================================
-   NAVIGATION MOBILE
-===================================================== */
-
-nav {
-
-    position:
-        fixed;
-
-    z-index:
-        100;
-
-    left:
-        50%;
-
-    bottom:
-        max(
-            10px,
-            env(safe-area-inset-bottom)
-        );
-
-    transform:
-        translateX(-50%);
-
-    width:
-        min(
-            560px,
-            calc(100% - 20px)
-        );
-
-    display:
-        grid;
-
+  .choices{
     grid-template-columns:
-        repeat(3, 1fr);
+      1fr 1fr;
+
+    gap:14px;
+  }
+
+  .welcome{
+    padding:
+      24px 28px 21px;
+  }
+
+  .choice-card{
+    min-height:106px;
 
     padding:
-        7px;
-
-    border-radius:
-        22px;
-
-    background:
-        rgba(255,255,255,.96);
-
-    border:
-        1px solid
-        rgba(255,255,255,.9);
-
-    box-shadow:
-        0 12px 40px
-        rgba(5,30,50,.22);
-
-    backdrop-filter:
-        blur(18px);
-
+      15px 18px;
+  }
 }
 
 
-nav button {
+/* =========================================================
+   GRAND IPAD / DESKTOP
+   ========================================================= */
 
-    border:
-        none;
+@media(min-width:1000px){
 
-    background:
-        transparent;
+  .hero{
+    min-height:300px;
+  }
 
-    border-radius:
-        15px;
+  main{
+    margin-top:-42px;
+  }
 
-    padding:
-        8px 4px;
+  .choices{
+    gap:18px;
+  }
 
-    color:
-        #566a79;
+  .choice-card{
+    min-height:115px;
+  }
 
-    font-size:
-        11px;
+  .choice-icon{
+    width:64px;
+    height:64px;
 
-    font-weight:
-        800;
+    flex-basis:64px;
 
+    font-size:33px;
+  }
 }
 
 
-.nav-icon {
-
-    display:
-        block;
-
-    margin-bottom:
-        2px;
-
-    font-size:
-        21px;
-
-}
-
-
-/* =====================================================
-   TABLETTE / IPAD
-===================================================== */
-
-@media (min-width: 700px) {
-
-    header {
-
-        min-height:
-            330px;
-
-        padding-top:
-            38px;
-
-    }
-
-
-    main {
-
-        width:
-            min(1120px, calc(100% - 40px));
-
-    }
-
-
-    .welcome {
-
-        padding:
-            27px 40px 24px;
-
-    }
-
-
-    .choices {
-
-        gap:
-            20px;
-
-    }
-
-
-    .choice-content {
-
-        min-height:
-            110px;
-
-        padding:
-            20px 25px;
-
-    }
-
-
-    .choice-icon {
-
-        width:
-            68px;
-
-        height:
-            68px;
-
-        flex-basis:
-            68px;
-
-    }
-
-}
-
-
-/* =====================================================
+/* =========================================================
    PETITS SMARTPHONES
-===================================================== */
+   ========================================================= */
 
-@media (max-width: 520px) {
+@media(max-width:380px){
 
-    header {
+  .hero{
+    min-height:225px;
 
-        min-height:
-            280px;
+    padding-bottom:50px;
+  }
 
-        padding:
-            24px 14px 72px;
+  .hero h1{
+    font-size:31px;
+  }
 
-    }
+  .sub{
+    font-size:13px;
+  }
 
+  main{
+    margin-top:-31px;
 
-    .status {
+    padding:
+      0 11px;
+  }
 
-        display:
-            none;
+  .welcome{
+    padding:
+      18px 13px 16px;
+  }
 
-    }
+  .welcome-icon{
+    width:53px;
+    height:53px;
 
+    font-size:28px;
+  }
 
-    header h1 {
+  .welcome h2{
+    font-size:27px;
+  }
 
-        font-size:
-            36px;
+  .welcome p{
+    font-size:13px;
+  }
 
-        letter-spacing:
-            1px;
+  .pill{
+    font-size:11px;
 
-    }
+    padding:
+      7px 10px;
+  }
 
+  .choice-card{
+    min-height:83px;
 
-    .subtitle {
+    padding:
+      10px 11px;
 
-        font-size:
-            15px;
+    gap:9px;
+  }
 
-    }
+  .choice-icon{
+    width:49px;
+    height:49px;
 
+    flex-basis:49px;
 
-    .train {
+    font-size:25px;
+  }
 
-        top:
-            100px;
+  .choice-text strong{
+    font-size:18px;
+  }
 
-        right:
-            -230px;
+  .choice-text small{
+    font-size:11px;
+  }
 
-        transform:
-            scale(.72);
+  .service{
+    grid-template-columns:
+      1fr;
+  }
 
-        transform-origin:
-            right top;
-
-        opacity:
-            .75;
-
-    }
-
-
-    .railway {
-
-        top:
-            220px;
-
-        opacity:
-            .75;
-
-    }
-
-
-    main {
-
-        width:
-            calc(100% - 18px);
-
-        margin-top:
-            -28px;
-
-    }
-
-
-    .welcome {
-
-        padding:
-            20px 17px 18px;
-
-        border-radius:
-            21px;
-
-    }
-
-
-    .welcome-icon {
-
-        width:
-            48px;
-
-        height:
-            48px;
-
-        font-size:
-            25px;
-
-    }
-
-
-    .welcome h2 {
-
-        font-size:
-            27px;
-
-    }
-
-
-    .welcome p {
-
-        font-size:
-            14px;
-
-    }
-
-
-    .choices {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            10px;
-
-    }
-
-
-    .choice-content {
-
-        min-height:
-            88px;
-
-        padding:
-            13px;
-
-        border-radius:
-            19px;
-
-    }
-
-
-    .choice-icon {
-
-        width:
-            54px;
-
-        height:
-            54px;
-
-        flex-basis:
-            54px;
-
-        border-radius:
-            15px;
-
-        font-size:
-            27px;
-
-    }
-
-
-    .choice-text strong {
-
-        font-size:
-            21px;
-
-    }
-
-
-    .choice-text small {
-
-        font-size:
-            12px;
-
-    }
-
-
-    .arrow {
-
-        right:
-            14px;
-
-    }
-
-
-    .page-card {
-
-        padding:
-            19px;
-
-    }
-
-
-    .row {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            0;
-
-    }
-
-
-    .exchange-actions {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
+  .actions{
+    grid-template-columns:
+      1fr;
+  }
 }
 
 
-/* =====================================================
-   IPAD PORTRAIT : 2 BOUTONS VISIBLES
-===================================================== */
+/* =========================================================
+   ACCESSIBILITÉ / IPAD PORTRAIT
+   ========================================================= */
 
-@media (min-width: 600px) and (max-width: 1100px) {
+@media(
+  min-width:700px
+) and (
+  max-width:1100px
+){
 
-    header {
+  .welcome{
+    max-width:100%;
+  }
 
-        min-height:
-            315px;
-
-    }
-
-
-    main {
-
-        margin-top:
-            -40px;
-
-    }
-
+  .choice-text small{
+    font-size:14px;
+  }
 }
 
 
-/* =====================================================
+/* =========================================================
+   ÉCRANS TRÈS HAUTS
+   ========================================================= */
+
+@media(
+  min-height:800px
+) and (
+  max-width:699px
+){
+
+  .hero{
+    min-height:270px;
+  }
+
+  .welcome{
+    padding-top:23px;
+    padding-bottom:20px;
+  }
+}
+
+
+/* =========================================================
    RÉDUCTION DES ANIMATIONS
-===================================================== */
+   ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media(
+  prefers-reduced-motion:reduce
+){
 
-    *,
-    *::before,
-    *::after {
-
-        scroll-behavior:
-            auto !important;
-
-        transition:
-            none !important;
-
-    }
-
+  *{
+    scroll-behavior:auto !important;
+    transition:none !important;
+  }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
+<!-- =======================================================
      FOND
-===================================================== -->
+     ======================================================= -->
 
-<div class="background-railway">
+<div class="bg">
 
-    <div class="circle one"></div>
-    <div class="circle two"></div>
-    <div class="circle three"></div>
-
-
-    <!-- TRAIN -->
-
-    <div class="train">
-
-        <div class="train-body"></div>
-
-        <div class="train-window"></div>
-
-        <div class="train-line"></div>
-
-        <div class="train-front"></div>
-
-        <div class="train-wheel one"></div>
-        <div class="train-wheel two"></div>
-
-    </div>
-
-
-    <!-- VOIE -->
-
-    <div class="railway">
-
-        <div class="sleepers"></div>
-
-        <div class="rail top"></div>
-        <div class="rail bottom"></div>
-
-    </div>
+  <div class="speed s1"></div>
+  <div class="speed s2"></div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =======================================================
      HEADER
-===================================================== -->
+     ======================================================= -->
 
-<header>
+<header class="hero">
 
-    <div class="status">
+  <div class="hero-inner">
 
-        <span class="status-dot"></span>
-
-        Service actif
-
+    <div class="mark">
+      🚆
     </div>
-
-
-    <div class="logo">
-
-        🚆
-
-    </div>
-
 
     <h1>
-
-        ÉCHANGE <span>SERVICE</span>
-
+      ÉCHANGE
+      <span>SERVICE</span>
     </h1>
 
-
-    <div class="subtitle">
-
-        Échange de journées entre agents
-
-        <strong>
-            si congés refusés
-        </strong>
-
+    <div class="sub">
+      Échange de journées entre agents
+      <strong>• si congés refusés</strong>
     </div>
+
+    <div class="glow"></div>
+
+  </div>
 
 </header>
 
 
-<!-- =====================================================
+<!-- =======================================================
      CONTENU
-===================================================== -->
+     ======================================================= -->
 
 <main>
 
 
-<!-- =====================================================
+<!-- =======================================================
      ACCUEIL
-===================================================== -->
+     ======================================================= -->
 
-<section
-    id="accueil"
->
+<section id="accueil">
+
+  <div class="welcome">
+
+    <div class="welcome-icon">
+      🤝
+    </div>
+
+    <h2>
+      Bienvenue
+    </h2>
+
+    <p>
+      Proposez une journée de service et trouvez
+      un collègue intéressé pour un éventuel échange.
+    </p>
+
+    <div class="pill">
+      🚆 Choisissez votre métier pour commencer
+    </div>
+
+  </div>
 
 
-    <div class="card welcome">
+  <div class="choices">
 
-        <div class="welcome-icon">
+    <!-- ADC -->
 
-            🤝
+    <button
+      class="choice adc"
+      onclick="choisirMetier('ADC')"
+    >
+
+      <div class="choice-card">
+
+        <div class="choice-icon">
+          🚆
+        </div>
+
+        <div class="choice-text">
+
+          <strong>
+            ADC
+          </strong>
+
+          <small>
+            Conducteurs de train
+          </small>
 
         </div>
 
+        <div class="arrow">
+          ›
+        </div>
 
-        <h2>
+      </div>
 
-            Bienvenue
-
-        </h2>
-
-
-        <p>
-
-            Proposez une journée de service
-            et trouvez un collègue intéressé
-            pour un éventuel échange.
-
-        </p>
+    </button>
 
 
-        <div class="choose">
+    <!-- ASCT -->
 
-            🚆
-            Choisissez votre métier
+    <button
+      class="choice asct"
+      onclick="choisirMetier('ASCT')"
+    >
+
+      <div class="choice-card">
+
+        <div class="choice-icon">
+          👨‍✈️
+        </div>
+
+        <div class="choice-text">
+
+          <strong>
+            ASCT
+          </strong>
+
+          <small>
+            Agents du Service Commercial Train
+          </small>
 
         </div>
 
-    </div>
+        <div class="arrow">
+          ›
+        </div>
 
+      </div>
 
-    <div class="choices">
+    </button>
 
-
-        <!-- ADC -->
-
-        <button
-            class="choice adc"
-            onclick="choisirMetier('ADC')"
-        >
-
-            <div class="choice-content">
-
-                <div class="choice-icon">
-
-                    🚆
-
-                </div>
-
-
-                <div class="choice-text">
-
-                    <strong>
-                        ADC
-                    </strong>
-
-                    <small>
-                        Conducteurs de train
-                    </small>
-
-                </div>
-
-
-                <div class="arrow">
-
-                    ›
-
-                </div>
-
-            </div>
-
-        </button>
-
-
-        <!-- ASCT -->
-
-        <button
-            class="choice asct"
-            onclick="choisirMetier('ASCT')"
-        >
-
-            <div class="choice-content">
-
-                <div class="choice-icon">
-
-                    👨‍✈️
-
-                </div>
-
-
-                <div class="choice-text">
-
-                    <strong>
-                        ASCT
-                    </strong>
-
-                    <small>
-                        Agents du Service Commercial Train
-                    </small>
-
-                </div>
-
-
-                <div class="arrow">
-
-                    ›
-
-                </div>
-
-            </div>
-
-        </button>
-
-
-    </div>
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-     PROPOSER
-===================================================== -->
+<!-- =======================================================
+     MA JOURNÉE
+     ======================================================= -->
 
 <section
-    id="proposer"
-    class="hidden"
+  id="proposer"
+  class="hidden"
 >
 
+  <div class="card">
 
-    <div class="card page-card">
-
-
-        <span
-            id="metier"
-            class="badge"
-        >
-
-            🚆 Métier
-
-        </span>
+    <span
+      id="metier"
+      class="badge"
+    >
+      🚆 Métier
+    </span>
 
 
-        <h2 class="page-title">
-
-            ➕ Ma journée
-
-        </h2>
+    <h2 class="page-title">
+      ➕ Ma journée
+    </h2>
 
 
-        <p class="page-subtitle">
-
-            Proposez votre journée afin
-            de trouver un collègue intéressé.
-
-        </p>
+    <p class="info">
+      Proposez votre journée afin de trouver
+      un collègue intéressé.
+    </p>
 
 
-        <label for="nom">
+    <label for="nom">
+      Nom et prénom
+    </label>
 
-            Nom et prénom
+    <input
+      id="nom"
+      type="text"
+      placeholder="Exemple : Jean DUPONT"
+      autocomplete="name"
+    >
 
+
+    <label for="date">
+      Date de la journée
+    </label>
+
+    <input
+      id="date"
+      type="date"
+    >
+
+
+    <div class="row">
+
+      <div>
+
+        <label for="prise">
+          Prise de service
         </label>
-
 
         <input
-            id="nom"
-            type="text"
-            placeholder="Exemple : Jean DUPONT"
-            autocomplete="name"
+          id="prise"
+          type="time"
         >
 
+      </div>
 
-        <label for="date">
 
-            Date de la journée
+      <div>
 
+        <label for="fin">
+          Fin de service
         </label>
-
 
         <input
-            id="date"
-            type="date"
+          id="fin"
+          type="time"
         >
 
-
-        <div class="row">
-
-
-            <div>
-
-                <label for="prise">
-
-                    Prise de service
-
-                </label>
-
-
-                <input
-                    id="prise"
-                    type="time"
-                >
-
-            </div>
-
-
-            <div>
-
-                <label for="fin">
-
-                    Fin de service
-
-                </label>
-
-
-                <input
-                    id="fin"
-                    type="time"
-                >
-
-            </div>
-
-
-        </div>
-
-
-        <label for="commentaire">
-
-            Commentaire
-
-        </label>
-
-
-        <textarea
-            id="commentaire"
-            placeholder="Exemple : TER, réserve, numéro de train..."
-        ></textarea>
-
-
-        <button
-            class="btn"
-            onclick="publier()"
-        >
-
-            🚆 PUBLIER MA JOURNÉE
-
-        </button>
-
-
-        <button
-            class="btn btn-secondary"
-            onclick="afficher('echanges')"
-        >
-
-            🔎 VOIR LES ÉCHANGES
-
-        </button>
-
+      </div>
 
     </div>
+
+
+    <label for="commentaire">
+      Commentaire
+    </label>
+
+    <textarea
+      id="commentaire"
+      placeholder="Exemple : TER, réserve, numéro de train..."
+    ></textarea>
+
+
+    <button
+      class="btn"
+      onclick="publier()"
+    >
+      🚆 PUBLIER MA JOURNÉE
+    </button>
+
+
+    <button
+      class="btn secondary"
+      onclick="afficher('echanges')"
+    >
+      🔎 VOIR LES ÉCHANGES
+    </button>
+
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-     ECHANGES
-===================================================== -->
+<!-- =======================================================
+     ÉCHANGES
+     ======================================================= -->
 
 <section
-    id="echanges"
-    class="hidden"
+  id="echanges"
+  class="hidden"
 >
 
+  <div class="card">
 
-    <div class="card page-card">
-
-
-        <h2 class="page-title">
-
-            🔎 Échanges disponibles
-
-        </h2>
+    <h2 class="page-title">
+      🔎 Échanges disponibles
+    </h2>
 
 
-        <p class="page-subtitle">
-
-            Métier :
-
-            <strong id="metierEchanges">
-                -
-            </strong>
-
-        </p>
+    <p class="info">
+      Métier :
+      <strong id="metierEchanges">
+        -
+      </strong>
+    </p>
 
 
-        <div id="listeEchanges">
-
-        </div>
-
-
-        <button
-            class="btn btn-secondary"
-            onclick="afficher('proposer')"
-        >
-
-            ➕ PROPOSER UNE JOURNÉE
-
-        </button>
+    <div
+      id="listeEchanges"
+      class="list"
+    ></div>
 
 
-    </div>
+    <button
+      class="btn secondary"
+      onclick="afficher('proposer')"
+    >
+      ➕ PROPOSER UNE JOURNÉE
+    </button>
+
+  </div>
 
 </section>
 
@@ -2637,1043 +1739,936 @@ nav button {
 </main>
 
 
-<!-- =====================================================
+<!-- =======================================================
      NAVIGATION
-===================================================== -->
+     ======================================================= -->
 
 <nav
-    id="menu"
-    class="hidden"
+  id="menu"
+  class="hidden"
 >
 
-
-    <button
-        onclick="afficher('proposer')"
-    >
-
-        <span class="nav-icon">
-            ➕
-        </span>
-
-        Ma journée
-
-    </button>
+  <button
+    onclick="afficher('proposer')"
+  >
+    <span class="nav-icon">
+      ➕
+    </span>
+    Ma journée
+  </button>
 
 
-    <button
-        onclick="afficher('echanges')"
-    >
-
-        <span class="nav-icon">
-            🔎
-        </span>
-
-        Échanges
-
-    </button>
+  <button
+    onclick="afficher('echanges')"
+  >
+    <span class="nav-icon">
+      🔎
+    </span>
+    Échanges
+  </button>
 
 
-    <button
-        onclick="changerMetier()"
-    >
-
-        <span class="nav-icon">
-            🚆
-        </span>
-
-        Métier
-
-    </button>
-
+  <button
+    onclick="changerMetier()"
+  >
+    <span class="nav-icon">
+      🚆
+    </span>
+    Métier
+  </button>
 
 </nav>
 
 
+<!-- =======================================================
+     JAVASCRIPT
+     ======================================================= -->
+
 <script>
 
-/* =====================================================
+
+/* =========================================================
    SUPABASE
-===================================================== */
+   ========================================================= */
 
 const SUPABASE_URL =
-    "https://nptwpoguokbjuzdyxach.supabase.co";
-
+  "https://nptwpoguokbjuzdyxach.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+  "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 
 const supabaseClient =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* métier actuellement sélectionné */
 
 let metierActuel = "";
 
 
-/* =====================================================
-   AFFICHER PAGE
-===================================================== */
+/* =========================================================
+   AFFICHER UNE PAGE
+   ========================================================= */
 
-function afficher(page) {
+function afficher(page){
 
-    document
-        .querySelectorAll("main section")
-        .forEach(section => {
-
-            section.classList.add("hidden");
-
-        });
+  document
+    .querySelectorAll("main section")
+    .forEach(
+      s => s.classList.add("hidden")
+    );
 
 
-    const section =
-        document.getElementById(page);
+  const el =
+    document.getElementById(page);
 
 
-    if (section) {
+  if(el){
 
-        section.classList.remove("hidden");
+    el.classList.remove("hidden");
 
-    }
-
-
-    if (page === "echanges") {
-
-        afficherEchanges();
-
-    }
+  }
 
 
-    window.scrollTo({
+  if(page === "echanges"){
 
-        top: 0,
-        behavior: "smooth"
+    afficherEchanges();
 
-    });
+  }
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* =====================================================
-   CHOIX METIER
-===================================================== */
+/* =========================================================
+   CHOIX DU MÉTIER
+   ========================================================= */
 
-function choisirMetier(metier) {
+function choisirMetier(metier){
 
-    metierActuel = metier;
-
-
-    const badge =
-        document.getElementById("metier");
+  metierActuel = metier;
 
 
-    const metierEchanges =
-        document.getElementById("metierEchanges");
+  const badge =
+    document.getElementById("metier");
 
 
-    if (metier === "ADC") {
+  if(metier === "ADC"){
 
-        badge.textContent =
-            "🚆 ADC – Conducteurs";
+    badge.innerHTML =
+      "🚆 ADC – Conducteurs";
 
+  }
+  else{
 
-    } else {
+    badge.innerHTML =
+      "👨‍✈️ ASCT – Service Commercial Train";
 
-        badge.textContent =
-            "👨‍✈️ ASCT – Service Commercial Train";
-
-    }
-
-
-    metierEchanges.textContent =
-        metier;
+  }
 
 
-    document
-        .getElementById("menu")
-        .classList
-        .remove("hidden");
+  document
+    .getElementById("metierEchanges")
+    .innerText = metier;
 
 
-    afficher("proposer");
+  document
+    .getElementById("menu")
+    .classList.remove("hidden");
+
+
+  afficher("proposer");
 
 }
 
 
-/* =====================================================
-   CHANGER METIER
-===================================================== */
+/* =========================================================
+   CHANGER DE MÉTIER
+   ========================================================= */
 
-function changerMetier() {
+function changerMetier(){
 
-    metierActuel = "";
-
-
-    document
-        .getElementById("menu")
-        .classList
-        .add("hidden");
+  metierActuel = "";
 
 
-    afficher("accueil");
+  document
+    .getElementById("menu")
+    .classList.add("hidden");
+
+
+  afficher("accueil");
 
 }
 
 
-/* =====================================================
-   PUBLIER
-===================================================== */
+/* =========================================================
+   PUBLIER UNE JOURNÉE
+   ========================================================= */
 
-async function publier() {
+async function publier(){
 
-
-    const nom =
-        document
-            .getElementById("nom")
-            .value
-            .trim();
-
-
-    const date =
-        document
-            .getElementById("date")
-            .value;
+  const nom =
+    document
+      .getElementById("nom")
+      .value
+      .trim();
 
 
-    const prise =
-        document
-            .getElementById("prise")
-            .value;
+  const date =
+    document
+      .getElementById("date")
+      .value;
 
 
-    const fin =
-        document
-            .getElementById("fin")
-            .value;
+  const prise =
+    document
+      .getElementById("prise")
+      .value;
 
 
-    const commentaire =
-        document
-            .getElementById("commentaire")
-            .value
-            .trim();
+  const fin =
+    document
+      .getElementById("fin")
+      .value;
 
 
-    if (!metierActuel) {
-
-        alert(
-            "Merci de choisir votre métier."
-        );
-
-        return;
-
-    }
+  const commentaire =
+    document
+      .getElementById("commentaire")
+      .value
+      .trim();
 
 
-    if (
-        !nom ||
-        !date ||
-        !prise ||
-        !fin
-    ) {
+  /* vérification métier */
 
-        alert(
-            "Merci de remplir le nom, la date et les horaires."
-        );
-
-        return;
-
-    }
-
-
-    const {
-        error
-    } = await supabaseClient
-
-        .from("echanges")
-
-        .insert([
-
-            {
-
-                metier:
-                    metierActuel,
-
-                nom:
-                    nom,
-
-                date_service:
-                    date,
-
-                prise_service:
-                    prise,
-
-                fin_service:
-                    fin,
-
-                commentaire:
-                    commentaire,
-
-                statut:
-                    "disponible",
-
-                agent_interesse:
-                    null
-
-            }
-
-        ]);
-
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "Erreur lors de la publication : "
-            +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    document.getElementById("nom").value = "";
-    document.getElementById("date").value = "";
-    document.getElementById("prise").value = "";
-    document.getElementById("fin").value = "";
-    document.getElementById("commentaire").value = "";
-
+  if(!metierActuel){
 
     alert(
-        "🚆 Votre journée est publiée !"
+      "Merci de choisir votre métier."
     );
 
+    return;
 
-    afficher("echanges");
+  }
+
+
+  /* vérification formulaire */
+
+  if(
+    !nom ||
+    !date ||
+    !prise ||
+    !fin
+  ){
+
+    alert(
+      "Merci de remplir le nom, la date et les horaires."
+    );
+
+    return;
+
+  }
+
+
+  /* insertion Supabase */
+
+  const { error } =
+    await supabaseClient
+      .from("echanges")
+      .insert([{
+
+        metier:
+          metierActuel,
+
+        nom:
+          nom,
+
+        date_service:
+          date,
+
+        prise_service:
+          prise,
+
+        fin_service:
+          fin,
+
+        commentaire:
+          commentaire,
+
+        statut:
+          "disponible",
+
+        agent_interesse:
+          null
+
+      }]);
+
+
+  if(error){
+
+    console.error(error);
+
+    alert(
+      "Erreur lors de la publication : "
+      + error.message
+    );
+
+    return;
+
+  }
+
+
+  /* nettoyage */
+
+  document
+    .getElementById("nom")
+    .value = "";
+
+
+  document
+    .getElementById("date")
+    .value = "";
+
+
+  document
+    .getElementById("prise")
+    .value = "";
+
+
+  document
+    .getElementById("fin")
+    .value = "";
+
+
+  document
+    .getElementById("commentaire")
+    .value = "";
+
+
+  alert(
+    "🚆 Votre journée est publiée !"
+  );
+
+
+  afficher("echanges");
 
 }
 
 
-/* =====================================================
-   RÉCUPÉRER LA DATE
-   -----------------------------------------------------
-   Plusieurs possibilités sont prévues afin d'éviter
-   l'affichage "undefined" si la colonne change.
-===================================================== */
-
-function getDateService(echange) {
-
-    return (
-
-        echange.date_service ||
-
-        echange.date ||
-
-        echange.date_journee ||
-
-        echange.jour ||
-
-        echange.service_date ||
-
-        null
-
-    );
-
-}
-
-
-/* =====================================================
-   RÉCUPÉRER L'HEURE DE DÉBUT
-===================================================== */
-
-function getPriseService(echange) {
-
-    return (
-
-        echange.prise_service ||
-
-        echange.prise ||
-
-        echange.heure_debut ||
-
-        echange.debut ||
-
-        null
-
-    );
-
-}
-
-
-/* =====================================================
-   RÉCUPÉRER L'HEURE DE FIN
-===================================================== */
-
-function getFinService(echange) {
-
-    return (
-
-        echange.fin_service ||
-
-        echange.fin ||
-
-        echange.heure_fin ||
-
-        echange.fin_journee ||
-
-        null
-
-    );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    AFFICHER LES ÉCHANGES
-===================================================== */
+   ========================================================= */
 
-async function afficherEchanges() {
+async function afficherEchanges(){
+
+  const zone =
+    document.getElementById(
+      "listeEchanges"
+    );
 
 
-    const zone =
-        document.getElementById(
-            "listeEchanges"
-        );
+  document
+    .getElementById("metierEchanges")
+    .innerText =
+      metierActuel || "-";
 
 
-    document
-        .getElementById("metierEchanges")
-        .textContent =
-            metierActuel;
+  zone.innerHTML = `
+    <div class="empty">
+
+      <span class="empty-icon">
+        🚆
+      </span>
+
+      Chargement des échanges...
+
+    </div>
+  `;
+
+
+  if(!metierActuel){
+
+    zone.innerHTML = `
+      <div class="empty">
+
+        Choisissez d’abord un métier.
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  /* =======================================================
+     RÉCUPÉRATION DES DONNÉES
+     ======================================================= */
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("echanges")
+      .select("*")
+      .eq(
+        "metier",
+        metierActuel
+      )
+      .eq(
+        "statut",
+        "disponible"
+      )
+      .order(
+        "date_service",
+        {
+          ascending:true
+        }
+      );
+
+
+  if(error){
+
+    console.error(error);
 
 
     zone.innerHTML = `
+      <div class="empty">
 
-        <div class="empty">
+        <span class="empty-icon">
+          ❌
+        </span>
 
-            <span class="empty-icon">
-                🚆
-            </span>
+        <strong>
+          Erreur lors du chargement.
+        </strong>
 
-            Chargement des échanges...
+        <br><br>
+
+        <small>
+          ${escapeHTML(error.message)}
+        </small>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  zone.innerHTML = "";
+
+
+  if(
+    !data ||
+    !data.length
+  ){
+
+    zone.innerHTML = `
+      <div class="empty">
+
+        <span class="empty-icon">
+          🚆
+        </span>
+
+        <strong>
+          Aucune journée proposée
+        </strong>
+
+        <br><br>
+
+        Soyez le premier à proposer
+        une journée !
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  /* =======================================================
+     CRÉATION DES CARTES
+     ======================================================= */
+
+  data.forEach(e => {
+
+    const bloc =
+      document.createElement("div");
+
+
+    bloc.className = "item";
+
+
+    /* =====================================================
+       DATE / HEURE DE PUBLICATION
+       ===================================================== */
+
+    const created =
+      e.created_at ||
+      e.date_demande ||
+      e.date_creation ||
+      e.createdAt;
+
+
+    let request;
+
+
+    if(created){
+
+      request = `
+        <div class="request-date">
+          🕒 Demande publiée le
+          ${formatDateTime(created)}
+        </div>
+      `;
+
+    }
+    else{
+
+      request = `
+        <div class="request-date">
+          🕒 Date et heure de demande
+          non disponible
+        </div>
+      `;
+
+    }
+
+
+    /* =====================================================
+       AGENT INTÉRESSÉ
+       ===================================================== */
+
+    const interest =
+      e.agent_interesse
+
+      ?
+
+      `
+        <div class="interest">
+          🙋 Agent intéressé :
+          <strong>
+            ${escapeHTML(
+              e.agent_interesse
+            )}
+          </strong>
+        </div>
+      `
+
+      :
+
+      "";
+
+
+    /* =====================================================
+       COMMENTAIRE
+       ===================================================== */
+
+    const comment =
+      e.commentaire
+
+      ?
+
+      `
+        <div class="comment">
+          💬
+          ${escapeHTML(
+            e.commentaire
+          )}
+        </div>
+      `
+
+      :
+
+      "";
+
+
+    /* =====================================================
+       CARTE COMPLÈTE
+       ===================================================== */
+
+    bloc.innerHTML = `
+
+      <div class="name">
+
+        👤
+        ${escapeHTML(
+          e.nom
+        )}
+
+      </div>
+
+
+      ${request}
+
+
+      <div class="service">
+
+
+        <div class="chip">
+
+          <span>
+            Journée de service
+          </span>
+
+          <strong>
+            📅
+            ${formatDate(
+              e.date_service
+            )}
+          </strong>
 
         </div>
+
+
+        <div class="chip">
+
+          <span>
+            Horaires
+          </span>
+
+          <strong>
+            ⏰
+            ${formatTime(
+              e.prise_service
+            )}
+
+            →
+
+            ${formatTime(
+              e.fin_service
+            )}
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+      ${comment}
+
+
+      ${interest}
+
+
+      <div class="actions">
+
+
+        <button
+          class="small interet"
+          onclick="interesse(${Number(e.id)})"
+        >
+
+          🙋 JE SUIS INTÉRESSÉ
+
+        </button>
+
+
+        <button
+          class="small delete"
+          onclick="supprimer(${Number(e.id)})"
+        >
+
+          🗑️ SUPPRIMER
+
+        </button>
+
+
+      </div>
 
     `;
 
 
-    const {
-        data,
-        error
-    } = await supabaseClient
+    zone.appendChild(bloc);
 
-        .from("echanges")
-
-        .select("*")
-
-        .eq(
-            "metier",
-            metierActuel
-        )
-
-        .eq(
-            "statut",
-            "disponible"
-        )
-
-        .order(
-            "date_service",
-            {
-                ascending: true
-            }
-        );
-
-
-    if (error) {
-
-        console.error(error);
-
-
-        zone.innerHTML = `
-
-            <div class="empty">
-
-                <span class="empty-icon">
-                    ❌
-                </span>
-
-                Erreur lors du chargement.
-
-                <br><br>
-
-                <small>
-                    ${escapeHTML(error.message)}
-                </small>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    zone.innerHTML = "";
-
-
-    if (!data || data.length === 0) {
-
-        zone.innerHTML = `
-
-            <div class="empty">
-
-                <span class="empty-icon">
-                    🚆
-                </span>
-
-                <strong>
-                    Aucune journée proposée
-                </strong>
-
-                <br><br>
-
-                Soyez le premier à proposer
-                une journée !
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    data.forEach(
-        afficherEchange
-    );
+  });
 
 }
 
 
-/* =====================================================
-   AFFICHER UN ÉCHANGE
-===================================================== */
+/* =========================================================
+   SE DÉCLARER INTÉRESSÉ
+   ========================================================= */
 
-function afficherEchange(echange) {
+async function interesse(id){
 
-
-    const bloc =
-        document.createElement("div");
-
-
-    bloc.className =
-        "exchange";
-
-
-    /* NOM */
-
-    const nom =
-        document.createElement("div");
-
-    nom.className =
-        "exchange-name";
-
-    nom.textContent =
-        "👤 " +
-        (echange.nom || "Agent");
-
-    bloc.appendChild(nom);
-
-
-    /* DATE */
-
-    const dateService =
-        getDateService(echange);
-
-
-    const prise =
-        getPriseService(echange);
-
-
-    const fin =
-        getFinService(echange);
-
-
-    const dateBox =
-        document.createElement("div");
-
-    dateBox.className =
-        "exchange-date";
-
-
-    /* LIGNE DATE */
-
-    const dateLine =
-        document.createElement("div");
-
-    dateLine.className =
-        "date-line";
-
-
-    dateLine.textContent =
-        "📅 " +
-        (
-            dateService
-                ? formatDate(dateService)
-                : "Date non renseignée"
-        );
-
-
-    dateBox.appendChild(
-        dateLine
+  const nomAgent =
+    prompt(
+      "Indiquez votre nom et prénom :"
     );
 
 
-    /* LIGNE HORAIRES */
+  if(
+    nomAgent === null
+  ){
 
-    const timeLine =
-        document.createElement("div");
+    return;
 
-    timeLine.className =
-        "time-line";
+  }
 
 
-    timeLine.textContent =
-        "⏰ " +
-
-        (
-            prise
-                ? formatTime(prise)
-                : "--:--"
-        )
-
-        +
-
-        " → " +
-
-        (
-            fin
-                ? formatTime(fin)
-                : "--:--"
-        );
-
-
-    dateBox.appendChild(
-        timeLine
-    );
-
-
-    bloc.appendChild(
-        dateBox
-    );
-
-
-    /* COMMENTAIRE */
-
-    if (
-        echange.commentaire &&
-        String(echange.commentaire).trim() !== ""
-    ) {
-
-        const commentaire =
-            document.createElement("div");
-
-        commentaire.className =
-            "exchange-comment";
-
-        commentaire.textContent =
-            "💬 " +
-            echange.commentaire;
-
-        bloc.appendChild(
-            commentaire
-        );
-
-    }
-
-
-    /* AGENT INTÉRESSÉ */
-
-    if (
-        echange.agent_interesse &&
-        String(echange.agent_interesse).trim() !== ""
-    ) {
-
-        const interesse =
-            document.createElement("div");
-
-        interesse.className =
-            "interested";
-
-        interesse.textContent =
-            "🙋 Agent intéressé : " +
-            echange.agent_interesse;
-
-        bloc.appendChild(
-            interesse
-        );
-
-    }
-
-
-    /* ACTIONS */
-
-    const actions =
-        document.createElement("div");
-
-    actions.className =
-        "exchange-actions";
-
-
-    /* BOUTON INTÉRESSÉ */
-
-    const boutonInteret =
-        document.createElement("button");
-
-    boutonInteret.className =
-        "small-btn btn-interest";
-
-    boutonInteret.textContent =
-        "🙋 JE SUIS INTÉRESSÉ";
-
-
-    boutonInteret.onclick =
-        function() {
-
-            interesse(
-                echange.id
-            );
-
-        };
-
-
-    actions.appendChild(
-        boutonInteret
-    );
-
-
-    /* BOUTON SUPPRIMER */
-
-    const boutonSupprimer =
-        document.createElement("button");
-
-    boutonSupprimer.className =
-        "small-btn btn-delete";
-
-    boutonSupprimer.textContent =
-        "🗑️ SUPPRIMER";
-
-
-    boutonSupprimer.onclick =
-        function() {
-
-            supprimer(
-                echange.id
-            );
-
-        };
-
-
-    actions.appendChild(
-        boutonSupprimer
-    );
-
-
-    bloc.appendChild(
-        actions
-    );
-
-
-    document
-        .getElementById("listeEchanges")
-        .appendChild(bloc);
-
-}
-
-
-/* =====================================================
-   INTÉRESSÉ
-===================================================== */
-
-async function interesse(id) {
-
-
-    const nomAgent =
-        prompt(
-            "Indiquez votre nom et prénom :"
-        );
-
-
-    if (nomAgent === null) {
-
-        return;
-
-    }
-
-
-    if (
-        nomAgent.trim() === ""
-    ) {
-
-        alert(
-            "Merci d'indiquer votre nom."
-        );
-
-        return;
-
-    }
-
-
-    const {
-        error
-    } = await supabaseClient
-
-        .from("echanges")
-
-        .update({
-
-            agent_interesse:
-                nomAgent.trim()
-
-        })
-
-        .eq(
-            "id",
-            id
-        );
-
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "Erreur : " +
-            error.message
-        );
-
-        return;
-
-    }
-
+  if(
+    !nomAgent.trim()
+  ){
 
     alert(
-        "👍 Votre intérêt a été enregistré."
+      "Merci d’indiquer votre nom."
     );
 
+    return;
 
-    await afficherEchanges();
-
-}
-
-
-/* =====================================================
-   SUPPRIMER
-===================================================== */
-
-async function supprimer(id) {
+  }
 
 
-    const confirmation =
-        confirm(
-            "Voulez-vous vraiment supprimer cette demande ?"
-        );
+  const { error } =
+    await supabaseClient
+      .from("echanges")
+      .update({
+
+        agent_interesse:
+          nomAgent.trim()
+
+      })
+      .eq(
+        "id",
+        id
+      );
 
 
-    if (!confirmation) {
+  if(error){
 
-        return;
-
-    }
-
-
-    const {
-        error
-    } = await supabaseClient
-
-        .from("echanges")
-
-        .delete()
-
-        .eq(
-            "id",
-            id
-        );
-
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "Erreur lors de la suppression : " +
-            error.message
-        );
-
-        return;
-
-    }
-
+    console.error(error);
 
     alert(
-        "🗑️ La demande a été supprimée."
+      "Erreur : "
+      + error.message
     );
 
+    return;
 
-    await afficherEchanges();
-
-}
-
-
-/* =====================================================
-   FORMAT DATE
-===================================================== */
-
-function formatDate(date) {
+  }
 
 
-    if (!date) {
-
-        return "";
-
-    }
+  alert(
+    "👍 Votre intérêt a été enregistré."
+  );
 
 
-    /*
-       Supabase peut renvoyer :
-
-       2026-09-12
-       2026-09-12T00:00:00
-    */
-
-
-    const valeur =
-        String(date);
-
-
-    const partieDate =
-        valeur.substring(
-            0,
-            10
-        );
-
-
-    const morceaux =
-        partieDate.split("-");
-
-
-    if (
-        morceaux.length === 3 &&
-        morceaux[0].length === 4
-    ) {
-
-        return (
-            morceaux[2]
-            +
-            "/"
-            +
-            morceaux[1]
-            +
-            "/"
-            +
-            morceaux[0]
-        );
-
-    }
-
-
-    /*
-       Si la date est déjà au format français
-    */
-
-    return valeur;
+  await afficherEchanges();
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   SUPPRIMER UNE DEMANDE
+   ========================================================= */
+
+async function supprimer(id){
+
+  if(
+    !confirm(
+      "Voulez-vous vraiment supprimer cette demande ?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const { error } =
+    await supabaseClient
+      .from("echanges")
+      .delete()
+      .eq(
+        "id",
+        id
+      );
+
+
+  if(error){
+
+    console.error(error);
+
+    alert(
+      "Erreur : "
+      + error.message
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "🗑️ La demande a été supprimée."
+  );
+
+
+  await afficherEchanges();
+
+}
+
+
+/* =========================================================
+   FORMAT DATE SERVICE
+   ========================================================= */
+
+function formatDate(date){
+
+  if(!date){
+
+    return "";
+
+  }
+
+
+  const p =
+    String(date).split("-");
+
+
+  if(
+    p.length === 3
+  ){
+
+    return (
+      p[2]
+      + "/"
+      + p[1]
+      + "/"
+      + p[0]
+    );
+
+  }
+
+
+  return String(date);
+
+}
+
+
+/* =========================================================
    FORMAT HEURE
-===================================================== */
+   ========================================================= */
 
-function formatTime(heure) {
+function formatTime(h){
 
+  if(!h){
 
-    if (!heure) {
+    return "";
 
-        return "";
-
-    }
-
-
-    const valeur =
-        String(heure);
+  }
 
 
-    return valeur.substring(
-        0,
-        5
+  return String(h)
+    .substring(0,5);
+
+}
+
+
+/* =========================================================
+   FORMAT DATE + HEURE DE LA DEMANDE
+   ========================================================= */
+
+function formatDateTime(value){
+
+  if(!value){
+
+    return "";
+
+  }
+
+
+  const d =
+    new Date(value);
+
+
+  if(
+    Number.isNaN(
+      d.getTime()
+    )
+  ){
+
+    return String(value);
+
+  }
+
+
+  const date =
+    d.toLocaleDateString(
+      "fr-FR",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
     );
 
-}
+
+  const time =
+    d.toLocaleTimeString(
+      "fr-FR",
+      {
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
 
 
-/* =====================================================
-   SÉCURITÉ AFFICHAGE
-===================================================== */
-
-function escapeHTML(texte) {
-
-
-    if (
-        texte === null ||
-        texte === undefined
-    ) {
-
-        return "";
-
-    }
-
-
-    const div =
-        document.createElement("div");
-
-
-    div.textContent =
-        String(texte);
-
-
-    return div.innerHTML;
+  return (
+    date
+    + " à "
+    + time
+  );
 
 }
 
 
-/* =====================================================
-   INITIALISATION
-===================================================== */
+/* =========================================================
+   PROTECTION HTML
+   ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+function escapeHTML(t){
 
-        afficher("accueil");
+  if(
+    t === null ||
+    t === undefined
+  ){
 
-    }
-);
+    return "";
+
+  }
+
+
+  const d =
+    document.createElement(
+      "div"
+    );
+
+
+  d.innerText =
+    String(t);
+
+
+  return d.innerHTML;
+
+}
 
 </script>
 
-
 </body>
-
 </html>
