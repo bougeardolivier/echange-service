@@ -1,262 +1,1159 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>ÉCHANGE SERVICE</title>
 
-<!-- Bibliothèque Supabase -->
+
+<!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <style>
 
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 :root {
-    --bleu-fonce: #102a43;
+
+    --bleu-nuit: #102a43;
+
+    --bleu-fonce: #163f63;
+
     --bleu: #1769aa;
-    --gris: #f3f6f8;
-    --vert: #167242;
-    --orange: #b86b00;
-    --rouge: #c62828;
+
+    --bleu-clair: #2d8fd5;
+
+    --cyan: #4bb3e8;
+
+    --gris-fond: #eef2f6;
+
+    --gris: #6b7785;
+
+    --gris-clair: #f7f9fb;
+
+    --blanc: #ffffff;
+
+    --vert: #20a464;
+
+    --vert-clair: #e8f8ef;
+
+    --orange: #f59e0b;
+
+    --orange-clair: #fff4df;
+
+    --rouge: #dc3545;
+
+    --rouge-clair: #fff0f1;
+
+    --ombre: 0 10px 30px rgba(16,42,67,0.10);
+
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
+
     box-sizing: border-box;
+
 }
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
 
 body {
+
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    background: var(--gris);
-    color: #17212b;
+
+    font-family:
+
+        -apple-system,
+
+        BlinkMacSystemFont,
+
+        "Segoe UI",
+
+        Roboto,
+
+        Arial,
+
+        sans-serif;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #dfe8ef 0px,
+            var(--gris-fond) 350px
+        );
+
+    color: #1d2a35;
+
+    min-height: 100vh;
+
 }
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header {
-    background: linear-gradient(
-        135deg,
-        var(--bleu-fonce),
-        var(--bleu)
-    );
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--bleu-nuit),
+            var(--bleu-fonce),
+            var(--bleu)
+        );
 
     color: white;
-    padding: 25px 20px 35px;
+
+    padding:
+
+        28px 20px
+        42px;
+
     text-align: center;
+
+    box-shadow:
+
+        0 4px 20px
+        rgba(0,0,0,0.15);
+
 }
+
+
+/* Décoration */
+
+header::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+
+    height: 400px;
+
+    border-radius: 50%;
+
+    background:
+
+        rgba(255,255,255,0.04);
+
+    top: -250px;
+
+    left: -150px;
+
+}
+
+
+header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    border:
+
+        2px solid
+        rgba(255,255,255,0.06);
+
+    right: -300px;
+
+    top: -220px;
+
+}
+
+
+.logo-train {
+
+    font-size: 42px;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
 
 header h1 {
+
     margin: 0;
-    font-size: 28px;
+
+    font-size: 30px;
+
+    letter-spacing: 1px;
+
+    font-weight: 800;
+
+    position: relative;
+
+    z-index: 2;
+
 }
+
 
 header p {
-    margin-bottom: 0;
-    opacity: 0.9;
+
+    margin:
+
+        8px 0
+        0;
+
+    font-size: 16px;
+
+    opacity: 0.88;
+
+    position: relative;
+
+    z-index: 2;
+
 }
+
+
+/* =========================================================
+   LIGNE FERROVIAIRE
+========================================================= */
+
+.rail {
+
+    height: 8px;
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+            #b8c4ce 0px,
+
+            #b8c4ce 18px,
+
+            #657787 18px,
+
+            #657787 22px
+
+        );
+
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
 
 main {
-    max-width: 650px;
-    margin: -15px auto 100px;
-    padding: 0 15px;
+
+    max-width: 720px;
+
+    margin:
+
+        -20px auto
+        110px;
+
+    padding:
+
+        0 16px;
+
+    position: relative;
+
+    z-index: 5;
+
 }
+
+
+/* =========================================================
+   CARTES
+========================================================= */
 
 .card {
-    background: white;
-    border-radius: 18px;
-    padding: 20px;
-    margin-top: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+    background:
+
+        rgba(255,255,255,0.96);
+
+    border-radius: 22px;
+
+    padding: 22px;
+
+    margin-top: 16px;
+
+    box-shadow:
+
+        var(--ombre);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,0.8);
+
 }
+
+
+.card h2 {
+
+    margin:
+
+        0
+        0
+        15px;
+
+    font-size: 23px;
+
+}
+
+
+.card h3 {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   CLASSE CACHEE
+========================================================= */
 
 .hidden {
+
     display: none !important;
+
 }
 
-/* ACCUEIL */
+
+/* =========================================================
+   ACCUEIL
+========================================================= */
+
+.accueil-icone {
+
+    font-size: 38px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.intro {
+
+    color: var(--gris);
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   CHOIX METIER
+========================================================= */
 
 .choice {
-    width: 100%;
-    padding: 22px;
-    margin-top: 15px;
 
-    border-radius: 16px;
-    border: 1px solid #e0e6eb;
+    width: 100%;
+
+    padding: 20px;
+
+    margin-top: 14px;
+
+    border-radius: 18px;
+
+    border:
+
+        1px solid
+        #dce5ec;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            white,
+            #f5f9fc
+        );
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    color: var(--bleu-nuit);
+
+    cursor: pointer;
+
+    transition:
+
+        transform 0.2s,
+        box-shadow 0.2s;
+
+    box-shadow:
+
+        0 5px 15px
+        rgba(0,0,0,0.05);
+
+}
+
+
+.choice:hover {
+
+    transform:
+
+        translateY(-2px);
+
+    box-shadow:
+
+        0 10px 22px
+        rgba(0,0,0,0.10);
+
+}
+
+
+.choice:active {
+
+    transform:
+
+        scale(0.98);
+
+}
+
+
+.choice small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: var(--gris);
+
+}
+
+
+.choice-icon {
+
+    font-size: 30px;
+
+    margin-right: 10px;
+
+}
+
+
+/* =========================================================
+   BADGE METIER
+========================================================= */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--bleu),
+            var(--bleu-clair)
+        );
+
+    color: white;
+
+    padding:
+
+        7px 13px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-top: 14px;
+
+    color: #445464;
+
+}
+
+
+input,
+
+textarea {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 6px;
+
+    border-radius: 12px;
+
+    border:
+
+        1px solid
+        #d3dde5;
 
     background: white;
 
-    font-size: 19px;
-    font-weight: bold;
+    font-size: 16px;
 
-    text-align: left;
-    cursor: pointer;
+    color: #1d2a35;
+
+    outline: none;
+
+    transition:
+
+        border 0.2s,
+        box-shadow 0.2s;
+
 }
 
-.choice small {
-    display: block;
-    margin-top: 5px;
 
-    font-size: 14px;
-    font-weight: normal;
+input:focus,
 
-    color: #687887;
+textarea:focus {
+
+    border-color:
+
+        var(--bleu-clair);
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(45,143,213,0.15);
+
 }
 
-/* BOUTONS */
+
+textarea {
+
+    min-height: 90px;
+
+    resize: vertical;
+
+}
+
+
+.row {
+
+    display: grid;
+
+    grid-template-columns:
+
+        1fr 1fr;
+
+    gap: 12px;
+
+}
+
+
+/* =========================================================
+   BOUTONS
+========================================================= */
 
 button {
+
     cursor: pointer;
+
+    font-family: inherit;
+
 }
 
+
 .btn {
+
     width: 100%;
-    padding: 15px;
-    margin-top: 10px;
+
+    padding: 16px;
+
+    margin-top: 16px;
 
     border: none;
-    border-radius: 12px;
 
-    background: var(--bleu);
+    border-radius: 14px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--bleu),
+            var(--bleu-clair)
+        );
+
     color: white;
 
     font-size: 16px;
-    font-weight: bold;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+
+        0 6px 15px
+        rgba(23,105,170,0.25);
+
+    transition:
+
+        transform 0.15s,
+        opacity 0.15s;
+
 }
+
+
+.btn:hover {
+
+    transform:
+
+        translateY(-1px);
+
+}
+
+
+.btn:active {
+
+    transform:
+
+        scale(0.98);
+
+}
+
 
 .btn-secondaire {
-    background: #e8eef4;
-    color: #17212b;
+
+    background:
+
+        #e8eef3;
+
+    color:
+
+        var(--bleu-nuit);
+
+    box-shadow: none;
+
 }
+
 
 .btn-interesse {
-    background: var(--vert);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #e58b00,
+            var(--orange)
+        );
+
+    box-shadow:
+
+        0 6px 15px
+        rgba(245,158,11,0.25);
+
 }
+
 
 .btn-supprimer {
-    background: var(--rouge);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #c72d3d,
+            var(--rouge)
+        );
+
+    box-shadow:
+
+        0 6px 15px
+        rgba(220,53,69,0.22);
+
 }
 
-/* FORMULAIRE */
 
-label {
-    display: block;
+/* =========================================================
+   LISTE DES ECHANGES
+========================================================= */
 
-    font-size: 14px;
-    font-weight: bold;
+.titre-metier {
 
-    margin-top: 10px;
+    margin:
 
-    color: #526273;
+        0
+        0
+        18px;
+
+    font-size: 17px;
+
+    color: var(--gris);
+
 }
 
-input,
-textarea {
-    width: 100%;
-
-    padding: 13px;
-    margin-top: 5px;
-
-    border-radius: 10px;
-
-    border: 1px solid #ccd6df;
-
-    font-size: 16px;
-}
-
-textarea {
-    min-height: 80px;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-/* ECHANGE */
 
 .item {
-    background: #f8fafc;
 
-    border-left: 5px solid var(--bleu);
+    position: relative;
 
-    padding: 16px;
-    margin-top: 12px;
+    overflow: hidden;
 
-    border-radius: 10px;
+    background:
+
+        linear-gradient(
+            135deg,
+            white,
+            #f7fafc
+        );
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    margin-top: 14px;
+
+    border:
+
+        1px solid
+        #e1e8ee;
+
+    border-left:
+
+        6px solid
+        var(--bleu);
+
+    box-shadow:
+
+        0 5px 16px
+        rgba(16,42,67,0.06);
+
 }
 
-.badge {
+
+/* décoration */
+
+.item::after {
+
+    content: "🚆";
+
+    position: absolute;
+
+    right: 16px;
+
+    top: 15px;
+
+    font-size: 22px;
+
+    opacity: 0.08;
+
+}
+
+
+.nom-agent {
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    color: var(--bleu-nuit);
+
+    margin-bottom: 10px;
+
+}
+
+
+.info {
+
+    margin-top: 5px;
+
+    font-size: 15px;
+
+    color: #455563;
+
+}
+
+
+.info strong {
+
+    color: #263747;
+
+}
+
+
+/* =========================================================
+   STATUT
+========================================================= */
+
+.statut {
+
     display: inline-block;
 
-    padding: 6px 10px;
+    margin-top: 12px;
+
+    padding:
+
+        6px 11px;
 
     border-radius: 20px;
 
     font-size: 12px;
-    font-weight: bold;
+
+    font-weight: 800;
+
 }
 
-.badge-disponible {
-    background: #e7f5ec;
-    color: var(--vert);
+
+.statut-disponible {
+
+    background:
+
+        var(--vert-clair);
+
+    color:
+
+        var(--vert);
+
 }
 
-.badge-interesse {
-    background: #fff1db;
-    color: var(--orange);
+
+.statut-interesse {
+
+    background:
+
+        var(--orange-clair);
+
+    color:
+
+        #b36b00;
+
 }
 
-.interesse-info {
+
+/* =========================================================
+   AGENT INTERESSE
+========================================================= */
+
+.interesse-box {
+
+    margin-top: 14px;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff7e8,
+            #fffdf8
+        );
+
+    border:
+
+        1px solid
+        #f4d9a5;
+
+}
+
+
+.interesse-titre {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #9a5c00;
+
+}
+
+
+.interesse-nom {
+
+    margin-top: 5px;
+
+    font-weight: 800;
+
+    color: #5d3a00;
+
+}
+
+
+/* =========================================================
+   COMMENTAIRE
+========================================================= */
+
+.commentaire {
+
     margin-top: 12px;
 
-    padding: 10px;
+    padding-top: 12px;
 
-    background: #fff1db;
+    border-top:
 
-    border-radius: 8px;
+        1px solid
+        #e7edf2;
 
-    color: #7a4700;
+    color:
+
+        var(--gris);
+
+    font-size: 14px;
+
 }
 
-/* MENU */
+
+/* =========================================================
+   ACTIONS DANS UNE CARTE
+========================================================= */
+
+.actions {
+
+    margin-top: 15px;
+
+    display: grid;
+
+    gap: 8px;
+
+}
+
+
+.actions button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   MESSAGE VIDE
+========================================================= */
+
+.vide {
+
+    text-align: center;
+
+    padding:
+
+        30px
+        15px;
+
+    color:
+
+        var(--gris);
+
+}
+
+
+.vide .icone {
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 nav {
+
     position: fixed;
 
+    z-index: 100;
+
     bottom: 0;
+
     left: 0;
+
     right: 0;
 
-    background: white;
+    background:
 
-    border-top: 1px solid #dfe6ec;
+        rgba(255,255,255,0.96);
 
-    padding: 8px;
+    backdrop-filter:
+
+        blur(15px);
+
+    border-top:
+
+        1px solid
+        #dfe6ec;
+
+    padding:
+
+        8px
+        8px
+        calc(8px + env(safe-area-inset-bottom));
 
     display: flex;
+
     justify-content: space-around;
 
-    z-index: 100;
+    box-shadow:
+
+        0 -5px 20px
+        rgba(0,0,0,0.06);
+
 }
+
 
 nav button {
+
+    flex: 1;
+
     border: none;
+
     background: none;
 
-    color: #17212b;
+    color:
+
+        #516170;
 
     font-size: 12px;
-    padding: 8px;
+
+    padding: 9px 4px;
+
+    border-radius: 10px;
+
 }
+
+
+nav button span {
+
+    display: block;
+
+    font-size: 20px;
+
+    margin-bottom: 3px;
+
+}
+
+
+nav button:hover {
+
+    background:
+
+        #eef5fa;
+
+    color:
+
+        var(--bleu);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media (max-width: 500px) {
 
+    header h1 {
+
+        font-size: 25px;
+
+    }
+
+
+    main {
+
+        padding:
+
+            0 10px;
+
+    }
+
+
+    .card {
+
+        padding: 18px;
+
+        border-radius: 18px;
+
+    }
+
+
     .row {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+
+            1fr;
+
+        gap: 0;
+
     }
 
 }
+
 
 </style>
 
@@ -266,214 +1163,384 @@ nav button {
 <body>
 
 
-<!-- =========================
-     EN-TÊTE
-========================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
-<h1>🚆 ÉCHANGE SERVICE</h1>
+    <span class="logo-train">
+        🚆
+    </span>
 
-<p>Échange de journées entre agents</p>
+    <h1>
+        ÉCHANGE SERVICE
+    </h1>
+
+    <p>
+        Échange de journées entre agents
+    </p>
 
 </header>
 
 
+<div class="rail"></div>
+
+
+
+<!-- =====================================================
+     CONTENU
+===================================================== -->
+
 <main>
 
 
-<!-- =========================
+<!-- =====================================================
      ACCUEIL
-========================= -->
+===================================================== -->
 
 <section id="accueil">
 
-<div class="card">
 
-<h2>Bienvenue 👋</h2>
-
-<p>
-Choisissez votre métier pour commencer.
-</p>
-
-</div>
+    <div class="card">
 
 
-<button
-class="choice"
-onclick="choisirMetier('ADC')">
+        <div class="accueil-icone">
 
-🚆 ADC
+            👋
 
-<small>
-Conducteurs de train
-</small>
-
-</button>
+        </div>
 
 
-<button
-class="choice"
-onclick="choisirMetier('ASCT')">
+        <h2>
 
-👤 ASCT
+            Bienvenue
 
-<small>
-Agents du Service Commercial Train
-</small>
+        </h2>
 
-</button>
+
+        <p class="intro">
+
+            Cette application permet aux agents de proposer
+            une journée de service et de consulter les
+            journées disponibles pour un éventuel échange.
+
+        </p>
+
+
+        <p class="intro">
+
+            Choisissez votre métier pour commencer.
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- ADC -->
+
+    <button
+        class="choice"
+        onclick="choisirMetier('ADC')"
+    >
+
+        <span class="choice-icon">
+
+            🚆
+
+        </span>
+
+        ADC
+
+
+        <small>
+
+            Conducteurs de train
+
+        </small>
+
+
+    </button>
+
+
+
+    <!-- ASCT -->
+
+    <button
+        class="choice"
+        onclick="choisirMetier('ASCT')"
+    >
+
+        <span class="choice-icon">
+
+            🧑‍✈️
+
+        </span>
+
+        ASCT
+
+
+        <small>
+
+            Agents du Service Commercial Train
+
+        </small>
+
+
+    </button>
 
 
 </section>
 
 
 
-<!-- =========================
-     PROPOSER
-========================= -->
+<!-- =====================================================
+     PROPOSER UNE JOURNEE
+===================================================== -->
 
 <section
-id="proposer"
-class="hidden">
-
-<div class="card">
-
-
-<span
-id="metier"
-class="badge badge-disponible">
-</span>
+    id="proposer"
+    class="hidden"
+>
 
 
-<h2>
-➕ Ma journée à échanger
-</h2>
+    <div class="card">
 
 
-<label>
-Nom et prénom
-</label>
+        <div
+            id="metier"
+            class="badge"
+        >
 
-<input
-id="nom"
-placeholder="Exemple : Jean DUPONT">
-
-
-<label>
-Date de la journée
-</label>
-
-<input
-id="date"
-type="date">
+        </div>
 
 
-<div class="row">
+        <h2>
+
+            ➕ Ma journée à échanger
+
+        </h2>
 
 
-<div>
-
-<label>
-Prise de service
-</label>
-
-<input
-id="prise"
-type="time">
-
-</div>
+        <!-- NOM -->
 
 
-<div>
+        <label>
 
-<label>
-Fin de service
-</label>
+            👤 Nom et prénom
 
-<input
-id="fin"
-type="time">
-
-</div>
+        </label>
 
 
-</div>
+        <input
+
+            id="nom"
+
+            placeholder="Exemple : Jean DUPONT"
+
+        >
 
 
-<label>
-Commentaire facultatif
-</label>
 
-<textarea
-id="commentaire"
-placeholder="Exemple : TER, réserve..."></textarea>
+        <!-- DATE -->
 
 
-<button
-class="btn"
-onclick="publier()">
+        <label>
 
-🚆 PUBLIER MA JOURNÉE
+            📅 Date de la journée
 
-</button>
+        </label>
 
 
-<button
-class="btn btn-secondaire"
-onclick="afficher('echanges')">
+        <input
 
-🔎 VOIR LES ÉCHANGES
+            id="date"
 
-</button>
+            type="date"
+
+        >
 
 
-</div>
+
+        <!-- HORAIRES -->
+
+
+        <div class="row">
+
+
+            <div>
+
+
+                <label>
+
+                    🚉 Prise de service
+
+                </label>
+
+
+                <input
+
+                    id="prise"
+
+                    type="time"
+
+                >
+
+
+            </div>
+
+
+
+            <div>
+
+
+                <label>
+
+                    🏁 Fin de service
+
+                </label>
+
+
+                <input
+
+                    id="fin"
+
+                    type="time"
+
+                >
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- COMMENTAIRE -->
+
+
+        <label>
+
+            💬 Commentaire facultatif
+
+        </label>
+
+
+        <textarea
+
+            id="commentaire"
+
+            placeholder="Exemple : TER, réserve, numéro de train..."
+
+        ></textarea>
+
+
+
+        <!-- BOUTON PUBLIER -->
+
+
+        <button
+
+            class="btn"
+
+            onclick="publier()"
+
+        >
+
+            🚆 PUBLIER MA JOURNÉE
+
+        </button>
+
+
+
+        <button
+
+            class="btn btn-secondaire"
+
+            onclick="afficher('echanges')"
+
+        >
+
+            🔎 VOIR LES ÉCHANGES
+
+        </button>
+
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =========================
+<!-- =====================================================
      ECHANGES
-========================= -->
+===================================================== -->
 
 <section
-id="echanges"
-class="hidden">
-
-<div class="card">
-
-
-<h2>
-🔎 Échanges
-</h2>
+    id="echanges"
+    class="hidden"
+>
 
 
-<p>
-
-Métier :
-
-<strong id="metierEchanges"></strong>
-
-</p>
+    <div class="card">
 
 
-<div id="listeEchanges">
+        <h2>
 
-</div>
+            🔎 Échanges disponibles
 
-
-<button
-class="btn btn-secondaire"
-onclick="afficher('proposer')">
-
-➕ PROPOSER UNE JOURNÉE
-
-</button>
+        </h2>
 
 
-</div>
+        <p
+            class="titre-metier"
+            id="metierListe"
+        >
+
+        </p>
+
+
+        <div
+            id="listeEchanges"
+        >
+
+        </div>
+
+
+
+        <button
+
+            class="btn"
+
+            onclick="afficher('proposer')"
+
+        >
+
+            ➕ PROPOSER UNE JOURNÉE
+
+        </button>
+
+
+
+        <button
+
+            class="btn btn-secondaire"
+
+            onclick="chargerEchanges()"
+
+        >
+
+            🔄 ACTUALISER
+
+        </button>
+
+
+    </div>
+
 
 </section>
 
@@ -482,389 +1549,664 @@ onclick="afficher('proposer')">
 
 
 
-<!-- =========================
-     MENU
-========================= -->
+<!-- =====================================================
+     MENU BAS
+===================================================== -->
 
 <nav
-id="menu"
-class="hidden">
+    id="menu"
+    class="hidden"
+>
 
 
-<button
-onclick="afficher('proposer')">
+    <button
+        onclick="afficher('proposer')"
+    >
 
-➕<br>
-Ma journée
+        <span>➕</span>
 
-</button>
+        Ma journée
 
-
-<button
-onclick="afficher('echanges')">
-
-🔎<br>
-Échanges
-
-</button>
+    </button>
 
 
-<button
-onclick="changerMetier()">
 
-🚆<br>
-Métier
+    <button
+        onclick="afficher('echanges')"
+    >
 
-</button>
+        <span>🔎</span>
+
+        Échanges
+
+    </button>
+
+
+
+    <button
+        onclick="changerMetier()"
+    >
+
+        <span>🚆</span>
+
+        Métier
+
+    </button>
 
 
 </nav>
 
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
 
-/* =========================
+/* =========================================================
    CONFIGURATION SUPABASE
-========================= */
+========================================================= */
+
 
 const SUPABASE_URL =
-"https://nptwpoguokbjuzdyxach.supabase.co";
+
+    "https://nptwpoguokbjuzdyxach.supabase.co";
 
 
 /*
-   CONSERVE TA VRAIE
-   PUBLISHABLE KEY ICI
+
+IMPORTANT :
+
+Remplace la valeur ci-dessous par ta Publishable Key
+Supabase.
+
 */
 
 const SUPABASE_KEY =
-"sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+
+    "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+
 
 
 const supabaseClient =
-supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+
+    supabase.createClient(
+
+        SUPABASE_URL,
+
+        SUPABASE_KEY
+
+    );
 
 
 
-/* =========================
-   VARIABLE METIER
-========================= */
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 
 let metierActuel = "";
 
 
 
-/* =========================
-   NAVIGATION
-========================= */
-
-async function afficher(page) {
+/* =========================================================
+   AFFICHER UNE PAGE
+========================================================= */
 
 
-    document
-    .querySelectorAll("main section")
-    .forEach(section => {
-
-        section.classList.add("hidden");
-
-    });
+function afficher(page) {
 
 
     document
-    .getElementById(page)
-    .classList
-    .remove("hidden");
+
+        .querySelectorAll(
+            "main section"
+        )
+
+        .forEach(
+
+            section => {
+
+                section.classList.add(
+                    "hidden"
+                );
+
+            }
+
+        );
 
 
-    if (page === "echanges") {
 
-        document
-        .getElementById("metierEchanges")
-        .innerText =
-        metierActuel;
+    document
+
+        .getElementById(page)
+
+        .classList.remove(
+            "hidden"
+        );
 
 
-        await afficherEchanges();
+
+    if (
+
+        page === "echanges"
+
+    ) {
+
+        chargerEchanges();
 
     }
+
 
 }
 
 
 
-/* =========================
-   CHOISIR METIER
-========================= */
+
+/* =========================================================
+   CHOISIR UN METIER
+========================================================= */
+
 
 function choisirMetier(metier) {
 
 
-    metierActuel =
-    metier;
+    metierActuel = metier;
+
+
+
+    let nomMetier = "";
+
+
+    if (
+
+        metier === "ADC"
+
+    ) {
+
+        nomMetier =
+
+            "🚆 ADC";
+
+    }
+
+
+    if (
+
+        metier === "ASCT"
+
+    ) {
+
+        nomMetier =
+
+            "🧑‍✈️ ASCT";
+
+    }
+
 
 
     document
-    .getElementById("metier")
-    .innerText =
-    metier;
+
+        .getElementById("metier")
+
+        .innerText =
+
+            nomMetier;
+
 
 
     document
-    .getElementById("menu")
-    .classList
-    .remove("hidden");
+
+        .getElementById("metierListe")
+
+        .innerHTML =
+
+            "Métier : <strong>" +
+
+            metier +
+
+            "</strong>";
 
 
-    afficher("proposer");
+
+    document
+
+        .getElementById("menu")
+
+        .classList.remove(
+            "hidden"
+        );
+
+
+
+    afficher(
+        "proposer"
+    );
+
 
 }
 
 
 
-/* =========================
-   CHANGER METIER
-========================= */
+
+/* =========================================================
+   CHANGER DE METIER
+========================================================= */
+
 
 function changerMetier() {
 
 
-    metierActuel =
-    "";
+    metierActuel = "";
+
 
 
     document
-    .getElementById("menu")
-    .classList
-    .add("hidden");
+
+        .getElementById("menu")
+
+        .classList.add(
+            "hidden"
+        );
 
 
-    afficher("accueil");
+
+    afficher(
+        "accueil"
+    );
+
 
 }
 
 
 
-/* =========================
+
+/* =========================================================
    PUBLIER UNE JOURNEE
-========================= */
+========================================================= */
+
 
 async function publier() {
 
 
-    const nom =
-    document
-    .getElementById("nom")
-    .value
-    .trim();
+    let nom =
+
+        document
+
+            .getElementById("nom")
+
+            .value
+
+            .trim();
 
 
-    const date =
-    document
-    .getElementById("date")
-    .value;
+
+    let date =
+
+        document
+
+            .getElementById("date")
+
+            .value;
 
 
-    const prise =
-    document
-    .getElementById("prise")
-    .value;
+
+    let prise =
+
+        document
+
+            .getElementById("prise")
+
+            .value;
 
 
-    const fin =
-    document
-    .getElementById("fin")
-    .value;
+
+    let fin =
+
+        document
+
+            .getElementById("fin")
+
+            .value;
 
 
-    const commentaire =
-    document
-    .getElementById("commentaire")
-    .value
-    .trim();
+
+    let commentaire =
+
+        document
+
+            .getElementById("commentaire")
+
+            .value
+
+            .trim();
+
+
+
+    /* VERIFICATION */
 
 
     if (
 
         !nom ||
+
         !date ||
+
         !prise ||
+
         !fin
 
     ) {
 
+
         alert(
-        "Merci de remplir le nom, la date et les horaires."
+
+            "⚠️ Merci de remplir le nom, la date et les horaires."
+
         );
+
 
         return;
 
     }
 
 
-    const { error } =
+
+    /* ENVOI VERS SUPABASE */
+
+
+    const {
+
+        error
+
+    }
+
+    =
+
     await supabaseClient
 
-    .from("echanges")
+        .from("echanges")
 
-    .insert([
+        .insert([
 
-        {
+            {
 
-            metier:
-            metierActuel,
+                metier:
 
-            nom:
-            nom,
-
-            date_service:
-            date,
-
-            prise_service:
-            prise,
-
-            fin_service:
-            fin,
-
-            commentaire:
-            commentaire,
-
-            statut:
-            "disponible",
-
-            agent_interesse:
-            null
-
-        }
-
-    ]);
+                    metierActuel,
 
 
-    if (error) {
+                nom:
 
-        console.error(error);
+                    nom,
+
+
+                date_service:
+
+                    date,
+
+
+                prise_service:
+
+                    prise,
+
+
+                fin_service:
+
+                    fin,
+
+
+                commentaire:
+
+                    commentaire,
+
+
+                statut:
+
+                    "disponible",
+
+
+                agent_interesse:
+
+                    null
+
+            }
+
+        ]);
+
+
+
+
+    /* ERREUR */
+
+
+    if (
+
+        error
+
+    ) {
+
+
+        console.error(
+            error
+        );
+
 
         alert(
-        "❌ Erreur : " +
-        error.message
+
+            "❌ Erreur lors de la publication : " +
+
+            error.message
+
         );
+
 
         return;
 
     }
 
 
-    document
-    .getElementById("nom")
-    .value =
-    "";
+
+    /* VIDAGE DU FORMULAIRE */
 
 
     document
-    .getElementById("date")
-    .value =
-    "";
 
+        .getElementById("nom")
 
-    document
-    .getElementById("prise")
-    .value =
-    "";
+        .value = "";
+
 
 
     document
-    .getElementById("fin")
-    .value =
-    "";
+
+        .getElementById("date")
+
+        .value = "";
+
 
 
     document
-    .getElementById("commentaire")
-    .value =
-    "";
+
+        .getElementById("prise")
+
+        .value = "";
+
+
+
+    document
+
+        .getElementById("fin")
+
+        .value = "";
+
+
+
+    document
+
+        .getElementById("commentaire")
+
+        .value = "";
+
 
 
     alert(
-    "✅ Votre journée est publiée !"
+
+        "✅ Votre journée est publiée !"
+
     );
 
 
-    await afficher("echanges");
+
+    afficher(
+        "echanges"
+    );
+
 
 }
 
 
 
-/* =========================
-   AFFICHER LES ECHANGES
-========================= */
 
-async function afficherEchanges() {
+/* =========================================================
+   CHARGER LES ECHANGES
+========================================================= */
 
 
-    const zone =
-    document
-    .getElementById(
-    "listeEchanges"
-    );
+async function chargerEchanges() {
+
+
+    let zone =
+
+        document.getElementById(
+            "listeEchanges"
+        );
+
 
 
     zone.innerHTML =
-    "<p>Chargement...</p>";
+
+        `
+
+        <div class="vide">
+
+            <div class="icone">
+
+                🚆
+
+            </div>
+
+            Chargement des échanges...
+
+        </div>
+
+        `;
 
 
-    /*
-    IMPORTANT :
 
-    AUCUN FILTRE SUR STATUT.
+    const {
 
-    On récupère toutes les demandes
-    du métier sélectionné.
+        data,
 
-    Donc une demande avec un agent
-    intéressé RESTE VISIBLE.
-    */
+        error
 
+    }
 
-    const { data, error } =
+    =
+
     await supabaseClient
 
-    .from("echanges")
+        .from("echanges")
 
-    .select("*")
+        .select("*")
 
-    .eq(
-    "metier",
-    metierActuel
-    )
+        .eq(
 
-    .order(
-    "date_service",
-    {
-        ascending: true
-    }
-    );
+            "metier",
+
+            metierActuel
+
+        )
+
+        .order(
+
+            "id",
+
+            {
+
+                ascending:
+
+                    false
+
+            }
+
+        );
 
 
-    if (error) {
 
-        console.error(error);
+
+    /* ERREUR */
+
+
+    if (
+
+        error
+
+    ) {
+
+
+        console.error(
+            error
+        );
+
 
         zone.innerHTML =
-        "<p>❌ Erreur : " +
-        error.message +
-        "</p>";
+
+            `
+
+            <div class="vide">
+
+                <div class="icone">
+
+                    ❌
+
+                </div>
+
+                <strong>
+
+                    Erreur lors du chargement
+
+                </strong>
+
+                <br><br>
+
+                ${error.message}
+
+            </div>
+
+            `;
+
 
         return;
 
     }
 
 
-    zone.innerHTML =
-    "";
+
+
+    /* NETTOYAGE */
+
+
+    zone.innerHTML = "";
+
+
+
+
+    /* AUCUNE DEMANDE */
 
 
     if (
@@ -875,313 +2217,490 @@ async function afficherEchanges() {
 
     ) {
 
+
         zone.innerHTML =
-        "<p>Aucune journée proposée pour le moment.</p>";
+
+            `
+
+            <div class="vide">
+
+                <div class="icone">
+
+                    🚉
+
+                </div>
+
+                <strong>
+
+                    Aucune journée proposée
+
+                </strong>
+
+                <br><br>
+
+                Soyez le premier à proposer
+                une journée !
+
+            </div>
+
+            `;
+
 
         return;
 
     }
 
 
+
+
+    /* AFFICHAGE */
+
+
     data.forEach(
-    echange => {
+
+        echange => {
 
 
-        creerCarteEchange(
-        echange,
-        zone
-        );
+            afficherCarte(
+                echange,
+                zone
+            );
 
 
-    });
+        }
+
+    );
 
 
 }
 
 
 
-/* =========================
-   CREER UNE CARTE
-========================= */
 
-function creerCarteEchange(
-echange,
-zone
+/* =========================================================
+   AFFICHER UNE CARTE D'ECHANGE
+========================================================= */
+
+
+function afficherCarte(
+
+    echange,
+
+    zone
+
 ) {
 
 
-    const bloc =
-    document.createElement(
-    "div"
-    );
+    let bloc =
+
+        document.createElement(
+            "div"
+        );
+
 
 
     bloc.className =
-    "item";
+
+        "item";
 
 
-    /*
-    Vérification :
 
-    Est-ce qu'un agent
-    est déjà intéressé ?
-    */
+    /* DATE FRANCAISE */
 
 
-    const dejaInteresse =
+    let dateAffichee =
 
-    echange.agent_interesse
-
-    &&
-
-    echange.agent_interesse
-    .trim() !== "";
+        echange.date_service;
 
 
-    /*
-    STATUT
-    */
+
+    if (
+
+        echange.date_service
+
+    ) {
 
 
-    let statutHTML =
-    "";
+        let morceaux =
+
+            echange
+
+                .date_service
+
+                .split("-");
 
 
-    if (dejaInteresse) {
+
+        if (
+
+            morceaux.length === 3
+
+        ) {
+
+
+            dateAffichee =
+
+                morceaux[2]
+
+                + "/"
+
+                + morceaux[1]
+
+                + "/"
+
+                + morceaux[0];
+
+        }
+
+    }
+
+
+
+
+    /* HORAIRES */
+
+
+    let prise =
+
+        echange.prise_service
+
+        ?
+
+        echange
+
+            .prise_service
+
+            .substring(0,5)
+
+        :
+
+        "";
+
+
+
+    let fin =
+
+        echange.fin_service
+
+        ?
+
+        echange
+
+            .fin_service
+
+            .substring(0,5)
+
+        :
+
+        "";
+
+
+
+
+    /* STATUT */
+
+
+    let statutHTML = "";
+
+
+
+    if (
+
+        echange.agent_interesse
+
+        &&
+
+        echange.agent_interesse
+
+        .trim() !== ""
+
+    ) {
 
 
         statutHTML =
 
-        '<span class="badge badge-interesse">' +
+            `
 
-        "🟠 AGENT INTÉRESSÉ" +
+            <div class="statut statut-interesse">
 
-        "</span>";
+                🤝 Agent intéressé
+
+            </div>
+
+            `;
 
 
     }
+
 
     else {
 
 
         statutHTML =
 
-        '<span class="badge badge-disponible">' +
+            `
 
-        "🟢 DISPONIBLE" +
+            <div class="statut statut-disponible">
 
-        "</span>";
+                ● Disponible
 
-    }
+            </div>
 
-
-    /*
-    AGENT INTERESSE
-    */
-
-
-    let agentHTML =
-    "";
-
-
-    if (dejaInteresse) {
-
-
-        agentHTML =
-
-        '<div class="interesse-info">' +
-
-        "👤 Agent intéressé : " +
-
-        "<strong>" +
-
-        echange.agent_interesse +
-
-        "</strong>" +
-
-        "</div>";
+            `;
 
     }
 
 
-    /*
-    BOUTON INTERESSE
-
-    Il apparaît UNIQUEMENT
-    s'il n'y a pas encore
-    d'agent intéressé.
-    */
 
 
-    let boutonInteresse =
-    "";
+    /* AGENT INTERESSE */
 
 
-    if (!dejaInteresse) {
+    let interesseHTML = "";
+
+
+
+    if (
+
+        echange.agent_interesse
+
+        &&
+
+        echange.agent_interesse
+
+        .trim() !== ""
+
+    ) {
+
+
+        interesseHTML =
+
+            `
+
+            <div class="interesse-box">
+
+                <div class="interesse-titre">
+
+                    🤝 AGENT INTÉRESSÉ
+
+                </div>
+
+                <div class="interesse-nom">
+
+                    ${securiserTexte(
+
+                        echange.agent_interesse
+
+                    )}
+
+                </div>
+
+            </div>
+
+            `;
+
+    }
+
+
+
+
+    /* BOUTON INTERESSE */
+
+
+    let boutonInteresse = "";
+
+
+
+    if (
+
+        !
+
+        echange.agent_interesse
+
+        ||
+
+        echange.agent_interesse
+
+        .trim() === ""
+
+    ) {
 
 
         boutonInteresse =
 
-        '<button ' +
+            `
 
-        'class="btn btn-interesse" ' +
+            <button
 
-        'onclick="jeSuisInteresse(' +
+                class="btn-interesse"
 
-        echange.id +
+                onclick="jeSuisInteresse(
 
-        ')"' +
+                    ${echange.id}
 
-        '>' +
+                )"
 
-        "🤝 JE SUIS INTÉRESSÉ" +
+            >
 
-        "</button>";
+                🤝 JE SUIS INTÉRESSÉ
 
-    }
+            </button>
 
-
-    /*
-    COMMENTAIRE
-    */
-
-
-    let commentaireHTML =
-    "";
-
-
-    if (echange.commentaire) {
-
-
-        commentaireHTML =
-
-        "<br>" +
-
-        "<small>💬 " +
-
-        echange.commentaire +
-
-        "</small>";
+            `;
 
     }
 
 
-    /*
-    CONTENU CARTE
-    */
+
+
+    /* CONTENU */
 
 
     bloc.innerHTML =
 
+        `
 
-    statutHTML
+        <div class="nom-agent">
 
+            👤
 
-    +
+            ${securiserTexte(
+                echange.nom
+            )}
 
-    "<br><br>"
-
-
-    +
-
-    "<strong>" +
-
-    echange.nom +
-
-    "</strong>"
+        </div>
 
 
-    +
 
-    "<br>"
+        <div class="info">
 
+            📅
 
-    +
+            <strong>
 
-    "📅 " +
+                ${dateAffichee}
 
-    echange.date_service
+            </strong>
 
-
-    +
-
-    "<br>"
+        </div>
 
 
-    +
 
-    "⏰ " +
+        <div class="info">
 
-    formatHeure(
-    echange.prise_service
-    )
+            ⏰
 
+            <strong>
 
-    +
+                ${prise}
 
-    " → "
+                →
 
+                ${fin}
 
-    +
+            </strong>
 
-    formatHeure(
-    echange.fin_service
-    )
+        </div>
 
 
-    +
 
-    commentaireHTML
+        ${
+
+            echange.commentaire
+
+            ?
+
+            `
+
+            <div class="commentaire">
+
+                💬
+
+                ${securiserTexte(
+
+                    echange.commentaire
+
+                )}
+
+            </div>
+
+            `
+
+            :
+
+            ""
+
+        }
 
 
-    +
 
-    agentHTML
-
-
-    +
-
-    boutonInteresse
+        ${statutHTML}
 
 
-    +
 
-    '<button ' +
+        ${interesseHTML}
 
-    'class="btn btn-supprimer" ' +
 
-    'onclick="supprimerEchange(' +
 
-    echange.id +
+        <div class="actions">
 
-    ')"' +
 
-    '>' +
+            ${boutonInteresse}
 
-    "🗑️ SUPPRIMER" +
 
-    "</button>";
+
+            <button
+
+                class="btn-supprimer"
+
+                onclick="supprimerEchange(
+
+                    ${echange.id}
+
+                )"
+
+            >
+
+                🗑️ SUPPRIMER
+
+            </button>
+
+
+        </div>
+
+        `;
+
 
 
     zone.appendChild(
-    bloc
+        bloc
     );
+
 
 }
 
 
 
-/* =========================
+
+/* =========================================================
    JE SUIS INTERESSE
-========================= */
+========================================================= */
+
 
 async function jeSuisInteresse(id) {
 
 
     let nomInteresse =
-    prompt(
-    "Indiquez votre nom et prénom :"
-    );
+
+        prompt(
+
+            "👤 Indiquez votre nom et prénom :"
+
+        );
+
+
+
+    /* ANNULATION */
 
 
     if (
@@ -1190,13 +2709,17 @@ async function jeSuisInteresse(id) {
 
     ) {
 
+
         return;
 
     }
 
 
+
     nomInteresse =
-    nomInteresse.trim();
+
+        nomInteresse.trim();
+
 
 
     if (
@@ -1205,166 +2728,284 @@ async function jeSuisInteresse(id) {
 
     ) {
 
+
         alert(
-        "Merci d'indiquer votre nom."
+
+            "⚠️ Merci d'indiquer votre nom."
+
         );
+
 
         return;
 
     }
 
 
-    /*
-    IMPORTANT :
-
-    On modifie UNIQUEMENT
-    agent_interesse.
-
-    On ne modifie PAS
-    le statut.
-
-    La demande reste donc :
-
-    statut = disponible
-    */
 
 
-    const { error } =
+    /* MISE A JOUR */
+
+
+    const {
+
+        error
+
+    }
+
+    =
+
     await supabaseClient
 
-    .from("echanges")
+        .from("echanges")
 
-    .update({
+        .update(
 
-        agent_interesse:
-        nomInteresse
+            {
 
-    })
+                agent_interesse:
 
-    .eq(
-    "id",
-    id
-    );
+                    nomInteresse,
 
 
-    if (error) {
+                statut:
 
-        console.error(error);
+                    "interesse"
+
+            }
+
+        )
+
+        .eq(
+
+            "id",
+
+            id
+
+        );
+
+
+
+
+    /* ERREUR */
+
+
+    if (
+
+        error
+
+    ) {
+
+
+        console.error(
+            error
+        );
+
 
         alert(
-        "❌ Erreur : " +
-        error.message
+
+            "❌ Erreur : " +
+
+            error.message
+
         );
+
 
         return;
 
     }
+
 
 
     alert(
-    "✅ Votre intérêt a été enregistré !"
+
+        "🤝 Votre intérêt a été enregistré !"
+
     );
 
 
-    /*
-    Rechargement.
 
-    La demande sera récupérée
-    à nouveau car afficherEchanges()
-    récupère TOUTES les demandes.
+    /* IMPORTANT :
+
+       LA DEMANDE RESTE VISIBLE
+
+       On recharge simplement la liste.
+
     */
 
 
-    await afficherEchanges();
+    await chargerEchanges();
+
 
 }
 
 
 
-/* =========================
+
+/* =========================================================
    SUPPRIMER UNE DEMANDE
-========================= */
+========================================================= */
+
 
 async function supprimerEchange(id) {
 
 
-    const confirmation =
-    confirm(
-    "⚠️ Voulez-vous vraiment supprimer cette demande ?"
-    );
+    let confirmation =
 
+        confirm(
 
-    if (!confirmation) {
+            "🗑️ Voulez-vous vraiment supprimer cette demande ?"
 
-        return;
-
-    }
-
-
-    const { error } =
-    await supabaseClient
-
-    .from("echanges")
-
-    .delete()
-
-    .eq(
-    "id",
-    id
-    );
-
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-        "❌ Erreur lors de la suppression : " +
-        error.message
         );
 
+
+
+    if (
+
+        !confirmation
+
+    ) {
+
+
         return;
 
     }
+
+
+
+
+    /* SUPPRESSION SUPABASE */
+
+
+    const {
+
+        error
+
+    }
+
+    =
+
+    await supabaseClient
+
+        .from("echanges")
+
+        .delete()
+
+        .eq(
+
+            "id",
+
+            id
+
+        );
+
+
+
+
+    /* ERREUR */
+
+
+    if (
+
+        error
+
+    ) {
+
+
+        console.error(
+            error
+        );
+
+
+        alert(
+
+            "❌ Impossible de supprimer la demande : "
+
+            +
+
+            error.message
+
+        );
+
+
+        return;
+
+    }
+
 
 
     alert(
-    "🗑️ La demande a été supprimée."
+
+        "✅ La demande a été supprimée."
+
     );
 
 
-    /*
-    Rechargement complet
-    depuis Supabase
-    */
+
+    /* RECHARGEMENT COMPLET */
 
 
-    await afficherEchanges();
+    await chargerEchanges();
+
 
 }
 
 
 
-/* =========================
-   FORMAT HEURE
-========================= */
 
-function formatHeure(heure) {
+/* =========================================================
+   SECURISER LE TEXTE
+========================================================= */
 
 
-    if (!heure) {
+function securiserTexte(texte) {
+
+
+    if (
+
+        texte === null
+
+        ||
+
+        texte === undefined
+
+    ) {
+
 
         return "";
 
     }
 
 
-    return heure.substring(
-    0,
-    5
-    );
+
+    let div =
+
+        document.createElement(
+            "div"
+        );
+
+
+
+    div.innerText = texte;
+
+
+
+    return div.innerHTML;
+
 
 }
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+
+/*
+
+Au chargement, l'utilisateur commence
+sur le choix du métier.
+
+*/
 
 
 </script>
