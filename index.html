@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 
@@ -13,7 +14,6 @@
     --bleu-fonce: #102a43;
     --bleu: #1769aa;
     --gris: #f3f6f8;
-    --blanc: #ffffff;
 }
 
 * {
@@ -66,25 +66,19 @@ main {
     width: 100%;
     padding: 22px;
     margin-top: 15px;
-
     border-radius: 16px;
     border: 1px solid #e0e6eb;
-
     background: white;
-
     font-size: 19px;
     font-weight: bold;
-
     text-align: left;
 }
 
 .choice small {
     display: block;
     margin-top: 5px;
-
     font-size: 14px;
     font-weight: normal;
-
     color: #687887;
 }
 
@@ -94,17 +88,12 @@ button {
 
 .btn {
     width: 100%;
-
     padding: 15px;
     margin-top: 10px;
-
     border: none;
     border-radius: 12px;
-
     background: var(--bleu);
-
     color: white;
-
     font-size: 16px;
     font-weight: bold;
 }
@@ -116,115 +105,70 @@ button {
 
 label {
     display: block;
-
     font-size: 14px;
     font-weight: bold;
-
     margin-top: 10px;
-
     color: #526273;
 }
 
 input,
 textarea {
-
     width: 100%;
-
     padding: 13px;
-
     margin-top: 5px;
-
     border-radius: 10px;
-
     border: 1px solid #ccd6df;
-
     font-size: 16px;
-
 }
 
 .row {
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
-
 }
 
 .item {
-
     background: #f8fafc;
-
     border-left: 5px solid var(--bleu);
-
     padding: 15px;
-
     margin-top: 12px;
-
     border-radius: 8px;
-
 }
 
 .badge {
-
     display: inline-block;
-
     background: #e7f5ec;
-
     color: #167242;
-
     padding: 6px 10px;
-
     border-radius: 20px;
-
     font-size: 12px;
-
     font-weight: bold;
-
 }
 
 nav {
-
     position: fixed;
-
     bottom: 0;
-
     left: 0;
-
     right: 0;
-
     background: white;
-
     border-top: 1px solid #dfe6ec;
-
     padding: 8px;
-
     display: flex;
-
     justify-content: space-around;
-
 }
 
 nav button {
-
     border: none;
-
     background: none;
-
     font-size: 12px;
-
     padding: 8px;
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -233,7 +177,6 @@ nav button {
 <p>Échange de journées entre agents</p>
 
 </header>
-
 
 
 <main>
@@ -247,11 +190,7 @@ nav button {
 
 <h2>Bienvenue 👋</h2>
 
-<p>
-
-Choisissez votre métier pour commencer.
-
-</p>
+<p>Choisissez votre métier pour commencer.</p>
 
 </div>
 
@@ -265,7 +204,6 @@ Choisissez votre métier pour commencer.
 </button>
 
 
-
 <button class="choice" onclick="choisirMetier('ASCT')">
 
 👤 ASCT
@@ -274,130 +212,76 @@ Choisissez votre métier pour commencer.
 
 </button>
 
-
 </section>
 
 
 
-
-<!-- PROPOSER JOURNEE -->
+<!-- PROPOSER -->
 
 <section id="proposer" class="hidden">
 
-
 <div class="card">
 
-
 <span id="metier" class="badge"></span>
-
 
 <h2>➕ Ma journée à échanger</h2>
 
 
-
-<label>
-
-Nom et prénom
-
-</label>
+<label>Nom et prénom</label>
 
 <input
-
 id="nom"
-
 placeholder="Exemple : Jean DUPONT"
-
 >
 
 
-
-<label>
-
-Date de la journée
-
-</label>
+<label>Date de la journée</label>
 
 <input
-
 id="date"
-
 type="date"
-
 >
-
 
 
 <div class="row">
 
-
 <div>
 
-<label>
-
-Prise de service
-
-</label>
+<label>Prise de service</label>
 
 <input
-
 id="prise"
-
 type="time"
-
 >
 
 </div>
-
 
 
 <div>
 
-<label>
-
-Fin de service
-
-</label>
+<label>Fin de service</label>
 
 <input
-
 id="fin"
-
 type="time"
-
 >
 
 </div>
 
-
 </div>
 
 
-
-<label>
-
-Commentaire facultatif
-
-</label>
-
+<label>Commentaire facultatif</label>
 
 <textarea
-
 id="commentaire"
-
 placeholder="Exemple : TER, réserve..."
-
->
-
-</textarea>
-
+></textarea>
 
 
 <button
-
 class="btn"
-
 onclick="publier()"
-
 >
 
 🚆 PUBLIER MA JOURNÉE
@@ -405,590 +289,449 @@ onclick="publier()"
 </button>
 
 
-
 <button
-
 class="btn btn-secondaire"
-
 onclick="afficher('echanges')"
-
 >
 
 🔎 VOIR LES ÉCHANGES
 
 </button>
 
-
 </div>
-
 
 </section>
 
 
 
-
-
-<!-- ECHANGES -->
+<!-- ÉCHANGES -->
 
 <section
-
 id="echanges"
-
 class="hidden"
-
 >
-
 
 <div class="card">
 
+<h2>🔎 Échanges disponibles</h2>
 
-<h2>
-
-🔎 Échanges disponibles
-
-</h2>
-
-
-
-<div
-
-id="listeEchanges"
-
->
-
-</div>
-
+<div id="listeEchanges"></div>
 
 
 <button
-
 class="btn btn-secondaire"
-
 onclick="afficher('proposer')"
-
 >
 
 ➕ PROPOSER UNE JOURNÉE
 
 </button>
 
-
 </div>
 
-
 </section>
-
 
 
 </main>
 
 
 
-
 <nav
-
 id="menu"
-
 class="hidden"
-
 >
 
-
-<button
-
-onclick="afficher('proposer')"
-
->
+<button onclick="afficher('proposer')">
 
 ➕ Ma journée
 
 </button>
 
 
-
-<button
-
-onclick="afficher('echanges')"
-
->
+<button onclick="afficher('echanges')">
 
 🔎 Échanges
 
 </button>
 
 
-
-<button
-
-onclick="changerMetier()"
-
->
+<button onclick="changerMetier()">
 
 🚆 Métier
 
 </button>
 
-
 </nav>
 
 
+
+<!-- BIBLIOTHÈQUE SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
 
 
+/* CONFIGURATION SUPABASE */
+
+const SUPABASE_URL =
+"https://nptwpoguokbjuzdyxach.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+
+/* MÉTIER ACTUEL */
+
 let metierActuel = "";
 
 
 
-let echanges = JSON.parse(
-
-localStorage.getItem(
-
-"echangeService"
-
-)
-
-|| "[]"
-
-);
-
-
-
+/* NAVIGATION */
 
 function afficher(page) {
 
 
-document
+    document
+    .querySelectorAll("main section")
+    .forEach(section => {
 
-.querySelectorAll("main section")
+        section.classList.add("hidden");
 
-.forEach(
-
-section => {
-
-section.classList.add("hidden");
-
-}
-
-);
+    });
 
 
-
-document
-
-.getElementById(page)
-
-.classList.remove("hidden");
+    document
+    .getElementById(page)
+    .classList.remove("hidden");
 
 
+    if (page === "echanges") {
 
-if(page === "echanges") {
+        afficherEchanges();
 
-afficherEchanges();
-
-}
-
+    }
 
 }
 
 
 
-
+/* CHOIX DU MÉTIER */
 
 function choisirMetier(metier) {
 
 
-metierActuel = metier;
+    metierActuel = metier;
 
 
-
-document
-
-.getElementById("metier")
-
-.innerText = metier;
+    document
+    .getElementById("metier")
+    .innerText = metier;
 
 
-
-document
-
-.getElementById("menu")
-
-.classList.remove("hidden");
+    document
+    .getElementById("menu")
+    .classList.remove("hidden");
 
 
-
-afficher("proposer");
-
+    afficher("proposer");
 
 }
 
 
 
-
+/* CHANGER DE MÉTIER */
 
 function changerMetier() {
 
 
-document
-
-.getElementById("menu")
-
-.classList.add("hidden");
+    metierActuel = "";
 
 
+    document
+    .getElementById("menu")
+    .classList.add("hidden");
 
-afficher("accueil");
 
+    afficher("accueil");
 
 }
 
 
 
+/* PUBLIER UNE JOURNÉE */
+
+async function publier() {
 
 
-function publier() {
+    let nom =
+    document
+    .getElementById("nom")
+    .value
+    .trim();
 
 
-let nouvelEchange = {
+    let date =
+    document
+    .getElementById("date")
+    .value;
 
 
-id:
-
-Date.now(),
-
-
-metier:
-
-metierActuel,
+    let prise =
+    document
+    .getElementById("prise")
+    .value;
 
 
-nom:
-
-document
-
-.getElementById("nom")
-
-.value,
+    let fin =
+    document
+    .getElementById("fin")
+    .value;
 
 
-date:
-
-document
-
-.getElementById("date")
-
-.value,
-
-
-prise:
-
-document
-
-.getElementById("prise")
-
-.value,
-
-
-fin:
-
-document
-
-.getElementById("fin")
-
-.value,
-
-
-commentaire:
-
-document
-
-.getElementById("commentaire")
-
-.value
-
-
-};
+    let commentaire =
+    document
+    .getElementById("commentaire")
+    .value
+    .trim();
 
 
 
+    if (
+        !nom ||
+        !date ||
+        !prise ||
+        !fin
+    ) {
 
-if(
+        alert(
+        "Merci de remplir le nom, la date et les horaires."
+        );
 
-!nouvelEchange.nom
+        return;
 
-||
-
-!nouvelEchange.date
-
-||
-
-!nouvelEchange.prise
-
-||
-
-!nouvelEchange.fin
-
-) {
+    }
 
 
-alert(
 
-"Merci de remplir le nom, la date et les horaires."
+    const { error } =
+    await supabaseClient
 
-);
+    .from("echanges")
+
+    .insert([
+
+        {
+
+            metier: metierActuel,
+
+            nom: nom,
+
+            date_service: date,
+
+            prise_service: prise,
+
+            fin_service: fin,
+
+            commentaire: commentaire,
+
+            statut: "disponible"
+
+        }
+
+    ]);
 
 
-return;
 
+    if (error) {
+
+        console.error(error);
+
+
+        alert(
+        "Erreur lors de la publication : " +
+        error.message
+        );
+
+
+        return;
+
+    }
+
+
+
+    document
+    .getElementById("nom")
+    .value = "";
+
+
+    document
+    .getElementById("date")
+    .value = "";
+
+
+    document
+    .getElementById("prise")
+    .value = "";
+
+
+    document
+    .getElementById("fin")
+    .value = "";
+
+
+    document
+    .getElementById("commentaire")
+    .value = "";
+
+
+
+    alert(
+    "Votre journée est publiée !"
+    );
+
+
+    afficher("echanges");
 
 }
 
 
 
+/* AFFICHER LES ÉCHANGES */
 
-echanges.push(
+async function afficherEchanges() {
 
-nouvelEchange
 
-);
+    let zone =
+    document.getElementById(
+    "listeEchanges"
+    );
 
 
+    zone.innerHTML =
+    "<p>Chargement...</p>";
 
-localStorage.setItem(
 
-"echangeService",
 
-JSON.stringify(
+    const { data, error } =
+    await supabaseClient
 
-echanges
+    .from("echanges")
 
-)
+    .select("*")
 
-);
+    .eq(
+    "metier",
+    metierActuel
+    )
 
+    .eq(
+    "statut",
+    "disponible"
+    )
 
+    .order(
+    "date_service",
+    {
+        ascending: true
+    }
+    );
 
 
-document
 
-.getElementById("nom")
+    if (error) {
 
-.value = "";
 
+        console.error(error);
 
 
-document
+        zone.innerHTML =
+        "<p>Erreur lors du chargement : "
+        +
+        error.message
+        +
+        "</p>";
 
-.getElementById("date")
 
-.value = "";
+        return;
 
+    }
 
 
-document
 
-.getElementById("prise")
+    zone.innerHTML = "";
 
-.value = "";
 
 
+    if (!data || data.length === 0) {
 
-document
 
-.getElementById("fin")
+        zone.innerHTML =
+        "<p>Aucune journée proposée pour le moment.</p>";
 
-.value = "";
 
+        return;
 
+    }
 
-document
 
-.getElementById("commentaire")
 
-.value = "";
+    data.forEach(echange => {
 
 
+        let bloc =
+        document.createElement("div");
 
-alert(
 
-"Votre journée est publiée !"
+        bloc.className = "item";
 
-);
 
+        bloc.innerHTML =
 
+        "<strong>" +
+        echange.nom +
+        "</strong>" +
 
-afficher(
+        "<br>" +
 
-"echanges"
+        "📅 " +
+        echange.date_service +
 
-);
+        "<br>" +
 
+        "⏰ " +
+        echange.prise_service +
+        " → " +
+        echange.fin_service +
 
-}
+        "<br><br>" +
 
+        "<small>" +
+        (echange.commentaire || "") +
+        "</small>";
 
 
 
+        zone.appendChild(bloc);
 
-function afficherEchanges() {
 
-
-let liste =
-
-echanges.filter(
-
-echange =>
-
-echange.metier ===
-
-metierActuel
-
-);
-
-
-
-
-let zone =
-
-document.getElementById(
-
-"listeEchanges"
-
-);
-
-
-
-
-zone.innerHTML = "";
-
-
-
-
-if(
-
-liste.length === 0
-
-) {
-
-
-zone.innerHTML =
-
-"<p>Aucune journée proposée pour le moment.</p>";
-
-
-return;
-
-
-}
-
-
-
-
-liste.forEach(
-
-echange => {
-
-
-let bloc =
-
-document.createElement(
-
-"div"
-
-);
-
-
-
-bloc.className =
-
-"item";
-
-
-
-bloc.innerHTML =
-
-"<strong>"
-
-+
-
-echange.nom
-
-+
-
-"</strong>"
-
-+
-
-"<br>"
-
-+
-
-"📅 "
-
-+
-
-echange.date
-
-+
-
-"<br>"
-
-+
-
-"⏰ "
-
-+
-
-echange.prise
-
-+
-
-" → "
-
-+
-
-echange.fin
-
-+
-
-"<br>"
-
-+
-
-"<small>"
-
-+
-
-echange.commentaire
-
-+
-
-"</small>";
-
-
-
-
-zone.appendChild(
-
-bloc
-
-);
-
-
-}
-
-
-);
+    });
 
 
 }
 
 
 </script>
-
-
 
 </body>
 
