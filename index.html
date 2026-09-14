@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ÉCHANGE SERVICE</title>
-
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
-
 
 /* =====================================================
    VARIABLES
@@ -28,17 +20,19 @@ content="width=device-width, initial-scale=1.0">
 
 :root {
 
-    --bleu-nuit: #061827;
-    --bleu-fonce: #0a2f4a;
+    --bleu-nuit: #061927;
+    --bleu-fonce: #0c2f4b;
     --bleu: #1676b8;
-    --bleu-clair: #58b8e8;
+    --bleu-clair: #54b5e8;
 
     --blanc: #ffffff;
     --gris: #eef3f7;
+
     --texte: #172a3a;
+    --texte-clair: #647789;
 
     --vert: #22a06b;
-    --orange: #f39c12;
+    --orange: #e89b16;
     --rouge: #d94343;
 
 }
@@ -69,7 +63,6 @@ body {
     min-height: 100vh;
 
     font-family:
-
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -82,16 +75,24 @@ body {
 
         linear-gradient(
             180deg,
-            #dce8ef 0%,
-            #eef3f7 45%,
-            #f5f7f9 100%
+            #061927 0%,
+            #0c3857 25%,
+            #dce8ef 60%,
+            #eef3f7 100%
         );
 
 }
 
 
+button {
+
+    font-family: inherit;
+
+}
+
+
 /* =====================================================
-   HEADER IMMERSIF
+   HEADER VISUEL FERROVIAIRE
 ===================================================== */
 
 header {
@@ -100,11 +101,10 @@ header {
 
     overflow: hidden;
 
-    min-height: 430px;
+    min-height: 390px;
 
     padding:
-
-        55px 20px
+        45px 20px
         120px;
 
     text-align: center;
@@ -113,20 +113,29 @@ header {
 
     background:
 
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(84,181,232,.30),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(255,255,255,.13),
+            transparent 22%
+        ),
+
         linear-gradient(
             135deg,
-            #041827 0%,
-            #082b44 40%,
-            #12608d 75%,
-            #2b91c7 100%
+            #061927,
+            #0b3859,
+            #176d9d
         );
 
 }
 
 
-/* =====================================================
-   CIEL / LUMIERES
-===================================================== */
+/* DECORATION */
 
 header::before {
 
@@ -140,17 +149,13 @@ header::before {
 
     border-radius: 50%;
 
-    top: -250px;
+    border:
+        1px solid
+        rgba(255,255,255,.10);
 
-    left: -150px;
+    top: -300px;
 
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(90,190,235,.25),
-            transparent 65%
-        );
+    left: -180px;
 
 }
 
@@ -161,220 +166,42 @@ header::after {
 
     position: absolute;
 
-    width: 500px;
+    width: 600px;
 
-    height: 500px;
+    height: 250px;
 
     border-radius: 50%;
 
-    bottom: -350px;
-
-    right: -100px;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.12),
-            transparent 70%
-        );
-
-}
-
-
-/* =====================================================
-   LIGNES DECORATIVES
-===================================================== */
-
-.header-lines {
-
-    position: absolute;
-
-    inset: 0;
-
-    opacity: .18;
-
-    background:
-
-        repeating-linear-gradient(
-
-            -45deg,
-
-            transparent 0px,
-
-            transparent 35px,
-
-            rgba(255,255,255,.2)
-            36px,
-
-            transparent 37px
-
-        );
-
-}
-
-
-/* =====================================================
-   CONTENU HEADER
-===================================================== */
-
-.header-content {
-
-    position: relative;
-
-    z-index: 5;
-
-}
-
-
-/* =====================================================
-   LOGO
-===================================================== */
-
-.train-logo {
-
-    width: 88px;
-
-    height: 88px;
-
-    margin:
-
-        0 auto
-        20px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 48px;
-
-    border-radius: 30px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.24),
-            rgba(255,255,255,.07)
-        );
-
     border:
-
         1px solid
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.12);
 
-    box-shadow:
+    bottom: -170px;
 
-        0 20px 40px
-        rgba(0,0,0,.30);
-
-    backdrop-filter:
-
-        blur(12px);
+    right: -150px;
 
 }
 
 
 /* =====================================================
-   TITRE
+   TRAIN HERO
 ===================================================== */
 
-header h1 {
-
-    margin: 0;
-
-    font-size:
-
-        clamp(
-            34px,
-            8vw,
-            56px
-        );
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    text-shadow:
-
-        0 5px 25px
-        rgba(0,0,0,.35);
-
-}
-
-
-header p {
-
-    margin:
-
-        15px auto
-        0;
-
-    max-width: 500px;
-
-    font-size:
-
-        clamp(
-            16px,
-            4vw,
-            20px
-        );
-
-    line-height: 1.5;
-
-    color:
-
-        rgba(255,255,255,.85);
-
-}
-
-
-/* =====================================================
-   DECOR TRAIN
-===================================================== */
-
-.train-scene {
+.train-hero {
 
     position: absolute;
 
-    z-index: 2;
+    left: 50%;
 
-    bottom: 0;
+    transform: translateX(-50%);
 
-    left: 0;
+    bottom: 35px;
 
-    width: 100%;
+    width: min(600px, 90%);
 
-    height: 130px;
+    height: 115px;
 
-    pointer-events: none;
-
-}
-
-
-/* HORIZON */
-
-.horizon {
-
-    position: absolute;
-
-    bottom: 70px;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 60px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(2,20,30,.25)
-        );
+    z-index: 1;
 
 }
 
@@ -385,125 +212,152 @@ header p {
 
     position: absolute;
 
-    bottom: 48px;
+    bottom: 30px;
 
     left: 50%;
 
-    transform:
+    transform: translateX(-50%);
 
-        translateX(-50%);
+    width: 92%;
 
-    width: min(
-        620px,
-        110%
-    );
-
-    height: 48px;
+    height: 62px;
 
     border-radius:
-
-        35px
-        12px
-        12px
-        35px;
+        40px
+        15px
+        15px
+        40px;
 
     background:
 
         linear-gradient(
             180deg,
-            #f5f8fa 0%,
-            #dce6ec 55%,
-            #a9bdc9 100%
+            #f8fbfc,
+            #cbd8df
         );
 
     box-shadow:
 
-        0 8px 20px
+        0 15px 25px
         rgba(0,0,0,.35);
 
 }
 
 
-/* NEZ DU TRAIN */
-
-.train::before {
-
-    content: "";
+.train-front {
 
     position: absolute;
 
-    left: -25px;
+    left: -15px;
 
-    top: 0;
+    top: 5px;
 
-    width: 55px;
+    width: 60px;
 
-    height: 48px;
+    height: 52px;
 
     border-radius:
-
-        50%
-        15px
-        15px
-        50%;
+        35px
+        10px
+        10px
+        35px;
 
     background:
 
         linear-gradient(
-            180deg,
-            #ffffff,
-            #b9ccd7
+            135deg,
+            #f5f8fa,
+            #aebfc9
         );
 
 }
 
 
-/* VITRES */
+/* FENETRES */
 
-.train-windows {
+.train-window {
 
     position: absolute;
 
-    top: 9px;
+    top: 14px;
 
-    left: 55px;
+    width: 38px;
 
-    right: 20px;
-
-    height: 18px;
+    height: 22px;
 
     border-radius: 5px;
 
     background:
 
-        repeating-linear-gradient(
-
-            90deg,
-
-            #123e59 0px,
-
-            #123e59 32px,
-
-            #e5edf1 33px,
-
-            #e5edf1 42px
-
+        linear-gradient(
+            180deg,
+            #12384f,
+            #071d2c
         );
+
+}
+
+
+.window1 {
+
+    left: 75px;
+
+}
+
+
+.window2 {
+
+    left: 125px;
+
+}
+
+
+.window3 {
+
+    left: 175px;
+
+}
+
+
+.window4 {
+
+    left: 225px;
+
+}
+
+
+.window5 {
+
+    left: 275px;
+
+}
+
+
+.window6 {
+
+    left: 325px;
+
+}
+
+
+.window7 {
+
+    left: 375px;
 
 }
 
 
 /* BANDE BLEUE */
 
-.train-stripe {
+.train-line {
 
     position: absolute;
 
-    bottom: 7px;
-
-    left: 20px;
+    left: 0;
 
     right: 0;
+
+    top: 42px;
 
     height: 7px;
 
@@ -511,37 +365,52 @@ header p {
 
         linear-gradient(
             90deg,
-            #1684c3,
-            #42b7e9
+            #176d9d,
+            #54b5e8,
+            #176d9d
         );
+
+}
+
+
+/* ROUES */
+
+.wheel {
+
+    position: absolute;
+
+    bottom: -12px;
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #14232d;
+
+    border:
+        4px solid
+        #53636d;
+
+}
+
+
+.wheel1 {
+
+    left: 100px;
+
+}
+
+
+.wheel2 {
+
+    right: 90px;
 
 }
 
 
 /* RAILS */
-
-.rails {
-
-    position: absolute;
-
-    bottom: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 55px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #263844,
-            #14232d
-        );
-
-}
-
 
 .rail {
 
@@ -555,37 +424,34 @@ header p {
 
     background:
 
-        #c4d0d6;
-
-    box-shadow:
-
-        0 2px 4px
-        rgba(0,0,0,.35);
+        rgba(225,235,240,.85);
 
 }
 
 
-.rail.one {
+.rail1 {
 
-    top: 12px;
-
-}
-
-
-.rail.two {
-
-    bottom: 10px;
+    bottom: 12px;
 
 }
 
 
-/* TRAVERSES */
+.rail2 {
+
+    bottom: 0;
+
+}
+
 
 .sleepers {
 
     position: absolute;
 
-    inset: 0;
+    bottom: -5px;
+
+    width: 100%;
+
+    height: 30px;
 
     background:
 
@@ -595,17 +461,11 @@ header p {
 
             transparent 0px,
 
-            transparent 18px,
+            transparent 20px,
 
-            rgba(100,80,60,.8)
-            19px,
+            rgba(210,220,225,.7) 20px,
 
-            rgba(100,80,60,.8)
-            28px,
-
-            transparent 29px,
-
-            transparent 48px
+            rgba(210,220,225,.7) 26px
 
         );
 
@@ -613,7 +473,113 @@ header p {
 
 
 /* =====================================================
-   CONTENU PRINCIPAL
+   LOGO
+===================================================== */
+
+.train-logo {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 82px;
+
+    height: 82px;
+
+    margin:
+        0 auto
+        15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 28px;
+
+    font-size: 43px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.25),
+            rgba(255,255,255,.05)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(0,0,0,.25);
+
+}
+
+
+/* =====================================================
+   TITRE
+===================================================== */
+
+header h1 {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin: 0;
+
+    font-size:
+
+        clamp(
+            32px,
+            8vw,
+            55px
+        );
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+
+        0 5px 20px
+        rgba(0,0,0,.35);
+
+}
+
+
+header p {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 12px;
+
+    font-size:
+
+        clamp(
+            16px,
+            4vw,
+            21px
+        );
+
+    color:
+
+        rgba(255,255,255,.85);
+
+}
+
+
+/* =====================================================
+   CONTENU
 ===================================================== */
 
 main {
@@ -625,19 +591,17 @@ main {
     max-width: 780px;
 
     margin:
-
-        -80px auto
+        -75px auto
         110px;
 
     padding:
-
         0 16px;
 
 }
 
 
 /* =====================================================
-   MASQUAGE
+   HIDDEN
 ===================================================== */
 
 .hidden {
@@ -657,11 +621,6 @@ main {
 
         rgba(255,255,255,.96);
 
-    border:
-
-        1px solid
-        rgba(255,255,255,.8);
-
     border-radius: 28px;
 
     padding: 25px;
@@ -670,12 +629,13 @@ main {
 
     box-shadow:
 
-        0 20px 55px
-        rgba(5,30,50,.16);
+        0 20px 50px
+        rgba(5,30,50,.18);
 
-    backdrop-filter:
+    border:
 
-        blur(18px);
+        1px solid
+        rgba(255,255,255,.9);
 
 }
 
@@ -686,51 +646,17 @@ main {
 
 .welcome-card {
 
-    position: relative;
-
-    overflow: hidden;
+    text-align: center;
 
     padding:
-
-        32px 28px;
-
-}
-
-
-.welcome-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 160px;
-
-    height: 160px;
-
-    border-radius: 50%;
-
-    right: -70px;
-
-    top: -70px;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(88,184,232,.18),
-            transparent 70%
-        );
+        30px 25px;
 
 }
 
 
 .welcome-icon {
 
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 52px;
+    font-size: 50px;
 
     margin-bottom: 12px;
 
@@ -739,32 +665,21 @@ main {
 
 .welcome-card h2 {
 
-    position: relative;
-
-    z-index: 2;
-
     margin:
+        0 0 12px;
 
-        0 0 15px;
-
-    font-size: 32px;
+    font-size: 30px;
 
 }
 
 
 .welcome-card p {
 
-    position: relative;
-
-    z-index: 2;
-
     margin: 0;
 
-    font-size: 16px;
+    line-height: 1.6;
 
-    line-height: 1.7;
-
-    color: #526273;
+    color: var(--texte-clair);
 
 }
 
@@ -802,9 +717,7 @@ main {
 
     gap: 18px;
 
-    width: 100%;
-
-    min-height: 130px;
+    min-height: 125px;
 
     padding: 22px;
 
@@ -814,14 +727,9 @@ main {
 
         linear-gradient(
             135deg,
-            rgba(255,255,255,.98),
-            rgba(241,248,252,.96)
+            #ffffff,
+            #eef6fa
         );
-
-    border:
-
-        1px solid
-        rgba(220,230,237,.9);
 
     box-shadow:
 
@@ -830,71 +738,26 @@ main {
 
     transition:
 
-        transform .20s ease,
-        box-shadow .20s ease;
-
-}
-
-
-.choice-content:hover {
-
-    transform:
-
-        translateY(-3px);
-
-    box-shadow:
-
-        0 22px 45px
-        rgba(5,30,50,.18);
+        transform .2s ease,
+        box-shadow .2s ease;
 
 }
 
 
 .choice-content:active {
 
-    transform:
-
-        scale(.98);
+    transform: scale(.98);
 
 }
 
-
-/* LIGNE DECORATIVE */
-
-.choice-content::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    bottom: 0;
-
-    width: 100%;
-
-    height: 5px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #1676b8,
-            #54b5e8
-        );
-
-}
-
-
-/* ICON */
 
 .choice-icon {
 
-    min-width: 80px;
+    width: 78px;
 
-    width: 80px;
+    min-width: 78px;
 
-    height: 80px;
+    height: 78px;
 
     display: flex;
 
@@ -902,31 +765,20 @@ main {
 
     justify-content: center;
 
-    font-size: 42px;
+    border-radius: 24px;
 
-    border-radius: 26px;
+    font-size: 40px;
 
     background:
 
         linear-gradient(
             135deg,
-            #d9f0fb,
-            #b7dceb
+            #d7effa,
+            #a8d7eb
         );
-
-    box-shadow:
-
-        inset
-        0 1px 2px
-        rgba(255,255,255,.9),
-
-        0 8px 20px
-        rgba(22,118,184,.12);
 
 }
 
-
-/* TEXTE */
 
 .choice-text {
 
@@ -939,13 +791,9 @@ main {
 
     display: block;
 
-    margin-bottom: 7px;
+    font-size: 28px;
 
-    font-size: 29px;
-
-    font-weight: 900;
-
-    color: #152d42;
+    color: var(--bleu-fonce);
 
 }
 
@@ -954,74 +802,24 @@ main {
 
     display: block;
 
-    font-size: 16px;
+    margin-top: 7px;
 
-    line-height: 1.4;
+    font-size: 15px;
 
-    color: #687887;
+    color: var(--texte-clair);
 
 }
 
-
-/* FLECHE */
 
 .choice-arrow {
 
     position: absolute;
 
-    right: 24px;
+    right: 22px;
 
     font-size: 32px;
 
-    font-weight: 300;
-
     color: var(--bleu);
-
-}
-
-
-/* =====================================================
-   TITRES
-===================================================== */
-
-h2 {
-
-    margin-top: 0;
-
-}
-
-
-.page-title {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 8px;
-
-    font-size: 28px;
-
-}
-
-
-.metier-info {
-
-    margin:
-
-        0 0 20px;
-
-    font-size: 16px;
-
-    color: #526273;
-
-}
-
-
-.metier-info strong {
-
-    color: var(--bleu-fonce);
 
 }
 
@@ -1034,25 +832,16 @@ h2 {
 
     display: inline-flex;
 
-    align-items: center;
-
-    gap: 6px;
-
     padding:
-
         8px 14px;
 
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 
     border-radius: 30px;
 
-    background:
+    background: #e1f2fa;
 
-        #e2f3fb;
-
-    color:
-
-        #12618d;
+    color: #12618d;
 
     font-size: 13px;
 
@@ -1062,16 +851,39 @@ h2 {
 
 
 /* =====================================================
-   FORMULAIRES
+   TITRES
+===================================================== */
+
+.page-title {
+
+    margin:
+        0 0 10px;
+
+    font-size: 27px;
+
+}
+
+
+.metier-info {
+
+    margin:
+        0 0 20px;
+
+    color: var(--texte-clair);
+
+}
+
+
+/* =====================================================
+   FORMULAIRE
 ===================================================== */
 
 label {
 
     display: block;
 
-    margin-top: 15px;
-
-    margin-bottom: 6px;
+    margin:
+        15px 0 6px;
 
     font-size: 14px;
 
@@ -1088,20 +900,18 @@ textarea {
 
     width: 100%;
 
+    padding: 14px;
+
+    border-radius: 14px;
+
     border:
 
         1px solid
         #d6e0e8;
 
-    border-radius: 14px;
-
-    padding: 14px;
-
-    font-size: 16px;
-
     background: #f9fbfc;
 
-    color: #172a3a;
+    font-size: 16px;
 
 }
 
@@ -1131,16 +941,11 @@ textarea {
 }
 
 
-/* =====================================================
-   LIGNE HORAIRES
-===================================================== */
-
 .row {
 
     display: grid;
 
     grid-template-columns:
-
         1fr 1fr;
 
     gap: 12px;
@@ -1156,7 +961,7 @@ textarea {
 
     width: 100%;
 
-    margin-top: 18px;
+    margin-top: 16px;
 
     padding: 16px;
 
@@ -1180,66 +985,49 @@ textarea {
 
     font-weight: 800;
 
-    box-shadow:
-
-        0 10px 20px
-        rgba(18,101,155,.20);
-
 }
 
 
 .btn:active {
 
-    transform:
-
-        scale(.98);
+    transform: scale(.98);
 
 }
 
 
 .btn-secondaire {
 
-    background:
+    background: #e8eff4;
 
-        #e8eff4;
-
-    color:
-
-        #243746;
-
-    box-shadow: none;
+    color: #243746;
 
 }
 
 
 /* =====================================================
-   ECHANGES
+   LISTE DES ECHANGES
 ===================================================== */
 
 .item {
 
-    position: relative;
-
-    overflow: hidden;
-
-    margin-top: 15px;
+    margin-top: 16px;
 
     padding: 20px;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     background:
 
         linear-gradient(
             135deg,
             #ffffff,
-            #f2f7fa
+            #f1f7fa
         );
 
     border:
 
         1px solid
-        #dce6ed;
+        #d9e5ec;
 
     border-left:
 
@@ -1248,72 +1036,70 @@ textarea {
 
     box-shadow:
 
-        0 8px 20px
-        rgba(10,40,60,.08);
+        0 10px 25px
+        rgba(10,40,60,.09);
 
 }
 
 
-.item-header {
-
-    display: flex;
-
-    justify-content:
-
-        space-between;
-
-    align-items:
-
-        flex-start;
-
-    gap: 10px;
-
-}
-
+/* NOM */
 
 .item-nom {
 
-    font-size: 20px;
+    font-size: 22px;
 
-    font-weight: 800;
+    font-weight: 900;
 
-    color: #19354a;
+    color: #15344a;
+
+    margin-bottom: 14px;
 
 }
 
+
+/* DETAILS */
 
 .item-details {
 
-    margin-top: 10px;
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background: #eaf4f8;
 
     line-height: 1.8;
 
-    color: #425466;
+    font-size: 16px;
+
+    color: #29485c;
 
 }
 
+
+/* COMMENTAIRE */
 
 .item-commentaire {
 
-    margin-top: 10px;
+    margin-top: 12px;
 
-    padding-top: 10px;
+    padding: 12px;
 
-    border-top:
+    border-radius: 12px;
 
-        1px solid
-        #e5edf2;
+    background: #f7fafc;
+
+    color: #647789;
 
     font-size: 14px;
-
-    color: #687887;
 
 }
 
 
+/* AGENT INTERESSE */
+
 .interesse {
 
-    margin-top: 15px;
+    margin-top: 14px;
 
     padding: 13px;
 
@@ -1323,29 +1109,24 @@ textarea {
 
         linear-gradient(
             135deg,
-            #fff6e4,
-            #ffefcc
+            #fff4dc,
+            #ffe8b5
         );
 
-    border:
-
-        1px solid
-        #f5d99b;
-
-    color:
-
-        #855900;
+    color: #795200;
 
     font-size: 14px;
-
-    font-weight: 700;
 
 }
 
 
 .interesse strong {
 
-    color: #704900;
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 16px;
 
 }
 
@@ -1359,10 +1140,9 @@ textarea {
     display: grid;
 
     grid-template-columns:
-
         1fr;
 
-    gap: 8px;
+    gap: 9px;
 
     margin-top: 15px;
 
@@ -1377,7 +1157,7 @@ textarea {
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
     cursor: pointer;
 
@@ -1390,28 +1170,16 @@ textarea {
 
 .btn-interet {
 
-    background:
+    background: #fff0cf;
 
-        linear-gradient(
-            135deg,
-            #fff0cf,
-            #ffe3a8
-        );
-
-    color: #915d00;
+    color: #875800;
 
 }
 
 
 .btn-delete {
 
-    background:
-
-        linear-gradient(
-            135deg,
-            #ffe5e5,
-            #ffd4d4
-        );
+    background: #ffe4e4;
 
     color: #b72d2d;
 
@@ -1426,11 +1194,9 @@ textarea {
 
     text-align: center;
 
-    padding:
+    padding: 40px 20px;
 
-        40px 20px;
-
-    color: #687887;
+    color: var(--texte-clair);
 
 }
 
@@ -1464,21 +1230,19 @@ nav {
 
     display: flex;
 
-    justify-content:
-
-        space-around;
-
-    align-items: center;
+    justify-content: space-around;
 
     padding:
 
-        8px
-        5px
-        calc(8px + env(safe-area-inset-bottom));
+        8px 5px
+        calc(
+            8px +
+            env(safe-area-inset-bottom)
+        );
 
     background:
 
-        rgba(255,255,255,.96);
+        rgba(255,255,255,.97);
 
     border-top:
 
@@ -1489,10 +1253,6 @@ nav {
 
         0 -8px 30px
         rgba(0,0,0,.08);
-
-    backdrop-filter:
-
-        blur(15px);
 
 }
 
@@ -1505,9 +1265,7 @@ nav button {
 
     background: transparent;
 
-    padding:
-
-        9px 5px;
+    padding: 8px;
 
     color: #526273;
 
@@ -1535,26 +1293,13 @@ nav button {
 
 @media (max-width: 500px) {
 
-
     header {
 
-        min-height: 390px;
+        min-height: 360px;
 
-        padding-top: 40px;
-
-    }
-
-
-    .train-logo {
-
-        width: 78px;
-
-        height: 78px;
-
-        font-size: 42px;
+        padding-top: 35px;
 
     }
-
 
     .card {
 
@@ -1564,35 +1309,23 @@ nav button {
 
     }
 
-
-    .welcome-card {
-
-        padding: 26px 22px;
-
-    }
-
-
     .choice-content {
 
-        min-height: 115px;
+        min-height: 110px;
 
     }
-
 
     .choice-icon {
 
-        width: 68px;
+        width: 65px;
 
-        min-width: 68px;
+        min-width: 65px;
 
-        height: 68px;
+        height: 65px;
 
-        font-size: 34px;
-
-        border-radius: 21px;
+        font-size: 32px;
 
     }
-
 
     .choice-text strong {
 
@@ -1600,22 +1333,11 @@ nav button {
 
     }
 
+    .train {
 
-    .choice-text small {
-
-        font-size: 14px;
-
-        max-width: 180px;
+        width: 95%;
 
     }
-
-
-    .choice-arrow {
-
-        right: 17px;
-
-    }
-
 
 }
 
@@ -1635,12 +1357,6 @@ nav button {
 <header>
 
 
-<div class="header-lines"></div>
-
-
-<div class="header-content">
-
-
 <div class="train-logo">
 
 🚆
@@ -1657,51 +1373,54 @@ nav button {
 
 <p>
 
-La plateforme d'échange de journées
-entre agents ferroviaires
+Échange de journées entre agents
 
 </p>
 
 
-</div>
 
+<!-- TRAIN VISUEL -->
 
-
-<!-- =====================================================
-     DECOR FERROVIAIRE
-===================================================== -->
-
-<div class="train-scene">
-
-
-<div class="horizon"></div>
+<div class="train-hero">
 
 
 <div class="train">
 
 
-<div class="train-windows"></div>
+<div class="train-front"></div>
 
 
-<div class="train-stripe"></div>
+<div class="train-window window1"></div>
+
+<div class="train-window window2"></div>
+
+<div class="train-window window3"></div>
+
+<div class="train-window window4"></div>
+
+<div class="train-window window5"></div>
+
+<div class="train-window window6"></div>
+
+<div class="train-window window7"></div>
+
+
+<div class="train-line"></div>
+
+
+<div class="wheel wheel1"></div>
+
+<div class="wheel wheel2"></div>
 
 
 </div>
-
-
-<div class="rails">
-
-
-<div class="rail one"></div>
-
-
-<div class="rail two"></div>
 
 
 <div class="sleepers"></div>
 
+<div class="rail rail1"></div>
 
-</div>
+<div class="rail rail2"></div>
 
 
 </div>
@@ -1718,7 +1437,6 @@ entre agents ferroviaires
 <main>
 
 
-
 <!-- =====================================================
      ACCUEIL
 ===================================================== -->
@@ -1731,7 +1449,7 @@ entre agents ferroviaires
 
 <div class="welcome-icon">
 
-👋
+🚆
 
 </div>
 
@@ -1745,9 +1463,8 @@ Bienvenue
 
 <p>
 
-Cette application permet aux agents de proposer
-une journée de service et de consulter les journées
-disponibles pour un éventuel échange.
+Proposez une journée de service et trouvez
+un collègue pour un éventuel échange.
 
 </p>
 
@@ -1767,9 +1484,7 @@ Choisissez votre métier pour commencer.
 
 
 
-<!-- =====================================================
-     ADC
-===================================================== -->
+<!-- ADC -->
 
 <button
 
@@ -1824,9 +1539,7 @@ Conducteurs de train
 
 
 
-<!-- =====================================================
-     ASCT
-===================================================== -->
+<!-- ASCT -->
 
 <button
 
@@ -1884,10 +1597,8 @@ Agents du Service Commercial Train
 
 
 
-
-
 <!-- =====================================================
-     PROPOSER UNE JOURNEE
+     PROPOSER
 ===================================================== -->
 
 <section
@@ -1930,7 +1641,6 @@ un collègue intéressé.
 </p>
 
 
-
 <label>
 
 Nom et prénom
@@ -1944,10 +1654,7 @@ id="nom"
 
 placeholder="Exemple : Jean DUPONT"
 
-autocomplete="name"
-
 >
-
 
 
 <label>
@@ -1964,7 +1671,6 @@ id="date"
 type="date"
 
 >
-
 
 
 <div class="row">
@@ -1992,7 +1698,6 @@ type="time"
 </div>
 
 
-
 <div>
 
 
@@ -2018,7 +1723,6 @@ type="time"
 </div>
 
 
-
 <label>
 
 Commentaire
@@ -2035,7 +1739,6 @@ placeholder="Exemple : TER, réserve, numéro de train..."
 ></textarea>
 
 
-
 <button
 
 class="btn"
@@ -2047,7 +1750,6 @@ onclick="publier()"
 🚆 PUBLIER MA JOURNÉE
 
 </button>
-
 
 
 <button
@@ -2067,8 +1769,6 @@ onclick="afficher('echanges')"
 
 
 </section>
-
-
 
 
 
@@ -2108,9 +1808,9 @@ Métier :
 </p>
 
 
+<div id="listeEchanges">
 
-<div id="listeEchanges"></div>
-
+</div>
 
 
 <button
@@ -2133,8 +1833,6 @@ onclick="afficher('proposer')"
 
 
 </main>
-
-
 
 
 
@@ -2217,8 +1915,6 @@ Métier
 
 
 
-
-
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
@@ -2230,19 +1926,15 @@ Métier
    SUPABASE
 ===================================================== */
 
-
 const SUPABASE_URL =
-
 "https://nptwpoguokbjuzdyxach.supabase.co";
 
 
 const SUPABASE_KEY =
-
 "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 
 const supabaseClient =
-
 supabase.createClient(
 
     SUPABASE_URL,
@@ -2253,63 +1945,41 @@ supabase.createClient(
 
 
 
-
 /* =====================================================
    VARIABLES
 ===================================================== */
-
 
 let metierActuel = "";
 
 
 
-
 /* =====================================================
-   AFFICHER UNE PAGE
+   AFFICHER PAGE
 ===================================================== */
-
 
 function afficher(page) {
 
 
     document
+        .querySelectorAll("main section")
+        .forEach(
 
-    .querySelectorAll(
-        "main section"
-    )
+            section => {
 
-    .forEach(
+                section.classList.add(
+                    "hidden"
+                );
 
-        section => {
+            }
 
-
-            section
-
-            .classList
-
-            .add(
-                "hidden"
-            );
-
-
-        }
-
-    );
-
+        );
 
 
     document
-
-    .getElementById(
-        page
-    )
-
-    .classList
-
-    .remove(
-        "hidden"
-    );
-
+        .getElementById(page)
+        .classList.remove(
+            "hidden"
+        );
 
 
     if (
@@ -2318,12 +1988,9 @@ function afficher(page) {
 
     ) {
 
-
         afficherEchanges();
 
-
     }
-
 
 
     window.scrollTo({
@@ -2339,12 +2006,9 @@ function afficher(page) {
 
 
 
-
-
 /* =====================================================
    CHOISIR METIER
 ===================================================== */
-
 
 function choisirMetier(metier) {
 
@@ -2352,61 +2016,52 @@ function choisirMetier(metier) {
     metierActuel = metier;
 
 
-
-    document
-
-    .getElementById(
-        "metier"
-    )
-
-    .innerHTML =
-
-    metier === "ADC"
-
-    ?
-
-    "🚆 ADC – Conducteurs"
-
-    :
-
-    "👨‍✈️ ASCT – Service Commercial Train";
+    const badge =
+        document.getElementById(
+            "metier"
+        );
 
 
+    if (
 
-    document
+        metier === "ADC"
 
-    .getElementById(
-        "metierEchanges"
-    )
+    ) {
 
-    .innerText =
+        badge.innerHTML =
+            "🚆 ADC – Conducteurs";
 
-    metier;
+    }
 
+    else {
+
+        badge.innerHTML =
+            "👨‍✈️ ASCT – Service Commercial Train";
+
+    }
 
 
     document
-
-    .getElementById(
-        "menu"
-    )
-
-    .classList
-
-    .remove(
-        "hidden"
-    );
+        .getElementById(
+            "metierEchanges"
+        )
+        .innerText =
+        metier;
 
 
+    document
+        .getElementById(
+            "menu"
+        )
+        .classList.remove(
+            "hidden"
+        );
 
-    afficher(
-        "proposer"
-    );
+
+    afficher("proposer");
 
 
 }
-
-
 
 
 
@@ -2414,144 +2069,98 @@ function choisirMetier(metier) {
    CHANGER METIER
 ===================================================== */
 
-
 function changerMetier() {
 
 
     metierActuel = "";
 
 
-
     document
-
-    .getElementById(
-        "menu"
-    )
-
-    .classList
-
-    .add(
-        "hidden"
-    );
+        .getElementById(
+            "menu"
+        )
+        .classList.add(
+            "hidden"
+        );
 
 
-
-    afficher(
-        "accueil"
-    );
+    afficher("accueil");
 
 
 }
 
 
 
-
-
 /* =====================================================
-   PUBLIER UNE JOURNEE
+   PUBLIER
 ===================================================== */
-
 
 async function publier() {
 
 
     const nom =
-
-    document
-
-    .getElementById(
-        "nom"
-    )
-
-    .value
-
-    .trim();
-
+        document
+        .getElementById("nom")
+        .value
+        .trim();
 
 
     const date =
-
-    document
-
-    .getElementById(
-        "date"
-    )
-
-    .value;
-
+        document
+        .getElementById("date")
+        .value;
 
 
     const prise =
-
-    document
-
-    .getElementById(
-        "prise"
-    )
-
-    .value;
-
+        document
+        .getElementById("prise")
+        .value;
 
 
     const fin =
-
-    document
-
-    .getElementById(
-        "fin"
-    )
-
-    .value;
-
+        document
+        .getElementById("fin")
+        .value;
 
 
     const commentaire =
-
-    document
-
-    .getElementById(
-        "commentaire"
-    )
-
-    .value
-
-    .trim();
+        document
+        .getElementById("commentaire")
+        .value
+        .trim();
 
 
+    if (
 
+        !metierActuel
 
-    /* VERIFICATION */
+    ) {
+
+        alert(
+            "Veuillez choisir un métier."
+        );
+
+        return;
+
+    }
 
 
     if (
 
         !nom ||
-
         !date ||
-
         !prise ||
-
         !fin
 
     ) {
 
-
         alert(
-
             "Merci de remplir le nom, la date et les horaires."
-
         );
-
 
         return;
 
-
     }
-
-
-
-
-    /* ENVOI SUPABASE */
 
 
     const {
@@ -2564,65 +2173,39 @@ async function publier() {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
     .insert([
 
-
         {
 
-
             metier:
-
-            metierActuel,
-
+                metierActuel,
 
             nom:
-
-            nom,
-
+                nom,
 
             date_service:
-
-            date,
-
+                date,
 
             prise_service:
-
-            prise,
-
+                prise,
 
             fin_service:
-
-            fin,
-
+                fin,
 
             commentaire:
-
-            commentaire,
-
+                commentaire,
 
             statut:
-
-            "disponible",
-
+                "disponible",
 
             agent_interesse:
-
-            null
-
+                null
 
         }
 
-
     ]);
-
-
-
-
-    /* ERREUR */
 
 
     if (
@@ -2631,10 +2214,7 @@ async function publier() {
 
     ) {
 
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         alert(
@@ -2650,63 +2230,32 @@ async function publier() {
 
         return;
 
-
     }
 
 
-
-
-    /* REINITIALISATION */
+    document
+        .getElementById("nom")
+        .value = "";
 
 
     document
-
-    .getElementById(
-        "nom"
-    )
-
-    .value = "";
-
+        .getElementById("date")
+        .value = "";
 
 
     document
-
-    .getElementById(
-        "date"
-    )
-
-    .value = "";
-
+        .getElementById("prise")
+        .value = "";
 
 
     document
-
-    .getElementById(
-        "prise"
-    )
-
-    .value = "";
-
+        .getElementById("fin")
+        .value = "";
 
 
     document
-
-    .getElementById(
-        "fin"
-    )
-
-    .value = "";
-
-
-
-    document
-
-    .getElementById(
-        "commentaire"
-    )
-
-    .value = "";
-
+        .getElementById("commentaire")
+        .value = "";
 
 
     alert(
@@ -2716,15 +2265,10 @@ async function publier() {
     );
 
 
-
-    afficher(
-        "echanges"
-    );
+    afficher("echanges");
 
 
 }
-
-
 
 
 
@@ -2732,58 +2276,36 @@ async function publier() {
    AFFICHER LES ECHANGES
 ===================================================== */
 
-
 async function afficherEchanges() {
 
 
     const zone =
-
-    document
-
-    .getElementById(
-        "listeEchanges"
-    );
-
+        document.getElementById(
+            "listeEchanges"
+        );
 
 
     document
-
-    .getElementById(
-        "metierEchanges"
-    )
-
-    .innerText =
-
-    metierActuel;
-
-
-
-
-    /* CHARGEMENT */
+        .getElementById(
+            "metierEchanges"
+        )
+        .innerText =
+        metierActuel;
 
 
     zone.innerHTML =
 
-    `
+        `
+        <div class="empty">
 
-    <div class="empty">
+        <span class="empty-icon">
+        🚆
+        </span>
 
-    <span class="empty-icon">
+        Chargement des échanges...
 
-    🚆
-
-    </span>
-
-    Chargement des échanges...
-
-    </div>
-
-    `;
-
-
-
-
-    /* RECUPERATION SUPABASE */
+        </div>
+        `;
 
 
     const {
@@ -2798,41 +2320,26 @@ async function afficherEchanges() {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
-    .select(
-        "*"
-    )
+    .select("*")
 
     .eq(
         "metier",
-
         metierActuel
     )
 
     .eq(
         "statut",
-
         "disponible"
     )
 
     .order(
         "date_service",
-
         {
-
             ascending: true
-
         }
-
     );
-
-
-
-
-    /* ERREUR */
 
 
     if (
@@ -2841,104 +2348,71 @@ async function afficherEchanges() {
 
     ) {
 
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         zone.innerHTML =
 
-        `
+            `
+            <div class="empty">
 
-        <div class="empty">
+            <span class="empty-icon">
+            ❌
+            </span>
 
-        <span class="empty-icon">
+            Erreur lors du chargement.
 
-        ❌
+            <br><br>
 
-        </span>
+            <small>
+            ${escapeHTML(error.message)}
+            </small>
 
-        Erreur lors du chargement.
-
-        <br>
-
-        <small>
-
-        ${escapeHTML(error.message)}
-
-        </small>
-
-        </div>
-
-        `;
+            </div>
+            `;
 
 
         return;
 
-
     }
-
-
-
-
-    /* NETTOYAGE */
 
 
     zone.innerHTML = "";
 
 
-
-
-    /* AUCUN RESULTAT */
-
-
     if (
 
         !data ||
-
         data.length === 0
 
     ) {
 
-
         zone.innerHTML =
 
-        `
+            `
+            <div class="empty">
 
-        <div class="empty">
+            <span class="empty-icon">
+            🚆
+            </span>
 
-        <span class="empty-icon">
+            <strong>
+            Aucune journée proposée
+            </strong>
 
-        🚆
+            <br><br>
 
-        </span>
+            Soyez le premier à proposer
+            une journée !
 
-        <strong>
-
-        Aucune journée proposée
-
-        </strong>
-
-        <br><br>
-
-        Soyez le premier à proposer
-        une journée !
-
-        </div>
-
-        `;
+            </div>
+            `;
 
 
         return;
 
-
     }
 
-
-
-
-    /* AFFICHAGE */
 
 
     data.forEach(
@@ -2948,173 +2422,183 @@ async function afficherEchanges() {
 
 
             const bloc =
-
-            document.createElement(
-                "div"
-            );
-
+                document.createElement(
+                    "div"
+                );
 
 
             bloc.className =
-
-            "item";
-
+                "item";
 
 
-            const agentInteresse =
+            /* NOM */
 
-            echange.agent_interesse
-
-            ?
-
-            `
-
-            <div class="interesse">
-
-            🙋 Agent intéressé :
-
-            <strong>
-
-            ${escapeHTML(
-                echange.agent_interesse
-            )}
-
-            </strong>
-
-            </div>
-
-            `
-
-            :
-
-            "";
+            const nom =
+                echange.nom || "Nom non renseigné";
 
 
+            /* DATE */
+
+            const date =
+                echange.date_service
+                ?
+                formatDate(
+                    echange.date_service
+                )
+                :
+                "Date non renseignée";
 
 
-            const commentaire =
+            /* HEURES */
 
-            echange.commentaire
+            const prise =
+                echange.prise_service
+                ?
+                formatTime(
+                    echange.prise_service
+                )
+                :
+                "--:--";
 
-            ?
 
-            `
+            const fin =
+                echange.fin_service
+                ?
+                formatTime(
+                    echange.fin_service
+                )
+                :
+                "--:--";
 
-            <div class="item-commentaire">
 
-            💬
+            /* COMMENTAIRE */
 
-            ${escapeHTML(
+            let commentaireHTML = "";
+
+
+            if (
+
                 echange.commentaire
-            )}
 
-            </div>
+            ) {
 
-            `
+                commentaireHTML =
 
-            :
+                    `
+                    <div class="item-commentaire">
 
-            "";
+                    💬
+                    ${escapeHTML(
+                        echange.commentaire
+                    )}
+
+                    </div>
+                    `;
+
+            }
 
 
+            /* AGENT INTERESSE */
+
+            let interesseHTML = "";
+
+
+            if (
+
+                echange.agent_interesse
+
+            ) {
+
+                interesseHTML =
+
+                    `
+                    <div class="interesse">
+
+                    🙋 Agent intéressé
+
+                    <strong>
+
+                    ${escapeHTML(
+                        echange.agent_interesse
+                    )}
+
+                    </strong>
+
+                    </div>
+                    `;
+
+            }
 
 
             bloc.innerHTML =
 
-            `
+                `
+
+                <div class="item-nom">
+
+                👤
+                ${escapeHTML(nom)}
+
+                </div>
 
 
-            <div class="item-header">
+                <div class="item-details">
+
+                📅
+                <strong>
+                ${escapeHTML(date)}
+                </strong>
+
+                <br>
+
+                ⏰
+                <strong>
+                ${escapeHTML(prise)}
+                →
+                ${escapeHTML(fin)}
+                </strong>
+
+                </div>
 
 
-            <div class="item-nom">
-
-            ${escapeHTML(
-                echange.nom
-            )}
-
-            </div>
+                ${commentaireHTML}
 
 
-            </div>
+                ${interesseHTML}
 
 
-
-            <div class="item-details">
-
-
-            📅
-
-            ${formatDate(
-                echange.date_service
-            )}
+                <div class="actions">
 
 
-            <br>
+                <button
+
+                class="btn-small btn-interet"
+
+                onclick="interesse(${echange.id})"
+
+                >
+
+                🙋 JE SUIS INTÉRESSÉ
+
+                </button>
 
 
-            ⏰
+                <button
 
-            ${formatTime(
-                echange.prise_service
-            )}
+                class="btn-small btn-delete"
 
-            →
+                onclick="supprimer(${echange.id})"
 
-            ${formatTime(
-                echange.fin_service
-            )}
+                >
 
+                🗑️ SUPPRIMER
 
-            </div>
+                </button>
 
 
-            ${commentaire}
+                </div>
 
-
-            ${agentInteresse}
-
-
-            <div class="actions">
-
-
-            <button
-
-            class="btn-small btn-interet"
-
-            onclick="interesse(
-                ${echange.id}
-            )"
-
-            >
-
-            🙋 JE SUIS INTÉRESSÉ
-
-            </button>
-
-
-
-            <button
-
-            class="btn-small btn-delete"
-
-            onclick="supprimer(
-                ${echange.id}
-            )"
-
-            >
-
-            🗑️ SUPPRIMER
-
-            </button>
-
-
-            </div>
-
-
-            `;
-
-
+                `;
 
 
             zone.appendChild(
@@ -3132,24 +2616,17 @@ async function afficherEchanges() {
 
 
 
-
-
 /* =====================================================
    JE SUIS INTERESSE
 ===================================================== */
-
 
 async function interesse(id) {
 
 
     const nomAgent =
-
-    prompt(
-
-        "Indiquez votre nom et prénom :"
-
-    );
-
+        prompt(
+            "Indiquez votre nom et prénom :"
+        );
 
 
     if (
@@ -3158,37 +2635,28 @@ async function interesse(id) {
 
     ) {
 
-
         return;
-
 
     }
 
+
+    const nomNettoye =
+        nomAgent.trim();
 
 
     if (
 
-        nomAgent.trim() === ""
+        nomNettoye === ""
 
     ) {
 
-
         alert(
-
             "Merci d'indiquer votre nom."
-
         );
-
 
         return;
 
-
     }
-
-
-
-
-    /* MISE A JOUR */
 
 
     const {
@@ -3201,17 +2669,12 @@ async function interesse(id) {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
     .update({
 
-
         agent_interesse:
-
-        nomAgent.trim()
-
+            nomNettoye
 
     })
 
@@ -3221,18 +2684,13 @@ async function interesse(id) {
     );
 
 
-
-
     if (
 
         error
 
     ) {
 
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         alert(
@@ -3248,10 +2706,7 @@ async function interesse(id) {
 
         return;
 
-
     }
-
-
 
 
     alert(
@@ -3261,12 +2716,12 @@ async function interesse(id) {
     );
 
 
-
     /*
-       LA DEMANDE RESTE DISPONIBLE.
+       IMPORTANT :
 
-       LE STATUT N'EST PAS MODIFIE.
+       LE STATUT RESTE "disponible".
 
+       LA DEMANDE RESTE DONC VISIBLE.
     */
 
 
@@ -3277,24 +2732,19 @@ async function interesse(id) {
 
 
 
-
-
 /* =====================================================
    SUPPRIMER
 ===================================================== */
-
 
 async function supprimer(id) {
 
 
     const confirmation =
+        confirm(
 
-    confirm(
+            "Voulez-vous vraiment supprimer cette demande ?"
 
-        "Voulez-vous vraiment supprimer cette demande ?"
-
-    );
-
+        );
 
 
     if (
@@ -3303,16 +2753,9 @@ async function supprimer(id) {
 
     ) {
 
-
         return;
 
-
     }
-
-
-
-
-    /* SUPPRESSION SUPABASE */
 
 
     const {
@@ -3325,9 +2768,7 @@ async function supprimer(id) {
 
     await supabaseClient
 
-    .from(
-        "echanges"
-    )
+    .from("echanges")
 
     .delete()
 
@@ -3337,21 +2778,13 @@ async function supprimer(id) {
     );
 
 
-
-
-    /* ERREUR */
-
-
     if (
 
         error
 
     ) {
 
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         alert(
@@ -3367,10 +2800,7 @@ async function supprimer(id) {
 
         return;
 
-
     }
-
-
 
 
     alert(
@@ -3380,11 +2810,6 @@ async function supprimer(id) {
     );
 
 
-
-
-    /* RECHARGEMENT */
-
-
     await afficherEchanges();
 
 
@@ -3392,12 +2817,9 @@ async function supprimer(id) {
 
 
 
-
-
 /* =====================================================
    FORMAT DATE
 ===================================================== */
-
 
 function formatDate(date) {
 
@@ -3408,18 +2830,13 @@ function formatDate(date) {
 
     ) {
 
-
         return "";
-
 
     }
 
 
-
     const morceaux =
-
-    date.split("-");
-
+        date.split("-");
 
 
     if (
@@ -3428,45 +2845,39 @@ function formatDate(date) {
 
     ) {
 
-
         return date;
-
 
     }
 
 
-
     return
 
-    morceaux[2]
+        morceaux[2]
 
-    +
+        +
 
-    "/"
+        "/"
 
-    +
+        +
 
-    morceaux[1]
+        morceaux[1]
 
-    +
+        +
 
-    "/"
+        "/"
 
-    +
+        +
 
-    morceaux[0];
+        morceaux[0];
 
 
 }
 
 
 
-
-
 /* =====================================================
    FORMAT HEURE
 ===================================================== */
-
 
 function formatTime(heure) {
 
@@ -3477,17 +2888,12 @@ function formatTime(heure) {
 
     ) {
 
-
         return "";
-
 
     }
 
 
-
-    return
-
-    heure.substring(
+    return heure.substring(
         0,
         5
     );
@@ -3497,12 +2903,9 @@ function formatTime(heure) {
 
 
 
-
-
 /* =====================================================
-   SECURITE AFFICHAGE
+   SECURITE HTML
 ===================================================== */
-
 
 function escapeHTML(texte) {
 
@@ -3515,31 +2918,20 @@ function escapeHTML(texte) {
 
     ) {
 
-
         return "";
-
 
     }
 
 
-
     const div =
-
-    document.createElement(
-        "div"
-    );
+        document.createElement("div");
 
 
-
-    div.innerText =
-
-    texte;
+    div.textContent =
+        texte;
 
 
-
-    return
-
-    div.innerHTML;
+    return div.innerHTML;
 
 
 }
