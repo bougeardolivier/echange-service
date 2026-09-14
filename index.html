@@ -6,7 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>ÉCHANGE SERVICE</title>
 
@@ -28,30 +30,23 @@
 :root {
 
     --bleu-nuit: #061827;
+    --bleu-profond: #092b45;
+    --bleu-marine: #103e60;
 
-    --bleu-profond: #092c46;
-
-    --bleu-fonce: #0d4265;
-
-    --bleu: #0879b8;
-
-    --bleu-clair: #38b6e8;
-
-    --cyan: #67d4f5;
+    --bleu: #167fc1;
+    --bleu-clair: #43b8df;
+    --cyan: #38c6cf;
 
     --blanc: #ffffff;
 
-    --gris-clair: #edf3f7;
+    --fond: #edf4f8;
 
-    --texte: #152b3b;
-
-    --texte-secondaire: #617180;
+    --texte: #142b3d;
+    --texte-secondaire: #607182;
 
     --vert: #22a06b;
-
-    --orange: #ef9b18;
-
-    --rouge: #d94343;
+    --orange: #ed9b23;
+    --rouge: #dc4a4a;
 
 }
 
@@ -80,141 +75,139 @@ body {
 
     min-height: 100vh;
 
+    padding-bottom: 90px;
+
     font-family:
 
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
     color: var(--texte);
 
     background:
 
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(62, 172, 222, .20),
-            transparent 28%
-        ),
+    radial-gradient(
+        circle at 10% 30%,
+        rgba(56,198,207,.12),
+        transparent 25%
+    ),
 
-        linear-gradient(
-            180deg,
-            #071a29 0%,
-            #0c3855 23%,
-            #315e78 43%,
-            #cbd9e1 70%,
-            #eef3f6 100%
-        );
+    radial-gradient(
+        circle at 90% 55%,
+        rgba(22,127,193,.10),
+        transparent 25%
+    ),
 
-    background-attachment: fixed;
-
-    padding-bottom: 95px;
+    linear-gradient(
+        180deg,
+        #e7f0f5 0%,
+        #f5f8fa 45%,
+        #e7eef3 100%
+    );
 
 }
 
 
 /* =====================================================
-   HEADER
+   HEADER MODERNE
 ===================================================== */
 
 header {
 
     position: relative;
 
-    min-height: 370px;
-
     overflow: hidden;
+
+    min-height: 430px;
 
     padding:
 
-        42px 20px
-        105px;
-
-    text-align: center;
+    45px 20px
+    145px;
 
     color: white;
 
     background:
 
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(87, 197, 244, .18),
-            transparent 26%
-        ),
+    radial-gradient(
+        circle at 80% 10%,
+        rgba(72,180,224,.38),
+        transparent 28%
+    ),
 
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(82, 181, 231, .20),
-            transparent 25%
-        ),
+    radial-gradient(
+        circle at 15% 0%,
+        rgba(255,255,255,.08),
+        transparent 30%
+    ),
 
-        linear-gradient(
-            135deg,
-            #051522 0%,
-            #092c46 45%,
-            #0b537d 100%
-        );
+    linear-gradient(
+        125deg,
+        #041522 0%,
+        #082940 38%,
+        #0d5275 75%,
+        #1677a6 100%
+    );
 
 }
 
 
 /* =====================================================
-   DECORATION HEADER
+   DECORATION CERCLES
 ===================================================== */
 
-header::before {
-
-    content: "";
+.header-circle {
 
     position: absolute;
-
-    width: 620px;
-
-    height: 620px;
 
     border-radius: 50%;
 
     border:
 
-        1px solid
-        rgba(255,255,255,.08);
+    1px solid
+    rgba(255,255,255,.12);
 
-    top: -430px;
-
-    left: -220px;
-
-    box-shadow:
-
-        0 0 0 80px
-        rgba(255,255,255,.015),
-
-        0 0 0 160px
-        rgba(255,255,255,.01);
+    pointer-events: none;
 
 }
 
 
-header::after {
+.circle-one {
 
-    content: "";
+    width: 520px;
+    height: 520px;
 
-    position: absolute;
+    left: -270px;
+    top: -310px;
 
-    width: 700px;
+}
 
-    height: 260px;
 
-    border-radius: 50%;
+.circle-two {
 
-    border:
+    width: 650px;
+    height: 650px;
 
-        1px solid
-        rgba(255,255,255,.10);
+    right: -360px;
+    top: -390px;
 
-    right: -180px;
+}
 
-    bottom: 30px;
+
+.circle-three {
+
+    width: 420px;
+    height: 420px;
+
+    right: -150px;
+    bottom: -280px;
+
+    border-color:
+
+    rgba(67,184,223,.20);
 
 }
 
@@ -223,52 +216,38 @@ header::after {
    LUEURS
 ===================================================== */
 
-.light-one {
+.header-glow {
 
     position: absolute;
 
-    width: 350px;
-
-    height: 350px;
+    width: 500px;
+    height: 220px;
 
     border-radius: 50%;
 
-    background:
+    filter: blur(70px);
 
-        radial-gradient(
-            circle,
-            rgba(54, 183, 235, .18),
-            transparent 70%
-        );
-
-    top: -80px;
-
-    right: 5%;
+    opacity: .35;
 
 }
 
 
-.light-two {
+.glow-one {
 
-    position: absolute;
+    background: #27b8dc;
 
-    width: 280px;
+    right: -100px;
+    top: 40px;
 
-    height: 280px;
+}
 
-    border-radius: 50%;
 
-    background:
+.glow-two {
 
-        radial-gradient(
-            circle,
-            rgba(79, 210, 247, .12),
-            transparent 70%
-        );
+    background: #126c9b;
 
-    bottom: -100px;
-
-    left: 10%;
+    left: -180px;
+    bottom: 20px;
 
 }
 
@@ -281,61 +260,63 @@ header::after {
 
     position: relative;
 
-    z-index: 5;
+    z-index: 10;
+
+    max-width: 1150px;
+
+    margin: auto;
 
 }
 
 
 /* =====================================================
-   LOGO TRAIN
+   LOGO
 ===================================================== */
 
 .train-logo {
 
-    width: 76px;
-
-    height: 76px;
+    width: 82px;
+    height: 82px;
 
     margin:
 
-        0 auto
-        16px;
+    0 auto
+    18px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    font-size: 42px;
+    font-size: 45px;
 
-    border-radius: 24px;
+    border-radius: 28px;
 
     background:
 
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.20),
-            rgba(255,255,255,.05)
-        );
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.22),
+        rgba(255,255,255,.05)
+    );
 
     border:
 
-        1px solid
-        rgba(255,255,255,.22);
+    1px solid
+    rgba(255,255,255,.28);
 
     box-shadow:
 
-        0 18px 40px
-        rgba(0,0,0,.30),
+    0 20px 45px
+    rgba(0,0,0,.30),
 
-        inset
-        0 1px 0
-        rgba(255,255,255,.20);
+    inset
+    0 1px 1px
+    rgba(255,255,255,.20);
 
     backdrop-filter:
 
-        blur(15px);
+    blur(15px);
 
 }
 
@@ -348,186 +329,222 @@ header h1 {
 
     margin: 0;
 
+    text-align: center;
+
     font-size:
 
-        clamp(
-            34px,
-            7vw,
-            58px
-        );
+    clamp(
+        38px,
+        7vw,
+        62px
+    );
 
     font-weight: 900;
 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
 
     text-shadow:
 
-        0 8px 25px
-        rgba(0,0,0,.30);
+    0 8px 30px
+    rgba(0,0,0,.28);
 
 }
 
 
-.header-subtitle {
+header p {
 
     margin:
 
-        15px 0 0;
+    15px 0 0;
+
+    text-align: center;
 
     font-size:
 
-        clamp(
-            16px,
-            3.5vw,
-            21px
-        );
+    clamp(
+        18px,
+        3vw,
+        24px
+    );
 
     color:
 
-        rgba(255,255,255,.85);
-
-    line-height: 1.5;
+    rgba(255,255,255,.85);
 
 }
 
 
-.header-subtitle span {
+.header-refus {
 
     display: inline-block;
 
-    margin-left: 5px;
+    margin-top: 8px;
 
-    color: #8bddf7;
+    font-size:
 
-    font-weight: 700;
+    clamp(
+        16px,
+        2.5vw,
+        21px
+    );
+
+    font-style: italic;
+
+    font-weight: 500;
+
+    color: #7ddcf2;
 
 }
 
 
 /* =====================================================
-   TRAIN DECORATIF
+   TRAIN MODERNE
 ===================================================== */
 
-.train-line {
+.train-scene {
 
     position: absolute;
 
     z-index: 3;
 
-    width: 560px;
+    right: 5%;
 
-    max-width: 80%;
+    bottom: 70px;
 
+    width: 520px;
+
+    height: 145px;
+
+    pointer-events: none;
+
+    opacity: .95;
+
+}
+
+
+.train {
+
+    position: absolute;
+
+    right: 0;
+    bottom: 25px;
+
+    width: 470px;
     height: 78px;
 
-    left: 50%;
+    border-radius:
 
-    transform: translateX(-50%);
-
-    bottom: 72px;
-
-    border-radius: 40px 40px 18px 18px;
+    45px
+    80px
+    25px
+    25px;
 
     background:
 
-        linear-gradient(
-            180deg,
-            rgba(113,199,235,.20),
-            rgba(255,255,255,.06)
-        );
-
-    border:
-
-        1px solid
-        rgba(255,255,255,.12);
+    linear-gradient(
+        180deg,
+        #edf8fc 0%,
+        #b9d8e7 25%,
+        #4989aa 26%,
+        #1d5f84 45%,
+        #dbeef5 47%,
+        #9dc4d7 100%
+    );
 
     box-shadow:
 
-        0 20px 45px
-        rgba(0,0,0,.18);
-
-    backdrop-filter:
-
-        blur(8px);
+    0 18px 30px
+    rgba(0,0,0,.25);
 
 }
 
 
-.train-line::before {
+.train::before {
 
     content: "";
 
     position: absolute;
 
-    width: 72%;
+    right: -12px;
+    top: 8px;
 
-    height: 13px;
+    width: 115px;
+    height: 62px;
 
-    border-radius: 10px;
+    border-radius:
 
-    left: 14%;
-
-    top: 18px;
+    55px
+    60px
+    45px
+    20px;
 
     background:
 
-        linear-gradient(
-            90deg,
-            #0c3753,
-            #14597c,
-            #0c3753
-        );
+    linear-gradient(
+        135deg,
+        #f2f8fa,
+        #8cb5c9
+    );
 
-    box-shadow:
+    transform:
 
-        0 3px 12px
-        rgba(0,0,0,.25);
+    skewX(-12deg);
 
 }
 
 
-.train-line::after {
+.train::after {
 
     content: "";
 
     position: absolute;
 
-    width: 55%;
+    left: 25px;
+    top: 16px;
 
-    height: 6px;
+    width: 285px;
+    height: 19px;
 
-    border-radius: 10px;
-
-    left: 22.5%;
-
-    top: 42px;
+    border-radius: 12px;
 
     background:
 
-        rgba(109,213,247,.65);
+    repeating-linear-gradient(
+
+        90deg,
+
+        #16384c 0px,
+        #16384c 28px,
+
+        #315d75 30px,
+        #315d75 36px
+
+    );
+
+    opacity: .9;
 
 }
 
 
 /* =====================================================
-   RAILS
+   RAILS HEADER
 ===================================================== */
 
 .rails {
 
     position: absolute;
 
-    z-index: 2;
-
-    bottom: 0;
+    z-index: 5;
 
     left: 0;
+    bottom: 0;
 
     width: 100%;
+    height: 110px;
 
-    height: 82px;
+    overflow: hidden;
 
-    opacity: .78;
+    opacity: .82;
 
 }
 
@@ -536,37 +553,41 @@ header h1 {
 
     position: absolute;
 
-    width: 100%;
+    left: -5%;
+
+    width: 110%;
 
     height: 5px;
 
     background:
 
-        linear-gradient(
-            90deg,
-            rgba(230,240,245,.45),
-            rgba(255,255,255,.90),
-            rgba(230,240,245,.45)
-        );
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(220,240,248,.9),
+        rgba(255,255,255,.9),
+        rgba(220,240,248,.9),
+        transparent
+    );
 
     box-shadow:
 
-        0 2px 6px
-        rgba(0,0,0,.20);
+    0 3px 8px
+    rgba(0,0,0,.35);
 
 }
 
 
 .rail.one {
 
-    bottom: 47px;
+    bottom: 62px;
 
 }
 
 
 .rail.two {
 
-    bottom: 17px;
+    bottom: 25px;
 
 }
 
@@ -575,29 +596,24 @@ header h1 {
 
     position: absolute;
 
-    bottom: 0;
+    bottom: 20px;
 
     width: 100%;
-
-    height: 68px;
+    height: 58px;
 
     background:
 
-        repeating-linear-gradient(
+    repeating-linear-gradient(
 
-            90deg,
+        90deg,
 
-            transparent 0px,
+        transparent 0px,
+        transparent 22px,
 
-            transparent 20px,
+        rgba(230,241,246,.70) 22px,
+        rgba(230,241,246,.70) 28px
 
-            rgba(220,235,242,.55)
-            20px,
-
-            rgba(220,235,242,.55)
-            26px
-
-        );
+    );
 
 }
 
@@ -610,18 +626,18 @@ main {
 
     position: relative;
 
-    z-index: 10;
+    z-index: 20;
 
-    max-width: 760px;
+    max-width: 1100px;
 
     margin:
 
-        -48px auto
-        60px;
+    -85px auto
+    60px;
 
     padding:
 
-        0 16px;
+    0 18px;
 
 }
 
@@ -638,53 +654,64 @@ main {
 
 
 /* =====================================================
-   CARTES
+   CARTE GENERALE
 ===================================================== */
 
 .card {
 
-    position: relative;
-
-    overflow: hidden;
-
     background:
 
-        rgba(255,255,255,.94);
+    rgba(255,255,255,.92);
 
     border:
 
-        1px solid
-        rgba(255,255,255,.85);
+    1px solid
+    rgba(255,255,255,.85);
 
     border-radius: 30px;
 
-    padding: 26px;
+    padding: 28px;
 
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 
     box-shadow:
 
-        0 20px 55px
-        rgba(4,29,47,.22);
+    0 25px 60px
+    rgba(12,48,70,.16),
+
+    0 2px 8px
+    rgba(10,30,45,.04);
 
     backdrop-filter:
 
-        blur(18px);
+    blur(18px);
 
 }
 
 
 /* =====================================================
-   CARTE BIENVENUE
+   BIENVENUE
 ===================================================== */
 
 .welcome-card {
 
-    text-align: center;
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 900px;
+
+    margin:
+
+    0 auto
+    25px;
 
     padding:
 
-        32px 26px;
+    35px
+    40px;
+
+    text-align: center;
 
 }
 
@@ -695,23 +722,25 @@ main {
 
     position: absolute;
 
-    width: 220px;
+    width: 260px;
+    height: 260px;
 
-    height: 220px;
+    left: -120px;
+    top: -130px;
 
     border-radius: 50%;
 
     background:
 
-        radial-gradient(
-            circle,
-            rgba(70,185,232,.12),
-            transparent 70%
-        );
+    radial-gradient(
 
-    top: -100px;
+        circle,
 
-    left: -100px;
+        rgba(67,184,223,.16),
+
+        transparent 70%
+
+    );
 
 }
 
@@ -723,22 +752,24 @@ main {
     position: absolute;
 
     width: 250px;
-
     height: 250px;
+
+    right: -130px;
+    bottom: -160px;
 
     border-radius: 50%;
 
     background:
 
-        radial-gradient(
-            circle,
-            rgba(42,130,185,.08),
-            transparent 70%
-        );
+    radial-gradient(
 
-    bottom: -150px;
+        circle,
 
-    right: -100px;
+        rgba(22,127,193,.12),
+
+        transparent 70%
+
+    );
 
 }
 
@@ -754,37 +785,40 @@ main {
 
 .welcome-icon {
 
-    width: 74px;
-
-    height: 74px;
+    width: 92px;
+    height: 92px;
 
     margin:
 
-        0 auto
-        15px;
+    -70px auto
+    15px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    font-size: 42px;
+    font-size: 46px;
 
-    border-radius: 24px;
+    border-radius: 50%;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #dff4fc,
-            #b7e0f1
-        );
+    linear-gradient(
+        145deg,
+        #ffffff,
+        #d8edf5
+    );
+
+    border:
+
+    1px solid
+    #d3e6ef;
 
     box-shadow:
 
-        0 10px 25px
-        rgba(16,105,150,.14);
+    0 15px 35px
+    rgba(15,70,100,.15);
 
 }
 
@@ -793,41 +827,74 @@ main {
 
     margin:
 
-        0 0 12px;
+    0 0 15px;
 
-    font-size: 32px;
+    font-size:
 
-    font-weight: 850;
+    clamp(
+        30px,
+        5vw,
+        45px
+    );
 
-    color: #173247;
+    color: #16314a;
 
 }
 
 
 .welcome-card p {
 
+    max-width: 700px;
+
     margin:
 
-        8px auto;
+    0 auto;
 
-    max-width: 620px;
+    font-size:
 
-    font-size: 17px;
+    clamp(
+        16px,
+        2.5vw,
+        20px
+    );
 
-    line-height: 1.65;
+    line-height: 1.6;
 
-    color: #607080;
+    color: #566d7e;
 
 }
 
 
-.welcome-choice {
+.choose-metier {
 
-    margin-top: 20px !important;
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 22px;
+
+    padding:
+
+    13px
+    25px;
+
+    border-radius: 50px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #e5f3f8,
+        #d4eaf4
+    );
+
+    color: #1d5374;
+
+    font-size: 17px;
 
     font-weight: 800;
-
-    color: #21465e !important;
 
 }
 
@@ -836,21 +903,39 @@ main {
    CHOIX METIER
 ===================================================== */
 
+.metiers-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+    repeat(
+        2,
+        1fr
+    );
+
+    gap: 22px;
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
 .choice {
 
     width: 100%;
 
-    border: none;
-
     padding: 0;
 
-    margin-bottom: 13px;
+    border: none;
 
     background: transparent;
 
     cursor: pointer;
 
-    -webkit-tap-highlight-color: transparent;
+    text-align: left;
 
 }
 
@@ -861,67 +946,39 @@ main {
 
     overflow: hidden;
 
+    min-height: 140px;
+
     display: flex;
 
     align-items: center;
 
-    gap: 16px;
-
-    width: 100%;
-
-    min-height: 98px;
+    gap: 18px;
 
     padding:
 
-        15px 20px;
+    22px
+    25px;
 
-    border-radius: 24px;
+    border-radius: 25px;
 
     background:
 
-        rgba(255,255,255,.96);
+    rgba(255,255,255,.95);
 
     border:
 
-        1px solid
-        rgba(255,255,255,.90);
+    1px solid
+    rgba(220,232,239,.95);
 
     box-shadow:
 
-        0 13px 32px
-        rgba(5,30,50,.16);
+    0 16px 35px
+    rgba(10,55,80,.12);
 
     transition:
 
-        transform .20s ease,
-        box-shadow .20s ease;
-
-}
-
-
-.choice-content::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-
-    height: 130px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(77,189,235,.12),
-            transparent 70%
-        );
-
-    right: -55px;
-
-    top: -35px;
+    transform .25s ease,
+    box-shadow .25s ease;
 
 }
 
@@ -930,12 +987,12 @@ main {
 
     transform:
 
-        translateY(-2px);
+    translateY(-5px);
 
     box-shadow:
 
-        0 18px 38px
-        rgba(5,30,50,.20);
+    0 25px 45px
+    rgba(10,55,80,.18);
 
 }
 
@@ -944,7 +1001,48 @@ main {
 
     transform:
 
-        scale(.985);
+    scale(.98);
+
+}
+
+
+.choice.adc .choice-content {
+
+    border-left:
+
+    7px solid
+    #2d9cdb;
+
+}
+
+
+.choice.asct .choice-content {
+
+    border-left:
+
+    7px solid
+    #26b6b6;
+
+}
+
+
+.choice-content::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -100px;
+    bottom: -120px;
+
+    background:
+
+    rgba(45,156,219,.06);
 
 }
 
@@ -955,38 +1053,36 @@ main {
 
     z-index: 2;
 
-    min-width: 62px;
+    min-width: 72px;
 
-    width: 62px;
-
-    height: 62px;
+    width: 72px;
+    height: 72px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    font-size: 32px;
+    font-size: 37px;
 
-    border-radius: 19px;
+    border-radius: 50%;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #dff4fc,
-            #b7ddea
-        );
+    linear-gradient(
+        145deg,
+        #e9f7fc,
+        #c9e5f0
+    );
 
     box-shadow:
 
-        0 8px 18px
-        rgba(12,92,138,.14),
+    inset
+    0 2px 4px
+    rgba(255,255,255,.9),
 
-        inset
-        0 1px 2px
-        rgba(255,255,255,.80);
+    0 8px 20px
+    rgba(20,90,120,.12);
 
 }
 
@@ -999,8 +1095,6 @@ main {
 
     flex: 1;
 
-    text-align: left;
-
 }
 
 
@@ -1008,11 +1102,11 @@ main {
 
     display: block;
 
-    font-size: 24px;
+    margin-bottom: 6px;
 
-    margin-bottom: 4px;
+    font-size: 27px;
 
-    color: #173247;
+    color: #16314a;
 
 }
 
@@ -1021,11 +1115,11 @@ main {
 
     display: block;
 
-    font-size: 15px;
+    font-size: 16px;
 
-    color: #6a7a88;
+    line-height: 1.4;
 
-    line-height: 1.35;
+    color: #607182;
 
 }
 
@@ -1036,11 +1130,11 @@ main {
 
     z-index: 2;
 
-    font-size: 27px;
+    font-size: 36px;
 
-    font-weight: 400;
+    font-weight: 300;
 
-    color: #1681b9;
+    color: #177db7;
 
 }
 
@@ -1066,9 +1160,9 @@ h2 {
 
     margin-bottom: 8px;
 
-    font-size: 27px;
+    font-size: 30px;
 
-    color: #173247;
+    color: #17344b;
 
 }
 
@@ -1077,18 +1171,18 @@ h2 {
 
     margin:
 
-        0 0 20px;
+    0 0 20px;
 
     font-size: 16px;
 
-    color: #617180;
+    color: var(--texte-secondaire);
 
 }
 
 
 .metier-info strong {
 
-    color: var(--bleu-fonce);
+    color: var(--bleu-profond);
 
 }
 
@@ -1103,32 +1197,26 @@ h2 {
 
     align-items: center;
 
-    gap: 6px;
+    gap: 7px;
 
     padding:
 
-        8px 14px;
+    9px
+    16px;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 
-    border-radius: 30px;
+    border-radius: 50px;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #dff3fb,
-            #edf9fd
-        );
+    linear-gradient(
+        90deg,
+        #e4f4fa,
+        #d2ebf5
+    );
 
-    border:
-
-        1px solid
-        #c5e6f3;
-
-    color:
-
-        #12618d;
+    color: #14618d;
 
     font-size: 13px;
 
@@ -1145,15 +1233,14 @@ label {
 
     display: block;
 
-    margin-top: 15px;
-
+    margin-top: 16px;
     margin-bottom: 7px;
 
     font-size: 14px;
 
-    font-weight: 750;
+    font-weight: 800;
 
-    color: #425466;
+    color: #40586a;
 
 }
 
@@ -1164,29 +1251,27 @@ textarea {
 
     width: 100%;
 
+    padding: 15px;
+
     border:
 
-        1px solid
-        #d6e1e8;
+    1px solid
+    #d6e2e9;
 
-    border-radius: 14px;
-
-    padding: 14px;
-
-    font-size: 16px;
+    border-radius: 15px;
 
     background:
 
-        #f8fbfc;
+    #f9fbfc;
 
-    color:
+    color: #172a3a;
 
-        #172a3a;
+    font-size: 16px;
 
     transition:
 
-        border .20s ease,
-        box-shadow .20s ease;
+    border .2s ease,
+    box-shadow .2s ease;
 
 }
 
@@ -1197,25 +1282,19 @@ textarea:focus {
 
     outline: none;
 
-    border-color:
-
-        var(--bleu);
+    border-color: #2598d1;
 
     box-shadow:
 
-        0 0 0 4px
-        rgba(22,118,184,.12);
-
-    background:
-
-        white;
+    0 0 0 4px
+    rgba(37,152,209,.12);
 
 }
 
 
 textarea {
 
-    min-height: 90px;
+    min-height: 100px;
 
     resize: vertical;
 
@@ -1232,9 +1311,9 @@ textarea {
 
     grid-template-columns:
 
-        1fr 1fr;
+    1fr 1fr;
 
-    gap: 12px;
+    gap: 14px;
 
 }
 
@@ -1259,11 +1338,11 @@ textarea {
 
     background:
 
-        linear-gradient(
-            135deg,
-            #08679f,
-            #159bd2
-        );
+    linear-gradient(
+        135deg,
+        #126da2,
+        #219ad2
+    );
 
     color: white;
 
@@ -1271,15 +1350,31 @@ textarea {
 
     font-weight: 800;
 
+    letter-spacing: .2px;
+
     box-shadow:
 
-        0 12px 24px
-        rgba(8,103,159,.22);
+    0 12px 25px
+    rgba(18,109,162,.20);
 
     transition:
 
-        transform .15s ease,
-        box-shadow .15s ease;
+    transform .2s ease,
+    box-shadow .2s ease;
+
+}
+
+
+.btn:hover {
+
+    transform:
+
+    translateY(-2px);
+
+    box-shadow:
+
+    0 17px 30px
+    rgba(18,109,162,.25);
 
 }
 
@@ -1288,7 +1383,7 @@ textarea {
 
     transform:
 
-        scale(.98);
+    scale(.98);
 
 }
 
@@ -1297,39 +1392,13 @@ textarea {
 
     background:
 
-        #e9f0f4;
+    #e9f0f4;
 
     color:
 
-        #304657;
+    #304555;
 
     box-shadow: none;
-
-}
-
-
-.btn-interesse {
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #dc850d,
-            #f4b936
-        );
-
-}
-
-
-.btn-supprimer {
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #b52f2f,
-            #e24d4d
-        );
 
 }
 
@@ -1344,61 +1413,55 @@ textarea {
 
     overflow: hidden;
 
-    margin-top: 15px;
+    margin-top: 16px;
 
-    padding: 20px;
+    padding: 21px;
 
-    border-radius: 20px;
+    border-radius: 21px;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #f2f7fa
-        );
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #f3f8fa
+    );
 
     border:
 
-        1px solid
-        #dce6ed;
+    1px solid
+    #dbe6ec;
 
     border-left:
 
-        6px solid
-        var(--bleu);
+    6px solid
+    #1d8ec8;
 
     box-shadow:
 
-        0 8px 20px
-        rgba(10,40,60,.08);
+    0 10px 25px
+    rgba(10,45,65,.08);
 
 }
 
 
-.item::before {
+.item::after {
 
     content: "";
 
     position: absolute;
 
-    width: 150px;
+    width: 140px;
+    height: 140px;
 
-    height: 150px;
+    right: -80px;
+    top: -80px;
 
     border-radius: 50%;
 
     background:
 
-        radial-gradient(
-            circle,
-            rgba(58,181,232,.08),
-            transparent 70%
-        );
-
-    right: -60px;
-
-    top: -70px;
+    rgba(29,142,200,.05);
 
 }
 
@@ -1411,26 +1474,20 @@ textarea {
 
     display: flex;
 
-    justify-content:
+    justify-content: space-between;
 
-        space-between;
-
-    align-items:
-
-        flex-start;
-
-    gap: 10px;
+    align-items: flex-start;
 
 }
 
 
 .item-nom {
 
-    font-size: 20px;
+    font-size: 21px;
 
-    font-weight: 850;
+    font-weight: 900;
 
-    color: #19354a;
+    color: #19384e;
 
 }
 
@@ -1441,13 +1498,13 @@ textarea {
 
     z-index: 2;
 
-    margin-top: 10px;
+    margin-top: 11px;
 
-    line-height: 1.7;
-
-    color: #425466;
+    line-height: 1.8;
 
     font-size: 16px;
+
+    color: #40576a;
 
 }
 
@@ -1458,11 +1515,18 @@ textarea {
 
     z-index: 2;
 
-    margin-top: 8px;
+    margin-top: 10px;
+
+    padding-top: 10px;
+
+    border-top:
+
+    1px solid
+    #e1eaee;
 
     font-size: 14px;
 
-    color: #687887;
+    color: #667988;
 
 }
 
@@ -1475,43 +1539,41 @@ textarea {
 
     margin-top: 15px;
 
-    padding: 12px;
+    padding: 13px;
 
     border-radius: 14px;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #fff0d2,
-            #fff7e9
-        );
+    linear-gradient(
+        135deg,
+        #fff5dc,
+        #ffedc4
+    );
 
-    border:
-
-        1px solid
-        #f5d99c;
-
-    color:
-
-        #855900;
+    color: #805600;
 
     font-size: 14px;
 
     font-weight: 700;
+
+    border:
+
+    1px solid
+    #f3d797;
 
 }
 
 
 .interesse strong {
 
-    color: #704900;
+    color: #654300;
 
 }
 
 
 /* =====================================================
-   ACTIONS ECHANGE
+   ACTIONS
 ===================================================== */
 
 .actions {
@@ -1524,11 +1586,11 @@ textarea {
 
     grid-template-columns:
 
-        1fr;
+    1fr;
 
-    gap: 8px;
+    gap: 9px;
 
-    margin-top: 15px;
+    margin-top: 16px;
 
 }
 
@@ -1541,13 +1603,26 @@ textarea {
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
     cursor: pointer;
 
     font-size: 14px;
 
-    font-weight: 750;
+    font-weight: 800;
+
+    transition:
+
+    transform .2s ease;
+
+}
+
+
+.btn-small:active {
+
+    transform:
+
+    scale(.98);
 
 }
 
@@ -1556,20 +1631,13 @@ textarea {
 
     background:
 
-        linear-gradient(
-            135deg,
-            #fff0cb,
-            #fff7e7
-        );
+    linear-gradient(
+        135deg,
+        #fff1ce,
+        #ffe3a5
+    );
 
-    border:
-
-        1px solid
-        #f1d491;
-
-    color:
-
-        #915d00;
+    color: #8a5a00;
 
 }
 
@@ -1578,20 +1646,13 @@ textarea {
 
     background:
 
-        linear-gradient(
-            135deg,
-            #ffe7e7,
-            #fff2f2
-        );
+    linear-gradient(
+        135deg,
+        #ffe8e8,
+        #ffd8d8
+    );
 
-    border:
-
-        1px solid
-        #f3c6c6;
-
-    color:
-
-        #b72d2d;
+    color: #b52f2f;
 
 }
 
@@ -1606,7 +1667,7 @@ textarea {
 
     padding:
 
-        40px 20px;
+    45px 20px;
 
     color: #687887;
 
@@ -1617,7 +1678,7 @@ textarea {
 
     display: block;
 
-    font-size: 55px;
+    font-size: 58px;
 
     margin-bottom: 15px;
 
@@ -1632,45 +1693,41 @@ nav {
 
     position: fixed;
 
-    z-index: 100;
+    z-index: 1000;
 
     bottom: 0;
-
     left: 0;
-
     right: 0;
 
     display: flex;
 
-    justify-content:
+    justify-content: center;
 
-        space-around;
-
-    align-items: center;
+    gap: 5px;
 
     padding:
 
-        7px
-        5px
-        calc(7px + env(safe-area-inset-bottom));
+    9px
+    12px
+    calc(9px + env(safe-area-inset-bottom));
 
     background:
 
-        rgba(255,255,255,.95);
+    rgba(255,255,255,.92);
 
     border-top:
 
-        1px solid
-        rgba(210,225,234,.90);
+    1px solid
+    rgba(210,225,233,.9);
 
     box-shadow:
 
-        0 -8px 30px
-        rgba(0,0,0,.10);
+    0 -10px 35px
+    rgba(5,35,55,.10);
 
     backdrop-filter:
 
-        blur(18px);
+    blur(20px);
 
 }
 
@@ -1679,21 +1736,32 @@ nav button {
 
     flex: 1;
 
+    max-width: 250px;
+
     border: none;
+
+    border-radius: 15px;
 
     background: transparent;
 
     padding:
 
-        9px 5px;
+    9px 5px;
 
-    color: #526273;
+    color: #526879;
 
     font-size: 12px;
 
     cursor: pointer;
 
-    font-weight: 650;
+}
+
+
+nav button:active {
+
+    background:
+
+    #e8f2f7;
 
 }
 
@@ -1702,9 +1770,9 @@ nav button {
 
     display: block;
 
-    font-size: 20px;
+    margin-bottom: 4px;
 
-    margin-bottom: 3px;
+    font-size: 22px;
 
 }
 
@@ -1713,169 +1781,132 @@ nav button {
    MOBILE
 ===================================================== */
 
-@media (max-width: 500px) {
+@media
+(max-width: 700px) {
 
 
     body {
 
-        padding-bottom: 90px;
+        padding-bottom: 85px;
 
     }
 
 
     header {
 
-        min-height: 330px;
+        min-height: 380px;
 
         padding:
 
-            34px 16px
-            95px;
+        38px 15px
+        125px;
 
     }
 
 
-    .train-logo {
+    .train-scene {
 
-        width: 66px;
+        width: 300px;
 
-        height: 66px;
+        right: -100px;
 
-        font-size: 37px;
+        bottom: 75px;
 
-        border-radius: 21px;
-
-    }
-
-
-    header h1 {
-
-        letter-spacing: 2px;
+        opacity: .45;
 
     }
 
 
-    .header-subtitle {
+    .train {
 
-        font-size: 16px;
+        transform:
 
-        padding: 0 10px;
+        scale(.65);
 
-    }
+        transform-origin:
 
-
-    .header-subtitle span {
-
-        display: block;
-
-        margin:
-
-            3px 0 0;
-
-    }
-
-
-    .train-line {
-
-        height: 62px;
-
-        bottom: 72px;
+        right bottom;
 
     }
 
 
     main {
 
-        margin-top: -40px;
+        margin:
 
-        padding: 0 12px;
+        -65px auto
+        40px;
 
-    }
+        padding:
 
-
-    .card {
-
-        padding: 20px;
-
-        border-radius: 24px;
+        0 14px;
 
     }
 
 
     .welcome-card {
 
-        padding: 27px 20px;
+        padding:
+
+        30px
+        20px;
 
     }
 
 
     .welcome-icon {
 
-        width: 64px;
+        width: 76px;
+        height: 76px;
 
-        height: 64px;
+        margin:
 
-        font-size: 36px;
+        -58px auto
+        15px;
 
-        border-radius: 20px;
-
-    }
-
-
-    .welcome-card h2 {
-
-        font-size: 28px;
+        font-size: 38px;
 
     }
 
 
-    .welcome-card p {
+    .metiers-grid {
 
-        font-size: 16px;
+        grid-template-columns:
 
-    }
-
-
-    .choice {
-
-        margin-bottom: 11px;
-
-    }
-
-
-    .choice-content {
-
-        min-height: 88px;
-
-        padding:
-
-            13px 17px;
-
-        border-radius: 21px;
+        1fr;
 
         gap: 14px;
 
     }
 
 
+    .choice-content {
+
+        min-height: 105px;
+
+        padding:
+
+        17px
+        18px;
+
+    }
+
+
     .choice-icon {
 
-        width: 56px;
+        width: 60px;
+        height: 60px;
 
-        min-width: 56px;
+        min-width: 60px;
 
-        height: 56px;
-
-        font-size: 29px;
-
-        border-radius: 17px;
+        font-size: 31px;
 
     }
 
 
     .choice-text strong {
 
-        font-size: 22px;
+        font-size: 24px;
 
     }
 
@@ -1889,20 +1920,19 @@ nav button {
 
     .choice-arrow {
 
-        font-size: 25px;
+        font-size: 30px;
 
     }
 
 
-    .row {
+    .card {
 
-        grid-template-columns:
+        padding: 20px;
 
-            1fr;
-
-        gap: 0;
+        border-radius: 23px;
 
     }
+
 
 }
 
@@ -1922,15 +1952,37 @@ nav button {
 <header>
 
 
-<div class="light-one"></div>
-
-<div class="light-two"></div>
-
-
-<div class="header-content">
+<div
+class="header-circle circle-one">
+</div>
 
 
-<div class="train-logo">
+<div
+class="header-circle circle-two">
+</div>
+
+
+<div
+class="header-circle circle-three">
+</div>
+
+
+<div
+class="header-glow glow-one">
+</div>
+
+
+<div
+class="header-glow glow-two">
+</div>
+
+
+<div
+class="header-content">
+
+
+<div
+class="train-logo">
 
 🚆
 
@@ -1944,13 +1996,17 @@ nav button {
 </h1>
 
 
-<p class="header-subtitle">
+<p>
 
 Échange de journées entre agents
 
-<span>
+<br>
 
-• si congés refusés
+
+<span
+class="header-refus">
+
+si congés refusés
 
 </span>
 
@@ -1960,20 +2016,40 @@ nav button {
 </div>
 
 
+
 <!-- TRAIN DECORATIF -->
 
-<div class="train-line"></div>
+<div
+class="train-scene">
+
+<div
+class="train">
+</div>
+
+</div>
+
 
 
 <!-- RAILS -->
 
-<div class="rails">
+<div
+class="rails">
 
-<div class="rail one"></div>
 
-<div class="rail two"></div>
+<div
+class="rail one">
+</div>
 
-<div class="sleepers"></div>
+
+<div
+class="rail two">
+</div>
+
+
+<div
+class="sleepers">
+</div>
+
 
 </div>
 
@@ -1994,18 +2070,22 @@ nav button {
      ACCUEIL
 ===================================================== -->
 
-<section id="accueil">
+<section
+id="accueil">
 
 
-<div class="card welcome-card">
+<div
+class="card welcome-card">
 
 
-<div class="welcome-content">
+<div
+class="welcome-content">
 
 
-<div class="welcome-icon">
+<div
+class="welcome-icon">
 
-🚆
+🤝
 
 </div>
 
@@ -2019,17 +2099,20 @@ Bienvenue
 
 <p>
 
-Proposez une journée de service et trouvez un collègue
-intéressé pour un éventuel échange.
+Proposez une journée de service et trouvez
+un collègue intéressé pour un éventuel échange.
 
 </p>
 
 
-<p class="welcome-choice">
+<div
+class="choose-metier">
+
+🚆
 
 Choisissez votre métier pour commencer.
 
-</p>
+</div>
 
 
 </div>
@@ -2040,29 +2123,39 @@ Choisissez votre métier pour commencer.
 
 
 <!-- =====================================================
-     ADC
+     CHOIX METIERS
 ===================================================== -->
+
+<div
+class="metiers-grid">
+
+
+
+<!-- ADC -->
 
 <button
 
-class="choice"
+class="choice adc"
 
 onclick="choisirMetier('ADC')"
 
 >
 
 
-<div class="choice-content">
+<div
+class="choice-content">
 
 
-<div class="choice-icon">
+<div
+class="choice-icon">
 
 🚆
 
 </div>
 
 
-<div class="choice-text">
+<div
+class="choice-text">
 
 
 <strong>
@@ -2082,7 +2175,8 @@ Conducteurs de train
 </div>
 
 
-<div class="choice-arrow">
+<div
+class="choice-arrow">
 
 ›
 
@@ -2096,30 +2190,31 @@ Conducteurs de train
 
 
 
-<!-- =====================================================
-     ASCT
-===================================================== -->
+<!-- ASCT -->
 
 <button
 
-class="choice"
+class="choice asct"
 
 onclick="choisirMetier('ASCT')"
 
 >
 
 
-<div class="choice-content">
+<div
+class="choice-content">
 
 
-<div class="choice-icon">
+<div
+class="choice-icon">
 
 👨‍✈️
 
 </div>
 
 
-<div class="choice-text">
+<div
+class="choice-text">
 
 
 <strong>
@@ -2139,7 +2234,8 @@ Agents du Service Commercial Train
 </div>
 
 
-<div class="choice-arrow">
+<div
+class="choice-arrow">
 
 ›
 
@@ -2152,9 +2248,10 @@ Agents du Service Commercial Train
 </button>
 
 
+</div>
+
+
 </section>
-
-
 
 
 
@@ -2172,7 +2269,8 @@ class="hidden"
 >
 
 
-<div class="card">
+<div
+class="card">
 
 
 <span
@@ -2189,14 +2287,16 @@ class="badge"
 
 
 
-<h2 class="page-title">
+<h2
+class="page-title">
 
 ➕ Ma journée
 
 </h2>
 
 
-<p class="metier-info">
+<p
+class="metier-info">
 
 Proposez votre journée afin de trouver
 un collègue intéressé.
@@ -2220,6 +2320,7 @@ placeholder="Exemple : Jean DUPONT"
 
 autocomplete="name"
 
+
 >
 
 
@@ -2237,11 +2338,13 @@ id="date"
 
 type="date"
 
+
 >
 
 
 
-<div class="row">
+<div
+class="row">
 
 
 <div>
@@ -2259,6 +2362,7 @@ Prise de service
 id="prise"
 
 type="time"
+
 
 >
 
@@ -2282,6 +2386,7 @@ Fin de service
 id="fin"
 
 type="time"
+
 
 >
 
@@ -2344,8 +2449,6 @@ onclick="afficher('echanges')"
 
 
 
-
-
 <!-- =====================================================
      ECHANGES
 ===================================================== -->
@@ -2359,21 +2462,25 @@ class="hidden"
 >
 
 
-<div class="card">
+<div
+class="card">
 
 
-<h2 class="page-title">
+<h2
+class="page-title">
 
 🔎 Échanges disponibles
 
 </h2>
 
 
-<p class="metier-info">
+<p
+class="metier-info">
 
 Métier :
 
-<strong id="metierEchanges">
+<strong
+id="metierEchanges">
 
 -
 
@@ -2383,9 +2490,8 @@ Métier :
 
 
 
-<div id="listeEchanges">
-
-
+<div
+id="listeEchanges">
 </div>
 
 
@@ -2413,8 +2519,6 @@ onclick="afficher('proposer')"
 
 
 
-
-
 <!-- =====================================================
      NAVIGATION
 ===================================================== -->
@@ -2424,6 +2528,7 @@ onclick="afficher('proposer')"
 id="menu"
 
 class="hidden"
+
 
 >
 
@@ -2435,7 +2540,8 @@ onclick="afficher('proposer')"
 >
 
 
-<span class="nav-icon">
+<span
+class="nav-icon">
 
 ➕
 
@@ -2456,7 +2562,8 @@ onclick="afficher('echanges')"
 >
 
 
-<span class="nav-icon">
+<span
+class="nav-icon">
 
 🔎
 
@@ -2477,7 +2584,8 @@ onclick="changerMetier()"
 >
 
 
-<span class="nav-icon">
+<span
+class="nav-icon">
 
 🚆
 
@@ -2491,8 +2599,6 @@ Métier
 
 
 </nav>
-
-
 
 
 
@@ -2524,7 +2630,6 @@ supabase.createClient(
     SUPABASE_KEY
 
 );
-
 
 
 
@@ -2570,7 +2675,6 @@ function afficher(page) {
     );
 
 
-
     document
 
     .getElementById(
@@ -2609,8 +2713,6 @@ function afficher(page) {
 
 
 }
-
-
 
 
 
@@ -2681,8 +2783,6 @@ function choisirMetier(metier) {
 
 
 
-
-
 /* =====================================================
    CHANGER METIER
 ===================================================== */
@@ -2715,8 +2815,6 @@ function changerMetier() {
 
 
 }
-
-
 
 
 
@@ -2999,8 +3097,6 @@ async function publier() {
 
 
 
-
-
 /* =====================================================
    AFFICHER LES ECHANGES
 ===================================================== */
@@ -3134,7 +3230,7 @@ async function afficherEchanges() {
 
         Erreur lors du chargement.
 
-        <br>
+        <br><br>
 
         <small>
 
@@ -3300,7 +3396,10 @@ async function afficherEchanges() {
             <div class="item-header">
 
 
-            <div class="item-nom">
+            <div
+            class="item-nom">
+
+            👤
 
             ${escapeHTML(
                 echange.nom
@@ -3313,20 +3412,27 @@ async function afficherEchanges() {
 
 
 
-            <div class="item-details">
+            <div
+            class="item-details">
 
 
             📅
 
+            <strong>
+
             ${formatDate(
                 echange.date_service
             )}
+
+            </strong>
 
 
             <br>
 
 
             ⏰
+
+            <strong>
 
             ${formatTime(
                 echange.prise_service
@@ -3338,6 +3444,8 @@ async function afficherEchanges() {
                 echange.fin_service
             )}
 
+            </strong>
+
 
             </div>
 
@@ -3348,7 +3456,8 @@ async function afficherEchanges() {
             ${agentInteresse}
 
 
-            <div class="actions">
+            <div
+            class="actions">
 
 
             <button
@@ -3402,8 +3511,6 @@ async function afficherEchanges() {
 
 
 }
-
-
 
 
 
@@ -3537,8 +3644,11 @@ async function interesse(id) {
 
     /*
        IMPORTANT :
+
        LA DEMANDE RESTE DISPONIBLE.
-       ON NE MODIFIE PAS LE STATUT.
+
+       LE STATUT N'EST PAS MODIFIE.
+
     */
 
 
@@ -3546,8 +3656,6 @@ async function interesse(id) {
 
 
 }
-
-
 
 
 
@@ -3653,16 +3761,18 @@ async function supprimer(id) {
 
 
 
+    /*
+       RECHARGEMENT COMPLET
 
-    /* RECHARGEMENT */
+       DEPUIS SUPABASE
+
+    */
 
 
     await afficherEchanges();
 
 
 }
-
-
 
 
 
@@ -3710,28 +3820,26 @@ function formatDate(date) {
 
     return
 
-        morceaux[2]
+    morceaux[2]
 
-        +
+    +
 
-        "/"
+    "/"
 
-        +
+    +
 
-        morceaux[1]
+    morceaux[1]
 
-        +
+    +
 
-        "/"
+    "/"
 
-        +
+    +
 
-        morceaux[0];
+    morceaux[0];
 
 
 }
-
-
 
 
 
@@ -3759,15 +3867,13 @@ function formatTime(heure) {
 
     return
 
-        heure.substring(
-            0,
-            5
-        );
+    heure.substring(
+        0,
+        5
+    );
 
 
 }
-
-
 
 
 
@@ -3805,13 +3911,13 @@ function escapeHTML(texte) {
 
     div.innerText =
 
-        texte;
+    texte;
 
 
 
     return
 
-        div.innerHTML;
+    div.innerHTML;
 
 
 }
