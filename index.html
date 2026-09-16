@@ -15,7 +15,7 @@
 
 <meta name="theme-color" content="#071c2c">
 
-<title>ÉCHANGE SERVICE</title>
+<title>ÉCHANGE SERVICE — V4.4</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -23,10 +23,21 @@
 
 /* =========================================================
    ÉCHANGE SERVICE — V4.4
-   VERSION AVEC CONFIRMATION CONGÉ REFUSÉ
+   =========================================================
+   Fond train
+   Design moderne
+   Confirmation congé refusé
+   Supabase
+   Mobile / iPad
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
    ========================================================= */
 
 :root{
+
   --navy:#071c2c;
   --navy2:#0b2d44;
 
@@ -37,7 +48,8 @@
   --teal:#29b9ad;
 
   --white:#ffffff;
-  --glass:rgba(255,255,255,.90);
+
+  --glass:rgba(255,255,255,.92);
 
   --text:#142f44;
   --muted:#687b89;
@@ -48,7 +60,8 @@
   --warning:#a56a00;
   --danger:#c23a45;
 
-  --shadow:0 18px 45px rgba(4,30,47,.18);
+  --shadow:
+    0 18px 45px rgba(4,30,47,.18);
 }
 
 
@@ -65,7 +78,9 @@ html{
 }
 
 body{
+
   margin:0;
+
   min-height:100vh;
 
   font-family:
@@ -88,11 +103,13 @@ body{
 
 
 /* =========================================================
-   FOND TRAIN
+   FOND D'ÉCRAN TRAIN
    ========================================================= */
 
 .bg{
+
   position:fixed;
+
   inset:0;
 
   z-index:-10;
@@ -102,52 +119,71 @@ body{
   pointer-events:none;
 
   background:
+
     linear-gradient(
       180deg,
-      rgba(3,20,34,.20) 0%,
-      rgba(3,24,40,.20) 35%,
-      rgba(5,38,57,.30) 58%,
-      rgba(235,245,249,.72) 100%
+      rgba(3,20,34,.18) 0%,
+      rgba(3,24,40,.18) 30%,
+      rgba(5,38,57,.20) 55%,
+      rgba(237,246,250,.78) 100%
     ),
+
     url("fond-train-v44.jpg")
+
     center center /
+
     cover
+
     no-repeat;
 }
 
+
+/* voile */
+
 .bg::before{
+
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
+
     linear-gradient(
       180deg,
-      rgba(3,19,32,.78) 0%,
-      rgba(5,31,48,.42) 32%,
-      rgba(10,54,75,.12) 55%,
+      rgba(3,19,32,.72) 0%,
+      rgba(5,31,48,.34) 30%,
+      rgba(10,54,75,.08) 55%,
       rgba(237,246,250,.82) 100%
     );
 }
 
+
+/* halos */
+
 .bg::after{
+
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
+
     radial-gradient(
       circle at 12% 10%,
       rgba(90,220,245,.22),
       transparent 26%
     ),
+
     radial-gradient(
       circle at 88% 18%,
-      rgba(31,160,207,.24),
+      rgba(31,160,207,.20),
       transparent 30%
     ),
+
     linear-gradient(
       115deg,
       transparent 0%,
@@ -162,6 +198,7 @@ body{
    ========================================================= */
 
 .speed{
+
   position:absolute;
 
   height:2px;
@@ -169,6 +206,7 @@ body{
   border-radius:999px;
 
   background:
+
     linear-gradient(
       90deg,
       transparent,
@@ -178,14 +216,20 @@ body{
 }
 
 .s1{
+
   width:34%;
+
   top:16%;
+
   left:4%;
 }
 
 .s2{
+
   width:27%;
+
   top:25%;
+
   right:4%;
 }
 
@@ -195,6 +239,7 @@ body{
    ========================================================= */
 
 .hero{
+
   position:relative;
 
   min-height:255px;
@@ -211,7 +256,9 @@ body{
   overflow:hidden;
 }
 
+
 .hero-inner{
+
   position:relative;
 
   z-index:2;
@@ -221,14 +268,20 @@ body{
   margin:auto;
 }
 
+
+/* logo */
+
 .mark{
+
   width:58px;
+
   height:58px;
 
   margin:
     0 auto 9px;
 
   display:grid;
+
   place-items:center;
 
   border:
@@ -249,7 +302,11 @@ body{
   font-size:30px;
 }
 
+
+/* titre */
+
 .hero h1{
+
   margin:0;
 
   font-size:
@@ -268,10 +325,15 @@ body{
 }
 
 .hero h1 span{
+
   color:var(--cyan);
 }
 
+
+/* sous-titre */
+
 .sub{
+
   margin-top:12px;
 
   font-size:
@@ -288,6 +350,7 @@ body{
 }
 
 .sub strong{
+
   display:inline-block;
 
   margin-top:4px;
@@ -297,7 +360,11 @@ body{
   font-weight:850;
 }
 
+
+/* trait lumineux */
+
 .glow{
+
   height:4px;
 
   width:min(460px,70%);
@@ -326,6 +393,7 @@ body{
    ========================================================= */
 
 main{
+
   width:min(1120px,100%);
 
   margin:
@@ -337,6 +405,7 @@ main{
 }
 
 .hidden{
+
   display:none !important;
 }
 
@@ -346,6 +415,7 @@ main{
    ========================================================= */
 
 .welcome{
+
   position:relative;
 
   overflow:hidden;
@@ -370,15 +440,19 @@ main{
   backdrop-filter:blur(20px);
 }
 
+
 .welcome::before{
+
   content:"";
 
   position:absolute;
 
   width:250px;
+
   height:250px;
 
   left:-150px;
+
   top:-160px;
 
   border-radius:50%;
@@ -387,15 +461,19 @@ main{
     rgba(74,205,235,.13);
 }
 
+
 .welcome::after{
+
   content:"";
 
   position:absolute;
 
   width:220px;
+
   height:220px;
 
   right:-120px;
+
   bottom:-150px;
 
   border-radius:50%;
@@ -404,17 +482,22 @@ main{
     rgba(42,188,174,.11);
 }
 
+
 .welcome-icon{
+
   position:relative;
+
   z-index:1;
 
   width:58px;
+
   height:58px;
 
   margin:
     0 auto 8px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:19px;
@@ -433,8 +516,11 @@ main{
     rgba(35,141,181,.18);
 }
 
+
 .welcome h2{
+
   position:relative;
+
   z-index:1;
 
   margin:
@@ -446,8 +532,11 @@ main{
   font-weight:900;
 }
 
+
 .welcome p{
+
   position:relative;
+
   z-index:1;
 
   max-width:850px;
@@ -462,8 +551,11 @@ main{
   line-height:1.42;
 }
 
+
 .pill{
+
   position:relative;
+
   z-index:1;
 
   display:inline-flex;
@@ -499,6 +591,7 @@ main{
    ========================================================= */
 
 .choices{
+
   display:grid;
 
   grid-template-columns:1fr;
@@ -508,7 +601,9 @@ main{
   margin-top:13px;
 }
 
+
 .choice{
+
   border:0;
 
   padding:0;
@@ -520,7 +615,9 @@ main{
   cursor:pointer;
 }
 
+
 .choice-card{
+
   position:relative;
 
   overflow:hidden;
@@ -554,7 +651,9 @@ main{
     box-shadow .16s ease;
 }
 
+
 .choice-card:hover{
+
   transform:translateY(-2px);
 
   box-shadow:
@@ -562,30 +661,40 @@ main{
     rgba(8,40,58,.20);
 }
 
+
 .choice-card:active{
+
   transform:scale(.985);
 }
 
+
 .adc .choice-card{
+
   border-left:
     5px solid
     #2ba7dc;
 }
 
+
 .asct .choice-card{
+
   border-left:
     5px solid
     #32b9ae;
 }
 
+
 .choice-icon{
+
   flex:
     0 0 56px;
 
   width:56px;
+
   height:56px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:18px;
@@ -600,11 +709,15 @@ main{
   font-size:28px;
 }
 
+
 .choice-text{
+
   min-width:0;
 }
 
+
 .choice-text strong{
+
   display:block;
 
   margin-bottom:3px;
@@ -614,7 +727,9 @@ main{
   font-weight:900;
 }
 
+
 .choice-text small{
+
   display:block;
 
   color:#748391;
@@ -624,7 +739,9 @@ main{
   line-height:1.25;
 }
 
+
 .arrow{
+
   margin-left:auto;
 
   font-size:28px;
@@ -640,6 +757,7 @@ main{
    ========================================================= */
 
 .card{
+
   padding:20px;
 
   border-radius:27px;
@@ -656,7 +774,9 @@ main{
   backdrop-filter:blur(20px);
 }
 
+
 .badge{
+
   display:inline-flex;
 
   padding:
@@ -673,7 +793,9 @@ main{
   font-weight:800;
 }
 
+
 .page-title{
+
   margin:
     10px 0 6px;
 
@@ -682,7 +804,9 @@ main{
   font-weight:900;
 }
 
+
 .info{
+
   margin:
     0 0 15px;
 
@@ -697,6 +821,7 @@ main{
    ========================================================= */
 
 label{
+
   display:block;
 
   margin:
@@ -709,8 +834,10 @@ label{
   font-weight:800;
 }
 
+
 input,
 textarea{
+
   width:100%;
 
   padding:
@@ -733,8 +860,10 @@ textarea{
   appearance:none;
 }
 
+
 input:focus,
 textarea:focus{
+
   outline:none;
 
   border-color:#2091c7;
@@ -744,13 +873,17 @@ textarea:focus{
     rgba(32,145,199,.11);
 }
 
+
 textarea{
+
   min-height:82px;
 
   resize:vertical;
 }
 
+
 .row{
+
   display:grid;
 
   grid-template-columns:
@@ -765,6 +898,7 @@ textarea{
    ========================================================= */
 
 .btn{
+
   width:100%;
 
   border:0;
@@ -800,15 +934,21 @@ textarea{
     opacity .15s ease;
 }
 
+
 .btn:hover{
+
   opacity:.94;
 }
 
+
 .btn:active{
+
   transform:scale(.985);
 }
 
+
 .secondary{
+
   background:#eaf1f5;
 
   color:#294252;
@@ -818,16 +958,19 @@ textarea{
 
 
 /* =========================================================
-   LISTE DES ÉCHANGES
+   LISTE
    ========================================================= */
 
 .list{
+
   display:grid;
 
   gap:12px;
 }
 
+
 .item{
+
   padding:15px;
 
   border-radius:20px;
@@ -852,7 +995,9 @@ textarea{
     rgba(10,42,62,.08);
 }
 
+
 .name{
+
   font-size:18px;
 
   font-weight:900;
@@ -862,10 +1007,11 @@ textarea{
 
 
 /* =========================================================
-   DATE DE DEMANDE
+   DATE DE LA DEMANDE
    ========================================================= */
 
 .request-date{
+
   display:block;
 
   width:max-content;
@@ -901,10 +1047,11 @@ textarea{
 
 
 /* =========================================================
-   DATE SERVICE / HORAIRES
+   SERVICE
    ========================================================= */
 
 .service{
+
   display:grid;
 
   grid-template-columns:
@@ -915,7 +1062,9 @@ textarea{
   margin-top:11px;
 }
 
+
 .chip{
+
   padding:10px;
 
   border-radius:13px;
@@ -925,7 +1074,9 @@ textarea{
   min-width:0;
 }
 
+
 .chip span{
+
   display:block;
 
   color:#71818e;
@@ -941,7 +1092,9 @@ textarea{
   margin-bottom:3px;
 }
 
+
 .chip strong{
+
   font-size:14px;
 
   color:#20455e;
@@ -955,6 +1108,7 @@ textarea{
    ========================================================= */
 
 .comment{
+
   margin-top:9px;
 
   padding:
@@ -973,10 +1127,11 @@ textarea{
 
 
 /* =========================================================
-   INTÉRÊT
+   AGENT INTÉRESSÉ
    ========================================================= */
 
 .interest{
+
   margin-top:10px;
 
   padding:
@@ -999,6 +1154,7 @@ textarea{
    ========================================================= */
 
 .actions{
+
   display:grid;
 
   grid-template-columns:
@@ -1009,7 +1165,9 @@ textarea{
   margin-top:11px;
 }
 
+
 .small{
+
   border:0;
 
   border-radius:12px;
@@ -1024,15 +1182,28 @@ textarea{
   font-weight:850;
 
   cursor:pointer;
+
+  transition:
+    transform .15s ease;
 }
 
+
+.small:active{
+
+  transform:scale(.98);
+}
+
+
 .interet{
+
   background:#fff0cf;
 
   color:#8b5b00;
 }
 
+
 .delete{
+
   background:#ffe5e5;
 
   color:#b72e2e;
@@ -1040,10 +1211,11 @@ textarea{
 
 
 /* =========================================================
-   VIDE
+   ÉTAT VIDE
    ========================================================= */
 
 .empty{
+
   text-align:center;
 
   padding:
@@ -1052,7 +1224,9 @@ textarea{
   color:#71808c;
 }
 
+
 .empty-icon{
+
   display:block;
 
   font-size:40px;
@@ -1062,10 +1236,11 @@ textarea{
 
 
 /* =========================================================
-   NAVIGATION
+   NAVIGATION BASSE
    ========================================================= */
 
 nav{
+
   position:fixed;
 
   z-index:100;
@@ -1110,7 +1285,9 @@ nav{
     blur(20px);
 }
 
+
 nav button{
+
   flex:1;
 
   border:0;
@@ -1133,11 +1310,15 @@ nav button{
   cursor:pointer;
 }
 
+
 nav button:active{
+
   background:#edf6f9;
 }
 
+
 .nav-icon{
+
   display:block;
 
   font-size:18px;
@@ -1150,7 +1331,7 @@ nav button:active{
    FENÊTRE DE CONFIRMATION
    ========================================================= */
 
-.modal-overlay{
+.modal{
 
   position:fixed;
 
@@ -1158,29 +1339,30 @@ nav button:active{
 
   z-index:1000;
 
-  display:none;
+  display:flex;
 
   align-items:center;
 
   justify-content:center;
 
-  padding:20px;
+  padding:
+    20px;
 
   background:
-    rgba(3,20,32,.72);
+    rgba(2,18,30,.68);
 
   backdrop-filter:
     blur(8px);
-
 }
 
-.modal-overlay.active{
 
-  display:flex;
+.modal.hidden{
 
+  display:none;
 }
 
-.confirm-modal{
+
+.modal-box{
 
   width:
     min(470px,100%);
@@ -1191,36 +1373,45 @@ nav button:active{
   border-radius:28px;
 
   background:
-    rgba(255,255,255,.98);
+    rgba(255,255,255,.97);
 
   box-shadow:
     0 25px 70px
-    rgba(0,0,0,.35);
+    rgba(0,0,0,.30);
 
   text-align:center;
 
   animation:
-    modalIn .18s ease-out;
-
+    modalIn .20s ease-out;
 }
+
 
 @keyframes modalIn{
 
   from{
+
     opacity:0;
-    transform:scale(.94) translateY(10px);
+
+    transform:
+      translateY(15px)
+      scale(.97);
   }
 
   to{
-    opacity:1;
-    transform:scale(1) translateY(0);
-  }
 
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
 }
 
-.confirm-icon{
+
+.modal-icon{
 
   width:70px;
+
   height:70px;
 
   margin:
@@ -1235,65 +1426,92 @@ nav button:active{
   background:
     linear-gradient(
       145deg,
-      #e8f8fc,
-      #ccecf5
+      #fff1c9,
+      #ffe2a0
     );
 
   font-size:36px;
-
 }
 
-.confirm-modal h2{
+
+.modal-box h2{
 
   margin:
     0 0 10px;
 
-  color:#16364c;
+  color:#17364c;
 
-  font-size:
-    clamp(23px,6vw,29px);
-
-  line-height:1.15;
+  font-size:25px;
 
   font-weight:900;
-
 }
 
-.confirm-modal p{
+
+.modal-box p{
 
   margin:
-    0 auto 18px;
+    0 auto 19px;
 
-  max-width:390px;
-
-  color:#607482;
+  color:#687b89;
 
   font-size:15px;
 
   line-height:1.5;
-
 }
 
-.confirm-question{
+
+.confirmation{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:11px;
 
   padding:
-    13px 14px;
+    14px;
 
-  margin-bottom:17px;
+  margin-bottom:15px;
 
-  border-radius:15px;
+  border-radius:16px;
 
-  background:#f1f7f9;
+  background:#fff7e5;
 
-  color:#23475c;
+  border:
+    1px solid
+    #f0d89c;
+
+  text-align:left;
+
+  cursor:pointer;
+}
+
+
+.confirmation input{
+
+  width:22px;
+
+  height:22px;
+
+  flex:0 0 22px;
+
+  margin:1px 0 0;
+
+  accent-color:#1385b6;
+}
+
+
+.confirmation span{
+
+  color:#684b16;
 
   font-size:14px;
 
   line-height:1.4;
 
-  font-weight:750;
-
+  font-weight:800;
 }
+
 
 .modal-actions{
 
@@ -1302,185 +1520,225 @@ nav button:active{
   grid-template-columns:
     1fr 1fr;
 
-  gap:10px;
-
+  gap:9px;
 }
+
 
 .modal-btn{
 
-  min-height:50px;
-
   border:0;
 
-  border-radius:15px;
+  border-radius:14px;
 
   padding:
-    10px 12px;
+    13px 10px;
 
   font:inherit;
 
   font-weight:850;
 
-  font-size:14px;
-
   cursor:pointer;
-
 }
+
 
 .modal-cancel{
 
-  background:#eaf0f3;
+  background:#edf2f5;
 
-  color:#455b68;
-
+  color:#4f6472;
 }
+
 
 .modal-confirm{
 
   background:
     linear-gradient(
       135deg,
-      #0876a9,
-      #19a0cf
+      #086b9f,
+      #1699ce
     );
 
   color:white;
 
-  box-shadow:
-    0 8px 18px
-    rgba(8,118,169,.20);
+  opacity:.45;
 
+  pointer-events:none;
+}
+
+
+.modal-confirm.ready{
+
+  opacity:1;
+
+  pointer-events:auto;
 }
 
 
 /* =========================================================
-   TABLET
+   TABLET / IPAD
    ========================================================= */
 
 @media(min-width:700px){
 
   .hero{
+
     min-height:275px;
 
     padding-top:24px;
   }
 
+
   main{
+
     padding:
       0 22px;
   }
 
+
   .choices{
+
     grid-template-columns:
       1fr 1fr;
 
     gap:14px;
   }
 
+
   .welcome{
+
     padding:
       24px 28px 21px;
   }
 
+
   .choice-card{
+
     min-height:106px;
 
     padding:
       15px 18px;
   }
-
 }
 
 
 /* =========================================================
-   GRAND ÉCRAN
+   GRAND IPAD / DESKTOP
    ========================================================= */
 
 @media(min-width:1000px){
 
   .hero{
+
     min-height:300px;
   }
 
+
   main{
+
     margin-top:-42px;
   }
 
+
   .choices{
+
     gap:18px;
   }
 
+
   .choice-card{
+
     min-height:115px;
   }
 
+
   .choice-icon{
+
     width:64px;
+
     height:64px;
 
     flex-basis:64px;
 
     font-size:33px;
   }
-
 }
 
 
 /* =========================================================
-   PETIT SMARTPHONE
+   PETITS SMARTPHONES
    ========================================================= */
 
 @media(max-width:380px){
 
   .hero{
+
     min-height:225px;
 
     padding-bottom:50px;
   }
 
+
   .hero h1{
+
     font-size:31px;
   }
 
+
   .sub{
+
     font-size:13px;
   }
 
+
   main{
+
     margin-top:-31px;
 
     padding:
       0 11px;
   }
 
+
   .welcome{
+
     padding:
       18px 13px 16px;
   }
 
+
   .welcome-icon{
+
     width:53px;
+
     height:53px;
 
     font-size:28px;
   }
 
+
   .welcome h2{
+
     font-size:27px;
   }
 
+
   .welcome p{
+
     font-size:13px;
   }
 
+
   .pill{
+
     font-size:11px;
 
     padding:
       7px 10px;
   }
 
+
   .choice-card{
+
     min-height:83px;
 
     padding:
@@ -1489,8 +1747,11 @@ nav button:active{
     gap:9px;
   }
 
+
   .choice-icon{
+
     width:49px;
+
     height:49px;
 
     flex-basis:49px;
@@ -1498,46 +1759,64 @@ nav button:active{
     font-size:25px;
   }
 
+
   .choice-text strong{
+
     font-size:18px;
   }
 
+
   .choice-text small{
+
     font-size:11px;
   }
 
+
   .service{
+
     grid-template-columns:
       1fr;
   }
+
 
   .actions{
+
     grid-template-columns:
       1fr;
   }
+
+
+  .modal-box{
+
+    padding:
+      22px 16px 18px;
+  }
+
 
   .modal-actions{
+
     grid-template-columns:
       1fr;
   }
-
 }
 
 
 /* =========================================================
-   RÉDUCTION ANIMATIONS
+   ACCESSIBILITÉ
    ========================================================= */
 
-@media(prefers-reduced-motion:reduce){
+@media(
+  prefers-reduced-motion:reduce
+){
 
   *{
+
     scroll-behavior:auto !important;
 
     transition:none !important;
 
     animation:none !important;
   }
-
 }
 
 </style>
@@ -1549,12 +1828,13 @@ nav button:active{
 
 
 <!-- =======================================================
-     FOND
+     FOND TRAIN
      ======================================================= -->
 
 <div class="bg">
 
   <div class="speed s1"></div>
+
   <div class="speed s2"></div>
 
 </div>
@@ -1573,8 +1853,10 @@ nav button:active{
     </div>
 
     <h1>
+
       ÉCHANGE
       <span>SERVICE</span>
+
     </h1>
 
     <div class="sub">
@@ -1618,12 +1900,16 @@ nav button:active{
     </h2>
 
     <p>
+
       Proposez une journée de service et trouvez
       un collègue intéressé pour un éventuel échange.
+
     </p>
 
     <div class="pill">
+
       🚆 Choisissez votre métier pour commencer
+
     </div>
 
   </div>
@@ -1729,8 +2015,10 @@ nav button:active{
 
 
     <p class="info">
+
       Proposez votre journée afin de trouver
       un collègue intéressé.
+
     </p>
 
 
@@ -1757,6 +2045,7 @@ nav button:active{
 
 
     <div class="row">
+
 
       <div>
 
@@ -1785,6 +2074,7 @@ nav button:active{
 
       </div>
 
+
     </div>
 
 
@@ -1802,7 +2092,9 @@ nav button:active{
       class="btn"
       onclick="publier()"
     >
+
       🚆 PUBLIER MA JOURNÉE
+
     </button>
 
 
@@ -1810,7 +2102,9 @@ nav button:active{
       class="btn secondary"
       onclick="afficher('echanges')"
     >
+
       🔎 VOIR LES ÉCHANGES
+
     </button>
 
   </div>
@@ -1833,6 +2127,7 @@ nav button:active{
       🔎 Échanges disponibles
     </h2>
 
+
     <p class="info">
 
       Métier :
@@ -1851,9 +2146,11 @@ nav button:active{
 
     <button
       class="btn secondary"
-      onclick="ouvrirConfirmation()"
+      onclick="afficher('proposer')"
     >
+
       ➕ PROPOSER UNE JOURNÉE
+
     </button>
 
   </div>
@@ -1865,7 +2162,7 @@ nav button:active{
 
 
 <!-- =======================================================
-     NAVIGATION BASSE
+     NAVIGATION
      ======================================================= -->
 
 <nav
@@ -1874,7 +2171,7 @@ nav button:active{
 >
 
   <button
-    onclick="ouvrirConfirmation()"
+    onclick="afficher('proposer')"
   >
 
     <span class="nav-icon">
@@ -1915,67 +2212,84 @@ nav button:active{
 
 
 <!-- =======================================================
-     FENÊTRE DE CONFIRMATION
+     MODALE CONFIRMATION CONGÉ REFUSÉ
      ======================================================= -->
 
 <div
-  id="confirmationOverlay"
-  class="modal-overlay"
+  id="confirmationModal"
+  class="modal hidden"
 >
 
   <div
-    class="confirm-modal"
+    class="modal-box"
     role="dialog"
     aria-modal="true"
-    aria-labelledby="confirmationTitre"
+    aria-labelledby="confirmationTitle"
   >
 
-    <div class="confirm-icon">
-      📋
+    <div class="modal-icon">
+      ⚠️
     </div>
 
 
-    <h2 id="confirmationTitre">
-      Avant de proposer une journée
+    <h2 id="confirmationTitle">
+      Confirmation nécessaire
     </h2>
 
 
     <p>
-      L'application est destinée aux échanges
-      de journées lorsque votre congé a été refusé.
+
+      Avant de proposer une journée,
+      cette plateforme est réservée aux agents
+      dont le congé a été refusé.
+
     </p>
 
 
-    <div class="confirm-question">
+    <label
+      class="confirmation"
+      for="confirmationConge"
+    >
 
-      ⚠️
-      <br>
+      <input
+        id="confirmationConge"
+        type="checkbox"
+        onchange="gererConfirmation()"
+      >
 
-      <strong>
-        Je confirme que mon congé a été refusé
-        et que je souhaite proposer cette journée
-        à l'échange.
-      </strong>
+      <span>
 
-    </div>
+        Je confirme que mon congé
+        a été refusé.
+
+      </span>
+
+    </label>
 
 
     <div class="modal-actions">
 
+
       <button
         class="modal-btn modal-cancel"
-        onclick="fermerConfirmation()"
+        onclick="annulerConfirmation()"
       >
+
         ANNULER
+
       </button>
 
 
       <button
+        id="btnConfirmer"
         class="modal-btn modal-confirm"
-        onclick="confirmerCongesRefuses()"
+        onclick="validerConfirmation()"
       >
-        ✓ JE CONFIRME
+
+        JE CONFIRME
+
       </button>
+
 
     </div>
 
@@ -1998,6 +2312,7 @@ nav button:active{
 const SUPABASE_URL =
   "https://nptwpoguokbjuzdyxach.supabase.co";
 
+
 const SUPABASE_KEY =
   "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
@@ -2015,71 +2330,9 @@ const supabaseClient =
 
 let metierActuel = "";
 
-let confirmationValidee = false;
+let metierEnAttente = "";
 
-
-/* =========================================================
-   OUVRIR LA CONFIRMATION
-   ========================================================= */
-
-function ouvrirConfirmation(){
-
-  /*
-     On n'affiche JAMAIS directement le formulaire.
-     La fenêtre de confirmation est obligatoire.
-  */
-
-  if(!metierActuel){
-
-    alert(
-      "Merci de choisir votre métier."
-    );
-
-    return;
-
-  }
-
-
-  document
-    .getElementById("confirmationOverlay")
-    .classList.add("active");
-
-}
-
-
-/* =========================================================
-   FERMER LA CONFIRMATION
-   ========================================================= */
-
-function fermerConfirmation(){
-
-  document
-    .getElementById("confirmationOverlay")
-    .classList.remove("active");
-
-}
-
-
-/* =========================================================
-   CONFIRMATION DU CONGÉ REFUSÉ
-   ========================================================= */
-
-function confirmerCongesRefuses(){
-
-  confirmationValidee = true;
-
-
-  fermerConfirmation();
-
-
-  /*
-     Seulement maintenant le formulaire
-     devient accessible.
-  */
-
-  afficher("proposer");
-
-}
+let confirmationCongesRefuses = false;
 
 
 /* =========================================================
@@ -2087,24 +2340,6 @@ function confirmerCongesRefuses(){
    ========================================================= */
 
 function afficher(page){
-
-  /*
-     Sécurité supplémentaire :
-     impossible d'afficher "Ma journée"
-     directement sans confirmation.
-  */
-
-  if(
-    page === "proposer" &&
-    !confirmationValidee
-  ){
-
-    ouvrirConfirmation();
-
-    return;
-
-  }
-
 
   document
     .querySelectorAll("main section")
@@ -2132,11 +2367,8 @@ function afficher(page){
 
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
 }
@@ -2148,25 +2380,148 @@ function afficher(page){
 
 function choisirMetier(metier){
 
-  metierActuel = metier;
+  metierEnAttente = metier;
 
 
   /*
-     Une nouvelle sélection de métier
-     nécessite une nouvelle confirmation.
-  */
+   * La confirmation est toujours demandée
+   * avant l'accès au formulaire.
+   */
 
-  confirmationValidee = false;
+  const checkbox =
+    document.getElementById(
+      "confirmationConge"
+    );
+
+
+  const bouton =
+    document.getElementById(
+      "btnConfirmer"
+    );
+
+
+  checkbox.checked = false;
+
+  bouton.classList.remove("ready");
+
+
+  document
+    .getElementById(
+      "confirmationModal"
+    )
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   GESTION CHECKBOX
+   ========================================================= */
+
+function gererConfirmation(){
+
+  const checkbox =
+    document.getElementById(
+      "confirmationConge"
+    );
+
+
+  const bouton =
+    document.getElementById(
+      "btnConfirmer"
+    );
+
+
+  if(checkbox.checked){
+
+    bouton.classList.add("ready");
+
+  }
+  else{
+
+    bouton.classList.remove("ready");
+
+  }
+
+}
+
+
+/* =========================================================
+   ANNULER CONFIRMATION
+   ========================================================= */
+
+function annulerConfirmation(){
+
+  metierEnAttente = "";
+
+
+  document
+    .getElementById(
+      "confirmationConge"
+    )
+    .checked = false;
+
+
+  document
+    .getElementById(
+      "btnConfirmer"
+    )
+    .classList.remove("ready");
+
+
+  document
+    .getElementById(
+      "confirmationModal"
+    )
+    .classList.add("hidden");
+
+}
+
+
+/* =========================================================
+   VALIDER CONFIRMATION
+   ========================================================= */
+
+function validerConfirmation(){
+
+  const checkbox =
+    document.getElementById(
+      "confirmationConge"
+    );
+
+
+  if(!checkbox.checked){
+
+    return;
+
+  }
+
+
+  confirmationCongesRefuses = true;
+
+  metierActuel = metierEnAttente;
 
 
   const badge =
-    document.getElementById("metier");
+    document.getElementById(
+      "metier"
+    );
 
 
-  if(metier === "ADC"){
+  const metierEchanges =
+    document.getElementById(
+      "metierEchanges"
+    );
+
+
+  if(metierActuel === "ADC"){
 
     badge.innerHTML =
       "🚆 ADC – Conducteurs";
+
+
+    metierEchanges.innerText =
+      "ADC";
 
   }
   else{
@@ -2174,26 +2529,31 @@ function choisirMetier(metier){
     badge.innerHTML =
       "👨‍✈️ ASCT – Service Commercial Train";
 
+
+    metierEchanges.innerText =
+      "ASCT";
+
   }
 
 
   document
-    .getElementById("metierEchanges")
-    .innerText = metier;
-
-
-  document
-    .getElementById("menu")
+    .getElementById(
+      "menu"
+    )
     .classList.remove("hidden");
 
 
-  /*
-     IMPORTANT :
-     On ouvre la confirmation,
-     PAS le formulaire.
-  */
+  document
+    .getElementById(
+      "confirmationModal"
+    )
+    .classList.add("hidden");
 
-  ouvrirConfirmation();
+
+  metierEnAttente = "";
+
+
+  afficher("proposer");
 
 }
 
@@ -2206,11 +2566,15 @@ function changerMetier(){
 
   metierActuel = "";
 
-  confirmationValidee = false;
+  metierEnAttente = "";
+
+  confirmationCongesRefuses = false;
 
 
   document
-    .getElementById("menu")
+    .getElementById(
+      "menu"
+    )
     .classList.add("hidden");
 
 
@@ -2220,14 +2584,23 @@ function changerMetier(){
 
 
 /* =========================================================
-   PUBLIER
+   PUBLIER UNE JOURNÉE
    ========================================================= */
 
 async function publier(){
 
-  if(!confirmationValidee){
+  /*
+   * Sécurité supplémentaire :
+   * même si quelqu'un tente de contourner
+   * l'interface, le formulaire ne peut pas
+   * être publié sans confirmation.
+   */
 
-    ouvrirConfirmation();
+  if(!confirmationCongesRefuses){
+
+    alert(
+      "Vous devez confirmer que votre congé a été refusé."
+    );
 
     return;
 
@@ -2267,7 +2640,7 @@ async function publier(){
 
 
   /* -------------------------------------------------------
-     VÉRIFICATION MÉTIER
+     Vérification métier
      ------------------------------------------------------- */
 
   if(!metierActuel){
@@ -2282,7 +2655,7 @@ async function publier(){
 
 
   /* -------------------------------------------------------
-     VÉRIFICATION FORMULAIRE
+     Vérification formulaire
      ------------------------------------------------------- */
 
   if(
@@ -2303,53 +2676,82 @@ async function publier(){
 
   /* -------------------------------------------------------
      INSERTION SUPABASE
-     
+     -------------------------------------------------------
+
      IMPORTANT :
-     PAS DE created_at ici car cette colonne
-     n'existe actuellement pas dans ta table.
+
+     Il n'y a volontairement PAS de champ
+     "created_at" ici.
+
+     Ton erreur venait de Supabase :
+
+     Could not find the 'created_at'
+     column of 'echanges'
+
+     On ne tente donc plus d'écrire
+     dans cette colonne.
      ------------------------------------------------------- */
 
-  const { error } =
+  const donnees = {
+
+    metier:
+      metierActuel,
+
+    nom:
+      nom,
+
+    date_service:
+      date,
+
+    prise_service:
+      prise,
+
+    fin_service:
+      fin,
+
+    commentaire:
+      commentaire,
+
+    statut:
+      "disponible",
+
+    agent_interesse:
+      null
+
+  };
+
+
+  console.log(
+    "Données envoyées à Supabase :",
+    donnees
+  );
+
+
+  const {
+    error
+  } =
     await supabaseClient
       .from("echanges")
-      .insert([{
+      .insert([donnees]);
 
-        metier:
-          metierActuel,
 
-        nom:
-          nom,
-
-        date_service:
-          date,
-
-        prise_service:
-          prise,
-
-        fin_service:
-          fin,
-
-        commentaire:
-          commentaire,
-
-        statut:
-          "disponible",
-
-        agent_interesse:
-          null
-
-      }]);
-
+  /* -------------------------------------------------------
+     ERREUR
+     ------------------------------------------------------- */
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Erreur Supabase :",
+      error
+    );
 
 
     alert(
-      "Erreur lors de la publication : "
+      "Erreur lors de la publication :\n\n"
       + error.message
     );
+
 
     return;
 
@@ -2408,7 +2810,9 @@ async function afficherEchanges(){
 
 
   document
-    .getElementById("metierEchanges")
+    .getElementById(
+      "metierEchanges"
+    )
     .innerText =
       metierActuel || "-";
 
@@ -2447,9 +2851,6 @@ async function afficherEchanges(){
 
   /* -------------------------------------------------------
      RÉCUPÉRATION
-     
-     On utilise uniquement les colonnes existantes
-     nécessaires au fonctionnement actuel.
      ------------------------------------------------------- */
 
   const {
@@ -2457,18 +2858,21 @@ async function afficherEchanges(){
     error
   } =
     await supabaseClient
+
       .from("echanges")
-      .select(
-        "id,metier,nom,date_service,prise_service,fin_service,commentaire,statut,agent_interesse"
-      )
+
+      .select("*")
+
       .eq(
         "metier",
         metierActuel
       )
+
       .eq(
         "statut",
         "disponible"
       )
+
       .order(
         "date_service",
         {
@@ -2477,9 +2881,16 @@ async function afficherEchanges(){
       );
 
 
+  /* -------------------------------------------------------
+     ERREUR
+     ------------------------------------------------------- */
+
   if(error){
 
-    console.error(error);
+    console.error(
+      "Erreur chargement :",
+      error
+    );
 
 
     zone.innerHTML = `
@@ -2512,6 +2923,10 @@ async function afficherEchanges(){
   zone.innerHTML = "";
 
 
+  /* -------------------------------------------------------
+     AUCUN RÉSULTAT
+     ------------------------------------------------------- */
+
   if(
     !data ||
     !data.length
@@ -2543,12 +2958,11 @@ async function afficherEchanges(){
   }
 
 
-  /* =======================================================
-     CARTES
-     ======================================================= */
+  /* -------------------------------------------------------
+     CRÉATION DES CARTES
+     ------------------------------------------------------- */
 
   data.forEach(e => {
-
 
     const bloc =
       document.createElement("div");
@@ -2560,25 +2974,59 @@ async function afficherEchanges(){
 
     /* -----------------------------------------------------
        DATE DE DEMANDE
-       
-       La colonne created_at n'est volontairement
-       PAS utilisée.
+       -----------------------------------------------------
+
+       On ne suppose PAS que created_at existe.
+
+       Si ta table possède déjà une autre colonne
+       de date, elle pourra être utilisée.
+
+       Sinon, le site indique simplement que la date
+       de publication n'est pas disponible dans la table.
        ----------------------------------------------------- */
 
-    const request = `
+    const created =
+      e.date_demande ||
+      e.date_creation ||
+      e.createdAt ||
+      null;
 
-      <div class="request-date">
 
-        🕒
-        Demande publiée
+    let request;
 
-      </div>
 
-    `;
+    if(created){
+
+      request = `
+
+        <div class="request-date">
+
+          🕒 Demande publiée le
+          ${formatDateTime(created)}
+
+        </div>
+
+      `;
+
+    }
+    else{
+
+      request = `
+
+        <div class="request-date">
+
+          🕒 Date de publication
+          non disponible
+
+        </div>
+
+      `;
+
+    }
 
 
     /* -----------------------------------------------------
-       INTÉRESSÉ
+       AGENT INTÉRESSÉ
        ----------------------------------------------------- */
 
     const interest =
@@ -2593,9 +3041,11 @@ async function afficherEchanges(){
           🙋 Agent intéressé :
 
           <strong>
+
             ${escapeHTML(
               e.agent_interesse
             )}
+
           </strong>
 
         </div>
@@ -2743,7 +3193,7 @@ async function afficherEchanges(){
 
 
 /* =========================================================
-   INTÉRESSÉ
+   SE DÉCLARER INTÉRESSÉ
    ========================================================= */
 
 async function interesse(id){
@@ -2776,15 +3226,20 @@ async function interesse(id){
   }
 
 
-  const { error } =
+  const {
+    error
+  } =
     await supabaseClient
+
       .from("echanges")
+
       .update({
 
         agent_interesse:
           nomAgent.trim()
 
       })
+
       .eq(
         "id",
         id
@@ -2793,7 +3248,11 @@ async function interesse(id){
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Erreur intérêt :",
+      error
+    );
+
 
     alert(
       "Erreur : "
@@ -2832,10 +3291,15 @@ async function supprimer(id){
   }
 
 
-  const { error } =
+  const {
+    error
+  } =
     await supabaseClient
+
       .from("echanges")
+
       .delete()
+
       .eq(
         "id",
         id
@@ -2844,7 +3308,11 @@ async function supprimer(id){
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Erreur suppression :",
+      error
+    );
+
 
     alert(
       "Erreur : "
@@ -2867,7 +3335,7 @@ async function supprimer(id){
 
 
 /* =========================================================
-   FORMAT DATE
+   FORMAT DATE SERVICE
    ========================================================= */
 
 function formatDate(date){
@@ -2923,6 +3391,64 @@ function formatTime(h){
 
 
 /* =========================================================
+   FORMAT DATE + HEURE
+   ========================================================= */
+
+function formatDateTime(value){
+
+  if(!value){
+
+    return "";
+
+  }
+
+
+  const d =
+    new Date(value);
+
+
+  if(
+    Number.isNaN(
+      d.getTime()
+    )
+  ){
+
+    return String(value);
+
+  }
+
+
+  const date =
+    d.toLocaleDateString(
+      "fr-FR",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    );
+
+
+  const time =
+    d.toLocaleTimeString(
+      "fr-FR",
+      {
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
+
+
+  return (
+    date
+    + " à "
+    + time
+  );
+
+}
+
+
+/* =========================================================
    PROTECTION HTML
    ========================================================= */
 
@@ -2954,47 +3480,23 @@ function escapeHTML(t){
 
 
 /* =========================================================
-   FERMETURE DU MODAL EN CLIQUANT À L'EXTÉRIEUR
-   ========================================================= */
-
-document
-  .getElementById("confirmationOverlay")
-  .addEventListener(
-    "click",
-    function(event){
-
-      if(
-        event.target === this
-      ){
-
-        fermerConfirmation();
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   TOUCHE ÉCHAP
+   INITIALISATION
    ========================================================= */
 
 document.addEventListener(
-  "keydown",
-  function(event){
+  "DOMContentLoaded",
+  function(){
 
-    if(
-      event.key === "Escape"
-    ){
-
-      fermerConfirmation();
-
-    }
+    console.log(
+      "ÉCHANGE SERVICE V4.4 chargé"
+    );
 
   }
 );
 
 </script>
 
+
 </body>
+
 </html>
