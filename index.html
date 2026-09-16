@@ -2,22 +2,34 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102b3d">
 <title>ÉCHANGE SERVICE</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+:root{
+  --navy:#102b3d;
+  --navy2:#173d54;
+  --blue:#0799cf;
+  --blue2:#12acd8;
+  --cyan:#61d9ef;
+  --green:#45d8a0;
+  --bg:#edf6f9;
+  --white:#fff;
+  --text:#18394d;
+  --muted:#688196;
+  --line:#d9e8ee;
+  --shadow:0 16px 38px rgba(18,57,77,.13);
+}
+
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
 }
 
 html{
-  min-height:100%;
-  background:#eaf7fb;
+  scroll-behavior:smooth;
 }
 
 body{
@@ -25,741 +37,799 @@ body{
   min-height:100vh;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   background:
-    radial-gradient(circle at top left,rgba(255,255,255,.9),transparent 35%),
-    linear-gradient(180deg,#edf9fc 0%,#e4f5fa 100%);
-  color:#19384a;
-  padding-bottom:110px;
+    radial-gradient(circle at 10% 20%,rgba(97,217,239,.16),transparent 25%),
+    radial-gradient(circle at 90% 45%,rgba(7,153,207,.10),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* =========================
-   HEADER
-========================= */
+button,
+input,
+textarea{
+  font-family:inherit;
+}
 
-.header{
-  background:
-    radial-gradient(circle at 100% 0%,rgba(255,255,255,.08),transparent 30%),
-    linear-gradient(135deg,#0b2d40 0%,#123b52 55%,#0b3044 100%);
-  color:white;
-  padding:
-    44px
-    max(28px,5vw)
-    52px;
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+.hidden{
+  display:none!important;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
   position:relative;
+  min-height:185px;
+  padding:
+    calc(30px + env(safe-area-inset-top))
+    42px
+    25px;
+  background:
+    linear-gradient(
+      135deg,
+      #132f42 0%,
+      #102b3d 60%,
+      #173c52 100%
+    );
+  color:#fff;
   overflow:hidden;
 }
 
-.header:after{
+header:after{
   content:"";
   position:absolute;
-  width:520px;
-  height:520px;
-  right:-230px;
-  top:-320px;
-  border:1px solid rgba(255,255,255,.10);
+  width:420px;
+  height:420px;
+  right:-190px;
+  top:-300px;
   border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
   box-shadow:
-    0 0 0 55px rgba(255,255,255,.025),
-    0 0 0 110px rgba(255,255,255,.02);
-  pointer-events:none;
+    0 0 0 35px rgba(255,255,255,.025),
+    0 0 0 70px rgba(255,255,255,.018);
 }
 
 .header-inner{
   position:relative;
   z-index:2;
-  width:min(1240px,100%);
+  width:min(1280px,100%);
   margin:auto;
   display:flex;
   align-items:center;
-  gap:30px;
+  gap:22px;
 }
 
 .train-logo{
-  width:105px;
-  height:105px;
-  flex:0 0 105px;
-  background:#fff;
-  border-radius:28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:55px;
-  box-shadow:0 12px 28px rgba(0,0,0,.16);
+  flex:0 0 80px;
+  width:80px;
+  height:80px;
+  display:grid;
+  place-items:center;
+  border-radius:25px;
+  background:linear-gradient(145deg,#fff,#e8f3f7);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+  font-size:42px;
 }
 
 .header-title{
-  flex:1;
   min-width:0;
 }
 
 .header-title h1{
   margin:0;
-  font-size:clamp(38px,5vw,66px);
+  font-size:clamp(34px,5vw,58px);
   line-height:1;
-  font-weight:900;
-  letter-spacing:-2px;
-}
-
-.header-title p{
-  margin:18px 0 0;
-  font-size:clamp(19px,2.2vw,29px);
-  font-weight:600;
-  color:#d9eaf1;
-}
-
-.active-status{
-  flex:0 0 auto;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:15px 25px;
-  border-radius:40px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.16);
-  font-size:19px;
-  font-weight:800;
-  white-space:nowrap;
-}
-
-.active-dot{
-  width:15px;
-  height:15px;
-  border-radius:50%;
-  background:#42e5a5;
-  box-shadow:0 0 14px rgba(66,229,165,.8);
-}
-
-/* =========================
-   CONTENU
-========================= */
-
-.main{
-  width:min(1240px,calc(100% - 40px));
-  margin:38px auto 0;
-}
-
-.intro{
-  background:rgba(255,255,255,.94);
-  border-radius:34px;
-  padding:40px 46px;
-  box-shadow:0 20px 45px rgba(35,102,126,.12);
-}
-
-.intro h2{
-  margin:0;
-  color:#145b7c;
-  font-size:clamp(31px,4vw,49px);
-  line-height:1.05;
   font-weight:900;
   letter-spacing:-1.5px;
 }
 
-.intro p{
-  margin:20px 0 0;
-  color:#698296;
-  font-size:clamp(17px,2vw,24px);
-  line-height:1.4;
-  font-weight:500;
+.header-title p{
+  margin:12px 0 0;
+  font-size:clamp(15px,2vw,22px);
+  color:#d7e8ef;
+  font-weight:650;
 }
 
-/* =========================
-   FILTRES
-========================= */
-
-.filters{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
-  margin:34px 2px 30px;
-}
-
-.filter{
-  border:0;
-  background:#fff;
-  color:#526979;
-  padding:16px 30px;
-  border-radius:40px;
-  font-size:20px;
-  font-weight:800;
-  box-shadow:0 8px 20px rgba(36,103,128,.08);
-  cursor:pointer;
-  transition:.2s;
-}
-
-.filter.active{
-  background:linear-gradient(135deg,#099dcb,#12afd4);
-  color:#fff;
-  box-shadow:0 10px 25px rgba(10,165,208,.28);
-}
-
-/* =========================
-   BOUTON PROPOSER
-========================= */
-
-.proposer{
-  width:min(890px,100%);
-  margin:0 auto 36px;
-  display:block;
-  border:0;
-  border-radius:31px;
-  padding:24px 30px;
-  background:linear-gradient(135deg,#099dcc,#11afd4);
-  color:#fff;
-  font-size:26px;
-  font-weight:900;
-  box-shadow:0 14px 30px rgba(4,156,204,.28);
-  cursor:pointer;
-  transition:transform .15s,box-shadow .15s;
-}
-
-.proposer:active{
-  transform:scale(.98);
-}
-
-/* =========================
-   LISTE
-========================= */
-
-#liste{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-  padding-bottom:25px;
-}
-
-/* =========================
-   POST
-========================= */
-
-.post{
-  position:relative;
-  background:rgba(255,255,255,.96);
-  border-radius:32px;
-  padding:30px 34px 32px 42px;
-  box-shadow:0 18px 38px rgba(35,102,126,.12);
-  overflow:hidden;
-}
-
-.post:before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-  width:9px;
-  background:linear-gradient(180deg,#079dca,#14b4d8);
-}
-
-.post-header{
-  display:flex;
-  align-items:center;
-  gap:17px;
-  margin-bottom:22px;
-}
-
-.avatar{
-  width:66px;
-  height:66px;
-  flex:0 0 66px;
-  border-radius:50%;
-  background:#e4f2f7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:36px;
-}
-
-.agent-info{
-  min-width:0;
-  flex:1;
-}
-
-.agent-name{
-  font-size:29px;
-  font-weight:900;
-  color:#183e51;
-  line-height:1.05;
-}
-
-.agent-meta{
-  margin-top:8px;
+.status{
+  margin-left:auto;
   display:flex;
   align-items:center;
   gap:10px;
+  padding:13px 19px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  background:rgba(255,255,255,.09);
+  color:#f4fbfd;
+  font-weight:800;
+  white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.status-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#4ee1aa;
+  box-shadow:0 0 14px rgba(78,225,170,.8);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+main{
+  width:min(1280px,100%);
+  margin:30px auto 120px;
+  padding:0 42px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+  padding:27px 34px;
+  border-radius:30px;
+  background:rgba(255,255,255,.91);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--shadow);
+}
+
+.intro h2{
+  margin:0;
+  color:#10577d;
+  font-size:clamp(28px,4vw,39px);
+  font-weight:900;
+  letter-spacing:-.5px;
+}
+
+.intro p{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:clamp(15px,2vw,19px);
+  line-height:1.4;
+}
+
+
+/* =========================================================
+   FILTRES
+========================================================= */
+
+.filters{
+  display:flex;
+  gap:12px;
+  margin:27px 0 25px;
+  overflow-x:auto;
+  padding:2px 2px 8px;
+  scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter{
+  flex:0 0 auto;
+  border:0;
+  padding:13px 25px;
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  color:#526c7c;
+  font-size:17px;
+  font-weight:850;
+  cursor:pointer;
+  box-shadow:0 7px 18px rgba(23,61,81,.08);
+  transition:.18s;
+}
+
+.filter.active{
+  color:#fff;
+  background:linear-gradient(135deg,#0798ca,#11acd8);
+  box-shadow:0 10px 23px rgba(7,153,207,.27);
+}
+
+
+/* =========================================================
+   BOUTON PROPOSER
+========================================================= */
+
+.proposer-btn{
+  display:block;
+  width:min(680px,100%);
+  margin:0 auto 26px;
+  border:0;
+  padding:20px 25px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#078fc1,#13acd8);
+  color:#fff;
+  font-size:21px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 14px 30px rgba(7,153,207,.28);
+  transition:.18s;
+}
+
+.proposer-btn:hover{
+  transform:translateY(-2px);
+}
+
+.proposer-btn:active{
+  transform:scale(.985);
+}
+
+
+/* =========================================================
+   LISTE
+========================================================= */
+
+#listeEchanges{
+  display:grid;
+  gap:18px;
+}
+
+
+/* =========================================================
+   POST
+========================================================= */
+
+.post{
+  position:relative;
+  overflow:hidden;
+  padding:27px 30px 24px;
+  border-radius:32px;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(255,255,255,.98);
+  border-left:7px solid var(--blue);
+  box-shadow:var(--shadow);
+}
+
+.post:after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:10px;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(41,170,210,.10),
+    transparent 68%
+  );
+  pointer-events:none;
+}
+
+.post-head{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  gap:13px;
   flex-wrap:wrap;
-  color:#748897;
-  font-size:16px;
-  font-weight:600;
+}
+
+.avatar{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#dcebf2,#c8e0ea);
+  color:#317094;
+  font-size:29px;
+}
+
+.agent{
+  font-size:26px;
+  font-weight:900;
+  color:#173b52;
 }
 
 .metier-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:#edf6fa;
-  color:#527083;
-  padding:7px 12px;
-  border-radius:20px;
-  font-weight:800;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#e4f5fb;
+  color:#14739b;
+  font-size:13px;
+  font-weight:900;
 }
 
 .publication{
-  color:#748897;
+  position:relative;
+  z-index:1;
+  width:max-content;
+  max-width:100%;
+  margin:13px 0 20px 65px;
+  padding:8px 12px;
+  border-radius:12px;
+  background:#edf5f8;
+  color:#557185;
+  font-size:13px;
+  font-weight:750;
 }
 
-.delete-btn{
-  border:0;
-  background:#fff0f0;
-  color:#d34d4d;
+.days{
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:13px;
+}
+
+.day{
+  padding:18px;
+  border-radius:25px;
+  border:1px solid #d7e8ef;
+  background:linear-gradient(
+    145deg,
+    #f5fbfd,
+    #eaf5f9
+  );
+}
+
+.day-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.day-number{
   width:43px;
   height:43px;
-  border-radius:50%;
-  font-size:19px;
-  cursor:pointer;
-}
-
-/* =========================
-   JOURNÉE
-========================= */
-
-.day-block{
-  background:#f4fafc;
-  border-radius:24px;
-  padding:23px 25px;
-  margin-top:17px;
+  display:grid;
+  place-items:center;
+  flex:0 0 43px;
+  border-radius:13px;
+  background:#078fc1;
+  color:#fff;
+  font-size:20px;
+  font-weight:900;
 }
 
 .day-title{
-  color:#146183;
-  font-size:16px;
+  color:#17618a;
+  font-size:22px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.date-big{
+  color:#1c465e;
+  font-size:21px;
+  font-weight:900;
+}
+
+.infos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+}
+
+.info-box{
+  min-height:75px;
+  padding:12px 14px;
+  border-radius:17px;
+  background:rgba(255,255,255,.76);
+  border:1px solid #d9e9ef;
+}
+
+.info-label{
+  margin-bottom:5px;
+  color:#7a91a0;
+  font-size:10px;
   font-weight:900;
   letter-spacing:.7px;
-  margin-bottom:16px;
-}
-
-.day-date{
-  font-size:25px;
-  font-weight:900;
-  color:#173f52;
-  margin-bottom:18px;
-}
-
-.service-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.service-box{
-  background:#fff;
-  border-radius:18px;
-  padding:15px 17px;
-  min-width:0;
-}
-
-.service-label{
-  display:block;
-  color:#8095a1;
-  font-size:13px;
-  font-weight:800;
   text-transform:uppercase;
-  margin-bottom:6px;
 }
 
-.service-value{
-  color:#234d60;
-  font-size:18px;
-  font-weight:800;
-  word-break:break-word;
-}
-
-.times{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.time-pill{
-  background:#e7f6fb;
-  color:#126080;
-  border-radius:16px;
-  padding:11px 16px;
+.info-value{
+  color:#244c64;
   font-size:17px;
-  font-weight:900;
+  font-weight:850;
+  line-height:1.3;
 }
 
 .comment{
-  margin-top:16px;
-  background:#fff;
-  border-radius:16px;
-  padding:15px 17px;
-  color:#5f7785;
-  line-height:1.4;
-  font-size:16px;
+  position:relative;
+  z-index:1;
+  margin-top:14px;
+  padding:13px 15px;
+  border-radius:15px;
+  background:#f4f7f8;
+  color:#607785;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.interest-info{
+  position:relative;
+  z-index:1;
+  margin-top:13px;
+  padding:12px 15px;
+  border-radius:15px;
+  background:#fff3d9;
+  color:#805800;
+  font-size:14px;
+  font-weight:750;
 }
 
 .post-actions{
+  position:relative;
+  z-index:1;
   display:flex;
-  gap:12px;
-  margin-top:20px;
-  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
 }
 
-.action-btn{
+.action{
   border:0;
-  border-radius:17px;
-  padding:13px 20px;
-  background:#edf7fa;
-  color:#14617f;
-  font-size:16px;
+  padding:12px 15px;
+  border-radius:14px;
+  font-size:13px;
   font-weight:900;
   cursor:pointer;
 }
 
-.action-btn.primary{
-  background:#dff5fb;
-  color:#078eb9;
+.action-interest{
+  flex:1;
+  background:#fff0cd;
+  color:#8a5c00;
 }
 
-/* =========================
-   MESSAGE VIDE
-========================= */
+.action-delete{
+  background:#ffe4e4;
+  color:#b72c2c;
+}
 
 .empty{
+  padding:45px 20px;
   text-align:center;
-  padding:55px 20px;
+  color:#6e8492;
   background:rgba(255,255,255,.75);
-  border-radius:30px;
-  color:#718897;
+  border-radius:25px;
 }
 
 .empty-icon{
-  font-size:50px;
-  margin-bottom:15px;
+  display:block;
+  margin-bottom:8px;
+  font-size:42px;
 }
 
-.empty-title{
-  font-size:24px;
-  font-weight:900;
-  color:#35586a;
-}
 
-/* =========================
-   NAVIGATION BASSE
-========================= */
-
-.bottom-nav{
-  position:fixed;
-  z-index:1000;
-  left:50%;
-  bottom:max(15px,env(safe-area-inset-bottom));
-  transform:translateX(-50%);
-  width:min(900px,calc(100% - 34px));
-  height:94px;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border-radius:30px;
-  box-shadow:0 15px 40px rgba(20,72,94,.18);
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  padding:8px;
-}
-
-.nav-btn{
-  border:0;
-  background:transparent;
-  border-radius:23px;
-  color:#647a88;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:5px;
-  font-size:16px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.nav-btn.active{
-  background:#edf8fb;
-  color:#087ea7;
-}
-
-.nav-icon{
-  font-size:27px;
-  line-height:1;
-}
-
-/* =========================
+/* =========================================================
    MODALES
-========================= */
+========================================================= */
 
-.modal{
+.overlay{
   position:fixed;
-  z-index:3000;
   inset:0;
-  background:rgba(4,25,37,.55);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
+  z-index:1000;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
+  background:rgba(5,24,37,.72);
+  backdrop-filter:blur(9px);
 }
 
-.modal.hidden{
-  display:none;
-}
-
-.modal-card{
-  width:min(560px,100%);
-  max-height:calc(100vh - 40px);
+.modal{
+  width:min(620px,100%);
+  max-height:90vh;
   overflow:auto;
+  padding:28px;
+  border-radius:29px;
   background:#fff;
-  border-radius:32px;
-  padding:32px;
-  box-shadow:0 25px 70px rgba(0,0,0,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.34);
 }
 
-.modal-title{
-  margin:0 0 12px;
-  color:#123f54;
-  font-size:30px;
-  font-weight:900;
+.modal-icon{
+  text-align:center;
+  font-size:46px;
+  margin-bottom:6px;
 }
 
-.modal-text{
-  color:#667f8d;
-  font-size:17px;
+.modal h2{
+  margin:0 0 9px;
+  color:#173b52;
+  font-size:27px;
+  text-align:center;
+}
+
+.modal p{
+  margin:0 auto 13px;
+  max-width:520px;
+  color:#687f8e;
   line-height:1.5;
-  margin:0 0 25px;
+  text-align:center;
 }
 
-.modal-actions{
-  display:flex;
-  gap:12px;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-}
-
-.btn{
-  border:0;
-  border-radius:17px;
-  padding:14px 22px;
-  font-size:16px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.btn-secondary{
-  background:#edf4f6;
-  color:#5d7480;
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,#079cca,#12afd4);
-  color:white;
-}
-
-/* =========================
-   CHOIX MÉTIER
-========================= */
-
-.metier-list{
+.modal-buttons{
   display:grid;
-  gap:12px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
   margin-top:20px;
 }
 
-.metier-choice{
+.modal-btn{
   border:0;
-  background:#f2f8fa;
-  border-radius:20px;
-  padding:19px;
-  text-align:left;
-  font-size:18px;
+  border-radius:15px;
+  padding:14px;
+  font-size:14px;
   font-weight:900;
-  color:#31596a;
   cursor:pointer;
 }
 
-.metier-choice:active{
-  background:#e2f5fa;
+.modal-cancel{
+  background:#eaf1f4;
+  color:#405969;
 }
 
-/* =========================
-   FORMULAIRE
-========================= */
-
-.form-group{
-  margin-bottom:17px;
+.modal-confirm{
+  background:linear-gradient(135deg,#078fc1,#13acd8);
+  color:#fff;
 }
 
-.form-group label{
-  display:block;
-  color:#496a79;
-  font-size:14px;
+.form-title{
+  margin:0 0 18px;
+  color:#173b52;
+  font-size:27px;
   font-weight:900;
-  margin-bottom:7px;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select{
+.form-badge{
+  display:inline-flex;
+  margin-bottom:10px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:#e4f5fb;
+  color:#14739b;
+  font-size:12px;
+  font-weight:900;
+}
+
+label{
+  display:block;
+  margin:13px 0 6px;
+  color:#405e6f;
+  font-size:13px;
+  font-weight:850;
+}
+
+input,
+textarea,
+select{
   width:100%;
-  border:1px solid #d9e9ee;
-  background:#f8fcfd;
-  border-radius:15px;
-  padding:14px;
-  font:inherit;
-  color:#244b5b;
+  padding:13px 14px;
+  border:1px solid #d5e4ea;
+  border-radius:14px;
+  background:#f9fbfc;
+  color:#18394d;
+  font-size:16px;
   outline:none;
 }
 
-.form-group textarea{
-  min-height:95px;
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#159dce;
+  box-shadow:0 0 0 4px rgba(21,157,206,.11);
+}
+
+textarea{
+  min-height:85px;
   resize:vertical;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-  border-color:#0aa4ce;
-  background:#fff;
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.section-title{
-  margin:25px 0 15px;
-  color:#12607e;
-  font-size:19px;
+.location-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.day-form-title{
+  margin-top:16px;
+  padding:9px 12px;
+  border-radius:12px;
+  background:#eaf6fa;
+  color:#166489;
+  font-size:14px;
   font-weight:900;
 }
 
-.second-toggle{
+.toggle{
   display:flex;
-  align-items:flex-start;
-  gap:12px;
-  background:#edf8fb;
-  border-radius:17px;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:17px;
+  padding:14px;
+  border-radius:16px;
+  background:#eef7fa;
+  border:1px solid #dce9ee;
+}
+
+.toggle strong{
+  display:block;
+  font-size:14px;
+}
+
+.toggle small{
+  display:block;
+  margin-top:4px;
+  color:#738794;
+  line-height:1.3;
+}
+
+.switch{
+  position:relative;
+  width:53px;
+  height:31px;
+  flex:0 0 53px;
+}
+
+.switch input{
+  position:absolute;
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  background:#c8d6dc;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:25px;
+  height:25px;
+  left:3px;
+  top:3px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.18);
+  transition:.2s;
+}
+
+.switch input:checked + .slider{
+  background:#079acb;
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(22px);
+}
+
+.modal-main-btn{
+  width:100%;
+  margin-top:17px;
+  border:0;
   padding:15px;
-  margin:20px 0;
+  border-radius:15px;
+  background:linear-gradient(135deg,#078fc1,#13acd8);
+  color:#fff;
+  font-size:15px;
+  font-weight:900;
   cursor:pointer;
 }
 
-.second-toggle input{
-  width:20px;
-  height:20px;
-  margin-top:2px;
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+  z-index:2000;
+  left:50%;
+  bottom:105px;
+  transform:translate(-50%,20px);
+  width:min(480px,calc(100% - 30px));
+  padding:14px 17px;
+  border-radius:15px;
+  background:#102b3d;
+  color:#fff;
+  text-align:center;
+  font-size:14px;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
-.second-toggle strong{
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+
+/* =========================================================
+   NAVIGATION BASSE
+========================================================= */
+
+.bottom-nav{
+  position:fixed;
+  z-index:900;
+  left:50%;
+  bottom:calc(10px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  width:min(690px,calc(100% - 28px));
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  padding:8px;
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:27px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 15px 38px rgba(19,61,82,.20);
+  backdrop-filter:blur(20px);
+}
+
+.bottom-nav button{
+  border:0;
+  padding:9px 8px;
+  border-radius:20px;
+  background:transparent;
+  color:#647a89;
+  font-size:14px;
+  font-weight:850;
+  cursor:pointer;
+}
+
+.bottom-nav button.active{
+  background:#edf8fb;
+  color:#087ba8;
+}
+
+.nav-icon{
   display:block;
-  color:#24586a;
+  margin-bottom:2px;
+  font-size:23px;
 }
 
-.second-toggle small{
-  display:block;
-  color:#708894;
-  margin-top:4px;
-}
 
-/* =========================
-   RESPONSIVE IPAD
-========================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-@media (min-width:768px){
+@media(max-width:700px){
 
-  .header{
-    padding-left:clamp(35px,5vw,80px);
-    padding-right:clamp(35px,5vw,80px);
-  }
-
-  .main{
-    width:min(1240px,calc(100% - 70px));
-  }
-
-  .post{
-    padding-right:42px;
-  }
-}
-
-@media (max-width:900px){
-
-  .header{
-    padding-top:30px;
-    padding-bottom:36px;
+  header{
+    min-height:170px;
+    padding:
+      calc(22px + env(safe-area-inset-top))
+      17px
+      22px;
   }
 
   .header-inner{
-    gap:20px;
+    gap:13px;
   }
 
   .train-logo{
-    width:82px;
-    height:82px;
-    flex-basis:82px;
-    border-radius:23px;
-    font-size:43px;
-  }
-
-  .header-title h1{
-    font-size:42px;
-    letter-spacing:-1.5px;
-  }
-
-  .header-title p{
-    font-size:19px;
-    margin-top:12px;
-  }
-
-  .active-status{
-    padding:12px 17px;
-    font-size:16px;
-  }
-
-  .main{
-    margin-top:28px;
-  }
-
-  .intro{
-    padding:30px 32px;
-    border-radius:28px;
-  }
-
-  .filter{
-    padding:14px 23px;
-    font-size:17px;
-  }
-
-  .proposer{
-    font-size:22px;
-    padding:21px;
-  }
-}
-
-@media (max-width:650px){
-
-  body{
-    padding-bottom:120px;
-  }
-
-  .header{
-    padding:24px 18px 30px;
-  }
-
-  .header-inner{
-    display:grid;
-    grid-template-columns:70px 1fr;
-    gap:15px;
-  }
-
-  .train-logo{
-    width:70px;
-    height:70px;
-    flex-basis:70px;
-    font-size:36px;
+    width:64px;
+    height:64px;
+    flex-basis:64px;
     border-radius:20px;
+    font-size:34px;
   }
 
   .header-title h1{
@@ -768,119 +838,115 @@ body{
   }
 
   .header-title p{
-    font-size:15px;
-    margin-top:8px;
-    line-height:1.25;
-  }
-
-  .active-status{
-    grid-column:1 / -1;
-    justify-self:end;
+    margin-top:7px;
     font-size:14px;
-    padding:9px 15px;
   }
 
-  .main{
-    width:calc(100% - 24px);
-    margin-top:18px;
+  .status{
+    position:absolute;
+    right:0;
+    top:78px;
+    padding:8px 12px;
+    font-size:12px;
+  }
+
+  .status-dot{
+    width:9px;
+    height:9px;
+  }
+
+  main{
+    margin-top:20px;
+    padding:0 14px;
   }
 
   .intro{
-    padding:24px 22px;
+    padding:22px 20px;
     border-radius:24px;
   }
 
   .intro h2{
-    font-size:29px;
+    font-size:27px;
   }
 
   .intro p{
-    font-size:16px;
-    margin-top:12px;
-  }
-
-  .filters{
-    gap:9px;
-    margin:20px 0;
+    font-size:14px;
   }
 
   .filter{
-    padding:11px 16px;
-    font-size:15px;
+    padding:11px 17px;
+    font-size:14px;
   }
 
-  .proposer{
-    font-size:18px;
-    border-radius:23px;
-    padding:18px 12px;
-    margin-bottom:24px;
+  .proposer-btn{
+    font-size:17px;
+    padding:16px;
+    border-radius:19px;
   }
 
   .post{
-    padding:23px 20px 25px 25px;
-    border-radius:25px;
+    padding:19px 15px 18px;
+    border-radius:24px;
   }
 
-  .post:before{
-    width:6px;
+  .agent{
+    font-size:21px;
   }
 
-  .agent-name{
-    font-size:22px;
+  .publication{
+    margin-left:0;
+    font-size:11px;
   }
 
-  .avatar{
-    width:54px;
-    height:54px;
-    flex-basis:54px;
-    font-size:28px;
+  .day{
+    padding:13px;
+    border-radius:20px;
   }
 
-  .service-grid{
+  .day-title{
+    font-size:18px;
+  }
+
+  .date-big{
+    font-size:18px;
+  }
+
+  .infos{
     grid-template-columns:1fr;
   }
 
-  .bottom-nav{
-    height:82px;
-    bottom:10px;
-    border-radius:25px;
+  .location-row,
+  .form-row{
+    grid-template-columns:1fr;
   }
 
-  .nav-icon{
-    font-size:23px;
+  .post-actions{
+    flex-direction:column;
   }
 
-  .nav-btn{
-    font-size:13px;
+  .action{
+    width:100%;
+  }
+
+  .modal{
+    padding:21px;
+    border-radius:23px;
+  }
+
+  .modal-buttons{
+    grid-template-columns:1fr;
   }
 }
 
-/* =========================
-   IPAD PAYSAGE / GRAND ÉCRAN
-========================= */
+@media(min-width:701px) and (max-width:1000px){
 
-@media (min-width:1000px){
-
-  .header{
-    min-height:240px;
-    display:flex;
-    align-items:center;
+  header{
+    padding-left:25px;
+    padding-right:25px;
   }
 
-  .header-inner{
-    min-height:145px;
-  }
-
-  .main{
-    margin-top:40px;
-  }
-
-  .bottom-nav{
-    height:88px;
-  }
-
-  body{
-    padding-bottom:125px;
+  main{
+    padding:0 25px;
   }
 }
 </style>
@@ -888,329 +954,596 @@ body{
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
 
-<header class="header">
+<!-- =======================================================
+     HEADER
+======================================================== -->
+
+<header>
+
   <div class="header-inner">
 
-    <div class="train-logo">🚆</div>
-
-    <div class="header-title">
-      <h1>ÉCHANGE SERVICE</h1>
-      <p>Échange de journées entre agents • si congés refusés</p>
+    <div class="train-logo">
+      🚆
     </div>
 
-    <div class="active-status">
-      <span class="active-dot"></span>
+    <div class="header-title">
+
+      <h1>
+        ÉCHANGE SERVICE
+      </h1>
+
+      <p>
+        Échange de journées entre agents • si congés refusés
+      </p>
+
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
       Service actif
     </div>
 
   </div>
+
 </header>
 
-<!-- =========================
+
+<!-- =======================================================
      CONTENU
-========================= -->
+======================================================== -->
 
-<main class="main">
+<main>
 
-  <section class="intro">
-    <h2>🔄 Les journées disponibles</h2>
-    <p>
-      Consulte les journées proposées par les agents et propose un échange
-      lorsque ton congé a été refusé.
-    </p>
-  </section>
+  <section>
 
-  <div class="filters">
+    <div class="intro">
 
-    <button class="filter active" onclick="filtrer('Tous',this)">
-      Tous
-    </button>
+      <h2>
+        🔄 Les journées disponibles
+      </h2>
 
-    <button class="filter" onclick="filtrer('ASCT',this)">
-      🚆 ASCT
-    </button>
-
-    <button class="filter" onclick="filtrer('ADC',this)">
-      🚄 ADC
-    </button>
-
-    <button class="filter" onclick="filtrer('Escales',this)">
-      👷 Escales
-    </button>
-
-    <button class="filter" onclick="filtrer('Autre',this)">
-      👨‍🔧 Autre
-    </button>
-
-  </div>
-
-  <button class="proposer" onclick="ouvrirConfirmation()">
-    ＋ PROPOSER UNE JOURNÉE
-  </button>
-
-  <section id="liste"></section>
-
-</main>
-
-<!-- =========================
-     NAVIGATION BASSE
-========================= -->
-
-<nav class="bottom-nav">
-
-  <button class="nav-btn" onclick="ouvrirConfirmation()">
-    <span class="nav-icon">＋</span>
-    <span>Ma journée</span>
-  </button>
-
-  <button class="nav-btn active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <span class="nav-icon">🔎</span>
-    <span>Échanges</span>
-  </button>
-
-  <button class="nav-btn" onclick="ouvrirChoixMetier()">
-    <span class="nav-icon">🚆</span>
-    <span>Métier</span>
-  </button>
-
-</nav>
-
-<!-- =========================
-     MODALE CONFIRMATION
-========================= -->
-
-<div id="confirmationModal" class="modal hidden">
-
-  <div class="modal-card">
-
-    <h2 class="modal-title">
-      Confirmation
-    </h2>
-
-    <p class="modal-text">
-      Avant de proposer une journée, merci de confirmer que ton congé
-      a bien été refusé.
-    </p>
-
-    <div class="modal-actions">
-
-      <button class="btn btn-secondary" onclick="fermerConfirmation()">
-        Annuler
-      </button>
-
-      <button class="btn btn-primary" onclick="confirmerCongeRefuse()">
-        ✓ Je confirme
-      </button>
+      <p>
+        Consulte les journées proposées par les agents
+        et propose un échange lorsque ton congé a été refusé.
+      </p>
 
     </div>
 
-  </div>
 
-</div>
+    <!-- FILTRES -->
 
-<!-- =========================
-     MODALE MÉTIER
-========================= -->
+    <div class="filters">
 
-<div id="metierModal" class="modal hidden">
+      <button
+        class="filter active"
+        data-metier=""
+        onclick="filtrerMetier('')"
+      >
+        Tous
+      </button>
 
-  <div class="modal-card">
-
-    <h2 class="modal-title">
-      Ton métier
-    </h2>
-
-    <p class="modal-text">
-      Sélectionne ton métier pour continuer.
-    </p>
-
-    <div class="metier-list">
-
-      <button class="metier-choice" onclick="selectionnerMetier('ASCT')">
+      <button
+        class="filter"
+        data-metier="ASCT"
+        onclick="filtrerMetier('ASCT')"
+      >
         🚆 ASCT
       </button>
 
-      <button class="metier-choice" onclick="selectionnerMetier('ADC')">
+      <button
+        class="filter"
+        data-metier="ADC"
+        onclick="filtrerMetier('ADC')"
+      >
         🚄 ADC
       </button>
 
-      <button class="metier-choice" onclick="selectionnerMetier('Escales')">
+      <button
+        class="filter"
+        data-metier="Escales"
+        onclick="filtrerMetier('Escales')"
+      >
         👷 Escales
       </button>
 
-      <button class="metier-choice" onclick="selectionnerMetier('Autre')">
+      <button
+        class="filter"
+        data-metier="Autre"
+        onclick="filtrerMetier('Autre')"
+      >
         👨‍🔧 Autre
       </button>
 
     </div>
 
-    <div class="modal-actions" style="margin-top:22px;">
-      <button class="btn btn-secondary" onclick="fermerChoixMetier()">
-        Annuler
+
+    <!-- PROPOSER -->
+
+    <button
+      class="proposer-btn"
+      onclick="ouvrirConfirmation()"
+    >
+      ＋ PROPOSER UNE JOURNÉE
+    </button>
+
+
+    <!-- LISTE -->
+
+    <div id="listeEchanges">
+
+      <div class="empty">
+        <span class="empty-icon">🚆</span>
+        Chargement des journées...
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- =======================================================
+     NAVIGATION BASSE
+======================================================== -->
+
+<nav class="bottom-nav">
+
+  <button
+    onclick="ouvrirConfirmation()"
+  >
+    <span class="nav-icon">＋</span>
+    Ma journée
+  </button>
+
+  <button
+    class="active"
+    onclick="allerEchanges()"
+  >
+    <span class="nav-icon">🔎</span>
+    Échanges
+  </button>
+
+  <button
+    onclick="ouvrirChoixMetier()"
+  >
+    <span class="nav-icon">🚆</span>
+    Métier
+  </button>
+
+</nav>
+
+
+<!-- =======================================================
+     MODALE CONFIRMATION CONGÉ
+======================================================== -->
+
+<div
+  id="confirmationModal"
+  class="overlay hidden"
+>
+
+  <div class="modal">
+
+    <div class="modal-icon">
+      ⚠️
+    </div>
+
+    <h2>
+      Confirmation
+    </h2>
+
+    <p>
+      Pour utiliser <strong>ÉCHANGE SERVICE</strong>,
+      vous devez avoir préalablement fait une demande
+      de congé qui a été refusée.
+    </p>
+
+    <p>
+      <strong>
+        Je confirme que mon congé a été refusé.
+      </strong>
+    </p>
+
+    <div class="modal-buttons">
+
+      <button
+        class="modal-btn modal-cancel"
+        onclick="fermerConfirmation()"
+      >
+        ANNULER
       </button>
+
+      <button
+        class="modal-btn modal-confirm"
+        onclick="confirmerCongeRefuse()"
+      >
+        JE CONFIRME
+      </button>
+
     </div>
 
   </div>
 
 </div>
 
-<!-- =========================
-     MODALE FORMULAIRE
-========================= -->
 
-<div id="formModal" class="modal hidden">
+<!-- =======================================================
+     MODALE CHOIX MÉTIER
+======================================================== -->
 
-  <div class="modal-card">
+<div
+  id="choixMetierModal"
+  class="overlay hidden"
+>
 
-    <h2 class="modal-title">
-      Proposer une journée
+  <div class="modal">
+
+    <div class="modal-icon">
+      🚆
+    </div>
+
+    <h2>
+      Choisir un métier
     </h2>
 
-    <p class="modal-text">
-      Renseigne les informations de ta journée afin que les agents
-      puissent proposer un échange.
+    <p>
+      Sélectionne ton métier pour publier ta journée.
     </p>
 
-    <div class="form-group">
-      <label>Nom / Prénom</label>
-      <input id="nom" type="text" placeholder="Ex. Dupont Jean">
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('ASCT')"
+    >
+      🚆 ASCT
+    </button>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('ADC')"
+    >
+      🚄 ADC
+    </button>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('Escales')"
+    >
+      👷 Escales
+    </button>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('Autre')"
+    >
+      👨‍🔧 Autre
+    </button>
+
+    <button
+      class="modal-btn modal-cancel"
+      style="width:100%;margin-top:10px"
+      onclick="fermerChoixMetier()"
+    >
+      ANNULER
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     MODALE FORMULAIRE
+======================================================== -->
+
+<div
+  id="formModal"
+  class="overlay hidden"
+>
+
+  <div class="modal">
+
+    <div id="formMetierBadge" class="form-badge">
+      Métier
     </div>
 
-    <div class="form-group">
-      <label>Métier</label>
-      <input id="metier" type="text" readonly>
-    </div>
+    <h2 class="form-title">
+      ➕ Proposer une journée
+    </h2>
 
-    <div class="section-title">
-      📅 Journée proposée
-    </div>
 
-    <div class="form-group">
-      <label>Date</label>
-      <input id="date1" type="date">
-    </div>
-
-    <div class="form-group">
-      <label>Lieu de prise de service</label>
-      <input id="lieuPrise1" type="text" placeholder="Ex. Caen">
-    </div>
-
-    <div class="form-group">
-      <label>Heure de prise de service</label>
-      <input id="prise1" type="time">
-    </div>
-
-    <div class="form-group">
-      <label>Lieu de fin de service</label>
-      <input id="lieuFin1" type="text" placeholder="Ex. Paris">
-    </div>
-
-    <div class="form-group">
-      <label>Heure de fin de service</label>
-      <input id="fin1" type="time">
-    </div>
-
-    <label class="second-toggle">
-      <input id="deuxiemeJournee" type="checkbox" onchange="toggleDeuxiemeJournee()">
-      <span>
-        <strong>🔄 J’ai une 2ᵉ journée à proposer</strong>
-        <small>Utile notamment en cas de RHR entre les deux journées.</small>
-      </span>
+    <label for="nom">
+      Nom et prénom
     </label>
 
-    <div id="blocJournee2" style="display:none;">
+    <input
+      id="nom"
+      type="text"
+      placeholder="Exemple : Jean DUPONT"
+      autocomplete="name"
+    >
 
-      <div class="section-title">
-        📅 2ᵉ journée
+
+    <!-- JOUR 1 -->
+
+    <div class="day-form-title">
+      📅 JOURNÉE 1
+    </div>
+
+    <label for="date">
+      Date du service
+    </label>
+
+    <input
+      id="date"
+      type="date"
+    >
+
+
+    <div class="form-row">
+
+      <div>
+
+        <label for="prise">
+          Prise de service
+        </label>
+
+        <input
+          id="prise"
+          type="time"
+        >
+
       </div>
 
-      <div class="form-group">
-        <label>Date</label>
-        <input id="date2" type="date">
-      </div>
 
-      <div class="form-group">
-        <label>Lieu de prise de service</label>
-        <input id="lieuPrise2" type="text" placeholder="Ex. Paris">
-      </div>
+      <div>
 
-      <div class="form-group">
-        <label>Heure de prise de service</label>
-        <input id="prise2" type="time">
-      </div>
+        <label for="fin">
+          Fin de service
+        </label>
 
-      <div class="form-group">
-        <label>Lieu de fin de service</label>
-        <input id="lieuFin2" type="text" placeholder="Ex. Caen">
-      </div>
+        <input
+          id="fin"
+          type="time"
+        >
 
-      <div class="form-group">
-        <label>Heure de fin de service</label>
-        <input id="fin2" type="time">
       </div>
 
     </div>
 
-    <div class="form-group">
-      <label>Commentaire</label>
-      <textarea id="commentaire" placeholder="Précision éventuelle concernant l’échange..."></textarea>
+
+    <div class="location-row">
+
+      <div>
+
+        <label for="lieuPrise">
+          📍 Lieu de prise de service
+        </label>
+
+        <input
+          id="lieuPrise"
+          type="text"
+          placeholder="Exemple : Caen"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label for="lieuFin">
+          📍 Lieu de fin de service
+        </label>
+
+        <input
+          id="lieuFin"
+          type="text"
+          placeholder="Exemple : Rouen"
+        >
+
+      </div>
+
     </div>
 
-    <div class="modal-actions">
 
-      <button class="btn btn-secondary" onclick="fermerFormulaire()">
-        Annuler
-      </button>
+    <!-- TOGGLE JOUR 2 -->
 
-      <button class="btn btn-primary" onclick="publier()">
-        Publier
-      </button>
+    <div class="toggle">
+
+      <div>
+
+        <strong>
+          🔄 J’ai une 2ᵉ journée à proposer
+        </strong>
+
+        <small>
+          Utile notamment en cas de RHR entre les deux journées.
+        </small>
+
+      </div>
+
+
+      <label class="switch">
+
+        <input
+          id="deuxiemeJournee"
+          type="checkbox"
+          onchange="toggleJournee2()"
+        >
+
+        <span class="slider"></span>
+
+      </label>
 
     </div>
+
+
+    <!-- JOUR 2 -->
+
+    <div
+      id="blocJournee2"
+      class="hidden"
+    >
+
+      <div class="day-form-title">
+        📅 JOURNÉE 2
+      </div>
+
+      <label for="date2">
+        Date du service
+      </label>
+
+      <input
+        id="date2"
+        type="date"
+      >
+
+
+      <div class="form-row">
+
+        <div>
+
+          <label for="prise2">
+            Prise de service
+          </label>
+
+          <input
+            id="prise2"
+            type="time"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="fin2">
+            Fin de service
+          </label>
+
+          <input
+            id="fin2"
+            type="time"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="location-row">
+
+        <div>
+
+          <label for="lieuPrise2">
+            📍 Lieu de prise de service
+          </label>
+
+          <input
+            id="lieuPrise2"
+            type="text"
+            placeholder="Exemple : Caen"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="lieuFin2">
+            📍 Lieu de fin de service
+          </label>
+
+          <input
+            id="lieuFin2"
+            type="text"
+            placeholder="Exemple : Rouen"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <label for="commentaire">
+      Commentaire
+    </label>
+
+    <textarea
+      id="commentaire"
+      placeholder="Exemple : TER, réserve, numéro de train, RHR entre les deux journées..."
+    ></textarea>
+
+
+    <button
+      class="modal-main-btn"
+      onclick="publier()"
+    >
+      🚆 PUBLIER MA JOURNÉE
+    </button>
+
+
+    <button
+      class="modal-btn modal-cancel"
+      style="width:100%;margin-top:10px"
+      onclick="fermerFormulaire()"
+    >
+      ANNULER
+    </button>
 
   </div>
 
 </div>
 
-<!-- =========================
+
+<!-- =======================================================
      MODALE INTÉRÊT
-========================= -->
+======================================================== -->
 
-<div id="interetModal" class="modal hidden">
+<div
+  id="interetModal"
+  class="overlay hidden"
+>
 
-  <div class="modal-card">
+  <div class="modal">
 
-    <h2 class="modal-title">
-      Intéressé par cette journée ?
+    <div class="modal-icon">
+      🙋
+    </div>
+
+    <h2>
+      Je suis intéressé
     </h2>
 
-    <p class="modal-text">
-      Indique tes coordonnées afin que l’agent puisse te contacter
-      concernant l’échange.
+    <p>
+      Indique ton nom et prénom afin que l'agent
+      puisse te contacter.
     </p>
 
-    <div class="form-group">
-      <label>Nom / Prénom</label>
-      <input id="interesseNom" type="text" placeholder="Ex. Dupont Jean">
-    </div>
+    <input
+      id="nomInteresse"
+      type="text"
+      placeholder="Nom et prénom"
+      autocomplete="name"
+    >
 
-    <div class="form-group">
-      <label>Coordonnées</label>
-      <input id="interesseContact" type="text" placeholder="Téléphone ou autre moyen de contact">
-    </div>
+    <div class="modal-buttons">
 
-    <div class="modal-actions">
-
-      <button class="btn btn-secondary" onclick="fermerInteret()">
-        Annuler
+      <button
+        class="modal-btn modal-cancel"
+        onclick="fermerInteret()"
+      >
+        ANNULER
       </button>
 
-      <button class="btn btn-primary" onclick="envoyerInteret()">
-        Envoyer
+      <button
+        class="modal-btn modal-confirm"
+        onclick="confirmerInteret()"
+      >
+        CONFIRMER
       </button>
 
     </div>
@@ -1218,6 +1551,13 @@ body{
   </div>
 
 </div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
 
 <script>
 
@@ -1232,447 +1572,62 @@ const SUPABASE_KEY =
   "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
 
 const supabaseClient =
-  supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-let donnees = [];
-let filtreActuel = "Tous";
 let metierActuel = "";
-let confirmationCongeValidee = false;
-let idInteret = null;
+
+let filtreActuel = "";
+
+let idInteretEnCours = null;
 
 
 /* =========================================================
-   NORMALISATION
+   NAVIGATION
 ========================================================= */
 
-function normaliser(texte){
-  return String(texte ?? "")
-    .trim()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"");
-}
+function allerEchanges(){
 
-
-/* =========================================================
-   DATE SUIVANTE
-========================================================= */
-
-function dateSuivante(date){
-
-  if(!date) return "";
-
-  const d = new Date(date + "T12:00:00");
-
-  if(isNaN(d.getTime())) return "";
-
-  d.setDate(d.getDate() + 1);
-
-  return d.toISOString().slice(0,10);
-}
-
-
-/* =========================================================
-   REGROUPEMENT
-========================================================= */
-
-function peutRegrouper(jour1,jour2){
-
-  if(!jour1 || !jour2) return false;
-
-  const memeNom =
-    normaliser(jour1.nom) === normaliser(jour2.nom);
-
-  const memeMetier =
-    normaliser(jour1.metier) === normaliser(jour2.metier);
-
-  const jourSuivant =
-    dateSuivante(jour1.date_service) === jour2.date_service;
-
-  const memeLieu =
-    normaliser(jour1.lieu_fin_service) ===
-    normaliser(jour2.lieu_prise_service);
-
-  return memeNom &&
-         memeMetier &&
-         jourSuivant &&
-         memeLieu;
-}
-
-
-/* =========================================================
-   CONSTRUIRE LES GROUPES
-========================================================= */
-
-function construireGroupes(data){
-
-  const rows = [...data].sort((a,b) => {
-
-    const nomA = normaliser(a.nom);
-    const nomB = normaliser(b.nom);
-
-    if(nomA !== nomB){
-      return nomA.localeCompare(nomB);
-    }
-
-    const dateA = a.date_service || "";
-    const dateB = b.date_service || "";
-
-    return dateA.localeCompare(dateB);
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
 
-  const groupes = [];
-  const utilises = new Set();
-
-  for(let i=0;i<rows.length;i++){
-
-    if(utilises.has(rows[i].id)) continue;
-
-    const groupe = [rows[i]];
-
-    utilises.add(rows[i].id);
-
-    let courant = rows[i];
-
-    while(true){
-
-      let suivant = null;
-
-      for(let j=0;j<rows.length;j++){
-
-        const candidat = rows[j];
-
-        if(utilises.has(candidat.id)) continue;
-
-        if(peutRegrouper(courant,candidat)){
-
-          suivant = candidat;
-          break;
-
-        }
-
-      }
-
-      if(!suivant) break;
-
-      groupe.push(suivant);
-      utilises.add(suivant.id);
-      courant = suivant;
-    }
-
-    groupes.push(groupe);
-  }
-
-  return groupes;
+  afficherEchanges();
 }
 
 
-/* =========================================================
-   FORMAT DATE
-========================================================= */
-
-function formaterDate(date){
-
-  if(!date) return "";
-
-  const d = new Date(date + "T12:00:00");
-
-  if(isNaN(d.getTime())) return date;
-
-  return d.toLocaleDateString("fr-FR",{
-    weekday:"long",
-    day:"2-digit",
-    month:"long",
-    year:"numeric"
-  });
-}
-
-
-/* =========================================================
-   FORMAT PUBLICATION
-========================================================= */
-
-function formaterPublication(date){
-
-  if(!date) return "";
-
-  const d = new Date(date);
-
-  if(isNaN(d.getTime())) return "";
-
-  return d.toLocaleString("fr-FR",{
-    day:"2-digit",
-    month:"2-digit",
-    year:"numeric",
-    hour:"2-digit",
-    minute:"2-digit"
-  });
-}
-
-
-/* =========================================================
-   EMOJI MÉTIER
-========================================================= */
-
-function emojiMetier(metier){
-
-  const m = normaliser(metier);
-
-  if(m === "asct") return "🚆";
-  if(m === "adc") return "🚄";
-  if(m === "escales") return "👷";
-
-  return "👨‍🔧";
-}
-
-
-/* =========================================================
-   AFFICHAGE
-========================================================= */
-
-function afficher(){
-
-  const liste = document.getElementById("liste");
-
-  let data = [...donnees];
-
-  if(filtreActuel !== "Tous"){
-
-    data = data.filter(item =>
-      normaliser(item.metier) === normaliser(filtreActuel)
-    );
-
-  }
-
-  const groupes = construireGroupes(data);
-
-  if(groupes.length === 0){
-
-    liste.innerHTML = `
-      <div class="empty">
-        <div class="empty-icon">🔎</div>
-        <div class="empty-title">
-          Aucune journée disponible
-        </div>
-        <p>
-          Aucune journée ne correspond actuellement à ce filtre.
-        </p>
-      </div>
-    `;
-
-    return;
-  }
-
-  liste.innerHTML = groupes.map(groupe => {
-
-    const premier = groupe[0];
-
-    return `
-      <article class="post">
-
-        <div class="post-header">
-
-          <div class="avatar">
-            👤
-          </div>
-
-          <div class="agent-info">
-
-            <div class="agent-name">
-              ${escapeHtml(premier.nom || "Agent")}
-            </div>
-
-            <div class="agent-meta">
-
-              <span class="metier-badge">
-                ${emojiMetier(premier.metier)}
-                ${escapeHtml(premier.metier || "Autre")}
-              </span>
-
-              ${
-                premier.date_demande
-                ?
-                `<span class="publication">
-                  🕒 Demande publiée le ${formaterPublication(premier.date_demande)}
-                </span>`
-                :
-                ""
-              }
-
-            </div>
-
-          </div>
-
-          <button
-            class="delete-btn"
-            onclick="supprimerGroupe(${JSON.stringify(groupe.map(x=>x.id))})"
-            title="Supprimer"
-          >
-            🗑
-          </button>
-
-        </div>
-
-        ${groupe.map((jour,index) => `
-
-          <div class="day-block">
-
-            <div class="day-title">
-              JOURNÉE ${index + 1}
-            </div>
-
-            <div class="day-date">
-              📅 ${formaterDate(jour.date_service)}
-            </div>
-
-            <div class="service-grid">
-
-              <div class="service-box">
-                <span class="service-label">
-                  Prise de service
-                </span>
-
-                <div class="service-value">
-                  📍 ${escapeHtml(jour.lieu_prise_service || "Non renseigné")}
-                </div>
-              </div>
-
-              <div class="service-box">
-                <span class="service-label">
-                  Fin de service
-                </span>
-
-                <div class="service-value">
-                  📍 ${escapeHtml(jour.lieu_fin_service || "Non renseigné")}
-                </div>
-              </div>
-
-            </div>
-
-            <div class="times">
-
-              <span class="time-pill">
-                🕐 ${escapeHtml(jour.prise_service || "--:--")}
-              </span>
-
-              <span class="time-pill">
-                🕐 ${escapeHtml(jour.fin_service || "--:--")}
-              </span>
-
-            </div>
-
-            ${
-              jour.commentaire
-              ?
-              `
-              <div class="comment">
-                💬 ${escapeHtml(jour.commentaire)}
-              </div>
-              `
-              :
-              ""
-            }
-
-          </div>
-
-        `).join("")}
-
-        <div class="post-actions">
-
-          <button
-            class="action-btn primary"
-            onclick="ouvrirInteret(${premier.id})"
-          >
-            🙋 Je suis intéressé
-          </button>
-
-        </div>
-
-      </article>
-    `;
-
-  }).join("");
-}
-
-
-/* =========================================================
-   SÉCURITÉ HTML
-========================================================= */
-
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-/* =========================================================
-   CHARGEMENT SUPABASE
-========================================================= */
-
-async function charger(){
-
-  const {data,error} = await supabaseClient
-    .from("echanges")
-    .select("*")
-    .neq("statut","supprime")
-    .order("date_service",{ascending:true})
-    .order("date_demande",{ascending:false});
-
-  if(error){
-
-    console.error(error);
-
-    document.getElementById("liste").innerHTML = `
-      <div class="empty">
-        <div class="empty-icon">⚠️</div>
-        <div class="empty-title">
-          Impossible de charger les échanges
-        </div>
-        <p>
-          Vérifie ta connexion puis actualise la page.
-        </p>
-      </div>
-    `;
-
-    return;
-  }
-
-  donnees = data || [];
-
-  afficher();
-}
-
-
-/* =========================================================
-   FILTRE
-========================================================= */
-
-function filtrer(metier,bouton){
-
-  filtreActuel = metier;
+function ouvrirChoixMetier(){
 
   document
-    .querySelectorAll(".filter")
-    .forEach(b => b.classList.remove("active"));
+    .getElementById("choixMetierModal")
+    .classList.remove("hidden");
+}
 
-  bouton.classList.add("active");
 
-  afficher();
+function fermerChoixMetier(){
+
+  document
+    .getElementById("choixMetierModal")
+    .classList.add("hidden");
+}
+
+
+function selectionnerMetier(metier){
+
+  metierActuel = metier;
+
+  fermerChoixMetier();
+
+  ouvrirConfirmation();
 }
 
 
 /* =========================================================
-   CONFIRMATION CONGÉ REFUSÉ
+   CONFIRMATION
 ========================================================= */
 
 function ouvrirConfirmation(){
@@ -1693,8 +1648,6 @@ function fermerConfirmation(){
 
 function confirmerCongeRefuse(){
 
-  confirmationCongeValidee = true;
-
   fermerConfirmation();
 
   if(!metierActuel){
@@ -1709,63 +1662,30 @@ function confirmerCongeRefuse(){
 
 
 /* =========================================================
-   CHOIX MÉTIER
-========================================================= */
-
-function ouvrirChoixMetier(){
-
-  document
-    .getElementById("metierModal")
-    .classList.remove("hidden");
-}
-
-
-function fermerChoixMetier(){
-
-  document
-    .getElementById("metierModal")
-    .classList.add("hidden");
-}
-
-
-function selectionnerMetier(metier){
-
-  metierActuel = metier;
-
-  document.getElementById("metier").value = metier;
-
-  fermerChoixMetier();
-
-  /*
-   * Si la confirmation du congé refusé a déjà été donnée,
-   * on ouvre directement le formulaire.
-   *
-   * Sinon, la confirmation est demandée avant.
-   */
-  if(confirmationCongeValidee){
-
-    ouvrirFormulaire();
-
-  }else{
-
-    ouvrirConfirmation();
-
-  }
-}
-
-
-/* =========================================================
    FORMULAIRE
 ========================================================= */
 
 function ouvrirFormulaire(){
 
+  const badge =
+    document.getElementById(
+      "formMetierBadge"
+    );
+
+  const noms = {
+    "ASCT":"🚆 ASCT",
+    "ADC":"🚄 ADC",
+    "Escales":"👷 Escales",
+    "Autre":"👨‍🔧 Autre"
+  };
+
+  badge.innerText =
+    noms[metierActuel] ||
+    metierActuel;
+
   document
     .getElementById("formModal")
     .classList.remove("hidden");
-
-  document.getElementById("metier").value = metierActuel;
-
 }
 
 
@@ -1774,29 +1694,26 @@ function fermerFormulaire(){
   document
     .getElementById("formModal")
     .classList.add("hidden");
-
-  /*
-   * Une nouvelle demande devra toujours être précédée
-   * de la confirmation du congé refusé.
-   */
-  confirmationCongeValidee = false;
 }
 
 
 /* =========================================================
-   2E JOURNÉE
+   JOURNÉE 2
 ========================================================= */
 
-function toggleDeuxiemeJournee(){
+function toggleJournee2(){
 
-  const checkbox =
-    document.getElementById("deuxiemeJournee");
+  const actif =
+    document
+      .getElementById("deuxiemeJournee")
+      .checked;
 
-  const bloc =
-    document.getElementById("blocJournee2");
-
-  bloc.style.display =
-    checkbox.checked ? "block" : "none";
+  document
+    .getElementById("blocJournee2")
+    .classList.toggle(
+      "hidden",
+      !actif
+    );
 }
 
 
@@ -1807,105 +1724,158 @@ function toggleDeuxiemeJournee(){
 async function publier(){
 
   const nom =
-    document.getElementById("nom").value.trim();
+    document
+      .getElementById("nom")
+      .value
+      .trim();
 
-  const date1 =
-    document.getElementById("date1").value;
+  const date =
+    document
+      .getElementById("date")
+      .value;
 
-  const prise1 =
-    document.getElementById("prise1").value;
+  const prise =
+    document
+      .getElementById("prise")
+      .value;
 
-  const fin1 =
-    document.getElementById("fin1").value;
+  const fin =
+    document
+      .getElementById("fin")
+      .value;
 
-  const lieuPrise1 =
-    document.getElementById("lieuPrise1").value.trim();
+  const lieuPrise =
+    document
+      .getElementById("lieuPrise")
+      .value
+      .trim();
 
-  const lieuFin1 =
-    document.getElementById("lieuFin1").value.trim();
+  const lieuFin =
+    document
+      .getElementById("lieuFin")
+      .value
+      .trim();
 
-  const commentaire =
-    document.getElementById("commentaire").value.trim();
 
   const deuxieme =
-    document.getElementById("deuxiemeJournee").checked;
+    document
+      .getElementById("deuxiemeJournee")
+      .checked;
 
-  if(
-    !nom ||
-    !metierActuel ||
-    !date1 ||
-    !prise1 ||
-    !fin1 ||
-    !lieuPrise1 ||
-    !lieuFin1
-  ){
 
-    alert("Merci de renseigner tous les champs obligatoires de la première journée.");
+  const date2 =
+    document
+      .getElementById("date2")
+      .value;
+
+  const prise2 =
+    document
+      .getElementById("prise2")
+      .value;
+
+  const fin2 =
+    document
+      .getElementById("fin2")
+      .value;
+
+  const lieuPrise2 =
+    document
+      .getElementById("lieuPrise2")
+      .value
+      .trim();
+
+  const lieuFin2 =
+    document
+      .getElementById("lieuFin2")
+      .value
+      .trim();
+
+
+  const commentaire =
+    document
+      .getElementById("commentaire")
+      .value
+      .trim();
+
+
+  if(!metierActuel){
+
+    alert(
+      "Merci de choisir votre métier."
+    );
 
     return;
   }
 
-  let date2 = null;
-  let prise2 = null;
-  let fin2 = null;
-  let lieuPrise2 = null;
-  let lieuFin2 = null;
 
-  if(deuxieme){
+  if(
+    !nom ||
+    !date ||
+    !prise ||
+    !fin ||
+    !lieuPrise ||
+    !lieuFin
+  ){
 
-    date2 =
-      document.getElementById("date2").value;
+    alert(
+      "Merci de remplir le nom, la date, les horaires et les lieux de la première journée."
+    );
 
-    prise2 =
-      document.getElementById("prise2").value;
+    return;
+  }
 
-    fin2 =
-      document.getElementById("fin2").value;
 
-    lieuPrise2 =
-      document.getElementById("lieuPrise2").value.trim();
-
-    lieuFin2 =
-      document.getElementById("lieuFin2").value.trim();
-
-    if(
+  if(
+    deuxieme &&
+    (
       !date2 ||
       !prise2 ||
       !fin2 ||
       !lieuPrise2 ||
       !lieuFin2
-    ){
+    )
+  ){
 
-      alert("Merci de renseigner tous les champs obligatoires de la deuxième journée.");
+    alert(
+      "Merci de remplir la date, les horaires et les lieux de la deuxième journée."
+    );
 
-      return;
-    }
-
-    if(date1 === date2){
-
-      alert("Les deux journées doivent avoir des dates différentes.");
-
-      return;
-    }
-
+    return;
   }
 
+
+  if(
+    deuxieme &&
+    date2 === date
+  ){
+
+    alert(
+      "Les deux journées doivent être sur deux dates différentes."
+    );
+
+    return;
+  }
+
+
   /*
-   * Une seule date de publication pour les deux lignes.
-   */
+    Une seule date de publication pour
+    toute la demande.
+  */
+
   const dateDemande =
     new Date().toISOString();
 
-  const lignes = [
+
+  const demandes = [
 
     {
       metier:metierActuel,
       nom:nom,
-      date_service:date1,
-      prise_service:prise1,
-      fin_service:fin1,
-      lieu_prise_service:lieuPrise1,
-      lieu_fin_service:lieuFin1,
+      date_service:date,
+      prise_service:prise,
+      fin_service:fin,
+      lieu_prise_service:lieuPrise,
+      lieu_fin_service:lieuFin,
       commentaire:commentaire,
       statut:"disponible",
       agent_interesse:null,
@@ -1914,9 +1884,10 @@ async function publier(){
 
   ];
 
+
   if(deuxieme){
 
-    lignes.push({
+    demandes.push({
 
       metier:metierActuel,
       nom:nom,
@@ -1934,201 +1905,1342 @@ async function publier(){
 
   }
 
-  const {error} =
+
+  const {
+    error
+  } =
     await supabaseClient
       .from("echanges")
-      .insert(lignes);
+      .insert(demandes);
+
 
   if(error){
 
     console.error(error);
 
     alert(
-      "Une erreur est survenue lors de la publication.\n\n" +
+      "Erreur lors de la publication : " +
       error.message
     );
 
     return;
   }
 
-  alert("Ta journée a bien été publiée.");
+
+  resetFormulaire();
 
   fermerFormulaire();
 
-  reinitialiserFormulaire();
 
-  await charger();
-
-}
-
-
-/* =========================================================
-   RESET FORMULAIRE
-========================================================= */
-
-function reinitialiserFormulaire(){
-
-  document.getElementById("nom").value = "";
-
-  document.getElementById("date1").value = "";
-  document.getElementById("prise1").value = "";
-  document.getElementById("fin1").value = "";
-  document.getElementById("lieuPrise1").value = "";
-  document.getElementById("lieuFin1").value = "";
-
-  document.getElementById("date2").value = "";
-  document.getElementById("prise2").value = "";
-  document.getElementById("fin2").value = "";
-  document.getElementById("lieuPrise2").value = "";
-  document.getElementById("lieuFin2").value = "";
-
-  document.getElementById("commentaire").value = "";
-
-  document.getElementById("deuxiemeJournee").checked = false;
-
-  document.getElementById("blocJournee2").style.display = "none";
-
-}
-
-
-/* =========================================================
-   SUPPRESSION
-========================================================= */
-
-async function supprimerGroupe(ids){
-
-  if(!confirm(
-    "Supprimer cette proposition ?"
-  )){
-
-    return;
-  }
-
-  const {error} =
-    await supabaseClient
-      .from("echanges")
-      .update({
-        statut:"supprime"
-      })
-      .in("id",ids);
-
-  if(error){
-
-    console.error(error);
-
-    alert(
-      "Impossible de supprimer cette proposition.\n\n" +
-      error.message
-    );
-
-    return;
-  }
-
-  await charger();
-}
-
-
-/* =========================================================
-   INTÉRESSÉ
-========================================================= */
-
-function ouvrirInteret(id){
-
-  idInteret = id;
-
-  document.getElementById("interesseNom").value = "";
-  document.getElementById("interesseContact").value = "";
-
-  document
-    .getElementById("interetModal")
-    .classList.remove("hidden");
-}
-
-
-function fermerInteret(){
-
-  document
-    .getElementById("interetModal")
-    .classList.add("hidden");
-
-  idInteret = null;
-}
-
-
-async function envoyerInteret(){
-
-  if(!idInteret) return;
-
-  const nom =
-    document.getElementById("interesseNom").value.trim();
-
-  const contact =
-    document.getElementById("interesseContact").value.trim();
-
-  if(!nom || !contact){
-
-    alert(
-      "Merci de renseigner ton nom et tes coordonnées."
-    );
-
-    return;
-  }
-
-  const {error} =
-    await supabaseClient
-      .from("echanges")
-      .update({
-        agent_interesse:
-          nom + " — " + contact
-      })
-      .eq("id",idInteret);
-
-  if(error){
-
-    console.error(error);
-
-    alert(
-      "Impossible d'enregistrer ta demande.\n\n" +
-      error.message
-    );
-
-    return;
-  }
-
-  alert(
-    "Ton intérêt a bien été transmis à l'agent."
+  afficherToast(
+    deuxieme
+      ? "🚆 Vos 2 journées sont publiées !"
+      : "🚆 Votre journée est publiée !"
   );
 
-  fermerInteret();
 
-  await charger();
+  await afficherEchanges();
 }
 
 
 /* =========================================================
-   FERMETURE MODALES EN CLIQUANT À CÔTÉ
+   RESET
 ========================================================= */
 
-document.querySelectorAll(".modal").forEach(modal => {
+function resetFormulaire(){
 
-  modal.addEventListener("click",function(e){
+  [
+    "nom",
+    "date",
+    "prise",
+    "fin",
+    "lieuPrise",
+    "lieuFin",
+    "date2",
+    "prise2",
+    "fin2",
+    "lieuPrise2",
+    "lieuFin2",
+    "commentaire"
+  ].forEach(id => {
 
-    if(e.target === modal){
+    const element =
+      document.getElementById(id);
 
-      modal.classList.add("hidden");
+    if(element){
+
+      element.value = "";
 
     }
 
   });
 
-});
+
+  const checkbox =
+    document.getElementById(
+      "deuxiemeJournee"
+    );
+
+  if(checkbox){
+
+    checkbox.checked = false;
+
+  }
+
+
+  document
+    .getElementById("blocJournee2")
+    .classList.add("hidden");
+
+}
 
 
 /* =========================================================
-   CHARGEMENT INITIAL
+   FILTRE MÉTIER
 ========================================================= */
 
-charger();
+function filtrerMetier(metier){
+
+  filtreActuel =
+    metier || "";
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(btn => {
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.metier === filtreActuel
+      );
+
+    });
+
+
+  afficherEchanges();
+}
+
+
+/* =========================================================
+   NORMALISATION
+========================================================= */
+
+function normaliserTexte(valeur){
+
+  return String(valeur || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/\s+/g," ");
+}
+
+
+/* =========================================================
+   DATE SUIVANTE
+========================================================= */
+
+function dateSuivante(dateStr){
+
+  if(!dateStr){
+
+    return null;
+
+  }
+
+
+  const morceaux =
+    String(dateStr)
+      .split("-")
+      .map(Number);
+
+
+  if(
+    morceaux.length !== 3 ||
+    !morceaux[0] ||
+    !morceaux[1] ||
+    !morceaux[2]
+  ){
+
+    return null;
+
+  }
+
+
+  const date =
+    new Date(
+      Date.UTC(
+        morceaux[0],
+        morceaux[1] - 1,
+        morceaux[2]
+      )
+    );
+
+
+  date.setUTCDate(
+    date.getUTCDate() + 1
+  );
+
+
+  return date
+    .toISOString()
+    .slice(0,10);
+}
+
+
+/* =========================================================
+   TEST REGROUPEMENT
+========================================================= */
+
+function peutRegrouper(
+  jour1,
+  jour2
+){
+
+  /*
+    Même agent
+  */
+
+  const memeNom =
+    normaliserTexte(
+      jour1.nom
+    ) ===
+    normaliserTexte(
+      jour2.nom
+    );
+
+
+  /*
+    Même métier
+  */
+
+  const memeMetier =
+    normaliserTexte(
+      jour1.metier
+    ) ===
+    normaliserTexte(
+      jour2.metier
+    );
+
+
+  /*
+    Jour 2 = lendemain exact
+  */
+
+  const dateSuivanteExacte =
+    dateSuivante(
+      jour1.date_service
+    ) ===
+    String(
+      jour2.date_service
+    );
+
+
+  /*
+    Fin jour 1 = prise jour 2
+  */
+
+  const memeLieu =
+    normaliserTexte(
+      jour1.lieu_fin_service
+    ) ===
+    normaliserTexte(
+      jour2.lieu_prise_service
+    );
+
+
+  return (
+    memeNom &&
+    memeMetier &&
+    dateSuivanteExacte &&
+    memeLieu
+  );
+}
+
+
+/* =========================================================
+   CONSTRUCTION DES GROUPES
+========================================================= */
+
+function construireGroupes(data){
+
+  const lignes =
+    [...data];
+
+
+  /*
+    Tri indépendant de l'ordre renvoyé
+    par Supabase.
+  */
+
+  lignes.sort((a,b) => {
+
+    const nomA =
+      normaliserTexte(a.nom);
+
+    const nomB =
+      normaliserTexte(b.nom);
+
+
+    if(nomA !== nomB){
+
+      return nomA.localeCompare(
+        nomB
+      );
+
+    }
+
+
+    const metierA =
+      normaliserTexte(a.metier);
+
+    const metierB =
+      normaliserTexte(b.metier);
+
+
+    if(metierA !== metierB){
+
+      return metierA.localeCompare(
+        metierB
+      );
+
+    }
+
+
+    return String(
+      a.date_service || ""
+    ).localeCompare(
+      String(
+        b.date_service || ""
+      )
+    );
+
+  });
+
+
+  const groupes = [];
+
+  const utilises =
+    new Set();
+
+
+  for(
+    let i = 0;
+    i < lignes.length;
+    i++
+  ){
+
+    if(
+      utilises.has(
+        lignes[i].id
+      )
+    ){
+
+      continue;
+
+    }
+
+
+    const groupe = [
+      lignes[i]
+    ];
+
+
+    utilises.add(
+      lignes[i].id
+    );
+
+
+    /*
+      On recherche la journée suivante
+      dans l'ensemble des lignes.
+    */
+
+    let recherche =
+      lignes[i];
+
+
+    while(true){
+
+      const indexSuivant =
+        lignes.findIndex(
+          candidate => {
+
+            if(
+              utilises.has(
+                candidate.id
+              )
+            ){
+
+              return false;
+
+            }
+
+
+            return peutRegrouper(
+              recherche,
+              candidate
+            );
+
+          }
+        );
+
+
+      if(
+        indexSuivant === -1
+      ){
+
+        break;
+
+      }
+
+
+      const suivante =
+        lignes[indexSuivant];
+
+
+      groupe.push(
+        suivante
+      );
+
+
+      utilises.add(
+        suivante.id
+      );
+
+
+      /*
+        Permet aussi de regrouper
+        une éventuelle 3e journée
+        consécutive.
+      */
+
+      recherche =
+        suivante;
+
+    }
+
+
+    groupe.sort(
+      (a,b) =>
+        String(
+          a.date_service || ""
+        ).localeCompare(
+          String(
+            b.date_service || ""
+          )
+        )
+    );
+
+
+    groupes.push(
+      groupe
+    );
+
+  }
+
+
+  return groupes;
+}
+
+
+/* =========================================================
+   AFFICHAGE
+========================================================= */
+
+async function afficherEchanges(){
+
+  const zone =
+    document.getElementById(
+      "listeEchanges"
+    );
+
+
+  zone.innerHTML =
+    `
+    <div class="empty">
+      <span class="empty-icon">🚆</span>
+      Chargement des journées...
+    </div>
+    `;
+
+
+  let requete =
+    supabaseClient
+      .from("echanges")
+      .select("*")
+      .eq("statut","disponible")
+      .order(
+        "date_service",
+        {
+          ascending:true
+        }
+      );
+
+
+  if(filtreActuel){
+
+    requete =
+      requete.eq(
+        "metier",
+        filtreActuel
+      );
+
+  }
+
+
+  const {
+    data,
+    error
+  } =
+    await requete;
+
+
+  if(error){
+
+    console.error(error);
+
+    zone.innerHTML =
+      `
+      <div class="empty">
+        <span class="empty-icon">❌</span>
+        <strong>Erreur lors du chargement.</strong>
+        <br><br>
+        <small>
+          ${escapeHTML(error.message)}
+        </small>
+      </div>
+      `;
+
+    return;
+  }
+
+
+  zone.innerHTML = "";
+
+
+  if(
+    !data ||
+    !data.length
+  ){
+
+    zone.innerHTML =
+      `
+      <div class="empty">
+        <span class="empty-icon">🚆</span>
+        <strong>Aucune journée proposée</strong>
+        <br><br>
+        Soyez le premier à proposer une journée !
+      </div>
+      `;
+
+    return;
+  }
+
+
+  /*
+    CORRECTION IMPORTANTE :
+    les lignes sont d'abord regroupées.
+  */
+
+  const groupes =
+    construireGroupes(data);
+
+
+  groupes.forEach(
+    groupe => {
+
+      afficherGroupe(
+        groupe,
+        zone
+      );
+
+    }
+  );
+}
+
+
+/* =========================================================
+   AFFICHAGE D'UN GROUPE
+========================================================= */
+
+function afficherGroupe(
+  groupe,
+  zone
+){
+
+  const premier =
+    groupe[0];
+
+
+  const bloc =
+    document.createElement(
+      "article"
+    );
+
+
+  bloc.className =
+    "post";
+
+
+  const metier =
+    premier.metier ||
+    "Autre";
+
+
+  const publication =
+    recupererDatePublication(
+      groupe
+    );
+
+
+  const metierIcon = {
+
+    "ASCT":"🚆",
+    "ADC":"🚄",
+    "Escales":"👷",
+    "Autre":"👨‍🔧"
+
+  }[metier] || "👨‍🔧";
+
+
+  const publicationHTML =
+    publication
+      ?
+      `
+      <div class="publication">
+        🕒 Demande publiée le
+        ${formatDatePublication(publication)}
+      </div>
+      `
+      :
+      `
+      <div class="publication">
+        🕒 Date de demande non disponible
+      </div>
+      `;
+
+
+  let joursHTML = "";
+
+
+  groupe.forEach(
+    (jour,index) => {
+
+      joursHTML +=
+        `
+        <div class="day">
+
+          <div class="day-header">
+
+            <div class="day-number">
+              ${index + 1}
+            </div>
+
+            <div>
+
+              <div class="day-title">
+                JOURNÉE ${index + 1}
+              </div>
+
+              <div class="date-big">
+                📅 ${formatDate(
+                  jour.date_service
+                )}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="infos">
+
+            <div class="info-box">
+
+              <div class="info-label">
+                HORAIRES
+              </div>
+
+              <div class="info-value">
+                ⏰
+                ${formatTime(
+                  jour.prise_service
+                )}
+                →
+                ${formatTime(
+                  jour.fin_service
+                )}
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                PRISE DE SERVICE
+              </div>
+
+              <div class="info-value">
+                📍
+                ${
+                  jour.lieu_prise_service
+                    ?
+                    escapeHTML(
+                      jour.lieu_prise_service
+                    )
+                    :
+                    "Non renseigné"
+                }
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                FIN DE SERVICE
+              </div>
+
+              <div class="info-value">
+                📍
+                ${
+                  jour.lieu_fin_service
+                    ?
+                    escapeHTML(
+                      jour.lieu_fin_service
+                    )
+                    :
+                    "Non renseigné"
+                }
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                DURÉE
+              </div>
+
+              <div class="info-value">
+                ⏱️
+                ${calculerDuree(
+                  jour.prise_service,
+                  jour.fin_service
+                )}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        `;
+
+    }
+  );
+
+
+  const commentaire =
+    premier.commentaire
+      ?
+      `
+      <div class="comment">
+        💬
+        ${escapeHTML(
+          premier.commentaire
+        )}
+      </div>
+      `
+      :
+      "";
+
+
+  const interesse =
+    premier.agent_interesse
+      ?
+      `
+      <div class="interest-info">
+        🙋 Agent intéressé :
+        <strong>
+          ${escapeHTML(
+            premier.agent_interesse
+          )}
+        </strong>
+      </div>
+      `
+      :
+      "";
+
+
+  const ids =
+    groupe
+      .map(
+        e => Number(e.id)
+      )
+      .filter(
+        id => Number.isFinite(id)
+      );
+
+
+  bloc.innerHTML =
+    `
+
+    <div class="post-head">
+
+      <div class="avatar">
+        👤
+      </div>
+
+      <div class="agent">
+        ${escapeHTML(
+          premier.nom
+        )}
+      </div>
+
+      <div class="metier-badge">
+        ${metierIcon}
+        ${escapeHTML(metier)}
+      </div>
+
+    </div>
+
+
+    ${publicationHTML}
+
+
+    <div class="days">
+      ${joursHTML}
+    </div>
+
+
+    ${commentaire}
+
+
+    ${interesse}
+
+
+    <div class="post-actions">
+
+      <button
+        class="action action-interest"
+        onclick="interesse(${ids[0]})"
+      >
+        🙋 JE SUIS INTÉRESSÉ
+      </button>
+
+      <button
+        class="action action-delete"
+        onclick='supprimerGroupe(${JSON.stringify(ids)})'
+      >
+        🗑️ SUPPRIMER
+      </button>
+
+    </div>
+
+    `;
+
+
+  zone.appendChild(
+    bloc
+  );
+}
+
+
+/* =========================================================
+   DATE DE PUBLICATION
+========================================================= */
+
+function recupererDatePublication(
+  groupe
+){
+
+  for(
+    const e of groupe
+  ){
+
+    if(e.date_demande){
+
+      return e.date_demande;
+
+    }
+
+  }
+
+
+  return null;
+}
+
+
+/* =========================================================
+   INTÉRÊT
+========================================================= */
+
+function interesse(id){
+
+  idInteretEnCours =
+    Number(id);
+
+
+  document
+    .getElementById(
+      "nomInteresse"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "interetModal"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  setTimeout(
+    () => {
+
+      document
+        .getElementById(
+          "nomInteresse"
+        )
+        .focus();
+
+    },
+    100
+  );
+}
+
+
+function fermerInteret(){
+
+  idInteretEnCours =
+    null;
+
+  document
+    .getElementById(
+      "interetModal"
+    )
+    .classList.add(
+      "hidden"
+    );
+}
+
+
+async function confirmerInteret(){
+
+  const nom =
+    document
+      .getElementById(
+        "nomInteresse"
+      )
+      .value
+      .trim();
+
+
+  if(!nom){
+
+    alert(
+      "Merci d’indiquer votre nom."
+    );
+
+    return;
+  }
+
+
+  if(!idInteretEnCours){
+
+    fermerInteret();
+
+    return;
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("echanges")
+      .update({
+        agent_interesse:nom
+      })
+      .eq(
+        "id",
+        idInteretEnCours
+      );
+
+
+  if(error){
+
+    console.error(error);
+
+    alert(
+      "Erreur : " +
+      error.message
+    );
+
+    return;
+  }
+
+
+  fermerInteret();
+
+
+  afficherToast(
+    "👍 Votre intérêt a été enregistré."
+  );
+
+
+  afficherEchanges();
+}
+
+
+/* =========================================================
+   SUPPRESSION D'UN GROUPE
+========================================================= */
+
+async function supprimerGroupe(
+  ids
+){
+
+  if(
+    !Array.isArray(ids) ||
+    !ids.length
+  ){
+
+    return;
+  }
+
+
+  if(
+    !confirm(
+      "Voulez-vous vraiment supprimer cette demande ?"
+    )
+  ){
+
+    return;
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("echanges")
+      .delete()
+      .in(
+        "id",
+        ids
+      );
+
+
+  if(error){
+
+    console.error(error);
+
+    alert(
+      "Erreur lors de la suppression : " +
+      error.message
+    );
+
+    return;
+  }
+
+
+  afficherToast(
+    "🗑️ La demande a été supprimée."
+  );
+
+
+  afficherEchanges();
+}
+
+
+/* =========================================================
+   OUTILS D'AFFICHAGE
+========================================================= */
+
+function formatDate(date){
+
+  if(!date){
+
+    return "";
+
+  }
+
+
+  const morceaux =
+    String(date)
+      .split("-");
+
+
+  if(
+    morceaux.length === 3
+  ){
+
+    const d =
+      new Date(
+        Number(morceaux[0]),
+        Number(morceaux[1]) - 1,
+        Number(morceaux[2])
+      );
+
+
+    return d.toLocaleDateString(
+      "fr-FR",
+      {
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
+    );
+
+  }
+
+
+  return String(date);
+}
+
+
+function formatDatePublication(
+  valeur
+){
+
+  if(!valeur){
+
+    return "";
+
+  }
+
+
+  const date =
+    new Date(valeur);
+
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return String(valeur);
+
+  }
+
+
+  return (
+    date.toLocaleDateString(
+      "fr-FR",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    ) +
+    " à " +
+    date.toLocaleTimeString(
+      "fr-FR",
+      {
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    )
+  );
+}
+
+
+function formatTime(value){
+
+  if(!value){
+
+    return "";
+
+  }
+
+
+  return String(
+    value
+  ).substring(
+    0,
+    5
+  );
+}
+
+
+/* =========================================================
+   CALCUL DURÉE
+========================================================= */
+
+function calculerDuree(
+  debut,
+  fin
+){
+
+  if(
+    !debut ||
+    !fin
+  ){
+
+    return "—";
+
+  }
+
+
+  const [h1,m1] =
+    String(debut)
+      .split(":")
+      .map(Number);
+
+  const [h2,m2] =
+    String(fin)
+      .split(":")
+      .map(Number);
+
+
+  if(
+    !Number.isFinite(h1) ||
+    !Number.isFinite(m1) ||
+    !Number.isFinite(h2) ||
+    !Number.isFinite(m2)
+  ){
+
+    return "—";
+
+  }
+
+
+  let minutes =
+    (h2 * 60 + m2) -
+    (h1 * 60 + m1);
+
+
+  if(minutes < 0){
+
+    minutes += 24 * 60;
+
+  }
+
+
+  const heures =
+    Math.floor(
+      minutes / 60
+    );
+
+  const reste =
+    minutes % 60;
+
+
+  return (
+    heures +
+    "h" +
+    String(reste).padStart(
+      2,
+      "0"
+    )
+  );
+}
+
+
+/* =========================================================
+   SÉCURITÉ HTML
+========================================================= */
+
+function escapeHTML(
+  valeur
+){
+
+  if(
+    valeur === null ||
+    valeur === undefined
+  ){
+
+    return "";
+
+  }
+
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.innerText =
+    String(valeur);
+
+
+  return div.innerHTML;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function afficherToast(
+  message
+){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.innerText =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    afficherToast.timer
+  );
+
+
+  afficherToast.timer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      3200
+    );
+}
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+filtreActuel = "";
+
+document
+  .querySelectorAll(".filter")
+  .forEach(
+    btn => {
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.metier === ""
+      );
+
+    }
+  );
+
+
+afficherEchanges();
 
 </script>
 
