@@ -2,507 +2,748 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#102b3d">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>ÉCHANGE SERVICE</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-:root{
-  --navy:#102b3d;
-  --navy2:#173d54;
-  --blue:#0799cf;
-  --blue2:#12acd8;
-  --cyan:#61d9ef;
-  --green:#45d8a0;
-  --bg:#edf6f9;
-  --white:#fff;
-  --text:#18394d;
-  --muted:#688196;
-  --line:#d9e8ee;
-  --shadow:0 16px 38px rgba(18,57,77,.13);
-}
-
 *{
   box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:
-    radial-gradient(circle at 10% 20%,rgba(97,217,239,.16),transparent 25%),
-    radial-gradient(circle at 90% 45%,rgba(7,153,207,.10),transparent 30%),
-    var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-button,
-input,
-textarea{
-  font-family:inherit;
-}
-
-button{
   -webkit-tap-highlight-color:transparent;
 }
 
-.hidden{
-  display:none!important;
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:#17344b;
+  background:#edf4f7;
 }
 
+body{
+  overflow-x:hidden;
+}
+
+/* =========================================================
+   FOND
+========================================================= */
+
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  overflow:hidden;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4,22,36,.18),
+      rgba(4,22,36,.40)
+    ),
+    url("IMG_7689.jpeg") center 45%/cover no-repeat;
+}
+
+.bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.10)
+    );
+}
+
+/* =========================================================
+   APPLICATION
+========================================================= */
+
+.app{
+  width:100%;
+  min-height:100vh;
+  padding-bottom:115px;
+}
+
+.container{
+  width:min(1400px,94%);
+  margin:0 auto;
+}
 
 /* =========================================================
    HEADER
 ========================================================= */
 
-header{
-  position:relative;
-  min-height:185px;
-  padding:
-    calc(30px + env(safe-area-inset-top))
-    42px
-    25px;
-  background:
-    linear-gradient(
-      135deg,
-      #132f42 0%,
-      #102b3d 60%,
-      #173c52 100%
-    );
-  color:#fff;
-  overflow:hidden;
-}
+.header{
+  position:sticky;
+  top:0;
+  z-index:30;
 
-header:after{
-  content:"";
-  position:absolute;
-  width:420px;
-  height:420px;
-  right:-190px;
-  top:-300px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 0 0 35px rgba(255,255,255,.025),
-    0 0 0 70px rgba(255,255,255,.018);
+  background:rgba(7,28,45,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(255,255,255,.15);
+
+  box-shadow:0 8px 30px rgba(0,0,0,.20);
 }
 
 .header-inner{
-  position:relative;
-  z-index:2;
-  width:min(1280px,100%);
+  width:min(1400px,94%);
   margin:auto;
+
+  min-height:105px;
+
   display:flex;
   align-items:center;
-  gap:22px;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.train-logo{
-  flex:0 0 80px;
-  width:80px;
-  height:80px;
-  display:grid;
-  place-items:center;
-  border-radius:25px;
-  background:linear-gradient(145deg,#fff,#e8f3f7);
-  box-shadow:0 10px 25px rgba(0,0,0,.18);
-  font-size:42px;
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:16px;
 }
 
-.header-title{
-  min-width:0;
+.logo-train{
+  width:62px;
+  height:62px;
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:34px;
+
+  background:linear-gradient(145deg,#ffffff,#dcebf2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 8px 25px rgba(0,0,0,.25);
 }
 
-.header-title h1{
+.title-block h1{
   margin:0;
-  font-size:clamp(34px,5vw,58px);
+
+  color:white;
+
+  font-size:clamp(27px,4vw,48px);
   line-height:1;
   font-weight:900;
-  letter-spacing:-1.5px;
+  letter-spacing:-1px;
 }
 
-.header-title p{
-  margin:12px 0 0;
-  font-size:clamp(15px,2vw,22px);
-  color:#d7e8ef;
-  font-weight:650;
+.title-block p{
+  margin:8px 0 0;
+
+  color:#cfe7f4;
+
+  font-size:clamp(12px,1.7vw,17px);
+  font-weight:600;
 }
 
-.status{
-  margin-left:auto;
+.status-pill{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:13px 19px;
-  border:1px solid rgba(255,255,255,.16);
+  gap:8px;
+
+  padding:11px 16px;
+
   border-radius:999px;
-  background:rgba(255,255,255,.09);
-  color:#f4fbfd;
-  font-weight:800;
-  white-space:nowrap;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.15);
+
+  color:white;
+
+  font-size:13px;
+  font-weight:700;
 }
 
 .status-dot{
-  width:12px;
-  height:12px;
+  width:9px;
+  height:9px;
   border-radius:50%;
-  background:#4ee1aa;
-  box-shadow:0 0 14px rgba(78,225,170,.8);
+  background:#49d69b;
+  box-shadow:0 0 10px rgba(73,214,155,.8);
 }
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-main{
-  width:min(1280px,100%);
-  margin:30px auto 120px;
-  padding:0 42px;
-}
-
 
 /* =========================================================
    INTRO
 ========================================================= */
 
 .intro{
-  padding:27px 34px;
-  border-radius:30px;
-  background:rgba(255,255,255,.91);
-  border:1px solid rgba(255,255,255,.95);
-  box-shadow:var(--shadow);
+  margin:24px 0 18px;
+
+  padding:22px 25px;
+
+  border-radius:25px;
+
+  background:rgba(255,255,255,.90);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,.75);
+
+  box-shadow:
+    0 18px 50px rgba(3,27,45,.16);
 }
 
 .intro h2{
-  margin:0;
-  color:#10577d;
-  font-size:clamp(28px,4vw,39px);
-  font-weight:900;
-  letter-spacing:-.5px;
+  margin:0 0 7px;
+
+  font-size:clamp(19px,2.8vw,27px);
+  color:#0d557d;
 }
 
 .intro p{
-  margin:10px 0 0;
-  color:var(--muted);
-  font-size:clamp(15px,2vw,19px);
-  line-height:1.4;
+  margin:0;
+
+  color:#607789;
+
+  font-size:14px;
+  line-height:1.5;
 }
 
-
 /* =========================================================
-   FILTRES
+   TABS METIERS
 ========================================================= */
 
-.filters{
+.metiers{
   display:flex;
-  gap:12px;
-  margin:27px 0 25px;
+  gap:10px;
   overflow-x:auto;
-  padding:2px 2px 8px;
+
+  padding:3px 2px 10px;
+
   scrollbar-width:none;
 }
 
-.filters::-webkit-scrollbar{
+.metiers::-webkit-scrollbar{
   display:none;
 }
 
-.filter{
+.metier-btn{
   flex:0 0 auto;
-  border:0;
-  padding:13px 25px;
+
+  border:none;
+
+  padding:12px 18px;
+
   border-radius:999px;
-  background:rgba(255,255,255,.86);
-  color:#526c7c;
-  font-size:17px;
-  font-weight:850;
+
+  background:rgba(255,255,255,.84);
+
+  color:#416174;
+
+  font-size:14px;
+  font-weight:800;
+
+  box-shadow:0 5px 18px rgba(3,30,50,.12);
+
   cursor:pointer;
-  box-shadow:0 7px 18px rgba(23,61,81,.08);
-  transition:.18s;
 }
 
-.filter.active{
-  color:#fff;
-  background:linear-gradient(135deg,#0798ca,#11acd8);
-  box-shadow:0 10px 23px rgba(7,153,207,.27);
-}
+.metier-btn.active{
+  color:white;
 
+  background:linear-gradient(135deg,#087eb5,#16a4d1);
+
+  box-shadow:
+    0 8px 22px rgba(9,126,181,.32);
+}
 
 /* =========================================================
-   BOUTON PROPOSER
+   BOUTON NOUVELLE DEMANDE
 ========================================================= */
 
-.proposer-btn{
-  display:block;
-  width:min(680px,100%);
-  margin:0 auto 26px;
-  border:0;
-  padding:20px 25px;
-  border-radius:25px;
-  background:linear-gradient(135deg,#078fc1,#13acd8);
-  color:#fff;
-  font-size:21px;
+.action-zone{
+  margin:10px 0 20px;
+
+  display:flex;
+  justify-content:center;
+}
+
+.new-btn{
+  width:100%;
+  max-width:520px;
+
+  border:none;
+
+  padding:18px 24px;
+
+  border-radius:20px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #087eb5,
+      #13a6d3
+    );
+
+  box-shadow:
+    0 12px 30px rgba(0,113,169,.30);
+
+  font-size:17px;
   font-weight:900;
+
   cursor:pointer;
-  box-shadow:0 14px 30px rgba(7,153,207,.28);
-  transition:.18s;
 }
 
-.proposer-btn:hover{
-  transform:translateY(-2px);
-}
-
-.proposer-btn:active{
+.new-btn:active{
   transform:scale(.985);
 }
-
 
 /* =========================================================
    LISTE
 ========================================================= */
 
-#listeEchanges{
-  display:grid;
+#liste{
+  display:flex;
+  flex-direction:column;
   gap:18px;
 }
 
-
 /* =========================================================
-   POST
+   CARTE DEMANDE
 ========================================================= */
 
-.post{
+.exchange-card{
   position:relative;
+
+  padding:24px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,.93);
+
+  border-left:6px solid #1296c5;
+
+  box-shadow:
+    0 18px 55px rgba(3,29,47,.17);
+
   overflow:hidden;
-  padding:27px 30px 24px;
-  border-radius:32px;
-  background:rgba(255,255,255,.96);
-  border:1px solid rgba(255,255,255,.98);
-  border-left:7px solid var(--blue);
-  box-shadow:var(--shadow);
 }
 
-.post:after{
+.exchange-card::before{
   content:"";
+
   position:absolute;
-  right:-80px;
-  top:10px;
-  width:250px;
-  height:250px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(41,170,210,.10),
-    transparent 68%
-  );
+  top:0;
+  right:0;
+
+  width:180px;
+  height:180px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(13,153,204,.10),
+      transparent 68%
+    );
+
   pointer-events:none;
 }
 
-.post-head{
+/* =========================================================
+   DEMANDEUR
+========================================================= */
+
+.request-header{
   position:relative;
-  z-index:1;
+  z-index:2;
+
   display:flex;
-  align-items:center;
-  gap:13px;
   flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+
+  margin-bottom:4px;
 }
 
-.avatar{
-  width:52px;
-  height:52px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:linear-gradient(145deg,#dcebf2,#c8e0ea);
-  color:#317094;
-  font-size:29px;
-}
+.agent-name{
+  margin:0;
 
-.agent{
-  font-size:26px;
+  color:#17384f;
+
+  font-size:clamp(22px,3.5vw,31px);
   font-weight:900;
-  color:#173b52;
+  letter-spacing:.2px;
 }
 
-.metier-badge{
-  padding:8px 14px;
+.agent-name span{
+  display:inline-flex;
+  margin-right:8px;
+}
+
+.metier-tag{
+  padding:7px 12px;
+
   border-radius:999px;
-  background:#e4f5fb;
-  color:#14739b;
-  font-size:13px;
+
+  color:#08729f;
+
+  background:#e5f5fb;
+
+  font-size:12px;
   font-weight:900;
 }
 
-.publication{
-  position:relative;
-  z-index:1;
+.request-date{
+  display:inline-flex;
+  align-items:center;
+
   width:max-content;
   max-width:100%;
-  margin:13px 0 20px 65px;
-  padding:8px 12px;
+
+  margin:8px 0 18px;
+
+  padding:8px 13px;
+
   border-radius:12px;
+
   background:#edf5f8;
-  color:#557185;
-  font-size:13px;
-  font-weight:750;
+
+  color:#687d8c;
+
+  font-size:14px;
+  font-weight:800;
 }
 
-.days{
+.request-date strong{
+  color:#315a71;
+}
+
+/* =========================================================
+   JOURNÉE
+========================================================= */
+
+.journey{
   position:relative;
-  z-index:1;
-  display:grid;
-  gap:13px;
+  z-index:2;
+
+  padding:17px;
+
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(241,249,252,.98),
+      rgba(247,251,252,.95)
+    );
+
+  border:1px solid #d7e7ee;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.8);
 }
 
-.day{
-  padding:18px;
-  border-radius:25px;
-  border:1px solid #d7e8ef;
-  background:linear-gradient(
-    145deg,
-    #f5fbfd,
-    #eaf5f9
-  );
+.journey + .journey{
+  margin-top:14px;
 }
 
-.day-header{
+.journey-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  margin:0 0 14px;
+
+  color:#12658e;
+
+  font-size:20px;
+  font-weight:950;
+  letter-spacing:.2px;
+}
+
+.journey-title .number{
+  width:31px;
+  height:31px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:10px;
+
+  color:white;
+
+  background:#138ab8;
+
+  font-size:15px;
+}
+
+/* =========================================================
+   DATE DE SERVICE — BIEN VISIBLE
+========================================================= */
+
+.service-date{
   display:flex;
   align-items:center;
   gap:12px;
-  margin-bottom:14px;
+
+  margin-bottom:12px;
+
+  padding:14px 16px;
+
+  border-radius:16px;
+
+  background:#e5f3f9;
+
+  border:1px solid #d1e7ef;
 }
 
-.day-number{
-  width:43px;
-  height:43px;
-  display:grid;
-  place-items:center;
-  flex:0 0 43px;
-  border-radius:13px;
-  background:#078fc1;
-  color:#fff;
-  font-size:20px;
-  font-weight:900;
+.service-date-icon{
+  font-size:25px;
+  line-height:1;
 }
 
-.day-title{
-  color:#17618a;
-  font-size:22px;
+.service-date-content{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.service-date-label{
+  color:#738997;
+
+  font-size:10px;
   font-weight:900;
+  letter-spacing:1px;
   text-transform:uppercase;
 }
 
-.date-big{
-  color:#1c465e;
-  font-size:21px;
-  font-weight:900;
+.service-date-value{
+  color:#1d4861;
+
+  font-size:17px;
+  font-weight:950;
 }
 
-.infos{
+/* =========================================================
+   HORAIRES
+========================================================= */
+
+.service-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:11px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
 .info-box{
-  min-height:75px;
-  padding:12px 14px;
-  border-radius:17px;
-  background:rgba(255,255,255,.76);
-  border:1px solid #d9e9ef;
+  min-width:0;
+
+  padding:14px;
+
+  border-radius:16px;
+
+  background:rgba(246,250,251,.92);
+
+  border:1px solid #dbe8ed;
 }
 
 .info-label{
-  margin-bottom:5px;
-  color:#7a91a0;
+  margin-bottom:7px;
+
+  color:#778b99;
+
   font-size:10px;
   font-weight:900;
-  letter-spacing:.7px;
+  letter-spacing:1px;
   text-transform:uppercase;
 }
 
 .info-value{
-  color:#244c64;
-  font-size:17px;
+  color:#244d64;
+
+  font-size:15px;
   font-weight:850;
-  line-height:1.3;
+
+  overflow-wrap:anywhere;
 }
 
-.comment{
-  position:relative;
-  z-index:1;
-  margin-top:14px;
-  padding:13px 15px;
-  border-radius:15px;
-  background:#f4f7f8;
-  color:#607785;
-  font-size:14px;
-  line-height:1.45;
+.info-value.big{
+  font-size:18px;
 }
 
-.interest-info{
-  position:relative;
-  z-index:1;
-  margin-top:13px;
-  padding:12px 15px;
-  border-radius:15px;
-  background:#fff3d9;
-  color:#805800;
-  font-size:14px;
-  font-weight:750;
-}
-
-.post-actions{
-  position:relative;
-  z-index:1;
-  display:flex;
+.locations{
+  display:grid;
+  grid-template-columns:1fr 1fr;
   gap:10px;
-  margin-top:15px;
+
+  margin-top:10px;
 }
 
-.action{
-  border:0;
-  padding:12px 15px;
-  border-radius:14px;
+.location-box{
+  padding:13px 14px;
+
+  border-radius:16px;
+
+  background:#f5f8f9;
+
+  border:1px solid #dce8ec;
+}
+
+.location-box .info-value{
+  font-size:16px;
+}
+
+/* =========================================================
+   SÉPARATEUR JOURNÉES
+========================================================= */
+
+.next-day{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin:12px 5px;
+
+  color:#1684b0;
+
   font-size:13px;
   font-weight:900;
+}
+
+.next-day::before,
+.next-day::after{
+  content:"";
+
+  height:1px;
+  flex:1;
+
+  background:#c8dce5;
+}
+
+/* =========================================================
+   COMMENTAIRE
+========================================================= */
+
+.commentaire{
+  position:relative;
+  z-index:2;
+
+  margin-top:14px;
+
+  padding:13px 15px;
+
+  border-radius:15px;
+
+  background:#f4f6f7;
+
+  color:#657987;
+
+  font-size:15px;
+
+  overflow-wrap:anywhere;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions{
+  position:relative;
+  z-index:2;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+  margin-top:14px;
+}
+
+.btn{
+  min-height:48px;
+
+  border:none;
+
+  border-radius:15px;
+
+  font-size:14px;
+  font-weight:900;
+
   cursor:pointer;
 }
 
-.action-interest{
-  flex:1;
-  background:#fff0cd;
-  color:#8a5c00;
+.btn-interest{
+  color:#966400;
+
+  background:#fff0c9;
 }
 
-.action-delete{
-  background:#ffe4e4;
-  color:#b72c2c;
+.btn-interest:active{
+  background:#ffe5a1;
 }
+
+.btn-delete{
+  color:#c52f2f;
+
+  background:#ffe3e3;
+}
+
+.btn-delete:active{
+  background:#ffd0d0;
+}
+
+.interested{
+  margin-top:12px;
+
+  padding:12px 15px;
+
+  border-radius:14px;
+
+  color:#916000;
+
+  background:#fff2d3;
+
+  font-size:14px;
+  font-weight:800;
+}
+
+/* =========================================================
+   ÉTAT VIDE
+========================================================= */
 
 .empty{
-  padding:45px 20px;
+  padding:45px 25px;
+
   text-align:center;
-  color:#6e8492;
-  background:rgba(255,255,255,.75);
-  border-radius:25px;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,.92);
+
+  box-shadow:0 15px 40px rgba(0,0,0,.13);
 }
 
 .empty-icon{
-  display:block;
-  margin-bottom:8px;
-  font-size:42px;
+  font-size:46px;
+  margin-bottom:10px;
 }
 
+.empty h3{
+  margin:0 0 8px;
+
+  color:#31556a;
+}
+
+.empty p{
+  margin:0;
+
+  color:#718592;
+}
 
 /* =========================================================
    MODALES
@@ -511,300 +752,404 @@ main{
 .overlay{
   position:fixed;
   inset:0;
-  z-index:1000;
-  display:flex;
+  z-index:100;
+
+  display:none;
   align-items:center;
   justify-content:center;
+
   padding:20px;
-  background:rgba(5,24,37,.72);
-  backdrop-filter:blur(9px);
+
+  background:rgba(3,19,31,.60);
+
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.overlay.show{
+  display:flex;
 }
 
 .modal{
-  width:min(620px,100%);
-  max-height:90vh;
-  overflow:auto;
-  padding:28px;
-  border-radius:29px;
-  background:#fff;
-  box-shadow:0 30px 80px rgba(0,0,0,.34);
-}
+  width:min(650px,100%);
+  max-height:92vh;
 
-.modal-icon{
-  text-align:center;
-  font-size:46px;
-  margin-bottom:6px;
+  overflow:auto;
+
+  padding:25px;
+
+  border-radius:28px;
+
+  background:#fff;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35);
 }
 
 .modal h2{
-  margin:0 0 9px;
+  margin:0 0 8px;
+
   color:#173b52;
-  font-size:27px;
-  text-align:center;
+
+  font-size:24px;
 }
 
-.modal p{
-  margin:0 auto 13px;
-  max-width:520px;
-  color:#687f8e;
+.modal-subtitle{
+  margin:0 0 20px;
+
+  color:#708391;
+
+  font-size:14px;
   line-height:1.5;
-  text-align:center;
 }
 
-.modal-buttons{
+.confirm-box{
+  padding:20px;
+
+  border-radius:20px;
+
+  background:#fff6df;
+
+  border:1px solid #f0dfb1;
+
+  color:#765719;
+
+  font-size:16px;
+  font-weight:750;
+  line-height:1.5;
+}
+
+.modal-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
+
   margin-top:20px;
 }
 
 .modal-btn{
-  border:0;
-  border-radius:15px;
-  padding:14px;
-  font-size:14px;
+  min-height:50px;
+
+  border:none;
+  border-radius:16px;
+
+  font-size:15px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .modal-cancel{
-  background:#eaf1f4;
-  color:#405969;
+  background:#edf2f4;
+  color:#536a78;
 }
 
 .modal-confirm{
-  background:linear-gradient(135deg,#078fc1,#13acd8);
-  color:#fff;
+  background:linear-gradient(135deg,#087eb5,#13a6d3);
+  color:white;
 }
 
-.form-title{
-  margin:0 0 18px;
-  color:#173b52;
-  font-size:27px;
-  font-weight:900;
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+.form-group{
+  margin-bottom:15px;
 }
 
-.form-badge{
-  display:inline-flex;
-  margin-bottom:10px;
-  padding:8px 13px;
-  border-radius:999px;
-  background:#e4f5fb;
-  color:#14739b;
+.form-label{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:#506d7c;
+
   font-size:12px;
   font-weight:900;
-}
-
-label{
-  display:block;
-  margin:13px 0 6px;
-  color:#405e6f;
-  font-size:13px;
-  font-weight:850;
+  letter-spacing:.5px;
 }
 
 input,
-textarea,
-select{
+select,
+textarea{
   width:100%;
-  padding:13px 14px;
-  border:1px solid #d5e4ea;
+
+  border:1px solid #d5e2e8;
+
   border-radius:14px;
-  background:#f9fbfc;
-  color:#18394d;
+
+  padding:13px 14px;
+
+  background:#f8fbfc;
+
+  color:#193f55;
+
+  font-family:inherit;
   font-size:16px;
+
   outline:none;
 }
 
 input:focus,
-textarea:focus,
-select:focus{
-  border-color:#159dce;
-  box-shadow:0 0 0 4px rgba(21,157,206,.11);
+select:focus,
+textarea:focus{
+  border-color:#1396c4;
+
+  box-shadow:
+    0 0 0 3px rgba(19,150,196,.12);
 }
 
 textarea{
-  min-height:85px;
+  min-height:90px;
   resize:vertical;
 }
 
-.form-row{
+.form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
-.location-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.day-form-title{
-  margin-top:16px;
-  padding:9px 12px;
-  border-radius:12px;
-  background:#eaf6fa;
-  color:#166489;
-  font-size:14px;
-  font-weight:900;
-}
-
-.toggle{
+.second-toggle{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-top:17px;
-  padding:14px;
-  border-radius:16px;
-  background:#eef7fa;
-  border:1px solid #dce9ee;
-}
+  gap:12px;
 
-.toggle strong{
-  display:block;
-  font-size:14px;
-}
+  margin:18px 0 8px;
 
-.toggle small{
-  display:block;
-  margin-top:4px;
-  color:#738794;
-  line-height:1.3;
-}
-
-.switch{
-  position:relative;
-  width:53px;
-  height:31px;
-  flex:0 0 53px;
-}
-
-.switch input{
-  position:absolute;
-  opacity:0;
-  width:0;
-  height:0;
-}
-
-.slider{
-  position:absolute;
-  inset:0;
-  border-radius:999px;
-  background:#c8d6dc;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.slider:before{
-  content:"";
-  position:absolute;
-  width:25px;
-  height:25px;
-  left:3px;
-  top:3px;
-  border-radius:50%;
-  background:#fff;
-  box-shadow:0 2px 6px rgba(0,0,0,.18);
-  transition:.2s;
-}
-
-.switch input:checked + .slider{
-  background:#079acb;
-}
-
-.switch input:checked + .slider:before{
-  transform:translateX(22px);
-}
-
-.modal-main-btn{
-  width:100%;
-  margin-top:17px;
-  border:0;
   padding:15px;
-  border-radius:15px;
-  background:linear-gradient(135deg,#078fc1,#13acd8);
-  color:#fff;
-  font-size:15px;
-  font-weight:900;
+
+  border-radius:17px;
+
+  background:#eef8fb;
+
+  border:1px solid #d3ebf2;
+
   cursor:pointer;
 }
 
+.second-toggle input{
+  width:22px;
+  height:22px;
+  flex:0 0 auto;
+}
+
+.second-toggle strong{
+  display:block;
+
+  color:#176481;
+
+  font-size:15px;
+}
+
+.second-helper{
+  margin:-2px 0 15px 37px;
+
+  color:#81929c;
+
+  font-size:12px;
+}
+
+.second-block{
+  display:none;
+
+  margin-top:14px;
+
+  padding:16px;
+
+  border-radius:20px;
+
+  background:#f3f9fb;
+
+  border:1px solid #d9eaf0;
+}
+
+.second-block.show{
+  display:block;
+}
+
+.submit-btn{
+  width:100%;
+
+  min-height:54px;
+
+  margin-top:8px;
+
+  border:none;
+  border-radius:17px;
+
+  color:white;
+
+  background:linear-gradient(135deg,#087eb5,#13a6d3);
+
+  font-size:16px;
+  font-weight:950;
+
+  cursor:pointer;
+
+  box-shadow:0 10px 25px rgba(8,126,181,.25);
+}
+
+.close-btn{
+  width:100%;
+
+  min-height:48px;
+
+  margin-top:10px;
+
+  border:none;
+  border-radius:15px;
+
+  color:#607481;
+
+  background:#edf2f4;
+
+  font-size:14px;
+  font-weight:850;
+
+  cursor:pointer;
+}
 
 /* =========================================================
-   TOAST
+   NOTIFICATION TOAST
 ========================================================= */
 
 .toast{
   position:fixed;
-  z-index:2000;
+
   left:50%;
   bottom:105px;
+
+  z-index:200;
+
+  width:min(500px,90%);
+
   transform:translate(-50%,20px);
-  width:min(480px,calc(100% - 30px));
-  padding:14px 17px;
-  border-radius:15px;
-  background:#102b3d;
-  color:#fff;
-  text-align:center;
-  font-size:14px;
-  font-weight:800;
+
   opacity:0;
   pointer-events:none;
-  transition:.25s;
-  box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+  padding:15px 18px;
+
+  border-radius:17px;
+
+  background:rgba(8,31,47,.94);
+
+  color:white;
+
+  box-shadow:0 15px 45px rgba(0,0,0,.3);
+
+  font-size:14px;
+  font-weight:750;
+
+  transition:.25s ease;
 }
 
 .toast.show{
-  opacity:1;
   transform:translate(-50%,0);
+  opacity:1;
 }
 
-
 /* =========================================================
-   NAVIGATION BASSE
+   NAVIGATION BAS
 ========================================================= */
 
 .bottom-nav{
   position:fixed;
-  z-index:900;
+
   left:50%;
-  bottom:calc(10px + env(safe-area-inset-bottom));
+  bottom:14px;
+
+  z-index:50;
+
   transform:translateX(-50%);
-  width:min(690px,calc(100% - 28px));
+
+  width:min(730px,92%);
+
+  padding:8px;
+
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
-  padding:8px;
-  border:1px solid rgba(255,255,255,.95);
+
   border-radius:27px;
-  background:rgba(255,255,255,.92);
-  box-shadow:0 15px 38px rgba(19,61,82,.20);
+
+  background:rgba(255,255,255,.94);
+
   backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  box-shadow:
+    0 16px 50px rgba(0,0,0,.22);
 }
 
-.bottom-nav button{
-  border:0;
-  padding:9px 8px;
+.nav-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  min-height:68px;
+
   border-radius:20px;
-  background:transparent;
-  color:#647a89;
-  font-size:14px;
-  font-weight:850;
+
+  color:#687c8a;
+
   cursor:pointer;
 }
 
-.bottom-nav button.active{
-  background:#edf8fb;
-  color:#087ba8;
+.nav-item.active{
+  color:#087aa7;
+
+  background:#eef8fb;
 }
 
 .nav-icon{
-  display:block;
-  margin-bottom:2px;
-  font-size:23px;
+  font-size:25px;
+  line-height:1;
+
+  margin-bottom:5px;
 }
 
+.nav-label{
+  font-size:12px;
+  font-weight:900;
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:45px;
+
+  color:#6d8290;
+
+  font-weight:800;
+}
+
+.spinner{
+  width:25px;
+  height:25px;
+
+  margin-right:10px;
+
+  border:3px solid #dce9ee;
+  border-top-color:#118ab6;
+
+  border-radius:50%;
+
+  animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
 
 /* =========================================================
    RESPONSIVE
@@ -812,141 +1157,85 @@ textarea{
 
 @media(max-width:700px){
 
-  header{
-    min-height:170px;
-    padding:
-      calc(22px + env(safe-area-inset-top))
-      17px
-      22px;
-  }
-
   .header-inner{
-    gap:13px;
+    min-height:86px;
   }
 
-  .train-logo{
-    width:64px;
-    height:64px;
-    flex-basis:64px;
-    border-radius:20px;
-    font-size:34px;
-  }
-
-  .header-title h1{
-    font-size:31px;
-    letter-spacing:-1px;
-  }
-
-  .header-title p{
-    margin-top:7px;
-    font-size:14px;
-  }
-
-  .status{
-    position:absolute;
-    right:0;
-    top:78px;
-    padding:8px 12px;
-    font-size:12px;
-  }
-
-  .status-dot{
-    width:9px;
-    height:9px;
-  }
-
-  main{
-    margin-top:20px;
-    padding:0 14px;
-  }
-
-  .intro{
-    padding:22px 20px;
-    border-radius:24px;
-  }
-
-  .intro h2{
+  .logo-train{
+    width:49px;
+    height:49px;
+    border-radius:14px;
     font-size:27px;
   }
 
-  .intro p{
-    font-size:14px;
-  }
-
-  .filter{
-    padding:11px 17px;
-    font-size:14px;
-  }
-
-  .proposer-btn{
-    font-size:17px;
-    padding:16px;
-    border-radius:19px;
-  }
-
-  .post{
-    padding:19px 15px 18px;
-    border-radius:24px;
-  }
-
-  .agent{
-    font-size:21px;
-  }
-
-  .publication{
-    margin-left:0;
+  .title-block p{
     font-size:11px;
   }
 
-  .day{
-    padding:13px;
-    border-radius:20px;
+  .status-pill{
+    display:none;
   }
 
-  .day-title{
-    font-size:18px;
+  .intro{
+    padding:18px;
+    border-radius:21px;
   }
 
-  .date-big{
-    font-size:18px;
-  }
-
-  .infos{
-    grid-template-columns:1fr;
-  }
-
-  .location-row,
-  .form-row{
-    grid-template-columns:1fr;
-  }
-
-  .post-actions{
-    flex-direction:column;
-  }
-
-  .action{
-    width:100%;
-  }
-
-  .modal{
-    padding:21px;
+  .exchange-card{
+    padding:17px;
     border-radius:23px;
   }
 
-  .modal-buttons{
+  .service-grid,
+  .locations,
+  .form-grid{
     grid-template-columns:1fr;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+  .journey{
+    padding:13px;
+  }
+
+  .service-date-value{
+    font-size:16px;
+  }
+
+  .bottom-nav{
+    bottom:8px;
+    width:94%;
   }
 }
 
-@media(min-width:701px) and (max-width:1000px){
+@media(min-width:1100px){
 
-  header{
-    padding-left:25px;
-    padding-right:25px;
+  .container,
+  .header-inner{
+    width:min(1500px,92%);
   }
 
-  main{
-    padding:0 25px;
+  #liste{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:start;
+  }
+}
+
+/* =========================================================
+   MODE PAYSAGE IPAD
+========================================================= */
+
+@media(min-width:700px) and (orientation:landscape){
+
+  .header-inner{
+    min-height:92px;
+  }
+
+  .bottom-nav{
+    width:730px;
   }
 }
 </style>
@@ -954,211 +1243,206 @@ textarea{
 
 <body>
 
+<div class="bg"></div>
 
-<!-- =======================================================
-     HEADER
-======================================================== -->
+<div class="app">
 
-<header>
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
-  <div class="header-inner">
+  <header class="header">
+    <div class="header-inner">
 
-    <div class="train-logo">
-      🚆
+      <div class="logo-area">
+
+        <div class="logo-train">
+          🚆
+        </div>
+
+        <div class="title-block">
+          <h1>ÉCHANGE SERVICE</h1>
+          <p>Échange de journées entre agents • si congés refusés</p>
+        </div>
+
+      </div>
+
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        Service actif
+      </div>
+
     </div>
+  </header>
 
-    <div class="header-title">
+  <main class="container">
 
-      <h1>
-        ÉCHANGE SERVICE
-      </h1>
+    <!-- =================================================
+         INTRO
+    ================================================== -->
+
+    <section class="intro">
+
+      <h2>🔄 Les journées disponibles</h2>
 
       <p>
-        Échange de journées entre agents • si congés refusés
+        Consulte les journées proposées par les agents et
+        propose un échange lorsque ton congé a été refusé.
       </p>
 
-    </div>
+    </section>
 
-    <div class="status">
-      <span class="status-dot"></span>
-      Service actif
-    </div>
+    <!-- =================================================
+         METIERS
+    ================================================== -->
 
-  </div>
-
-</header>
-
-
-<!-- =======================================================
-     CONTENU
-======================================================== -->
-
-<main>
-
-  <section>
-
-    <div class="intro">
-
-      <h2>
-        🔄 Les journées disponibles
-      </h2>
-
-      <p>
-        Consulte les journées proposées par les agents
-        et propose un échange lorsque ton congé a été refusé.
-      </p>
-
-    </div>
-
-
-    <!-- FILTRES -->
-
-    <div class="filters">
+    <div class="metiers">
 
       <button
-        class="filter active"
-        data-metier=""
-        onclick="filtrerMetier('')"
-      >
+        class="metier-btn active"
+        data-metier="Tous"
+        onclick="choisirMetier('Tous',this)">
         Tous
       </button>
 
       <button
-        class="filter"
+        class="metier-btn"
         data-metier="ASCT"
-        onclick="filtrerMetier('ASCT')"
-      >
+        onclick="choisirMetier('ASCT',this)">
         🚆 ASCT
       </button>
 
       <button
-        class="filter"
+        class="metier-btn"
         data-metier="ADC"
-        onclick="filtrerMetier('ADC')"
-      >
+        onclick="choisirMetier('ADC',this)">
         🚄 ADC
       </button>
 
       <button
-        class="filter"
+        class="metier-btn"
         data-metier="Escales"
-        onclick="filtrerMetier('Escales')"
-      >
-        👷 Escales
+        onclick="choisirMetier('Escales',this)">
+        🧑‍💼 Escales
       </button>
 
       <button
-        class="filter"
+        class="metier-btn"
         data-metier="Autre"
-        onclick="filtrerMetier('Autre')"
-      >
-        👨‍🔧 Autre
+        onclick="choisirMetier('Autre',this)">
+        👷 Autre
       </button>
 
     </div>
 
+    <!-- =================================================
+         NOUVELLE DEMANDE
+    ================================================== -->
 
-    <!-- PROPOSER -->
+    <div class="action-zone">
 
-    <button
-      class="proposer-btn"
-      onclick="ouvrirConfirmation()"
-    >
-      ＋ PROPOSER UNE JOURNÉE
-    </button>
-
-
-    <!-- LISTE -->
-
-    <div id="listeEchanges">
-
-      <div class="empty">
-        <span class="empty-icon">🚆</span>
-        Chargement des journées...
-      </div>
+      <button
+        class="new-btn"
+        onclick="ouvrirConfirmation()">
+        ➕ PROPOSER UNE JOURNÉE
+      </button>
 
     </div>
 
-  </section>
+    <!-- =================================================
+         LISTE
+    ================================================== -->
 
-</main>
+    <section id="liste">
 
+      <div class="loader">
+        <div class="spinner"></div>
+        Chargement des échanges…
+      </div>
 
-<!-- =======================================================
-     NAVIGATION BASSE
-======================================================== -->
+    </section>
+
+  </main>
+
+</div>
+
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
 
 <nav class="bottom-nav">
 
-  <button
-    onclick="ouvrirConfirmation()"
-  >
-    <span class="nav-icon">＋</span>
-    Ma journée
-  </button>
+  <div
+    class="nav-item"
+    onclick="ouvrirConfirmation()">
 
-  <button
-    class="active"
-    onclick="allerEchanges()"
-  >
-    <span class="nav-icon">🔎</span>
-    Échanges
-  </button>
+    <div class="nav-icon">➕</div>
+    <div class="nav-label">Ma journée</div>
 
-  <button
-    onclick="ouvrirChoixMetier()"
-  >
-    <span class="nav-icon">🚆</span>
-    Métier
-  </button>
+  </div>
+
+  <div
+    class="nav-item active"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+    <div class="nav-icon">🔎</div>
+    <div class="nav-label">Échanges</div>
+
+  </div>
+
+  <div
+    class="nav-item"
+    onclick="document.querySelector('.metiers').scrollIntoView({behavior:'smooth'})">
+
+    <div class="nav-icon">🚆</div>
+    <div class="nav-label">Métier</div>
+
+  </div>
 
 </nav>
 
-
-<!-- =======================================================
-     MODALE CONFIRMATION CONGÉ
-======================================================== -->
+<!-- =====================================================
+     MODALE CONFIRMATION CONGE REFUSE
+====================================================== -->
 
 <div
-  id="confirmationModal"
-  class="overlay hidden"
->
+  class="overlay"
+  id="confirmationModal">
 
   <div class="modal">
 
-    <div class="modal-icon">
-      ⚠️
-    </div>
+    <h2>📋 Proposer une journée</h2>
 
-    <h2>
-      Confirmation
-    </h2>
-
-    <p>
-      Pour utiliser <strong>ÉCHANGE SERVICE</strong>,
-      vous devez avoir préalablement fait une demande
-      de congé qui a été refusée.
+    <p class="modal-subtitle">
+      Avant de créer une demande d'échange, merci de confirmer
+      que ton congé n'a pas pu être accepté.
     </p>
 
-    <p>
+    <div class="confirm-box">
+
+      ⚠️
       <strong>
         Je confirme que mon congé a été refusé.
       </strong>
-    </p>
 
-    <div class="modal-buttons">
+      <br><br>
+
+      Je souhaite proposer ma journée à l'échange avec un autre
+      agent.
+
+    </div>
+
+    <div class="modal-actions">
 
       <button
         class="modal-btn modal-cancel"
-        onclick="fermerConfirmation()"
-      >
+        onclick="fermerConfirmation()">
         ANNULER
       </button>
 
       <button
         class="modal-btn modal-confirm"
-        onclick="confirmerCongeRefuse()"
-      >
+        onclick="confirmerEtOuvrirFormulaire()">
         JE CONFIRME
       </button>
 
@@ -1168,298 +1452,245 @@ textarea{
 
 </div>
 
-
-<!-- =======================================================
-     MODALE CHOIX MÉTIER
-======================================================== -->
+<!-- =====================================================
+     MODALE FORMULAIRE
+====================================================== -->
 
 <div
-  id="choixMetierModal"
-  class="overlay hidden"
->
+  class="overlay"
+  id="formModal">
 
   <div class="modal">
 
-    <div class="modal-icon">
-      🚆
-    </div>
+    <h2>🚆 Ma journée à échanger</h2>
 
-    <h2>
-      Choisir un métier
-    </h2>
-
-    <p>
-      Sélectionne ton métier pour publier ta journée.
+    <p class="modal-subtitle">
+      Renseigne les informations de ta journée.
+      Tu peux également proposer une deuxième journée.
     </p>
 
-    <button
-      class="modal-main-btn"
-      onclick="selectionnerMetier('ASCT')"
-    >
-      🚆 ASCT
-    </button>
+    <!-- METIER -->
 
-    <button
-      class="modal-main-btn"
-      onclick="selectionnerMetier('ADC')"
-    >
-      🚄 ADC
-    </button>
+    <div class="form-group">
 
-    <button
-      class="modal-main-btn"
-      onclick="selectionnerMetier('Escales')"
-    >
-      👷 Escales
-    </button>
+      <label class="form-label">
+        MÉTIER
+      </label>
 
-    <button
-      class="modal-main-btn"
-      onclick="selectionnerMetier('Autre')"
-    >
-      👨‍🔧 Autre
-    </button>
+      <select id="metier">
 
-    <button
-      class="modal-btn modal-cancel"
-      style="width:100%;margin-top:10px"
-      onclick="fermerChoixMetier()"
-    >
-      ANNULER
-    </button>
+        <option value="ASCT">
+          🚆 ASCT
+        </option>
 
-  </div>
+        <option value="ADC">
+          🚄 ADC
+        </option>
 
-</div>
+        <option value="Escales">
+          🧑‍💼 Escales
+        </option>
 
+        <option value="Autre">
+          👷 Autre
+        </option>
 
-<!-- =======================================================
-     MODALE FORMULAIRE
-======================================================== -->
+      </select>
 
-<div
-  id="formModal"
-  class="overlay hidden"
->
-
-  <div class="modal">
-
-    <div id="formMetierBadge" class="form-badge">
-      Métier
     </div>
 
-    <h2 class="form-title">
-      ➕ Proposer une journée
-    </h2>
+    <!-- NOM -->
 
+    <div class="form-group">
 
-    <label for="nom">
-      Nom et prénom
-    </label>
+      <label class="form-label">
+        NOM / IDENTIFIANT
+      </label>
 
-    <input
-      id="nom"
-      type="text"
-      placeholder="Exemple : Jean DUPONT"
-      autocomplete="name"
-    >
+      <input
+        id="nom"
+        type="text"
+        placeholder="Ex : BOUGEARD"
+        autocomplete="off">
 
-
-    <!-- JOUR 1 -->
-
-    <div class="day-form-title">
-      📅 JOURNÉE 1
     </div>
 
-    <label for="date">
-      Date du service
-    </label>
+    <!-- JOURNEE 1 -->
 
-    <input
-      id="date"
-      type="date"
-    >
+    <div class="form-group">
 
+      <label class="form-label">
+        DATE DE LA JOURNÉE À ÉCHANGER
+      </label>
 
-    <div class="form-row">
+      <input
+        id="date"
+        type="date">
 
-      <div>
+    </div>
 
-        <label for="prise">
-          Prise de service
+    <div class="form-grid">
+
+      <div class="form-group">
+
+        <label class="form-label">
+          PRISE DE SERVICE
         </label>
 
         <input
           id="prise"
-          type="time"
-        >
+          type="time">
 
       </div>
 
+      <div class="form-group">
 
-      <div>
-
-        <label for="fin">
-          Fin de service
+        <label class="form-label">
+          FIN DE SERVICE
         </label>
 
         <input
           id="fin"
-          type="time"
-        >
+          type="time">
 
       </div>
 
     </div>
 
+    <div class="form-grid">
 
-    <div class="location-row">
+      <div class="form-group">
 
-      <div>
-
-        <label for="lieuPrise">
-          📍 Lieu de prise de service
+        <label class="form-label">
+          LIEU DE PRISE DE SERVICE
         </label>
 
         <input
           id="lieuPrise"
           type="text"
-          placeholder="Exemple : Caen"
-        >
+          placeholder="Ex : CAEN"
+          autocomplete="off">
 
       </div>
 
+      <div class="form-group">
 
-      <div>
-
-        <label for="lieuFin">
-          📍 Lieu de fin de service
+        <label class="form-label">
+          LIEU DE FIN DE SERVICE
         </label>
 
         <input
           id="lieuFin"
           type="text"
-          placeholder="Exemple : Rouen"
-        >
+          placeholder="Ex : PARIS"
+          autocomplete="off">
 
       </div>
 
     </div>
 
+    <!-- DEUXIEME JOURNEE -->
 
-    <!-- TOGGLE JOUR 2 -->
+    <label class="second-toggle">
 
-    <div class="toggle">
+      <input
+        type="checkbox"
+        id="deuxiemeJournee"
+        onchange="gererDeuxiemeJournee()">
 
-      <div>
-
+      <span>
         <strong>
           🔄 J’ai une 2ᵉ journée à proposer
         </strong>
+      </span>
 
-        <small>
-          Utile notamment en cas de RHR entre les deux journées.
-        </small>
+    </label>
 
-      </div>
-
-
-      <label class="switch">
-
-        <input
-          id="deuxiemeJournee"
-          type="checkbox"
-          onchange="toggleJournee2()"
-        >
-
-        <span class="slider"></span>
-
-      </label>
-
+    <div class="second-helper">
+      Utile notamment en cas de RHR entre les deux journées.
     </div>
 
-
-    <!-- JOUR 2 -->
-
     <div
-      id="blocJournee2"
-      class="hidden"
-    >
+      class="second-block"
+      id="blocJournee2">
 
-      <div class="day-form-title">
-        📅 JOURNÉE 2
+      <div
+        style="
+          color:#176481;
+          font-weight:950;
+          margin-bottom:14px;
+          font-size:17px;
+        ">
+        🔄 JOURNÉE 2
       </div>
 
-      <label for="date2">
-        Date du service
-      </label>
+      <div class="form-group">
 
-      <input
-        id="date2"
-        type="date"
-      >
+        <label class="form-label">
+          DATE DE LA 2ᵉ JOURNÉE
+        </label>
 
+        <input
+          id="date2"
+          type="date">
 
-      <div class="form-row">
+      </div>
 
-        <div>
+      <div class="form-grid">
 
-          <label for="prise2">
-            Prise de service
+        <div class="form-group">
+
+          <label class="form-label">
+            PRISE DE SERVICE
           </label>
 
           <input
             id="prise2"
-            type="time"
-          >
+            type="time">
 
         </div>
 
+        <div class="form-group">
 
-        <div>
-
-          <label for="fin2">
-            Fin de service
+          <label class="form-label">
+            FIN DE SERVICE
           </label>
 
           <input
             id="fin2"
-            type="time"
-          >
+            type="time">
 
         </div>
 
       </div>
 
+      <div class="form-grid">
 
-      <div class="location-row">
+        <div class="form-group">
 
-        <div>
-
-          <label for="lieuPrise2">
-            📍 Lieu de prise de service
+          <label class="form-label">
+            LIEU DE PRISE DE SERVICE
           </label>
 
           <input
             id="lieuPrise2"
             type="text"
-            placeholder="Exemple : Caen"
-          >
+            placeholder="Ex : CAEN"
+            autocomplete="off">
 
         </div>
 
+        <div class="form-group">
 
-        <div>
-
-          <label for="lieuFin2">
-            📍 Lieu de fin de service
+          <label class="form-label">
+            LIEU DE FIN DE SERVICE
           </label>
 
           <input
             id="lieuFin2"
             type="text"
-            placeholder="Exemple : Rouen"
-          >
+            placeholder="Ex : PARIS"
+            autocomplete="off">
 
         </div>
 
@@ -1467,30 +1698,29 @@ textarea{
 
     </div>
 
+    <!-- COMMENTAIRE -->
 
-    <label for="commentaire">
-      Commentaire
-    </label>
+    <div class="form-group">
 
-    <textarea
-      id="commentaire"
-      placeholder="Exemple : TER, réserve, numéro de train, RHR entre les deux journées..."
-    ></textarea>
+      <label class="form-label">
+        COMMENTAIRE
+      </label>
 
+      <textarea
+        id="commentaire"
+        placeholder="Information complémentaire…"></textarea>
+
+    </div>
 
     <button
-      class="modal-main-btn"
-      onclick="publier()"
-    >
-      🚆 PUBLIER MA JOURNÉE
+      class="submit-btn"
+      onclick="publier()">
+      🚆 PUBLIER MA DEMANDE
     </button>
 
-
     <button
-      class="modal-btn modal-cancel"
-      style="width:100%;margin-top:10px"
-      onclick="fermerFormulaire()"
-    >
+      class="close-btn"
+      onclick="fermerFormulaire()">
       ANNULER
     </button>
 
@@ -1498,51 +1728,48 @@ textarea{
 
 </div>
 
-
-<!-- =======================================================
-     MODALE INTÉRÊT
-======================================================== -->
+<!-- =====================================================
+     MODALE INTERET
+====================================================== -->
 
 <div
-  id="interetModal"
-  class="overlay hidden"
->
+  class="overlay"
+  id="interestModal">
 
   <div class="modal">
 
-    <div class="modal-icon">
-      🙋
-    </div>
+    <h2>🙋 Je suis intéressé</h2>
 
-    <h2>
-      Je suis intéressé
-    </h2>
-
-    <p>
-      Indique ton nom et prénom afin que l'agent
-      puisse te contacter.
+    <p class="modal-subtitle">
+      Indique ton nom afin que l'agent puisse savoir qui est
+      intéressé par sa journée.
     </p>
 
-    <input
-      id="nomInteresse"
-      type="text"
-      placeholder="Nom et prénom"
-      autocomplete="name"
-    >
+    <div class="form-group">
 
-    <div class="modal-buttons">
+      <label class="form-label">
+        TON NOM / IDENTIFIANT
+      </label>
+
+      <input
+        id="interessantNom"
+        type="text"
+        placeholder="Ex : DUPONT"
+        autocomplete="off">
+
+    </div>
+
+    <div class="modal-actions">
 
       <button
         class="modal-btn modal-cancel"
-        onclick="fermerInteret()"
-      >
+        onclick="fermerInteret()">
         ANNULER
       </button>
 
       <button
         class="modal-btn modal-confirm"
-        onclick="confirmerInteret()"
-      >
+        onclick="confirmerInteret()">
         CONFIRMER
       </button>
 
@@ -1552,12 +1779,14 @@ textarea{
 
 </div>
 
+<!-- =====================================================
+     TOAST
+====================================================== -->
 
 <div
-  id="toast"
   class="toast"
-></div>
-
+  id="toast">
+</div>
 
 <script>
 
@@ -1577,54 +1806,273 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-
-let metierActuel = "";
-
-let filtreActuel = "";
-
-let idInteretEnCours = null;
-
-
 /* =========================================================
-   NAVIGATION
+   VARIABLES
 ========================================================= */
 
-function allerEchanges(){
+let metierActuel = "Tous";
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+let demandeInteretId = null;
+
+let demandesChargees = [];
+
+/* =========================================================
+   OUTILS
+========================================================= */
+
+function echapperHTML(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+/* =========================================================
+   DATE SERVICE
+   Conversion robuste de YYYY-MM-DD
+========================================================= */
+
+function dateLocaleDepuisString(dateString){
+
+  if(!dateString){
+    return null;
+  }
+
+  const texte = String(dateString).substring(0,10);
+
+  const match =
+    texte.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  if(!match){
+    return null;
+  }
+
+  const annee = Number(match[1]);
+  const mois = Number(match[2]);
+  const jour = Number(match[3]);
+
+  const date =
+    new Date(
+      annee,
+      mois - 1,
+      jour
+    );
+
+  if(isNaN(date.getTime())){
+    return null;
+  }
+
+  return date;
+}
+
+function formatDate(dateString){
+
+  const date =
+    dateLocaleDepuisString(dateString);
+
+  if(!date){
+    return "Date non renseignée";
+  }
+
+  return date.toLocaleDateString(
+    "fr-FR",
+    {
+      weekday:"long",
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    }
+  );
+}
+
+/* =========================================================
+   DATE COURTE
+========================================================= */
+
+function formatDateCourte(dateString){
+
+  const date =
+    dateLocaleDepuisString(dateString);
+
+  if(!date){
+    return "";
+  }
+
+  return date.toLocaleDateString(
+    "fr-FR",
+    {
+      day:"2-digit",
+      month:"2-digit",
+      year:"numeric"
+    }
+  );
+}
+
+/* =========================================================
+   HEURE
+========================================================= */
+
+function formatTime(value){
+
+  if(!value){
+    return "--:--";
+  }
+
+  const texte =
+    String(value);
+
+  const match =
+    texte.match(/^(\d{1,2}):(\d{2})/);
+
+  if(!match){
+    return texte;
+  }
+
+  return (
+    String(match[1]).padStart(2,"0")
+    + ":"
+    + match[2]
+  );
+}
+
+/* =========================================================
+   DATE DE PUBLICATION
+========================================================= */
+
+function formatDatePublication(value){
+
+  if(!value){
+    return null;
+  }
+
+  let date;
+
+  /*
+    Supabase renvoie normalement un timestamptz
+    sous forme ISO.
+  */
+
+  if(value instanceof Date){
+
+    date = value;
+
+  }else{
+
+    date = new Date(value);
+
+  }
+
+  if(isNaN(date.getTime())){
+    return null;
+  }
+
+  return date.toLocaleDateString(
+    "fr-FR",
+    {
+      day:"2-digit",
+      month:"2-digit",
+      year:"numeric"
+    }
+  )
+  +
+  " à "
+  +
+  date.toLocaleTimeString(
+    "fr-FR",
+    {
+      hour:"2-digit",
+      minute:"2-digit"
+    }
+  );
+}
+
+/* =========================================================
+   RECUPERATION DATE PUBLICATION
+========================================================= */
+
+function recupererDatePublication(demande){
+
+  if(!demande){
+    return null;
+  }
+
+  /*
+    La colonne utilisée par les nouvelles demandes
+    est date_demande.
+
+    Les autres noms sont uniquement des sécurités
+    pour d'anciennes versions éventuelles.
+  */
+
+  const valeur =
+    demande.date_demande ??
+    demande.date_creation ??
+    demande.dateCreated ??
+    demande.date_publication ??
+    demande.published_at ??
+    null;
+
+  return formatDatePublication(valeur);
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer = null;
+
+function afficherToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent =
+    message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(
+      ()=>{
+        toast.classList.remove("show");
+      },
+      3000
+    );
+}
+
+/* =========================================================
+   METIER
+========================================================= */
+
+function choisirMetier(
+  metier,
+  bouton
+){
+
+  metierActuel =
+    metier;
+
+  document
+    .querySelectorAll(".metier-btn")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
+
+  if(bouton){
+    bouton.classList.add("active");
+  }
 
   afficherEchanges();
 }
-
-
-function ouvrirChoixMetier(){
-
-  document
-    .getElementById("choixMetierModal")
-    .classList.remove("hidden");
-}
-
-
-function fermerChoixMetier(){
-
-  document
-    .getElementById("choixMetierModal")
-    .classList.add("hidden");
-}
-
-
-function selectionnerMetier(metier){
-
-  metierActuel = metier;
-
-  fermerChoixMetier();
-
-  ouvrirConfirmation();
-}
-
 
 /* =========================================================
    CONFIRMATION
@@ -1634,94 +2082,62 @@ function ouvrirConfirmation(){
 
   document
     .getElementById("confirmationModal")
-    .classList.remove("hidden");
+    .classList.add("show");
 }
-
 
 function fermerConfirmation(){
 
   document
     .getElementById("confirmationModal")
-    .classList.add("hidden");
+    .classList.remove("show");
 }
 
-
-function confirmerCongeRefuse(){
+function confirmerEtOuvrirFormulaire(){
 
   fermerConfirmation();
 
-  if(!metierActuel){
-
-    ouvrirChoixMetier();
-
-    return;
-  }
-
-  ouvrirFormulaire();
+  document
+    .getElementById("formModal")
+    .classList.add("show");
 }
-
 
 /* =========================================================
    FORMULAIRE
 ========================================================= */
 
-function ouvrirFormulaire(){
-
-  const badge =
-    document.getElementById(
-      "formMetierBadge"
-    );
-
-  const noms = {
-    "ASCT":"🚆 ASCT",
-    "ADC":"🚄 ADC",
-    "Escales":"👷 Escales",
-    "Autre":"👨‍🔧 Autre"
-  };
-
-  badge.innerText =
-    noms[metierActuel] ||
-    metierActuel;
-
-  document
-    .getElementById("formModal")
-    .classList.remove("hidden");
-}
-
-
 function fermerFormulaire(){
 
   document
     .getElementById("formModal")
-    .classList.add("hidden");
+    .classList.remove("show");
 }
 
+function gererDeuxiemeJournee(){
 
-/* =========================================================
-   JOURNÉE 2
-========================================================= */
+  const coche =
+    document.getElementById("deuxiemeJournee").checked;
 
-function toggleJournee2(){
+  const bloc =
+    document.getElementById("blocJournee2");
 
-  const actif =
-    document
-      .getElementById("deuxiemeJournee")
-      .checked;
-
-  document
-    .getElementById("blocJournee2")
-    .classList.toggle(
-      "hidden",
-      !actif
-    );
+  if(coche){
+    bloc.classList.add("show");
+  }else{
+    bloc.classList.remove("show");
+  }
 }
-
 
 /* =========================================================
    PUBLICATION
 ========================================================= */
 
 async function publier(){
+
+  const metier =
+    document
+      .getElementById("metier")
+      .value
+      .trim();
 
   const nom =
     document
@@ -1756,120 +2172,120 @@ async function publier(){
       .value
       .trim();
 
-
-  const deuxieme =
-    document
-      .getElementById("deuxiemeJournee")
-      .checked;
-
-
-  const date2 =
-    document
-      .getElementById("date2")
-      .value;
-
-  const prise2 =
-    document
-      .getElementById("prise2")
-      .value;
-
-  const fin2 =
-    document
-      .getElementById("fin2")
-      .value;
-
-  const lieuPrise2 =
-    document
-      .getElementById("lieuPrise2")
-      .value
-      .trim();
-
-  const lieuFin2 =
-    document
-      .getElementById("lieuFin2")
-      .value
-      .trim();
-
-
   const commentaire =
     document
       .getElementById("commentaire")
       .value
       .trim();
 
+  const deuxieme =
+    document
+      .getElementById("deuxiemeJournee")
+      .checked;
 
-  if(!metierActuel){
+  /* =========================
+     VALIDATION JOURNEE 1
+  ========================== */
 
-    alert(
-      "Merci de choisir votre métier."
-    );
-
+  if(!nom){
+    afficherToast("⚠️ Merci d'indiquer ton nom.");
     return;
   }
 
-
-  if(
-    !nom ||
-    !date ||
-    !prise ||
-    !fin ||
-    !lieuPrise ||
-    !lieuFin
-  ){
-
-    alert(
-      "Merci de remplir le nom, la date, les horaires et les lieux de la première journée."
-    );
-
+  if(!date){
+    afficherToast("⚠️ Merci d'indiquer la date de la journée.");
     return;
   }
 
-
-  if(
-    deuxieme &&
-    (
-      !date2 ||
-      !prise2 ||
-      !fin2 ||
-      !lieuPrise2 ||
-      !lieuFin2
-    )
-  ){
-
-    alert(
-      "Merci de remplir la date, les horaires et les lieux de la deuxième journée."
-    );
-
+  if(!prise || !fin){
+    afficherToast("⚠️ Merci d'indiquer les horaires.");
     return;
   }
 
-
-  if(
-    deuxieme &&
-    date2 === date
-  ){
-
-    alert(
-      "Les deux journées doivent être sur deux dates différentes."
-    );
-
+  if(!lieuPrise || !lieuFin){
+    afficherToast("⚠️ Merci d'indiquer les lieux de prise et de fin.");
     return;
   }
 
+  /* =========================
+     VALIDATION JOURNEE 2
+  ========================== */
 
-  /*
-    Une seule date de publication pour
-    toute la demande.
-  */
+  let date2 = null;
+  let prise2 = null;
+  let fin2 = null;
+  let lieuPrise2 = null;
+  let lieuFin2 = null;
+
+  if(deuxieme){
+
+    date2 =
+      document
+        .getElementById("date2")
+        .value;
+
+    prise2 =
+      document
+        .getElementById("prise2")
+        .value;
+
+    fin2 =
+      document
+        .getElementById("fin2")
+        .value;
+
+    lieuPrise2 =
+      document
+        .getElementById("lieuPrise2")
+        .value
+        .trim();
+
+    lieuFin2 =
+      document
+        .getElementById("lieuFin2")
+        .value
+        .trim();
+
+    if(!date2){
+      afficherToast("⚠️ Merci d'indiquer la date de la 2ᵉ journée.");
+      return;
+    }
+
+    if(!prise2 || !fin2){
+      afficherToast("⚠️ Merci d'indiquer les horaires de la 2ᵉ journée.");
+      return;
+    }
+
+    if(!lieuPrise2 || !lieuFin2){
+      afficherToast("⚠️ Merci d'indiquer les lieux de la 2ᵉ journée.");
+      return;
+    }
+
+    if(date2 === date){
+      afficherToast("⚠️ Les deux journées doivent être à des dates différentes.");
+      return;
+    }
+
+  }
+
+  /* =====================================================
+     DATE DE PUBLICATION
+     
+     UNE SEULE date_demande pour les deux lignes.
+     On n'utilise PAS created_at.
+  ====================================================== */
 
   const dateDemande =
     new Date().toISOString();
 
+  /* =====================================================
+     CONSTRUCTION DES DEMANDES
+  ====================================================== */
 
   const demandes = [
 
     {
-      metier:metierActuel,
+      metier:metier,
       nom:nom,
       date_service:date,
       prise_service:prise,
@@ -1879,1201 +2295,718 @@ async function publier(){
       commentaire:commentaire,
       statut:"disponible",
       agent_interesse:null,
+
+      /*
+        IMPORTANT :
+        date de publication de la demande
+      */
       date_demande:dateDemande
     }
 
   ];
 
-
   if(deuxieme){
 
     demandes.push({
 
-      metier:metierActuel,
+      metier:metier,
       nom:nom,
+
+      /*
+        Date du 2e service
+      */
       date_service:date2,
+
       prise_service:prise2,
       fin_service:fin2,
+
       lieu_prise_service:lieuPrise2,
       lieu_fin_service:lieuFin2,
+
       commentaire:commentaire,
+
       statut:"disponible",
       agent_interesse:null,
+
+      /*
+        Même date de publication
+        que la journée 1
+      */
       date_demande:dateDemande
 
     });
 
   }
 
+  /* =====================================================
+     INSERT SUPABASE
+  ====================================================== */
 
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("echanges")
-      .insert(demandes);
+  try{
 
+    const { error } =
+      await supabaseClient
+        .from("echanges")
+        .insert(demandes);
 
-  if(error){
+    if(error){
+
+      console.error(
+        "Erreur Supabase :",
+        error
+      );
+
+      afficherToast(
+        "❌ Erreur lors de la publication : "
+        + error.message
+      );
+
+      return;
+    }
+
+    afficherToast(
+      "✅ Ta demande a été publiée."
+    );
+
+    /* RESET */
+
+    document
+      .getElementById("nom")
+      .value = "";
+
+    document
+      .getElementById("date")
+      .value = "";
+
+    document
+      .getElementById("prise")
+      .value = "";
+
+    document
+      .getElementById("fin")
+      .value = "";
+
+    document
+      .getElementById("lieuPrise")
+      .value = "";
+
+    document
+      .getElementById("lieuFin")
+      .value = "";
+
+    document
+      .getElementById("commentaire")
+      .value = "";
+
+    document
+      .getElementById("deuxiemeJournee")
+      .checked = false;
+
+    gererDeuxiemeJournee();
+
+    document
+      .getElementById("date2")
+      .value = "";
+
+    document
+      .getElementById("prise2")
+      .value = "";
+
+    document
+      .getElementById("fin2")
+      .value = "";
+
+    document
+      .getElementById("lieuPrise2")
+      .value = "";
+
+    document
+      .getElementById("lieuFin2")
+      .value = "";
+
+    fermerFormulaire();
+
+    await afficherEchanges();
+
+  }catch(error){
 
     console.error(error);
 
-    alert(
-      "Erreur lors de la publication : " +
-      error.message
+    afficherToast(
+      "❌ Une erreur est survenue."
     );
-
-    return;
-  }
-
-
-  resetFormulaire();
-
-  fermerFormulaire();
-
-
-  afficherToast(
-    deuxieme
-      ? "🚆 Vos 2 journées sont publiées !"
-      : "🚆 Votre journée est publiée !"
-  );
-
-
-  await afficherEchanges();
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-function resetFormulaire(){
-
-  [
-    "nom",
-    "date",
-    "prise",
-    "fin",
-    "lieuPrise",
-    "lieuFin",
-    "date2",
-    "prise2",
-    "fin2",
-    "lieuPrise2",
-    "lieuFin2",
-    "commentaire"
-  ].forEach(id => {
-
-    const element =
-      document.getElementById(id);
-
-    if(element){
-
-      element.value = "";
-
-    }
-
-  });
-
-
-  const checkbox =
-    document.getElementById(
-      "deuxiemeJournee"
-    );
-
-  if(checkbox){
-
-    checkbox.checked = false;
 
   }
 
-
-  document
-    .getElementById("blocJournee2")
-    .classList.add("hidden");
-
 }
 
-
 /* =========================================================
-   FILTRE MÉTIER
+   GROUPEMENT DES JOURNEES
 ========================================================= */
 
-function filtrerMetier(metier){
+function normaliserTexte(value){
 
-  filtreActuel =
-    metier || "";
-
-  document
-    .querySelectorAll(".filter")
-    .forEach(btn => {
-
-      btn.classList.toggle(
-        "active",
-        btn.dataset.metier === filtreActuel
-      );
-
-    });
-
-
-  afficherEchanges();
-}
-
-
-/* =========================================================
-   NORMALISATION
-========================================================= */
-
-function normaliserTexte(valeur){
-
-  return String(valeur || "")
+  return String(value || "")
     .trim()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"")
-    .replace(/\s+/g," ");
+    .toUpperCase();
 }
 
+function lendemain(date1,date2){
 
-/* =========================================================
-   DATE SUIVANTE
-========================================================= */
+  const d1 =
+    dateLocaleDepuisString(date1);
 
-function dateSuivante(dateStr){
+  const d2 =
+    dateLocaleDepuisString(date2);
 
-  if(!dateStr){
-
-    return null;
-
+  if(!d1 || !d2){
+    return false;
   }
 
+  const difference =
+    d2.getTime() - d1.getTime();
 
-  const morceaux =
-    String(dateStr)
-      .split("-")
-      .map(Number);
+  return difference === 86400000;
+}
 
+function peutRegrouper(a,b){
+
+  if(!a || !b){
+    return false;
+  }
 
   if(
-    morceaux.length !== 3 ||
-    !morceaux[0] ||
-    !morceaux[1] ||
-    !morceaux[2]
+    normaliserTexte(a.nom) !==
+    normaliserTexte(b.nom)
   ){
-
-    return null;
-
+    return false;
   }
 
+  if(
+    normaliserTexte(a.metier) !==
+    normaliserTexte(b.metier)
+  ){
+    return false;
+  }
 
-  const date =
-    new Date(
-      Date.UTC(
-        morceaux[0],
-        morceaux[1] - 1,
-        morceaux[2]
-      )
-    );
+  if(
+    !lendemain(
+      a.date_service,
+      b.date_service
+    )
+  ){
+    return false;
+  }
 
+  if(
+    normaliserTexte(a.lieu_fin_service) !==
+    normaliserTexte(b.lieu_prise_service)
+  ){
+    return false;
+  }
 
-  date.setUTCDate(
-    date.getUTCDate() + 1
-  );
-
-
-  return date
-    .toISOString()
-    .slice(0,10);
+  return true;
 }
-
-
-/* =========================================================
-   TEST REGROUPEMENT
-========================================================= */
-
-function peutRegrouper(
-  jour1,
-  jour2
-){
-
-  /*
-    Même agent
-  */
-
-  const memeNom =
-    normaliserTexte(
-      jour1.nom
-    ) ===
-    normaliserTexte(
-      jour2.nom
-    );
-
-
-  /*
-    Même métier
-  */
-
-  const memeMetier =
-    normaliserTexte(
-      jour1.metier
-    ) ===
-    normaliserTexte(
-      jour2.metier
-    );
-
-
-  /*
-    Jour 2 = lendemain exact
-  */
-
-  const dateSuivanteExacte =
-    dateSuivante(
-      jour1.date_service
-    ) ===
-    String(
-      jour2.date_service
-    );
-
-
-  /*
-    Fin jour 1 = prise jour 2
-  */
-
-  const memeLieu =
-    normaliserTexte(
-      jour1.lieu_fin_service
-    ) ===
-    normaliserTexte(
-      jour2.lieu_prise_service
-    );
-
-
-  return (
-    memeNom &&
-    memeMetier &&
-    dateSuivanteExacte &&
-    memeLieu
-  );
-}
-
-
-/* =========================================================
-   CONSTRUCTION DES GROUPES
-========================================================= */
 
 function construireGroupes(data){
-
-  const lignes =
-    [...data];
-
-
-  /*
-    Tri indépendant de l'ordre renvoyé
-    par Supabase.
-  */
-
-  lignes.sort((a,b) => {
-
-    const nomA =
-      normaliserTexte(a.nom);
-
-    const nomB =
-      normaliserTexte(b.nom);
-
-
-    if(nomA !== nomB){
-
-      return nomA.localeCompare(
-        nomB
-      );
-
-    }
-
-
-    const metierA =
-      normaliserTexte(a.metier);
-
-    const metierB =
-      normaliserTexte(b.metier);
-
-
-    if(metierA !== metierB){
-
-      return metierA.localeCompare(
-        metierB
-      );
-
-    }
-
-
-    return String(
-      a.date_service || ""
-    ).localeCompare(
-      String(
-        b.date_service || ""
-      )
-    );
-
-  });
-
 
   const groupes = [];
 
   const utilises =
     new Set();
 
-
   for(
-    let i = 0;
-    i < lignes.length;
+    let i=0;
+    i<data.length;
     i++
   ){
 
-    if(
-      utilises.has(
-        lignes[i].id
-      )
-    ){
-
+    if(utilises.has(i)){
       continue;
-
     }
 
+    const premier =
+      data[i];
 
-    const groupe = [
-      lignes[i]
-    ];
+    const groupe =
+      [premier];
 
+    utilises.add(i);
 
-    utilises.add(
-      lignes[i].id
-    );
+    for(
+      let j=i+1;
+      j<data.length;
+      j++
+    ){
 
+      if(utilises.has(j)){
+        continue;
+      }
 
-    /*
-      On recherche la journée suivante
-      dans l'ensemble des lignes.
-    */
-
-    let recherche =
-      lignes[i];
-
-
-    while(true){
-
-      const indexSuivant =
-        lignes.findIndex(
-          candidate => {
-
-            if(
-              utilises.has(
-                candidate.id
-              )
-            ){
-
-              return false;
-
-            }
-
-
-            return peutRegrouper(
-              recherche,
-              candidate
-            );
-
-          }
-        );
-
+      const candidat =
+        data[j];
 
       if(
-        indexSuivant === -1
+        peutRegrouper(
+          groupe[groupe.length - 1],
+          candidat
+        )
       ){
 
-        break;
+        groupe.push(candidat);
+
+        utilises.add(j);
 
       }
 
-
-      const suivante =
-        lignes[indexSuivant];
-
-
-      groupe.push(
-        suivante
-      );
-
-
-      utilises.add(
-        suivante.id
-      );
-
-
-      /*
-        Permet aussi de regrouper
-        une éventuelle 3e journée
-        consécutive.
-      */
-
-      recherche =
-        suivante;
-
     }
 
-
-    groupe.sort(
-      (a,b) =>
-        String(
-          a.date_service || ""
-        ).localeCompare(
-          String(
-            b.date_service || ""
-          )
-        )
-    );
-
-
-    groupes.push(
-      groupe
-    );
+    groupes.push(groupe);
 
   }
-
 
   return groupes;
 }
 
-
 /* =========================================================
-   AFFICHAGE
+   AFFICHAGE DES ECHANGES
 ========================================================= */
 
 async function afficherEchanges(){
 
-  const zone =
-    document.getElementById(
-      "listeEchanges"
-    );
+  const liste =
+    document.getElementById("liste");
 
+  liste.innerHTML = `
 
-  zone.innerHTML =
-    `
-    <div class="empty">
-      <span class="empty-icon">🚆</span>
-      Chargement des journées...
+    <div class="loader">
+      <div class="spinner"></div>
+      Chargement des échanges…
     </div>
-    `;
 
+  `;
 
-  let requete =
-    supabaseClient
-      .from("echanges")
-      .select("*")
-      .eq("statut","disponible")
-      .order(
-        "date_service",
-        {
-          ascending:true
-        }
+  try{
+
+    let requete =
+      supabaseClient
+        .from("echanges")
+        .select("*")
+        .eq("statut","disponible")
+        .order(
+          "date_service",
+          {
+            ascending:true
+          }
+        );
+
+    if(metierActuel !== "Tous"){
+
+      requete =
+        requete.eq(
+          "metier",
+          metierActuel
+        );
+
+    }
+
+    const {
+      data,
+      error
+    } = await requete;
+
+    if(error){
+
+      console.error(
+        "Erreur récupération :",
+        error
       );
 
+      liste.innerHTML = `
 
-  if(filtreActuel){
+        <div class="empty">
 
-    requete =
-      requete.eq(
-        "metier",
-        filtreActuel
+          <div class="empty-icon">
+            ⚠️
+          </div>
+
+          <h3>Impossible de charger les échanges</h3>
+
+          <p>
+            ${echapperHTML(error.message)}
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+    demandesChargees =
+      data || [];
+
+    if(!demandesChargees.length){
+
+      liste.innerHTML = `
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            🚆
+          </div>
+
+          <h3>Aucune journée disponible</h3>
+
+          <p>
+            Aucune demande d'échange n'est actuellement
+            disponible pour ce métier.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+    /*
+      On trie à nouveau côté navigateur afin de garantir
+      que les journées consécutives soient regroupées.
+    */
+
+    const groupes =
+      construireGroupes(
+        [...demandesChargees]
+          .sort(
+            (a,b)=>
+              String(a.date_service || "")
+                .localeCompare(
+                  String(b.date_service || "")
+                )
+          )
       );
 
-  }
+    liste.innerHTML =
+      groupes
+        .map(
+          (groupe,index)=>
+            construireCarte(
+              groupe,
+              index
+            )
+        )
+        .join("");
 
-
-  const {
-    data,
-    error
-  } =
-    await requete;
-
-
-  if(error){
+  }catch(error){
 
     console.error(error);
 
-    zone.innerHTML =
-      `
-      <div class="empty">
-        <span class="empty-icon">❌</span>
-        <strong>Erreur lors du chargement.</strong>
-        <br><br>
-        <small>
-          ${escapeHTML(error.message)}
-        </small>
-      </div>
-      `;
+    liste.innerHTML = `
 
-    return;
+      <div class="empty">
+
+        <div class="empty-icon">
+          ⚠️
+        </div>
+
+        <h3>Erreur</h3>
+
+        <p>
+          Impossible de charger les demandes.
+        </p>
+
+      </div>
+
+    `;
+
   }
 
-
-  zone.innerHTML = "";
-
-
-  if(
-    !data ||
-    !data.length
-  ){
-
-    zone.innerHTML =
-      `
-      <div class="empty">
-        <span class="empty-icon">🚆</span>
-        <strong>Aucune journée proposée</strong>
-        <br><br>
-        Soyez le premier à proposer une journée !
-      </div>
-      `;
-
-    return;
-  }
-
-
-  /*
-    CORRECTION IMPORTANTE :
-    les lignes sont d'abord regroupées.
-  */
-
-  const groupes =
-    construireGroupes(data);
-
-
-  groupes.forEach(
-    groupe => {
-
-      afficherGroupe(
-        groupe,
-        zone
-      );
-
-    }
-  );
 }
 
-
 /* =========================================================
-   AFFICHAGE D'UN GROUPE
+   CARTE D'UNE DEMANDE
 ========================================================= */
 
-function afficherGroupe(
+function construireCarte(
   groupe,
-  zone
+  index
 ){
 
   const premier =
     groupe[0];
 
-
-  const bloc =
-    document.createElement(
-      "article"
-    );
-
-
-  bloc.className =
-    "post";
-
-
-  const metier =
-    premier.metier ||
-    "Autre";
-
+  /*
+    Date de publication :
+    on cherche la date sur la première ligne.
+  */
 
   const publication =
     recupererDatePublication(
-      groupe
+      premier
     );
-
-
-  const metierIcon = {
-
-    "ASCT":"🚆",
-    "ADC":"🚄",
-    "Escales":"👷",
-    "Autre":"👨‍🔧"
-
-  }[metier] || "👨‍🔧";
-
 
   const publicationHTML =
     publication
-      ?
+
+      ? `
+        <div class="request-date">
+          🕒 Demande publiée le
+          <strong>&nbsp;${echapperHTML(publication)}</strong>
+        </div>
       `
-      <div class="publication">
-        🕒 Demande publiée le
-        ${formatDatePublication(publication)}
-      </div>
-      `
-      :
-      `
-      <div class="publication">
-        🕒 Date de demande non disponible
-      </div>
+
+      : `
+        <div class="request-date">
+          🕒 Date de publication non disponible
+        </div>
       `;
 
+  const journeesHTML =
+    groupe
+      .map(
+        (jour,numero)=>
+          construireJournee(
+            jour,
+            numero + 1,
+            groupe.length
+          )
+      )
+      .join("");
 
-  let joursHTML = "";
+  let interetHTML = "";
 
+  if(premier.agent_interesse){
 
-  groupe.forEach(
-    (jour,index) => {
+    interetHTML = `
 
-      joursHTML +=
-        `
-        <div class="day">
-
-          <div class="day-header">
-
-            <div class="day-number">
-              ${index + 1}
-            </div>
-
-            <div>
-
-              <div class="day-title">
-                JOURNÉE ${index + 1}
-              </div>
-
-              <div class="date-big">
-                📅 ${formatDate(
-                  jour.date_service
-                )}
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="infos">
-
-            <div class="info-box">
-
-              <div class="info-label">
-                HORAIRES
-              </div>
-
-              <div class="info-value">
-                ⏰
-                ${formatTime(
-                  jour.prise_service
-                )}
-                →
-                ${formatTime(
-                  jour.fin_service
-                )}
-              </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-              <div class="info-label">
-                PRISE DE SERVICE
-              </div>
-
-              <div class="info-value">
-                📍
-                ${
-                  jour.lieu_prise_service
-                    ?
-                    escapeHTML(
-                      jour.lieu_prise_service
-                    )
-                    :
-                    "Non renseigné"
-                }
-              </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-              <div class="info-label">
-                FIN DE SERVICE
-              </div>
-
-              <div class="info-value">
-                📍
-                ${
-                  jour.lieu_fin_service
-                    ?
-                    escapeHTML(
-                      jour.lieu_fin_service
-                    )
-                    :
-                    "Non renseigné"
-                }
-              </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-              <div class="info-label">
-                DURÉE
-              </div>
-
-              <div class="info-value">
-                ⏱️
-                ${calculerDuree(
-                  jour.prise_service,
-                  jour.fin_service
-                )}
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-        `;
-
-    }
-  );
-
-
-  const commentaire =
-    premier.commentaire
-      ?
-      `
-      <div class="comment">
-        💬
-        ${escapeHTML(
-          premier.commentaire
-        )}
-      </div>
-      `
-      :
-      "";
-
-
-  const interesse =
-    premier.agent_interesse
-      ?
-      `
-      <div class="interest-info">
+      <div class="interested">
         🙋 Agent intéressé :
         <strong>
-          ${escapeHTML(
+          ${echapperHTML(
             premier.agent_interesse
           )}
         </strong>
       </div>
-      `
-      :
-      "";
-
-
-  const ids =
-    groupe
-      .map(
-        e => Number(e.id)
-      )
-      .filter(
-        id => Number.isFinite(id)
-      );
-
-
-  bloc.innerHTML =
-    `
-
-    <div class="post-head">
-
-      <div class="avatar">
-        👤
-      </div>
-
-      <div class="agent">
-        ${escapeHTML(
-          premier.nom
-        )}
-      </div>
-
-      <div class="metier-badge">
-        ${metierIcon}
-        ${escapeHTML(metier)}
-      </div>
-
-    </div>
-
-
-    ${publicationHTML}
-
-
-    <div class="days">
-      ${joursHTML}
-    </div>
-
-
-    ${commentaire}
-
-
-    ${interesse}
-
-
-    <div class="post-actions">
-
-      <button
-        class="action action-interest"
-        onclick="interesse(${ids[0]})"
-      >
-        🙋 JE SUIS INTÉRESSÉ
-      </button>
-
-      <button
-        class="action action-delete"
-        onclick='supprimerGroupe(${JSON.stringify(ids)})'
-      >
-        🗑️ SUPPRIMER
-      </button>
-
-    </div>
 
     `;
 
+  }
 
-  zone.appendChild(
-    bloc
-  );
+  return `
+
+    <article
+      class="exchange-card"
+      data-id="${echapperHTML(premier.id)}">
+
+      <div class="request-header">
+
+        <h3 class="agent-name">
+          <span>👤</span>
+          ${echapperHTML(
+            premier.nom || "Agent"
+          )}
+        </h3>
+
+        <div class="metier-tag">
+          ${echapperHTML(
+            premier.metier || "Métier"
+          )}
+        </div>
+
+      </div>
+
+      ${publicationHTML}
+
+      ${journeesHTML}
+
+      ${
+        premier.commentaire
+          ? `
+            <div class="commentaire">
+              💬 ${echapperHTML(
+                premier.commentaire
+              )}
+            </div>
+          `
+          : ""
+      }
+
+      ${interetHTML}
+
+      <div class="actions">
+
+        <button
+          class="btn btn-interest"
+          onclick="ouvrirInteret('${echapperHTML(premier.id)}')">
+          🙋 JE SUIS INTÉRESSÉ
+        </button>
+
+        <button
+          class="btn btn-delete"
+          onclick="supprimerDemande('${echapperHTML(premier.id)}')">
+          🗑️ SUPPRIMER
+        </button>
+
+      </div>
+
+    </article>
+
+  `;
 }
 
-
 /* =========================================================
-   DATE DE PUBLICATION
+   UNE JOURNEE
 ========================================================= */
 
-function recupererDatePublication(
-  groupe
+function construireJournee(
+  jour,
+  numero,
+  nombre
 ){
 
-  for(
-    const e of groupe
-  ){
-
-    if(e.date_demande){
-
-      return e.date_demande;
-
-    }
-
-  }
-
-
-  return null;
-}
-
-
-/* =========================================================
-   INTÉRÊT
-========================================================= */
-
-function interesse(id){
-
-  idInteretEnCours =
-    Number(id);
-
-
-  document
-    .getElementById(
-      "nomInteresse"
-    )
-    .value = "";
-
-
-  document
-    .getElementById(
-      "interetModal"
-    )
-    .classList.remove(
-      "hidden"
+  const dateAffichee =
+    formatDate(
+      jour.date_service
     );
 
+  const horaires =
+    formatTime(jour.prise_service)
+    +
+    " → "
+    +
+    formatTime(jour.fin_service);
 
-  setTimeout(
-    () => {
+  let html = `
 
-      document
-        .getElementById(
-          "nomInteresse"
-        )
-        .focus();
+    <div class="journey">
 
-    },
-    100
-  );
-}
+      <div class="journey-title">
 
+        <span class="number">
+          ${numero}
+        </span>
 
-function fermerInteret(){
+        📅 JOURNÉE ${numero}
 
-  idInteretEnCours =
-    null;
+      </div>
 
-  document
-    .getElementById(
-      "interetModal"
-    )
-    .classList.add(
-      "hidden"
-    );
-}
+      <!-- DATE DU SERVICE -->
 
+      <div class="service-date">
 
-async function confirmerInteret(){
+        <div class="service-date-icon">
+          📅
+        </div>
 
-  const nom =
-    document
-      .getElementById(
-        "nomInteresse"
-      )
-      .value
-      .trim();
+        <div class="service-date-content">
 
+          <div class="service-date-label">
+            DATE DU SERVICE À ÉCHANGER
+          </div>
 
-  if(!nom){
+          <div class="service-date-value">
+            ${echapperHTML(
+              dateAffichee
+            )}
+          </div>
 
-    alert(
-      "Merci d’indiquer votre nom."
-    );
+        </div>
 
-    return;
-  }
+      </div>
 
+      <!-- HORAIRES -->
 
-  if(!idInteretEnCours){
+      <div class="service-grid">
 
-    fermerInteret();
+        <div class="info-box">
 
-    return;
-  }
+          <div class="info-label">
+            HORAIRES
+          </div>
 
+          <div class="info-value big">
+            ⏰ ${echapperHTML(horaires)}
+          </div>
 
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("echanges")
-      .update({
-        agent_interesse:nom
-      })
-      .eq(
-        "id",
-        idInteretEnCours
-      );
+        </div>
 
+        <div class="info-box">
 
-  if(error){
+          <div class="info-label">
+            DURÉE
+          </div>
 
-    console.error(error);
+          <div class="info-value">
+            ${calculerDuree(
+              jour.prise_service,
+              jour.fin_service
+            )}
+          </div>
 
-    alert(
-      "Erreur : " +
-      error.message
-    );
+        </div>
 
-    return;
-  }
+      </div>
 
+      <!-- LIEUX -->
 
-  fermerInteret();
+      <div class="locations">
 
+        <div class="location-box">
 
-  afficherToast(
-    "👍 Votre intérêt a été enregistré."
-  );
+          <div class="info-label">
+            📍 PRISE DE SERVICE
+          </div>
 
+          <div class="info-value">
+            ${echapperHTML(
+              jour.lieu_prise_service ||
+              "Non renseigné"
+            )}
+          </div>
 
-  afficherEchanges();
-}
+        </div>
 
+        <div class="location-box">
 
-/* =========================================================
-   SUPPRESSION D'UN GROUPE
-========================================================= */
+          <div class="info-label">
+            📍 FIN DE SERVICE
+          </div>
 
-async function supprimerGroupe(
-  ids
-){
+          <div class="info-value">
+            ${echapperHTML(
+              jour.lieu_fin_service ||
+              "Non renseigné"
+            )}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
 
   if(
-    !Array.isArray(ids) ||
-    !ids.length
+    numero < nombre
   ){
 
-    return;
+    html += `
+
+      <div class="next-day">
+        🔄 journée suivante
+      </div>
+
+    `;
+
   }
 
-
-  if(
-    !confirm(
-      "Voulez-vous vraiment supprimer cette demande ?"
-    )
-  ){
-
-    return;
-  }
-
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("echanges")
-      .delete()
-      .in(
-        "id",
-        ids
-      );
-
-
-  if(error){
-
-    console.error(error);
-
-    alert(
-      "Erreur lors de la suppression : " +
-      error.message
-    );
-
-    return;
-  }
-
-
-  afficherToast(
-    "🗑️ La demande a été supprimée."
-  );
-
-
-  afficherEchanges();
+  return html;
 }
-
 
 /* =========================================================
-   OUTILS D'AFFICHAGE
-========================================================= */
-
-function formatDate(date){
-
-  if(!date){
-
-    return "";
-
-  }
-
-
-  const morceaux =
-    String(date)
-      .split("-");
-
-
-  if(
-    morceaux.length === 3
-  ){
-
-    const d =
-      new Date(
-        Number(morceaux[0]),
-        Number(morceaux[1]) - 1,
-        Number(morceaux[2])
-      );
-
-
-    return d.toLocaleDateString(
-      "fr-FR",
-      {
-        weekday:"long",
-        day:"numeric",
-        month:"long",
-        year:"numeric"
-      }
-    );
-
-  }
-
-
-  return String(date);
-}
-
-
-function formatDatePublication(
-  valeur
-){
-
-  if(!valeur){
-
-    return "";
-
-  }
-
-
-  const date =
-    new Date(valeur);
-
-
-  if(
-    Number.isNaN(
-      date.getTime()
-    )
-  ){
-
-    return String(valeur);
-
-  }
-
-
-  return (
-    date.toLocaleDateString(
-      "fr-FR",
-      {
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric"
-      }
-    ) +
-    " à " +
-    date.toLocaleTimeString(
-      "fr-FR",
-      {
-        hour:"2-digit",
-        minute:"2-digit"
-      }
-    )
-  );
-}
-
-
-function formatTime(value){
-
-  if(!value){
-
-    return "";
-
-  }
-
-
-  return String(
-    value
-  ).substring(
-    0,
-    5
-  );
-}
-
-
-/* =========================================================
-   CALCUL DURÉE
+   DUREE
 ========================================================= */
 
 function calculerDuree(
@@ -3081,166 +3014,286 @@ function calculerDuree(
   fin
 ){
 
-  if(
-    !debut ||
-    !fin
-  ){
-
+  if(!debut || !fin){
     return "—";
-
   }
 
+  const d =
+    convertirMinutes(debut);
 
-  const [h1,m1] =
-    String(debut)
-      .split(":")
-      .map(Number);
-
-  const [h2,m2] =
-    String(fin)
-      .split(":")
-      .map(Number);
-
+  const f =
+    convertirMinutes(fin);
 
   if(
-    !Number.isFinite(h1) ||
-    !Number.isFinite(m1) ||
-    !Number.isFinite(h2) ||
-    !Number.isFinite(m2)
+    d === null ||
+    f === null
   ){
-
     return "—";
-
   }
-
 
   let minutes =
-    (h2 * 60 + m2) -
-    (h1 * 60 + m1);
-
+    f - d;
 
   if(minutes < 0){
-
     minutes += 24 * 60;
-
   }
 
-
   const heures =
-    Math.floor(
-      minutes / 60
-    );
+    Math.floor(minutes / 60);
 
   const reste =
     minutes % 60;
 
-
   return (
-    heures +
-    "h" +
-    String(reste).padStart(
-      2,
-      "0"
-    )
+    heures
+    + "h"
+    + String(reste).padStart(2,"0")
   );
 }
 
+function convertirMinutes(value){
+
+  const match =
+    String(value)
+      .match(/^(\d{1,2}):(\d{2})/);
+
+  if(!match){
+    return null;
+  }
+
+  return (
+    Number(match[1]) * 60
+    +
+    Number(match[2])
+  );
+}
 
 /* =========================================================
-   SÉCURITÉ HTML
+   SUPPRESSION
 ========================================================= */
 
-function escapeHTML(
-  valeur
+async function supprimerDemande(
+  id
 ){
 
-  if(
-    valeur === null ||
-    valeur === undefined
-  ){
+  if(!id){
+    return;
+  }
 
-    return "";
+  const confirmation =
+    window.confirm(
+      "Voulez-vous vraiment supprimer cette demande ?"
+    );
+
+  if(!confirmation){
+    return;
+  }
+
+  try{
+
+    /*
+      Suppression de la ligne sélectionnée.
+    */
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("echanges")
+        .delete()
+        .eq("id",id);
+
+    if(error){
+
+      console.error(error);
+
+      afficherToast(
+        "❌ Impossible de supprimer la demande : "
+        + error.message
+      );
+
+      return;
+    }
+
+    afficherToast(
+      "🗑️ Demande supprimée."
+    );
+
+    await afficherEchanges();
+
+  }catch(error){
+
+    console.error(error);
+
+    afficherToast(
+      "❌ Une erreur est survenue."
+    );
 
   }
 
-
-  const div =
-    document.createElement(
-      "div"
-    );
-
-
-  div.innerText =
-    String(valeur);
-
-
-  return div.innerHTML;
 }
-
 
 /* =========================================================
-   TOAST
+   INTERET
 ========================================================= */
 
-function afficherToast(
-  message
-){
+function ouvrirInteret(id){
 
-  const toast =
-    document.getElementById(
-      "toast"
-    );
+  demandeInteretId =
+    id;
 
+  document
+    .getElementById("interessantNom")
+    .value = "";
 
-  toast.innerText =
-    message;
+  document
+    .getElementById("interestModal")
+    .classList.add("show");
 
-
-  toast.classList.add(
-    "show"
-  );
-
-
-  clearTimeout(
-    afficherToast.timer
-  );
-
-
-  afficherToast.timer =
-    setTimeout(
-      () => {
-
-        toast.classList.remove(
-          "show"
-        );
-
-      },
-      3200
-    );
 }
 
+function fermerInteret(){
+
+  document
+    .getElementById("interestModal")
+    .classList.remove("show");
+
+  demandeInteretId =
+    null;
+}
+
+async function confirmerInteret(){
+
+  const nom =
+    document
+      .getElementById("interessantNom")
+      .value
+      .trim();
+
+  if(!nom){
+
+    afficherToast(
+      "⚠️ Merci d'indiquer ton nom."
+    );
+
+    return;
+  }
+
+  if(!demandeInteretId){
+
+    fermerInteret();
+
+    return;
+  }
+
+  try{
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("echanges")
+        .update({
+          agent_interesse:nom
+        })
+        .eq(
+          "id",
+          demandeInteretId
+        );
+
+    if(error){
+
+      console.error(error);
+
+      afficherToast(
+        "❌ Impossible d'enregistrer ton intérêt : "
+        + error.message
+      );
+
+      return;
+    }
+
+    fermerInteret();
+
+    afficherToast(
+      "🙋 Ton intérêt a bien été enregistré."
+    );
+
+    await afficherEchanges();
+
+  }catch(error){
+
+    console.error(error);
+
+    afficherToast(
+      "❌ Une erreur est survenue."
+    );
+
+  }
+
+}
+
+/* =========================================================
+   FERMETURE DES MODALES EN CLIQUANT À L'EXTÉRIEUR
+========================================================= */
+
+document
+  .getElementById("confirmationModal")
+  .addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target === this
+      ){
+        fermerConfirmation();
+      }
+
+    }
+  );
+
+document
+  .getElementById("formModal")
+  .addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target === this
+      ){
+        fermerFormulaire();
+      }
+
+    }
+  );
+
+document
+  .getElementById("interestModal")
+  .addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target === this
+      ){
+        fermerInteret();
+      }
+
+    }
+  );
 
 /* =========================================================
    INITIALISATION
 ========================================================= */
 
-filtreActuel = "";
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
 
-document
-  .querySelectorAll(".filter")
-  .forEach(
-    btn => {
+    afficherEchanges();
 
-      btn.classList.toggle(
-        "active",
-        btn.dataset.metier === ""
-      );
-
-    }
-  );
-
-
-afficherEchanges();
+  }
+);
 
 </script>
 
