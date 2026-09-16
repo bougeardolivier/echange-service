@@ -1,959 +1,1915 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061827">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta
+  name="theme-color"
+  content="#061827">
+
 <title>ÉCHANGE SERVICE</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 :root{
+
   --navy:#061827;
   --blue:#087fba;
   --cyan:#57d9ef;
   --teal:#35c2b2;
+
   --text:#173249;
   --muted:#687989;
+
   --line:#dce8ee;
-  --shadow:0 18px 45px rgba(5,35,53,.18)
+
+  --shadow:
+    0 18px 45px rgba(5,35,53,.18);
+
 }
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 *{
-  box-sizing:border-box
+  box-sizing:border-box;
 }
+
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
+
 
 body{
+
   margin:0;
+
   min-height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
   color:var(--text);
+
   background:#061827;
-  overflow-x:hidden
+
+  overflow-x:hidden;
+
 }
 
+
+.hidden{
+  display:none!important;
+}
+
+
+/* =========================================================
+   BACKGROUND TRAIN
+========================================================= */
+
 .bg{
+
   position:fixed;
+
   inset:0;
+
   z-index:-5;
+
   overflow:hidden;
+
   pointer-events:none;
+
   background:
+
     linear-gradient(
       180deg,
       rgba(4,22,36,.18),
       rgba(4,22,36,.40)
     ),
-    url("IMG_7689.jpeg") center 45%/cover no-repeat
+
+    url("IMG_7689.jpeg")
+    center 45%/cover
+    no-repeat;
+
 }
 
+
 .bg:before{
+
   content:"";
+
   position:absolute;
+
   inset:0;
+
   background:
+
     linear-gradient(
       180deg,
       rgba(3,22,37,.72) 0%,
       rgba(4,31,49,.40) 31%,
       rgba(8,51,72,.20) 55%,
       rgba(238,247,250,.62) 100%
-    )
+    );
+
 }
 
+
 .bg:after{
+
   content:"";
+
   position:absolute;
+
   inset:0;
+
   background:
+
     radial-gradient(
       circle at 8% 10%,
       rgba(87,217,239,.28),
       transparent 25%
     ),
+
     radial-gradient(
       circle at 92% 15%,
       rgba(30,154,207,.28),
       transparent 28%
-    )
+    );
+
 }
 
+
 .speed{
+
   position:absolute;
+
   height:2px;
+
   border-radius:999px;
+
   background:
+
     linear-gradient(
       90deg,
       transparent,
       rgba(103,226,247,.72),
       transparent
-    )
+    );
+
 }
+
 
 .s1{
   width:34%;
   top:13%;
-  left:5%
+  left:5%;
 }
+
 
 .s2{
   width:26%;
   top:23%;
-  right:5%
+  right:5%;
 }
 
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
+
   position:relative;
+
   min-height:250px;
+
   padding:
     calc(18px + env(safe-area-inset-top))
     16px
     58px;
+
   text-align:center;
+
   color:#fff;
-  overflow:hidden
+
+  overflow:hidden;
+
 }
+
 
 .hero-inner{
+
   position:relative;
+
   z-index:2;
+
   width:min(1000px,100%);
-  margin:auto
+
+  margin:auto;
+
 }
+
 
 .mark{
+
   width:56px;
+
   height:56px;
+
   margin:0 auto 10px;
+
   display:grid;
+
   place-items:center;
-  border:1px solid rgba(255,255,255,.32);
+
+  border:
+    1px solid
+    rgba(255,255,255,.32);
+
   border-radius:18px;
-  background:rgba(5,34,53,.46);
-  box-shadow:0 12px 30px rgba(0,0,0,.24);
+
+  background:
+    rgba(5,34,53,.46);
+
+  box-shadow:
+    0 12px 30px
+    rgba(0,0,0,.24);
+
   backdrop-filter:blur(14px);
-  font-size:30px
+
+  font-size:30px;
+
 }
+
 
 .hero h1{
+
   margin:0;
-  font-size:clamp(34px,7vw,66px);
+
+  font-size:
+    clamp(34px,7vw,66px);
+
   line-height:1;
+
   font-weight:900;
-  letter-spacing:clamp(1px,1vw,4px);
-  text-shadow:0 8px 25px rgba(0,0,0,.45)
+
+  letter-spacing:
+    clamp(1px,1vw,4px);
+
+  text-shadow:
+    0 8px 25px
+    rgba(0,0,0,.45);
+
 }
+
 
 .hero h1 span{
-  color:var(--cyan)
+  color:var(--cyan);
 }
+
 
 .sub{
+
   margin:12px 0 0;
-  font-size:clamp(15px,3vw,22px);
-  color:rgba(255,255,255,.94);
-  text-shadow:0 3px 14px rgba(0,0,0,.35)
+
+  font-size:
+    clamp(15px,3vw,22px);
+
+  color:
+    rgba(255,255,255,.94);
+
+  text-shadow:
+    0 3px 14px
+    rgba(0,0,0,.35);
+
 }
+
 
 .sub strong{
+
   display:inline-block;
+
   margin-top:4px;
+
   color:#8cecff;
-  font-weight:850
+
+  font-weight:850;
+
 }
 
+
 .glow{
+
   height:5px;
+
   width:min(500px,72%);
+
   margin:17px auto 0;
+
   border-radius:999px;
+
   background:
+
     linear-gradient(
       90deg,
       transparent,
       #55d6ee,
       transparent
     );
-  box-shadow:0 0 24px rgba(85,214,238,.45)
+
+  box-shadow:
+    0 0 24px
+    rgba(85,214,238,.45);
+
 }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 main{
+
   width:min(1120px,100%);
+
   margin:-34px auto 100px;
-  padding:0 14px
+
+  padding:0 14px;
+
 }
 
-.hidden{
-  display:none!important
-}
 
-/* ACCUEIL */
+/* =========================================================
+   WELCOME
+========================================================= */
 
 .welcome{
+
   position:relative;
+
   overflow:hidden;
+
   text-align:center;
+
   padding:22px 18px 20px;
-  border:1px solid rgba(255,255,255,.82);
+
+  border:
+    1px solid
+    rgba(255,255,255,.82);
+
   border-radius:28px;
-  background:rgba(255,255,255,.91);
+
+  background:
+    rgba(255,255,255,.91);
+
   box-shadow:var(--shadow);
-  backdrop-filter:blur(18px)
+
+  backdrop-filter:blur(18px);
+
 }
+
 
 .welcome:before{
+
   content:"";
+
   position:absolute;
+
   width:260px;
+
   height:260px;
+
   left:-150px;
+
   top:-170px;
+
   border-radius:50%;
-  background:rgba(80,211,238,.13)
+
+  background:
+    rgba(80,211,238,.13);
+
 }
+
 
 .welcome:after{
+
   content:"";
+
   position:absolute;
+
   width:220px;
+
   height:220px;
+
   right:-110px;
+
   bottom:-140px;
+
   border-radius:50%;
-  background:rgba(50,194,178,.11)
+
+  background:
+    rgba(50,194,178,.11);
+
 }
+
 
 .welcome-icon{
+
   position:relative;
+
   z-index:1;
+
   width:58px;
+
   height:58px;
+
   margin:auto auto 8px;
+
   display:grid;
+
   place-items:center;
+
   border-radius:19px;
-  background:linear-gradient(145deg,#e9faff,#c7eaf4);
+
+  background:
+    linear-gradient(
+      145deg,
+      #e9faff,
+      #c7eaf4
+    );
+
   font-size:31px;
-  box-shadow:0 10px 25px rgba(35,141,181,.18)
+
+  box-shadow:
+    0 10px 25px
+    rgba(35,141,181,.18);
+
 }
+
 
 .welcome h2{
+
   position:relative;
+
   z-index:1;
+
   margin:0 0 7px;
-  font-size:clamp(28px,5vw,40px)
+
+  font-size:
+    clamp(28px,5vw,40px);
+
 }
+
 
 .welcome p{
+
   position:relative;
+
   z-index:1;
+
   max-width:850px;
+
   margin:auto;
+
   color:var(--muted);
-  font-size:clamp(14px,2.3vw,18px);
-  line-height:1.42
+
+  font-size:
+    clamp(14px,2.3vw,18px);
+
+  line-height:1.42;
+
 }
+
 
 .pill{
+
   position:relative;
+
   z-index:1;
+
   display:inline-flex;
+
   margin-top:13px;
+
   padding:8px 15px;
+
   border-radius:999px;
-  background:linear-gradient(135deg,#e0f6fb,#c9eaf5);
+
+  background:
+    linear-gradient(
+      135deg,
+      #e0f6fb,
+      #c9eaf5
+    );
+
   color:#24536c;
+
   font-weight:800;
-  font-size:13px
+
+  font-size:13px;
+
 }
+
+
+/* =========================================================
+   METIER
+========================================================= */
 
 .choices{
+
   display:grid;
+
   grid-template-columns:1fr;
+
   gap:12px;
-  margin-top:13px
+
+  margin-top:13px;
+
 }
+
 
 .choice{
+
   border:0;
+
   padding:0;
+
   background:transparent;
+
   text-align:left;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .choice-card{
+
   position:relative;
+
   overflow:hidden;
+
   min-height:92px;
+
   display:flex;
+
   align-items:center;
+
   gap:13px;
+
   padding:13px 15px;
+
   border-radius:23px;
-  background:rgba(255,255,255,.93);
-  border:1px solid rgba(255,255,255,.95);
-  box-shadow:0 13px 30px rgba(8,40,58,.15);
+
+  background:
+    rgba(255,255,255,.93);
+
+  border:
+    1px solid
+    rgba(255,255,255,.95);
+
+  box-shadow:
+    0 13px 30px
+    rgba(8,40,58,.15);
+
   transition:
     transform .16s ease,
-    box-shadow .16s ease
+    box-shadow .16s ease;
+
 }
+
 
 .choice-card:hover{
+
   transform:translateY(-2px);
-  box-shadow:0 17px 35px rgba(8,40,58,.20)
+
+  box-shadow:
+    0 17px 35px
+    rgba(8,40,58,.20);
+
 }
+
 
 .choice-card:active{
-  transform:scale(.985)
+  transform:scale(.985);
 }
+
 
 .adc .choice-card{
-  border-left:5px solid #2ba7dc
+  border-left:5px solid #2ba7dc;
 }
+
 
 .asct .choice-card{
-  border-left:5px solid #32b9ae
+  border-left:5px solid #32b9ae;
 }
+
 
 .choice-icon{
+
   flex:0 0 56px;
+
   width:56px;
+
   height:56px;
+
   display:grid;
+
   place-items:center;
+
   border-radius:18px;
-  background:linear-gradient(145deg,#e5f8fd,#c6e9f4);
-  font-size:29px
+
+  background:
+    linear-gradient(
+      145deg,
+      #e5f8fd,
+      #c6e9f4
+    );
+
+  font-size:29px;
+
 }
+
 
 .choice-text{
-  min-width:0
+  min-width:0;
 }
+
 
 .choice-text strong{
+
   display:block;
+
   font-size:21px;
-  margin-bottom:3px
+
+  margin-bottom:3px;
+
 }
+
 
 .choice-text small{
+
   display:block;
+
   color:#748391;
+
   font-size:13px;
-  line-height:1.25
+
+  line-height:1.25;
+
 }
+
 
 .arrow{
+
   margin-left:auto;
+
   font-size:27px;
-  color:#1683b8
+
+  color:#1683b8;
+
 }
 
-/* CARTES */
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .card{
+
   padding:20px;
+
   border-radius:27px;
-  background:rgba(255,255,255,.93);
-  border:1px solid rgba(255,255,255,.95);
+
+  background:
+    rgba(255,255,255,.93);
+
+  border:
+    1px solid
+    rgba(255,255,255,.95);
+
   box-shadow:var(--shadow);
-  backdrop-filter:blur(18px)
+
+  backdrop-filter:blur(18px);
+
 }
+
 
 .badge{
+
   display:inline-flex;
+
   padding:7px 12px;
+
   border-radius:999px;
+
   background:#e2f5fb;
+
   color:#12658e;
+
   font-size:12px;
-  font-weight:800
+
+  font-weight:800;
+
 }
+
 
 .page-title{
+
   margin:10px 0 6px;
-  font-size:26px
+
+  font-size:26px;
+
 }
+
 
 .info{
+
   margin:0 0 15px;
+
   color:var(--muted);
-  line-height:1.5
+
+  line-height:1.5;
+
 }
 
-/* FORMULAIRE */
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
 
 label{
+
   display:block;
+
   margin:13px 0 6px;
+
   font-size:13px;
+
   font-weight:800;
-  color:#405666
+
+  color:#405666;
+
 }
+
 
 input,
 textarea{
+
   width:100%;
+
   padding:12px 13px;
-  border:1px solid #d5e2e9;
+
+  border:
+    1px solid
+    #d5e2e9;
+
   border-radius:14px;
+
   background:#f9fbfc;
+
   color:var(--text);
+
   font:inherit;
-  font-size:16px
+
+  font-size:16px;
+
 }
+
 
 input:focus,
 textarea:focus{
+
   outline:none;
+
   border-color:#2091c7;
-  box-shadow:0 0 0 4px rgba(32,145,199,.11)
+
+  box-shadow:
+    0 0 0 4px
+    rgba(32,145,199,.11);
+
 }
+
 
 textarea{
+
   min-height:82px;
-  resize:vertical
+
+  resize:vertical;
+
 }
+
 
 .row{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
-  gap:10px
+
+  gap:10px;
+
 }
+
 
 .location-row{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
-  gap:10px
+
+  gap:10px;
+
 }
 
-/* 2e JOURNEE */
+
+/* =========================================================
+   DEUXIEME JOURNEE
+========================================================= */
 
 .toggle-wrap{
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:12px;
+
   margin:16px 0 4px;
+
   padding:13px 14px;
+
   border-radius:16px;
+
   background:#eef7fa;
-  border:1px solid #dce8ee
+
+  border:
+    1px solid
+    #dce8ee;
+
 }
+
 
 .toggle-text strong{
+
   display:block;
-  font-size:14px
+
+  font-size:14px;
+
 }
+
 
 .toggle-text small{
+
   display:block;
+
   color:#71818e;
+
   margin-top:3px;
-  line-height:1.3
+
+  line-height:1.3;
+
 }
+
 
 .switch{
+
   position:relative;
+
   width:52px;
+
   height:30px;
-  flex:0 0 52px
+
+  flex:0 0 52px;
+
 }
+
 
 .switch input{
+
   opacity:0;
+
   width:0;
-  height:0
+
+  height:0;
+
 }
+
 
 .slider{
+
   position:absolute;
+
   inset:0;
+
   border-radius:999px;
+
   background:#cbd9df;
+
   cursor:pointer;
-  transition:.2s
+
+  transition:.2s;
+
 }
+
 
 .slider:before{
+
   content:"";
+
   position:absolute;
+
   width:24px;
+
   height:24px;
+
   left:3px;
+
   top:3px;
+
   border-radius:50%;
+
   background:#fff;
-  box-shadow:0 2px 6px rgba(0,0,0,.18);
-  transition:.2s
+
+  box-shadow:
+    0 2px 6px
+    rgba(0,0,0,.18);
+
+  transition:.2s;
+
 }
+
 
 .switch input:checked + .slider{
-  background:#1699ce
+  background:#1699ce;
 }
+
 
 .switch input:checked + .slider:before{
-  transform:translateX(22px)
+  transform:translateX(22px);
 }
+
 
 .day2{
+
   margin-top:12px;
+
   padding-top:4px;
-  border-top:1px dashed #cbdde5
+
+  border-top:
+    1px dashed
+    #cbdde5;
+
 }
+
 
 .day-label{
+
   display:flex;
+
   align-items:center;
+
   gap:8px;
+
   margin-top:12px;
+
   font-size:14px;
+
   font-weight:900;
-  color:#17658b
+
+  color:#17658b;
+
 }
 
-/* BOUTONS */
+
+/* =========================================================
+   BOUTONS
+========================================================= */
 
 .btn{
+
   width:100%;
+
   border:0;
+
   border-radius:15px;
+
   padding:13px 15px;
+
   margin-top:14px;
-  background:linear-gradient(135deg,#086b9f,#1699ce);
+
+  background:
+    linear-gradient(
+      135deg,
+      #086b9f,
+      #1699ce
+    );
+
   color:#fff;
+
   font:inherit;
+
   font-weight:850;
+
   cursor:pointer;
-  box-shadow:0 9px 20px rgba(8,107,159,.18)
+
+  box-shadow:
+    0 9px 20px
+    rgba(8,107,159,.18);
+
 }
+
 
 .secondary{
+
   background:#eaf1f5;
+
   color:#294252;
-  box-shadow:none
+
+  box-shadow:none;
+
 }
 
-/* MODALE CONGE REFUSE */
+
+/* =========================================================
+   MODALE CONGE REFUSE
+========================================================= */
 
 .modal-overlay{
+
   position:fixed;
+
   inset:0;
+
   z-index:9999;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   padding:20px;
-  background:rgba(3,18,30,.68);
-  backdrop-filter:blur(8px)
+
+  background:
+    rgba(3,18,30,.68);
+
+  backdrop-filter:blur(8px);
+
 }
+
 
 .modal{
+
   width:min(500px,100%);
+
   padding:28px 22px 22px;
+
   border-radius:27px;
-  background:rgba(255,255,255,.98);
-  box-shadow:0 25px 70px rgba(0,0,0,.35);
+
+  background:
+    rgba(255,255,255,.98);
+
+  box-shadow:
+    0 25px 70px
+    rgba(0,0,0,.35);
+
   text-align:center;
-  animation:modalIn .22s ease-out
+
+  animation:
+    modalIn .22s ease-out;
+
 }
 
+
 @keyframes modalIn{
+
   from{
+
     opacity:0;
-    transform:translateY(12px) scale(.97)
+
+    transform:
+      translateY(12px)
+      scale(.97);
+
   }
 
   to{
+
     opacity:1;
-    transform:translateY(0) scale(1)
+
+    transform:
+      translateY(0)
+      scale(1);
+
   }
+
 }
+
 
 .modal-icon{
+
   width:64px;
+
   height:64px;
+
   margin:0 auto 14px;
+
   display:grid;
+
   place-items:center;
+
   border-radius:20px;
+
   background:#e8f6fb;
-  font-size:34px
+
+  font-size:34px;
+
 }
+
 
 .modal h2{
+
   margin:0 0 10px;
+
   color:#173249;
-  font-size:24px
+
+  font-size:24px;
+
 }
+
 
 .modal p{
+
   margin:0 auto 14px;
+
   color:#687989;
+
   line-height:1.45;
-  font-size:15px
+
+  font-size:15px;
+
 }
+
 
 .modal-confirm{
-  margin-top:8px
+  margin-top:8px;
 }
+
 
 .modal-cancel{
+
   margin-top:9px;
+
   background:#edf2f5;
+
   color:#405666;
-  box-shadow:none
+
+  box-shadow:none;
+
 }
 
-/* LISTE ECHANGES */
+
+/* =========================================================
+   LISTE
+========================================================= */
 
 .list{
+
   display:grid;
-  gap:12px
+
+  gap:12px;
+
 }
+
 
 .item{
+
   padding:15px;
+
   border-radius:20px;
-  background:linear-gradient(145deg,#fff,#f5f9fb);
-  border:1px solid var(--line);
-  border-left:5px solid #1587bb;
-  box-shadow:0 9px 23px rgba(10,42,62,.08)
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #f5f9fb
+    );
+
+  border:
+    1px solid
+    var(--line);
+
+  border-left:
+    5px solid
+    #1587bb;
+
+  box-shadow:
+    0 9px 23px
+    rgba(10,42,62,.08);
+
 }
+
+
+/* =========================================================
+   EN-TETE DEMANDE
+========================================================= */
 
 .name{
+
   font-size:18px;
+
   font-weight:850;
-  color:#17364c
+
+  color:#17364c;
+
 }
+
 
 .request-date{
+
   display:block;
+
   width:max-content;
+
   max-width:100%;
+
   margin-top:6px;
+
   padding:5px 8px;
+
   border-radius:8px;
+
   background:#edf4f7;
+
   color:#637582;
+
   font-size:12px;
-  font-weight:700
+
+  font-weight:700;
+
 }
+
+
+/* =========================================================
+   BADGE 2 JOURNEES
+========================================================= */
+
+.multi-day-badge{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  margin-top:9px;
+
+  padding:7px 10px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e1f7f5,
+      #d2f0ec
+    );
+
+  color:#14766e;
+
+  font-size:12px;
+
+  font-weight:900;
+
+}
+
+
+/* =========================================================
+   BLOC JOURNEE
+========================================================= */
+
+.day-card{
+
+  margin-top:11px;
+
+  padding:12px;
+
+  border-radius:16px;
+
+  background:#f5f9fa;
+
+  border:
+    1px solid
+    #e1ecef;
+
+}
+
+
+.day-card-header{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-bottom:9px;
+
+  color:#17658b;
+
+  font-size:14px;
+
+  font-weight:900;
+
+}
+
 
 .service{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:8px;
-  margin-top:11px
+
 }
+
 
 .chip{
+
   padding:9px;
+
   border-radius:13px;
-  background:#eef7fa
+
+  background:#eef7fa;
+
 }
+
 
 .chip span{
+
   display:block;
+
   color:#71818e;
+
   font-size:9px;
+
   text-transform:uppercase;
+
   letter-spacing:.4px;
+
   font-weight:800;
-  margin-bottom:3px
+
+  margin-bottom:3px;
+
 }
+
 
 .chip strong{
+
   font-size:14px;
-  color:#20455e
+
+  color:#20455e;
+
 }
+
+
+/* =========================================================
+   LIEUX
+========================================================= */
 
 .locations{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:8px;
-  margin-top:8px
+
+  margin-top:8px;
+
 }
+
 
 .location-chip{
+
   padding:9px;
+
   border-radius:13px;
+
   background:#f1f7f8;
-  border:1px solid #e1ecef
+
+  border:
+    1px solid
+    #e1ecef;
+
 }
+
 
 .location-chip span{
+
   display:block;
+
   color:#71818e;
+
   font-size:9px;
+
   text-transform:uppercase;
+
   letter-spacing:.4px;
+
   font-weight:800;
-  margin-bottom:3px
+
+  margin-bottom:3px;
+
 }
+
 
 .location-chip strong{
+
   font-size:13px;
+
   color:#20455e;
-  line-height:1.25
+
+  line-height:1.25;
+
 }
+
+
+/* =========================================================
+   COMMENTAIRE
+========================================================= */
 
 .comment{
+
   margin-top:9px;
+
   padding:9px 10px;
+
   border-radius:12px;
+
   background:#f5f7f8;
+
   color:#667784;
+
   font-size:13px;
-  line-height:1.4
+
+  line-height:1.4;
+
 }
+
+
+/* =========================================================
+   INTERET
+========================================================= */
 
 .interest{
+
   margin-top:10px;
+
   padding:9px 11px;
+
   border-radius:12px;
+
   background:#fff3d9;
+
   color:#835700;
+
   font-size:13px;
-  font-weight:700
+
+  font-weight:700;
+
 }
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
 
 .actions{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:8px;
-  margin-top:11px
+
+  margin-top:11px;
+
 }
+
 
 .small{
+
   border:0;
+
   border-radius:12px;
+
   padding:10px 8px;
+
   font:inherit;
+
   font-size:12px;
+
   font-weight:800;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .interet{
+
   background:#fff0cf;
-  color:#8b5b00
+
+  color:#8b5b00;
+
 }
+
 
 .delete{
+
   background:#ffe5e5;
-  color:#b72e2e
+
+  color:#b72e2e;
+
 }
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
 
 .empty{
+
   text-align:center;
+
   padding:28px 15px;
-  color:#71808c
+
+  color:#71808c;
+
 }
+
 
 .empty-icon{
+
   display:block;
+
   font-size:40px;
-  margin-bottom:7px
+
+  margin-bottom:7px;
+
 }
 
-/* NAVIGATION */
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 nav{
+
   position:fixed;
+
   z-index:100;
+
   left:50%;
-  bottom:calc(8px + env(safe-area-inset-bottom));
+
+  bottom:
+    calc(
+      8px +
+      env(safe-area-inset-bottom)
+    );
+
   transform:translateX(-50%);
-  width:min(430px,calc(100% - 20px));
+
+  width:min(
+    430px,
+    calc(100% - 20px)
+  );
+
   display:flex;
+
   gap:4px;
+
   padding:6px;
-  border:1px solid rgba(255,255,255,.85);
+
+  border:
+    1px solid
+    rgba(255,255,255,.85);
+
   border-radius:21px;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 12px 35px rgba(8,40,58,.22);
-  backdrop-filter:blur(20px)
+
+  background:
+    rgba(255,255,255,.88);
+
+  box-shadow:
+    0 12px 35px
+    rgba(8,40,58,.22);
+
+  backdrop-filter:blur(20px);
+
 }
+
 
 nav button{
+
   flex:1;
+
   border:0;
+
   border-radius:15px;
+
   padding:6px 5px;
+
   background:transparent;
+
   color:#5c6e7c;
+
   font:inherit;
+
   font-size:11px;
+
   font-weight:800;
-  cursor:pointer
+
+  cursor:pointer;
+
 }
+
 
 .nav-icon{
+
   display:block;
+
   font-size:18px;
-  margin-bottom:1px
+
+  margin-bottom:1px;
+
 }
 
-/* RESPONSIVE */
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:699px){
+
   .bg{
-    background-position:center center
+    background-position:center center;
   }
+
 }
+
 
 @media(min-width:700px) and (max-width:1099px){
+
   .bg{
-    background-position:center 42%
+    background-position:center 42%;
   }
+
 }
 
+
 @media(min-width:1100px){
+
   .bg{
-    background-position:center 45%
+    background-position:center 45%;
   }
+
 }
+
 
 @media(min-width:700px){
 
   .hero{
+
     min-height:275px;
-    padding-top:24px
+
+    padding-top:24px;
+
   }
+
 
   main{
-    padding:0 22px
+    padding:0 22px;
   }
+
 
   .choices{
+
     grid-template-columns:1fr 1fr;
-    gap:14px
+
+    gap:14px;
+
   }
+
 
   .welcome{
-    padding:24px 28px 21px
+    padding:24px 28px 21px;
   }
 
+
   .choice-card{
+
     min-height:106px;
-    padding:15px 18px
+
+    padding:15px 18px;
+
   }
+
 }
+
 
 @media(min-width:1000px){
 
   .hero{
-    min-height:300px
+    min-height:300px;
   }
+
 
   main{
-    margin-top:-42px
+    margin-top:-42px;
   }
+
 
   .choices{
-    gap:18px
+    gap:18px;
   }
+
 
   .choice-card{
-    min-height:115px
+    min-height:115px;
   }
 
+
   .choice-icon{
+
     width:64px;
+
     height:64px;
+
     flex-basis:64px;
-    font-size:33px
+
+    font-size:33px;
+
   }
+
 }
+
 
 @media(max-width:600px){
 
   .location-row,
   .locations{
-    grid-template-columns:1fr
+
+    grid-template-columns:1fr;
+
   }
+
 }
+
 
 @media(max-width:380px){
 
   .hero{
+
     min-height:230px;
-    padding-bottom:52px
+
+    padding-bottom:52px;
+
   }
+
 
   .hero h1{
-    font-size:32px
+    font-size:32px;
   }
+
 
   .sub{
-    font-size:14px
+    font-size:14px;
   }
+
 
   .welcome{
-    padding:20px 14px 18px
+
+    padding:20px 14px 18px;
+
   }
+
 
   .welcome h2{
-    font-size:28px
+    font-size:28px;
   }
+
 
   .welcome p{
-    font-size:13px
+    font-size:13px;
   }
+
 
   .pill{
+
     font-size:12px;
-    padding:7px 11px
+
+    padding:7px 11px;
+
   }
+
 
   .choice-card{
+
     min-height:86px;
+
     padding:11px 12px;
-    gap:9px
+
+    gap:9px;
+
   }
+
 
   .choice-icon{
+
     width:51px;
+
     height:51px;
+
     flex-basis:51px;
-    font-size:27px
+
+    font-size:27px;
+
   }
+
 
   .choice-text strong{
-    font-size:19px
+    font-size:19px;
   }
 
+
   .choice-text small{
-    font-size:11px
+    font-size:11px;
   }
+
 
   .service,
   .actions{
-    grid-template-columns:1fr
+
+    grid-template-columns:1fr;
+
   }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
+
 <div class="bg">
+
   <div class="speed s1"></div>
+
   <div class="speed s2"></div>
+
 </div>
 
-<!-- =========================
-     MODALE CONGE REFUSE
-========================= -->
 
-<div id="modalCongeRefuse" class="modal-overlay hidden">
+<!-- =========================================================
+     MODALE CONGE REFUSE
+========================================================= -->
+
+<div
+  id="modalCongeRefuse"
+  class="modal-overlay hidden">
 
   <div class="modal">
 
@@ -966,15 +1922,20 @@ nav button{
     </h2>
 
     <p>
-      Pour utiliser <strong>ÉCHANGE SERVICE</strong>,
-      vous devez avoir préalablement fait une demande
-      de congé qui a été refusée.
+
+      Pour utiliser
+      <strong>ÉCHANGE SERVICE</strong>,
+      vous devez avoir préalablement fait
+      une demande de congé qui a été refusée.
+
     </p>
 
     <p>
+
       <strong>
         Je confirme que mon congé a été refusé.
       </strong>
+
     </p>
 
     <button
@@ -997,9 +1958,10 @@ nav button{
 
 </div>
 
-<!-- =========================
-     HEADER
-========================= -->
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <header class="hero">
 
@@ -1010,12 +1972,20 @@ nav button{
     </div>
 
     <h1>
-      ÉCHANGE <span>SERVICE</span>
+
+      ÉCHANGE
+      <span>SERVICE</span>
+
     </h1>
 
     <div class="sub">
+
       Échange de journées entre agents
-      <strong>• si congés refusés</strong>
+
+      <strong>
+        • si congés refusés
+      </strong>
+
     </div>
 
     <div class="glow"></div>
@@ -1024,11 +1994,17 @@ nav button{
 
 </header>
 
-<!-- =========================
-     CONTENU
-========================= -->
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main>
+
+
+<!-- =========================================================
+     ACCUEIL
+========================================================= -->
 
 <section id="accueil">
 
@@ -1043,17 +2019,26 @@ nav button{
     </h2>
 
     <p>
-      Proposez une journée de service et trouvez
-      un collègue intéressé pour un éventuel échange.
+
+      Proposez une journée de service
+      et trouvez un collègue intéressé
+      pour un éventuel échange.
+
     </p>
 
     <div class="pill">
+
       🚆 Choisissez votre métier pour commencer
+
     </div>
 
   </div>
 
+
   <div class="choices">
+
+
+    <!-- ADC -->
 
     <button
       class="choice adc"
@@ -1085,6 +2070,9 @@ nav button{
 
     </button>
 
+
+    <!-- ASCT -->
+
     <button
       class="choice asct"
       onclick="choisirMetier('ASCT')">
@@ -1115,35 +2103,55 @@ nav button{
 
     </button>
 
+
   </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      PROPOSER
-========================= -->
+========================================================= -->
 
-<section id="proposer" class="hidden">
+<section
+  id="proposer"
+  class="hidden">
 
   <div class="card">
 
-    <span id="metier" class="badge">
+
+    <span
+      id="metier"
+      class="badge">
+
       🚆 Métier
+
     </span>
 
+
     <h2 class="page-title">
+
       ➕ Ma journée
+
     </h2>
 
+
     <p class="info">
+
       Proposez votre journée afin de trouver
       un collègue intéressé.
+
     </p>
 
+
+    <!-- NOM -->
+
     <label for="nom">
+
       Nom et prénom
+
     </label>
+
 
     <input
       id="nom"
@@ -1151,26 +2159,38 @@ nav button{
       autocomplete="name">
 
 
-    <!-- JOURNEE 1 -->
+    <!-- =====================================================
+         JOURNEE 1
+    ====================================================== -->
 
     <div class="day-label">
+
       📅 JOURNÉE 1
+
     </div>
 
+
     <label for="date">
+
       Date de la journée
+
     </label>
+
 
     <input
       id="date"
       type="date">
 
+
     <div class="row">
+
 
       <div>
 
         <label for="prise">
+
           Prise de service
+
         </label>
 
         <input
@@ -1179,10 +2199,13 @@ nav button{
 
       </div>
 
+
       <div>
 
         <label for="fin">
+
           Fin de service
+
         </label>
 
         <input
@@ -1191,6 +2214,7 @@ nav button{
 
       </div>
 
+
     </div>
 
 
@@ -1198,10 +2222,13 @@ nav button{
 
     <div class="location-row">
 
+
       <div>
 
         <label for="lieuPrise">
+
           📍 Lieu de prise de service
+
         </label>
 
         <input
@@ -1211,10 +2238,13 @@ nav button{
 
       </div>
 
+
       <div>
 
         <label for="lieuFin">
+
           📍 Lieu de fin de service
+
         </label>
 
         <input
@@ -1224,24 +2254,33 @@ nav button{
 
       </div>
 
+
     </div>
 
 
-    <!-- DEUXIEME JOURNEE -->
+    <!-- =====================================================
+         OPTION JOURNEE 2
+    ====================================================== -->
 
     <div class="toggle-wrap">
+
 
       <div class="toggle-text">
 
         <strong>
+
           🔄 J’ai une 2ᵉ journée à proposer
+
         </strong>
 
         <small>
+
           Utile notamment en cas de RHR entre les deux journées.
+
         </small>
 
       </div>
+
 
       <label class="switch">
 
@@ -1254,31 +2293,47 @@ nav button{
 
       </label>
 
+
     </div>
 
+
+    <!-- =====================================================
+         JOURNEE 2
+    ====================================================== -->
 
     <div
       id="blocJournee2"
       class="day2 hidden">
 
+
       <div class="day-label">
+
         📅 JOURNÉE 2
+
       </div>
 
+
       <label for="date2">
+
         Date de la 2ᵉ journée
+
       </label>
+
 
       <input
         id="date2"
         type="date">
 
+
       <div class="row">
+
 
         <div>
 
           <label for="prise2">
+
             Prise de service
+
           </label>
 
           <input
@@ -1287,10 +2342,13 @@ nav button{
 
         </div>
 
+
         <div>
 
           <label for="fin2">
+
             Fin de service
+
           </label>
 
           <input
@@ -1299,6 +2357,7 @@ nav button{
 
         </div>
 
+
       </div>
 
 
@@ -1306,10 +2365,13 @@ nav button{
 
       <div class="location-row">
 
+
         <div>
 
           <label for="lieuPrise2">
+
             📍 Lieu de prise de service
+
           </label>
 
           <input
@@ -1319,10 +2381,13 @@ nav button{
 
         </div>
 
+
         <div>
 
           <label for="lieuFin2">
+
             📍 Lieu de fin de service
+
           </label>
 
           <input
@@ -1332,7 +2397,9 @@ nav button{
 
         </div>
 
+
       </div>
+
 
     </div>
 
@@ -1340,13 +2407,18 @@ nav button{
     <!-- COMMENTAIRE -->
 
     <label for="commentaire">
+
       Commentaire
+
     </label>
+
 
     <textarea
       id="commentaire"
       placeholder="Exemple : TER, réserve, numéro de train, RHR entre les deux journées..."></textarea>
 
+
+    <!-- PUBLICATION -->
 
     <button
       class="btn"
@@ -1356,6 +2428,7 @@ nav button{
 
     </button>
 
+
     <button
       class="btn secondary"
       onclick="afficher('echanges')">
@@ -1364,34 +2437,47 @@ nav button{
 
     </button>
 
+
   </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      ECHANGES
-========================= -->
+========================================================= -->
 
-<section id="echanges" class="hidden">
+<section
+  id="echanges"
+  class="hidden">
+
 
   <div class="card">
 
+
     <h2 class="page-title">
+
       🔎 Échanges disponibles
+
     </h2>
 
+
     <p class="info">
+
       Métier :
       <strong id="metierEchanges">
         -
       </strong>
+
     </p>
+
 
     <div
       id="listeEchanges"
       class="list">
+
     </div>
+
 
     <button
       class="btn secondary"
@@ -1401,20 +2487,26 @@ nav button{
 
     </button>
 
+
   </div>
 
 </section>
 
+
 </main>
 
 
-<!-- =========================
+<!-- =========================================================
      NAVIGATION
-========================= -->
+========================================================= -->
 
-<nav id="menu" class="hidden">
+<nav
+  id="menu"
+  class="hidden">
 
-  <button onclick="afficher('proposer')">
+
+  <button
+    onclick="afficher('proposer')">
 
     <span class="nav-icon">
       ➕
@@ -1424,7 +2516,9 @@ nav button{
 
   </button>
 
-  <button onclick="afficher('echanges')">
+
+  <button
+    onclick="afficher('echanges')">
 
     <span class="nav-icon">
       🔎
@@ -1434,7 +2528,9 @@ nav button{
 
   </button>
 
-  <button onclick="changerMetier()">
+
+  <button
+    onclick="changerMetier()">
 
     <span class="nav-icon">
       🚆
@@ -1444,20 +2540,24 @@ nav button{
 
   </button>
 
+
 </nav>
 
 
 <script>
 
-/* =========================
+
+/* =========================================================
    SUPABASE
-========================= */
+========================================================= */
 
 const SUPABASE_URL =
   "https://nptwpoguokbjuzdyxach.supabase.co";
 
+
 const SUPABASE_KEY =
   "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
+
 
 const supabaseClient =
   supabase.createClient(
@@ -1465,14 +2565,16 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
+
 let metierActuel = "";
 
 
-/* =========================
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 function afficher(page){
+
 
   document
     .querySelectorAll("main section")
@@ -1480,114 +2582,152 @@ function afficher(page){
       s => s.classList.add("hidden")
     );
 
+
   const el =
     document.getElementById(page);
 
+
   if(el){
+
     el.classList.remove("hidden");
+
   }
+
 
   if(page === "echanges"){
+
     afficherEchanges();
+
   }
 
+
   window.scrollTo({
+
     top:0,
+
     behavior:"smooth"
+
   });
+
+
 }
 
 
-/* =========================
+/* =========================================================
    CHOIX METIER
-========================= */
+========================================================= */
 
 function choisirMetier(metier){
 
+
   metierActuel = metier;
+
 
   document
     .getElementById("metier")
     .innerHTML =
+
       metier === "ADC"
+
         ? "🚆 ADC – Conducteurs"
+
         : "👨‍✈️ ASCT – Service Commercial Train";
+
 
   document
     .getElementById("metierEchanges")
     .innerText = metier;
 
+
   /*
-   * IMPORTANT :
-   * Le formulaire n'est PAS ouvert ici.
-   * La fenêtre de confirmation est affichée en premier.
+   * Le formulaire ne s'ouvre pas directement.
+   * La confirmation du congé refusé apparaît d'abord.
    */
 
   document
     .getElementById("modalCongeRefuse")
     .classList
     .remove("hidden");
+
+
 }
 
 
-/* =========================
+/* =========================================================
    CONFIRMATION CONGE REFUSE
-========================= */
+========================================================= */
 
 function confirmerCongeRefuse(){
+
 
   document
     .getElementById("modalCongeRefuse")
     .classList
     .add("hidden");
+
 
   document
     .getElementById("menu")
     .classList
     .remove("hidden");
 
+
   afficher("proposer");
+
+
 }
 
 
 function annulerCongeRefuse(){
+
 
   document
     .getElementById("modalCongeRefuse")
     .classList
     .add("hidden");
 
+
   metierActuel = "";
+
+
 }
 
 
-/* =========================
+/* =========================================================
    CHANGER DE METIER
-========================= */
+========================================================= */
 
 function changerMetier(){
 
+
   metierActuel = "";
+
 
   document
     .getElementById("menu")
     .classList
     .add("hidden");
 
+
   afficher("accueil");
+
+
 }
 
 
-/* =========================
+/* =========================================================
    DEUXIEME JOURNEE
-========================= */
+========================================================= */
 
 function toggleJournee2(){
 
+
   const actif =
+
     document
       .getElementById("deuxiemeJournee")
       .checked;
+
 
   document
     .getElementById("blocJournee2")
@@ -1596,88 +2736,118 @@ function toggleJournee2(){
       "hidden",
       !actif
     );
+
+
 }
 
 
-/* =========================
+/* =========================================================
    PUBLICATION
-========================= */
+========================================================= */
 
 async function publier(){
 
+
   const nom =
+
     document
       .getElementById("nom")
       .value
       .trim();
 
+
   const date =
+
     document
       .getElementById("date")
       .value;
 
+
   const prise =
+
     document
       .getElementById("prise")
       .value;
 
+
   const fin =
+
     document
       .getElementById("fin")
       .value;
 
+
   const lieuPrise =
+
     document
       .getElementById("lieuPrise")
       .value
       .trim();
 
+
   const lieuFin =
+
     document
       .getElementById("lieuFin")
       .value
       .trim();
 
+
   const deuxieme =
+
     document
       .getElementById("deuxiemeJournee")
       .checked;
 
+
   const date2 =
+
     document
       .getElementById("date2")
       .value;
 
+
   const prise2 =
+
     document
       .getElementById("prise2")
       .value;
 
+
   const fin2 =
+
     document
       .getElementById("fin2")
       .value;
 
+
   const lieuPrise2 =
+
     document
       .getElementById("lieuPrise2")
       .value
       .trim();
 
+
   const lieuFin2 =
+
     document
       .getElementById("lieuFin2")
       .value
       .trim();
 
+
   const commentaire =
+
     document
       .getElementById("commentaire")
       .value
       .trim();
 
 
-  /* METIER */
+  /* =======================================================
+     METIER
+  ======================================================= */
 
   if(!metierActuel){
 
@@ -1686,71 +2856,115 @@ async function publier(){
     );
 
     return;
+
   }
 
 
-  /* JOURNEE 1 */
+  /* =======================================================
+     JOURNEE 1
+  ======================================================= */
 
   if(
+
     !nom ||
     !date ||
     !prise ||
     !fin ||
     !lieuPrise ||
     !lieuFin
+
   ){
 
     alert(
-      "Merci de remplir le nom, la date, les horaires et les lieux de la première journée."
+
+      "Merci de remplir le nom, la date, " +
+      "les horaires et les lieux de la première journée."
+
     );
 
     return;
+
   }
 
 
-  /* JOURNEE 2 */
+  /* =======================================================
+     JOURNEE 2
+  ======================================================= */
 
   if(
+
     deuxieme &&
+
     (
+
       !date2 ||
       !prise2 ||
       !fin2 ||
       !lieuPrise2 ||
       !lieuFin2
+
     )
+
   ){
 
     alert(
-      "Merci de remplir la date, les horaires et les lieux de la deuxième journée."
+
+      "Merci de remplir la date, les horaires " +
+      "et les lieux de la deuxième journée."
+
     );
 
     return;
+
   }
 
 
-  /* DATES DIFFERENTES */
+  /* =======================================================
+     DATES DIFFERENTES
+  ======================================================= */
 
   if(
+
     deuxieme &&
     date2 === date
+
   ){
 
     alert(
-      "Les deux journées doivent être sur deux dates différentes."
+
+      "Les deux journées doivent être sur " +
+      "deux dates différentes."
+
     );
 
     return;
+
   }
 
 
-  /* =========================
+  /* =======================================================
+     IDENTIFIANT DE GROUPE
+     
+     IMPORTANT :
+     Les deux lignes auront le même groupe_id.
+     Cela permet de les afficher dans un seul post.
+  ======================================================= */
+
+  const groupeId =
+    crypto.randomUUID();
+
+
+  /* =======================================================
      JOURNEE 1
-  ========================= */
+  ======================================================= */
 
   const demandes = [
 
+
     {
+
+      groupe_id:groupeId,
+
       metier:metierActuel,
 
       nom:nom,
@@ -1770,18 +2984,24 @@ async function publier(){
       statut:"disponible",
 
       agent_interesse:null
+
     }
+
 
   ];
 
 
-  /* =========================
+  /* =======================================================
      JOURNEE 2
-  ========================= */
+  ======================================================= */
 
   if(deuxieme){
 
+
     demandes.push({
+
+
+      groupe_id:groupeId,
 
       metier:metierActuel,
 
@@ -1805,16 +3025,20 @@ async function publier(){
 
     });
 
+
   }
 
 
-  /* =========================
-     INSERTION SUPABASE
-  ========================= */
+  /* =======================================================
+     INSERTION
+  ======================================================= */
 
   const {error} =
+
     await supabaseClient
+
       .from("echanges")
+
       .insert(demandes);
 
 
@@ -1823,71 +3047,108 @@ async function publier(){
     console.error(error);
 
     alert(
+
       "Erreur lors de la publication : " +
       error.message
+
     );
 
     return;
+
   }
 
 
-  /* RESET */
+  /* =======================================================
+     RESET
+  ======================================================= */
 
   resetFormulaire();
 
 
-  /* CONFIRMATION */
+  /* =======================================================
+     CONFIRMATION
+  ======================================================= */
 
   alert(
+
     deuxieme
+
       ? "🚆 Vos 2 journées sont publiées !"
+
       : "🚆 Votre journée est publiée !"
+
   );
 
 
   afficher("echanges");
+
+
 }
 
 
-/* =========================
-   RESET
-========================= */
+/* =========================================================
+   RESET FORMULAIRE
+========================================================= */
 
 function resetFormulaire(){
 
+
   [
+
     "nom",
+
     "date",
+
     "prise",
+
     "fin",
+
     "lieuPrise",
+
     "lieuFin",
+
     "date2",
+
     "prise2",
+
     "fin2",
+
     "lieuPrise2",
+
     "lieuFin2",
+
     "commentaire"
+
   ]
+
   .forEach(id => {
+
 
     const el =
       document.getElementById(id);
 
+
     if(el){
+
       el.value = "";
+
     }
+
 
   });
 
 
   const cb =
+
     document.getElementById(
       "deuxiemeJournee"
     );
 
+
   if(cb){
+
     cb.checked = false;
+
   }
 
 
@@ -1895,61 +3156,90 @@ function resetFormulaire(){
     .getElementById("blocJournee2")
     .classList
     .add("hidden");
+
+
 }
 
 
-/* =========================
+/* =========================================================
    AFFICHER ECHANGES
-========================= */
+========================================================= */
 
 async function afficherEchanges(){
 
+
   const zone =
+
     document.getElementById(
       "listeEchanges"
     );
+
 
   document
     .getElementById(
       "metierEchanges"
     )
     .innerText =
+
       metierActuel || "-";
 
 
   zone.innerHTML =
+
     '<div class="empty">' +
+
       '<span class="empty-icon">🚆</span>' +
+
       'Chargement des échanges...' +
+
     '</div>';
 
 
   if(!metierActuel){
 
+
     zone.innerHTML =
+
       '<div class="empty">' +
+
         'Choisissez d’abord un métier.' +
+
       '</div>';
 
+
     return;
+
   }
 
 
+  /* =======================================================
+     REQUETE SUPABASE
+  ======================================================= */
+
   const {
+
     data,
+
     error
+
   } =
+
     await supabaseClient
+
       .from("echanges")
+
       .select("*")
+
       .eq(
         "metier",
         metierActuel
       )
+
       .eq(
         "statut",
         "disponible"
       )
+
       .order(
         "date_service",
         {
@@ -1960,21 +3250,33 @@ async function afficherEchanges(){
 
   if(error){
 
+
     console.error(error);
 
+
     zone.innerHTML =
+
       '<div class="empty">' +
+
         '<span class="empty-icon">❌</span>' +
+
         '<strong>Erreur lors du chargement.</strong>' +
+
         '<br><br>' +
+
         '<small>' +
+
           escapeHTML(
             error.message
           ) +
+
         '</small>' +
+
       '</div>';
 
+
     return;
+
   }
 
 
@@ -1982,237 +3284,489 @@ async function afficherEchanges(){
 
 
   if(
+
     !data ||
     !data.length
+
   ){
 
+
     zone.innerHTML =
+
       '<div class="empty">' +
+
         '<span class="empty-icon">🚆</span>' +
+
         '<strong>Aucune journée proposée</strong>' +
+
         '<br><br>' +
+
         'Soyez le premier à proposer une journée !' +
+
       '</div>';
 
+
     return;
+
   }
 
 
-  /* =========================
-     CARTES
-  ========================= */
+  /* =======================================================
+     REGROUPEMENT DES DEMANDES
+     
+     Les lignes ayant le même groupe_id sont réunies.
+     
+     Pour les anciennes demandes qui n'ont pas de groupe_id,
+     chaque ligne est considérée comme une demande indépendante.
+  ======================================================= */
+
+  const groupes = new Map();
+
 
   data.forEach(e => {
 
-    const bloc =
-      document.createElement(
-        "div"
+
+    const groupe =
+
+      e.groupe_id
+
+        ? String(e.groupe_id)
+
+        : "ancien-" + String(e.id);
+
+
+    if(!groupes.has(groupe)){
+
+      groupes.set(
+        groupe,
+        []
       );
 
-    bloc.className = "item";
+    }
 
 
-    /* DATE DEMANDE */
-
-    const created =
-      e.created_at ||
-      e.date_demande ||
-      e.date_creation ||
-      e.createdAt;
+    groupes
+      .get(groupe)
+      .push(e);
 
 
-    const request =
-      created
+  });
 
-        ? `<div class="request-date">
+
+  /* =======================================================
+     CREATION DES POSTS
+  ======================================================= */
+
+  groupes.forEach(
+    (demandes,groupeId) => {
+
+
+      demandes.sort(
+        (a,b) =>
+          String(a.date_service)
+            .localeCompare(
+              String(b.date_service)
+            )
+      );
+
+
+      const premier =
+        demandes[0];
+
+
+      const bloc =
+        document.createElement("div");
+
+
+      bloc.className = "item";
+
+
+      /* =====================================================
+         DATE DE DEMANDE
+      ===================================================== */
+
+      const created =
+
+        premier.created_at ||
+
+        premier.date_demande ||
+
+        premier.date_creation ||
+
+        premier.createdAt;
+
+
+      const request =
+
+        created
+
+          ?
+
+          `<div class="request-date">
              🕒 Demande publiée le
              ${formatDateTime(created)}
            </div>`
 
-        : `<div class="request-date">
+          :
+
+          `<div class="request-date">
              🕒 Date de demande non disponible
            </div>`;
 
 
-    /* INTERET */
+      /* =====================================================
+         INTERET
+      ===================================================== */
 
-    const interest =
-      e.agent_interesse
+      const interesses =
 
-        ? `<div class="interest">
+        demandes
+          .map(
+            d => d.agent_interesse
+          )
+          .filter(Boolean);
+
+
+      const nomInteresse =
+
+        interesses.length
+
+          ? interesses[0]
+
+          : "";
+
+
+      const interest =
+
+        nomInteresse
+
+          ?
+
+          `<div class="interest">
              🙋 Agent intéressé :
              <strong>
                ${escapeHTML(
-                 e.agent_interesse
+                 nomInteresse
                )}
              </strong>
            </div>`
 
-        : "";
+          : "";
 
 
-    /* COMMENTAIRE */
+      /* =====================================================
+         JOURNEES
+      ===================================================== */
 
-    const comment =
-      e.commentaire
+      let joursHTML = "";
 
-        ? `<div class="comment">
+
+      demandes.forEach(
+        (e,index) => {
+
+
+          const lieuPriseAffichage =
+
+            e.lieu_prise_service
+
+              ?
+
+              escapeHTML(
+                e.lieu_prise_service
+              )
+
+              :
+
+              "Non renseigné";
+
+
+          const lieuFinAffichage =
+
+            e.lieu_fin_service
+
+              ?
+
+              escapeHTML(
+                e.lieu_fin_service
+              )
+
+              :
+
+              "Non renseigné";
+
+
+          joursHTML += `
+
+            <div class="day-card">
+
+              <div class="day-card-header">
+
+                📅 JOURNÉE
+                ${index + 1}
+
+              </div>
+
+
+              <div class="service">
+
+
+                <div class="chip">
+
+                  <span>
+                    Date
+                  </span>
+
+                  <strong>
+
+                    📅
+                    ${formatDate(
+                      e.date_service
+                    )}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="chip">
+
+                  <span>
+                    Horaires
+                  </span>
+
+                  <strong>
+
+                    ⏰
+                    ${formatTime(
+                      e.prise_service
+                    )}
+
+                    →
+
+                    ${formatTime(
+                      e.fin_service
+                    )}
+
+                  </strong>
+
+                </div>
+
+
+              </div>
+
+
+              <div class="locations">
+
+
+                <div class="location-chip">
+
+                  <span>
+                    📍 Prise de service
+                  </span>
+
+                  <strong>
+
+                    ${lieuPriseAffichage}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="location-chip">
+
+                  <span>
+                    📍 Fin de service
+                  </span>
+
+                  <strong>
+
+                    ${lieuFinAffichage}
+
+                  </strong>
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+          `;
+
+
+        }
+      );
+
+
+      /* =====================================================
+         COMMENTAIRE
+      ===================================================== */
+
+      const commentaires =
+
+        demandes
+          .map(
+            d => d.commentaire
+          )
+          .filter(Boolean);
+
+
+      const commentaireFinal =
+
+        commentaires.length
+
+          ? commentaires[0]
+
+          : "";
+
+
+      const comment =
+
+        commentaireFinal
+
+          ?
+
+          `<div class="comment">
+
              💬
              ${escapeHTML(
-               e.commentaire
+               commentaireFinal
              )}
+
            </div>`
 
-        : "";
+          : "";
 
 
-    /* LIEU PRISE */
+      /* =====================================================
+         BADGE 2 JOURNEES
+      ===================================================== */
 
-    const lieuPriseAffichage =
-      e.lieu_prise_service
+      const multiDay =
 
-        ? escapeHTML(
-            e.lieu_prise_service
+        demandes.length > 1
+
+          ?
+
+          `<div class="multi-day-badge">
+
+             🔄
+             ${demandes.length} journées
+             proposées ensemble
+
+           </div>`
+
+          : "";
+
+
+      /* =====================================================
+         ID DES DEMANDES
+      ===================================================== */
+
+      const ids =
+
+        demandes
+          .map(
+            d => Number(d.id)
           )
-
-        : "Non renseigné";
-
-
-    /* LIEU FIN */
-
-    const lieuFinAffichage =
-      e.lieu_fin_service
-
-        ? escapeHTML(
-            e.lieu_fin_service
-          )
-
-        : "Non renseigné";
+          .filter(
+            id => Number.isFinite(id)
+          );
 
 
-    bloc.innerHTML = `
+      const idsJSON =
+        JSON.stringify(ids);
 
-      <div class="name">
-        👤 ${escapeHTML(e.nom)}
-      </div>
 
-      ${request}
+      /* =====================================================
+         CARTE COMPLETE
+      ===================================================== */
 
-      <div class="service">
+      bloc.innerHTML = `
 
-        <div class="chip">
+        <div class="name">
 
-          <span>
-            Journée de service
-          </span>
-
-          <strong>
-            📅
-            ${formatDate(
-              e.date_service
-            )}
-          </strong>
+          👤
+          ${escapeHTML(
+            premier.nom
+          )}
 
         </div>
 
 
-        <div class="chip">
+        ${request}
 
-          <span>
-            Horaires
-          </span>
 
-          <strong>
-            ⏰
-            ${formatTime(
-              e.prise_service
-            )}
-            →
-            ${formatTime(
-              e.fin_service
-            )}
-          </strong>
+        ${multiDay}
+
+
+        ${joursHTML}
+
+
+        ${comment}
+
+
+        ${interest}
+
+
+        <div class="actions">
+
+
+          <button
+            class="small interet"
+            onclick='interesseGroupe(
+              ${JSON.stringify(String(groupeId))},
+              ${idsJSON}
+            )'>
+
+            🙋 JE SUIS INTÉRESSÉ
+
+          </button>
+
+
+          <button
+            class="small delete"
+            onclick='supprimerGroupe(
+              ${JSON.stringify(String(groupeId))},
+              ${idsJSON}
+            )'>
+
+            🗑️ SUPPRIMER
+
+          </button>
+
 
         </div>
 
-      </div>
+      `;
 
 
-      <div class="locations">
-
-        <div class="location-chip">
-
-          <span>
-            📍 Prise de service
-          </span>
-
-          <strong>
-            ${lieuPriseAffichage}
-          </strong>
-
-        </div>
+      zone.appendChild(
+        bloc
+      );
 
 
-        <div class="location-chip">
+    }
+  );
 
-          <span>
-            📍 Fin de service
-          </span>
-
-          <strong>
-            ${lieuFinAffichage}
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      ${comment}
-
-      ${interest}
-
-
-      <div class="actions">
-
-        <button
-          class="small interet"
-          onclick="interesse(${Number(e.id)})">
-
-          🙋 JE SUIS INTÉRESSÉ
-
-        </button>
-
-
-        <button
-          class="small delete"
-          onclick="supprimer(${Number(e.id)})">
-
-          🗑️ SUPPRIMER
-
-        </button>
-
-      </div>
-
-    `;
-
-
-    zone.appendChild(
-      bloc
-    );
-
-  });
 
 }
 
 
-/* =========================
-   INTERESSE
-========================= */
+/* =========================================================
+   INTERESSE — GROUPE
+========================================================= */
 
-async function interesse(id){
+async function interesseGroupe(
+  groupeId,
+  ids
+){
+
 
   const nomAgent =
+
     prompt(
       "Indiquez votre nom et prénom :"
     );
@@ -2221,7 +3775,9 @@ async function interesse(id){
   if(
     nomAgent === null
   ){
+
     return;
+
   }
 
 
@@ -2234,20 +3790,65 @@ async function interesse(id){
     );
 
     return;
+
+  }
+
+
+  /* =======================================================
+     SI GROUPE REEL
+  ======================================================= */
+
+  let query =
+
+    supabaseClient
+      .from("echanges")
+      .update({
+
+        agent_interesse:
+          nomAgent.trim()
+
+      });
+
+
+  if(
+    groupeId &&
+    !groupeId.startsWith("ancien-")
+  ){
+
+    query =
+      query.eq(
+        "groupe_id",
+        groupeId
+      );
+
+  }
+
+  else{
+
+
+    /*
+     * Ancienne demande sans groupe_id :
+     * on ne modifie que sa propre ligne.
+     */
+
+    if(
+      ids &&
+      ids.length
+    ){
+
+      query =
+        query.in(
+          "id",
+          ids
+        );
+
+    }
+
   }
 
 
   const {error} =
-    await supabaseClient
-      .from("echanges")
-      .update({
-        agent_interesse:
-          nomAgent.trim()
-      })
-      .eq(
-        "id",
-        id
-      );
+    await query;
 
 
   if(error){
@@ -2260,6 +3861,7 @@ async function interesse(id){
     );
 
     return;
+
   }
 
 
@@ -2269,32 +3871,88 @@ async function interesse(id){
 
 
   await afficherEchanges();
+
+
 }
 
 
-/* =========================
-   SUPPRIMER
-========================= */
+/* =========================================================
+   SUPPRIMER — GROUPE
+========================================================= */
 
-async function supprimer(id){
+async function supprimerGroupe(
+  groupeId,
+  ids
+){
+
+
+  const confirmation =
+
+    confirm(
+
+      ids && ids.length > 1
+
+        ?
+
+        "Voulez-vous vraiment supprimer ces " +
+        ids.length +
+        " journées de cette demande ?"
+
+        :
+
+        "Voulez-vous vraiment supprimer cette demande ?"
+
+    );
+
+
+  if(!confirmation){
+
+    return;
+
+  }
+
+
+  let query =
+
+    supabaseClient
+      .from("echanges")
+      .delete();
+
 
   if(
-    !confirm(
-      "Voulez-vous vraiment supprimer cette demande ?"
-    )
+    groupeId &&
+    !groupeId.startsWith("ancien-")
   ){
-    return;
+
+    query =
+      query.eq(
+        "groupe_id",
+        groupeId
+      );
+
+  }
+
+  else{
+
+
+    if(
+      ids &&
+      ids.length
+    ){
+
+      query =
+        query.in(
+          "id",
+          ids
+        );
+
+    }
+
   }
 
 
   const {error} =
-    await supabaseClient
-      .from("echanges")
-      .delete()
-      .eq(
-        "id",
-        id
-      );
+    await query;
 
 
   if(error){
@@ -2302,11 +3960,14 @@ async function supprimer(id){
     console.error(error);
 
     alert(
+
       "Erreur lors de la suppression : " +
       error.message
+
     );
 
     return;
+
   }
 
 
@@ -2316,55 +3977,86 @@ async function supprimer(id){
 
 
   await afficherEchanges();
+
+
 }
 
 
-/* =========================
+/* =========================================================
    FORMAT DATE
-========================= */
+========================================================= */
 
 function formatDate(date){
 
+
   if(!date){
+
     return "";
+
   }
+
 
   const p =
     String(date).split("-");
 
-  return p.length === 3
 
-    ? p[2] +
+  return
+
+    p.length === 3
+
+      ?
+
+      p[2] +
       "/" +
       p[1] +
       "/" +
       p[0]
 
-    : String(date);
+      :
+
+      String(date);
+
+
 }
 
 
-/* =========================
+/* =========================================================
    FORMAT HEURE
-========================= */
+========================================================= */
 
 function formatTime(h){
 
+
   return h
-    ? String(h).substring(0,5)
-    : "";
+
+    ?
+
+      String(h).substring(
+        0,
+        5
+      )
+
+    :
+
+      "";
+
+
 }
 
 
-/* =========================
+/* =========================================================
    FORMAT DATE / HEURE
-========================= */
+========================================================= */
 
 function formatDateTime(value){
 
+
   if(!value){
+
     return "";
+
   }
+
 
   const d =
     new Date(value);
@@ -2384,12 +4076,19 @@ function formatDateTime(value){
   return
 
     d.toLocaleDateString(
+
       "fr-FR",
+
       {
+
         day:"2-digit",
+
         month:"2-digit",
+
         year:"numeric"
+
       }
+
     )
 
     +
@@ -2399,24 +4098,35 @@ function formatDateTime(value){
     +
 
     d.toLocaleTimeString(
+
       "fr-FR",
+
       {
+
         hour:"2-digit",
+
         minute:"2-digit"
+
       }
+
     );
+
+
 }
 
 
-/* =========================
+/* =========================================================
    SECURITE HTML
-========================= */
+========================================================= */
 
 function escapeHTML(t){
 
+
   if(
+
     t === null ||
     t === undefined
+
   ){
 
     return "";
@@ -2435,9 +4145,13 @@ function escapeHTML(t){
 
 
   return d.innerHTML;
+
+
 }
 
 </script>
 
+
 </body>
+
 </html>
