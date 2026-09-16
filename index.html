@@ -20,8 +20,13 @@
   --shadow:0 18px 45px rgba(5,35,53,.18)
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box
+}
+
+html{
+  scroll-behavior:smooth
+}
 
 body{
   margin:0;
@@ -32,6 +37,10 @@ body{
   overflow-x:hidden
 }
 
+/* =========================
+   FOND TRAIN
+========================= */
+
 .bg{
   position:fixed;
   inset:0;
@@ -39,7 +48,11 @@ body{
   overflow:hidden;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(4,22,36,.18),rgba(4,22,36,.40)),
+    linear-gradient(
+      180deg,
+      rgba(4,22,36,.18),
+      rgba(4,22,36,.40)
+    ),
     url("IMG_7689.jpeg") center 45%/cover no-repeat
 }
 
@@ -62,29 +75,54 @@ body{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(circle at 8% 10%,rgba(87,217,239,.28),transparent 25%),
-    radial-gradient(circle at 92% 15%,rgba(30,154,207,.28),transparent 28%)
+    radial-gradient(
+      circle at 8% 10%,
+      rgba(87,217,239,.28),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 92% 15%,
+      rgba(30,154,207,.28),
+      transparent 28%
+    )
 }
 
 .speed{
   position:absolute;
   height:2px;
   border-radius:999px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(103,226,247,.72),
-    transparent
-  )
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(103,226,247,.72),
+      transparent
+    )
 }
 
-.s1{width:34%;top:13%;left:5%}
-.s2{width:26%;top:23%;right:5%}
+.s1{
+  width:34%;
+  top:13%;
+  left:5%
+}
+
+.s2{
+  width:26%;
+  top:23%;
+  right:5%
+}
+
+/* =========================
+   HEADER
+========================= */
 
 .hero{
   position:relative;
   min-height:250px;
-  padding:calc(18px + env(safe-area-inset-top)) 16px 58px;
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    16px
+    58px;
   text-align:center;
   color:#fff;
   overflow:hidden
@@ -120,7 +158,9 @@ body{
   text-shadow:0 8px 25px rgba(0,0,0,.45)
 }
 
-.hero h1 span{color:var(--cyan)}
+.hero h1 span{
+  color:var(--cyan)
+}
 
 .sub{
   margin:12px 0 0;
@@ -141,14 +181,19 @@ body{
   width:min(500px,72%);
   margin:17px auto 0;
   border-radius:999px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #55d6ee,
-    transparent
-  );
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #55d6ee,
+      transparent
+    );
   box-shadow:0 0 24px rgba(85,214,238,.45)
 }
+
+/* =========================
+   STRUCTURE
+========================= */
 
 main{
   width:min(1120px,100%);
@@ -156,7 +201,13 @@ main{
   padding:0 14px
 }
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important
+}
+
+/* =========================
+   ACCUEIL
+========================= */
 
 .welcome{
   position:relative;
@@ -236,6 +287,10 @@ main{
   font-size:13px
 }
 
+/* =========================
+   CHOIX METIER
+========================= */
+
 .choices{
   display:grid;
   grid-template-columns:1fr;
@@ -263,7 +318,9 @@ main{
   background:rgba(255,255,255,.93);
   border:1px solid rgba(255,255,255,.95);
   box-shadow:0 13px 30px rgba(8,40,58,.15);
-  transition:transform .16s ease,box-shadow .16s ease
+  transition:
+    transform .16s ease,
+    box-shadow .16s ease
 }
 
 .choice-card:hover{
@@ -275,8 +332,13 @@ main{
   transform:scale(.985)
 }
 
-.adc .choice-card{border-left:5px solid #2ba7dc}
-.asct .choice-card{border-left:5px solid #32b9ae}
+.adc .choice-card{
+  border-left:5px solid #2ba7dc
+}
+
+.asct .choice-card{
+  border-left:5px solid #32b9ae
+}
 
 .choice-icon{
   flex:0 0 56px;
@@ -289,7 +351,9 @@ main{
   font-size:29px
 }
 
-.choice-text{min-width:0}
+.choice-text{
+  min-width:0
+}
 
 .choice-text strong{
   display:block;
@@ -309,6 +373,10 @@ main{
   font-size:27px;
   color:#1683b8
 }
+
+/* =========================
+   CARTES
+========================= */
 
 .card{
   padding:20px;
@@ -340,6 +408,10 @@ main{
   line-height:1.5
 }
 
+/* =========================
+   FORMULAIRE
+========================= */
+
 label{
   display:block;
   margin:13px 0 6px;
@@ -348,7 +420,8 @@ label{
   color:#405666
 }
 
-input,textarea{
+input,
+textarea{
   width:100%;
   padding:12px 13px;
   border:1px solid #d5e2e9;
@@ -359,7 +432,8 @@ input,textarea{
   font-size:16px
 }
 
-input:focus,textarea:focus{
+input:focus,
+textarea:focus{
   outline:none;
   border-color:#2091c7;
   box-shadow:0 0 0 4px rgba(32,145,199,.11)
@@ -376,11 +450,19 @@ textarea{
   gap:10px
 }
 
+/* =========================
+   LIEUX
+========================= */
+
 .location-row{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px
 }
+
+/* =========================
+   DEUXIEME JOURNEE
+========================= */
 
 .toggle-wrap{
   display:flex;
@@ -465,6 +547,10 @@ textarea{
   color:#17658b
 }
 
+/* =========================
+   BOUTONS
+========================= */
+
 .btn{
   width:100%;
   border:0;
@@ -484,6 +570,10 @@ textarea{
   color:#294252;
   box-shadow:none
 }
+
+/* =========================
+   LISTE ECHANGES
+========================= */
 
 .list{
   display:grid;
@@ -545,6 +635,10 @@ textarea{
   font-size:14px;
   color:#20455e
 }
+
+/* =========================
+   LIEUX DANS LES ECHANGES
+========================= */
 
 .locations{
   display:grid;
@@ -635,6 +729,10 @@ textarea{
   margin-bottom:7px
 }
 
+/* =========================
+   MENU BAS
+========================= */
+
 nav{
   position:fixed;
   z-index:100;
@@ -671,16 +769,26 @@ nav button{
   margin-bottom:1px
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width:699px){
-  .bg{background-position:center center}
+  .bg{
+    background-position:center center
+  }
 }
 
 @media(min-width:700px) and (max-width:1099px){
-  .bg{background-position:center 42%}
+  .bg{
+    background-position:center 42%
+  }
 }
 
 @media(min-width:1100px){
-  .bg{background-position:center 45%}
+  .bg{
+    background-position:center 45%
+  }
 }
 
 @media(min-width:700px){
@@ -709,15 +817,21 @@ nav button{
 }
 
 @media(min-width:1000px){
-  .hero{min-height:300px}
+  .hero{
+    min-height:300px
+  }
 
   main{
     margin-top:-42px
   }
 
-  .choices{gap:18px}
+  .choices{
+    gap:18px
+  }
 
-  .choice-card{min-height:115px}
+  .choice-card{
+    min-height:115px
+  }
 
   .choice-icon{
     width:64px;
@@ -740,15 +854,25 @@ nav button{
     padding-bottom:52px
   }
 
-  .hero h1{font-size:32px}
-  .sub{font-size:14px}
+  .hero h1{
+    font-size:32px
+  }
+
+  .sub{
+    font-size:14px
+  }
 
   .welcome{
     padding:20px 14px 18px
   }
 
-  .welcome h2{font-size:28px}
-  .welcome p{font-size:13px}
+  .welcome h2{
+    font-size:28px
+  }
+
+  .welcome p{
+    font-size:13px
+  }
 
   .pill{
     font-size:12px;
@@ -768,8 +892,13 @@ nav button{
     font-size:27px
   }
 
-  .choice-text strong{font-size:19px}
-  .choice-text small{font-size:11px}
+  .choice-text strong{
+    font-size:19px
+  }
+
+  .choice-text small{
+    font-size:11px
+  }
 
   .service,
   .actions{
@@ -788,62 +917,96 @@ nav button{
 
 <header class="hero">
   <div class="hero-inner">
+
     <div class="mark">🚆</div>
-    <h1>ÉCHANGE <span>SERVICE</span></h1>
+
+    <h1>
+      ÉCHANGE <span>SERVICE</span>
+    </h1>
+
     <div class="sub">
       Échange de journées entre agents
       <strong>• si congés refusés</strong>
     </div>
+
     <div class="glow"></div>
+
   </div>
 </header>
 
 <main>
 
+<!-- =========================
+     ACCUEIL
+========================= -->
+
 <section id="accueil">
 
   <div class="welcome">
+
     <div class="welcome-icon">🤝</div>
+
     <h2>Bienvenue</h2>
 
     <p>
-      Proposez une journée de service et trouvez un collègue
-      intéressé pour un éventuel échange.
+      Proposez une journée de service et trouvez
+      un collègue intéressé pour un éventuel échange.
     </p>
 
     <div class="pill">
       🚆 Choisissez votre métier pour commencer
     </div>
+
   </div>
 
   <div class="choices">
 
-    <button class="choice adc" onclick="choisirMetier('ADC')">
+    <button
+      class="choice adc"
+      onclick="choisirMetier('ADC')">
+
       <div class="choice-card">
+
         <div class="choice-icon">🚆</div>
+
         <div class="choice-text">
           <strong>ADC</strong>
           <small>Conducteurs de train</small>
         </div>
+
         <div class="arrow">›</div>
+
       </div>
+
     </button>
 
-    <button class="choice asct" onclick="choisirMetier('ASCT')">
+    <button
+      class="choice asct"
+      onclick="choisirMetier('ASCT')">
+
       <div class="choice-card">
+
         <div class="choice-icon">👨‍✈️</div>
+
         <div class="choice-text">
           <strong>ASCT</strong>
           <small>Agents du Service Commercial Train</small>
         </div>
+
         <div class="arrow">›</div>
+
       </div>
+
     </button>
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     PROPOSER
+========================= -->
 
 <section id="proposer" class="hidden">
 
@@ -858,8 +1021,11 @@ nav button{
     </h2>
 
     <p class="info">
-      Proposez votre journée afin de trouver un collègue intéressé.
+      Proposez votre journée afin de trouver
+      un collègue intéressé.
     </p>
+
+    <!-- NOM -->
 
     <label for="nom">
       Nom et prénom
@@ -868,11 +1034,12 @@ nav button{
     <input
       id="nom"
       placeholder="Exemple : Jean DUPONT"
-      autocomplete="name"
-    >
+      autocomplete="name">
 
 
-    <!-- JOURNÉE 1 -->
+    <!-- =========================
+         JOURNEE 1
+    ========================= -->
 
     <div class="day-label">
       📅 JOURNÉE 1
@@ -884,39 +1051,45 @@ nav button{
 
     <input
       id="date"
-      type="date"
-    >
+      type="date">
+
 
     <div class="row">
 
       <div>
+
         <label for="prise">
           Prise de service
         </label>
 
         <input
           id="prise"
-          type="time"
-        >
+          type="time">
+
       </div>
 
+
       <div>
+
         <label for="fin">
           Fin de service
         </label>
 
         <input
           id="fin"
-          type="time"
-        >
+          type="time">
+
       </div>
 
     </div>
 
 
+    <!-- LIEUX JOURNEE 1 -->
+
     <div class="location-row">
 
       <div>
+
         <label for="lieuPrise">
           📍 Lieu de prise de service
         </label>
@@ -924,11 +1097,13 @@ nav button{
         <input
           id="lieuPrise"
           type="text"
-          placeholder="Exemple : Caen"
-        >
+          placeholder="Exemple : Caen">
+
       </div>
 
+
       <div>
+
         <label for="lieuFin">
           📍 Lieu de fin de service
         </label>
@@ -936,14 +1111,16 @@ nav button{
         <input
           id="lieuFin"
           type="text"
-          placeholder="Exemple : Paris Saint-Lazare"
-        >
+          placeholder="Exemple : Paris Saint-Lazare">
+
       </div>
 
     </div>
 
 
-    <!-- TOGGLE JOURNÉE 2 -->
+    <!-- =========================
+         ACTIVATION JOURNEE 2
+    ========================= -->
 
     <div class="toggle-wrap">
 
@@ -959,13 +1136,13 @@ nav button{
 
       </div>
 
+
       <label class="switch">
 
         <input
           id="deuxiemeJournee"
           type="checkbox"
-          onchange="toggleJournee2()"
-        >
+          onchange="toggleJournee2()">
 
         <span class="slider"></span>
 
@@ -974,13 +1151,18 @@ nav button{
     </div>
 
 
-    <!-- JOURNÉE 2 -->
+    <!-- =========================
+         JOURNEE 2
+    ========================= -->
 
-    <div id="blocJournee2" class="day2 hidden">
+    <div
+      id="blocJournee2"
+      class="day2 hidden">
 
       <div class="day-label">
         📅 JOURNÉE 2
       </div>
+
 
       <label for="date2">
         Date de la 2ᵉ journée
@@ -988,8 +1170,8 @@ nav button{
 
       <input
         id="date2"
-        type="date"
-      >
+        type="date">
+
 
       <div class="row">
 
@@ -1001,10 +1183,10 @@ nav button{
 
           <input
             id="prise2"
-            type="time"
-          >
+            type="time">
 
         </div>
+
 
         <div>
 
@@ -1014,13 +1196,14 @@ nav button{
 
           <input
             id="fin2"
-            type="time"
-          >
+            type="time">
 
         </div>
 
       </div>
 
+
+      <!-- LIEUX JOURNEE 2 -->
 
       <div class="location-row">
 
@@ -1033,10 +1216,10 @@ nav button{
           <input
             id="lieuPrise2"
             type="text"
-            placeholder="Exemple : Caen"
-          >
+            placeholder="Exemple : Caen">
 
         </div>
+
 
         <div>
 
@@ -1047,8 +1230,7 @@ nav button{
           <input
             id="lieuFin2"
             type="text"
-            placeholder="Exemple : Rouen"
-          >
+            placeholder="Exemple : Paris Saint-Lazare">
 
         </div>
 
@@ -1057,34 +1239,44 @@ nav button{
     </div>
 
 
+    <!-- COMMENTAIRE -->
+
     <label for="commentaire">
       Commentaire
     </label>
 
     <textarea
       id="commentaire"
-      placeholder="Exemple : TER, réserve, numéro de train, RHR entre les deux journées..."
-    ></textarea>
+      placeholder="Exemple : TER, réserve, numéro de train, RHR entre les deux journées..."></textarea>
 
+
+    <!-- BOUTONS -->
 
     <button
       class="btn"
-      onclick="publier()"
-    >
+      onclick="publier()">
+
       🚆 PUBLIER MA JOURNÉE
+
     </button>
+
 
     <button
       class="btn secondary"
-      onclick="afficher('echanges')"
-    >
+      onclick="afficher('echanges')">
+
       🔎 VOIR LES ÉCHANGES
+
     </button>
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     ECHANGES
+========================= -->
 
 <section id="echanges" class="hidden">
 
@@ -1101,14 +1293,16 @@ nav button{
 
     <div
       id="listeEchanges"
-      class="list"
-    ></div>
+      class="list">
+    </div>
+
 
     <button
       class="btn secondary"
-      onclick="afficher('proposer')"
-    >
+      onclick="afficher('proposer')">
+
       ➕ PROPOSER UNE JOURNÉE
+
     </button>
 
   </div>
@@ -1117,6 +1311,10 @@ nav button{
 
 </main>
 
+
+<!-- =========================
+     MENU
+========================= -->
 
 <nav id="menu" class="hidden">
 
@@ -1140,6 +1338,10 @@ nav button{
 
 <script>
 
+/* =========================
+   SUPABASE
+========================= */
+
 const SUPABASE_URL =
   "https://nptwpoguokbjuzdyxach.supabase.co";
 
@@ -1152,25 +1354,32 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
+
 let metierActuel = "";
 
+
+/* =========================
+   NAVIGATION
+========================= */
 
 function afficher(page){
 
   document
     .querySelectorAll("main section")
-    .forEach(s =>
-      s.classList.add("hidden")
+    .forEach(
+      s => s.classList.add("hidden")
     );
 
   const el =
     document.getElementById(page);
 
-  if(el)
+  if(el){
     el.classList.remove("hidden");
+  }
 
-  if(page === "echanges")
+  if(page === "echanges"){
     afficherEchanges();
+  }
 
   window.scrollTo({
     top:0,
@@ -1178,6 +1387,10 @@ function afficher(page){
   });
 }
 
+
+/* =========================
+   CHOIX METIER
+========================= */
 
 function choisirMetier(metier){
 
@@ -1193,11 +1406,16 @@ function choisirMetier(metier){
 
   document
     .getElementById("menu")
-    .classList.remove("hidden");
+    .classList
+    .remove("hidden");
 
   afficher("proposer");
 }
 
+
+/* =========================
+   CHANGER METIER
+========================= */
 
 function changerMetier(){
 
@@ -1205,53 +1423,82 @@ function changerMetier(){
 
   document
     .getElementById("menu")
-    .classList.add("hidden");
+    .classList
+    .add("hidden");
 
   afficher("accueil");
 }
 
 
+/* =========================
+   PUBLICATION
+========================= */
+
 async function publier(){
 
   const nom =
-    document.getElementById("nom").value.trim();
+    document.getElementById("nom")
+      .value
+      .trim();
 
   const date =
-    document.getElementById("date").value;
+    document.getElementById("date")
+      .value;
 
   const prise =
-    document.getElementById("prise").value;
+    document.getElementById("prise")
+      .value;
 
   const fin =
-    document.getElementById("fin").value;
+    document.getElementById("fin")
+      .value;
 
   const lieuPrise =
-    document.getElementById("lieuPrise").value.trim();
+    document.getElementById("lieuPrise")
+      .value
+      .trim();
 
   const lieuFin =
-    document.getElementById("lieuFin").value.trim();
+    document.getElementById("lieuFin")
+      .value
+      .trim();
+
 
   const deuxieme =
-    document.getElementById("deuxiemeJournee").checked;
+    document.getElementById("deuxiemeJournee")
+      .checked;
+
 
   const date2 =
-    document.getElementById("date2").value;
+    document.getElementById("date2")
+      .value;
 
   const prise2 =
-    document.getElementById("prise2").value;
+    document.getElementById("prise2")
+      .value;
 
   const fin2 =
-    document.getElementById("fin2").value;
+    document.getElementById("fin2")
+      .value;
 
   const lieuPrise2 =
-    document.getElementById("lieuPrise2").value.trim();
+    document.getElementById("lieuPrise2")
+      .value
+      .trim();
 
   const lieuFin2 =
-    document.getElementById("lieuFin2").value.trim();
+    document.getElementById("lieuFin2")
+      .value
+      .trim();
+
 
   const commentaire =
-    document.getElementById("commentaire").value.trim();
+    document.getElementById("commentaire")
+      .value
+      .trim();
 
+
+  /* METIER */
 
   if(!metierActuel){
 
@@ -1262,6 +1509,8 @@ async function publier(){
     return;
   }
 
+
+  /* JOURNEE 1 */
 
   if(
     !nom ||
@@ -1279,6 +1528,8 @@ async function publier(){
     return;
   }
 
+
+  /* JOURNEE 2 */
 
   if(
     deuxieme &&
@@ -1299,6 +1550,8 @@ async function publier(){
   }
 
 
+  /* DATES DIFFERENTES */
+
   if(
     deuxieme &&
     date2 === date
@@ -1312,6 +1565,10 @@ async function publier(){
   }
 
 
+  /* =========================
+     DEMANDE 1
+  ========================= */
+
   const demandes = [
 
     {
@@ -1320,15 +1577,23 @@ async function publier(){
       date_service:date,
       prise_service:prise,
       fin_service:fin,
+
       lieu_prise_service:lieuPrise,
       lieu_fin_service:lieuFin,
+
       commentaire:commentaire,
+
       statut:"disponible",
+
       agent_interesse:null
     }
 
   ];
 
+
+  /* =========================
+     DEMANDE 2
+  ========================= */
 
   if(deuxieme){
 
@@ -1336,19 +1601,31 @@ async function publier(){
 
       metier:metierActuel,
       nom:nom,
+
       date_service:date2,
+
       prise_service:prise2,
+
       fin_service:fin2,
+
       lieu_prise_service:lieuPrise2,
+
       lieu_fin_service:lieuFin2,
+
       commentaire:commentaire,
+
       statut:"disponible",
+
       agent_interesse:null
 
     });
 
   }
 
+
+  /* =========================
+     INSERT SUPABASE
+  ========================= */
 
   const {error} =
     await supabaseClient
@@ -1361,8 +1638,8 @@ async function publier(){
     console.error(error);
 
     alert(
-      "Erreur lors de la publication : " +
-      error.message
+      "Erreur lors de la publication : "
+      + error.message
     );
 
     return;
@@ -1383,6 +1660,10 @@ async function publier(){
 }
 
 
+/* =========================
+   AFFICHER / CACHER JOURNEE 2
+========================= */
+
 function toggleJournee2(){
 
   const actif =
@@ -1399,6 +1680,10 @@ function toggleJournee2(){
     );
 }
 
+
+/* =========================
+   RESET FORMULAIRE
+========================= */
 
 function resetFormulaire(){
 
@@ -1420,8 +1705,9 @@ function resetFormulaire(){
     const el =
       document.getElementById(id);
 
-    if(el)
+    if(el){
       el.value = "";
+    }
 
   });
 
@@ -1431,8 +1717,9 @@ function resetFormulaire(){
       "deuxiemeJournee"
     );
 
-  if(cb)
+  if(cb){
     cb.checked = false;
+  }
 
 
   document
@@ -1442,12 +1729,17 @@ function resetFormulaire(){
 }
 
 
+/* =========================
+   AFFICHER ECHANGES
+========================= */
+
 async function afficherEchanges(){
 
   const zone =
     document.getElementById(
       "listeEchanges"
     );
+
 
   document.getElementById(
     "metierEchanges"
@@ -1457,8 +1749,8 @@ async function afficherEchanges(){
 
   zone.innerHTML =
     '<div class="empty">' +
-    '<span class="empty-icon">🚆</span>' +
-    'Chargement des échanges...' +
+      '<span class="empty-icon">🚆</span>' +
+      'Chargement des échanges...' +
     '</div>';
 
 
@@ -1466,7 +1758,7 @@ async function afficherEchanges(){
 
     zone.innerHTML =
       '<div class="empty">' +
-      'Choisissez d’abord un métier.' +
+        'Choisissez d’abord un métier.' +
       '</div>';
 
     return;
@@ -1477,11 +1769,19 @@ async function afficherEchanges(){
     await supabaseClient
       .from("echanges")
       .select("*")
-      .eq("metier",metierActuel)
-      .eq("statut","disponible")
+      .eq(
+        "metier",
+        metierActuel
+      )
+      .eq(
+        "statut",
+        "disponible"
+      )
       .order(
         "date_service",
-        {ascending:true}
+        {
+          ascending:true
+        }
       );
 
 
@@ -1491,12 +1791,12 @@ async function afficherEchanges(){
 
     zone.innerHTML =
       '<div class="empty">' +
-      '<span class="empty-icon">❌</span>' +
-      '<strong>Erreur lors du chargement.</strong>' +
-      '<br><br>' +
-      '<small>' +
-      escapeHTML(error.message) +
-      '</small>' +
+        '<span class="empty-icon">❌</span>' +
+        '<strong>Erreur lors du chargement.</strong>' +
+        '<br><br>' +
+        '<small>' +
+          escapeHTML(error.message) +
+        '</small>' +
       '</div>';
 
     return;
@@ -1510,10 +1810,10 @@ async function afficherEchanges(){
 
     zone.innerHTML =
       '<div class="empty">' +
-      '<span class="empty-icon">🚆</span>' +
-      '<strong>Aucune journée proposée</strong>' +
-      '<br><br>' +
-      'Soyez le premier à proposer une journée !' +
+        '<span class="empty-icon">🚆</span>' +
+        '<strong>Aucune journée proposée</strong>' +
+        '<br><br>' +
+        'Soyez le premier à proposer une journée !' +
       '</div>';
 
     return;
@@ -1528,6 +1828,8 @@ async function afficherEchanges(){
     bloc.className = "item";
 
 
+    /* DATE DEMANDE */
+
     const created =
       e.created_at ||
       e.date_demande ||
@@ -1538,50 +1840,71 @@ async function afficherEchanges(){
     const request =
       created
 
-      ? `<div class="request-date">
-           🕒 Demande publiée le
-           ${formatDateTime(created)}
-         </div>`
+        ? `<div class="request-date">
+             🕒 Demande publiée le
+             ${formatDateTime(created)}
+           </div>`
 
-      : `<div class="request-date">
-           🕒 Date de demande non disponible
-         </div>`;
+        : `<div class="request-date">
+             🕒 Date de demande non disponible
+           </div>`;
 
+
+    /* INTERET */
 
     const interest =
       e.agent_interesse
 
-      ? `<div class="interest">
-           🙋 Agent intéressé :
-           <strong>
-             ${escapeHTML(e.agent_interesse)}
-           </strong>
-         </div>`
+        ? `<div class="interest">
+             🙋 Agent intéressé :
+             <strong>
+               ${escapeHTML(
+                 e.agent_interesse
+               )}
+             </strong>
+           </div>`
 
-      : "";
+        : "";
 
+
+    /* COMMENTAIRE */
 
     const comment =
       e.commentaire
 
-      ? `<div class="comment">
-           💬 ${escapeHTML(e.commentaire)}
-         </div>`
+        ? `<div class="comment">
+             💬
+             ${escapeHTML(
+               e.commentaire
+             )}
+           </div>`
 
-      : "";
+        : "";
 
+
+    /* LIEUX */
 
     const lieuPriseAffichage =
       e.lieu_prise_service
-      ? escapeHTML(e.lieu_prise_service)
-      : "Non renseigné";
+
+        ? escapeHTML(
+            e.lieu_prise_service
+          )
+
+        : "Non renseigné";
 
 
     const lieuFinAffichage =
       e.lieu_fin_service
-      ? escapeHTML(e.lieu_fin_service)
-      : "Non renseigné";
 
+        ? escapeHTML(
+            e.lieu_fin_service
+          )
+
+        : "Non renseigné";
+
+
+    /* CARTE */
 
     bloc.innerHTML = `
 
@@ -1591,41 +1914,73 @@ async function afficherEchanges(){
 
       ${request}
 
+
       <div class="service">
 
         <div class="chip">
-          <span>Journée de service</span>
+
+          <span>
+            Journée de service
+          </span>
+
           <strong>
-            📅 ${formatDate(e.date_service)}
+            📅 ${formatDate(
+              e.date_service
+            )}
           </strong>
+
         </div>
 
+
         <div class="chip">
-          <span>Horaires</span>
+
+          <span>
+            Horaires
+          </span>
+
           <strong>
-            ⏰ ${formatTime(e.prise_service)}
+            ⏰
+            ${formatTime(
+              e.prise_service
+            )}
             →
-            ${formatTime(e.fin_service)}
+            ${formatTime(
+              e.fin_service
+            )}
           </strong>
+
         </div>
 
       </div>
 
 
+      <!-- LIEUX -->
+
       <div class="locations">
 
         <div class="location-chip">
-          <span>📍 Prise de service</span>
+
+          <span>
+            📍 Prise de service
+          </span>
+
           <strong>
             ${lieuPriseAffichage}
           </strong>
+
         </div>
 
+
         <div class="location-chip">
-          <span>📍 Fin de service</span>
+
+          <span>
+            📍 Fin de service
+          </span>
+
           <strong>
             ${lieuFinAffichage}
           </strong>
+
         </div>
 
       </div>
@@ -1640,16 +1995,19 @@ async function afficherEchanges(){
 
         <button
           class="small interet"
-          onclick="interesse(${Number(e.id)})"
-        >
+          onclick="interesse(${Number(e.id)})">
+
           🙋 JE SUIS INTÉRESSÉ
+
         </button>
+
 
         <button
           class="small delete"
-          onclick="supprimer(${Number(e.id)})"
-        >
+          onclick="supprimer(${Number(e.id)})">
+
           🗑️ SUPPRIMER
+
         </button>
 
       </div>
@@ -1660,9 +2018,12 @@ async function afficherEchanges(){
     zone.appendChild(bloc);
 
   });
-
 }
 
+
+/* =========================
+   INTERESSE
+========================= */
 
 async function interesse(id){
 
@@ -1672,8 +2033,9 @@ async function interesse(id){
     );
 
 
-  if(nomAgent === null)
+  if(nomAgent === null){
     return;
+  }
 
 
   if(!nomAgent.trim()){
@@ -1693,7 +2055,10 @@ async function interesse(id){
         agent_interesse:
           nomAgent.trim()
       })
-      .eq("id",id);
+      .eq(
+        "id",
+        id
+      );
 
 
   if(error){
@@ -1701,8 +2066,8 @@ async function interesse(id){
     console.error(error);
 
     alert(
-      "Erreur : " +
-      error.message
+      "Erreur : "
+      + error.message
     );
 
     return;
@@ -1718,21 +2083,29 @@ async function interesse(id){
 }
 
 
+/* =========================
+   SUPPRIMER
+========================= */
+
 async function supprimer(id){
 
   if(
     !confirm(
       "Voulez-vous vraiment supprimer cette demande ?"
     )
-  )
+  ){
     return;
+  }
 
 
   const {error} =
     await supabaseClient
       .from("echanges")
       .delete()
-      .eq("id",id);
+      .eq(
+        "id",
+        id
+      );
 
 
   if(error){
@@ -1740,8 +2113,8 @@ async function supprimer(id){
     console.error(error);
 
     alert(
-      "Erreur lors de la suppression : " +
-      error.message
+      "Erreur lors de la suppression : "
+      + error.message
     );
 
     return;
@@ -1757,19 +2130,36 @@ async function supprimer(id){
 }
 
 
+/* =========================
+   FORMAT DATE
+========================= */
+
 function formatDate(date){
 
-  if(!date)
+  if(!date){
     return "";
+  }
+
 
   const p =
     String(date).split("-");
 
+
   return p.length === 3
-    ? p[2] + "/" + p[1] + "/" + p[0]
+
+    ? p[2] +
+      "/" +
+      p[1] +
+      "/" +
+      p[0]
+
     : String(date);
 }
 
+
+/* =========================
+   FORMAT HEURE
+========================= */
 
 function formatTime(h){
 
@@ -1779,10 +2169,16 @@ function formatTime(h){
 }
 
 
+/* =========================
+   FORMAT DATE / HEURE
+========================= */
+
 function formatDateTime(value){
 
-  if(!value)
+  if(!value){
     return "";
+  }
+
 
   const d =
     new Date(value);
@@ -1792,8 +2188,9 @@ function formatDateTime(value){
     Number.isNaN(
       d.getTime()
     )
-  )
+  ){
     return String(value);
+  }
 
 
   return d.toLocaleDateString(
@@ -1817,19 +2214,27 @@ function formatDateTime(value){
 }
 
 
+/* =========================
+   SECURITE HTML
+========================= */
+
 function escapeHTML(t){
 
   if(
     t === null ||
     t === undefined
-  )
+  ){
     return "";
+  }
+
 
   const d =
     document.createElement("div");
 
+
   d.innerText =
     String(t);
+
 
   return d.innerHTML;
 }
