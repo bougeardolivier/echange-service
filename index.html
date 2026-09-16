@@ -1792,10 +1792,6 @@ let demandeInteretId = null;
 
 let demandesChargees = [];
 
-/*
-  Permet de gérer correctement la fenêtre
-  « congé refusé » avant l'ouverture du formulaire.
-*/
 let confirmationCongeValidee = false;
 
 /* =========================================================
@@ -2040,10 +2036,6 @@ function choisirMetier(
   bouton
 ){
 
-  /*
-    Seuls ASCT et ADC sont autorisés.
-  */
-
   if(
     metier !== "ASCT" &&
     metier !== "ADC"
@@ -2064,10 +2056,6 @@ function choisirMetier(
     bouton.classList.add("active");
   }
 
-  /*
-    Le métier sélectionné sur l'accueil
-    est également repris dans le formulaire.
-  */
   const selectMetier =
     document.getElementById("metier");
 
@@ -2104,11 +2092,6 @@ function confirmerEtOuvrirFormulaire(){
 
   fermerConfirmation();
 
-  /*
-    Le métier sélectionné sur l'accueil
-    est conservé dans le formulaire.
-  */
-
   const selectMetier =
     document.getElementById("metier");
 
@@ -2133,11 +2116,6 @@ function fermerFormulaire(){
   document
     .getElementById("formModal")
     .classList.remove("show");
-
-  /*
-    Une nouvelle demande nécessitera
-    une nouvelle confirmation.
-  */
 
   confirmationCongeValidee =
     false;
@@ -2165,12 +2143,6 @@ function gererDeuxiemeJournee(){
 ========================================================= */
 
 async function publier(){
-
-  /*
-    Sécurité supplémentaire :
-    impossible de publier sans avoir confirmé
-    le refus du congé.
-  */
 
   if(!confirmationCongeValidee){
 
@@ -2231,10 +2203,6 @@ async function publier(){
       .getElementById("deuxiemeJournee")
       .checked;
 
-  /* =========================
-     VALIDATION METIER
-  ========================== */
-
   if(
     metier !== "ASCT" &&
     metier !== "ADC"
@@ -2246,10 +2214,6 @@ async function publier(){
 
     return;
   }
-
-  /* =========================
-     VALIDATION JOURNEE 1
-  ========================== */
 
   if(!nom){
 
@@ -2286,10 +2250,6 @@ async function publier(){
 
     return;
   }
-
-  /* =========================
-     VALIDATION JOURNEE 2
-  ========================== */
 
   let date2 = null;
   let prise2 = null;
@@ -2364,16 +2324,8 @@ async function publier(){
 
   }
 
-  /* =====================================================
-     DATE DE PUBLICATION
-  ====================================================== */
-
   const dateDemande =
     new Date().toISOString();
-
-  /* =====================================================
-     CONSTRUCTION DES DEMANDES
-  ====================================================== */
 
   const demandes = [
 
@@ -2419,10 +2371,6 @@ async function publier(){
 
   }
 
-  /* =====================================================
-     INSERT SUPABASE
-  ====================================================== */
-
   try{
 
     const {
@@ -2450,8 +2398,6 @@ async function publier(){
     afficherToast(
       "✅ Ta demande a été publiée."
     );
-
-    /* RESET */
 
     document
       .getElementById("nom")
@@ -2597,13 +2543,6 @@ function construireGroupes(data){
   const utilises =
     new Set();
 
-  /*
-    On travaille sur une copie triée.
-    Le regroupement cherche le jour suivant
-    dans TOUT le tableau, pas seulement sur
-    la ligne immédiatement voisine.
-  */
-
   const donneesTriees =
     [...data].sort(
       (a,b)=>{
@@ -2649,11 +2588,6 @@ function construireGroupes(data){
     let dernier =
       premier;
 
-    /*
-      Recherche répétée du jour suivant
-      dans l'ensemble des lignes restantes.
-    */
-
     let trouve = true;
 
     while(trouve){
@@ -2697,11 +2631,6 @@ function construireGroupes(data){
 
     }
 
-    /*
-      Sécurité : les journées du groupe sont
-      affichées dans l'ordre chronologique.
-    */
-
     groupe.sort(
       (a,b)=>
         String(a.date_service || "")
@@ -2736,10 +2665,6 @@ async function afficherEchanges(){
   `;
 
   try{
-
-    /*
-      Uniquement ASCT ou ADC.
-    */
 
     let requete =
       supabaseClient
@@ -2813,10 +2738,6 @@ async function afficherEchanges(){
 
       return;
     }
-
-    /*
-      Regroupement des journées consécutives.
-    */
 
     const groupes =
       construireGroupes(
@@ -3413,7 +3334,8 @@ document.addEventListener(
 
     /*
       Par défaut : ASCT.
-      Il n'y a volontairement aucun filtre "Tous".
+      Aucun filtre "Tous".
+      Aucun métier Escales ou Autre.
     */
 
     metierActuel = "ASCT";
@@ -3439,6 +3361,23 @@ document.addEventListener(
     if(selectMetier){
       selectMetier.value = "ASCT";
     }
+
+    /*
+      IMPORTANT :
+      On force l'ouverture de la page
+      tout en haut afin que Safari ne
+      conserve pas une ancienne position
+      de défilement au rechargement.
+    */
+
+    window.scrollTo(0,0);
+
+    setTimeout(
+      ()=>{
+        window.scrollTo(0,0);
+      },
+      100
+    );
 
     afficherEchanges();
 
