@@ -25,20 +25,14 @@
 ========================================================= */
 
 :root{
-
   --navy:#061827;
   --blue:#087fba;
   --cyan:#57d9ef;
   --teal:#35c2b2;
-
   --text:#173249;
   --muted:#687989;
-
   --line:#dce8ee;
-
-  --shadow:
-    0 18px 45px rgba(5,35,53,.18);
-
+  --shadow:0 18px 45px rgba(5,35,53,.18);
 }
 
 
@@ -50,18 +44,13 @@
   box-sizing:border-box;
 }
 
-
 html{
   scroll-behavior:smooth;
 }
 
-
 body{
-
   margin:0;
-
   min-height:100vh;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -69,15 +58,10 @@ body{
     Roboto,
     Arial,
     sans-serif;
-
   color:var(--text);
-
   background:#061827;
-
   overflow-x:hidden;
-
 }
-
 
 .hidden{
   display:none!important;
@@ -85,46 +69,31 @@ body{
 
 
 /* =========================================================
-   BACKGROUND TRAIN
+   BACKGROUND
 ========================================================= */
 
 .bg{
-
   position:fixed;
-
   inset:0;
-
   z-index:-5;
-
   overflow:hidden;
-
   pointer-events:none;
 
   background:
-
     linear-gradient(
       180deg,
       rgba(4,22,36,.18),
       rgba(4,22,36,.40)
     ),
-
-    url("IMG_7689.jpeg")
-    center 45%/cover
-    no-repeat;
-
+    url("IMG_7689.jpeg") center 45%/cover no-repeat;
 }
 
-
 .bg:before{
-
   content:"";
-
   position:absolute;
-
   inset:0;
 
   background:
-
     linear-gradient(
       180deg,
       rgba(3,22,37,.72) 0%,
@@ -132,61 +101,45 @@ body{
       rgba(8,51,72,.20) 55%,
       rgba(238,247,250,.62) 100%
     );
-
 }
 
-
 .bg:after{
-
   content:"";
-
   position:absolute;
-
   inset:0;
 
   background:
-
     radial-gradient(
       circle at 8% 10%,
       rgba(87,217,239,.28),
       transparent 25%
     ),
-
     radial-gradient(
       circle at 92% 15%,
       rgba(30,154,207,.28),
       transparent 28%
     );
-
 }
 
-
 .speed{
-
   position:absolute;
-
   height:2px;
-
   border-radius:999px;
 
   background:
-
     linear-gradient(
       90deg,
       transparent,
       rgba(103,226,247,.72),
       transparent
     );
-
 }
-
 
 .s1{
   width:34%;
   top:13%;
   left:5%;
 }
-
 
 .s2{
   width:26%;
@@ -200,9 +153,7 @@ body{
 ========================================================= */
 
 .hero{
-
   position:relative;
-
   min-height:250px;
 
   padding:
@@ -211,65 +162,42 @@ body{
     58px;
 
   text-align:center;
-
   color:#fff;
-
   overflow:hidden;
-
 }
-
 
 .hero-inner{
-
   position:relative;
-
   z-index:2;
-
   width:min(1000px,100%);
-
   margin:auto;
-
 }
 
-
 .mark{
-
   width:56px;
-
   height:56px;
-
   margin:0 auto 10px;
 
   display:grid;
-
   place-items:center;
 
-  border:
-    1px solid
-    rgba(255,255,255,.32);
-
+  border:1px solid rgba(255,255,255,.32);
   border-radius:18px;
 
-  background:
-    rgba(5,34,53,.46);
+  background:rgba(5,34,53,.46);
 
   box-shadow:
-    0 12px 30px
-    rgba(0,0,0,.24);
+    0 12px 30px rgba(0,0,0,.24);
 
   backdrop-filter:blur(14px);
 
   font-size:30px;
-
 }
 
-
 .hero h1{
-
   margin:0;
 
-  font-size:
-    clamp(34px,7vw,66px);
+  font-size:clamp(34px,7vw,66px);
 
   line-height:1;
 
@@ -279,51 +207,34 @@ body{
     clamp(1px,1vw,4px);
 
   text-shadow:
-    0 8px 25px
-    rgba(0,0,0,.45);
-
+    0 8px 25px rgba(0,0,0,.45);
 }
-
 
 .hero h1 span{
   color:var(--cyan);
 }
 
-
 .sub{
-
   margin:12px 0 0;
 
   font-size:
     clamp(15px,3vw,22px);
 
-  color:
-    rgba(255,255,255,.94);
+  color:rgba(255,255,255,.94);
 
   text-shadow:
-    0 3px 14px
-    rgba(0,0,0,.35);
-
+    0 3px 14px rgba(0,0,0,.35);
 }
-
 
 .sub strong{
-
   display:inline-block;
-
   margin-top:4px;
-
   color:#8cecff;
-
   font-weight:850;
-
 }
 
-
 .glow{
-
   height:5px;
-
   width:min(500px,72%);
 
   margin:17px auto 0;
@@ -331,7 +242,6 @@ body{
   border-radius:999px;
 
   background:
-
     linear-gradient(
       90deg,
       transparent,
@@ -340,9 +250,7 @@ body{
     );
 
   box-shadow:
-    0 0 24px
-    rgba(85,214,238,.45);
-
+    0 0 24px rgba(85,214,238,.45);
 }
 
 
@@ -351,104 +259,76 @@ body{
 ========================================================= */
 
 main{
-
   width:min(1120px,100%);
-
   margin:-34px auto 100px;
-
   padding:0 14px;
-
 }
 
 
 /* =========================================================
-   WELCOME
+   ACCUEIL
 ========================================================= */
 
 .welcome{
-
   position:relative;
-
   overflow:hidden;
 
   text-align:center;
 
   padding:22px 18px 20px;
 
-  border:
-    1px solid
-    rgba(255,255,255,.82);
-
+  border:1px solid rgba(255,255,255,.82);
   border-radius:28px;
 
-  background:
-    rgba(255,255,255,.91);
+  background:rgba(255,255,255,.91);
 
   box-shadow:var(--shadow);
 
   backdrop-filter:blur(18px);
-
 }
 
-
 .welcome:before{
-
   content:"";
 
   position:absolute;
 
   width:260px;
-
   height:260px;
 
   left:-150px;
-
   top:-170px;
 
   border-radius:50%;
 
-  background:
-    rgba(80,211,238,.13);
-
+  background:rgba(80,211,238,.13);
 }
 
-
 .welcome:after{
-
   content:"";
 
   position:absolute;
 
   width:220px;
-
   height:220px;
 
   right:-110px;
-
   bottom:-140px;
 
   border-radius:50%;
 
-  background:
-    rgba(50,194,178,.11);
-
+  background:rgba(50,194,178,.11);
 }
 
-
 .welcome-icon{
-
   position:relative;
-
   z-index:1;
 
   width:58px;
-
   height:58px;
 
   margin:auto auto 8px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:19px;
@@ -463,30 +343,21 @@ main{
   font-size:31px;
 
   box-shadow:
-    0 10px 25px
-    rgba(35,141,181,.18);
-
+    0 10px 25px rgba(35,141,181,.18);
 }
 
-
 .welcome h2{
-
   position:relative;
-
   z-index:1;
 
   margin:0 0 7px;
 
   font-size:
     clamp(28px,5vw,40px);
-
 }
 
-
 .welcome p{
-
   position:relative;
-
   z-index:1;
 
   max-width:850px;
@@ -499,14 +370,10 @@ main{
     clamp(14px,2.3vw,18px);
 
   line-height:1.42;
-
 }
 
-
 .pill{
-
   position:relative;
-
   z-index:1;
 
   display:inline-flex;
@@ -527,116 +394,81 @@ main{
   color:#24536c;
 
   font-weight:800;
-
   font-size:13px;
-
 }
 
 
 /* =========================================================
-   METIER
+   CHOIX METIER
 ========================================================= */
 
 .choices{
-
   display:grid;
-
   grid-template-columns:1fr;
-
   gap:12px;
-
   margin-top:13px;
-
 }
-
 
 .choice{
-
   border:0;
-
   padding:0;
-
   background:transparent;
-
   text-align:left;
-
   cursor:pointer;
-
 }
 
-
 .choice-card{
-
   position:relative;
-
   overflow:hidden;
 
   min-height:92px;
 
   display:flex;
-
   align-items:center;
-
   gap:13px;
 
   padding:13px 15px;
 
   border-radius:23px;
 
-  background:
-    rgba(255,255,255,.93);
+  background:rgba(255,255,255,.93);
 
-  border:
-    1px solid
-    rgba(255,255,255,.95);
+  border:1px solid rgba(255,255,255,.95);
 
   box-shadow:
-    0 13px 30px
-    rgba(8,40,58,.15);
+    0 13px 30px rgba(8,40,58,.15);
 
   transition:
     transform .16s ease,
     box-shadow .16s ease;
-
 }
 
-
 .choice-card:hover{
-
   transform:translateY(-2px);
 
   box-shadow:
-    0 17px 35px
-    rgba(8,40,58,.20);
-
+    0 17px 35px rgba(8,40,58,.20);
 }
-
 
 .choice-card:active{
   transform:scale(.985);
 }
 
-
 .adc .choice-card{
   border-left:5px solid #2ba7dc;
 }
-
 
 .asct .choice-card{
   border-left:5px solid #32b9ae;
 }
 
-
 .choice-icon{
-
   flex:0 0 56px;
 
   width:56px;
-
   height:56px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:18px;
@@ -649,76 +481,53 @@ main{
     );
 
   font-size:29px;
-
 }
-
 
 .choice-text{
   min-width:0;
 }
 
-
 .choice-text strong{
-
   display:block;
-
   font-size:21px;
-
   margin-bottom:3px;
-
 }
 
-
 .choice-text small{
-
   display:block;
 
   color:#748391;
 
   font-size:13px;
-
   line-height:1.25;
-
 }
 
-
 .arrow{
-
   margin-left:auto;
-
   font-size:27px;
-
   color:#1683b8;
-
 }
 
 
 /* =========================================================
-   CARD
+   CARTES
 ========================================================= */
 
 .card{
-
   padding:20px;
 
   border-radius:27px;
 
-  background:
-    rgba(255,255,255,.93);
+  background:rgba(255,255,255,.93);
 
-  border:
-    1px solid
-    rgba(255,255,255,.95);
+  border:1px solid rgba(255,255,255,.95);
 
   box-shadow:var(--shadow);
 
   backdrop-filter:blur(18px);
-
 }
 
-
 .badge{
-
   display:inline-flex;
 
   padding:7px 12px;
@@ -730,29 +539,20 @@ main{
   color:#12658e;
 
   font-size:12px;
-
   font-weight:800;
-
 }
-
 
 .page-title{
-
   margin:10px 0 6px;
-
   font-size:26px;
-
 }
 
-
 .info{
-
   margin:0 0 15px;
 
   color:var(--muted);
 
   line-height:1.5;
-
 }
 
 
@@ -761,7 +561,6 @@ main{
 ========================================================= */
 
 label{
-
   display:block;
 
   margin:13px 0 6px;
@@ -771,20 +570,15 @@ label{
   font-weight:800;
 
   color:#405666;
-
 }
-
 
 input,
 textarea{
-
   width:100%;
 
   padding:12px 13px;
 
-  border:
-    1px solid
-    #d5e2e9;
+  border:1px solid #d5e2e9;
 
   border-radius:14px;
 
@@ -795,52 +589,33 @@ textarea{
   font:inherit;
 
   font-size:16px;
-
 }
-
 
 input:focus,
 textarea:focus{
-
   outline:none;
 
   border-color:#2091c7;
 
   box-shadow:
-    0 0 0 4px
-    rgba(32,145,199,.11);
-
+    0 0 0 4px rgba(32,145,199,.11);
 }
-
 
 textarea{
-
   min-height:82px;
-
   resize:vertical;
-
 }
-
 
 .row{
-
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:10px;
-
 }
 
-
 .location-row{
-
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:10px;
-
 }
 
 
@@ -849,11 +624,9 @@ textarea{
 ========================================================= */
 
 .toggle-wrap{
-
   display:flex;
 
   align-items:center;
-
   justify-content:space-between;
 
   gap:12px;
@@ -866,24 +639,15 @@ textarea{
 
   background:#eef7fa;
 
-  border:
-    1px solid
-    #dce8ee;
-
+  border:1px solid #dce8ee;
 }
-
 
 .toggle-text strong{
-
   display:block;
-
   font-size:14px;
-
 }
 
-
 .toggle-text small{
-
   display:block;
 
   color:#71818e;
@@ -891,36 +655,24 @@ textarea{
   margin-top:3px;
 
   line-height:1.3;
-
 }
 
-
 .switch{
-
   position:relative;
 
   width:52px;
-
   height:30px;
 
   flex:0 0 52px;
-
 }
-
 
 .switch input{
-
   opacity:0;
-
   width:0;
-
   height:0;
-
 }
 
-
 .slider{
-
   position:absolute;
 
   inset:0;
@@ -932,22 +684,17 @@ textarea{
   cursor:pointer;
 
   transition:.2s;
-
 }
 
-
 .slider:before{
-
   content:"";
 
   position:absolute;
 
   width:24px;
-
   height:24px;
 
   left:3px;
-
   top:3px;
 
   border-radius:50%;
@@ -955,39 +702,29 @@ textarea{
   background:#fff;
 
   box-shadow:
-    0 2px 6px
-    rgba(0,0,0,.18);
+    0 2px 6px rgba(0,0,0,.18);
 
   transition:.2s;
-
 }
-
 
 .switch input:checked + .slider{
   background:#1699ce;
 }
 
-
 .switch input:checked + .slider:before{
   transform:translateX(22px);
 }
 
-
 .day2{
-
   margin-top:12px;
 
   padding-top:4px;
 
   border-top:
-    1px dashed
-    #cbdde5;
-
+    1px dashed #cbdde5;
 }
 
-
 .day-label{
-
   display:flex;
 
   align-items:center;
@@ -1001,7 +738,6 @@ textarea{
   font-weight:900;
 
   color:#17658b;
-
 }
 
 
@@ -1010,7 +746,6 @@ textarea{
 ========================================================= */
 
 .btn{
-
   width:100%;
 
   border:0;
@@ -1037,20 +772,15 @@ textarea{
   cursor:pointer;
 
   box-shadow:
-    0 9px 20px
-    rgba(8,107,159,.18);
-
+    0 9px 20px rgba(8,107,159,.18);
 }
 
-
 .secondary{
-
   background:#eaf1f5;
 
   color:#294252;
 
   box-shadow:none;
-
 }
 
 
@@ -1059,7 +789,6 @@ textarea{
 ========================================================= */
 
 .modal-overlay{
-
   position:fixed;
 
   inset:0;
@@ -1069,7 +798,6 @@ textarea{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   padding:20px;
@@ -1078,12 +806,9 @@ textarea{
     rgba(3,18,30,.68);
 
   backdrop-filter:blur(8px);
-
 }
 
-
 .modal{
-
   width:min(500px,100%);
 
   padding:28px 22px 22px;
@@ -1094,52 +819,41 @@ textarea{
     rgba(255,255,255,.98);
 
   box-shadow:
-    0 25px 70px
-    rgba(0,0,0,.35);
+    0 25px 70px rgba(0,0,0,.35);
 
   text-align:center;
 
   animation:
     modalIn .22s ease-out;
-
 }
-
 
 @keyframes modalIn{
 
   from{
-
     opacity:0;
 
     transform:
       translateY(12px)
       scale(.97);
-
   }
 
   to{
-
     opacity:1;
 
     transform:
       translateY(0)
       scale(1);
-
   }
 
 }
 
-
 .modal-icon{
-
   width:64px;
-
   height:64px;
 
   margin:0 auto 14px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:20px;
@@ -1147,23 +861,17 @@ textarea{
   background:#e8f6fb;
 
   font-size:34px;
-
 }
 
-
 .modal h2{
-
   margin:0 0 10px;
 
   color:#173249;
 
   font-size:24px;
-
 }
 
-
 .modal p{
-
   margin:0 auto 14px;
 
   color:#687989;
@@ -1171,17 +879,13 @@ textarea{
   line-height:1.45;
 
   font-size:15px;
-
 }
-
 
 .modal-confirm{
   margin-top:8px;
 }
 
-
 .modal-cancel{
-
   margin-top:9px;
 
   background:#edf2f5;
@@ -1189,25 +893,19 @@ textarea{
   color:#405666;
 
   box-shadow:none;
-
 }
 
 
 /* =========================================================
-   LISTE
+   LISTE DES ECHANGES
 ========================================================= */
 
 .list{
-
   display:grid;
-
   gap:12px;
-
 }
 
-
 .item{
-
   padding:15px;
 
   border-radius:20px;
@@ -1220,37 +918,24 @@ textarea{
     );
 
   border:
-    1px solid
-    var(--line);
+    1px solid var(--line);
 
   border-left:
-    5px solid
-    #1587bb;
+    5px solid #1587bb;
 
   box-shadow:
-    0 9px 23px
-    rgba(10,42,62,.08);
-
+    0 9px 23px rgba(10,42,62,.08);
 }
 
-
-/* =========================================================
-   EN-TETE DEMANDE
-========================================================= */
-
 .name{
-
   font-size:18px;
 
   font-weight:850;
 
   color:#17364c;
-
 }
 
-
 .request-date{
-
   display:block;
 
   width:max-content;
@@ -1270,16 +955,14 @@ textarea{
   font-size:12px;
 
   font-weight:700;
-
 }
 
 
 /* =========================================================
-   BADGE 2 JOURNEES
+   BADGE GROUPE
 ========================================================= */
 
 .multi-day-badge{
-
   display:inline-flex;
 
   align-items:center;
@@ -1304,16 +987,14 @@ textarea{
   font-size:12px;
 
   font-weight:900;
-
 }
 
 
 /* =========================================================
-   BLOC JOURNEE
+   JOURNEE DANS UN POST
 ========================================================= */
 
 .day-card{
-
   margin-top:11px;
 
   padding:12px;
@@ -1323,14 +1004,10 @@ textarea{
   background:#f5f9fa;
 
   border:
-    1px solid
-    #e1ecef;
-
+    1px solid #e1ecef;
 }
 
-
 .day-card-header{
-
   display:flex;
 
   align-items:center;
@@ -1344,34 +1021,25 @@ textarea{
   font-size:14px;
 
   font-weight:900;
-
 }
 
-
 .service{
-
   display:grid;
 
   grid-template-columns:1fr 1fr;
 
   gap:8px;
-
 }
 
-
 .chip{
-
   padding:9px;
 
   border-radius:13px;
 
   background:#eef7fa;
-
 }
 
-
 .chip span{
-
   display:block;
 
   color:#71818e;
@@ -1385,16 +1053,12 @@ textarea{
   font-weight:800;
 
   margin-bottom:3px;
-
 }
 
-
 .chip strong{
-
   font-size:14px;
 
   color:#20455e;
-
 }
 
 
@@ -1403,7 +1067,6 @@ textarea{
 ========================================================= */
 
 .locations{
-
   display:grid;
 
   grid-template-columns:1fr 1fr;
@@ -1411,12 +1074,9 @@ textarea{
   gap:8px;
 
   margin-top:8px;
-
 }
 
-
 .location-chip{
-
   padding:9px;
 
   border-radius:13px;
@@ -1424,14 +1084,10 @@ textarea{
   background:#f1f7f8;
 
   border:
-    1px solid
-    #e1ecef;
-
+    1px solid #e1ecef;
 }
 
-
 .location-chip span{
-
   display:block;
 
   color:#71818e;
@@ -1445,18 +1101,14 @@ textarea{
   font-weight:800;
 
   margin-bottom:3px;
-
 }
 
-
 .location-chip strong{
-
   font-size:13px;
 
   color:#20455e;
 
   line-height:1.25;
-
 }
 
 
@@ -1465,7 +1117,6 @@ textarea{
 ========================================================= */
 
 .comment{
-
   margin-top:9px;
 
   padding:9px 10px;
@@ -1479,7 +1130,6 @@ textarea{
   font-size:13px;
 
   line-height:1.4;
-
 }
 
 
@@ -1488,7 +1138,6 @@ textarea{
 ========================================================= */
 
 .interest{
-
   margin-top:10px;
 
   padding:9px 11px;
@@ -1502,7 +1151,6 @@ textarea{
   font-size:13px;
 
   font-weight:700;
-
 }
 
 
@@ -1511,7 +1159,6 @@ textarea{
 ========================================================= */
 
 .actions{
-
   display:grid;
 
   grid-template-columns:1fr 1fr;
@@ -1519,12 +1166,9 @@ textarea{
   gap:8px;
 
   margin-top:11px;
-
 }
 
-
 .small{
-
   border:0;
 
   border-radius:12px;
@@ -1538,25 +1182,18 @@ textarea{
   font-weight:800;
 
   cursor:pointer;
-
 }
 
-
 .interet{
-
   background:#fff0cf;
 
   color:#8b5b00;
-
 }
 
-
 .delete{
-
   background:#ffe5e5;
 
   color:#b72e2e;
-
 }
 
 
@@ -1565,24 +1202,19 @@ textarea{
 ========================================================= */
 
 .empty{
-
   text-align:center;
 
   padding:28px 15px;
 
   color:#71808c;
-
 }
 
-
 .empty-icon{
-
   display:block;
 
   font-size:40px;
 
   margin-bottom:7px;
-
 }
 
 
@@ -1591,7 +1223,6 @@ textarea{
 ========================================================= */
 
 nav{
-
   position:fixed;
 
   z-index:100;
@@ -1618,8 +1249,7 @@ nav{
   padding:6px;
 
   border:
-    1px solid
-    rgba(255,255,255,.85);
+    1px solid rgba(255,255,255,.85);
 
   border-radius:21px;
 
@@ -1627,16 +1257,12 @@ nav{
     rgba(255,255,255,.88);
 
   box-shadow:
-    0 12px 35px
-    rgba(8,40,58,.22);
+    0 12px 35px rgba(8,40,58,.22);
 
   backdrop-filter:blur(20px);
-
 }
 
-
 nav button{
-
   flex:1;
 
   border:0;
@@ -1656,18 +1282,14 @@ nav button{
   font-weight:800;
 
   cursor:pointer;
-
 }
 
-
 .nav-icon{
-
   display:block;
 
   font-size:18px;
 
   margin-bottom:1px;
-
 }
 
 
@@ -1683,7 +1305,6 @@ nav button{
 
 }
 
-
 @media(min-width:700px) and (max-width:1099px){
 
   .bg{
@@ -1691,7 +1312,6 @@ nav button{
   }
 
 }
-
 
 @media(min-width:1100px){
 
@@ -1701,47 +1321,32 @@ nav button{
 
 }
 
-
 @media(min-width:700px){
 
   .hero{
-
     min-height:275px;
-
     padding-top:24px;
-
   }
-
 
   main{
     padding:0 22px;
   }
 
-
   .choices{
-
     grid-template-columns:1fr 1fr;
-
     gap:14px;
-
   }
-
 
   .welcome{
     padding:24px 28px 21px;
   }
 
-
   .choice-card{
-
     min-height:106px;
-
     padding:15px 18px;
-
   }
 
 }
-
 
 @media(min-width:1000px){
 
@@ -1749,135 +1354,92 @@ nav button{
     min-height:300px;
   }
 
-
   main{
     margin-top:-42px;
   }
-
 
   .choices{
     gap:18px;
   }
 
-
   .choice-card{
     min-height:115px;
   }
 
-
   .choice-icon{
-
     width:64px;
-
     height:64px;
-
     flex-basis:64px;
-
     font-size:33px;
-
   }
 
 }
-
 
 @media(max-width:600px){
 
   .location-row,
   .locations{
-
     grid-template-columns:1fr;
-
   }
 
 }
 
-
 @media(max-width:380px){
 
   .hero{
-
     min-height:230px;
-
     padding-bottom:52px;
-
   }
-
 
   .hero h1{
     font-size:32px;
   }
 
-
   .sub{
     font-size:14px;
   }
 
-
   .welcome{
-
     padding:20px 14px 18px;
-
   }
-
 
   .welcome h2{
     font-size:28px;
   }
 
-
   .welcome p{
     font-size:13px;
   }
 
-
   .pill{
-
     font-size:12px;
-
     padding:7px 11px;
-
   }
-
 
   .choice-card{
-
     min-height:86px;
-
     padding:11px 12px;
-
     gap:9px;
-
   }
-
 
   .choice-icon{
-
     width:51px;
-
     height:51px;
-
     flex-basis:51px;
-
     font-size:27px;
-
   }
-
 
   .choice-text strong{
     font-size:19px;
   }
 
-
   .choice-text small{
     font-size:11px;
   }
 
-
   .service,
   .actions{
-
     grid-template-columns:1fr;
-
   }
 
 }
@@ -1897,7 +1459,6 @@ nav button{
 <div class="bg">
 
   <div class="speed s1"></div>
-
   <div class="speed s2"></div>
 
 </div>
@@ -1922,20 +1483,16 @@ nav button{
     </h2>
 
     <p>
-
       Pour utiliser
       <strong>ÉCHANGE SERVICE</strong>,
       vous devez avoir préalablement fait
       une demande de congé qui a été refusée.
-
     </p>
 
     <p>
-
       <strong>
         Je confirme que mon congé a été refusé.
       </strong>
-
     </p>
 
     <button
@@ -1972,20 +1529,12 @@ nav button{
     </div>
 
     <h1>
-
-      ÉCHANGE
-      <span>SERVICE</span>
-
+      ÉCHANGE <span>SERVICE</span>
     </h1>
 
     <div class="sub">
-
       Échange de journées entre agents
-
-      <strong>
-        • si congés refusés
-      </strong>
-
+      <strong>• si congés refusés</strong>
     </div>
 
     <div class="glow"></div>
@@ -1996,7 +1545,7 @@ nav button{
 
 
 <!-- =========================================================
-     MAIN
+     CONTENU
 ========================================================= -->
 
 <main>
@@ -2019,17 +1568,12 @@ nav button{
     </h2>
 
     <p>
-
-      Proposez une journée de service
-      et trouvez un collègue intéressé
-      pour un éventuel échange.
-
+      Proposez une journée de service et trouvez
+      un collègue intéressé pour un éventuel échange.
     </p>
 
     <div class="pill">
-
       🚆 Choisissez votre métier pour commencer
-
     </div>
 
   </div>
@@ -2037,8 +1581,6 @@ nav button{
 
   <div class="choices">
 
-
-    <!-- ADC -->
 
     <button
       class="choice adc"
@@ -2070,8 +1612,6 @@ nav button{
 
     </button>
 
-
-    <!-- ASCT -->
 
     <button
       class="choice asct"
@@ -2130,28 +1670,21 @@ nav button{
 
 
     <h2 class="page-title">
-
       ➕ Ma journée
-
     </h2>
 
 
     <p class="info">
-
       Proposez votre journée afin de trouver
       un collègue intéressé.
-
     </p>
 
 
     <!-- NOM -->
 
     <label for="nom">
-
       Nom et prénom
-
     </label>
-
 
     <input
       id="nom"
@@ -2159,23 +1692,16 @@ nav button{
       autocomplete="name">
 
 
-    <!-- =====================================================
-         JOURNEE 1
-    ====================================================== -->
+    <!-- JOURNEE 1 -->
 
     <div class="day-label">
-
       📅 JOURNÉE 1
-
     </div>
 
 
     <label for="date">
-
       Date de la journée
-
     </label>
-
 
     <input
       id="date"
@@ -2184,13 +1710,10 @@ nav button{
 
     <div class="row">
 
-
       <div>
 
         <label for="prise">
-
           Prise de service
-
         </label>
 
         <input
@@ -2203,9 +1726,7 @@ nav button{
       <div>
 
         <label for="fin">
-
           Fin de service
-
         </label>
 
         <input
@@ -2214,7 +1735,6 @@ nav button{
 
       </div>
 
-
     </div>
 
 
@@ -2222,13 +1742,10 @@ nav button{
 
     <div class="location-row">
 
-
       <div>
 
         <label for="lieuPrise">
-
           📍 Lieu de prise de service
-
         </label>
 
         <input
@@ -2242,9 +1759,7 @@ nav button{
       <div>
 
         <label for="lieuFin">
-
           📍 Lieu de fin de service
-
         </label>
 
         <input
@@ -2254,29 +1769,21 @@ nav button{
 
       </div>
 
-
     </div>
 
 
-    <!-- =====================================================
-         OPTION JOURNEE 2
-    ====================================================== -->
+    <!-- DEUXIEME JOURNEE -->
 
     <div class="toggle-wrap">
-
 
       <div class="toggle-text">
 
         <strong>
-
           🔄 J’ai une 2ᵉ journée à proposer
-
         </strong>
 
         <small>
-
           Utile notamment en cas de RHR entre les deux journées.
-
         </small>
 
       </div>
@@ -2293,13 +1800,10 @@ nav button{
 
       </label>
 
-
     </div>
 
 
-    <!-- =====================================================
-         JOURNEE 2
-    ====================================================== -->
+    <!-- JOURNEE 2 -->
 
     <div
       id="blocJournee2"
@@ -2307,18 +1811,13 @@ nav button{
 
 
       <div class="day-label">
-
         📅 JOURNÉE 2
-
       </div>
 
 
       <label for="date2">
-
         Date de la 2ᵉ journée
-
       </label>
-
 
       <input
         id="date2"
@@ -2327,13 +1826,10 @@ nav button{
 
       <div class="row">
 
-
         <div>
 
           <label for="prise2">
-
             Prise de service
-
           </label>
 
           <input
@@ -2346,9 +1842,7 @@ nav button{
         <div>
 
           <label for="fin2">
-
             Fin de service
-
           </label>
 
           <input
@@ -2357,21 +1851,15 @@ nav button{
 
         </div>
 
-
       </div>
 
 
-      <!-- LIEUX JOURNEE 2 -->
-
       <div class="location-row">
-
 
         <div>
 
           <label for="lieuPrise2">
-
             📍 Lieu de prise de service
-
           </label>
 
           <input
@@ -2385,9 +1873,7 @@ nav button{
         <div>
 
           <label for="lieuFin2">
-
             📍 Lieu de fin de service
-
           </label>
 
           <input
@@ -2396,7 +1882,6 @@ nav button{
             placeholder="Exemple : Paris Saint-Lazare">
 
         </div>
-
 
       </div>
 
@@ -2407,18 +1892,13 @@ nav button{
     <!-- COMMENTAIRE -->
 
     <label for="commentaire">
-
       Commentaire
-
     </label>
-
 
     <textarea
       id="commentaire"
       placeholder="Exemple : TER, réserve, numéro de train, RHR entre les deux journées..."></textarea>
 
-
-    <!-- PUBLICATION -->
 
     <button
       class="btn"
@@ -2451,14 +1931,11 @@ nav button{
   id="echanges"
   class="hidden">
 
-
   <div class="card">
 
 
     <h2 class="page-title">
-
       🔎 Échanges disponibles
-
     </h2>
 
 
@@ -2475,7 +1952,6 @@ nav button{
     <div
       id="listeEchanges"
       class="list">
-
     </div>
 
 
@@ -2546,7 +2022,6 @@ nav button{
 
 <script>
 
-
 /* =========================================================
    SUPABASE
 ========================================================= */
@@ -2554,10 +2029,8 @@ nav button{
 const SUPABASE_URL =
   "https://nptwpoguokbjuzdyxach.supabase.co";
 
-
 const SUPABASE_KEY =
   "sb_publishable_VxIiVyjGPVxipQx8j5njxA_YxaFOnAF";
-
 
 const supabaseClient =
   supabase.createClient(
@@ -2575,7 +2048,6 @@ let metierActuel = "";
 
 function afficher(page){
 
-
   document
     .querySelectorAll("main section")
     .forEach(
@@ -2588,27 +2060,19 @@ function afficher(page){
 
 
   if(el){
-
     el.classList.remove("hidden");
-
   }
 
 
   if(page === "echanges"){
-
     afficherEchanges();
-
   }
 
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
-
 
 }
 
@@ -2618,7 +2082,6 @@ function afficher(page){
 ========================================================= */
 
 function choisirMetier(metier){
-
 
   metierActuel = metier;
 
@@ -2639,16 +2102,10 @@ function choisirMetier(metier){
     .innerText = metier;
 
 
-  /*
-   * Le formulaire ne s'ouvre pas directement.
-   * La confirmation du congé refusé apparaît d'abord.
-   */
-
   document
     .getElementById("modalCongeRefuse")
     .classList
     .remove("hidden");
-
 
 }
 
@@ -2658,7 +2115,6 @@ function choisirMetier(metier){
 ========================================================= */
 
 function confirmerCongeRefuse(){
-
 
   document
     .getElementById("modalCongeRefuse")
@@ -2674,12 +2130,10 @@ function confirmerCongeRefuse(){
 
   afficher("proposer");
 
-
 }
 
 
 function annulerCongeRefuse(){
-
 
   document
     .getElementById("modalCongeRefuse")
@@ -2689,16 +2143,14 @@ function annulerCongeRefuse(){
 
   metierActuel = "";
 
-
 }
 
 
 /* =========================================================
-   CHANGER DE METIER
+   CHANGER METIER
 ========================================================= */
 
 function changerMetier(){
-
 
   metierActuel = "";
 
@@ -2711,7 +2163,6 @@ function changerMetier(){
 
   afficher("accueil");
 
-
 }
 
 
@@ -2720,7 +2171,6 @@ function changerMetier(){
 ========================================================= */
 
 function toggleJournee2(){
-
 
   const actif =
 
@@ -2737,7 +2187,6 @@ function toggleJournee2(){
       !actif
     );
 
-
 }
 
 
@@ -2747,9 +2196,7 @@ function toggleJournee2(){
 
 async function publier(){
 
-
   const nom =
-
     document
       .getElementById("nom")
       .value
@@ -2757,28 +2204,24 @@ async function publier(){
 
 
   const date =
-
     document
       .getElementById("date")
       .value;
 
 
   const prise =
-
     document
       .getElementById("prise")
       .value;
 
 
   const fin =
-
     document
       .getElementById("fin")
       .value;
 
 
   const lieuPrise =
-
     document
       .getElementById("lieuPrise")
       .value
@@ -2786,7 +2229,6 @@ async function publier(){
 
 
   const lieuFin =
-
     document
       .getElementById("lieuFin")
       .value
@@ -2794,35 +2236,30 @@ async function publier(){
 
 
   const deuxieme =
-
     document
       .getElementById("deuxiemeJournee")
       .checked;
 
 
   const date2 =
-
     document
       .getElementById("date2")
       .value;
 
 
   const prise2 =
-
     document
       .getElementById("prise2")
       .value;
 
 
   const fin2 =
-
     document
       .getElementById("fin2")
       .value;
 
 
   const lieuPrise2 =
-
     document
       .getElementById("lieuPrise2")
       .value
@@ -2830,7 +2267,6 @@ async function publier(){
 
 
   const lieuFin2 =
-
     document
       .getElementById("lieuFin2")
       .value
@@ -2838,7 +2274,6 @@ async function publier(){
 
 
   const commentaire =
-
     document
       .getElementById("commentaire")
       .value
@@ -2846,7 +2281,7 @@ async function publier(){
 
 
   /* =======================================================
-     METIER
+     VERIFICATION METIER
   ======================================================= */
 
   if(!metierActuel){
@@ -2865,21 +2300,16 @@ async function publier(){
   ======================================================= */
 
   if(
-
     !nom ||
     !date ||
     !prise ||
     !fin ||
     !lieuPrise ||
     !lieuFin
-
   ){
 
     alert(
-
-      "Merci de remplir le nom, la date, " +
-      "les horaires et les lieux de la première journée."
-
+      "Merci de remplir le nom, la date, les horaires et les lieux de la première journée."
     );
 
     return;
@@ -2896,22 +2326,17 @@ async function publier(){
     deuxieme &&
 
     (
-
       !date2 ||
       !prise2 ||
       !fin2 ||
       !lieuPrise2 ||
       !lieuFin2
-
     )
 
   ){
 
     alert(
-
-      "Merci de remplir la date, les horaires " +
-      "et les lieux de la deuxième journée."
-
+      "Merci de remplir la date, les horaires et les lieux de la deuxième journée."
     );
 
     return;
@@ -2920,21 +2345,16 @@ async function publier(){
 
 
   /* =======================================================
-     DATES DIFFERENTES
+     VERIFICATION DATES
   ======================================================= */
 
   if(
-
     deuxieme &&
     date2 === date
-
   ){
 
     alert(
-
-      "Les deux journées doivent être sur " +
-      "deux dates différentes."
-
+      "Les deux journées doivent être sur deux dates différentes."
     );
 
     return;
@@ -2943,27 +2363,15 @@ async function publier(){
 
 
   /* =======================================================
-     IDENTIFIANT DE GROUPE
+     DEMANDES
      
      IMPORTANT :
-     Les deux lignes auront le même groupe_id.
-     Cela permet de les afficher dans un seul post.
-  ======================================================= */
-
-  const groupeId =
-    crypto.randomUUID();
-
-
-  /* =======================================================
-     JOURNEE 1
+     Aucun created_at n'est envoyé.
   ======================================================= */
 
   const demandes = [
 
-
     {
-
-      groupe_id:groupeId,
 
       metier:metierActuel,
 
@@ -2987,21 +2395,12 @@ async function publier(){
 
     }
 
-
   ];
 
 
-  /* =======================================================
-     JOURNEE 2
-  ======================================================= */
-
   if(deuxieme){
 
-
     demandes.push({
-
-
-      groupe_id:groupeId,
 
       metier:metierActuel,
 
@@ -3025,7 +2424,6 @@ async function publier(){
 
     });
 
-
   }
 
 
@@ -3036,9 +2434,7 @@ async function publier(){
   const {error} =
 
     await supabaseClient
-
       .from("echanges")
-
       .insert(demandes);
 
 
@@ -3047,10 +2443,8 @@ async function publier(){
     console.error(error);
 
     alert(
-
       "Erreur lors de la publication : " +
       error.message
-
     );
 
     return;
@@ -3058,16 +2452,8 @@ async function publier(){
   }
 
 
-  /* =======================================================
-     RESET
-  ======================================================= */
-
   resetFormulaire();
 
-
-  /* =======================================================
-     CONFIRMATION
-  ======================================================= */
 
   alert(
 
@@ -3082,73 +2468,50 @@ async function publier(){
 
   afficher("echanges");
 
-
 }
 
 
 /* =========================================================
-   RESET FORMULAIRE
+   RESET
 ========================================================= */
 
 function resetFormulaire(){
 
-
   [
 
     "nom",
-
     "date",
-
     "prise",
-
     "fin",
-
     "lieuPrise",
-
     "lieuFin",
-
     "date2",
-
     "prise2",
-
     "fin2",
-
     "lieuPrise2",
-
     "lieuFin2",
-
     "commentaire"
 
-  ]
-
-  .forEach(id => {
-
+  ].forEach(id => {
 
     const el =
       document.getElementById(id);
 
-
     if(el){
-
       el.value = "";
-
     }
-
 
   });
 
 
   const cb =
-
     document.getElementById(
       "deuxiemeJournee"
     );
 
 
   if(cb){
-
     cb.checked = false;
-
   }
 
 
@@ -3157,6 +2520,325 @@ function resetFormulaire(){
     .classList
     .add("hidden");
 
+}
+
+
+/* =========================================================
+   OUTILS POUR LE REGROUPEMENT
+========================================================= */
+
+
+/*
+ * Transforme une date YYYY-MM-DD en nombre de jours.
+ */
+
+function dateVersJour(date){
+
+  if(!date){
+    return null;
+  }
+
+
+  const parts =
+    String(date).split("-");
+
+
+  if(parts.length !== 3){
+    return null;
+  }
+
+
+  const d =
+    new Date(
+      Number(parts[0]),
+      Number(parts[1]) - 1,
+      Number(parts[2])
+    );
+
+
+  if(Number.isNaN(d.getTime())){
+    return null;
+  }
+
+
+  return Math.floor(
+    d.getTime() /
+    86400000
+  );
+
+}
+
+
+/*
+ * Vérifie si deux dates sont consécutives.
+ *
+ * Exemple :
+ * 17/09 -> 18/09 = true
+ * 17/09 -> 19/09 = false
+ */
+
+function datesConsecutives(date1,date2){
+
+  const j1 =
+    dateVersJour(date1);
+
+
+  const j2 =
+    dateVersJour(date2);
+
+
+  if(
+    j1 === null ||
+    j2 === null
+  ){
+
+    return false;
+
+  }
+
+
+  return Math.abs(j2 - j1) === 1;
+
+}
+
+
+/*
+ * Compare les lieux sans tenir compte :
+ * - des majuscules/minuscules
+ * - des espaces inutiles
+ */
+
+function lieuxIdentiques(lieu1,lieu2){
+
+  const a =
+    String(lieu1 || "")
+      .trim()
+      .replace(/\s+/g," ")
+      .toUpperCase();
+
+
+  const b =
+    String(lieu2 || "")
+      .trim()
+      .replace(/\s+/g," ")
+      .toUpperCase();
+
+
+  return (
+    a !== "" &&
+    b !== "" &&
+    a === b
+  );
+
+}
+
+
+/*
+ * Vérifie si une journée peut suivre
+ * directement la précédente.
+ *
+ * Conditions :
+ *
+ * même métier
+ * même nom
+ * date consécutive
+ * fin J1 = prise J2
+ */
+
+function peutEtreRegroupee(journee1,journee2){
+
+  const memeMetier =
+    String(journee1.metier || "")
+      .trim()
+      .toUpperCase()
+
+    ===
+
+    String(journee2.metier || "")
+      .trim()
+      .toUpperCase();
+
+
+  const memeNom =
+    String(journee1.nom || "")
+      .trim()
+      .replace(/\s+/g," ")
+      .toUpperCase()
+
+    ===
+
+    String(journee2.nom || "")
+      .trim()
+      .replace(/\s+/g," ")
+      .toUpperCase();
+
+
+  const datesOK =
+    datesConsecutives(
+      journee1.date_service,
+      journee2.date_service
+    );
+
+
+  const lieuxOK =
+    lieuxIdentiques(
+      journee1.lieu_fin_service,
+      journee2.lieu_prise_service
+    );
+
+
+  return (
+    memeMetier &&
+    memeNom &&
+    datesOK &&
+    lieuxOK
+  );
+
+}
+
+
+/* =========================================================
+   CONSTRUCTION DES GROUPES
+========================================================= */
+
+function construireGroupes(data){
+
+  /*
+   * On travaille sur une copie.
+   */
+
+  const lignes =
+    [...data];
+
+
+  /*
+   * Tri par :
+   * métier
+   * nom
+   * date
+   */
+
+  lignes.sort((a,b) => {
+
+    const metierA =
+      String(a.metier || "")
+        .toUpperCase();
+
+
+    const metierB =
+      String(b.metier || "")
+        .toUpperCase();
+
+
+    if(metierA < metierB){
+      return -1;
+    }
+
+
+    if(metierA > metierB){
+      return 1;
+    }
+
+
+    const nomA =
+      String(a.nom || "")
+        .trim()
+        .toUpperCase();
+
+
+    const nomB =
+      String(b.nom || "")
+        .trim()
+        .toUpperCase();
+
+
+    if(nomA < nomB){
+      return -1;
+    }
+
+
+    if(nomA > nomB){
+      return 1;
+    }
+
+
+    return String(
+      a.date_service || ""
+    ).localeCompare(
+      String(
+        b.date_service || ""
+      )
+    );
+
+  });
+
+
+  const groupes = [];
+
+
+  lignes.forEach(journee => {
+
+    let groupeTrouve = null;
+
+
+    /*
+     * On cherche le dernier groupe
+     * auquel cette journée peut être ajoutée.
+     */
+
+    for(
+      let i = groupes.length - 1;
+      i >= 0;
+      i--
+    ){
+
+      const groupe =
+        groupes[i];
+
+
+      if(!groupe.length){
+        continue;
+      }
+
+
+      const derniere =
+        groupe[groupe.length - 1];
+
+
+      if(
+        peutEtreRegroupee(
+          derniere,
+          journee
+        )
+      ){
+
+        groupeTrouve =
+          groupe;
+
+        break;
+
+      }
+
+    }
+
+
+    if(groupeTrouve){
+
+      groupeTrouve.push(journee);
+
+    }
+    else{
+
+      groupes.push([
+        journee
+      ]);
+
+    }
+
+  });
+
+
+  return groupes;
 
 }
 
@@ -3167,9 +2849,7 @@ function resetFormulaire(){
 
 async function afficherEchanges(){
 
-
   const zone =
-
     document.getElementById(
       "listeEchanges"
     );
@@ -3180,7 +2860,6 @@ async function afficherEchanges(){
       "metierEchanges"
     )
     .innerText =
-
       metierActuel || "-";
 
 
@@ -3197,7 +2876,6 @@ async function afficherEchanges(){
 
   if(!metierActuel){
 
-
     zone.innerHTML =
 
       '<div class="empty">' +
@@ -3206,22 +2884,18 @@ async function afficherEchanges(){
 
       '</div>';
 
-
     return;
 
   }
 
 
   /* =======================================================
-     REQUETE SUPABASE
+     RECUPERATION SUPABASE
   ======================================================= */
 
   const {
-
     data,
-
     error
-
   } =
 
     await supabaseClient
@@ -3250,7 +2924,6 @@ async function afficherEchanges(){
 
   if(error){
 
-
     console.error(error);
 
 
@@ -3274,7 +2947,6 @@ async function afficherEchanges(){
 
       '</div>';
 
-
     return;
 
   }
@@ -3284,12 +2956,9 @@ async function afficherEchanges(){
 
 
   if(
-
     !data ||
     !data.length
-
   ){
-
 
     zone.innerHTML =
 
@@ -3305,468 +2974,430 @@ async function afficherEchanges(){
 
       '</div>';
 
-
     return;
 
   }
 
 
   /* =======================================================
-     REGROUPEMENT DES DEMANDES
+     REGROUPEMENT AUTOMATIQUE
      
-     Les lignes ayant le même groupe_id sont réunies.
+     Exemple :
      
-     Pour les anciennes demandes qui n'ont pas de groupe_id,
-     chaque ligne est considérée comme une demande indépendante.
+     BOUGEARD
+     17/09 : AR → GRV
+     18/09 : GRV → AR
+     
+     devient UN SEUL POST.
   ======================================================= */
 
-  const groupes = new Map();
-
-
-  data.forEach(e => {
-
-
-    const groupe =
-
-      e.groupe_id
-
-        ? String(e.groupe_id)
-
-        : "ancien-" + String(e.id);
-
-
-    if(!groupes.has(groupe)){
-
-      groupes.set(
-        groupe,
-        []
-      );
-
-    }
-
-
-    groupes
-      .get(groupe)
-      .push(e);
-
-
-  });
+  const groupes =
+    construireGroupes(data);
 
 
   /* =======================================================
-     CREATION DES POSTS
+     AFFICHAGE DES GROUPES
   ======================================================= */
 
-  groupes.forEach(
-    (demandes,groupeId) => {
+  groupes.forEach(demandes => {
 
 
-      demandes.sort(
-        (a,b) =>
-          String(a.date_service)
-            .localeCompare(
-              String(b.date_service)
-            )
+    const premier =
+      demandes[0];
+
+
+    const bloc =
+      document.createElement(
+        "div"
       );
 
 
-      const premier =
-        demandes[0];
+    bloc.className =
+      "item";
 
 
-      const bloc =
-        document.createElement("div");
+    /* =====================================================
+       NOM
+    ===================================================== */
+
+    const nom =
+      escapeHTML(
+        premier.nom
+      );
 
 
-      bloc.className = "item";
+    /* =====================================================
+       DATE DE DEMANDE
+    ===================================================== */
+
+    const created =
+
+      premier.created_at ||
+
+      premier.date_demande ||
+
+      premier.date_creation ||
+
+      premier.createdAt;
 
 
-      /* =====================================================
-         DATE DE DEMANDE
-      ===================================================== */
+    const request =
 
-      const created =
+      created
 
-        premier.created_at ||
+        ?
 
-        premier.date_demande ||
+        `<div class="request-date">
+           🕒 Demande publiée le
+           ${formatDateTime(created)}
+         </div>`
 
-        premier.date_creation ||
+        :
 
-        premier.createdAt;
-
-
-      const request =
-
-        created
-
-          ?
-
-          `<div class="request-date">
-             🕒 Demande publiée le
-             ${formatDateTime(created)}
-           </div>`
-
-          :
-
-          `<div class="request-date">
-             🕒 Date de demande non disponible
-           </div>`;
+        `<div class="request-date">
+           🕒 Date de demande non disponible
+         </div>`;
 
 
-      /* =====================================================
-         INTERET
-      ===================================================== */
+    /* =====================================================
+       BADGE
+    ===================================================== */
 
-      const interesses =
+    const multiDay =
 
-        demandes
-          .map(
-            d => d.agent_interesse
-          )
-          .filter(Boolean);
+      demandes.length > 1
 
+        ?
 
-      const nomInteresse =
+        `<div class="multi-day-badge">
 
-        interesses.length
+           🔄
+           ${demandes.length}
+           journées consécutives
 
-          ? interesses[0]
+         </div>`
 
-          : "";
-
-
-      const interest =
-
-        nomInteresse
-
-          ?
-
-          `<div class="interest">
-             🙋 Agent intéressé :
-             <strong>
-               ${escapeHTML(
-                 nomInteresse
-               )}
-             </strong>
-           </div>`
-
-          : "";
+        : "";
 
 
-      /* =====================================================
-         JOURNEES
-      ===================================================== */
+    /* =====================================================
+       INTERET
+    ===================================================== */
 
-      let joursHTML = "";
+    const interesses =
 
-
-      demandes.forEach(
-        (e,index) => {
-
-
-          const lieuPriseAffichage =
-
-            e.lieu_prise_service
-
-              ?
-
-              escapeHTML(
-                e.lieu_prise_service
-              )
-
-              :
-
-              "Non renseigné";
+      demandes
+        .map(
+          d => d.agent_interesse
+        )
+        .filter(Boolean);
 
 
-          const lieuFinAffichage =
+    const nomInteresse =
 
-            e.lieu_fin_service
-
-              ?
-
-              escapeHTML(
-                e.lieu_fin_service
-              )
-
-              :
-
-              "Non renseigné";
+      interesses.length
+        ? interesses[0]
+        : "";
 
 
-          joursHTML += `
+    const interest =
 
-            <div class="day-card">
+      nomInteresse
 
-              <div class="day-card-header">
+        ?
 
-                📅 JOURNÉE
-                ${index + 1}
+        `<div class="interest">
+
+           🙋 Agent intéressé :
+           <strong>
+             ${escapeHTML(
+               nomInteresse
+             )}
+           </strong>
+
+         </div>`
+
+        : "";
+
+
+    /* =====================================================
+       JOURNEES
+    ===================================================== */
+
+    let joursHTML = "";
+
+
+    demandes.forEach(
+      (e,index) => {
+
+
+        const lieuPrise =
+
+          e.lieu_prise_service
+
+            ?
+
+            escapeHTML(
+              e.lieu_prise_service
+            )
+
+            :
+
+            "Non renseigné";
+
+
+        const lieuFin =
+
+          e.lieu_fin_service
+
+            ?
+
+            escapeHTML(
+              e.lieu_fin_service
+            )
+
+            :
+
+            "Non renseigné";
+
+
+        joursHTML += `
+
+          <div class="day-card">
+
+
+            <div class="day-card-header">
+
+              📅 JOURNÉE
+              ${index + 1}
+
+            </div>
+
+
+            <div class="service">
+
+
+              <div class="chip">
+
+                <span>
+                  Journée de service
+                </span>
+
+                <strong>
+
+                  📅
+                  ${formatDate(
+                    e.date_service
+                  )}
+
+                </strong>
 
               </div>
 
 
-              <div class="service">
+              <div class="chip">
 
+                <span>
+                  Horaires
+                </span>
 
-                <div class="chip">
+                <strong>
 
-                  <span>
-                    Date
-                  </span>
+                  ⏰
+                  ${formatTime(
+                    e.prise_service
+                  )}
 
-                  <strong>
+                  →
 
-                    📅
-                    ${formatDate(
-                      e.date_service
-                    )}
+                  ${formatTime(
+                    e.fin_service
+                  )}
 
-                  </strong>
-
-                </div>
-
-
-                <div class="chip">
-
-                  <span>
-                    Horaires
-                  </span>
-
-                  <strong>
-
-                    ⏰
-                    ${formatTime(
-                      e.prise_service
-                    )}
-
-                    →
-
-                    ${formatTime(
-                      e.fin_service
-                    )}
-
-                  </strong>
-
-                </div>
-
-
-              </div>
-
-
-              <div class="locations">
-
-
-                <div class="location-chip">
-
-                  <span>
-                    📍 Prise de service
-                  </span>
-
-                  <strong>
-
-                    ${lieuPriseAffichage}
-
-                  </strong>
-
-                </div>
-
-
-                <div class="location-chip">
-
-                  <span>
-                    📍 Fin de service
-                  </span>
-
-                  <strong>
-
-                    ${lieuFinAffichage}
-
-                  </strong>
-
-                </div>
-
+                </strong>
 
               </div>
 
 
             </div>
 
-          `;
 
+            <div class="locations">
 
-        }
-      );
 
+              <div class="location-chip">
 
-      /* =====================================================
-         COMMENTAIRE
-      ===================================================== */
+                <span>
+                  📍 Prise de service
+                </span>
 
-      const commentaires =
+                <strong>
+                  ${lieuPrise}
+                </strong>
 
-        demandes
-          .map(
-            d => d.commentaire
-          )
-          .filter(Boolean);
+              </div>
 
 
-      const commentaireFinal =
+              <div class="location-chip">
 
-        commentaires.length
+                <span>
+                  📍 Fin de service
+                </span>
 
-          ? commentaires[0]
+                <strong>
+                  ${lieuFin}
+                </strong>
 
-          : "";
+              </div>
 
 
-      const comment =
+            </div>
 
-        commentaireFinal
 
-          ?
+          </div>
 
-          `<div class="comment">
+        `;
 
-             💬
-             ${escapeHTML(
-               commentaireFinal
-             )}
 
-           </div>`
+      }
+    );
 
-          : "";
 
+    /* =====================================================
+       COMMENTAIRES
+    ===================================================== */
 
-      /* =====================================================
-         BADGE 2 JOURNEES
-      ===================================================== */
+    const commentaires =
 
-      const multiDay =
+      demandes
+        .map(
+          d => d.commentaire
+        )
+        .filter(Boolean);
 
-        demandes.length > 1
 
-          ?
+    const commentaireFinal =
 
-          `<div class="multi-day-badge">
+      commentaires.length
+        ? commentaires[0]
+        : "";
 
-             🔄
-             ${demandes.length} journées
-             proposées ensemble
 
-           </div>`
+    const comment =
 
-          : "";
+      commentaireFinal
 
+        ?
 
-      /* =====================================================
-         ID DES DEMANDES
-      ===================================================== */
+        `<div class="comment">
 
-      const ids =
+           💬
+           ${escapeHTML(
+             commentaireFinal
+           )}
 
-        demandes
-          .map(
-            d => Number(d.id)
-          )
-          .filter(
-            id => Number.isFinite(id)
-          );
+         </div>`
 
+        : "";
 
-      const idsJSON =
-        JSON.stringify(ids);
 
+    /* =====================================================
+       IDS
+       
+       Pour une demande groupée, les boutons agiront
+       sur toutes les journées du post.
+    ===================================================== */
 
-      /* =====================================================
-         CARTE COMPLETE
-      ===================================================== */
+    const ids =
 
-      bloc.innerHTML = `
+      demandes
+        .map(
+          d => Number(d.id)
+        )
+        .filter(
+          id => Number.isFinite(id)
+        );
 
-        <div class="name">
 
-          👤
-          ${escapeHTML(
-            premier.nom
-          )}
+    const idsJSON =
+      JSON.stringify(ids);
 
-        </div>
 
+    /* =====================================================
+       CARTE
+    ===================================================== */
 
-        ${request}
+    bloc.innerHTML = `
 
+      <div class="name">
 
-        ${multiDay}
+        👤 ${nom}
 
+      </div>
 
-        ${joursHTML}
 
+      ${request}
 
-        ${comment}
 
+      ${multiDay}
 
-        ${interest}
 
+      ${joursHTML}
 
-        <div class="actions">
 
+      ${comment}
 
-          <button
-            class="small interet"
-            onclick='interesseGroupe(
-              ${JSON.stringify(String(groupeId))},
-              ${idsJSON}
-            )'>
 
-            🙋 JE SUIS INTÉRESSÉ
+      ${interest}
 
-          </button>
 
+      <div class="actions">
 
-          <button
-            class="small delete"
-            onclick='supprimerGroupe(
-              ${JSON.stringify(String(groupeId))},
-              ${idsJSON}
-            )'>
 
-            🗑️ SUPPRIMER
+        <button
+          class="small interet"
+          onclick='interesseGroupe(
+            ${idsJSON}
+          )'>
 
-          </button>
+          🙋 JE SUIS INTÉRESSÉ
 
+        </button>
 
-        </div>
 
-      `;
+        <button
+          class="small delete"
+          onclick='supprimerGroupe(
+            ${idsJSON}
+          )'>
 
+          🗑️ SUPPRIMER
 
-      zone.appendChild(
-        bloc
-      );
+        </button>
 
 
-    }
-  );
+      </div>
 
+    `;
+
+
+    zone.appendChild(
+      bloc
+    );
+
+
+  });
 
 }
 
 
 /* =========================================================
-   INTERESSE — GROUPE
+   INTERESSE GROUPE
 ========================================================= */
 
-async function interesseGroupe(
-  groupeId,
-  ids
-){
-
+async function interesseGroupe(ids){
 
   const nomAgent =
-
     prompt(
       "Indiquez votre nom et prénom :"
     );
@@ -3775,9 +3406,7 @@ async function interesseGroupe(
   if(
     nomAgent === null
   ){
-
     return;
-
   }
 
 
@@ -3794,61 +3423,37 @@ async function interesseGroupe(
   }
 
 
-  /* =======================================================
-     SI GROUPE REEL
-  ======================================================= */
-
-  let query =
-
-    supabaseClient
-      .from("echanges")
-      .update({
-
-        agent_interesse:
-          nomAgent.trim()
-
-      });
-
-
   if(
-    groupeId &&
-    !groupeId.startsWith("ancien-")
+    !ids ||
+    !ids.length
   ){
 
-    query =
-      query.eq(
-        "groupe_id",
-        groupeId
-      );
+    alert(
+      "Impossible d'identifier la demande."
+    );
 
-  }
-
-  else{
-
-
-    /*
-     * Ancienne demande sans groupe_id :
-     * on ne modifie que sa propre ligne.
-     */
-
-    if(
-      ids &&
-      ids.length
-    ){
-
-      query =
-        query.in(
-          "id",
-          ids
-        );
-
-    }
+    return;
 
   }
 
 
   const {error} =
-    await query;
+
+    await supabaseClient
+
+      .from("echanges")
+
+      .update({
+
+        agent_interesse:
+          nomAgent.trim()
+
+      })
+
+      .in(
+        "id",
+        ids
+      );
 
 
   if(error){
@@ -3872,87 +3477,65 @@ async function interesseGroupe(
 
   await afficherEchanges();
 
-
 }
 
 
 /* =========================================================
-   SUPPRIMER — GROUPE
+   SUPPRIMER GROUPE
 ========================================================= */
 
-async function supprimerGroupe(
-  groupeId,
-  ids
-){
+async function supprimerGroupe(ids){
 
+  if(
+    !ids ||
+    !ids.length
+  ){
 
-  const confirmation =
-
-    confirm(
-
-      ids && ids.length > 1
-
-        ?
-
-        "Voulez-vous vraiment supprimer ces " +
-        ids.length +
-        " journées de cette demande ?"
-
-        :
-
-        "Voulez-vous vraiment supprimer cette demande ?"
-
+    alert(
+      "Impossible d'identifier la demande."
     );
-
-
-  if(!confirmation){
 
     return;
 
   }
 
 
-  let query =
+  const message =
 
-    supabaseClient
-      .from("echanges")
-      .delete();
+    ids.length > 1
+
+      ?
+
+      "Voulez-vous vraiment supprimer les " +
+      ids.length +
+      " journées de cette demande ?"
+
+      :
+
+      "Voulez-vous vraiment supprimer cette demande ?";
 
 
   if(
-    groupeId &&
-    !groupeId.startsWith("ancien-")
+    !confirm(message)
   ){
 
-    query =
-      query.eq(
-        "groupe_id",
-        groupeId
-      );
-
-  }
-
-  else{
-
-
-    if(
-      ids &&
-      ids.length
-    ){
-
-      query =
-        query.in(
-          "id",
-          ids
-        );
-
-    }
+    return;
 
   }
 
 
   const {error} =
-    await query;
+
+    await supabaseClient
+
+      .from("echanges")
+
+      .delete()
+
+      .in(
+        "id",
+        ids
+      );
 
 
   if(error){
@@ -3960,10 +3543,8 @@ async function supprimerGroupe(
     console.error(error);
 
     alert(
-
       "Erreur lors de la suppression : " +
       error.message
-
     );
 
     return;
@@ -3978,7 +3559,6 @@ async function supprimerGroupe(
 
   await afficherEchanges();
 
-
 }
 
 
@@ -3988,11 +3568,8 @@ async function supprimerGroupe(
 
 function formatDate(date){
 
-
   if(!date){
-
     return "";
-
   }
 
 
@@ -4016,7 +3593,6 @@ function formatDate(date){
 
       String(date);
 
-
 }
 
 
@@ -4025,7 +3601,6 @@ function formatDate(date){
 ========================================================= */
 
 function formatTime(h){
-
 
   return h
 
@@ -4040,7 +3615,6 @@ function formatTime(h){
 
       "";
 
-
 }
 
 
@@ -4050,11 +3624,8 @@ function formatTime(h){
 
 function formatDateTime(value){
 
-
   if(!value){
-
     return "";
-
   }
 
 
@@ -4076,19 +3647,12 @@ function formatDateTime(value){
   return
 
     d.toLocaleDateString(
-
       "fr-FR",
-
       {
-
         day:"2-digit",
-
         month:"2-digit",
-
         year:"numeric"
-
       }
-
     )
 
     +
@@ -4098,19 +3662,12 @@ function formatDateTime(value){
     +
 
     d.toLocaleTimeString(
-
       "fr-FR",
-
       {
-
         hour:"2-digit",
-
         minute:"2-digit"
-
       }
-
     );
-
 
 }
 
@@ -4121,12 +3678,9 @@ function formatDateTime(value){
 
 function escapeHTML(t){
 
-
   if(
-
     t === null ||
     t === undefined
-
   ){
 
     return "";
@@ -4145,7 +3699,6 @@ function escapeHTML(t){
 
 
   return d.innerHTML;
-
 
 }
 
