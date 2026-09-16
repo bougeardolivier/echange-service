@@ -3,671 +3,512 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061827">
+<meta name="theme-color" content="#102b3d">
 <title>ÉCHANGE SERVICE</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 :root{
-  --navy:#061827;
-  --blue:#087fba;
-  --cyan:#57d9ef;
-  --teal:#35c2b2;
-  --text:#173249;
-  --muted:#687989;
-  --line:#dce8ee;
-  --shadow:0 18px 45px rgba(5,35,53,.18)
+  --navy:#102b3d;
+  --navy2:#173d54;
+  --blue:#0799cf;
+  --blue2:#12acd8;
+  --cyan:#61d9ef;
+  --green:#45d8a0;
+  --bg:#edf6f9;
+  --white:#fff;
+  --text:#18394d;
+  --muted:#688196;
+  --line:#d9e8ee;
+  --shadow:0 16px 38px rgba(18,57,77,.13);
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 
 body{
   margin:0;
   min-height:100vh;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 20%,rgba(97,217,239,.16),transparent 25%),
+    radial-gradient(circle at 90% 45%,rgba(7,153,207,.10),transparent 30%),
+    var(--bg);
   color:var(--text);
-  background:#061827;
-  overflow-x:hidden
+  overflow-x:hidden;
 }
 
-.bg{
-  position:fixed;
-  inset:0;
-  z-index:-5;
-  overflow:hidden;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(4,22,36,.18),rgba(4,22,36,.40)),
-    url("IMG_7689.jpeg") center 45%/cover no-repeat
+button,
+input,
+textarea{
+  font-family:inherit;
 }
 
-.bg:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(3,22,37,.72) 0%,
-      rgba(4,31,49,.40) 31%,
-      rgba(8,51,72,.20) 55%,
-      rgba(238,247,250,.62) 100%
-    )
-}
-
-.bg:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 8% 10%,rgba(87,217,239,.28),transparent 25%),
-    radial-gradient(circle at 92% 15%,rgba(30,154,207,.28),transparent 28%)
-}
-
-.speed{
-  position:absolute;
-  height:2px;
-  border-radius:999px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(103,226,247,.72),
-    transparent
-  )
-}
-
-.s1{
-  width:34%;
-  top:13%;
-  left:5%
-}
-
-.s2{
-  width:26%;
-  top:23%;
-  right:5%
-}
-
-.hero{
-  position:relative;
-  min-height:250px;
-  padding:calc(18px + env(safe-area-inset-top)) 16px 58px;
-  text-align:center;
-  color:#fff;
-  overflow:hidden
-}
-
-.hero-inner{
-  position:relative;
-  z-index:2;
-  width:min(1000px,100%);
-  margin:auto
-}
-
-.mark{
-  width:56px;
-  height:56px;
-  margin:0 auto 10px;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(255,255,255,.32);
-  border-radius:18px;
-  background:rgba(5,34,53,.46);
-  box-shadow:0 12px 30px rgba(0,0,0,.24);
-  backdrop-filter:blur(14px);
-  font-size:30px
-}
-
-.hero h1{
-  margin:0;
-  font-size:clamp(34px,7vw,66px);
-  line-height:1;
-  font-weight:900;
-  letter-spacing:clamp(1px,1vw,4px);
-  text-shadow:0 8px 25px rgba(0,0,0,.45)
-}
-
-.hero h1 span{
-  color:var(--cyan)
-}
-
-.sub{
-  margin:12px 0 0;
-  font-size:clamp(15px,3vw,22px);
-  color:rgba(255,255,255,.94);
-  text-shadow:0 3px 14px rgba(0,0,0,.35)
-}
-
-.sub strong{
-  display:inline-block;
-  margin-top:4px;
-  color:#8cecff;
-  font-weight:850
-}
-
-.glow{
-  height:5px;
-  width:min(500px,72%);
-  margin:17px auto 0;
-  border-radius:999px;
-  background:linear-gradient(90deg,transparent,#55d6ee,transparent);
-  box-shadow:0 0 24px rgba(85,214,238,.45)
-}
-
-main{
-  width:min(1120px,100%);
-  margin:-34px auto 100px;
-  padding:0 14px
+button{
+  -webkit-tap-highlight-color:transparent;
 }
 
 .hidden{
-  display:none!important
+  display:none!important;
 }
 
-.welcome{
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
   position:relative;
+  min-height:185px;
+  padding:
+    calc(30px + env(safe-area-inset-top))
+    42px
+    25px;
+  background:
+    linear-gradient(
+      135deg,
+      #132f42 0%,
+      #102b3d 60%,
+      #173c52 100%
+    );
+  color:#fff;
   overflow:hidden;
-  text-align:center;
-  padding:22px 18px 20px;
-  border:1px solid rgba(255,255,255,.82);
-  border-radius:28px;
-  background:rgba(255,255,255,.91);
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(18px)
 }
 
-.welcome:before{
+header:after{
   content:"";
   position:absolute;
-  width:260px;
-  height:260px;
-  left:-150px;
-  top:-170px;
+  width:420px;
+  height:420px;
+  right:-190px;
+  top:-300px;
   border-radius:50%;
-  background:rgba(80,211,238,.13)
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 0 35px rgba(255,255,255,.025),
+    0 0 0 70px rgba(255,255,255,.018);
 }
 
-.welcome:after{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  right:-110px;
-  bottom:-140px;
-  border-radius:50%;
-  background:rgba(50,194,178,.11)
-}
-
-.welcome-icon{
+.header-inner{
   position:relative;
-  z-index:1;
-  width:58px;
-  height:58px;
-  margin:auto auto 8px;
+  z-index:2;
+  width:min(1280px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.train-logo{
+  flex:0 0 80px;
+  width:80px;
+  height:80px;
   display:grid;
   place-items:center;
-  border-radius:19px;
-  background:linear-gradient(145deg,#e9faff,#c7eaf4);
-  font-size:31px;
-  box-shadow:0 10px 25px rgba(35,141,181,.18)
+  border-radius:25px;
+  background:linear-gradient(145deg,#fff,#e8f3f7);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+  font-size:42px;
 }
 
-.welcome h2{
-  position:relative;
-  z-index:1;
-  margin:0 0 7px;
-  font-size:clamp(28px,5vw,40px)
+.header-title{
+  min-width:0;
 }
 
-.welcome p{
-  position:relative;
-  z-index:1;
-  max-width:850px;
-  margin:auto;
-  color:var(--muted);
-  font-size:clamp(14px,2.3vw,18px);
-  line-height:1.42
+.header-title h1{
+  margin:0;
+  font-size:clamp(34px,5vw,58px);
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-1.5px;
 }
 
-.pill{
-  position:relative;
-  z-index:1;
-  display:inline-flex;
-  margin-top:13px;
-  padding:8px 15px;
+.header-title p{
+  margin:12px 0 0;
+  font-size:clamp(15px,2vw,22px);
+  color:#d7e8ef;
+  font-weight:650;
+}
+
+.status{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 19px;
+  border:1px solid rgba(255,255,255,.16);
   border-radius:999px;
-  background:linear-gradient(135deg,#e0f6fb,#c9eaf5);
-  color:#24536c;
+  background:rgba(255,255,255,.09);
+  color:#f4fbfd;
   font-weight:800;
-  font-size:13px
+  white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-.choices{
-  display:grid;
-  grid-template-columns:1fr;
+.status-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#4ee1aa;
+  box-shadow:0 0 14px rgba(78,225,170,.8);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+main{
+  width:min(1280px,100%);
+  margin:30px auto 120px;
+  padding:0 42px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+  padding:27px 34px;
+  border-radius:30px;
+  background:rgba(255,255,255,.91);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--shadow);
+}
+
+.intro h2{
+  margin:0;
+  color:#10577d;
+  font-size:clamp(28px,4vw,39px);
+  font-weight:900;
+  letter-spacing:-.5px;
+}
+
+.intro p{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:clamp(15px,2vw,19px);
+  line-height:1.4;
+}
+
+
+/* =========================================================
+   FILTRES
+========================================================= */
+
+.filters{
+  display:flex;
   gap:12px;
-  margin-top:13px
+  margin:27px 0 25px;
+  overflow-x:auto;
+  padding:2px 2px 8px;
+  scrollbar-width:none;
 }
 
-.choice{
+.filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter{
+  flex:0 0 auto;
   border:0;
-  padding:0;
-  background:transparent;
-  text-align:left;
-  cursor:pointer
+  padding:13px 25px;
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  color:#526c7c;
+  font-size:17px;
+  font-weight:850;
+  cursor:pointer;
+  box-shadow:0 7px 18px rgba(23,61,81,.08);
+  transition:.18s;
 }
 
-.choice-card{
+.filter.active{
+  color:#fff;
+  background:linear-gradient(135deg,#0798ca,#11acd8);
+  box-shadow:0 10px 23px rgba(7,153,207,.27);
+}
+
+
+/* =========================================================
+   BOUTON PROPOSER
+========================================================= */
+
+.proposer-btn{
+  display:block;
+  width:min(680px,100%);
+  margin:0 auto 26px;
+  border:0;
+  padding:20px 25px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#078fc1,#13acd8);
+  color:#fff;
+  font-size:21px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 14px 30px rgba(7,153,207,.28);
+  transition:.18s;
+}
+
+.proposer-btn:hover{
+  transform:translateY(-2px);
+}
+
+.proposer-btn:active{
+  transform:scale(.985);
+}
+
+
+/* =========================================================
+   LISTE
+========================================================= */
+
+#listeEchanges{
+  display:grid;
+  gap:18px;
+}
+
+
+/* =========================================================
+   POST
+========================================================= */
+
+.post{
   position:relative;
   overflow:hidden;
-  min-height:92px;
+  padding:27px 30px 24px;
+  border-radius:32px;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(255,255,255,.98);
+  border-left:7px solid var(--blue);
+  box-shadow:var(--shadow);
+}
+
+.post:after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:10px;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(41,170,210,.10),
+    transparent 68%
+  );
+  pointer-events:none;
+}
+
+.post-head{
+  position:relative;
+  z-index:1;
   display:flex;
   align-items:center;
   gap:13px;
-  padding:13px 15px;
-  border-radius:23px;
-  background:rgba(255,255,255,.93);
-  border:1px solid rgba(255,255,255,.95);
-  box-shadow:0 13px 30px rgba(8,40,58,.15);
-  transition:transform .16s ease,box-shadow .16s ease
+  flex-wrap:wrap;
 }
 
-.choice-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 17px 35px rgba(8,40,58,.20)
-}
-
-.choice-card:active{
-  transform:scale(.985)
-}
-
-.adc .choice-card{
-  border-left:5px solid #2ba7dc
-}
-
-.asct .choice-card{
-  border-left:5px solid #32b9ae
-}
-
-.choice-icon{
-  flex:0 0 56px;
-  width:56px;
-  height:56px;
+.avatar{
+  width:52px;
+  height:52px;
   display:grid;
   place-items:center;
-  border-radius:18px;
-  background:linear-gradient(145deg,#e5f8fd,#c6e9f4);
-  font-size:29px
-}
-
-.choice-text{
-  min-width:0
-}
-
-.choice-text strong{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px
-}
-
-.choice-text small{
-  display:block;
-  color:#748391;
-  font-size:13px;
-  line-height:1.25
-}
-
-.arrow{
-  margin-left:auto;
-  font-size:27px;
-  color:#1683b8
-}
-
-.card{
-  padding:20px;
-  border-radius:27px;
-  background:rgba(255,255,255,.93);
-  border:1px solid rgba(255,255,255,.95);
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(18px)
-}
-
-.badge{
-  display:inline-flex;
-  padding:7px 12px;
-  border-radius:999px;
-  background:#e2f5fb;
-  color:#12658e;
-  font-size:12px;
-  font-weight:800
-}
-
-.page-title{
-  margin:10px 0 6px;
-  font-size:26px
-}
-
-.info{
-  margin:0 0 15px;
-  color:var(--muted);
-  line-height:1.5
-}
-
-label{
-  display:block;
-  margin:13px 0 6px;
-  font-size:13px;
-  font-weight:800;
-  color:#405666
-}
-
-input,
-textarea{
-  width:100%;
-  padding:12px 13px;
-  border:1px solid #d5e2e9;
-  border-radius:14px;
-  background:#f9fbfc;
-  color:var(--text);
-  font:inherit;
-  font-size:16px
-}
-
-input:focus,
-textarea:focus{
-  outline:none;
-  border-color:#2091c7;
-  box-shadow:0 0 0 4px rgba(32,145,199,.11)
-}
-
-textarea{
-  min-height:82px;
-  resize:vertical
-}
-
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
-}
-
-.location-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
-}
-
-.toggle-wrap{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin:16px 0 4px;
-  padding:13px 14px;
-  border-radius:16px;
-  background:#eef7fa;
-  border:1px solid #dce8ee
-}
-
-.toggle-text strong{
-  display:block;
-  font-size:14px
-}
-
-.toggle-text small{
-  display:block;
-  color:#71818e;
-  margin-top:3px;
-  line-height:1.3
-}
-
-.switch{
-  position:relative;
-  width:52px;
-  height:30px;
-  flex:0 0 52px
-}
-
-.switch input{
-  opacity:0;
-  width:0;
-  height:0
-}
-
-.slider{
-  position:absolute;
-  inset:0;
-  border-radius:999px;
-  background:#cbd9df;
-  cursor:pointer;
-  transition:.2s
-}
-
-.slider:before{
-  content:"";
-  position:absolute;
-  width:24px;
-  height:24px;
-  left:3px;
-  top:3px;
   border-radius:50%;
-  background:#fff;
-  box-shadow:0 2px 6px rgba(0,0,0,.18);
-  transition:.2s
+  background:linear-gradient(145deg,#dcebf2,#c8e0ea);
+  color:#317094;
+  font-size:29px;
 }
 
-.switch input:checked + .slider{
-  background:#1699ce
-}
-
-.switch input:checked + .slider:before{
-  transform:translateX(22px)
-}
-
-.day2{
-  margin-top:12px;
-  padding-top:4px;
-  border-top:1px dashed #cbdde5
-}
-
-.day-label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:12px;
-  font-size:14px;
+.agent{
+  font-size:26px;
   font-weight:900;
-  color:#17658b
+  color:#173b52;
 }
 
-.btn{
-  width:100%;
-  border:0;
-  border-radius:15px;
-  padding:13px 15px;
-  margin-top:14px;
-  background:linear-gradient(135deg,#086b9f,#1699ce);
-  color:#fff;
-  font:inherit;
-  font-weight:850;
-  cursor:pointer;
-  box-shadow:0 9px 20px rgba(8,107,159,.18)
+.metier-badge{
+  padding:8px 14px;
+  border-radius:999px;
+  background:#e4f5fb;
+  color:#14739b;
+  font-size:13px;
+  font-weight:900;
 }
 
-.secondary{
-  background:#eaf1f5;
-  color:#294252;
-  box-shadow:none
-}
-
-.list{
-  display:grid;
-  gap:12px
-}
-
-.item{
-  padding:15px;
-  border-radius:20px;
-  background:linear-gradient(145deg,#fff,#f5f9fb);
-  border:1px solid var(--line);
-  border-left:5px solid #1587bb;
-  box-shadow:0 9px 23px rgba(10,42,62,.08)
-}
-
-.name{
-  font-size:18px;
-  font-weight:850;
-  color:#17364c
-}
-
-.request-date{
-  display:block;
+.publication{
+  position:relative;
+  z-index:1;
   width:max-content;
   max-width:100%;
-  margin-top:6px;
-  padding:5px 8px;
-  border-radius:8px;
-  background:#edf4f7;
-  color:#637582;
-  font-size:12px;
-  font-weight:700
-}
-
-.group-title{
-  margin-top:12px;
-  margin-bottom:6px;
-  padding:7px 9px;
-  border-radius:10px;
-  background:#e7f5f8;
-  color:#17658b;
-  font-size:12px;
-  font-weight:900;
-  text-transform:uppercase
-}
-
-.service{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:11px
-}
-
-.chip{
-  padding:9px;
-  border-radius:13px;
-  background:#eef7fa
-}
-
-.chip span{
-  display:block;
-  color:#71818e;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.4px;
-  font-weight:800;
-  margin-bottom:3px
-}
-
-.chip strong{
-  font-size:14px;
-  color:#20455e
-}
-
-.locations{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:8px
-}
-
-.location-chip{
-  padding:9px;
-  border-radius:13px;
-  background:#f1f7f8;
-  border:1px solid #e1ecef
-}
-
-.location-chip span{
-  display:block;
-  color:#71818e;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.4px;
-  font-weight:800;
-  margin-bottom:3px
-}
-
-.location-chip strong{
+  margin:13px 0 20px 65px;
+  padding:8px 12px;
+  border-radius:12px;
+  background:#edf5f8;
+  color:#557185;
   font-size:13px;
-  color:#20455e;
-  line-height:1.25
+  font-weight:750;
+}
+
+.days{
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:13px;
+}
+
+.day{
+  padding:18px;
+  border-radius:25px;
+  border:1px solid #d7e8ef;
+  background:linear-gradient(
+    145deg,
+    #f5fbfd,
+    #eaf5f9
+  );
+}
+
+.day-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.day-number{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  flex:0 0 43px;
+  border-radius:13px;
+  background:#078fc1;
+  color:#fff;
+  font-size:20px;
+  font-weight:900;
+}
+
+.day-title{
+  color:#17618a;
+  font-size:22px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.date-big{
+  color:#1c465e;
+  font-size:21px;
+  font-weight:900;
+}
+
+.infos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+}
+
+.info-box{
+  min-height:75px;
+  padding:12px 14px;
+  border-radius:17px;
+  background:rgba(255,255,255,.76);
+  border:1px solid #d9e9ef;
+}
+
+.info-label{
+  margin-bottom:5px;
+  color:#7a91a0;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.info-value{
+  color:#244c64;
+  font-size:17px;
+  font-weight:850;
+  line-height:1.3;
 }
 
 .comment{
-  margin-top:9px;
-  padding:9px 10px;
-  border-radius:12px;
-  background:#f5f7f8;
-  color:#667784;
-  font-size:13px;
-  line-height:1.4
+  position:relative;
+  z-index:1;
+  margin-top:14px;
+  padding:13px 15px;
+  border-radius:15px;
+  background:#f4f7f8;
+  color:#607785;
+  font-size:14px;
+  line-height:1.45;
 }
 
-.interest{
-  margin-top:10px;
-  padding:9px 11px;
-  border-radius:12px;
+.interest-info{
+  position:relative;
+  z-index:1;
+  margin-top:13px;
+  padding:12px 15px;
+  border-radius:15px;
   background:#fff3d9;
-  color:#835700;
-  font-size:13px;
-  font-weight:700
+  color:#805800;
+  font-size:14px;
+  font-weight:750;
 }
 
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:11px
+.post-actions{
+  position:relative;
+  z-index:1;
+  display:flex;
+  gap:10px;
+  margin-top:15px;
 }
 
-.small{
+.action{
   border:0;
-  border-radius:12px;
-  padding:10px 8px;
-  font:inherit;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer
+  padding:12px 15px;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
 }
 
-.interet{
-  background:#fff0cf;
-  color:#8b5b00
+.action-interest{
+  flex:1;
+  background:#fff0cd;
+  color:#8a5c00;
 }
 
-.delete{
-  background:#ffe5e5;
-  color:#b72e2e
+.action-delete{
+  background:#ffe4e4;
+  color:#b72c2c;
 }
 
 .empty{
+  padding:45px 20px;
   text-align:center;
-  padding:28px 15px;
-  color:#71808c
+  color:#6e8492;
+  background:rgba(255,255,255,.75);
+  border-radius:25px;
 }
 
 .empty-icon{
   display:block;
-  font-size:40px;
-  margin-bottom:7px
+  margin-bottom:8px;
+  font-size:42px;
 }
 
-.modal-overlay{
+
+/* =========================================================
+   MODALES
+========================================================= */
+
+.overlay{
   position:fixed;
   inset:0;
   z-index:1000;
@@ -675,254 +516,437 @@ textarea{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:rgba(3,18,30,.72);
-  backdrop-filter:blur(8px)
+  background:rgba(5,24,37,.72);
+  backdrop-filter:blur(9px);
 }
 
 .modal{
-  width:min(500px,100%);
-  padding:24px;
-  border-radius:25px;
+  width:min(620px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:28px;
+  border-radius:29px;
   background:#fff;
-  box-shadow:0 25px 70px rgba(0,0,0,.35);
-  text-align:center
+  box-shadow:0 30px 80px rgba(0,0,0,.34);
 }
 
 .modal-icon{
-  font-size:48px;
-  margin-bottom:8px
+  text-align:center;
+  font-size:46px;
+  margin-bottom:6px;
 }
 
 .modal h2{
-  margin:0 0 10px;
-  color:#17364c;
-  font-size:24px
+  margin:0 0 9px;
+  color:#173b52;
+  font-size:27px;
+  text-align:center;
 }
 
 .modal p{
-  margin:0;
-  color:#687989;
-  line-height:1.5
+  margin:0 auto 13px;
+  max-width:520px;
+  color:#687f8e;
+  line-height:1.5;
+  text-align:center;
 }
 
-.modal-actions{
+.modal-buttons{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
-  margin-top:20px
+  margin-top:20px;
 }
 
-.modal-actions button{
+.modal-btn{
   border:0;
-  border-radius:14px;
-  padding:13px;
-  font:inherit;
-  font-weight:850;
-  cursor:pointer
+  border-radius:15px;
+  padding:14px;
+  font-size:14px;
+  font-weight:900;
+  cursor:pointer;
 }
 
 .modal-cancel{
-  background:#eaf1f5;
-  color:#294252
+  background:#eaf1f4;
+  color:#405969;
 }
 
 .modal-confirm{
-  background:linear-gradient(135deg,#086b9f,#1699ce);
-  color:#fff
+  background:linear-gradient(135deg,#078fc1,#13acd8);
+  color:#fff;
 }
+
+.form-title{
+  margin:0 0 18px;
+  color:#173b52;
+  font-size:27px;
+  font-weight:900;
+}
+
+.form-badge{
+  display:inline-flex;
+  margin-bottom:10px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:#e4f5fb;
+  color:#14739b;
+  font-size:12px;
+  font-weight:900;
+}
+
+label{
+  display:block;
+  margin:13px 0 6px;
+  color:#405e6f;
+  font-size:13px;
+  font-weight:850;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #d5e4ea;
+  border-radius:14px;
+  background:#f9fbfc;
+  color:#18394d;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#159dce;
+  box-shadow:0 0 0 4px rgba(21,157,206,.11);
+}
+
+textarea{
+  min-height:85px;
+  resize:vertical;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.location-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.day-form-title{
+  margin-top:16px;
+  padding:9px 12px;
+  border-radius:12px;
+  background:#eaf6fa;
+  color:#166489;
+  font-size:14px;
+  font-weight:900;
+}
+
+.toggle{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:17px;
+  padding:14px;
+  border-radius:16px;
+  background:#eef7fa;
+  border:1px solid #dce9ee;
+}
+
+.toggle strong{
+  display:block;
+  font-size:14px;
+}
+
+.toggle small{
+  display:block;
+  margin-top:4px;
+  color:#738794;
+  line-height:1.3;
+}
+
+.switch{
+  position:relative;
+  width:53px;
+  height:31px;
+  flex:0 0 53px;
+}
+
+.switch input{
+  position:absolute;
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  background:#c8d6dc;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:25px;
+  height:25px;
+  left:3px;
+  top:3px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.18);
+  transition:.2s;
+}
+
+.switch input:checked + .slider{
+  background:#079acb;
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(22px);
+}
+
+.modal-main-btn{
+  width:100%;
+  margin-top:17px;
+  border:0;
+  padding:15px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#078fc1,#13acd8);
+  color:#fff;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
 
 .toast{
   position:fixed;
   z-index:2000;
   left:50%;
-  bottom:90px;
-  transform:translateX(-50%) translateY(20px);
-  width:min(450px,calc(100% - 30px));
-  padding:13px 16px;
+  bottom:105px;
+  transform:translate(-50%,20px);
+  width:min(480px,calc(100% - 30px));
+  padding:14px 17px;
   border-radius:15px;
-  background:#061827;
+  background:#102b3d;
   color:#fff;
   text-align:center;
   font-size:14px;
-  font-weight:700;
-  box-shadow:0 15px 35px rgba(0,0,0,.3);
+  font-weight:800;
   opacity:0;
   pointer-events:none;
-  transition:.25s
+  transition:.25s;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 .toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0)
+  transform:translate(-50%,0);
 }
 
-nav{
+
+/* =========================================================
+   NAVIGATION BASSE
+========================================================= */
+
+.bottom-nav{
   position:fixed;
-  z-index:100;
+  z-index:900;
   left:50%;
-  bottom:calc(8px + env(safe-area-inset-bottom));
+  bottom:calc(10px + env(safe-area-inset-bottom));
   transform:translateX(-50%);
-  width:min(430px,calc(100% - 20px));
-  display:flex;
-  gap:4px;
-  padding:6px;
-  border:1px solid rgba(255,255,255,.85);
-  border-radius:21px;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 12px 35px rgba(8,40,58,.22);
-  backdrop-filter:blur(20px)
+  width:min(690px,calc(100% - 28px));
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  padding:8px;
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:27px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 15px 38px rgba(19,61,82,.20);
+  backdrop-filter:blur(20px);
 }
 
-nav button{
-  flex:1;
+.bottom-nav button{
   border:0;
-  border-radius:15px;
-  padding:6px 5px;
+  padding:9px 8px;
+  border-radius:20px;
   background:transparent;
-  color:#5c6e7c;
-  font:inherit;
-  font-size:11px;
-  font-weight:800;
-  cursor:pointer
+  color:#647a89;
+  font-size:14px;
+  font-weight:850;
+  cursor:pointer;
+}
+
+.bottom-nav button.active{
+  background:#edf8fb;
+  color:#087ba8;
 }
 
 .nav-icon{
   display:block;
-  font-size:18px;
-  margin-bottom:1px
+  margin-bottom:2px;
+  font-size:23px;
 }
 
-@media(max-width:699px){
-  .bg{
-    background-position:center center
-  }
-}
 
-@media(min-width:700px) and (max-width:1099px){
-  .bg{
-    background-position:center 42%
-  }
-}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-@media(min-width:1100px){
-  .bg{
-    background-position:center 45%
-  }
-}
+@media(max-width:700px){
 
-@media(min-width:700px){
-  .hero{
-    min-height:275px;
-    padding-top:24px
+  header{
+    min-height:170px;
+    padding:
+      calc(22px + env(safe-area-inset-top))
+      17px
+      22px;
   }
 
-  main{
-    padding:0 22px
+  .header-inner{
+    gap:13px;
   }
 
-  .choices{
-    grid-template-columns:1fr 1fr;
-    gap:14px
-  }
-
-  .welcome{
-    padding:24px 28px 21px
-  }
-
-  .choice-card{
-    min-height:106px;
-    padding:15px 18px
-  }
-}
-
-@media(min-width:1000px){
-  .hero{
-    min-height:300px
-  }
-
-  main{
-    margin-top:-42px
-  }
-
-  .choices{
-    gap:18px
-  }
-
-  .choice-card{
-    min-height:115px
-  }
-
-  .choice-icon{
+  .train-logo{
     width:64px;
     height:64px;
     flex-basis:64px;
-    font-size:33px
-  }
-}
-
-@media(max-width:600px){
-  .location-row,
-  .locations{
-    grid-template-columns:1fr
-  }
-}
-
-@media(max-width:380px){
-  .hero{
-    min-height:230px;
-    padding-bottom:52px
+    border-radius:20px;
+    font-size:34px;
   }
 
-  .hero h1{
-    font-size:32px
+  .header-title h1{
+    font-size:31px;
+    letter-spacing:-1px;
   }
 
-  .sub{
-    font-size:14px
+  .header-title p{
+    margin-top:7px;
+    font-size:14px;
   }
 
-  .welcome{
-    padding:20px 14px 18px
-  }
-
-  .welcome h2{
-    font-size:28px
-  }
-
-  .welcome p{
-    font-size:13px
-  }
-
-  .pill{
+  .status{
+    position:absolute;
+    right:0;
+    top:78px;
+    padding:8px 12px;
     font-size:12px;
-    padding:7px 11px
   }
 
-  .choice-card{
-    min-height:86px;
-    padding:11px 12px;
-    gap:9px
+  .status-dot{
+    width:9px;
+    height:9px;
   }
 
-  .choice-icon{
-    width:51px;
-    height:51px;
-    flex-basis:51px;
-    font-size:27px
+  main{
+    margin-top:20px;
+    padding:0 14px;
   }
 
-  .choice-text strong{
-    font-size:19px
+  .intro{
+    padding:22px 20px;
+    border-radius:24px;
   }
 
-  .choice-text small{
-    font-size:11px
+  .intro h2{
+    font-size:27px;
   }
 
-  .service,
-  .actions,
-  .modal-actions{
-    grid-template-columns:1fr
+  .intro p{
+    font-size:14px;
+  }
+
+  .filter{
+    padding:11px 17px;
+    font-size:14px;
+  }
+
+  .proposer-btn{
+    font-size:17px;
+    padding:16px;
+    border-radius:19px;
+  }
+
+  .post{
+    padding:19px 15px 18px;
+    border-radius:24px;
+  }
+
+  .agent{
+    font-size:21px;
+  }
+
+  .publication{
+    margin-left:0;
+    font-size:11px;
+  }
+
+  .day{
+    padding:13px;
+    border-radius:20px;
+  }
+
+  .day-title{
+    font-size:18px;
+  }
+
+  .date-big{
+    font-size:18px;
+  }
+
+  .infos{
+    grid-template-columns:1fr;
+  }
+
+  .location-row,
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .post-actions{
+    flex-direction:column;
+  }
+
+  .action{
+    width:100%;
+  }
+
+  .modal{
+    padding:21px;
+    border-radius:23px;
+  }
+
+  .modal-buttons{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(min-width:701px) and (max-width:1000px){
+
+  header{
+    padding-left:25px;
+    padding-right:25px;
+  }
+
+  main{
+    padding:0 25px;
   }
 }
 </style>
@@ -930,95 +954,304 @@ nav button{
 
 <body>
 
-<div class="bg">
-  <div class="speed s1"></div>
-  <div class="speed s2"></div>
-</div>
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="mark">🚆</div>
+<!-- =======================================================
+     HEADER
+======================================================== -->
 
-    <h1>
-      ÉCHANGE <span>SERVICE</span>
-    </h1>
+<header>
 
-    <div class="sub">
-      Échange de journées entre agents
-      <strong>• si congés refusés</strong>
+  <div class="header-inner">
+
+    <div class="train-logo">
+      🚆
     </div>
 
-    <div class="glow"></div>
+    <div class="header-title">
+
+      <h1>
+        ÉCHANGE SERVICE
+      </h1>
+
+      <p>
+        Échange de journées entre agents • si congés refusés
+      </p>
+
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Service actif
+    </div>
+
   </div>
+
 </header>
+
+
+<!-- =======================================================
+     CONTENU
+======================================================== -->
 
 <main>
 
-<section id="accueil">
+  <section>
 
-  <div class="welcome">
-    <div class="welcome-icon">🤝</div>
+    <div class="intro">
 
-    <h2>Bienvenue</h2>
+      <h2>
+        🔄 Les journées disponibles
+      </h2>
 
-    <p>
-      Proposez une journée de service et trouvez
-      un collègue intéressé pour un éventuel échange.
-    </p>
+      <p>
+        Consulte les journées proposées par les agents
+        et propose un échange lorsque ton congé a été refusé.
+      </p>
 
-    <div class="pill">
-      🚆 Choisissez votre métier pour commencer
     </div>
-  </div>
 
-  <div class="choices">
 
-    <button class="choice adc" onclick="choisirMetier('ADC')">
-      <div class="choice-card">
-        <div class="choice-icon">🚆</div>
+    <!-- FILTRES -->
 
-        <div class="choice-text">
-          <strong>ADC</strong>
-          <small>Conducteurs de train</small>
-        </div>
+    <div class="filters">
 
-        <div class="arrow">›</div>
-      </div>
+      <button
+        class="filter active"
+        data-metier=""
+        onclick="filtrerMetier('')"
+      >
+        Tous
+      </button>
+
+      <button
+        class="filter"
+        data-metier="ASCT"
+        onclick="filtrerMetier('ASCT')"
+      >
+        🚆 ASCT
+      </button>
+
+      <button
+        class="filter"
+        data-metier="ADC"
+        onclick="filtrerMetier('ADC')"
+      >
+        🚄 ADC
+      </button>
+
+      <button
+        class="filter"
+        data-metier="Escales"
+        onclick="filtrerMetier('Escales')"
+      >
+        👷 Escales
+      </button>
+
+      <button
+        class="filter"
+        data-metier="Autre"
+        onclick="filtrerMetier('Autre')"
+      >
+        👨‍🔧 Autre
+      </button>
+
+    </div>
+
+
+    <!-- PROPOSER -->
+
+    <button
+      class="proposer-btn"
+      onclick="ouvrirConfirmation()"
+    >
+      ＋ PROPOSER UNE JOURNÉE
     </button>
 
-    <button class="choice asct" onclick="choisirMetier('ASCT')">
-      <div class="choice-card">
-        <div class="choice-icon">👨‍✈️</div>
 
-        <div class="choice-text">
-          <strong>ASCT</strong>
-          <small>Agents du Service Commercial Train</small>
-        </div>
+    <!-- LISTE -->
 
-        <div class="arrow">›</div>
+    <div id="listeEchanges">
+
+      <div class="empty">
+        <span class="empty-icon">🚆</span>
+        Chargement des journées...
       </div>
-    </button>
 
-  </div>
+    </div>
 
-</section>
+  </section>
+
+</main>
 
 
-<section id="proposer" class="hidden">
+<!-- =======================================================
+     NAVIGATION BASSE
+======================================================== -->
 
-  <div class="card">
+<nav class="bottom-nav">
 
-    <span id="metier" class="badge">
-      🚆 Métier
-    </span>
+  <button
+    onclick="ouvrirConfirmation()"
+  >
+    <span class="nav-icon">＋</span>
+    Ma journée
+  </button>
 
-    <h2 class="page-title">
-      ➕ Ma journée
+  <button
+    class="active"
+    onclick="allerEchanges()"
+  >
+    <span class="nav-icon">🔎</span>
+    Échanges
+  </button>
+
+  <button
+    onclick="ouvrirChoixMetier()"
+  >
+    <span class="nav-icon">🚆</span>
+    Métier
+  </button>
+
+</nav>
+
+
+<!-- =======================================================
+     MODALE CONFIRMATION CONGÉ
+======================================================== -->
+
+<div
+  id="confirmationModal"
+  class="overlay hidden"
+>
+
+  <div class="modal">
+
+    <div class="modal-icon">
+      ⚠️
+    </div>
+
+    <h2>
+      Confirmation
     </h2>
 
-    <p class="info">
-      Proposez votre journée afin de trouver un collègue intéressé.
+    <p>
+      Pour utiliser <strong>ÉCHANGE SERVICE</strong>,
+      vous devez avoir préalablement fait une demande
+      de congé qui a été refusée.
     </p>
+
+    <p>
+      <strong>
+        Je confirme que mon congé a été refusé.
+      </strong>
+    </p>
+
+    <div class="modal-buttons">
+
+      <button
+        class="modal-btn modal-cancel"
+        onclick="fermerConfirmation()"
+      >
+        ANNULER
+      </button>
+
+      <button
+        class="modal-btn modal-confirm"
+        onclick="confirmerCongeRefuse()"
+      >
+        JE CONFIRME
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     MODALE CHOIX MÉTIER
+======================================================== -->
+
+<div
+  id="choixMetierModal"
+  class="overlay hidden"
+>
+
+  <div class="modal">
+
+    <div class="modal-icon">
+      🚆
+    </div>
+
+    <h2>
+      Choisir un métier
+    </h2>
+
+    <p>
+      Sélectionne ton métier pour publier ta journée.
+    </p>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('ASCT')"
+    >
+      🚆 ASCT
+    </button>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('ADC')"
+    >
+      🚄 ADC
+    </button>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('Escales')"
+    >
+      👷 Escales
+    </button>
+
+    <button
+      class="modal-main-btn"
+      onclick="selectionnerMetier('Autre')"
+    >
+      👨‍🔧 Autre
+    </button>
+
+    <button
+      class="modal-btn modal-cancel"
+      style="width:100%;margin-top:10px"
+      onclick="fermerChoixMetier()"
+    >
+      ANNULER
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     MODALE FORMULAIRE
+======================================================== -->
+
+<div
+  id="formModal"
+  class="overlay hidden"
+>
+
+  <div class="modal">
+
+    <div id="formMetierBadge" class="form-badge">
+      Métier
+    </div>
+
+    <h2 class="form-title">
+      ➕ Proposer une journée
+    </h2>
+
 
     <label for="nom">
       Nom et prénom
@@ -1026,17 +1259,20 @@ nav button{
 
     <input
       id="nom"
+      type="text"
       placeholder="Exemple : Jean DUPONT"
       autocomplete="name"
     >
 
 
-    <div class="day-label">
+    <!-- JOUR 1 -->
+
+    <div class="day-form-title">
       📅 JOURNÉE 1
     </div>
 
     <label for="date">
-      Date de la journée
+      Date du service
     </label>
 
     <input
@@ -1044,9 +1280,11 @@ nav button{
       type="date"
     >
 
-    <div class="row">
+
+    <div class="form-row">
 
       <div>
+
         <label for="prise">
           Prise de service
         </label>
@@ -1055,9 +1293,12 @@ nav button{
           id="prise"
           type="time"
         >
+
       </div>
 
+
       <div>
+
         <label for="fin">
           Fin de service
         </label>
@@ -1066,6 +1307,7 @@ nav button{
           id="fin"
           type="time"
         >
+
       </div>
 
     </div>
@@ -1074,6 +1316,7 @@ nav button{
     <div class="location-row">
 
       <div>
+
         <label for="lieuPrise">
           📍 Lieu de prise de service
         </label>
@@ -1083,9 +1326,12 @@ nav button{
           type="text"
           placeholder="Exemple : Caen"
         >
+
       </div>
 
+
       <div>
+
         <label for="lieuFin">
           📍 Lieu de fin de service
         </label>
@@ -1093,16 +1339,19 @@ nav button{
         <input
           id="lieuFin"
           type="text"
-          placeholder="Exemple : Paris Saint-Lazare"
+          placeholder="Exemple : Rouen"
         >
+
       </div>
 
     </div>
 
 
-    <div class="toggle-wrap">
+    <!-- TOGGLE JOUR 2 -->
 
-      <div class="toggle-text">
+    <div class="toggle">
+
+      <div>
 
         <strong>
           🔄 J’ai une 2ᵉ journée à proposer
@@ -1113,6 +1362,7 @@ nav button{
         </small>
 
       </div>
+
 
       <label class="switch">
 
@@ -1129,14 +1379,19 @@ nav button{
     </div>
 
 
-    <div id="blocJournee2" class="day2 hidden">
+    <!-- JOUR 2 -->
 
-      <div class="day-label">
+    <div
+      id="blocJournee2"
+      class="hidden"
+    >
+
+      <div class="day-form-title">
         📅 JOURNÉE 2
       </div>
 
       <label for="date2">
-        Date de la 2ᵉ journée
+        Date du service
       </label>
 
       <input
@@ -1144,9 +1399,11 @@ nav button{
         type="date"
       >
 
-      <div class="row">
+
+      <div class="form-row">
 
         <div>
+
           <label for="prise2">
             Prise de service
           </label>
@@ -1155,9 +1412,12 @@ nav button{
             id="prise2"
             type="time"
           >
+
         </div>
 
+
         <div>
+
           <label for="fin2">
             Fin de service
           </label>
@@ -1166,6 +1426,7 @@ nav button{
             id="fin2"
             type="time"
           >
+
         </div>
 
       </div>
@@ -1174,6 +1435,7 @@ nav button{
       <div class="location-row">
 
         <div>
+
           <label for="lieuPrise2">
             📍 Lieu de prise de service
           </label>
@@ -1183,9 +1445,12 @@ nav button{
             type="text"
             placeholder="Exemple : Caen"
           >
+
         </div>
 
+
         <div>
+
           <label for="lieuFin2">
             📍 Lieu de fin de service
           </label>
@@ -1193,8 +1458,9 @@ nav button{
           <input
             id="lieuFin2"
             type="text"
-            placeholder="Exemple : Paris Saint-Lazare"
+            placeholder="Exemple : Rouen"
           >
+
         </div>
 
       </div>
@@ -1213,122 +1479,33 @@ nav button{
 
 
     <button
-      class="btn"
-      onclick="ouvrirConfirmation()"
+      class="modal-main-btn"
+      onclick="publier()"
     >
       🚆 PUBLIER MA JOURNÉE
     </button>
 
-    <button
-      class="btn secondary"
-      onclick="afficher('echanges')"
-    >
-      🔎 VOIR LES ÉCHANGES
-    </button>
-
-  </div>
-
-</section>
-
-
-<section id="echanges" class="hidden">
-
-  <div class="card">
-
-    <h2 class="page-title">
-      🔎 Échanges disponibles
-    </h2>
-
-    <p class="info">
-      Métier :
-      <strong id="metierEchanges">-</strong>
-    </p>
-
-    <div id="listeEchanges" class="list"></div>
 
     <button
-      class="btn secondary"
-      onclick="afficher('proposer')"
+      class="modal-btn modal-cancel"
+      style="width:100%;margin-top:10px"
+      onclick="fermerFormulaire()"
     >
-      ➕ PROPOSER UNE JOURNÉE
+      ANNULER
     </button>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<nav id="menu" class="hidden">
-
-  <button onclick="afficher('proposer')">
-    <span class="nav-icon">➕</span>
-    Ma journée
-  </button>
-
-  <button onclick="afficher('echanges')">
-    <span class="nav-icon">🔎</span>
-    Échanges
-  </button>
-
-  <button onclick="changerMetier()">
-    <span class="nav-icon">🚆</span>
-    Métier
-  </button>
-
-</nav>
-
-
-<!-- MODALE CONFIRMATION -->
-
-<div
-  id="confirmationModal"
-  class="modal-overlay hidden"
->
-
-  <div class="modal">
-
-    <div class="modal-icon">
-      ⚠️
-    </div>
-
-    <h2>
-      Confirmation
-    </h2>
-
-    <p>
-      Je confirme que mon congé a été refusé.
-    </p>
-
-    <div class="modal-actions">
-
-      <button
-        class="modal-cancel"
-        onclick="fermerConfirmation()"
-      >
-        ANNULER
-      </button>
-
-      <button
-        class="modal-confirm"
-        onclick="confirmerPublication()"
-      >
-        JE CONFIRME
-      </button>
-
-    </div>
 
   </div>
 
 </div>
 
 
-<!-- MODALE INTÉRÊT -->
+<!-- =======================================================
+     MODALE INTÉRÊT
+======================================================== -->
 
 <div
   id="interetModal"
-  class="modal-overlay hidden"
+  class="overlay hidden"
 >
 
   <div class="modal">
@@ -1342,7 +1519,8 @@ nav button{
     </h2>
 
     <p>
-      Indiquez votre nom et prénom afin que l'agent puisse vous contacter.
+      Indique ton nom et prénom afin que l'agent
+      puisse te contacter.
     </p>
 
     <input
@@ -1350,20 +1528,19 @@ nav button{
       type="text"
       placeholder="Nom et prénom"
       autocomplete="name"
-      style="margin-top:18px"
     >
 
-    <div class="modal-actions">
+    <div class="modal-buttons">
 
       <button
-        class="modal-cancel"
+        class="modal-btn modal-cancel"
         onclick="fermerInteret()"
       >
         ANNULER
       </button>
 
       <button
-        class="modal-confirm"
+        class="modal-btn modal-confirm"
         onclick="confirmerInteret()"
       >
         CONFIRMER
@@ -1376,7 +1553,10 @@ nav button{
 </div>
 
 
-<div id="toast" class="toast"></div>
+<div
+  id="toast"
+  class="toast"
+></div>
 
 
 <script>
@@ -1399,6 +1579,9 @@ const supabaseClient =
 
 
 let metierActuel = "";
+
+let filtreActuel = "";
+
 let idInteretEnCours = null;
 
 
@@ -1406,66 +1589,45 @@ let idInteretEnCours = null;
    NAVIGATION
 ========================================================= */
 
-function afficher(page){
-
-  document
-    .querySelectorAll("main section")
-    .forEach(section =>
-      section.classList.add("hidden")
-    );
-
-  const element =
-    document.getElementById(page);
-
-  if(element){
-    element.classList.remove("hidden");
-  }
-
-  if(page === "echanges"){
-    afficherEchanges();
-  }
+function allerEchanges(){
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
+  afficherEchanges();
 }
 
 
-function choisirMetier(metier){
+function ouvrirChoixMetier(){
+
+  document
+    .getElementById("choixMetierModal")
+    .classList.remove("hidden");
+}
+
+
+function fermerChoixMetier(){
+
+  document
+    .getElementById("choixMetierModal")
+    .classList.add("hidden");
+}
+
+
+function selectionnerMetier(metier){
 
   metierActuel = metier;
 
-  document.getElementById("metier").innerHTML =
-    metier === "ADC"
-      ? "🚆 ADC – Conducteurs"
-      : "👨‍✈️ ASCT – Service Commercial Train";
+  fermerChoixMetier();
 
-  document.getElementById("metierEchanges").innerText =
-    metier;
-
-  document
-    .getElementById("menu")
-    .classList.remove("hidden");
-
-  afficher("proposer");
-}
-
-
-function changerMetier(){
-
-  metierActuel = "";
-
-  document
-    .getElementById("menu")
-    .classList.add("hidden");
-
-  afficher("accueil");
+  ouvrirConfirmation();
 }
 
 
 /* =========================================================
-   CONFIRMATION CONGÉ REFUSÉ
+   CONFIRMATION
 ========================================================= */
 
 function ouvrirConfirmation(){
@@ -1484,11 +1646,54 @@ function fermerConfirmation(){
 }
 
 
-function confirmerPublication(){
+function confirmerCongeRefuse(){
 
   fermerConfirmation();
 
-  publier();
+  if(!metierActuel){
+
+    ouvrirChoixMetier();
+
+    return;
+  }
+
+  ouvrirFormulaire();
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+function ouvrirFormulaire(){
+
+  const badge =
+    document.getElementById(
+      "formMetierBadge"
+    );
+
+  const noms = {
+    "ASCT":"🚆 ASCT",
+    "ADC":"🚄 ADC",
+    "Escales":"👷 Escales",
+    "Autre":"👨‍🔧 Autre"
+  };
+
+  badge.innerText =
+    noms[metierActuel] ||
+    metierActuel;
+
+  document
+    .getElementById("formModal")
+    .classList.remove("hidden");
+}
+
+
+function fermerFormulaire(){
+
+  document
+    .getElementById("formModal")
+    .classList.add("hidden");
 }
 
 
@@ -1499,11 +1704,16 @@ function confirmerPublication(){
 function toggleJournee2(){
 
   const actif =
-    document.getElementById("deuxiemeJournee").checked;
+    document
+      .getElementById("deuxiemeJournee")
+      .checked;
 
   document
     .getElementById("blocJournee2")
-    .classList.toggle("hidden", !actif);
+    .classList.toggle(
+      "hidden",
+      !actif
+    );
 }
 
 
@@ -1514,48 +1724,85 @@ function toggleJournee2(){
 async function publier(){
 
   const nom =
-    document.getElementById("nom").value.trim();
+    document
+      .getElementById("nom")
+      .value
+      .trim();
 
   const date =
-    document.getElementById("date").value;
+    document
+      .getElementById("date")
+      .value;
 
   const prise =
-    document.getElementById("prise").value;
+    document
+      .getElementById("prise")
+      .value;
 
   const fin =
-    document.getElementById("fin").value;
+    document
+      .getElementById("fin")
+      .value;
 
   const lieuPrise =
-    document.getElementById("lieuPrise").value.trim();
+    document
+      .getElementById("lieuPrise")
+      .value
+      .trim();
 
   const lieuFin =
-    document.getElementById("lieuFin").value.trim();
+    document
+      .getElementById("lieuFin")
+      .value
+      .trim();
+
 
   const deuxieme =
-    document.getElementById("deuxiemeJournee").checked;
+    document
+      .getElementById("deuxiemeJournee")
+      .checked;
+
 
   const date2 =
-    document.getElementById("date2").value;
+    document
+      .getElementById("date2")
+      .value;
 
   const prise2 =
-    document.getElementById("prise2").value;
+    document
+      .getElementById("prise2")
+      .value;
 
   const fin2 =
-    document.getElementById("fin2").value;
+    document
+      .getElementById("fin2")
+      .value;
 
   const lieuPrise2 =
-    document.getElementById("lieuPrise2").value.trim();
+    document
+      .getElementById("lieuPrise2")
+      .value
+      .trim();
 
   const lieuFin2 =
-    document.getElementById("lieuFin2").value.trim();
+    document
+      .getElementById("lieuFin2")
+      .value
+      .trim();
+
 
   const commentaire =
-    document.getElementById("commentaire").value.trim();
+    document
+      .getElementById("commentaire")
+      .value
+      .trim();
 
 
   if(!metierActuel){
 
-    alert("Merci de choisir votre métier.");
+    alert(
+      "Merci de choisir votre métier."
+    );
 
     return;
   }
@@ -1597,7 +1844,10 @@ async function publier(){
   }
 
 
-  if(deuxieme && date2 === date){
+  if(
+    deuxieme &&
+    date2 === date
+  ){
 
     alert(
       "Les deux journées doivent être sur deux dates différentes."
@@ -1608,9 +1858,8 @@ async function publier(){
 
 
   /*
-    Une seule date de publication est créée
-    pour les deux lignes afin qu'elles appartiennent
-    clairement à la même demande.
+    Une seule date de publication pour
+    toute la demande.
   */
 
   const dateDemande =
@@ -1680,6 +1929,8 @@ async function publier(){
 
   resetFormulaire();
 
+  fermerFormulaire();
+
 
   afficherToast(
     deuxieme
@@ -1688,12 +1939,12 @@ async function publier(){
   );
 
 
-  afficher("echanges");
+  await afficherEchanges();
 }
 
 
 /* =========================================================
-   RESET FORMULAIRE
+   RESET
 ========================================================= */
 
 function resetFormulaire(){
@@ -1717,29 +1968,60 @@ function resetFormulaire(){
       document.getElementById(id);
 
     if(element){
+
       element.value = "";
+
     }
 
   });
 
 
   const checkbox =
-    document.getElementById("deuxiemeJournee");
+    document.getElementById(
+      "deuxiemeJournee"
+    );
 
   if(checkbox){
+
     checkbox.checked = false;
+
   }
 
 
   document
     .getElementById("blocJournee2")
     .classList.add("hidden");
+
+}
+
+
+/* =========================================================
+   FILTRE MÉTIER
+========================================================= */
+
+function filtrerMetier(metier){
+
+  filtreActuel =
+    metier || "";
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(btn => {
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.metier === filtreActuel
+      );
+
+    });
+
+
+  afficherEchanges();
 }
 
 
 /* =========================================================
    NORMALISATION
-   IMPORTANT POUR LE REGROUPEMENT
 ========================================================= */
 
 function normaliserTexte(valeur){
@@ -1747,24 +2029,30 @@ function normaliserTexte(valeur){
   return String(valeur || "")
     .trim()
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
     .replace(/\s+/g," ");
 }
 
 
 /* =========================================================
-   CALCUL DE LA DATE SUIVANTE
+   DATE SUIVANTE
 ========================================================= */
 
 function dateSuivante(dateStr){
 
   if(!dateStr){
+
     return null;
+
   }
+
 
   const morceaux =
     String(dateStr)
       .split("-")
       .map(Number);
+
 
   if(
     morceaux.length !== 3 ||
@@ -1772,16 +2060,13 @@ function dateSuivante(dateStr){
     !morceaux[1] ||
     !morceaux[2]
   ){
+
     return null;
+
   }
 
-  /*
-    UTC volontairement utilisé ici pour éviter
-    les problèmes de changement de jour liés
-    au fuseau horaire du navigateur.
-  */
 
-  const d =
+  const date =
     new Date(
       Date.UTC(
         morceaux[0],
@@ -1790,67 +2075,83 @@ function dateSuivante(dateStr){
       )
     );
 
-  d.setUTCDate(
-    d.getUTCDate() + 1
+
+  date.setUTCDate(
+    date.getUTCDate() + 1
   );
 
-  return d
+
+  return date
     .toISOString()
     .slice(0,10);
 }
 
 
 /* =========================================================
-   TEST DE REGROUPEMENT
+   TEST REGROUPEMENT
 ========================================================= */
 
-function peutRegrouper(jour1,jour2){
+function peutRegrouper(
+  jour1,
+  jour2
+){
 
   /*
-    1. Même nom
+    Même agent
   */
 
   const memeNom =
-    normaliserTexte(jour1.nom) ===
-    normaliserTexte(jour2.nom);
+    normaliserTexte(
+      jour1.nom
+    ) ===
+    normaliserTexte(
+      jour2.nom
+    );
 
 
   /*
-    2. Même métier
+    Même métier
   */
 
   const memeMetier =
-    normaliserTexte(jour1.metier) ===
-    normaliserTexte(jour2.metier);
+    normaliserTexte(
+      jour1.metier
+    ) ===
+    normaliserTexte(
+      jour2.metier
+    );
 
 
   /*
-    3. Le deuxième service est exactement
-       le lendemain du premier.
+    Jour 2 = lendemain exact
   */
 
-  const dateJourSuivant =
-    dateSuivante(jour1.date_service) ===
-    String(jour2.date_service);
+  const dateSuivanteExacte =
+    dateSuivante(
+      jour1.date_service
+    ) ===
+    String(
+      jour2.date_service
+    );
 
 
   /*
-    4. Le lieu de fin du premier service
-       correspond au lieu de prise du second.
-       
-       La normalisation permet de considérer
-       "CAEN", "Caen" et " Caen " comme identiques.
+    Fin jour 1 = prise jour 2
   */
 
   const memeLieu =
-    normaliserTexte(jour1.lieu_fin_service) ===
-    normaliserTexte(jour2.lieu_prise_service);
+    normaliserTexte(
+      jour1.lieu_fin_service
+    ) ===
+    normaliserTexte(
+      jour2.lieu_prise_service
+    );
 
 
   return (
     memeNom &&
     memeMetier &&
-    dateJourSuivant &&
+    dateSuivanteExacte &&
     memeLieu
   );
 }
@@ -1858,24 +2159,17 @@ function peutRegrouper(jour1,jour2){
 
 /* =========================================================
    CONSTRUCTION DES GROUPES
-   CORRECTION PRINCIPALE
 ========================================================= */
 
 function construireGroupes(data){
 
-  /*
-    On crée une copie afin de ne jamais modifier
-    directement le tableau reçu de Supabase.
-  */
-
-  const lignes = [...data];
+  const lignes =
+    [...data];
 
 
   /*
-    Tri par :
-    - nom
-    - métier
-    - date
+    Tri indépendant de l'ordre renvoyé
+    par Supabase.
   */
 
   lignes.sort((a,b) => {
@@ -1889,7 +2183,9 @@ function construireGroupes(data){
 
     if(nomA !== nomB){
 
-      return nomA.localeCompare(nomB);
+      return nomA.localeCompare(
+        nomB
+      );
 
     }
 
@@ -1903,28 +2199,29 @@ function construireGroupes(data){
 
     if(metierA !== metierB){
 
-      return metierA.localeCompare(metierB);
+      return metierA.localeCompare(
+        metierB
+      );
 
     }
 
 
-    return String(a.date_service || "")
-      .localeCompare(
-        String(b.date_service || "")
-      );
+    return String(
+      a.date_service || ""
+    ).localeCompare(
+      String(
+        b.date_service || ""
+      )
+    );
 
   });
 
 
   const groupes = [];
 
-  const utilises = new Set();
+  const utilises =
+    new Set();
 
-
-  /*
-    Chaque ligne non utilisée démarre
-    potentiellement un nouveau groupe.
-  */
 
   for(
     let i = 0;
@@ -1933,9 +2230,13 @@ function construireGroupes(data){
   ){
 
     if(
-      utilises.has(lignes[i].id)
+      utilises.has(
+        lignes[i].id
+      )
     ){
+
       continue;
+
     }
 
 
@@ -1950,12 +2251,8 @@ function construireGroupes(data){
 
 
     /*
-      On cherche la journée suivante dans
-      TOUT le tableau.
-
-      C'est cette partie qui corrige le problème :
-      les deux lignes n'ont pas besoin d'être
-      adjacentes dans la réponse Supabase.
+      On recherche la journée suivante
+      dans l'ensemble des lignes.
     */
 
     let recherche =
@@ -1965,23 +2262,32 @@ function construireGroupes(data){
     while(true){
 
       const indexSuivant =
-        lignes.findIndex(candidate => {
+        lignes.findIndex(
+          candidate => {
 
-          if(
-            utilises.has(candidate.id)
-          ){
-            return false;
+            if(
+              utilises.has(
+                candidate.id
+              )
+            ){
+
+              return false;
+
+            }
+
+
+            return peutRegrouper(
+              recherche,
+              candidate
+            );
+
           }
-
-          return peutRegrouper(
-            recherche,
-            candidate
-          );
-
-        });
+        );
 
 
-      if(indexSuivant === -1){
+      if(
+        indexSuivant === -1
+      ){
 
         break;
 
@@ -2003,9 +2309,9 @@ function construireGroupes(data){
 
 
       /*
-        Si une troisième journée consécutive
-        existe et correspond aux critères,
-        elle pourra également être ajoutée.
+        Permet aussi de regrouper
+        une éventuelle 3e journée
+        consécutive.
       */
 
       recherche =
@@ -2014,15 +2320,14 @@ function construireGroupes(data){
     }
 
 
-    /*
-      Les journées du groupe sont toujours
-      affichées dans l'ordre chronologique.
-    */
-
-    groupe.sort((a,b) =>
-      String(a.date_service || "")
-        .localeCompare(
-          String(b.date_service || "")
+    groupe.sort(
+      (a,b) =>
+        String(
+          a.date_service || ""
+        ).localeCompare(
+          String(
+            b.date_service || ""
+          )
         )
     );
 
@@ -2039,7 +2344,7 @@ function construireGroupes(data){
 
 
 /* =========================================================
-   AFFICHAGE DES ÉCHANGES
+   AFFICHAGE
 ========================================================= */
 
 async function afficherEchanges(){
@@ -2050,27 +2355,36 @@ async function afficherEchanges(){
     );
 
 
-  document.getElementById(
-    "metierEchanges"
-  ).innerText =
-    metierActuel || "-";
-
-
   zone.innerHTML =
-    '<div class="empty">' +
-      '<span class="empty-icon">🚆</span>' +
-      'Chargement des échanges...' +
-    '</div>';
+    `
+    <div class="empty">
+      <span class="empty-icon">🚆</span>
+      Chargement des journées...
+    </div>
+    `;
 
 
-  if(!metierActuel){
+  let requete =
+    supabaseClient
+      .from("echanges")
+      .select("*")
+      .eq("statut","disponible")
+      .order(
+        "date_service",
+        {
+          ascending:true
+        }
+      );
 
-    zone.innerHTML =
-      '<div class="empty">' +
-        'Choisissez d’abord un métier.' +
-      '</div>';
 
-    return;
+  if(filtreActuel){
+
+    requete =
+      requete.eq(
+        "metier",
+        filtreActuel
+      );
+
   }
 
 
@@ -2078,14 +2392,7 @@ async function afficherEchanges(){
     data,
     error
   } =
-    await supabaseClient
-      .from("echanges")
-      .select("*")
-      .eq("metier",metierActuel)
-      .eq("statut","disponible")
-      .order("date_service",{
-        ascending:true
-      });
+    await requete;
 
 
   if(error){
@@ -2093,14 +2400,16 @@ async function afficherEchanges(){
     console.error(error);
 
     zone.innerHTML =
-      '<div class="empty">' +
-        '<span class="empty-icon">❌</span>' +
-        '<strong>Erreur lors du chargement.</strong>' +
-        '<br><br>' +
-        '<small>' +
-          escapeHTML(error.message) +
-        '</small>' +
-      '</div>';
+      `
+      <div class="empty">
+        <span class="empty-icon">❌</span>
+        <strong>Erreur lors du chargement.</strong>
+        <br><br>
+        <small>
+          ${escapeHTML(error.message)}
+        </small>
+      </div>
+      `;
 
     return;
   }
@@ -2109,367 +2418,335 @@ async function afficherEchanges(){
   zone.innerHTML = "";
 
 
-  if(!data || !data.length){
+  if(
+    !data ||
+    !data.length
+  ){
 
     zone.innerHTML =
-      '<div class="empty">' +
-        '<span class="empty-icon">🚆</span>' +
-        '<strong>Aucune journée proposée</strong>' +
-        '<br><br>' +
-        'Soyez le premier à proposer une journée !' +
-      '</div>';
+      `
+      <div class="empty">
+        <span class="empty-icon">🚆</span>
+        <strong>Aucune journée proposée</strong>
+        <br><br>
+        Soyez le premier à proposer une journée !
+      </div>
+      `;
 
     return;
   }
 
 
   /*
-    IMPORTANT :
-    On construit d'abord les groupes,
-    puis on affiche les groupes.
-
-    C'est ici que les deux journées consécutives
-    sont réunies dans un même post.
+    CORRECTION IMPORTANTE :
+    les lignes sont d'abord regroupées.
   */
 
   const groupes =
     construireGroupes(data);
 
 
-  groupes.forEach(groupe => {
+  groupes.forEach(
+    groupe => {
 
-    const bloc =
-      document.createElement("div");
-
-    bloc.className = "item";
-
-
-    const premier =
-      groupe[0];
-
-
-    /*
-      Date de publication.
-      On utilise date_demande en priorité.
-      created_at n'est PAS utilisé pour l'insertion.
-    */
-
-    const publication =
-      recupererDatePublication(
-        groupe
+      afficherGroupe(
+        groupe,
+        zone
       );
 
-
-    const request =
-      publication
-        ? `
-          <div class="request-date">
-            🕒 Demande publiée le
-            ${formatDatePublication(publication)}
-          </div>
-        `
-        : `
-          <div class="request-date">
-            🕒 Date de demande non disponible
-          </div>
-        `;
+    }
+  );
+}
 
 
-    const interest =
-      premier.agent_interesse
-        ? `
-          <div class="interest">
-            🙋 Agent intéressé :
-            <strong>
-              ${escapeHTML(
-                premier.agent_interesse
-              )}
-            </strong>
-          </div>
-        `
-        : "";
+/* =========================================================
+   AFFICHAGE D'UN GROUPE
+========================================================= */
+
+function afficherGroupe(
+  groupe,
+  zone
+){
+
+  const premier =
+    groupe[0];
 
 
-    const comment =
-      premier.commentaire
-        ? `
-          <div class="comment">
-            💬
-            ${escapeHTML(
-              premier.commentaire
-            )}
-          </div>
-        `
-        : "";
+  const bloc =
+    document.createElement(
+      "article"
+    );
 
 
-    let contenuJours = "";
+  bloc.className =
+    "post";
 
 
-    /*
-      Une journée
-    */
-
-    if(groupe.length === 1){
-
-      const e =
-        groupe[0];
+  const metier =
+    premier.metier ||
+    "Autre";
 
 
-      contenuJours = `
-
-        <div class="service">
-
-          <div class="chip">
-            <span>
-              Date du service
-            </span>
-
-            <strong>
-              📅 ${formatDate(
-                e.date_service
-              )}
-            </strong>
-          </div>
+  const publication =
+    recupererDatePublication(
+      groupe
+    );
 
 
-          <div class="chip">
-            <span>
-              Horaires
-            </span>
+  const metierIcon = {
 
-            <strong>
-              ⏰ ${formatTime(
-                e.prise_service
-              )}
-              →
-              ${formatTime(
-                e.fin_service
-              )}
-            </strong>
-          </div>
+    "ASCT":"🚆",
+    "ADC":"🚄",
+    "Escales":"👷",
+    "Autre":"👨‍🔧"
 
-        </div>
+  }[metier] || "👨‍🔧";
 
 
-        <div class="locations">
-
-          <div class="location-chip">
-
-            <span>
-              📍 Prise de service
-            </span>
-
-            <strong>
-              ${
-                e.lieu_prise_service
-                  ? escapeHTML(
-                      e.lieu_prise_service
-                    )
-                  : "Non renseigné"
-              }
-            </strong>
-
-          </div>
-
-
-          <div class="location-chip">
-
-            <span>
-              📍 Fin de service
-            </span>
-
-            <strong>
-              ${
-                e.lieu_fin_service
-                  ? escapeHTML(
-                      e.lieu_fin_service
-                    )
-                  : "Non renseigné"
-              }
-            </strong>
-
-          </div>
-
-        </div>
-
+  const publicationHTML =
+    publication
+      ?
+      `
+      <div class="publication">
+        🕒 Demande publiée le
+        ${formatDatePublication(publication)}
+      </div>
+      `
+      :
+      `
+      <div class="publication">
+        🕒 Date de demande non disponible
+      </div>
       `;
 
+
+  let joursHTML = "";
+
+
+  groupe.forEach(
+    (jour,index) => {
+
+      joursHTML +=
+        `
+        <div class="day">
+
+          <div class="day-header">
+
+            <div class="day-number">
+              ${index + 1}
+            </div>
+
+            <div>
+
+              <div class="day-title">
+                JOURNÉE ${index + 1}
+              </div>
+
+              <div class="date-big">
+                📅 ${formatDate(
+                  jour.date_service
+                )}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="infos">
+
+            <div class="info-box">
+
+              <div class="info-label">
+                HORAIRES
+              </div>
+
+              <div class="info-value">
+                ⏰
+                ${formatTime(
+                  jour.prise_service
+                )}
+                →
+                ${formatTime(
+                  jour.fin_service
+                )}
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                PRISE DE SERVICE
+              </div>
+
+              <div class="info-value">
+                📍
+                ${
+                  jour.lieu_prise_service
+                    ?
+                    escapeHTML(
+                      jour.lieu_prise_service
+                    )
+                    :
+                    "Non renseigné"
+                }
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                FIN DE SERVICE
+              </div>
+
+              <div class="info-value">
+                📍
+                ${
+                  jour.lieu_fin_service
+                    ?
+                    escapeHTML(
+                      jour.lieu_fin_service
+                    )
+                    :
+                    "Non renseigné"
+                }
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                DURÉE
+              </div>
+
+              <div class="info-value">
+                ⏱️
+                ${calculerDuree(
+                  jour.prise_service,
+                  jour.fin_service
+                )}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        `;
+
     }
+  );
 
 
-    /*
-      Plusieurs journées regroupées
-    */
-
-    else{
-
-      groupe.forEach(
-        (e,index) => {
-
-          contenuJours += `
-
-            <div class="group-title">
-              📅 JOURNÉE ${index + 1}
-            </div>
-
-
-            <div class="service">
-
-              <div class="chip">
-
-                <span>
-                  Date du service
-                </span>
-
-                <strong>
-                  📅 ${formatDate(
-                    e.date_service
-                  )}
-                </strong>
-
-              </div>
+  const commentaire =
+    premier.commentaire
+      ?
+      `
+      <div class="comment">
+        💬
+        ${escapeHTML(
+          premier.commentaire
+        )}
+      </div>
+      `
+      :
+      "";
 
 
-              <div class="chip">
-
-                <span>
-                  Horaires
-                </span>
-
-                <strong>
-                  ⏰ ${formatTime(
-                    e.prise_service
-                  )}
-                  →
-                  ${formatTime(
-                    e.fin_service
-                  )}
-                </strong>
-
-              </div>
-
-            </div>
+  const interesse =
+    premier.agent_interesse
+      ?
+      `
+      <div class="interest-info">
+        🙋 Agent intéressé :
+        <strong>
+          ${escapeHTML(
+            premier.agent_interesse
+          )}
+        </strong>
+      </div>
+      `
+      :
+      "";
 
 
-            <div class="locations">
-
-              <div class="location-chip">
-
-                <span>
-                  📍 Prise de service
-                </span>
-
-                <strong>
-                  ${
-                    e.lieu_prise_service
-                      ? escapeHTML(
-                          e.lieu_prise_service
-                        )
-                      : "Non renseigné"
-                  }
-                </strong>
-
-              </div>
-
-
-              <div class="location-chip">
-
-                <span>
-                  📍 Fin de service
-                </span>
-
-                <strong>
-                  ${
-                    e.lieu_fin_service
-                      ? escapeHTML(
-                          e.lieu_fin_service
-                        )
-                      : "Non renseigné"
-                  }
-                </strong>
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
+  const ids =
+    groupe
+      .map(
+        e => Number(e.id)
+      )
+      .filter(
+        id => Number.isFinite(id)
       );
 
-    }
 
+  bloc.innerHTML =
+    `
 
-    /*
-      Boutons :
-      pour un groupe, on utilise l'id de la
-      première ligne comme référence pour
-      l'intérêt.
+    <div class="post-head">
 
-      Suppression :
-      toutes les lignes du groupe sont supprimées.
-    */
+      <div class="avatar">
+        👤
+      </div>
 
-    const ids =
-      groupe
-        .map(e => Number(e.id))
-        .filter(id => Number.isFinite(id));
-
-
-    const idPrincipal =
-      ids[0];
-
-
-    bloc.innerHTML = `
-
-      <div class="name">
-        👤 ${escapeHTML(
+      <div class="agent">
+        ${escapeHTML(
           premier.nom
         )}
       </div>
 
-
-      ${request}
-
-
-      ${contenuJours}
-
-
-      ${comment}
-
-
-      ${interest}
-
-
-      <div class="actions">
-
-        <button
-          class="small interet"
-          onclick="interesse(${idPrincipal})"
-        >
-          🙋 JE SUIS INTÉRESSÉ
-        </button>
-
-
-        <button
-          class="small delete"
-          onclick='supprimerGroupe(${JSON.stringify(ids)})'
-        >
-          🗑️ SUPPRIMER
-        </button>
-
+      <div class="metier-badge">
+        ${metierIcon}
+        ${escapeHTML(metier)}
       </div>
+
+    </div>
+
+
+    ${publicationHTML}
+
+
+    <div class="days">
+      ${joursHTML}
+    </div>
+
+
+    ${commentaire}
+
+
+    ${interesse}
+
+
+    <div class="post-actions">
+
+      <button
+        class="action action-interest"
+        onclick="interesse(${ids[0]})"
+      >
+        🙋 JE SUIS INTÉRESSÉ
+      </button>
+
+      <button
+        class="action action-delete"
+        onclick='supprimerGroupe(${JSON.stringify(ids)})'
+      >
+        🗑️ SUPPRIMER
+      </button>
+
+    </div>
 
     `;
 
 
-    zone.appendChild(
-      bloc
-    );
-
-  });
-
+  zone.appendChild(
+    bloc
+  );
 }
 
 
@@ -2477,32 +2754,22 @@ async function afficherEchanges(){
    DATE DE PUBLICATION
 ========================================================= */
 
-function recupererDatePublication(groupe){
+function recupererDatePublication(
+  groupe
+){
 
-  for(const e of groupe){
+  for(
+    const e of groupe
+  ){
 
     if(e.date_demande){
+
       return e.date_demande;
-    }
 
-    /*
-      Compatibilité avec d'anciennes données
-      déjà présentes dans Supabase.
-    */
-
-    if(e.created_at){
-      return e.created_at;
-    }
-
-    if(e.date_creation){
-      return e.date_creation;
-    }
-
-    if(e.createdAt){
-      return e.createdAt;
     }
 
   }
+
 
   return null;
 }
@@ -2518,46 +2785,64 @@ function interesse(id){
     Number(id);
 
 
-  document.getElementById(
-    "nomInteresse"
-  ).value = "";
+  document
+    .getElementById(
+      "nomInteresse"
+    )
+    .value = "";
 
 
   document
-    .getElementById("interetModal")
-    .classList.remove("hidden");
+    .getElementById(
+      "interetModal"
+    )
+    .classList.remove(
+      "hidden"
+    );
 
 
-  setTimeout(() => {
+  setTimeout(
+    () => {
 
-    document
-      .getElementById("nomInteresse")
-      .focus();
+      document
+        .getElementById(
+          "nomInteresse"
+        )
+        .focus();
 
-  },100);
+    },
+    100
+  );
 }
 
 
 function fermerInteret(){
 
-  idInteretEnCours = null;
+  idInteretEnCours =
+    null;
 
   document
-    .getElementById("interetModal")
-    .classList.add("hidden");
+    .getElementById(
+      "interetModal"
+    )
+    .classList.add(
+      "hidden"
+    );
 }
 
 
 async function confirmerInteret(){
 
-  const nomAgent =
+  const nom =
     document
-      .getElementById("nomInteresse")
+      .getElementById(
+        "nomInteresse"
+      )
       .value
       .trim();
 
 
-  if(!nomAgent){
+  if(!nom){
 
     alert(
       "Merci d’indiquer votre nom."
@@ -2581,7 +2866,7 @@ async function confirmerInteret(){
     await supabaseClient
       .from("echanges")
       .update({
-        agent_interesse:nomAgent
+        agent_interesse:nom
       })
       .eq(
         "id",
@@ -2610,7 +2895,7 @@ async function confirmerInteret(){
   );
 
 
-  await afficherEchanges();
+  afficherEchanges();
 }
 
 
@@ -2618,7 +2903,9 @@ async function confirmerInteret(){
    SUPPRESSION D'UN GROUPE
 ========================================================= */
 
-async function supprimerGroupe(ids){
+async function supprimerGroupe(
+  ids
+){
 
   if(
     !Array.isArray(ids) ||
@@ -2645,7 +2932,10 @@ async function supprimerGroupe(ids){
     await supabaseClient
       .from("echanges")
       .delete()
-      .in("id",ids);
+      .in(
+        "id",
+        ids
+      );
 
 
   if(error){
@@ -2666,46 +2956,48 @@ async function supprimerGroupe(ids){
   );
 
 
-  await afficherEchanges();
-}
-
-
-/*
-  Compatibilité avec l'ancien bouton de suppression
-*/
-
-async function supprimer(id){
-
-  await supprimerGroupe([
-    Number(id)
-  ]);
-
+  afficherEchanges();
 }
 
 
 /* =========================================================
-   FORMAT DATE
+   OUTILS D'AFFICHAGE
 ========================================================= */
 
 function formatDate(date){
 
   if(!date){
+
     return "";
+
   }
 
 
-  const p =
-    String(date).split("-");
+  const morceaux =
+    String(date)
+      .split("-");
 
 
-  if(p.length === 3){
+  if(
+    morceaux.length === 3
+  ){
 
-    return (
-      p[2] +
-      "/" +
-      p[1] +
-      "/" +
-      p[0]
+    const d =
+      new Date(
+        Number(morceaux[0]),
+        Number(morceaux[1]) - 1,
+        Number(morceaux[2])
+      );
+
+
+    return d.toLocaleDateString(
+      "fr-FR",
+      {
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
     );
 
   }
@@ -2715,34 +3007,34 @@ function formatDate(date){
 }
 
 
-/* =========================================================
-   FORMAT DATE PUBLICATION
-========================================================= */
+function formatDatePublication(
+  valeur
+){
 
-function formatDatePublication(value){
+  if(!valeur){
 
-  if(!value){
     return "";
+
   }
 
 
-  const d =
-    new Date(value);
+  const date =
+    new Date(valeur);
 
 
   if(
     Number.isNaN(
-      d.getTime()
+      date.getTime()
     )
   ){
 
-    return String(value);
+    return String(valeur);
 
   }
 
 
   return (
-    d.toLocaleDateString(
+    date.toLocaleDateString(
       "fr-FR",
       {
         day:"2-digit",
@@ -2751,7 +3043,7 @@ function formatDatePublication(value){
       }
     ) +
     " à " +
-    d.toLocaleTimeString(
+    date.toLocaleTimeString(
       "fr-FR",
       {
         hour:"2-digit",
@@ -2762,15 +3054,127 @@ function formatDatePublication(value){
 }
 
 
+function formatTime(value){
+
+  if(!value){
+
+    return "";
+
+  }
+
+
+  return String(
+    value
+  ).substring(
+    0,
+    5
+  );
+}
+
+
 /* =========================================================
-   FORMAT HEURE
+   CALCUL DURÉE
 ========================================================= */
 
-function formatTime(h){
+function calculerDuree(
+  debut,
+  fin
+){
 
-  return h
-    ? String(h).substring(0,5)
-    : "";
+  if(
+    !debut ||
+    !fin
+  ){
+
+    return "—";
+
+  }
+
+
+  const [h1,m1] =
+    String(debut)
+      .split(":")
+      .map(Number);
+
+  const [h2,m2] =
+    String(fin)
+      .split(":")
+      .map(Number);
+
+
+  if(
+    !Number.isFinite(h1) ||
+    !Number.isFinite(m1) ||
+    !Number.isFinite(h2) ||
+    !Number.isFinite(m2)
+  ){
+
+    return "—";
+
+  }
+
+
+  let minutes =
+    (h2 * 60 + m2) -
+    (h1 * 60 + m1);
+
+
+  if(minutes < 0){
+
+    minutes += 24 * 60;
+
+  }
+
+
+  const heures =
+    Math.floor(
+      minutes / 60
+    );
+
+  const reste =
+    minutes % 60;
+
+
+  return (
+    heures +
+    "h" +
+    String(reste).padStart(
+      2,
+      "0"
+    )
+  );
+}
+
+
+/* =========================================================
+   SÉCURITÉ HTML
+========================================================= */
+
+function escapeHTML(
+  valeur
+){
+
+  if(
+    valeur === null ||
+    valeur === undefined
+  ){
+
+    return "";
+
+  }
+
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.innerText =
+    String(valeur);
+
+
+  return div.innerHTML;
 }
 
 
@@ -2778,7 +3182,9 @@ function formatTime(h){
    TOAST
 ========================================================= */
 
-function afficherToast(message){
+function afficherToast(
+  message
+){
 
   const toast =
     document.getElementById(
@@ -2801,43 +3207,16 @@ function afficherToast(message){
 
 
   afficherToast.timer =
-    setTimeout(() => {
+    setTimeout(
+      () => {
 
-      toast.classList.remove(
-        "show"
-      );
+        toast.classList.remove(
+          "show"
+        );
 
-    },3000);
-}
-
-
-/* =========================================================
-   PROTECTION HTML
-========================================================= */
-
-function escapeHTML(t){
-
-  if(
-    t === null ||
-    t === undefined
-  ){
-
-    return "";
-
-  }
-
-
-  const d =
-    document.createElement(
-      "div"
+      },
+      3200
     );
-
-
-  d.innerText =
-    String(t);
-
-
-  return d.innerHTML;
 }
 
 
@@ -2845,7 +3224,23 @@ function escapeHTML(t){
    INITIALISATION
 ========================================================= */
 
-afficher("accueil");
+filtreActuel = "";
+
+document
+  .querySelectorAll(".filter")
+  .forEach(
+    btn => {
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.metier === ""
+      );
+
+    }
+  );
+
+
+afficherEchanges();
 
 </script>
 
