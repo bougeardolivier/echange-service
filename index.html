@@ -55,22 +55,15 @@ body{
   pointer-events:none;
 
   background:
-    radial-gradient(
-      circle at 15% 15%,
-      rgba(22,126,163,.32),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 85% 25%,
-      rgba(0,179,220,.16),
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      #061d2c 0%,
-      #0a3045 48%,
-      #dce8ed 100%
-    );
+    .bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+    pointer-events:none;
+
+    background:url("regiolis-normandie.jpg") center 45%/cover no-repeat;
+}
 }
 
 .bg::after{
