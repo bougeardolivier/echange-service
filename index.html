@@ -25,21 +25,15 @@
 ========================================================= */
 
 :root{
-
   --navy:#061827;
   --blue:#087fba;
   --blue2:#1699ce;
   --cyan:#57d9ef;
   --teal:#35c2b2;
-
   --text:#173249;
   --muted:#687989;
-
   --line:#dce8ee;
-
-  --shadow:
-    0 18px 45px rgba(5,35,53,.18);
-
+  --shadow:0 18px 45px rgba(5,35,53,.18);
 }
 
 
@@ -56,11 +50,8 @@ html{
 }
 
 body{
-
   margin:0;
-
   min-height:100vh;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -68,57 +59,40 @@ body{
     Roboto,
     Arial,
     sans-serif;
-
   color:var(--text);
-
   background:#061827;
-
   overflow-x:hidden;
-
 }
 
 
 /* =========================================================
-   ARRIERE PLAN TRAIN
+   BACKGROUND
 ========================================================= */
 
 .bg{
-
   position:fixed;
-
   inset:0;
-
   z-index:-5;
-
   overflow:hidden;
-
   pointer-events:none;
 
   background:
-
     linear-gradient(
       180deg,
       rgba(4,22,36,.18),
       rgba(4,22,36,.40)
     ),
-
     url("IMG_7689.jpeg")
-    center 45% / cover
+    center 45%/cover
     no-repeat;
-
 }
 
-
 .bg:before{
-
   content:"";
-
   position:absolute;
-
   inset:0;
 
   background:
-
     linear-gradient(
       180deg,
       rgba(3,22,37,.72) 0%,
@@ -126,74 +100,50 @@ body{
       rgba(8,51,72,.20) 55%,
       rgba(238,247,250,.62) 100%
     );
-
 }
 
-
 .bg:after{
-
   content:"";
-
   position:absolute;
-
   inset:0;
 
   background:
-
     radial-gradient(
       circle at 8% 10%,
       rgba(87,217,239,.28),
       transparent 25%
     ),
-
     radial-gradient(
       circle at 92% 15%,
       rgba(30,154,207,.28),
       transparent 28%
     );
-
 }
 
-
 .speed{
-
   position:absolute;
-
   height:2px;
-
   border-radius:999px;
 
   background:
-
     linear-gradient(
       90deg,
       transparent,
       rgba(103,226,247,.72),
       transparent
     );
-
 }
-
 
 .s1{
-
   width:34%;
-
   top:13%;
-
   left:5%;
-
 }
 
-
 .s2{
-
   width:26%;
-
   top:23%;
-
   right:5%;
-
 }
 
 
@@ -202,9 +152,7 @@ body{
 ========================================================= */
 
 .hero{
-
   position:relative;
-
   min-height:250px;
 
   padding:
@@ -213,47 +161,29 @@ body{
     58px;
 
   text-align:center;
-
   color:#fff;
-
   overflow:hidden;
-
 }
-
 
 .hero-inner{
-
   position:relative;
-
   z-index:2;
-
   width:min(1000px,100%);
-
   margin:auto;
-
 }
 
-
 .mark{
-
   width:56px;
-
   height:56px;
-
-  margin:
-    0 auto 10px;
+  margin:0 auto 10px;
 
   display:grid;
-
   place-items:center;
 
-  border:
-    1px solid rgba(255,255,255,.32);
-
+  border:1px solid rgba(255,255,255,.32);
   border-radius:18px;
 
-  background:
-    rgba(5,34,53,.46);
+  background:rgba(5,34,53,.46);
 
   box-shadow:
     0 12px 30px rgba(0,0,0,.24);
@@ -261,12 +191,9 @@ body{
   backdrop-filter:blur(14px);
 
   font-size:30px;
-
 }
 
-
 .hero h1{
-
   margin:0;
 
   font-size:
@@ -281,60 +208,41 @@ body{
 
   text-shadow:
     0 8px 25px rgba(0,0,0,.45);
-
 }
-
 
 .hero h1 span{
-
   color:var(--cyan);
-
 }
 
-
 .sub{
-
-  margin:
-    12px 0 0;
+  margin:12px 0 0;
 
   font-size:
     clamp(15px,3vw,22px);
 
-  color:
-    rgba(255,255,255,.94);
+  color:rgba(255,255,255,.94);
 
   text-shadow:
     0 3px 14px rgba(0,0,0,.35);
-
 }
 
-
 .sub strong{
-
   display:inline-block;
-
   margin-top:4px;
 
   color:#8cecff;
-
   font-weight:850;
-
 }
 
-
 .glow{
-
   height:5px;
-
   width:min(500px,72%);
 
-  margin:
-    17px auto 0;
+  margin:17px auto 0;
 
   border-radius:999px;
 
   background:
-
     linear-gradient(
       90deg,
       transparent,
@@ -344,7 +252,6 @@ body{
 
   box-shadow:
     0 0 24px rgba(85,214,238,.45);
-
 }
 
 
@@ -353,22 +260,16 @@ body{
 ========================================================= */
 
 main{
-
   width:min(1120px,100%);
 
   margin:
     -34px auto 100px;
 
-  padding:
-    0 14px;
-
+  padding:0 14px;
 }
 
-
 .hidden{
-
   display:none!important;
-
 }
 
 
@@ -377,9 +278,7 @@ main{
 ========================================================= */
 
 .welcome{
-
   position:relative;
-
   overflow:hidden;
 
   text-align:center;
@@ -398,69 +297,52 @@ main{
   box-shadow:var(--shadow);
 
   backdrop-filter:blur(18px);
-
 }
 
-
 .welcome:before{
-
   content:"";
 
   position:absolute;
 
   width:260px;
-
   height:260px;
 
   left:-150px;
-
   top:-170px;
 
   border-radius:50%;
 
   background:
     rgba(80,211,238,.13);
-
 }
 
-
 .welcome:after{
-
   content:"";
 
   position:absolute;
 
   width:220px;
-
   height:220px;
 
   right:-110px;
-
   bottom:-140px;
 
   border-radius:50%;
 
   background:
     rgba(50,194,178,.11);
-
 }
 
-
 .welcome-icon{
-
   position:relative;
-
   z-index:1;
 
   width:58px;
-
   height:58px;
 
-  margin:
-    auto auto 8px;
+  margin:auto auto 8px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:19px;
@@ -477,14 +359,10 @@ main{
   box-shadow:
     0 10px 25px
     rgba(35,141,181,.18);
-
 }
 
-
 .welcome h2{
-
   position:relative;
-
   z-index:1;
 
   margin:
@@ -492,18 +370,13 @@ main{
 
   font-size:
     clamp(28px,5vw,40px);
-
 }
 
-
 .welcome p{
-
   position:relative;
-
   z-index:1;
 
   max-width:850px;
-
   margin:auto;
 
   color:var(--muted);
@@ -512,14 +385,10 @@ main{
     clamp(14px,2.3vw,18px);
 
   line-height:1.42;
-
 }
 
-
 .pill{
-
   position:relative;
-
   z-index:1;
 
   display:inline-flex;
@@ -541,14 +410,10 @@ main{
   color:#24536c;
 
   font-weight:800;
-
   font-size:13px;
-
 }
 
-
 .choices{
-
   display:grid;
 
   grid-template-columns:1fr;
@@ -556,14 +421,10 @@ main{
   gap:12px;
 
   margin-top:13px;
-
 }
 
-
 .choice{
-
   border:0;
-
   padding:0;
 
   background:transparent;
@@ -571,20 +432,15 @@ main{
   text-align:left;
 
   cursor:pointer;
-
 }
 
-
 .choice-card{
-
   position:relative;
-
   overflow:hidden;
 
   min-height:92px;
 
   display:flex;
-
   align-items:center;
 
   gap:13px;
@@ -607,57 +463,37 @@ main{
   transition:
     transform .16s ease,
     box-shadow .16s ease;
-
 }
 
-
 .choice-card:hover{
-
-  transform:
-    translateY(-2px);
+  transform:translateY(-2px);
 
   box-shadow:
     0 17px 35px
     rgba(8,40,58,.20);
-
 }
-
 
 .choice-card:active{
-
-  transform:
-    scale(.985);
-
+  transform:scale(.985);
 }
-
 
 .adc .choice-card{
-
   border-left:
     5px solid #2ba7dc;
-
 }
-
 
 .asct .choice-card{
-
   border-left:
     5px solid #32b9ae;
-
 }
 
-
 .choice-icon{
-
-  flex:
-    0 0 56px;
+  flex:0 0 56px;
 
   width:56px;
-
   height:56px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:18px;
@@ -670,30 +506,21 @@ main{
     );
 
   font-size:29px;
-
 }
-
 
 .choice-text{
-
   min-width:0;
-
 }
 
-
 .choice-text strong{
-
   display:block;
 
   font-size:21px;
 
   margin-bottom:3px;
-
 }
 
-
 .choice-text small{
-
   display:block;
 
   color:#748391;
@@ -701,18 +528,14 @@ main{
   font-size:13px;
 
   line-height:1.25;
-
 }
 
-
 .arrow{
-
   margin-left:auto;
 
   font-size:27px;
 
   color:#1683b8;
-
 }
 
 
@@ -721,7 +544,6 @@ main{
 ========================================================= */
 
 .card{
-
   padding:20px;
 
   border-radius:27px;
@@ -735,12 +557,9 @@ main{
   box-shadow:var(--shadow);
 
   backdrop-filter:blur(18px);
-
 }
 
-
 .badge{
-
   display:inline-flex;
 
   padding:
@@ -755,29 +574,22 @@ main{
   font-size:12px;
 
   font-weight:800;
-
 }
 
-
 .page-title{
-
   margin:
     10px 0 6px;
 
   font-size:26px;
-
 }
 
-
 .info{
-
   margin:
     0 0 15px;
 
   color:var(--muted);
 
   line-height:1.5;
-
 }
 
 
@@ -786,7 +598,6 @@ main{
 ========================================================= */
 
 label{
-
   display:block;
 
   margin:
@@ -797,13 +608,10 @@ label{
   font-weight:800;
 
   color:#405666;
-
 }
-
 
 input,
 textarea{
-
   width:100%;
 
   padding:
@@ -821,13 +629,10 @@ textarea{
   font:inherit;
 
   font-size:16px;
-
 }
-
 
 input:focus,
 textarea:focus{
-
   outline:none;
 
   border-color:#2091c7;
@@ -835,49 +640,37 @@ textarea:focus{
   box-shadow:
     0 0 0 4px
     rgba(32,145,199,.11);
-
 }
-
 
 textarea{
-
   min-height:82px;
-
   resize:vertical;
-
 }
-
 
 .row{
-
   display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
   gap:10px;
-
 }
 
-
 .location-row{
-
   display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
   gap:10px;
-
 }
 
 
 /* =========================================================
-   2E JOURNEE
+   DEUXIEME JOURNEE
 ========================================================= */
 
 .toggle-wrap{
-
   display:flex;
 
   align-items:center;
@@ -898,21 +691,14 @@ textarea{
 
   border:
     1px solid #dce8ee;
-
 }
-
 
 .toggle-text strong{
-
   display:block;
-
   font-size:14px;
-
 }
 
-
 .toggle-text small{
-
   display:block;
 
   color:#71818e;
@@ -920,37 +706,25 @@ textarea{
   margin-top:3px;
 
   line-height:1.3;
-
 }
 
-
 .switch{
-
   position:relative;
 
   width:52px;
-
   height:30px;
 
-  flex:
-    0 0 52px;
-
+  flex:0 0 52px;
 }
 
-
 .switch input{
-
   opacity:0;
 
   width:0;
-
   height:0;
-
 }
 
-
 .slider{
-
   position:absolute;
 
   inset:0;
@@ -962,22 +736,17 @@ textarea{
   cursor:pointer;
 
   transition:.2s;
-
 }
 
-
 .slider:before{
-
   content:"";
 
   position:absolute;
 
   width:24px;
-
   height:24px;
 
   left:3px;
-
   top:3px;
 
   border-radius:50%;
@@ -988,39 +757,27 @@ textarea{
     0 2px 6px rgba(0,0,0,.18);
 
   transition:.2s;
-
 }
-
 
 .switch input:checked + .slider{
-
   background:#1699ce;
-
 }
-
 
 .switch input:checked + .slider:before{
-
   transform:
     translateX(22px);
-
 }
 
-
 .day2{
-
   margin-top:12px;
 
   padding-top:4px;
 
   border-top:
     1px dashed #cbdde5;
-
 }
 
-
 .day-label{
-
   display:flex;
 
   align-items:center;
@@ -1034,7 +791,6 @@ textarea{
   font-weight:900;
 
   color:#17658b;
-
 }
 
 
@@ -1043,7 +799,6 @@ textarea{
 ========================================================= */
 
 .btn{
-
   width:100%;
 
   border:0;
@@ -1073,27 +828,22 @@ textarea{
   box-shadow:
     0 9px 20px
     rgba(8,107,159,.18);
-
 }
 
-
 .secondary{
-
   background:#eaf1f5;
 
   color:#294252;
 
   box-shadow:none;
-
 }
 
 
 /* =========================================================
-   MODALE CONGE REFUSE
+   MODALE
 ========================================================= */
 
 .modal-overlay{
-
   position:fixed;
 
   inset:0;
@@ -1112,12 +862,9 @@ textarea{
     rgba(3,18,30,.68);
 
   backdrop-filter:blur(8px);
-
 }
 
-
 .modal{
-
   width:min(500px,100%);
 
   padding:
@@ -1129,53 +876,42 @@ textarea{
     rgba(255,255,255,.98);
 
   box-shadow:
-    0 25px 70px
-    rgba(0,0,0,.35);
+    0 25px 70px rgba(0,0,0,.35);
 
   text-align:center;
 
   animation:
     modalIn .22s ease-out;
-
 }
-
 
 @keyframes modalIn{
 
   from{
-
     opacity:0;
 
     transform:
       translateY(12px)
       scale(.97);
-
   }
 
   to{
-
     opacity:1;
 
     transform:
       translateY(0)
       scale(1);
-
   }
 
 }
 
-
 .modal-icon{
-
   width:64px;
-
   height:64px;
 
   margin:
     0 auto 14px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:20px;
@@ -1183,24 +919,18 @@ textarea{
   background:#e8f6fb;
 
   font-size:34px;
-
 }
 
-
 .modal h2{
-
   margin:
     0 0 10px;
 
   color:#173249;
 
   font-size:24px;
-
 }
 
-
 .modal p{
-
   margin:
     0 auto 14px;
 
@@ -1209,19 +939,13 @@ textarea{
   line-height:1.45;
 
   font-size:15px;
-
 }
-
 
 .modal-confirm{
-
   margin-top:8px;
-
 }
 
-
 .modal-cancel{
-
   margin-top:9px;
 
   background:#edf2f5;
@@ -1229,25 +953,19 @@ textarea{
   color:#405666;
 
   box-shadow:none;
-
 }
 
 
 /* =========================================================
-   LISTE DES ECHANGES
+   LISTE
 ========================================================= */
 
 .list{
-
   display:grid;
-
   gap:14px;
-
 }
 
-
 .item{
-
   padding:17px;
 
   border-radius:22px;
@@ -1268,24 +986,27 @@ textarea{
   box-shadow:
     0 9px 23px
     rgba(10,42,62,.08);
-
 }
 
 
 /* =========================================================
-   NOM
+   NOM + DATE DE PUBLICATION
 ========================================================= */
 
 .name{
-
   font-size:20px;
 
   font-weight:900;
 
   color:#17364c;
-
 }
 
+
+/*
+ * Date et heure de publication.
+ * Elle est volontairement placée
+ * directement sous le nom.
+ */
 
 .request-date{
 
@@ -1302,13 +1023,13 @@ textarea{
 
   border-radius:9px;
 
-  background:#edf4f7;
+  background:#e8f2f6;
 
-  color:#637582;
+  color:#536c7b;
 
   font-size:12px;
 
-  font-weight:700;
+  font-weight:750;
 
 }
 
@@ -1321,26 +1042,19 @@ textarea{
 
   margin-top:12px;
 
-  padding:
-    12px;
+  padding:12px;
 
   border:
     1px solid #dce9ee;
 
   border-radius:18px;
 
-  background:
-    #f3f9fb;
-
+  background:#f3f9fb;
 }
-
 
 .journey + .journey{
-
   margin-top:10px;
-
 }
-
 
 .journey-title{
 
@@ -1357,6 +1071,29 @@ textarea{
   font-size:16px;
 
   font-weight:900;
+}
+
+
+/*
+ * Date du service mise en évidence
+ */
+
+.service-date{
+
+  margin-bottom:8px;
+
+  padding:
+    10px 11px;
+
+  border-radius:13px;
+
+  background:#e3f3f8;
+
+  color:#155c7d;
+
+  font-size:15px;
+
+  font-weight:900;
 
 }
 
@@ -1369,9 +1106,7 @@ textarea{
     1fr 1fr;
 
   gap:8px;
-
 }
-
 
 .chip{
 
@@ -1380,9 +1115,7 @@ textarea{
   border-radius:13px;
 
   background:#eaf5f9;
-
 }
-
 
 .chip span{
 
@@ -1399,18 +1132,14 @@ textarea{
   font-weight:800;
 
   margin-bottom:3px;
-
 }
-
 
 .chip strong{
 
   font-size:14px;
 
   color:#20455e;
-
 }
-
 
 .locations{
 
@@ -1422,9 +1151,7 @@ textarea{
   gap:8px;
 
   margin-top:8px;
-
 }
-
 
 .location-chip{
 
@@ -1436,9 +1163,7 @@ textarea{
 
   border:
     1px solid #e1ecef;
-
 }
-
 
 .location-chip span{
 
@@ -1455,9 +1180,7 @@ textarea{
   font-weight:800;
 
   margin-bottom:3px;
-
 }
-
 
 .location-chip strong{
 
@@ -1466,12 +1189,11 @@ textarea{
   color:#20455e;
 
   line-height:1.25;
-
 }
 
 
 /* =========================================================
-   LIEN ENTRE LES 2 JOURNEES
+   LIAISON J1 / J2
 ========================================================= */
 
 .connection{
@@ -1484,20 +1206,16 @@ textarea{
 
   gap:7px;
 
-  margin:
-    5px 0;
+  margin:5px 0;
 
-  padding:
-    5px;
+  padding:5px;
 
   color:#1385b3;
 
   font-size:11px;
 
   font-weight:850;
-
 }
-
 
 .connection-line{
 
@@ -1505,9 +1223,7 @@ textarea{
 
   flex:1;
 
-  background:
-    #c8dde6;
-
+  background:#c8dde6;
 }
 
 
@@ -1531,7 +1247,6 @@ textarea{
   font-size:13px;
 
   line-height:1.4;
-
 }
 
 
@@ -1555,7 +1270,6 @@ textarea{
   font-size:13px;
 
   font-weight:700;
-
 }
 
 
@@ -1573,9 +1287,7 @@ textarea{
   gap:8px;
 
   margin-top:11px;
-
 }
-
 
 .small{
 
@@ -1593,25 +1305,20 @@ textarea{
   font-weight:800;
 
   cursor:pointer;
-
 }
-
 
 .interet{
 
   background:#fff0cf;
 
   color:#8b5b00;
-
 }
-
 
 .delete{
 
   background:#ffe5e5;
 
   color:#b72e2e;
-
 }
 
 
@@ -1627,9 +1334,7 @@ textarea{
     28px 15px;
 
   color:#71808c;
-
 }
-
 
 .empty-icon{
 
@@ -1638,7 +1343,6 @@ textarea{
   font-size:40px;
 
   margin-bottom:7px;
-
 }
 
 
@@ -1687,9 +1391,7 @@ nav{
     rgba(8,40,58,.22);
 
   backdrop-filter:blur(20px);
-
 }
-
 
 nav button{
 
@@ -1713,9 +1415,7 @@ nav button{
   font-weight:800;
 
   cursor:pointer;
-
 }
-
 
 .nav-icon{
 
@@ -1724,7 +1424,6 @@ nav button{
   font-size:18px;
 
   margin-bottom:1px;
-
 }
 
 
@@ -1735,58 +1434,38 @@ nav button{
 @media(max-width:699px){
 
   .bg{
-
-    background-position:
-      center center;
-
+    background-position:center center;
   }
 
 }
-
 
 @media(min-width:700px)
 and (max-width:1099px){
 
   .bg{
-
-    background-position:
-      center 42%;
-
+    background-position:center 42%;
   }
 
 }
-
 
 @media(min-width:1100px){
 
   .bg{
-
-    background-position:
-      center 45%;
-
+    background-position:center 45%;
   }
 
 }
 
-
 @media(min-width:700px){
 
   .hero{
-
     min-height:275px;
-
     padding-top:24px;
-
   }
-
 
   main{
-
-    padding:
-      0 22px;
-
+    padding:0 22px;
   }
-
 
   .choices{
 
@@ -1794,61 +1473,41 @@ and (max-width:1099px){
       1fr 1fr;
 
     gap:14px;
-
   }
-
 
   .welcome{
-
     padding:
       24px 28px 21px;
-
   }
 
-
   .choice-card{
-
     min-height:106px;
 
     padding:
       15px 18px;
-
   }
 
 }
-
 
 @media(min-width:1000px){
 
   .hero{
-
     min-height:300px;
-
   }
-
 
   main{
-
     margin-top:-42px;
-
   }
-
 
   .choices{
-
     gap:18px;
-
   }
 
-
   .choice-card{
-
     min-height:115px;
-
   }
 
 }
-
 
 @media(max-width:600px){
 
@@ -1857,11 +1516,9 @@ and (max-width:1099px){
 
     grid-template-columns:
       1fr;
-
   }
 
 }
-
 
 @media(max-width:500px){
 
@@ -1869,11 +1526,9 @@ and (max-width:1099px){
 
     grid-template-columns:
       1fr;
-
   }
 
 }
-
 
 @media(max-width:380px){
 
@@ -1882,55 +1537,35 @@ and (max-width:1099px){
     min-height:230px;
 
     padding-bottom:52px;
-
   }
-
 
   .hero h1{
-
     font-size:32px;
-
   }
-
 
   .sub{
-
     font-size:14px;
-
   }
-
 
   .welcome{
-
     padding:
       20px 14px 18px;
-
   }
-
 
   .welcome h2{
-
     font-size:28px;
-
   }
-
 
   .welcome p{
-
     font-size:13px;
-
   }
 
-
   .pill{
-
     font-size:12px;
 
     padding:
       7px 11px;
-
   }
-
 
   .choice-card{
 
@@ -1940,43 +1575,31 @@ and (max-width:1099px){
       11px 12px;
 
     gap:9px;
-
   }
-
 
   .choice-icon{
 
     width:51px;
-
     height:51px;
 
     flex-basis:51px;
 
     font-size:27px;
-
   }
-
 
   .choice-text strong{
-
     font-size:19px;
-
   }
-
 
   .choice-text small{
-
     font-size:11px;
-
   }
-
 
   .service,
   .actions{
 
     grid-template-columns:
       1fr;
-
   }
 
 }
@@ -2672,6 +2295,7 @@ function choisirMetier(metier){
   document
     .getElementById("metier")
     .innerHTML =
+
       metier === "ADC"
 
         ? "🚆 ADC – Conducteurs"
@@ -2693,7 +2317,7 @@ function choisirMetier(metier){
 
 
 /* =========================================================
-   CONFIRMATION CONGE REFUSE
+   CONFIRMATION
 ========================================================= */
 
 function confirmerCongeRefuse(){
@@ -2729,7 +2353,7 @@ function annulerCongeRefuse(){
 
 
 /* =========================================================
-   CHANGER DE METIER
+   CHANGER METIER
 ========================================================= */
 
 function changerMetier(){
@@ -2863,7 +2487,7 @@ async function publier(){
 
 
   /* -------------------------------------------------------
-     VERIFICATION METIER
+     METIER
   ------------------------------------------------------- */
 
   if(!metierActuel){
@@ -2878,7 +2502,7 @@ async function publier(){
 
 
   /* -------------------------------------------------------
-     VERIFICATION JOURNEE 1
+     JOURNEE 1
   ------------------------------------------------------- */
 
   if(
@@ -2904,7 +2528,7 @@ async function publier(){
 
 
   /* -------------------------------------------------------
-     VERIFICATION JOURNEE 2
+     JOURNEE 2
   ------------------------------------------------------- */
 
   if(
@@ -2933,7 +2557,7 @@ async function publier(){
 
 
   /* -------------------------------------------------------
-     JOURNEES DIFFERENTES
+     DATES DIFFERENTES
   ------------------------------------------------------- */
 
   if(
@@ -2954,19 +2578,54 @@ async function publier(){
   }
 
 
-  /* -------------------------------------------------------
-     NOUVELLE DATE DE DEMANDE
+  /*
+   * Vérification optionnelle :
+   * si 2 journées sont proposées,
+   * elles doivent être consécutives.
+   */
+
+  if(
+
+    deuxieme &&
+    !datesConsecutives(
+      date,
+      date2
+    ) &&
+    !datesConsecutives(
+      date2,
+      date
+    )
+
+  ){
+
+    alert(
+
+      "Pour une demande de 2 journées, les deux dates doivent être consécutives."
+
+    );
+
+    return;
+
+  }
+
+
+  /* =======================================================
+     DATE ET HEURE DE PUBLICATION
      
-     Même timestamp pour les 2 lignes.
-  ------------------------------------------------------- */
+     IMPORTANT :
+     Cette valeur est créée UNE SEULE FOIS.
+     
+     Les deux lignes d'une demande de 2 journées
+     possèdent donc exactement le même horodatage.
+  ======================================================= */
 
   const dateDemande =
     new Date().toISOString();
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      JOURNEE 1
-  ------------------------------------------------------- */
+  ======================================================= */
 
   const demandes = [
 
@@ -3010,9 +2669,9 @@ async function publier(){
   ];
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      JOURNEE 2
-  ------------------------------------------------------- */
+  ======================================================= */
 
   if(deuxieme){
 
@@ -3056,14 +2715,18 @@ async function publier(){
   }
 
 
-  /* -------------------------------------------------------
-     INSERTION
-  ------------------------------------------------------- */
+  /* =======================================================
+     INSERTION SUPABASE
+  ======================================================= */
 
-  const {error} =
+  const {
+    error
+  } =
 
     await supabaseClient
+
       .from("echanges")
+
       .insert(demandes);
 
 
@@ -3084,16 +2747,16 @@ async function publier(){
   }
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      RESET
-  ------------------------------------------------------- */
+  ======================================================= */
 
   resetFormulaire();
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      CONFIRMATION
-  ------------------------------------------------------- */
+  ======================================================= */
 
   alert(
 
@@ -3112,11 +2775,10 @@ async function publier(){
 
 
 /* =========================================================
-   RESET
+   RESET FORMULAIRE
 ========================================================= */
 
 function resetFormulaire(){
-
 
   [
 
@@ -3146,20 +2808,20 @@ function resetFormulaire(){
 
   ]
 
-  .forEach(id => {
+  .forEach(
+    id => {
 
+      const el =
+        document.getElementById(id);
 
-    const el =
-      document.getElementById(id);
+      if(el){
 
+        el.value = "";
 
-    if(el){
-
-      el.value = "";
+      }
 
     }
-
-  });
+  );
 
 
   const cb =
@@ -3184,17 +2846,8 @@ function resetFormulaire(){
 
 
 /* =========================================================
-   UTILITAIRES DATES
+   OUTILS DATES
 ========================================================= */
-
-
-/*
- * Convertit une date YYYY-MM-DD en
- * nombre de jours depuis une origine.
- *
- * Permet de vérifier facilement
- * si deux dates sont consécutives.
- */
 
 function dateToDayNumber(date){
 
@@ -3216,38 +2869,43 @@ function dateToDayNumber(date){
   }
 
 
-  const y =
+  const year =
     Number(parts[0]);
 
-  const m =
+
+  const month =
     Number(parts[1]);
 
-  const d =
+
+  const day =
     Number(parts[2]);
 
 
   const dt =
     new Date(
+
       Date.UTC(
-        y,
-        m - 1,
-        d
+        year,
+        month - 1,
+        day
       )
+
     );
 
 
   return Math.floor(
+
     dt.getTime() /
     86400000
+
   );
 
 }
 
 
-/*
- * Vérifie que dateB est exactement
- * le lendemain de dateA.
- */
+/* =========================================================
+   DATES CONSECUTIVES
+========================================================= */
 
 function datesConsecutives(
   dateA,
@@ -3255,112 +2913,31 @@ function datesConsecutives(
 ){
 
   const a =
-    dateToDayNumber(dateA);
+    dateToDayNumber(
+      dateA
+    );
 
 
   const b =
-    dateToDayNumber(dateB);
+    dateToDayNumber(
+      dateB
+    );
 
 
   return (
 
     Number.isFinite(a) &&
     Number.isFinite(b) &&
-    b === a + 1
+    Math.abs(b - a) === 1
 
   );
 
 }
 
 
-/*
- * Normalise les lieux afin d'éviter
- * qu'un espace ou une différence de
- * majuscule empêche le regroupement.
- */
-
-function normaliserLieu(value){
-
-  return String(
-    value || ""
-  )
-  .trim()
-  .replace(/\s+/g," ")
-  .toUpperCase();
-
-}
-
-
-/*
- * Vérifie si deux journées peuvent
- * être regroupées dans le même post.
- *
- * CONDITIONS :
- *
- * 1. même nom
- * 2. même métier
- * 3. dates consécutives
- * 4. fin service J1 =
- *    prise service J2
- */
-
-function peutRegrouper(
-  jour1,
-  jour2
-){
-
-  const memeNom =
-
-    normaliserTexte(
-      jour1.nom
-    ) ===
-
-    normaliserTexte(
-      jour2.nom
-    );
-
-
-  const memeMetier =
-
-    String(jour1.metier || "")
-    ===
-    String(jour2.metier || "");
-
-
-  const dateOK =
-
-    datesConsecutives(
-      jour1.date_service,
-      jour2.date_service
-    );
-
-
-  const lieuOK =
-
-    normaliserLieu(
-      jour1.lieu_fin_service
-    )
-    ===
-    normaliserLieu(
-      jour2.lieu_prise_service
-    );
-
-
-  return (
-
-    memeNom &&
-    memeMetier &&
-    dateOK &&
-    lieuOK
-
-  );
-
-}
-
-
-/*
- * Normalisation des noms.
- */
+/* =========================================================
+   NORMALISATION
+========================================================= */
 
 function normaliserTexte(value){
 
@@ -3374,76 +2951,193 @@ function normaliserTexte(value){
 }
 
 
+function normaliserLieu(value){
+
+  return String(
+    value || ""
+  )
+  .trim()
+  .replace(/\s+/g," ")
+  .toUpperCase();
+
+}
+
+
 /* =========================================================
-   CREATION DES GROUPES
+   TEST REGROUPEMENT
 ========================================================= */
 
+function peutRegrouper(
+  jour1,
+  jour2
+){
 
-/*
- * Cette fonction transforme les lignes
- * Supabase en posts.
- *
- * Exemple :
- *
- * BOURGEARD - 17/09 - AR -> GRV
- * BOURGEARD - 18/09 - GRV -> AR
- *
- * devient :
- *
- * ┌─────────────────────────────┐
- * │ BOURGEARD                   │
- * │ demande publiée le ...     │
- * │                             │
- * │ JOURNÉE 1                   │
- * │ 17/09 15:38 → 17:38         │
- * │ AR → GRV                    │
- * │                             │
- * │ JOURNÉE 2                   │
- * │ 18/09 15:38 → 17:38         │
- * │ GRV → AR                    │
- * └─────────────────────────────┘
- *
- */
+  /*
+   * Même métier
+   */
+
+  const memeMetier =
+
+    String(
+      jour1.metier || ""
+    )
+    ===
+    String(
+      jour2.metier || ""
+    );
+
+
+  /*
+   * Même nom
+   */
+
+  const memeNom =
+
+    normaliserTexte(
+      jour1.nom
+    )
+    ===
+    normaliserTexte(
+      jour2.nom
+    );
+
+
+  /*
+   * Dates consécutives,
+   * dans n'importe quel ordre.
+   */
+
+  const datesOK =
+
+    datesConsecutives(
+
+      jour1.date_service,
+
+      jour2.date_service
+
+    );
+
+
+  /*
+   * On identifie automatiquement
+   * la journée 1 et la journée 2.
+   */
+
+  let premier =
+    jour1;
+
+  let second =
+    jour2;
+
+
+  if(
+
+    String(
+      jour2.date_service || ""
+    )
+    <
+    String(
+      jour1.date_service || ""
+    )
+
+  ){
+
+    premier =
+      jour2;
+
+    second =
+      jour1;
+
+  }
+
+
+  /*
+   * CONDITION ESSENTIELLE :
+   *
+   * fin service J1
+   * =
+   * prise service J2
+   */
+
+  const lieuxOK =
+
+    normaliserLieu(
+      premier.lieu_fin_service
+    )
+    ===
+    normaliserLieu(
+      second.lieu_prise_service
+    );
+
+
+  return (
+
+    memeMetier &&
+    memeNom &&
+    datesOK &&
+    lieuxOK
+
+  );
+
+}
+
+
+/* =========================================================
+   CONSTRUCTION DES GROUPES
+========================================================= */
 
 function construireGroupes(data){
 
   const lignes =
-    [...data].sort(
-      (a,b) => {
-
-        const da =
-          String(
-            a.date_service || ""
-          );
-
-        const db =
-          String(
-            b.date_service || ""
-          );
+    [...data];
 
 
-        if(da < db){
+  /*
+   * Tri chronologique.
+   */
 
-          return -1;
+  lignes.sort(
 
-        }
+    (a,b) => {
 
-
-        if(da > db){
-
-          return 1;
-
-        }
+      const da =
+        String(
+          a.date_service || ""
+        );
 
 
-        return Number(a.id) -
-               Number(b.id);
+      const db =
+        String(
+          b.date_service || ""
+        );
+
+
+      if(da < db){
+
+        return -1;
 
       }
-    );
+
+
+      if(da > db){
+
+        return 1;
+
+      }
+
+
+      return (
+        Number(a.id) -
+        Number(b.id)
+      );
+
+    }
+
+  );
 
 
   const groupes = [];
+
 
   const utilise =
     new Set();
@@ -3470,10 +3164,13 @@ function construireGroupes(data){
     }
 
 
-    let groupe = [
+    /*
+     * On commence par un groupe
+     * contenant une seule journée.
+     */
 
+    const groupe = [
       ligne
-
     ];
 
 
@@ -3504,10 +3201,12 @@ function construireGroupes(data){
 
 
       if(
+
         peutRegrouper(
           ligne,
           candidate
         )
+
       ){
 
         groupe.push(
@@ -3533,23 +3232,23 @@ function construireGroupes(data){
 
 
     /*
-     * On remet les journées
-     * dans l'ordre chronologique.
+     * Tri interne du groupe :
+     * J1 puis J2.
      */
 
     groupe.sort(
-      (a,b) => {
 
-        return String(
+      (a,b) =>
+
+        String(
           a.date_service || ""
         )
         .localeCompare(
           String(
             b.date_service || ""
           )
-        );
+        )
 
-      }
     );
 
 
@@ -3612,9 +3311,9 @@ async function afficherEchanges(){
   }
 
 
-  /* -------------------------------------------------------
-     REQUETE
-  ------------------------------------------------------- */
+  /* =======================================================
+     RECUPERATION
+  ======================================================= */
 
   const {
     data,
@@ -3680,8 +3379,10 @@ async function afficherEchanges(){
 
 
   if(
+
     !data ||
     !data.length
+
   ){
 
     zone.innerHTML =
@@ -3704,20 +3405,24 @@ async function afficherEchanges(){
   }
 
 
-  /* -------------------------------------------------------
-     CREATION DES GROUPES
-  ------------------------------------------------------- */
+  /* =======================================================
+     GROUPES
+  ======================================================= */
 
   const groupes =
-    construireGroupes(data);
+    construireGroupes(
+      data
+    );
 
 
-  /* -------------------------------------------------------
-     AFFICHAGE
-  ------------------------------------------------------- */
+  /* =======================================================
+     AFFICHAGE DES GROUPES
+  ======================================================= */
 
   groupes.forEach(
+
     groupe => {
+
 
       const bloc =
         document.createElement(
@@ -3729,6 +3434,11 @@ async function afficherEchanges(){
         "item";
 
 
+      /*
+       * Première journée = référence
+       * pour le nom et la publication.
+       */
+
       const premier =
         groupe[0];
 
@@ -3737,7 +3447,7 @@ async function afficherEchanges(){
          NOM
       =================================================== */
 
-      const nomAffiche =
+      const nomHTML =
 
         escapeHTML(
           premier.nom
@@ -3745,39 +3455,60 @@ async function afficherEchanges(){
 
 
       /* ===================================================
-         DATE DEMANDE
+         DATE DE PUBLICATION
       =================================================== */
 
       /*
-       * Pour un groupe, les 2 lignes
-       * ont normalement exactement
-       * le même date_demande.
+       * PRIORITE :
+       *
+       * 1. date_demande
+       * 2. anciens champs éventuellement présents
+       *
+       * Pour les nouvelles demandes,
+       * date_demande sera toujours présent.
        */
 
-      const created =
-
-        premier.date_demande ||
-
-        premier.created_at ||
-
-        premier.date_creation ||
-
-        premier.createdAt;
+      let datePublication =
+        premier.date_demande;
 
 
-      let requestHTML;
+      if(!datePublication){
+
+        datePublication =
+          premier.created_at;
+
+      }
 
 
-      if(created){
+      if(!datePublication){
 
-        requestHTML =
+        datePublication =
+          premier.date_creation;
+
+      }
+
+
+      if(!datePublication){
+
+        datePublication =
+          premier.createdAt;
+
+      }
+
+
+      let publicationHTML = "";
+
+
+      if(datePublication){
+
+        publicationHTML =
 
           '<div class="request-date">' +
 
-            '🕒 Demande publiée le ' +
+            '🕒 Publiée le ' +
 
             formatDateTime(
-              created
+              datePublication
             ) +
 
           '</div>';
@@ -3786,11 +3517,11 @@ async function afficherEchanges(){
 
       else{
 
-        requestHTML =
+        publicationHTML =
 
           '<div class="request-date">' +
 
-            '🕒 Date de demande non disponible' +
+            '🕒 Date de publication non disponible' +
 
           '</div>';
 
@@ -3801,13 +3532,8 @@ async function afficherEchanges(){
          INTERET
       =================================================== */
 
-      /*
-       * Si l'une des journées possède
-       * déjà un agent intéressé,
-       * on l'affiche.
-       */
-
-      let interetTexte = "";
+      let agentInteresse =
+        "";
 
 
       for(
@@ -3815,10 +3541,13 @@ async function afficherEchanges(){
       ){
 
         if(
-          jour.agent_interesse
+          jour.agent_interesse &&
+          String(
+            jour.agent_interesse
+          ).trim()
         ){
 
-          interetTexte =
+          agentInteresse =
             jour.agent_interesse;
 
           break;
@@ -3830,7 +3559,7 @@ async function afficherEchanges(){
 
       const interest =
 
-        interetTexte
+        agentInteresse
 
           ?
 
@@ -3841,7 +3570,7 @@ async function afficherEchanges(){
               '<strong>' +
 
                 escapeHTML(
-                  interetTexte
+                  agentInteresse
                 ) +
 
               '</strong>' +
@@ -3857,7 +3586,8 @@ async function afficherEchanges(){
          COMMENTAIRE
       =================================================== */
 
-      let commentaireTexte = "";
+      let commentaire =
+        "";
 
 
       for(
@@ -3871,7 +3601,7 @@ async function afficherEchanges(){
           ).trim()
         ){
 
-          commentaireTexte =
+          commentaire =
             jour.commentaire;
 
           break;
@@ -3881,9 +3611,9 @@ async function afficherEchanges(){
       }
 
 
-      const comment =
+      const commentHTML =
 
-        commentaireTexte
+        commentaire
 
           ?
 
@@ -3892,7 +3622,7 @@ async function afficherEchanges(){
               '💬 ' +
 
               escapeHTML(
-                commentaireTexte
+                commentaire
               ) +
 
             '</div>'
@@ -3906,10 +3636,12 @@ async function afficherEchanges(){
          JOURNEES
       =================================================== */
 
-      let journeesHTML = "";
+      let journeesHTML =
+        "";
 
 
       groupe.forEach(
+
         (jour,index) => {
 
 
@@ -3947,6 +3679,26 @@ async function afficherEchanges(){
                 "Non renseigné";
 
 
+          /*
+           * DATE DU JOUR DE SERVICE
+           *
+           * Elle est affichée
+           * très explicitement.
+           */
+
+          const dateServiceHTML =
+
+            '<div class="service-date">' +
+
+              '📅 ' +
+
+              formatDate(
+                jour.date_service
+              ) +
+
+            '</div>';
+
+
           journeesHTML +=
 
             '<div class="journey">' +
@@ -3961,6 +3713,9 @@ async function afficherEchanges(){
               '</div>' +
 
 
+              dateServiceHTML +
+
+
               '<div class="service">' +
 
 
@@ -3968,28 +3723,7 @@ async function afficherEchanges(){
 
                   '<span>' +
 
-                    'Date' +
-
-                  '</span>' +
-
-                  '<strong>' +
-
-                    '📅 ' +
-
-                    formatDate(
-                      jour.date_service
-                    ) +
-
-                  '</strong>' +
-
-                '</div>' +
-
-
-                '<div class="chip">' +
-
-                  '<span>' +
-
-                    'Horaires' +
+                    'Prise de service' +
 
                   '</span>' +
 
@@ -4001,7 +3735,22 @@ async function afficherEchanges(){
                       jour.prise_service
                     ) +
 
-                    ' → ' +
+                  '</strong>' +
+
+                '</div>' +
+
+
+                '<div class="chip">' +
+
+                  '<span>' +
+
+                    'Fin de service' +
+
+                  '</span>' +
+
+                  '<strong>' +
+
+                    '⏰ ' +
 
                     formatTime(
                       jour.fin_service
@@ -4059,14 +3808,14 @@ async function afficherEchanges(){
 
 
           /*
-           * Si 2 journées sont regroupées,
-           * on affiche une liaison visuelle
-           * entre J1 et J2.
+           * Liaison visuelle entre J1 et J2.
            */
 
           if(
+
             index <
             groupe.length - 1
+
           ){
 
             journeesHTML +=
@@ -4084,20 +3833,13 @@ async function afficherEchanges(){
           }
 
         }
+
       );
 
 
       /* ===================================================
-         ACTIONS
+         IDS
       =================================================== */
-
-      /*
-       * Le bouton "intéressé" utilise
-       * la première ligne du groupe.
-       *
-       * Le bouton supprimer supprime
-       * toutes les lignes du groupe.
-       */
 
       const premierId =
         Number(
@@ -4111,22 +3853,26 @@ async function afficherEchanges(){
         );
 
 
+      /* ===================================================
+         POST
+      =================================================== */
+
       bloc.innerHTML = `
 
         <div class="name">
 
-          👤 ${nomAffiche}
+          👤 ${nomHTML}
 
         </div>
 
 
-        ${requestHTML}
+        ${publicationHTML}
 
 
         ${journeesHTML}
 
 
-        ${comment}
+        ${commentHTML}
 
 
         ${interest}
@@ -4163,13 +3909,14 @@ async function afficherEchanges(){
       );
 
     }
+
   );
 
 }
 
 
 /* =========================================================
-   INTERESSE GROUPE
+   INTERESSE
 ========================================================= */
 
 async function interesseGroupe(
@@ -4203,12 +3950,6 @@ async function interesseGroupe(
 
   }
 
-
-  /*
-   * On retrouve d'abord le groupe
-   * correspondant afin d'enregistrer
-   * l'intérêt sur les journées du groupe.
-   */
 
   const {
     data,
@@ -4260,9 +4001,8 @@ async function interesseGroupe(
 
 
   /*
-   * Pour savoir si une deuxième ligne
-   * fait partie du même post, on récupère
-   * les journées du même nom/métier.
+   * Recherche des autres lignes
+   * du même nom et métier.
    */
 
   const {
@@ -4306,26 +4046,34 @@ async function interesseGroupe(
   }
 
 
+  /*
+   * On retrouve uniquement
+   * les lignes faisant réellement
+   * partie du même groupe.
+   */
+
   const groupe =
 
     (autres || [])
+
       .filter(
+
         e =>
+
           e.id === ligne.id ||
+
           peutRegrouper(
             ligne,
             e
           ) ||
+
           peutRegrouper(
             e,
             ligne
           )
+
       );
 
-
-  /*
-   * Au minimum la ligne sélectionnée.
-   */
 
   const ids =
 
@@ -4342,7 +4090,9 @@ async function interesseGroupe(
         [ligne.id];
 
 
-  const {error:updateError} =
+  const {
+    error:updateError
+  } =
 
     await supabaseClient
 
@@ -4385,10 +4135,6 @@ async function interesseGroupe(
 }
 
 
-/* =========================================================
-   ANCIENNE FONCTION INTERESSE
-========================================================= */
-
 async function interesse(id){
 
   await interesseGroupe(id);
@@ -4397,7 +4143,7 @@ async function interesse(id){
 
 
 /* =========================================================
-   SUPPRIMER UN GROUPE
+   SUPPRESSION GROUPE
 ========================================================= */
 
 async function supprimerGroupe(
@@ -4405,8 +4151,10 @@ async function supprimerGroupe(
 ){
 
   if(
+
     !Array.isArray(ids) ||
     !ids.length
+
   ){
 
     return;
@@ -4436,7 +4184,9 @@ async function supprimerGroupe(
   }
 
 
-  const {error} =
+  const {
+    error
+  } =
 
     await supabaseClient
 
@@ -4467,9 +4217,17 @@ async function supprimerGroupe(
 
 
   alert(
+
     ids.length > 1
-      ? "🗑️ Les 2 journées ont été supprimées."
-      : "🗑️ La demande a été supprimée."
+
+      ?
+
+        "🗑️ Les 2 journées ont été supprimées."
+
+      :
+
+        "🗑️ La demande a été supprimée."
+
   );
 
 
@@ -4477,10 +4235,6 @@ async function supprimerGroupe(
 
 }
 
-
-/* =========================================================
-   SUPPRIMER UNE SEULE LIGNE
-========================================================= */
 
 async function supprimer(id){
 
@@ -4492,37 +4246,46 @@ async function supprimer(id){
 
 
 /* =========================================================
-   FORMAT DATE
+   FORMAT DATE SERVICE
 ========================================================= */
 
 function formatDate(date){
 
   if(!date){
 
-    return "";
+    return "Date non renseignée";
 
   }
 
 
+  const valeur =
+    String(date)
+      .substring(0,10);
+
+
   const p =
-    String(date).split("-");
+    valeur.split("-");
 
 
-  return
+  if(
+    p.length === 3 &&
+    p[0].length === 4
+  ){
 
-    p.length === 3
+    return (
 
-      ?
+      p[2] +
+      "/" +
+      p[1] +
+      "/" +
+      p[0]
 
-        p[2] +
-        "/" +
-        p[1] +
-        "/" +
-        p[0]
+    );
 
-      :
+  }
 
-        String(date);
+
+  return String(date);
 
 }
 
@@ -4533,22 +4296,21 @@ function formatDate(date){
 
 function formatTime(h){
 
-  return h
+  if(!h){
 
-    ?
+    return "Non renseignée";
 
-      String(h)
-        .substring(0,5)
+  }
 
-    :
 
-      "";
+  return String(h)
+    .substring(0,5);
 
 }
 
 
 /* =========================================================
-   FORMAT DATE / HEURE DEMANDE
+   FORMAT DATE DE PUBLICATION
 ========================================================= */
 
 function formatDateTime(value){
@@ -4575,18 +4337,14 @@ function formatDateTime(value){
   }
 
 
-  return
+  return (
 
     d.toLocaleDateString(
       "fr-FR",
       {
-
         day:"2-digit",
-
         month:"2-digit",
-
         year:"numeric"
-
       }
     )
 
@@ -4599,13 +4357,12 @@ function formatDateTime(value){
     d.toLocaleTimeString(
       "fr-FR",
       {
-
         hour:"2-digit",
-
         minute:"2-digit"
-
       }
-    );
+    )
+
+  );
 
 }
 
@@ -4646,12 +4403,15 @@ function escapeHTML(t){
 ========================================================= */
 
 document.addEventListener(
+
   "DOMContentLoaded",
+
   () => {
 
     afficher("accueil");
 
   }
+
 );
 
 </script>
