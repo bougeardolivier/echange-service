@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -10,23 +12,45 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   padding:0;
   width:100%;
   min-height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
   color:#17344b;
+
   background:#edf4f7;
 }
 
 body{
   overflow-x:hidden;
+}
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
 }
 
 /* =========================================================
@@ -36,7 +60,9 @@ body{
 .bg{
   position:fixed;
   inset:0;
+
   z-index:-5;
+
   overflow:hidden;
   pointer-events:none;
 
@@ -51,8 +77,10 @@ body{
 
 .bg::after{
   content:"";
+
   position:absolute;
   inset:0;
+
   background:
     linear-gradient(
       180deg,
@@ -77,7 +105,431 @@ body{
 }
 
 /* =========================================================
-   HEADER
+   ACCUEIL V4.4
+========================================================= */
+
+.home-page{
+  min-height:100vh;
+
+  padding:
+    28px 20px
+    120px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4,25,42,.92) 0%,
+      rgba(10,42,61,.90) 37%,
+      rgba(231,241,246,.94) 100%
+    );
+}
+
+/* =========================================================
+   EN-TÊTE ACCUEIL
+========================================================= */
+
+.home-header{
+  width:min(1500px,100%);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  text-align:center;
+
+  margin-bottom:52px;
+}
+
+.home-train{
+  width:86px;
+  height:86px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:16px;
+
+  border-radius:25px;
+
+  border:1px solid rgba(255,255,255,.35);
+
+  background:
+    rgba(5,28,45,.48);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.12);
+
+  font-size:46px;
+}
+
+.home-title{
+  margin:0;
+
+  font-size:
+    clamp(42px,7vw,82px);
+
+  line-height:.98;
+
+  font-weight:950;
+
+  letter-spacing:-3px;
+
+  color:white;
+
+  text-shadow:
+    0 8px 30px rgba(0,0,0,.28);
+}
+
+.home-title .blue{
+  color:#58d6f2;
+}
+
+.home-subtitle{
+  margin:23px 0 0;
+
+  color:white;
+
+  font-size:
+    clamp(17px,2.6vw,28px);
+
+  font-weight:500;
+
+  line-height:1.35;
+}
+
+.home-subtitle strong{
+  color:#62d9f4;
+  font-weight:900;
+}
+
+.home-line{
+  width:min(620px,70%);
+
+  height:3px;
+
+  margin-top:25px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #55d7f4,
+      transparent
+    );
+
+  box-shadow:
+    0 0 18px rgba(71,210,241,.5);
+}
+
+/* =========================================================
+   CARTE BIENVENUE
+========================================================= */
+
+.welcome-card{
+  position:relative;
+
+  width:min(1500px,100%);
+
+  min-height:350px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  padding:
+    48px 35px
+    42px;
+
+  margin-bottom:22px;
+
+  overflow:hidden;
+
+  text-align:center;
+
+  border-radius:38px;
+
+  background:
+    rgba(255,255,255,.94);
+
+  border:
+    1px solid rgba(255,255,255,.90);
+
+  box-shadow:
+    0 25px 70px rgba(5,31,47,.24);
+}
+
+.welcome-card::before{
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  top:-95px;
+  left:-80px;
+
+  border-radius:50%;
+
+  background:
+    rgba(80,190,222,.17);
+}
+
+.welcome-card::after{
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  right:-95px;
+  bottom:-125px;
+
+  border-radius:50%;
+
+  background:
+    rgba(73,195,183,.14);
+}
+
+.welcome-icon{
+  position:relative;
+  z-index:2;
+
+  width:86px;
+  height:86px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:20px;
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dff7fd,
+      #c9f0f7
+    );
+
+  box-shadow:
+    0 12px 30px rgba(19,143,177,.16);
+
+  font-size:45px;
+}
+
+.welcome-card h2{
+  position:relative;
+  z-index:2;
+
+  margin:0;
+
+  color:#17354d;
+
+  font-size:
+    clamp(38px,5vw,57px);
+
+  line-height:1;
+
+  font-weight:950;
+
+  letter-spacing:-1.5px;
+}
+
+.welcome-card p{
+  position:relative;
+  z-index:2;
+
+  margin:
+    22px 0
+    23px;
+
+  color:#718294;
+
+  font-size:
+    clamp(16px,2vw,25px);
+
+  line-height:1.4;
+
+  font-weight:500;
+}
+
+.choose-pill{
+  position:relative;
+  z-index:2;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:13px 25px;
+
+  border-radius:999px;
+
+  color:#28566e;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d8f7fc,
+      #c8eff7
+    );
+
+  font-size:
+    clamp(14px,1.7vw,19px);
+
+  font-weight:900;
+
+  box-shadow:
+    0 7px 20px rgba(27,147,180,.12);
+}
+
+/* =========================================================
+   CHOIX METIER V4.4
+========================================================= */
+
+.home-metiers{
+  width:min(1500px,100%);
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:25px;
+}
+
+.home-metier-card{
+  position:relative;
+
+  min-height:165px;
+
+  display:flex;
+  align-items:center;
+
+  padding:26px 30px;
+
+  border-radius:30px;
+
+  background:
+    rgba(255,255,255,.96);
+
+  border:
+    1px solid rgba(255,255,255,.9);
+
+  box-shadow:
+    0 18px 50px rgba(6,38,56,.20);
+
+  cursor:pointer;
+
+  overflow:hidden;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+.home-metier-card:active{
+  transform:scale(.985);
+}
+
+.home-metier-card.adc{
+  border-left:
+    7px solid #2da9d8;
+}
+
+.home-metier-card.asct{
+  border-left:
+    7px solid #3bc1b1;
+}
+
+.home-metier-icon{
+  width:92px;
+  height:92px;
+
+  flex:0 0 92px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-right:23px;
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dff7fc,
+      #c9eff7
+    );
+
+  font-size:47px;
+}
+
+.home-metier-content{
+  min-width:0;
+}
+
+.home-metier-name{
+  margin:0 0 5px;
+
+  color:#1680cf;
+
+  font-size:
+    clamp(25px,3vw,34px);
+
+  font-weight:950;
+
+  line-height:1;
+}
+
+.home-metier-description{
+  color:#82909e;
+
+  font-size:
+    clamp(14px,1.8vw,20px);
+
+  line-height:1.35;
+
+  font-weight:500;
+}
+
+.home-metier-arrow{
+  margin-left:auto;
+  padding-left:15px;
+
+  color:#2386b3;
+
+  font-size:35px;
+  font-weight:500;
+}
+
+/* =========================================================
+   PAGE ECHANGES
+========================================================= */
+
+.exchange-page{
+  display:none;
+}
+
+.exchange-page.visible{
+  display:block;
+}
+
+/* =========================================================
+   HEADER ECHANGES
 ========================================================= */
 
 .header{
@@ -85,13 +537,17 @@ body{
   top:0;
   z-index:30;
 
-  background:rgba(7,28,45,.88);
+  background:
+    rgba(7,28,45,.88);
+
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
 
-  border-bottom:1px solid rgba(255,255,255,.15);
+  border-bottom:
+    1px solid rgba(255,255,255,.15);
 
-  box-shadow:0 8px 30px rgba(0,0,0,.20);
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.20);
 }
 
 .header-inner{
@@ -103,27 +559,36 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:20px;
 }
 
 .logo-area{
   display:flex;
   align-items:center;
+
   gap:16px;
 }
 
 .logo-train{
   width:62px;
   height:62px;
-  border-radius:18px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
+  border-radius:18px;
+
   font-size:34px;
 
-  background:linear-gradient(145deg,#ffffff,#dcebf2);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #dcebf2
+    );
+
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.9),
     0 8px 25px rgba(0,0,0,.25);
@@ -134,9 +599,13 @@ body{
 
   color:white;
 
-  font-size:clamp(27px,4vw,48px);
+  font-size:
+    clamp(27px,4vw,48px);
+
   line-height:1;
+
   font-weight:900;
+
   letter-spacing:-1px;
 }
 
@@ -145,21 +614,27 @@ body{
 
   color:#cfe7f4;
 
-  font-size:clamp(12px,1.7vw,17px);
+  font-size:
+    clamp(12px,1.7vw,17px);
+
   font-weight:600;
 }
 
 .status-pill{
   display:flex;
   align-items:center;
+
   gap:8px;
 
   padding:11px 16px;
 
   border-radius:999px;
 
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.15);
+  background:
+    rgba(255,255,255,.10);
+
+  border:
+    1px solid rgba(255,255,255,.15);
 
   color:white;
 
@@ -170,9 +645,13 @@ body{
 .status-dot{
   width:9px;
   height:9px;
+
   border-radius:50%;
+
   background:#49d69b;
-  box-shadow:0 0 10px rgba(73,214,155,.8);
+
+  box-shadow:
+    0 0 10px rgba(73,214,155,.8);
 }
 
 /* =========================================================
@@ -186,11 +665,14 @@ body{
 
   border-radius:25px;
 
-  background:rgba(255,255,255,.90);
+  background:
+    rgba(255,255,255,.90);
+
   backdrop-filter:blur(15px);
   -webkit-backdrop-filter:blur(15px);
 
-  border:1px solid rgba(255,255,255,.75);
+  border:
+    1px solid rgba(255,255,255,.75);
 
   box-shadow:
     0 18px 50px rgba(3,27,45,.16);
@@ -199,7 +681,9 @@ body{
 .intro h2{
   margin:0 0 7px;
 
-  font-size:clamp(19px,2.8vw,27px);
+  font-size:
+    clamp(19px,2.8vw,27px);
+
   color:#0d557d;
 }
 
@@ -209,17 +693,18 @@ body{
   color:#607789;
 
   font-size:14px;
+
   line-height:1.5;
 }
 
 /* =========================================================
-   METIERS
+   METIERS PAGE ECHANGES
 ========================================================= */
 
 .metiers{
   display:flex;
+
   gap:10px;
-  overflow-x:auto;
 
   padding:3px 2px 10px;
 
@@ -239,14 +724,17 @@ body{
 
   border-radius:999px;
 
-  background:rgba(255,255,255,.84);
+  background:
+    rgba(255,255,255,.84);
 
   color:#416174;
 
   font-size:15px;
+
   font-weight:900;
 
-  box-shadow:0 5px 18px rgba(3,30,50,.12);
+  box-shadow:
+    0 5px 18px rgba(3,30,50,.12);
 
   cursor:pointer;
 }
@@ -254,7 +742,12 @@ body{
 .metier-btn.active{
   color:white;
 
-  background:linear-gradient(135deg,#087eb5,#16a4d1);
+  background:
+    linear-gradient(
+      135deg,
+      #087eb5,
+      #16a4d1
+    );
 
   box-shadow:
     0 8px 22px rgba(9,126,181,.32);
@@ -294,6 +787,7 @@ body{
     0 12px 30px rgba(0,113,169,.30);
 
   font-size:17px;
+
   font-weight:900;
 
   cursor:pointer;
@@ -324,9 +818,11 @@ body{
 
   border-radius:30px;
 
-  background:rgba(255,255,255,.93);
+  background:
+    rgba(255,255,255,.93);
 
-  border-left:6px solid #1296c5;
+  border-left:
+    6px solid #1296c5;
 
   box-shadow:
     0 18px 55px rgba(3,29,47,.17);
@@ -338,6 +834,7 @@ body{
   content:"";
 
   position:absolute;
+
   top:0;
   right:0;
 
@@ -365,6 +862,7 @@ body{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
+
   gap:10px 14px;
 
   margin-bottom:4px;
@@ -375,13 +873,17 @@ body{
 
   color:#17384f;
 
-  font-size:clamp(22px,3.5vw,31px);
+  font-size:
+    clamp(22px,3.5vw,31px);
+
   font-weight:900;
+
   letter-spacing:.2px;
 }
 
 .agent-name span{
   display:inline-flex;
+
   margin-right:8px;
 }
 
@@ -395,6 +897,7 @@ body{
   background:#e5f5fb;
 
   font-size:12px;
+
   font-weight:900;
 }
 
@@ -416,6 +919,7 @@ body{
   color:#687d8c;
 
   font-size:14px;
+
   font-weight:800;
 }
 
@@ -424,7 +928,7 @@ body{
 }
 
 /* =========================================================
-   JOURNÉE
+   JOURNEE
 ========================================================= */
 
 .journey{
@@ -442,7 +946,8 @@ body{
       rgba(247,251,252,.95)
     );
 
-  border:1px solid #d7e7ee;
+  border:
+    1px solid #d7e7ee;
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.8);
@@ -455,6 +960,7 @@ body{
 .journey-title{
   display:flex;
   align-items:center;
+
   gap:9px;
 
   margin:0 0 14px;
@@ -462,7 +968,9 @@ body{
   color:#12658e;
 
   font-size:20px;
+
   font-weight:950;
+
   letter-spacing:.2px;
 }
 
@@ -484,12 +992,13 @@ body{
 }
 
 /* =========================================================
-   DATE DE SERVICE
+   DATE SERVICE
 ========================================================= */
 
 .service-date{
   display:flex;
   align-items:center;
+
   gap:12px;
 
   margin-bottom:12px;
@@ -500,7 +1009,8 @@ body{
 
   background:#e5f3f9;
 
-  border:1px solid #d1e7ef;
+  border:
+    1px solid #d1e7ef;
 }
 
 .service-date-icon{
@@ -511,6 +1021,7 @@ body{
 .service-date-content{
   display:flex;
   flex-direction:column;
+
   gap:3px;
 }
 
@@ -518,8 +1029,11 @@ body{
   color:#738997;
 
   font-size:10px;
+
   font-weight:900;
+
   letter-spacing:1px;
+
   text-transform:uppercase;
 }
 
@@ -527,6 +1041,7 @@ body{
   color:#1d4861;
 
   font-size:17px;
+
   font-weight:950;
 }
 
@@ -536,7 +1051,9 @@ body{
 
 .service-grid{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
@@ -547,9 +1064,11 @@ body{
 
   border-radius:16px;
 
-  background:rgba(246,250,251,.92);
+  background:
+    rgba(246,250,251,.92);
 
-  border:1px solid #dbe8ed;
+  border:
+    1px solid #dbe8ed;
 }
 
 .info-label{
@@ -558,8 +1077,11 @@ body{
   color:#778b99;
 
   font-size:10px;
+
   font-weight:900;
+
   letter-spacing:1px;
+
   text-transform:uppercase;
 }
 
@@ -567,6 +1089,7 @@ body{
   color:#244d64;
 
   font-size:15px;
+
   font-weight:850;
 
   overflow-wrap:anywhere;
@@ -578,7 +1101,9 @@ body{
 
 .locations{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 
   margin-top:10px;
@@ -591,7 +1116,8 @@ body{
 
   background:#f5f8f9;
 
-  border:1px solid #dce8ec;
+  border:
+    1px solid #dce8ec;
 }
 
 .location-box .info-value{
@@ -599,12 +1125,13 @@ body{
 }
 
 /* =========================================================
-   SÉPARATEUR JOURNÉES
+   SEPARATEUR
 ========================================================= */
 
 .next-day{
   display:flex;
   align-items:center;
+
   gap:10px;
 
   margin:12px 5px;
@@ -612,6 +1139,7 @@ body{
   color:#1684b0;
 
   font-size:13px;
+
   font-weight:900;
 }
 
@@ -620,6 +1148,7 @@ body{
   content:"";
 
   height:1px;
+
   flex:1;
 
   background:#c8dce5;
@@ -657,6 +1186,7 @@ body{
   z-index:2;
 
   display:grid;
+
   grid-template-columns:1fr 1fr;
 
   gap:10px;
@@ -672,6 +1202,7 @@ body{
   border-radius:15px;
 
   font-size:14px;
+
   font-weight:900;
 
   cursor:pointer;
@@ -709,6 +1240,7 @@ body{
   background:#fff2d3;
 
   font-size:14px;
+
   font-weight:800;
 }
 
@@ -723,13 +1255,16 @@ body{
 
   border-radius:28px;
 
-  background:rgba(255,255,255,.92);
+  background:
+    rgba(255,255,255,.92);
 
-  box-shadow:0 15px 40px rgba(0,0,0,.13);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.13);
 }
 
 .empty-icon{
   font-size:46px;
+
   margin-bottom:10px;
 }
 
@@ -752,15 +1287,18 @@ body{
 .overlay{
   position:fixed;
   inset:0;
+
   z-index:100;
 
   display:none;
+
   align-items:center;
   justify-content:center;
 
   padding:20px;
 
-  background:rgba(3,19,31,.60);
+  background:
+    rgba(3,19,31,.60);
 
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
@@ -772,6 +1310,7 @@ body{
 
 .modal{
   width:min(650px,100%);
+
   max-height:92vh;
 
   overflow:auto;
@@ -800,6 +1339,7 @@ body{
   color:#708391;
 
   font-size:14px;
+
   line-height:1.5;
 }
 
@@ -810,18 +1350,23 @@ body{
 
   background:#fff6df;
 
-  border:1px solid #f0dfb1;
+  border:
+    1px solid #f0dfb1;
 
   color:#765719;
 
   font-size:16px;
+
   font-weight:750;
+
   line-height:1.5;
 }
 
 .modal-actions{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 
   margin-top:20px;
@@ -831,9 +1376,11 @@ body{
   min-height:50px;
 
   border:none;
+
   border-radius:16px;
 
   font-size:15px;
+
   font-weight:900;
 
   cursor:pointer;
@@ -841,11 +1388,18 @@ body{
 
 .modal-cancel{
   background:#edf2f4;
+
   color:#536a78;
 }
 
 .modal-confirm{
-  background:linear-gradient(135deg,#087eb5,#13a6d3);
+  background:
+    linear-gradient(
+      135deg,
+      #087eb5,
+      #13a6d3
+    );
+
   color:white;
 }
 
@@ -865,7 +1419,9 @@ body{
   color:#506d7c;
 
   font-size:12px;
+
   font-weight:900;
+
   letter-spacing:.5px;
 }
 
@@ -874,7 +1430,8 @@ select,
 textarea{
   width:100%;
 
-  border:1px solid #d5e2e8;
+  border:
+    1px solid #d5e2e8;
 
   border-radius:14px;
 
@@ -884,7 +1441,6 @@ textarea{
 
   color:#193f55;
 
-  font-family:inherit;
   font-size:16px;
 
   outline:none;
@@ -901,18 +1457,22 @@ textarea:focus{
 
 textarea{
   min-height:90px;
+
   resize:vertical;
 }
 
 .form-grid{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:12px;
 }
 
 .second-toggle{
   display:flex;
   align-items:center;
+
   gap:12px;
 
   margin:18px 0 8px;
@@ -923,7 +1483,8 @@ textarea{
 
   background:#eef8fb;
 
-  border:1px solid #d3ebf2;
+  border:
+    1px solid #d3ebf2;
 
   cursor:pointer;
 }
@@ -931,6 +1492,7 @@ textarea{
 .second-toggle input{
   width:22px;
   height:22px;
+
   flex:0 0 auto;
 }
 
@@ -943,7 +1505,9 @@ textarea{
 }
 
 .second-helper{
-  margin:-2px 0 15px 37px;
+  margin:
+    -2px 0
+    15px 37px;
 
   color:#81929c;
 
@@ -961,7 +1525,8 @@ textarea{
 
   background:#f3f9fb;
 
-  border:1px solid #d9eaf0;
+  border:
+    1px solid #d9eaf0;
 }
 
 .second-block.show{
@@ -976,18 +1541,26 @@ textarea{
   margin-top:8px;
 
   border:none;
+
   border-radius:17px;
 
   color:white;
 
-  background:linear-gradient(135deg,#087eb5,#13a6d3);
+  background:
+    linear-gradient(
+      135deg,
+      #087eb5,
+      #13a6d3
+    );
 
   font-size:16px;
+
   font-weight:950;
 
   cursor:pointer;
 
-  box-shadow:0 10px 25px rgba(8,126,181,.25);
+  box-shadow:
+    0 10px 25px rgba(8,126,181,.25);
 }
 
 .close-btn{
@@ -998,6 +1571,7 @@ textarea{
   margin-top:10px;
 
   border:none;
+
   border-radius:15px;
 
   color:#607481;
@@ -1005,6 +1579,7 @@ textarea{
   background:#edf2f4;
 
   font-size:14px;
+
   font-weight:850;
 
   cursor:pointer;
@@ -1024,29 +1599,36 @@ textarea{
 
   width:min(500px,90%);
 
-  transform:translate(-50%,20px);
+  transform:
+    translate(-50%,20px);
 
   opacity:0;
+
   pointer-events:none;
 
   padding:15px 18px;
 
   border-radius:17px;
 
-  background:rgba(8,31,47,.94);
+  background:
+    rgba(8,31,47,.94);
 
   color:white;
 
-  box-shadow:0 15px 45px rgba(0,0,0,.3);
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.3);
 
   font-size:14px;
+
   font-weight:750;
 
   transition:.25s ease;
 }
 
 .toast.show{
-  transform:translate(-50%,0);
+  transform:
+    translate(-50%,0);
+
   opacity:1;
 }
 
@@ -1062,18 +1644,22 @@ textarea{
 
   z-index:50;
 
-  transform:translateX(-50%);
+  transform:
+    translateX(-50%);
 
   width:min(730px,92%);
 
   padding:8px;
 
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
+  display:none;
+
+  grid-template-columns:
+    1fr 1fr 1fr;
 
   border-radius:27px;
 
-  background:rgba(255,255,255,.94);
+  background:
+    rgba(255,255,255,.94);
 
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
@@ -1082,9 +1668,15 @@ textarea{
     0 16px 50px rgba(0,0,0,.22);
 }
 
+.bottom-nav.visible{
+  display:grid;
+}
+
 .nav-item{
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
   justify-content:center;
 
@@ -1105,6 +1697,7 @@ textarea{
 
 .nav-icon{
   font-size:25px;
+
   line-height:1;
 
   margin-bottom:5px;
@@ -1112,6 +1705,7 @@ textarea{
 
 .nav-label{
   font-size:12px;
+
   font-weight:900;
 }
 
@@ -1121,6 +1715,7 @@ textarea{
 
 .loader{
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -1137,18 +1732,23 @@ textarea{
 
   margin-right:10px;
 
-  border:3px solid #dce9ee;
+  border:
+    3px solid #dce9ee;
+
   border-top-color:#118ab6;
 
   border-radius:50%;
 
-  animation:spin .7s linear infinite;
+  animation:
+    spin .7s linear infinite;
 }
 
 @keyframes spin{
+
   to{
     transform:rotate(360deg);
   }
+
 }
 
 /* =========================================================
@@ -1157,6 +1757,125 @@ textarea{
 
 @media(max-width:700px){
 
+  .home-page{
+    padding:
+      20px 15px
+      105px;
+  }
+
+  .home-header{
+    margin-bottom:32px;
+  }
+
+  .home-train{
+    width:62px;
+    height:62px;
+
+    border-radius:18px;
+
+    font-size:34px;
+
+    margin-bottom:12px;
+  }
+
+  .home-title{
+    font-size:clamp(38px,11vw,58px);
+
+    letter-spacing:-2px;
+  }
+
+  .home-subtitle{
+    margin-top:15px;
+
+    font-size:15px;
+  }
+
+  .home-line{
+    margin-top:18px;
+
+    width:75%;
+  }
+
+  .welcome-card{
+    min-height:300px;
+
+    padding:
+      35px 20px
+      30px;
+
+    border-radius:27px;
+  }
+
+  .welcome-icon{
+    width:70px;
+    height:70px;
+
+    border-radius:20px;
+
+    font-size:36px;
+
+    margin-bottom:16px;
+  }
+
+  .welcome-card h2{
+    font-size:38px;
+  }
+
+  .welcome-card p{
+    margin:
+      15px 0
+      18px;
+
+    font-size:15px;
+  }
+
+  .choose-pill{
+    padding:
+      11px 16px;
+
+    font-size:13px;
+  }
+
+  .home-metiers{
+    grid-template-columns:1fr;
+
+    gap:14px;
+  }
+
+  .home-metier-card{
+    min-height:125px;
+
+    padding:
+      18px 17px;
+
+    border-radius:23px;
+  }
+
+  .home-metier-icon{
+    width:68px;
+    height:68px;
+
+    flex:0 0 68px;
+
+    margin-right:15px;
+
+    border-radius:19px;
+
+    font-size:35px;
+  }
+
+  .home-metier-name{
+    font-size:27px;
+  }
+
+  .home-metier-description{
+    font-size:13px;
+  }
+
+  .home-metier-arrow{
+    font-size:28px;
+  }
+
   .header-inner{
     min-height:86px;
   }
@@ -1164,7 +1883,9 @@ textarea{
   .logo-train{
     width:49px;
     height:49px;
+
     border-radius:14px;
+
     font-size:27px;
   }
 
@@ -1178,11 +1899,13 @@ textarea{
 
   .intro{
     padding:18px;
+
     border-radius:21px;
   }
 
   .exchange-card{
     padding:17px;
+
     border-radius:23px;
   }
 
@@ -1206,13 +1929,17 @@ textarea{
 
   .bottom-nav{
     bottom:8px;
+
     width:94%;
   }
 
   .metier-btn{
-    padding:13px 16px;
+    padding:
+      13px 16px;
+
     font-size:14px;
   }
+
 }
 
 @media(min-width:1100px){
@@ -1224,14 +1951,14 @@ textarea{
 
   #liste{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+      1fr 1fr;
+
     align-items:start;
   }
-}
 
-/* =========================================================
-   MODE PAYSAGE IPAD
-========================================================= */
+}
 
 @media(min-width:700px) and (orientation:landscape){
 
@@ -1242,148 +1969,360 @@ textarea{
   .bottom-nav{
     width:730px;
   }
+
 }
+
+/* =========================================================
+   PETITS ECRANS TRES ETROITS
+========================================================= */
+
+@media(max-width:390px){
+
+  .home-title{
+    font-size:35px;
+  }
+
+  .home-subtitle{
+    font-size:14px;
+  }
+
+  .welcome-card h2{
+    font-size:34px;
+  }
+
+  .home-metier-description{
+    font-size:12px;
+  }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="bg"></div>
 
-<div class="app">
+<!-- =====================================================
+     ACCUEIL V4.4
+====================================================== -->
 
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
+<section
+  id="homePage"
+  class="home-page">
 
-  <header class="header">
-    <div class="header-inner">
+  <header class="home-header">
 
-      <div class="logo-area">
-
-        <div class="logo-train">
-          🚆
-        </div>
-
-        <div class="title-block">
-          <h1>ÉCHANGE SERVICE</h1>
-          <p>Échange de journées entre agents • si congés refusés</p>
-        </div>
-
-      </div>
-
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        Service actif
-      </div>
-
+    <div class="home-train">
+      🚆
     </div>
+
+    <h1 class="home-title">
+      <span>ÉCHANGE</span>
+      <span class="blue"> SERVICE</span>
+    </h1>
+
+    <p class="home-subtitle">
+      Échange de journées entre agents
+      <strong>• si congés refusés</strong>
+    </p>
+
+    <div class="home-line"></div>
+
   </header>
 
-  <main class="container">
 
-    <!-- =================================================
-         INTRO
-    ================================================== -->
+  <!-- =================================================
+       BIENVENUE
+  ================================================== -->
 
-    <section class="intro">
+  <section class="welcome-card">
 
-      <h2>🔄 Les journées disponibles</h2>
-
-      <p>
-        Consulte les journées proposées par les agents et
-        propose un échange lorsque ton congé a été refusé.
-      </p>
-
-    </section>
-
-    <!-- =================================================
-         METIERS : UNIQUEMENT ASCT / ADC
-    ================================================== -->
-
-    <div class="metiers">
-
-      <button
-        class="metier-btn active"
-        data-metier="ASCT"
-        onclick="choisirMetier('ASCT',this)">
-        🚆 ASCT
-      </button>
-
-      <button
-        class="metier-btn"
-        data-metier="ADC"
-        onclick="choisirMetier('ADC',this)">
-        🚄 ADC
-      </button>
-
+    <div class="welcome-icon">
+      🤝
     </div>
 
-    <!-- =================================================
-         NOUVELLE DEMANDE
-    ================================================== -->
+    <h2>
+      Bienvenue
+    </h2>
 
-    <div class="action-zone">
+    <p>
+      Proposez une journée de service et trouvez
+      un collègue intéressé pour un éventuel échange.
+    </p>
 
-      <button
-        class="new-btn"
-        onclick="ouvrirConfirmation()">
-        ➕ PROPOSER UNE JOURNÉE
-      </button>
-
+    <div class="choose-pill">
+      🚆&nbsp; Choisissez votre métier pour commencer
     </div>
 
-    <!-- =================================================
-         LISTE
-    ================================================== -->
+  </section>
 
-    <section id="liste">
 
-      <div class="loader">
-        <div class="spinner"></div>
-        Chargement des échanges…
+  <!-- =================================================
+       CHOIX METIERS
+       UNIQUEMENT ADC / ASCT
+  ================================================== -->
+
+  <div class="home-metiers">
+
+    <!-- ADC -->
+
+    <button
+      type="button"
+      class="home-metier-card adc"
+      onclick="ouvrirMetierDepuisAccueil('ADC')">
+
+      <div class="home-metier-icon">
+        🚆
       </div>
 
-    </section>
+      <div class="home-metier-content">
 
-  </main>
+        <div class="home-metier-name">
+          ADC
+        </div>
+
+        <div class="home-metier-description">
+          Conducteurs de train
+        </div>
+
+      </div>
+
+      <div class="home-metier-arrow">
+        ›
+      </div>
+
+    </button>
+
+
+    <!-- ASCT -->
+
+    <button
+      type="button"
+      class="home-metier-card asct"
+      onclick="ouvrirMetierDepuisAccueil('ASCT')">
+
+      <div class="home-metier-icon">
+        👨‍✈️
+      </div>
+
+      <div class="home-metier-content">
+
+        <div class="home-metier-name">
+          ASCT
+        </div>
+
+        <div class="home-metier-description">
+          Agents du Service Commercial Train
+        </div>
+
+      </div>
+
+      <div class="home-metier-arrow">
+        ›
+      </div>
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     APPLICATION ECHANGES
+====================================================== -->
+
+<div
+  id="exchangePage"
+  class="exchange-page">
+
+  <div class="app">
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="header">
+
+      <div class="header-inner">
+
+        <div class="logo-area">
+
+          <div class="logo-train">
+            🚆
+          </div>
+
+          <div class="title-block">
+
+            <h1>
+              ÉCHANGE SERVICE
+            </h1>
+
+            <p>
+              Échange de journées entre agents • si congés refusés
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="status-pill">
+
+          <span class="status-dot"></span>
+
+          Service actif
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <main class="container">
+
+      <!-- =================================================
+           INTRO
+      ================================================== -->
+
+      <section class="intro">
+
+        <h2>
+          🔄 Les journées disponibles
+        </h2>
+
+        <p>
+          Consulte les journées proposées par les agents et
+          propose un échange lorsque ton congé a été refusé.
+        </p>
+
+      </section>
+
+
+      <!-- =================================================
+           METIERS
+           UNIQUEMENT ASCT / ADC
+      ================================================== -->
+
+      <div class="metiers">
+
+        <button
+          class="metier-btn"
+          data-metier="ASCT"
+          onclick="choisirMetier('ASCT',this)">
+
+          🚆 ASCT
+
+        </button>
+
+        <button
+          class="metier-btn"
+          data-metier="ADC"
+          onclick="choisirMetier('ADC',this)">
+
+          🚄 ADC
+
+        </button>
+
+      </div>
+
+
+      <!-- =================================================
+           NOUVELLE DEMANDE
+      ================================================== -->
+
+      <div class="action-zone">
+
+        <button
+          class="new-btn"
+          onclick="ouvrirConfirmation()">
+
+          ➕ PROPOSER UNE JOURNÉE
+
+        </button>
+
+      </div>
+
+
+      <!-- =================================================
+           LISTE
+      ================================================== -->
+
+      <section id="liste">
+
+        <div class="loader">
+
+          <div class="spinner"></div>
+
+          Chargement des échanges…
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
 
 </div>
 
+
 <!-- =====================================================
-     NAVIGATION
+     NAVIGATION BAS
 ====================================================== -->
 
-<nav class="bottom-nav">
+<nav
+  id="bottomNav"
+  class="bottom-nav">
 
   <div
     class="nav-item"
     onclick="ouvrirConfirmation()">
 
-    <div class="nav-icon">➕</div>
-    <div class="nav-label">Ma journée</div>
+    <div class="nav-icon">
+      ➕
+    </div>
+
+    <div class="nav-label">
+      Ma journée
+    </div>
 
   </div>
+
 
   <div
     class="nav-item active"
-    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    onclick="retourEchanges()">
 
-    <div class="nav-icon">🔎</div>
-    <div class="nav-label">Échanges</div>
+    <div class="nav-icon">
+      🔎
+    </div>
+
+    <div class="nav-label">
+      Échanges
+    </div>
 
   </div>
+
 
   <div
     class="nav-item"
     onclick="document.querySelector('.metiers').scrollIntoView({behavior:'smooth'})">
 
-    <div class="nav-icon">🚆</div>
-    <div class="nav-label">Métier</div>
+    <div class="nav-icon">
+      🚆
+    </div>
+
+    <div class="nav-label">
+      Métier
+    </div>
 
   </div>
 
 </nav>
+
 
 <!-- =====================================================
      MODALE CONFIRMATION CONGE REFUSE
@@ -1395,24 +2334,30 @@ textarea{
 
   <div class="modal">
 
-    <h2>📋 Proposer une journée</h2>
+    <h2>
+      📋 Proposer une journée
+    </h2>
 
     <p class="modal-subtitle">
-      Avant de créer une demande d'échange, merci de confirmer
-      que ton congé n'a pas pu être accepté.
+
+      Avant de créer une demande d'échange,
+      merci de confirmer que ton congé n'a pas
+      pu être accepté.
+
     </p>
 
     <div class="confirm-box">
 
       ⚠️
+
       <strong>
         Je confirme que mon congé a été refusé.
       </strong>
 
       <br><br>
 
-      Je souhaite proposer ma journée à l'échange avec un autre
-      agent.
+      Je souhaite proposer ma journée à l'échange
+      avec un autre agent.
 
     </div>
 
@@ -1421,13 +2366,17 @@ textarea{
       <button
         class="modal-btn modal-cancel"
         onclick="fermerConfirmation()">
+
         ANNULER
+
       </button>
 
       <button
         class="modal-btn modal-confirm"
         onclick="confirmerEtOuvrirFormulaire()">
+
         JE CONFIRME
+
       </button>
 
     </div>
@@ -1435,6 +2384,7 @@ textarea{
   </div>
 
 </div>
+
 
 <!-- =====================================================
      MODALE FORMULAIRE
@@ -1446,12 +2396,17 @@ textarea{
 
   <div class="modal">
 
-    <h2>🚆 Ma journée à échanger</h2>
+    <h2>
+      🚆 Ma journée à échanger
+    </h2>
 
     <p class="modal-subtitle">
+
       Renseigne les informations de ta journée.
       Tu peux également proposer une deuxième journée.
+
     </p>
+
 
     <!-- METIER -->
 
@@ -1475,6 +2430,7 @@ textarea{
 
     </div>
 
+
     <!-- NOM -->
 
     <div class="form-group">
@@ -1491,6 +2447,7 @@ textarea{
 
     </div>
 
+
     <!-- JOURNEE 1 -->
 
     <div class="form-group">
@@ -1504,6 +2461,7 @@ textarea{
         type="date">
 
     </div>
+
 
     <div class="form-grid">
 
@@ -1519,6 +2477,7 @@ textarea{
 
       </div>
 
+
       <div class="form-group">
 
         <label class="form-label">
@@ -1532,6 +2491,7 @@ textarea{
       </div>
 
     </div>
+
 
     <div class="form-grid">
 
@@ -1549,6 +2509,7 @@ textarea{
 
       </div>
 
+
       <div class="form-group">
 
         <label class="form-label">
@@ -1565,6 +2526,7 @@ textarea{
 
     </div>
 
+
     <!-- DEUXIEME JOURNEE -->
 
     <label class="second-toggle">
@@ -1575,16 +2537,22 @@ textarea{
         onchange="gererDeuxiemeJournee()">
 
       <span>
+
         <strong>
           🔄 J’ai une 2ᵉ journée à proposer
         </strong>
+
       </span>
 
     </label>
 
+
     <div class="second-helper">
+
       Utile notamment en cas de RHR entre les deux journées.
+
     </div>
+
 
     <div
       class="second-block"
@@ -1597,8 +2565,11 @@ textarea{
           margin-bottom:14px;
           font-size:17px;
         ">
+
         🔄 JOURNÉE 2
+
       </div>
+
 
       <div class="form-group">
 
@@ -1611,6 +2582,7 @@ textarea{
           type="date">
 
       </div>
+
 
       <div class="form-grid">
 
@@ -1626,6 +2598,7 @@ textarea{
 
         </div>
 
+
         <div class="form-group">
 
           <label class="form-label">
@@ -1639,6 +2612,7 @@ textarea{
         </div>
 
       </div>
+
 
       <div class="form-grid">
 
@@ -1655,6 +2629,7 @@ textarea{
             autocomplete="off">
 
         </div>
+
 
         <div class="form-group">
 
@@ -1674,6 +2649,7 @@ textarea{
 
     </div>
 
+
     <!-- COMMENTAIRE -->
 
     <div class="form-group">
@@ -1688,21 +2664,28 @@ textarea{
 
     </div>
 
+
     <button
       class="submit-btn"
       onclick="publier()">
+
       🚆 PUBLIER MA DEMANDE
+
     </button>
+
 
     <button
       class="close-btn"
       onclick="fermerFormulaire()">
+
       ANNULER
+
     </button>
 
   </div>
 
 </div>
+
 
 <!-- =====================================================
      MODALE INTERET
@@ -1714,11 +2697,15 @@ textarea{
 
   <div class="modal">
 
-    <h2>🙋 Je suis intéressé</h2>
+    <h2>
+      🙋 Je suis intéressé
+    </h2>
 
     <p class="modal-subtitle">
-      Indique ton nom afin que l'agent puisse savoir qui est
-      intéressé par sa journée.
+
+      Indique ton nom afin que l'agent puisse savoir
+      qui est intéressé par sa journée.
+
     </p>
 
     <div class="form-group">
@@ -1735,18 +2722,24 @@ textarea{
 
     </div>
 
+
     <div class="modal-actions">
 
       <button
         class="modal-btn modal-cancel"
         onclick="fermerInteret()">
+
         ANNULER
+
       </button>
+
 
       <button
         class="modal-btn modal-confirm"
         onclick="confirmerInteret()">
+
         CONFIRMER
+
       </button>
 
     </div>
@@ -1754,6 +2747,7 @@ textarea{
   </div>
 
 </div>
+
 
 <!-- =====================================================
      TOAST
@@ -1763,6 +2757,7 @@ textarea{
   class="toast"
   id="toast">
 </div>
+
 
 <script>
 
@@ -1782,11 +2777,12 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
+
 /* =========================================================
    VARIABLES
 ========================================================= */
 
-let metierActuel = "ASCT";
+let metierActuel = null;
 
 let demandeInteretId = null;
 
@@ -1794,13 +2790,19 @@ let demandesChargees = [];
 
 let confirmationCongeValidee = false;
 
+let toastTimer = null;
+
+
 /* =========================================================
    OUTILS
 ========================================================= */
 
 function echapperHTML(value){
 
-  if(value === null || value === undefined){
+  if(
+    value === null ||
+    value === undefined
+  ){
     return "";
   }
 
@@ -1812,8 +2814,9 @@ function echapperHTML(value){
     .replace(/'/g,"&#039;");
 }
 
+
 /* =========================================================
-   NORMALISATION TEXTE
+   NORMALISATION
 ========================================================= */
 
 function normaliserTexte(value){
@@ -1824,6 +2827,7 @@ function normaliserTexte(value){
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g,"");
 }
+
 
 /* =========================================================
    DATE SERVICE
@@ -1839,15 +2843,22 @@ function dateLocaleDepuisString(dateString){
     String(dateString).substring(0,10);
 
   const match =
-    texte.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    texte.match(
+      /^(\d{4})-(\d{2})-(\d{2})$/
+    );
 
   if(!match){
     return null;
   }
 
-  const annee = Number(match[1]);
-  const mois = Number(match[2]);
-  const jour = Number(match[3]);
+  const annee =
+    Number(match[1]);
+
+  const mois =
+    Number(match[2]);
+
+  const jour =
+    Number(match[3]);
 
   const date =
     new Date(
@@ -1856,17 +2867,22 @@ function dateLocaleDepuisString(dateString){
       jour
     );
 
-  if(isNaN(date.getTime())){
+  if(
+    isNaN(date.getTime())
+  ){
     return null;
   }
 
   return date;
 }
 
+
 function formatDate(dateString){
 
   const date =
-    dateLocaleDepuisString(dateString);
+    dateLocaleDepuisString(
+      dateString
+    );
 
   if(!date){
     return "Date non renseignée";
@@ -1883,14 +2899,13 @@ function formatDate(dateString){
   );
 }
 
-/* =========================================================
-   DATE COURTE
-========================================================= */
 
 function formatDateCourte(dateString){
 
   const date =
-    dateLocaleDepuisString(dateString);
+    dateLocaleDepuisString(
+      dateString
+    );
 
   if(!date){
     return "";
@@ -1906,6 +2921,7 @@ function formatDateCourte(dateString){
   );
 }
 
+
 /* =========================================================
    HEURE
 ========================================================= */
@@ -1920,21 +2936,27 @@ function formatTime(value){
     String(value);
 
   const match =
-    texte.match(/^(\d{1,2}):(\d{2})/);
+    texte.match(
+      /^(\d{1,2}):(\d{2})/
+    );
 
   if(!match){
     return texte;
   }
 
   return (
-    String(match[1]).padStart(2,"0")
-    + ":"
-    + match[2]
+    String(match[1])
+      .padStart(2,"0")
+    +
+    ":"
+    +
+    match[2]
   );
 }
 
+
 /* =========================================================
-   DATE DE PUBLICATION
+   DATE PUBLICATION
 ========================================================= */
 
 function formatDatePublication(value){
@@ -1946,44 +2968,43 @@ function formatDatePublication(value){
   let date;
 
   if(value instanceof Date){
-
     date = value;
-
   }else{
-
     date = new Date(value);
-
   }
 
-  if(isNaN(date.getTime())){
+  if(
+    isNaN(date.getTime())
+  ){
     return null;
   }
 
-  return date.toLocaleDateString(
-    "fr-FR",
-    {
-      day:"2-digit",
-      month:"2-digit",
-      year:"numeric"
-    }
-  )
-  +
-  " à "
-  +
-  date.toLocaleTimeString(
-    "fr-FR",
-    {
-      hour:"2-digit",
-      minute:"2-digit"
-    }
+  return (
+    date.toLocaleDateString(
+      "fr-FR",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    )
+    +
+    " à "
+    +
+    date.toLocaleTimeString(
+      "fr-FR",
+      {
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    )
   );
 }
 
-/* =========================================================
-   RECUPERATION DATE PUBLICATION
-========================================================= */
 
-function recupererDatePublication(demande){
+function recupererDatePublication(
+  demande
+){
 
   if(!demande){
     return null;
@@ -1997,26 +3018,31 @@ function recupererDatePublication(demande){
     demande.published_at ??
     null;
 
-  return formatDatePublication(valeur);
+  return formatDatePublication(
+    valeur
+  );
 }
+
 
 /* =========================================================
    TOAST
 ========================================================= */
 
-let toastTimer = null;
-
 function afficherToast(message){
 
   const toast =
-    document.getElementById("toast");
+    document.getElementById(
+      "toast"
+    );
 
   toast.textContent =
     message;
 
   toast.classList.add("show");
 
-  clearTimeout(toastTimer);
+  clearTimeout(
+    toastTimer
+  );
 
   toastTimer =
     setTimeout(
@@ -2027,9 +3053,100 @@ function afficherToast(message){
     );
 }
 
+
 /* =========================================================
-   METIER
+   OUVERTURE METIER DEPUIS ACCUEIL
 ========================================================= */
+
+function ouvrirMetierDepuisAccueil(
+  metier
+){
+
+  if(
+    metier !== "ASCT" &&
+    metier !== "ADC"
+  ){
+    return;
+  }
+
+  metierActuel =
+    metier;
+
+  const home =
+    document.getElementById(
+      "homePage"
+    );
+
+  const exchange =
+    document.getElementById(
+      "exchangePage"
+    );
+
+  const nav =
+    document.getElementById(
+      "bottomNav"
+    );
+
+  home.style.display =
+    "none";
+
+  exchange.classList.add(
+    "visible"
+  );
+
+  nav.classList.add(
+    "visible"
+  );
+
+  activerBoutonMetier();
+
+  const selectMetier =
+    document.getElementById(
+      "metier"
+    );
+
+  if(selectMetier){
+    selectMetier.value =
+      metier;
+  }
+
+  afficherEchanges();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =========================================================
+   BOUTON METIER PAGE ECHANGES
+========================================================= */
+
+function activerBoutonMetier(){
+
+  document
+    .querySelectorAll(
+      ".metier-btn"
+    )
+    .forEach(
+      btn=>{
+        btn.classList.remove(
+          "active"
+        );
+
+        if(
+          btn.dataset.metier ===
+          metierActuel
+        ){
+          btn.classList.add(
+            "active"
+          );
+        }
+      }
+    );
+}
+
 
 function choisirMetier(
   metier,
@@ -2047,17 +3164,27 @@ function choisirMetier(
     metier;
 
   document
-    .querySelectorAll(".metier-btn")
-    .forEach(btn=>{
-      btn.classList.remove("active");
-    });
+    .querySelectorAll(
+      ".metier-btn"
+    )
+    .forEach(
+      btn=>{
+        btn.classList.remove(
+          "active"
+        );
+      }
+    );
 
   if(bouton){
-    bouton.classList.add("active");
+    bouton.classList.add(
+      "active"
+    );
   }
 
   const selectMetier =
-    document.getElementById("metier");
+    document.getElementById(
+      "metier"
+    );
 
   if(selectMetier){
     selectMetier.value =
@@ -2065,7 +3192,39 @@ function choisirMetier(
   }
 
   afficherEchanges();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
+
+
+/* =========================================================
+   RETOUR ECHANGES
+========================================================= */
+
+function retourEchanges(){
+
+  const exchange =
+    document.getElementById(
+      "exchangePage"
+    );
+
+  if(
+    !exchange.classList.contains(
+      "visible"
+    )
+  ){
+    return;
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
 
 /* =========================================================
    CONFIRMATION CONGE REFUSE
@@ -2074,16 +3233,22 @@ function choisirMetier(
 function ouvrirConfirmation(){
 
   document
-    .getElementById("confirmationModal")
+    .getElementById(
+      "confirmationModal"
+    )
     .classList.add("show");
 }
+
 
 function fermerConfirmation(){
 
   document
-    .getElementById("confirmationModal")
+    .getElementById(
+      "confirmationModal"
+    )
     .classList.remove("show");
 }
+
 
 function confirmerEtOuvrirFormulaire(){
 
@@ -2093,19 +3258,28 @@ function confirmerEtOuvrirFormulaire(){
   fermerConfirmation();
 
   const selectMetier =
-    document.getElementById("metier");
+    document.getElementById(
+      "metier"
+    );
 
-  if(selectMetier){
-
+  if(
+    selectMetier &&
+    (
+      metierActuel === "ASCT" ||
+      metierActuel === "ADC"
+    )
+  ){
     selectMetier.value =
       metierActuel;
-
   }
 
   document
-    .getElementById("formModal")
+    .getElementById(
+      "formModal"
+    )
     .classList.add("show");
 }
+
 
 /* =========================================================
    FORMULAIRE
@@ -2114,29 +3288,41 @@ function confirmerEtOuvrirFormulaire(){
 function fermerFormulaire(){
 
   document
-    .getElementById("formModal")
+    .getElementById(
+      "formModal"
+    )
     .classList.remove("show");
 
   confirmationCongeValidee =
     false;
 }
 
+
 function gererDeuxiemeJournee(){
 
   const coche =
     document
-      .getElementById("deuxiemeJournee")
+      .getElementById(
+        "deuxiemeJournee"
+      )
       .checked;
 
   const bloc =
-    document.getElementById("blocJournee2");
+    document.getElementById(
+      "blocJournee2"
+    );
 
   if(coche){
-    bloc.classList.add("show");
+    bloc.classList.add(
+      "show"
+    );
   }else{
-    bloc.classList.remove("show");
+    bloc.classList.remove(
+      "show"
+    );
   }
 }
+
 
 /* =========================================================
    PUBLICATION
@@ -2144,7 +3330,9 @@ function gererDeuxiemeJournee(){
 
 async function publier(){
 
-  if(!confirmationCongeValidee){
+  if(
+    !confirmationCongeValidee
+  ){
 
     afficherToast(
       "⚠️ Merci de confirmer que ton congé a été refusé."
@@ -2153,11 +3341,13 @@ async function publier(){
     return;
   }
 
+
   const metier =
     document
       .getElementById("metier")
       .value
       .trim();
+
 
   const nom =
     document
@@ -2165,20 +3355,24 @@ async function publier(){
       .value
       .trim();
 
+
   const date =
     document
       .getElementById("date")
       .value;
+
 
   const prise =
     document
       .getElementById("prise")
       .value;
 
+
   const fin =
     document
       .getElementById("fin")
       .value;
+
 
   const lieuPrise =
     document
@@ -2186,11 +3380,13 @@ async function publier(){
       .value
       .trim();
 
+
   const lieuFin =
     document
       .getElementById("lieuFin")
       .value
       .trim();
+
 
   const commentaire =
     document
@@ -2198,10 +3394,14 @@ async function publier(){
       .value
       .trim();
 
+
   const deuxieme =
     document
       .getElementById("deuxiemeJournee")
       .checked;
+
+
+  /* VALIDATION METIER */
 
   if(
     metier !== "ASCT" &&
@@ -2215,6 +3415,9 @@ async function publier(){
     return;
   }
 
+
+  /* VALIDATION JOURNEE 1 */
+
   if(!nom){
 
     afficherToast(
@@ -2223,6 +3426,7 @@ async function publier(){
 
     return;
   }
+
 
   if(!date){
 
@@ -2233,7 +3437,11 @@ async function publier(){
     return;
   }
 
-  if(!prise || !fin){
+
+  if(
+    !prise ||
+    !fin
+  ){
 
     afficherToast(
       "⚠️ Merci d'indiquer les horaires."
@@ -2242,7 +3450,11 @@ async function publier(){
     return;
   }
 
-  if(!lieuPrise || !lieuFin){
+
+  if(
+    !lieuPrise ||
+    !lieuFin
+  ){
 
     afficherToast(
       "⚠️ Merci d'indiquer les lieux de prise et de fin."
@@ -2251,11 +3463,15 @@ async function publier(){
     return;
   }
 
+
+  /* JOURNEE 2 */
+
   let date2 = null;
   let prise2 = null;
   let fin2 = null;
   let lieuPrise2 = null;
   let lieuFin2 = null;
+
 
   if(deuxieme){
 
@@ -2264,15 +3480,18 @@ async function publier(){
         .getElementById("date2")
         .value;
 
+
     prise2 =
       document
         .getElementById("prise2")
         .value;
 
+
     fin2 =
       document
         .getElementById("fin2")
         .value;
+
 
     lieuPrise2 =
       document
@@ -2280,11 +3499,13 @@ async function publier(){
         .value
         .trim();
 
+
     lieuFin2 =
       document
         .getElementById("lieuFin2")
         .value
         .trim();
+
 
     if(!date2){
 
@@ -2295,7 +3516,11 @@ async function publier(){
       return;
     }
 
-    if(!prise2 || !fin2){
+
+    if(
+      !prise2 ||
+      !fin2
+    ){
 
       afficherToast(
         "⚠️ Merci d'indiquer les horaires de la 2ᵉ journée."
@@ -2304,7 +3529,11 @@ async function publier(){
       return;
     }
 
-    if(!lieuPrise2 || !lieuFin2){
+
+    if(
+      !lieuPrise2 ||
+      !lieuFin2
+    ){
 
       afficherToast(
         "⚠️ Merci d'indiquer les lieux de la 2ᵉ journée."
@@ -2313,7 +3542,10 @@ async function publier(){
       return;
     }
 
-    if(date2 === date){
+
+    if(
+      date2 === date
+    ){
 
       afficherToast(
         "⚠️ Les deux journées doivent être à des dates différentes."
@@ -2324,26 +3556,40 @@ async function publier(){
 
   }
 
+
+  /* DATE PUBLICATION */
+
   const dateDemande =
     new Date().toISOString();
+
+
+  /* CONSTRUCTION */
 
   const demandes = [
 
     {
       metier:metier,
       nom:nom,
+
       date_service:date,
+
       prise_service:prise,
       fin_service:fin,
+
       lieu_prise_service:lieuPrise,
       lieu_fin_service:lieuFin,
+
       commentaire:commentaire,
+
       statut:"disponible",
+
       agent_interesse:null,
+
       date_demande:dateDemande
     }
 
   ];
+
 
   if(deuxieme){
 
@@ -2363,6 +3609,7 @@ async function publier(){
       commentaire:commentaire,
 
       statut:"disponible",
+
       agent_interesse:null,
 
       date_demande:dateDemande
@@ -2371,6 +3618,9 @@ async function publier(){
 
   }
 
+
+  /* INSERT SUPABASE */
+
   try{
 
     const {
@@ -2378,7 +3628,10 @@ async function publier(){
     } =
       await supabaseClient
         .from("echanges")
-        .insert(demandes);
+        .insert(
+          demandes
+        );
+
 
     if(error){
 
@@ -2389,77 +3642,64 @@ async function publier(){
 
       afficherToast(
         "❌ Erreur lors de la publication : "
-        + error.message
+        +
+        error.message
       );
 
       return;
     }
 
+
     afficherToast(
       "✅ Ta demande a été publiée."
     );
 
-    document
-      .getElementById("nom")
-      .value = "";
+
+    /* RESET */
+
+    document.getElementById("nom").value = "";
+
+    document.getElementById("date").value = "";
+
+    document.getElementById("prise").value = "";
+
+    document.getElementById("fin").value = "";
+
+    document.getElementById("lieuPrise").value = "";
+
+    document.getElementById("lieuFin").value = "";
+
+    document.getElementById("commentaire").value = "";
 
     document
-      .getElementById("date")
-      .value = "";
-
-    document
-      .getElementById("prise")
-      .value = "";
-
-    document
-      .getElementById("fin")
-      .value = "";
-
-    document
-      .getElementById("lieuPrise")
-      .value = "";
-
-    document
-      .getElementById("lieuFin")
-      .value = "";
-
-    document
-      .getElementById("commentaire")
-      .value = "";
-
-    document
-      .getElementById("deuxiemeJournee")
+      .getElementById(
+        "deuxiemeJournee"
+      )
       .checked = false;
 
     gererDeuxiemeJournee();
 
-    document
-      .getElementById("date2")
-      .value = "";
+    document.getElementById("date2").value = "";
 
-    document
-      .getElementById("prise2")
-      .value = "";
+    document.getElementById("prise2").value = "";
 
-    document
-      .getElementById("fin2")
-      .value = "";
+    document.getElementById("fin2").value = "";
 
-    document
-      .getElementById("lieuPrise2")
-      .value = "";
+    document.getElementById("lieuPrise2").value = "";
 
-    document
-      .getElementById("lieuFin2")
-      .value = "";
+    document.getElementById("lieuFin2").value = "";
+
 
     fermerFormulaire();
 
     await afficherEchanges();
 
+
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     afficherToast(
       "❌ Une erreur est survenue."
@@ -2469,8 +3709,9 @@ async function publier(){
 
 }
 
+
 /* =========================================================
-   GROUPEMENT DES JOURNEES
+   GROUPEMENT
 ========================================================= */
 
 function lendemain(
@@ -2479,43 +3720,62 @@ function lendemain(
 ){
 
   const d1 =
-    dateLocaleDepuisString(date1);
+    dateLocaleDepuisString(
+      date1
+    );
 
   const d2 =
-    dateLocaleDepuisString(date2);
+    dateLocaleDepuisString(
+      date2
+    );
 
-  if(!d1 || !d2){
+  if(
+    !d1 ||
+    !d2
+  ){
     return false;
   }
 
   const difference =
-    d2.getTime() - d1.getTime();
+    d2.getTime()
+    -
+    d1.getTime();
 
-  return difference === 86400000;
+  return difference ===
+    86400000;
 }
+
 
 function peutRegrouper(
   a,
   b
 ){
 
-  if(!a || !b){
+  if(
+    !a ||
+    !b
+  ){
     return false;
   }
 
+
   if(
-    normaliserTexte(a.nom) !==
+    normaliserTexte(a.nom)
+    !==
     normaliserTexte(b.nom)
   ){
     return false;
   }
 
+
   if(
-    normaliserTexte(a.metier) !==
+    normaliserTexte(a.metier)
+    !==
     normaliserTexte(b.metier)
   ){
     return false;
   }
+
 
   if(
     !lendemain(
@@ -2526,46 +3786,68 @@ function peutRegrouper(
     return false;
   }
 
+
   if(
-    normaliserTexte(a.lieu_fin_service) !==
-    normaliserTexte(b.lieu_prise_service)
+    normaliserTexte(
+      a.lieu_fin_service
+    )
+    !==
+    normaliserTexte(
+      b.lieu_prise_service
+    )
   ){
     return false;
   }
 
+
   return true;
 }
 
-function construireGroupes(data){
+
+function construireGroupes(
+  data
+){
 
   const groupes = [];
 
   const utilises =
     new Set();
 
+
   const donneesTriees =
     [...data].sort(
       (a,b)=>{
 
         const dateCompare =
-          String(a.date_service || "")
-            .localeCompare(
-              String(b.date_service || "")
-            );
+          String(
+            a.date_service || ""
+          )
+          .localeCompare(
+            String(
+              b.date_service || ""
+            )
+          );
 
-        if(dateCompare !== 0){
+
+        if(
+          dateCompare !== 0
+        ){
           return dateCompare;
         }
 
-        return (
-          String(a.nom || "")
-            .localeCompare(
-              String(b.nom || "")
-            )
+
+        return String(
+          a.nom || ""
+        )
+        .localeCompare(
+          String(
+            b.nom || ""
+          )
         );
 
       }
     );
+
 
   for(
     let i=0;
@@ -2573,26 +3855,35 @@ function construireGroupes(data){
     i++
   ){
 
-    if(utilises.has(i)){
+    if(
+      utilises.has(i)
+    ){
       continue;
     }
+
 
     const premier =
       donneesTriees[i];
 
+
     const groupe =
       [premier];
 
+
     utilises.add(i);
+
 
     let dernier =
       premier;
 
+
     let trouve = true;
+
 
     while(trouve){
 
       trouve = false;
+
 
       for(
         let j=0;
@@ -2600,12 +3891,16 @@ function construireGroupes(data){
         j++
       ){
 
-        if(utilises.has(j)){
+        if(
+          utilises.has(j)
+        ){
           continue;
         }
 
+
         const candidat =
           donneesTriees[j];
+
 
         if(
           peutRegrouper(
@@ -2614,7 +3909,9 @@ function construireGroupes(data){
           )
         ){
 
-          groupe.push(candidat);
+          groupe.push(
+            candidat
+          );
 
           utilises.add(j);
 
@@ -2631,38 +3928,63 @@ function construireGroupes(data){
 
     }
 
+
     groupe.sort(
       (a,b)=>
-        String(a.date_service || "")
-          .localeCompare(
-            String(b.date_service || "")
+        String(
+          a.date_service || ""
+        )
+        .localeCompare(
+          String(
+            b.date_service || ""
           )
+        )
     );
 
-    groupes.push(groupe);
+
+    groupes.push(
+      groupe
+    );
 
   }
+
 
   return groupes;
 }
 
+
 /* =========================================================
-   AFFICHAGE DES ECHANGES
+   AFFICHAGE ECHANGES
 ========================================================= */
 
 async function afficherEchanges(){
 
   const liste =
-    document.getElementById("liste");
+    document.getElementById(
+      "liste"
+    );
+
+
+  if(
+    metierActuel !== "ASCT" &&
+    metierActuel !== "ADC"
+  ){
+    return;
+  }
+
 
   liste.innerHTML = `
 
     <div class="loader">
+
       <div class="spinner"></div>
+
       Chargement des échanges…
+
     </div>
 
   `;
+
 
   try{
 
@@ -2670,8 +3992,14 @@ async function afficherEchanges(){
       supabaseClient
         .from("echanges")
         .select("*")
-        .eq("statut","disponible")
-        .eq("metier",metierActuel)
+        .eq(
+          "statut",
+          "disponible"
+        )
+        .eq(
+          "metier",
+          metierActuel
+        )
         .order(
           "date_service",
           {
@@ -2679,10 +4007,13 @@ async function afficherEchanges(){
           }
         );
 
+
     const {
       data,
       error
-    } = await requete;
+    } =
+      await requete;
+
 
     if(error){
 
@@ -2690,6 +4021,7 @@ async function afficherEchanges(){
         "Erreur récupération :",
         error
       );
+
 
       liste.innerHTML = `
 
@@ -2699,10 +4031,14 @@ async function afficherEchanges(){
             ⚠️
           </div>
 
-          <h3>Impossible de charger les échanges</h3>
+          <h3>
+            Impossible de charger les échanges
+          </h3>
 
           <p>
-            ${echapperHTML(error.message)}
+            ${echapperHTML(
+              error.message
+            )}
           </p>
 
         </div>
@@ -2712,10 +4048,14 @@ async function afficherEchanges(){
       return;
     }
 
+
     demandesChargees =
       data || [];
 
-    if(!demandesChargees.length){
+
+    if(
+      !demandesChargees.length
+    ){
 
       liste.innerHTML = `
 
@@ -2725,11 +4065,16 @@ async function afficherEchanges(){
             🚆
           </div>
 
-          <h3>Aucune journée disponible</h3>
+          <h3>
+            Aucune journée disponible
+          </h3>
 
           <p>
             Aucune demande d'échange n'est actuellement
-            disponible pour le métier ${echapperHTML(metierActuel)}.
+            disponible pour le métier
+            ${echapperHTML(
+              metierActuel
+            )}.
           </p>
 
         </div>
@@ -2739,10 +4084,12 @@ async function afficherEchanges(){
       return;
     }
 
+
     const groupes =
       construireGroupes(
         demandesChargees
       );
+
 
     liste.innerHTML =
       groupes
@@ -2755,9 +4102,13 @@ async function afficherEchanges(){
         )
         .join("");
 
+
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     liste.innerHTML = `
 
@@ -2767,7 +4118,9 @@ async function afficherEchanges(){
           ⚠️
         </div>
 
-        <h3>Erreur</h3>
+        <h3>
+          Erreur
+        </h3>
 
         <p>
           Impossible de charger les demandes.
@@ -2781,8 +4134,9 @@ async function afficherEchanges(){
 
 }
 
+
 /* =========================================================
-   CARTE D'UNE DEMANDE
+   CARTE DEMANDE
 ========================================================= */
 
 function construireCarte(
@@ -2793,26 +4147,43 @@ function construireCarte(
   const premier =
     groupe[0];
 
+
   const publication =
     recupererDatePublication(
       premier
     );
 
+
   const publicationHTML =
     publication
 
       ? `
+
         <div class="request-date">
+
           🕒 Demande publiée le
-          <strong>&nbsp;${echapperHTML(publication)}</strong>
+
+          <strong>
+            &nbsp;
+            ${echapperHTML(
+              publication
+            )}
+          </strong>
+
         </div>
+
       `
 
       : `
+
         <div class="request-date">
+
           🕒 Date de publication non disponible
+
         </div>
+
       `;
+
 
   const journeesHTML =
     groupe
@@ -2826,78 +4197,120 @@ function construireCarte(
       )
       .join("");
 
+
   let interetHTML = "";
 
-  if(premier.agent_interesse){
+
+  if(
+    premier.agent_interesse
+  ){
 
     interetHTML = `
 
       <div class="interested">
+
         🙋 Agent intéressé :
+
         <strong>
+
           ${echapperHTML(
             premier.agent_interesse
           )}
+
         </strong>
+
       </div>
 
     `;
 
   }
 
+
   return `
 
     <article
       class="exchange-card"
-      data-id="${echapperHTML(premier.id)}">
+      data-id="${echapperHTML(
+        premier.id
+      )}">
 
       <div class="request-header">
 
         <h3 class="agent-name">
-          <span>👤</span>
+
+          <span>
+            👤
+          </span>
+
           ${echapperHTML(
-            premier.nom || "Agent"
+            premier.nom ||
+            "Agent"
           )}
+
         </h3>
 
+
         <div class="metier-tag">
+
           ${echapperHTML(
-            premier.metier || "Métier"
+            premier.metier ||
+            "Métier"
           )}
+
         </div>
 
       </div>
 
+
       ${publicationHTML}
 
+
       ${journeesHTML}
+
 
       ${
         premier.commentaire
           ? `
+
             <div class="commentaire">
-              💬 ${echapperHTML(
+
+              💬
+
+              ${echapperHTML(
                 premier.commentaire
               )}
+
             </div>
+
           `
           : ""
       }
 
+
       ${interetHTML}
+
 
       <div class="actions">
 
         <button
           class="btn btn-interest"
-          onclick="ouvrirInteret('${echapperHTML(premier.id)}')">
+          onclick="ouvrirInteret('${echapperHTML(
+            premier.id
+          )}')">
+
           🙋 JE SUIS INTÉRESSÉ
+
         </button>
+
 
         <button
           class="btn btn-delete"
-          onclick="supprimerDemande('${echapperHTML(premier.id)}')">
+          onclick="supprimerDemande('${echapperHTML(
+            premier.id
+          )}')">
+
           🗑️ SUPPRIMER
+
         </button>
 
       </div>
@@ -2905,7 +4318,9 @@ function construireCarte(
     </article>
 
   `;
+
 }
+
 
 /* =========================================================
    UNE JOURNEE
@@ -2922,12 +4337,18 @@ function construireJournee(
       jour.date_service
     );
 
+
   const horaires =
-    formatTime(jour.prise_service)
+    formatTime(
+      jour.prise_service
+    )
     +
     " → "
     +
-    formatTime(jour.fin_service);
+    formatTime(
+      jour.fin_service
+    );
+
 
   let html = `
 
@@ -2943,11 +4364,13 @@ function construireJournee(
 
       </div>
 
+
       <div class="service-date">
 
         <div class="service-date-icon">
           📅
         </div>
+
 
         <div class="service-date-content">
 
@@ -2955,15 +4378,19 @@ function construireJournee(
             DATE DU SERVICE À ÉCHANGER
           </div>
 
+
           <div class="service-date-value">
+
             ${echapperHTML(
               dateAffichee
             )}
+
           </div>
 
         </div>
 
       </div>
+
 
       <div class="service-grid">
 
@@ -2973,11 +4400,18 @@ function construireJournee(
             HORAIRES
           </div>
 
+
           <div class="info-value big">
-            ⏰ ${echapperHTML(horaires)}
+
+            ⏰
+            ${echapperHTML(
+              horaires
+            )}
+
           </div>
 
         </div>
+
 
         <div class="info-box">
 
@@ -2985,16 +4419,20 @@ function construireJournee(
             DURÉE
           </div>
 
+
           <div class="info-value">
+
             ${calculerDuree(
               jour.prise_service,
               jour.fin_service
             )}
+
           </div>
 
         </div>
 
       </div>
+
 
       <div class="locations">
 
@@ -3004,14 +4442,18 @@ function construireJournee(
             📍 PRISE DE SERVICE
           </div>
 
+
           <div class="info-value">
+
             ${echapperHTML(
               jour.lieu_prise_service ||
               "Non renseigné"
             )}
+
           </div>
 
         </div>
+
 
         <div class="location-box">
 
@@ -3019,11 +4461,14 @@ function construireJournee(
             📍 FIN DE SERVICE
           </div>
 
+
           <div class="info-value">
+
             ${echapperHTML(
               jour.lieu_fin_service ||
               "Non renseigné"
             )}
+
           </div>
 
         </div>
@@ -3034,6 +4479,7 @@ function construireJournee(
 
   `;
 
+
   if(
     numero < nombre
   ){
@@ -3041,15 +4487,19 @@ function construireJournee(
     html += `
 
       <div class="next-day">
+
         🔄 journée suivante
+
       </div>
 
     `;
 
   }
 
+
   return html;
 }
+
 
 /* =========================================================
    DUREE
@@ -3060,15 +4510,25 @@ function calculerDuree(
   fin
 ){
 
-  if(!debut || !fin){
+  if(
+    !debut ||
+    !fin
+  ){
     return "—";
   }
 
+
   const d =
-    convertirMinutes(debut);
+    convertirMinutes(
+      debut
+    );
+
 
   const f =
-    convertirMinutes(fin);
+    convertirMinutes(
+      fin
+    );
+
 
   if(
     d === null ||
@@ -3077,35 +4537,59 @@ function calculerDuree(
     return "—";
   }
 
+
   let minutes =
     f - d;
 
-  if(minutes < 0){
-    minutes += 24 * 60;
+
+  if(
+    minutes < 0
+  ){
+    minutes +=
+      24 * 60;
   }
 
+
   const heures =
-    Math.floor(minutes / 60);
+    Math.floor(
+      minutes / 60
+    );
+
 
   const reste =
     minutes % 60;
 
+
   return (
     heures
-    + "h"
-    + String(reste).padStart(2,"0")
+    +
+    "h"
+    +
+    String(
+      reste
+    ).padStart(
+      2,
+      "0"
+    )
   );
 }
 
-function convertirMinutes(value){
+
+function convertirMinutes(
+  value
+){
 
   const match =
     String(value)
-      .match(/^(\d{1,2}):(\d{2})/);
+      .match(
+        /^(\d{1,2}):(\d{2})/
+      );
+
 
   if(!match){
     return null;
   }
+
 
   return (
     Number(match[1]) * 60
@@ -3113,6 +4597,7 @@ function convertirMinutes(value){
     Number(match[2])
   );
 }
+
 
 /* =========================================================
    SUPPRESSION
@@ -3126,14 +4611,17 @@ async function supprimerDemande(
     return;
   }
 
+
   const confirmation =
     window.confirm(
       "Voulez-vous vraiment supprimer cette demande ?"
     );
 
+
   if(!confirmation){
     return;
   }
+
 
   try{
 
@@ -3143,29 +4631,43 @@ async function supprimerDemande(
       await supabaseClient
         .from("echanges")
         .delete()
-        .eq("id",id);
+        .eq(
+          "id",
+          id
+        );
+
 
     if(error){
 
-      console.error(error);
+      console.error(
+        error
+      );
+
 
       afficherToast(
         "❌ Impossible de supprimer la demande : "
-        + error.message
+        +
+        error.message
       );
 
       return;
     }
 
+
     afficherToast(
       "🗑️ Demande supprimée."
     );
 
+
     await afficherEchanges();
+
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     afficherToast(
       "❌ Une erreur est survenue."
@@ -3175,42 +4677,62 @@ async function supprimerDemande(
 
 }
 
+
 /* =========================================================
    INTERET
 ========================================================= */
 
-function ouvrirInteret(id){
+function ouvrirInteret(
+  id
+){
 
   demandeInteretId =
     id;
 
+
   document
-    .getElementById("interessantNom")
+    .getElementById(
+      "interessantNom"
+    )
     .value = "";
 
-  document
-    .getElementById("interestModal")
-    .classList.add("show");
 
+  document
+    .getElementById(
+      "interestModal"
+    )
+    .classList.add(
+      "show"
+    );
 }
+
 
 function fermerInteret(){
 
   document
-    .getElementById("interestModal")
-    .classList.remove("show");
+    .getElementById(
+      "interestModal"
+    )
+    .classList.remove(
+      "show"
+    );
+
 
   demandeInteretId =
     null;
 }
 
+
 async function confirmerInteret(){
 
   const nom =
     document
-      .getElementById("interessantNom")
+      .getElementById(
+        "interessantNom"
+      )
       .value
       .trim();
+
 
   if(!nom){
 
@@ -3221,12 +4743,14 @@ async function confirmerInteret(){
     return;
   }
 
+
   if(!demandeInteretId){
 
     fermerInteret();
 
     return;
   }
+
 
   try{
 
@@ -3236,36 +4760,49 @@ async function confirmerInteret(){
       await supabaseClient
         .from("echanges")
         .update({
-          agent_interesse:nom
+          agent_interesse:
+            nom
         })
         .eq(
           "id",
           demandeInteretId
         );
 
+
     if(error){
 
-      console.error(error);
+      console.error(
+        error
+      );
+
 
       afficherToast(
         "❌ Impossible d'enregistrer ton intérêt : "
-        + error.message
+        +
+        error.message
       );
 
       return;
     }
 
+
     fermerInteret();
+
 
     afficherToast(
       "🙋 Ton intérêt a bien été enregistré."
     );
 
+
     await afficherEchanges();
+
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     afficherToast(
       "❌ Une erreur est survenue."
@@ -3275,12 +4812,15 @@ async function confirmerInteret(){
 
 }
 
+
 /* =========================================================
-   FERMETURE DES MODALES EN CLIQUANT À L'EXTERIEUR
+   FERMETURE MODALES EXTERIEUR
 ========================================================= */
 
 document
-  .getElementById("confirmationModal")
+  .getElementById(
+    "confirmationModal"
+  )
   .addEventListener(
     "click",
     function(event){
@@ -3294,8 +4834,11 @@ document
     }
   );
 
+
 document
-  .getElementById("formModal")
+  .getElementById(
+    "formModal"
+  )
   .addEventListener(
     "click",
     function(event){
@@ -3309,8 +4852,11 @@ document
     }
   );
 
+
 document
-  .getElementById("interestModal")
+  .getElementById(
+    "interestModal"
+  )
   .addEventListener(
     "click",
     function(event){
@@ -3324,6 +4870,7 @@ document
     }
   );
 
+
 /* =========================================================
    INITIALISATION
 ========================================================= */
@@ -3333,53 +4880,52 @@ document.addEventListener(
   function(){
 
     /*
-      Par défaut : ASCT.
-      Aucun filtre "Tous".
-      Aucun métier Escales ou Autre.
+      IMPORTANT :
+      L'application commence maintenant
+      sur le véritable accueil V4.4.
+
+      Aucun métier n'est sélectionné
+      automatiquement.
+
+      L'utilisateur choisit :
+      - ADC
+      - ASCT
     */
 
-    metierActuel = "ASCT";
+    metierActuel =
+      null;
 
-    const boutonASCT =
-      document.querySelector(
-        '.metier-btn[data-metier="ASCT"]'
+
+    const home =
+      document.getElementById(
+        "homePage"
       );
 
-    document
-      .querySelectorAll(".metier-btn")
-      .forEach(btn=>{
-        btn.classList.remove("active");
-      });
 
-    if(boutonASCT){
-      boutonASCT.classList.add("active");
-    }
+    const exchange =
+      document.getElementById(
+        "exchangePage"
+      );
 
-    const selectMetier =
-      document.getElementById("metier");
 
-    if(selectMetier){
-      selectMetier.value = "ASCT";
-    }
+    const nav =
+      document.getElementById(
+        "bottomNav"
+      );
 
-    /*
-      IMPORTANT :
-      On force l'ouverture de la page
-      tout en haut afin que Safari ne
-      conserve pas une ancienne position
-      de défilement au rechargement.
-    */
 
-    window.scrollTo(0,0);
+    home.style.display =
+      "flex";
 
-    setTimeout(
-      ()=>{
-        window.scrollTo(0,0);
-      },
-      100
+
+    exchange.classList.remove(
+      "visible"
     );
 
-    afficherEchanges();
+
+    nav.classList.remove(
+      "visible"
+    );
 
   }
 );
