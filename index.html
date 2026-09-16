@@ -1600,6 +1600,11 @@ function allerEchanges(){
 }
 
 
+/*
+  La navigation "Métier" permet de choisir
+  directement le métier, mais la confirmation
+  de congé refusé sera affichée avant le formulaire.
+*/
 function ouvrirChoixMetier(){
 
   document
@@ -1621,6 +1626,11 @@ function selectionnerMetier(metier){
   metierActuel = metier;
 
   fermerChoixMetier();
+
+  /*
+    On demande maintenant la confirmation
+    AVANT d'ouvrir le formulaire.
+  */
 
   ouvrirConfirmation();
 }
@@ -1650,12 +1660,22 @@ function confirmerCongeRefuse(){
 
   fermerConfirmation();
 
+  /*
+    Si le métier n'a pas encore été choisi,
+    on ouvre le choix du métier.
+  */
+
   if(!metierActuel){
 
     ouvrirChoixMetier();
 
     return;
   }
+
+  /*
+    Si le métier était déjà choisi,
+    on ouvre directement le formulaire.
+  */
 
   ouvrirFormulaire();
 }
@@ -1856,11 +1876,6 @@ async function publier(){
     return;
   }
 
-
-  /*
-    Une seule date de publication pour
-    toute la demande.
-  */
 
   const dateDemande =
     new Date().toISOString();
@@ -2096,10 +2111,6 @@ function peutRegrouper(
   jour2
 ){
 
-  /*
-    Même agent
-  */
-
   const memeNom =
     normaliserTexte(
       jour1.nom
@@ -2108,10 +2119,6 @@ function peutRegrouper(
       jour2.nom
     );
 
-
-  /*
-    Même métier
-  */
 
   const memeMetier =
     normaliserTexte(
@@ -2122,10 +2129,6 @@ function peutRegrouper(
     );
 
 
-  /*
-    Jour 2 = lendemain exact
-  */
-
   const dateSuivanteExacte =
     dateSuivante(
       jour1.date_service
@@ -2134,10 +2137,6 @@ function peutRegrouper(
       jour2.date_service
     );
 
-
-  /*
-    Fin jour 1 = prise jour 2
-  */
 
   const memeLieu =
     normaliserTexte(
@@ -2166,11 +2165,6 @@ function construireGroupes(data){
   const lignes =
     [...data];
 
-
-  /*
-    Tri indépendant de l'ordre renvoyé
-    par Supabase.
-  */
 
   lignes.sort((a,b) => {
 
@@ -2250,11 +2244,6 @@ function construireGroupes(data){
     );
 
 
-    /*
-      On recherche la journée suivante
-      dans l'ensemble des lignes.
-    */
-
     let recherche =
       lignes[i];
 
@@ -2307,12 +2296,6 @@ function construireGroupes(data){
         suivante.id
       );
 
-
-      /*
-        Permet aussi de regrouper
-        une éventuelle 3e journée
-        consécutive.
-      */
 
       recherche =
         suivante;
@@ -2436,11 +2419,6 @@ async function afficherEchanges(){
     return;
   }
 
-
-  /*
-    CORRECTION IMPORTANTE :
-    les lignes sont d'abord regroupées.
-  */
 
   const groupes =
     construireGroupes(data);
