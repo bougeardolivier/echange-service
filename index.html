@@ -28,7 +28,6 @@ body{
   padding:0;
   width:100%;
   min-height:100%;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -36,21 +35,12 @@ body{
     Roboto,
     Arial,
     sans-serif;
-
   color:#17344b;
-
   background:#edf4f7;
 }
 
 body{
   overflow-x:hidden;
-}
-
-button,
-input,
-select,
-textarea{
-  font-family:inherit;
 }
 
 /* =========================================================
@@ -60,32 +50,39 @@ textarea{
 .bg{
   position:fixed;
   inset:0;
-
-  z-index:-5;
-
+  z-index:-10;
   overflow:hidden;
   pointer-events:none;
 
   background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(22,126,163,.32),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(0,179,220,.16),
+      transparent 35%
+    ),
     linear-gradient(
       180deg,
-      rgba(4,22,36,.18),
-      rgba(4,22,36,.40)
-    ),
-    url("IMG_7689.jpeg") center 45%/cover no-repeat;
+      #061d2c 0%,
+      #0a3045 48%,
+      #dce8ed 100%
+    );
 }
 
 .bg::after{
   content:"";
-
   position:absolute;
   inset:0;
 
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,.04),
-      rgba(255,255,255,.10)
+      rgba(0,0,0,.05),
+      rgba(255,255,255,.15)
     );
 }
 
@@ -105,128 +102,95 @@ textarea{
 }
 
 /* =========================================================
-   ACCUEIL V4.4
+   PAGE ACCUEIL V4.4
 ========================================================= */
 
 .home-page{
   min-height:100vh;
-
-  padding:
-    28px 20px
-    120px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(4,25,42,.92) 0%,
-      rgba(10,42,61,.90) 37%,
-      rgba(231,241,246,.94) 100%
-    );
+  padding:28px 0 120px;
 }
 
 /* =========================================================
-   EN-TÊTE ACCUEIL
+   LOGO ACCUEIL
 ========================================================= */
 
-.home-header{
-  width:min(1500px,100%);
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
+.home-brand{
   text-align:center;
-
-  margin-bottom:52px;
+  color:white;
+  padding:8px 15px 35px;
 }
 
 .home-train{
   width:86px;
   height:86px;
 
+  margin:0 auto 15px;
+
   display:flex;
   align-items:center;
   justify-content:center;
 
-  margin-bottom:16px;
-
   border-radius:25px;
+
+  font-size:47px;
+
+  background:rgba(8,31,47,.58);
 
   border:1px solid rgba(255,255,255,.35);
 
-  background:
-    rgba(5,28,45,.48);
-
   box-shadow:
-    0 10px 30px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.12);
-
-  font-size:46px;
+    0 12px 35px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.15);
 }
 
 .home-title{
   margin:0;
 
-  font-size:
-    clamp(42px,7vw,82px);
-
-  line-height:.98;
+  font-size:clamp(43px,7vw,86px);
+  line-height:.95;
 
   font-weight:950;
-
   letter-spacing:-3px;
 
-  color:white;
-
   text-shadow:
-    0 8px 30px rgba(0,0,0,.28);
+    0 5px 25px rgba(0,0,0,.20);
 }
 
 .home-title .blue{
-  color:#58d6f2;
+  color:#62d9f2;
 }
 
 .home-subtitle{
-  margin:23px 0 0;
+  margin:24px 0 0;
 
-  color:white;
+  color:#f1f7fa;
 
-  font-size:
-    clamp(17px,2.6vw,28px);
-
+  font-size:clamp(17px,2.4vw,29px);
   font-weight:500;
-
-  line-height:1.35;
 }
 
 .home-subtitle strong{
-  color:#62d9f4;
-  font-weight:900;
+  color:#62d9f2;
 }
 
-.home-line{
-  width:min(620px,70%);
+/* lignes décoratives */
 
+.home-line{
+  width:min(650px,55%);
   height:3px;
 
-  margin-top:25px;
-
-  border-radius:999px;
+  margin:24px auto 0;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      #55d7f4,
+      #53d4ed,
       transparent
     );
 
   box-shadow:
-    0 0 18px rgba(71,210,241,.5);
+    0 0 15px rgba(83,212,237,.65);
 }
 
 /* =========================================================
@@ -234,37 +198,35 @@ textarea{
 ========================================================= */
 
 .welcome-card{
+
   position:relative;
 
-  width:min(1500px,100%);
-
-  min-height:350px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  width:100%;
 
   padding:
-    48px 35px
-    42px;
+    clamp(32px,5vw,55px)
+    clamp(22px,5vw,55px)
+    clamp(30px,4vw,42px);
 
-  margin-bottom:22px;
-
-  overflow:hidden;
-
-  text-align:center;
+  margin:0 auto 20px;
 
   border-radius:38px;
 
   background:
-    rgba(255,255,255,.94);
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.96),
+      rgba(244,248,250,.94)
+    );
 
-  border:
-    1px solid rgba(255,255,255,.90);
+  border:1px solid rgba(255,255,255,.85);
 
   box-shadow:
-    0 25px 70px rgba(5,31,47,.24);
+    0 25px 70px rgba(2,31,48,.28);
+
+  overflow:hidden;
+
+  text-align:center;
 }
 
 .welcome-card::before{
@@ -272,16 +234,16 @@ textarea{
 
   position:absolute;
 
-  width:220px;
-  height:220px;
+  width:210px;
+  height:210px;
 
-  top:-95px;
-  left:-80px;
+  left:-100px;
+  top:-100px;
 
   border-radius:50%;
 
   background:
-    rgba(80,190,222,.17);
+    rgba(93,190,220,.18);
 }
 
 .welcome-card::after{
@@ -292,80 +254,78 @@ textarea{
   width:220px;
   height:220px;
 
-  right:-95px;
-  bottom:-125px;
+  right:-105px;
+  bottom:-115px;
 
   border-radius:50%;
 
   background:
-    rgba(73,195,183,.14);
+    rgba(67,198,184,.15);
 }
 
 .welcome-icon{
+
   position:relative;
   z-index:2;
 
   width:86px;
   height:86px;
 
+  margin:0 auto 22px;
+
   display:flex;
   align-items:center;
   justify-content:center;
 
-  margin-bottom:20px;
+  border-radius:24px;
 
-  border-radius:25px;
+  font-size:42px;
 
   background:
     linear-gradient(
       145deg,
-      #dff7fd,
-      #c9f0f7
+      #e9fbff,
+      #d9f3f8
     );
 
   box-shadow:
-    0 12px 30px rgba(19,143,177,.16);
-
-  font-size:45px;
+    0 12px 30px rgba(41,155,187,.18);
 }
 
 .welcome-card h2{
+
   position:relative;
   z-index:2;
 
   margin:0;
 
-  color:#17354d;
+  color:#16334d;
 
-  font-size:
-    clamp(38px,5vw,57px);
-
+  font-size:clamp(35px,5vw,57px);
   line-height:1;
 
   font-weight:950;
-
   letter-spacing:-1.5px;
 }
 
 .welcome-card p{
+
   position:relative;
   z-index:2;
 
-  margin:
-    22px 0
-    23px;
+  max-width:1100px;
 
-  color:#718294;
+  margin:22px auto 25px;
 
-  font-size:
-    clamp(16px,2vw,25px);
+  color:#708090;
 
-  line-height:1.4;
+  font-size:clamp(16px,2vw,25px);
 
-  font-weight:500;
+  line-height:1.45;
 }
 
-.choose-pill{
+.choose-label{
+
   position:relative;
   z-index:2;
 
@@ -373,65 +333,69 @@ textarea{
   align-items:center;
   justify-content:center;
 
-  padding:13px 25px;
+  padding:12px 25px;
 
   border-radius:999px;
-
-  color:#28566e;
 
   background:
     linear-gradient(
       135deg,
-      #d8f7fc,
-      #c8eff7
+      #e2f8fc,
+      #c9eef7
     );
 
-  font-size:
-    clamp(14px,1.7vw,19px);
+  color:#285a72;
 
+  font-size:clamp(14px,1.8vw,20px);
   font-weight:900;
-
-  box-shadow:
-    0 7px 20px rgba(27,147,180,.12);
 }
 
 /* =========================================================
-   CHOIX METIER V4.4
+   CARTES METIERS V4.4
 ========================================================= */
 
 .home-metiers{
-  width:min(1500px,100%);
 
   display:grid;
 
   grid-template-columns:
-    1fr 1fr;
+    repeat(2,minmax(0,1fr));
 
-  gap:25px;
+  gap:24px;
+
+  margin-top:20px;
 }
 
 .home-metier-card{
+
   position:relative;
 
-  min-height:165px;
+  min-height:175px;
+
+  padding:25px 28px;
 
   display:flex;
   align-items:center;
 
-  padding:26px 30px;
+  gap:22px;
 
-  border-radius:30px;
+  border:none;
+
+  border-radius:32px;
 
   background:
-    rgba(255,255,255,.96);
-
-  border:
-    1px solid rgba(255,255,255,.9);
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.98),
+      rgba(249,251,252,.96)
+    );
 
   box-shadow:
-    0 18px 50px rgba(6,38,56,.20);
+    0 20px 50px rgba(2,31,48,.22);
 
   cursor:pointer;
+
+  text-align:left;
 
   overflow:hidden;
 
@@ -440,79 +404,89 @@ textarea{
     box-shadow .18s ease;
 }
 
+.home-metier-card:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 25px 60px rgba(2,31,48,.27);
+}
+
 .home-metier-card:active{
   transform:scale(.985);
 }
 
 .home-metier-card.adc{
-  border-left:
-    7px solid #2da9d8;
+  border-left:7px solid #29a7dc;
 }
 
 .home-metier-card.asct{
-  border-left:
-    7px solid #3bc1b1;
+  border-left:7px solid #36bcae;
 }
 
 .home-metier-icon{
+
+  flex:0 0 auto;
+
   width:92px;
   height:92px;
-
-  flex:0 0 92px;
 
   display:flex;
   align-items:center;
   justify-content:center;
-
-  margin-right:23px;
 
   border-radius:25px;
 
   background:
     linear-gradient(
       145deg,
-      #dff7fc,
-      #c9eff7
+      #e4f8fc,
+      #d4f1f6
     );
 
-  font-size:47px;
+  font-size:48px;
+
+  box-shadow:
+    0 8px 20px rgba(33,139,170,.10);
 }
 
 .home-metier-content{
   min-width:0;
+  flex:1;
 }
 
-.home-metier-name{
-  margin:0 0 5px;
+.home-metier-content h3{
 
-  color:#1680cf;
+  margin:0 0 7px;
 
-  font-size:
-    clamp(25px,3vw,34px);
+  color:#187fd1;
 
-  font-weight:950;
+  font-size:clamp(25px,3vw,34px);
 
   line-height:1;
+
+  font-weight:950;
 }
 
-.home-metier-description{
-  color:#82909e;
+.home-metier-content p{
 
-  font-size:
-    clamp(14px,1.8vw,20px);
+  margin:0;
+
+  color:#7c8996;
+
+  font-size:clamp(14px,1.7vw,20px);
 
   line-height:1.35;
-
-  font-weight:500;
 }
 
 .home-metier-arrow{
-  margin-left:auto;
-  padding-left:15px;
 
-  color:#2386b3;
+  flex:0 0 auto;
 
-  font-size:35px;
+  color:#2589b2;
+
+  font-size:34px;
+
   font-weight:500;
 }
 
@@ -524,7 +498,7 @@ textarea{
   display:none;
 }
 
-.exchange-page.visible{
+.exchange-page.show{
   display:block;
 }
 
@@ -537,8 +511,7 @@ textarea{
   top:0;
   z-index:30;
 
-  background:
-    rgba(7,28,45,.88);
+  background:rgba(7,28,45,.90);
 
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
@@ -551,6 +524,7 @@ textarea{
 }
 
 .header-inner{
+
   width:min(1400px,94%);
   margin:auto;
 
@@ -566,19 +540,19 @@ textarea{
 .logo-area{
   display:flex;
   align-items:center;
-
   gap:16px;
 }
 
 .logo-train{
+
   width:62px;
   height:62px;
+
+  border-radius:18px;
 
   display:flex;
   align-items:center;
   justify-content:center;
-
-  border-radius:18px;
 
   font-size:34px;
 
@@ -595,12 +569,12 @@ textarea{
 }
 
 .title-block h1{
+
   margin:0;
 
   color:white;
 
-  font-size:
-    clamp(27px,4vw,48px);
+  font-size:clamp(27px,4vw,48px);
 
   line-height:1;
 
@@ -610,39 +584,39 @@ textarea{
 }
 
 .title-block p{
+
   margin:8px 0 0;
 
   color:#cfe7f4;
 
-  font-size:
-    clamp(12px,1.7vw,17px);
+  font-size:clamp(12px,1.7vw,17px);
 
   font-weight:600;
 }
 
 .status-pill{
+
   display:flex;
   align-items:center;
-
   gap:8px;
 
   padding:11px 16px;
 
   border-radius:999px;
 
-  background:
-    rgba(255,255,255,.10);
+  background:rgba(255,255,255,.10);
 
-  border:
-    1px solid rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.15);
 
   color:white;
 
   font-size:13px;
+
   font-weight:700;
 }
 
 .status-dot{
+
   width:9px;
   height:9px;
 
@@ -659,35 +633,35 @@ textarea{
 ========================================================= */
 
 .intro{
+
   margin:24px 0 18px;
 
   padding:22px 25px;
 
   border-radius:25px;
 
-  background:
-    rgba(255,255,255,.90);
+  background:rgba(255,255,255,.90);
 
   backdrop-filter:blur(15px);
   -webkit-backdrop-filter:blur(15px);
 
-  border:
-    1px solid rgba(255,255,255,.75);
+  border:1px solid rgba(255,255,255,.75);
 
   box-shadow:
     0 18px 50px rgba(3,27,45,.16);
 }
 
 .intro h2{
+
   margin:0 0 7px;
 
-  font-size:
-    clamp(19px,2.8vw,27px);
+  font-size:clamp(19px,2.8vw,27px);
 
   color:#0d557d;
 }
 
 .intro p{
+
   margin:0;
 
   color:#607789;
@@ -698,10 +672,11 @@ textarea{
 }
 
 /* =========================================================
-   METIERS PAGE ECHANGES
+   METIERS ECHANGES
 ========================================================= */
 
 .metiers{
+
   display:flex;
 
   gap:10px;
@@ -716,7 +691,8 @@ textarea{
 }
 
 .metier-btn{
-  flex:1 1 0;
+
+  flex:1;
 
   border:none;
 
@@ -724,8 +700,7 @@ textarea{
 
   border-radius:999px;
 
-  background:
-    rgba(255,255,255,.84);
+  background:rgba(255,255,255,.84);
 
   color:#416174;
 
@@ -740,6 +715,7 @@ textarea{
 }
 
 .metier-btn.active{
+
   color:white;
 
   background:
@@ -758,6 +734,7 @@ textarea{
 ========================================================= */
 
 .action-zone{
+
   margin:10px 0 20px;
 
   display:flex;
@@ -765,6 +742,7 @@ textarea{
 }
 
 .new-btn{
+
   width:100%;
   max-width:520px;
 
@@ -793,17 +771,16 @@ textarea{
   cursor:pointer;
 }
 
-.new-btn:active{
-  transform:scale(.985);
-}
-
 /* =========================================================
    LISTE
 ========================================================= */
 
 #liste{
+
   display:flex;
+
   flex-direction:column;
+
   gap:18px;
 }
 
@@ -812,17 +789,16 @@ textarea{
 ========================================================= */
 
 .exchange-card{
+
   position:relative;
 
   padding:24px;
 
   border-radius:30px;
 
-  background:
-    rgba(255,255,255,.93);
+  background:rgba(255,255,255,.93);
 
-  border-left:
-    6px solid #1296c5;
+  border-left:6px solid #1296c5;
 
   box-shadow:
     0 18px 55px rgba(3,29,47,.17);
@@ -831,6 +807,7 @@ textarea{
 }
 
 .exchange-card::before{
+
   content:"";
 
   position:absolute;
@@ -856,11 +833,14 @@ textarea{
 ========================================================= */
 
 .request-header{
+
   position:relative;
   z-index:2;
 
   display:flex;
+
   flex-wrap:wrap;
+
   align-items:center;
 
   gap:10px 14px;
@@ -869,12 +849,12 @@ textarea{
 }
 
 .agent-name{
+
   margin:0;
 
   color:#17384f;
 
-  font-size:
-    clamp(22px,3.5vw,31px);
+  font-size:clamp(22px,3.5vw,31px);
 
   font-weight:900;
 
@@ -883,11 +863,11 @@ textarea{
 
 .agent-name span{
   display:inline-flex;
-
   margin-right:8px;
 }
 
 .metier-tag{
+
   padding:7px 12px;
 
   border-radius:999px;
@@ -902,10 +882,13 @@ textarea{
 }
 
 .request-date{
+
   display:inline-flex;
+
   align-items:center;
 
   width:max-content;
+
   max-width:100%;
 
   margin:8px 0 18px;
@@ -932,6 +915,7 @@ textarea{
 ========================================================= */
 
 .journey{
+
   position:relative;
   z-index:2;
 
@@ -946,8 +930,7 @@ textarea{
       rgba(247,251,252,.95)
     );
 
-  border:
-    1px solid #d7e7ee;
+  border:1px solid #d7e7ee;
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.8);
@@ -958,6 +941,7 @@ textarea{
 }
 
 .journey-title{
+
   display:flex;
   align-items:center;
 
@@ -970,15 +954,15 @@ textarea{
   font-size:20px;
 
   font-weight:950;
-
-  letter-spacing:.2px;
 }
 
 .journey-title .number{
+
   width:31px;
   height:31px;
 
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -992,10 +976,11 @@ textarea{
 }
 
 /* =========================================================
-   DATE SERVICE
+   DATE
 ========================================================= */
 
 .service-date{
+
   display:flex;
   align-items:center;
 
@@ -1009,16 +994,15 @@ textarea{
 
   background:#e5f3f9;
 
-  border:
-    1px solid #d1e7ef;
+  border:1px solid #d1e7ef;
 }
 
 .service-date-icon{
   font-size:25px;
-  line-height:1;
 }
 
 .service-date-content{
+
   display:flex;
   flex-direction:column;
 
@@ -1026,6 +1010,7 @@ textarea{
 }
 
 .service-date-label{
+
   color:#738997;
 
   font-size:10px;
@@ -1038,6 +1023,7 @@ textarea{
 }
 
 .service-date-value{
+
   color:#1d4861;
 
   font-size:17px;
@@ -1050,6 +1036,7 @@ textarea{
 ========================================================= */
 
 .service-grid{
+
   display:grid;
 
   grid-template-columns:1fr 1fr;
@@ -1058,20 +1045,20 @@ textarea{
 }
 
 .info-box{
+
   min-width:0;
 
   padding:14px;
 
   border-radius:16px;
 
-  background:
-    rgba(246,250,251,.92);
+  background:rgba(246,250,251,.92);
 
-  border:
-    1px solid #dbe8ed;
+  border:1px solid #dbe8ed;
 }
 
 .info-label{
+
   margin-bottom:7px;
 
   color:#778b99;
@@ -1086,6 +1073,7 @@ textarea{
 }
 
 .info-value{
+
   color:#244d64;
 
   font-size:15px;
@@ -1100,6 +1088,7 @@ textarea{
 }
 
 .locations{
+
   display:grid;
 
   grid-template-columns:1fr 1fr;
@@ -1110,14 +1099,14 @@ textarea{
 }
 
 .location-box{
+
   padding:13px 14px;
 
   border-radius:16px;
 
   background:#f5f8f9;
 
-  border:
-    1px solid #dce8ec;
+  border:1px solid #dce8ec;
 }
 
 .location-box .info-value{
@@ -1129,7 +1118,9 @@ textarea{
 ========================================================= */
 
 .next-day{
+
   display:flex;
+
   align-items:center;
 
   gap:10px;
@@ -1145,6 +1136,7 @@ textarea{
 
 .next-day::before,
 .next-day::after{
+
   content:"";
 
   height:1px;
@@ -1159,6 +1151,7 @@ textarea{
 ========================================================= */
 
 .commentaire{
+
   position:relative;
   z-index:2;
 
@@ -1182,6 +1175,7 @@ textarea{
 ========================================================= */
 
 .actions{
+
   position:relative;
   z-index:2;
 
@@ -1195,6 +1189,7 @@ textarea{
 }
 
 .btn{
+
   min-height:48px;
 
   border:none;
@@ -1209,26 +1204,21 @@ textarea{
 }
 
 .btn-interest{
+
   color:#966400;
 
   background:#fff0c9;
 }
 
-.btn-interest:active{
-  background:#ffe5a1;
-}
-
 .btn-delete{
+
   color:#c52f2f;
 
   background:#ffe3e3;
 }
 
-.btn-delete:active{
-  background:#ffd0d0;
-}
-
 .interested{
+
   margin-top:12px;
 
   padding:12px 15px;
@@ -1249,32 +1239,35 @@ textarea{
 ========================================================= */
 
 .empty{
+
   padding:45px 25px;
 
   text-align:center;
 
   border-radius:28px;
 
-  background:
-    rgba(255,255,255,.92);
+  background:rgba(255,255,255,.92);
 
   box-shadow:
     0 15px 40px rgba(0,0,0,.13);
 }
 
 .empty-icon{
+
   font-size:46px;
 
   margin-bottom:10px;
 }
 
 .empty h3{
+
   margin:0 0 8px;
 
   color:#31556a;
 }
 
 .empty p{
+
   margin:0;
 
   color:#718592;
@@ -1285,7 +1278,9 @@ textarea{
 ========================================================= */
 
 .overlay{
+
   position:fixed;
+
   inset:0;
 
   z-index:100;
@@ -1297,10 +1292,10 @@ textarea{
 
   padding:20px;
 
-  background:
-    rgba(3,19,31,.60);
+  background:rgba(3,19,31,.60);
 
   backdrop-filter:blur(8px);
+
   -webkit-backdrop-filter:blur(8px);
 }
 
@@ -1309,6 +1304,7 @@ textarea{
 }
 
 .modal{
+
   width:min(650px,100%);
 
   max-height:92vh;
@@ -1326,6 +1322,7 @@ textarea{
 }
 
 .modal h2{
+
   margin:0 0 8px;
 
   color:#173b52;
@@ -1334,6 +1331,7 @@ textarea{
 }
 
 .modal-subtitle{
+
   margin:0 0 20px;
 
   color:#708391;
@@ -1344,14 +1342,14 @@ textarea{
 }
 
 .confirm-box{
+
   padding:20px;
 
   border-radius:20px;
 
   background:#fff6df;
 
-  border:
-    1px solid #f0dfb1;
+  border:1px solid #f0dfb1;
 
   color:#765719;
 
@@ -1363,6 +1361,7 @@ textarea{
 }
 
 .modal-actions{
+
   display:grid;
 
   grid-template-columns:1fr 1fr;
@@ -1373,6 +1372,7 @@ textarea{
 }
 
 .modal-btn{
+
   min-height:50px;
 
   border:none;
@@ -1387,12 +1387,14 @@ textarea{
 }
 
 .modal-cancel{
+
   background:#edf2f4;
 
   color:#536a78;
 }
 
 .modal-confirm{
+
   background:
     linear-gradient(
       135deg,
@@ -1412,6 +1414,7 @@ textarea{
 }
 
 .form-label{
+
   display:block;
 
   margin-bottom:7px;
@@ -1428,10 +1431,10 @@ textarea{
 input,
 select,
 textarea{
+
   width:100%;
 
-  border:
-    1px solid #d5e2e8;
+  border:1px solid #d5e2e8;
 
   border-radius:14px;
 
@@ -1441,6 +1444,8 @@ textarea{
 
   color:#193f55;
 
+  font-family:inherit;
+
   font-size:16px;
 
   outline:none;
@@ -1449,6 +1454,7 @@ textarea{
 input:focus,
 select:focus,
 textarea:focus{
+
   border-color:#1396c4;
 
   box-shadow:
@@ -1456,12 +1462,14 @@ textarea:focus{
 }
 
 textarea{
+
   min-height:90px;
 
   resize:vertical;
 }
 
 .form-grid{
+
   display:grid;
 
   grid-template-columns:1fr 1fr;
@@ -1470,7 +1478,9 @@ textarea{
 }
 
 .second-toggle{
+
   display:flex;
+
   align-items:center;
 
   gap:12px;
@@ -1483,13 +1493,13 @@ textarea{
 
   background:#eef8fb;
 
-  border:
-    1px solid #d3ebf2;
+  border:1px solid #d3ebf2;
 
   cursor:pointer;
 }
 
 .second-toggle input{
+
   width:22px;
   height:22px;
 
@@ -1497,6 +1507,7 @@ textarea{
 }
 
 .second-toggle strong{
+
   display:block;
 
   color:#176481;
@@ -1505,9 +1516,8 @@ textarea{
 }
 
 .second-helper{
-  margin:
-    -2px 0
-    15px 37px;
+
+  margin:-2px 0 15px 37px;
 
   color:#81929c;
 
@@ -1515,6 +1525,7 @@ textarea{
 }
 
 .second-block{
+
   display:none;
 
   margin-top:14px;
@@ -1525,8 +1536,7 @@ textarea{
 
   background:#f3f9fb;
 
-  border:
-    1px solid #d9eaf0;
+  border:1px solid #d9eaf0;
 }
 
 .second-block.show{
@@ -1534,6 +1544,7 @@ textarea{
 }
 
 .submit-btn{
+
   width:100%;
 
   min-height:54px;
@@ -1564,6 +1575,7 @@ textarea{
 }
 
 .close-btn{
+
   width:100%;
 
   min-height:48px;
@@ -1590,6 +1602,7 @@ textarea{
 ========================================================= */
 
 .toast{
+
   position:fixed;
 
   left:50%;
@@ -1599,8 +1612,7 @@ textarea{
 
   width:min(500px,90%);
 
-  transform:
-    translate(-50%,20px);
+  transform:translate(-50%,20px);
 
   opacity:0;
 
@@ -1610,8 +1622,7 @@ textarea{
 
   border-radius:17px;
 
-  background:
-    rgba(8,31,47,.94);
+  background:rgba(8,31,47,.94);
 
   color:white;
 
@@ -1626,8 +1637,8 @@ textarea{
 }
 
 .toast.show{
-  transform:
-    translate(-50%,0);
+
+  transform:translate(-50%,0);
 
   opacity:1;
 }
@@ -1637,6 +1648,7 @@ textarea{
 ========================================================= */
 
 .bottom-nav{
+
   position:fixed;
 
   left:50%;
@@ -1644,40 +1656,36 @@ textarea{
 
   z-index:50;
 
-  transform:
-    translateX(-50%);
+  transform:translateX(-50%);
 
   width:min(730px,92%);
 
   padding:8px;
 
-  display:none;
+  display:grid;
 
-  grid-template-columns:
-    1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr;
 
   border-radius:27px;
 
-  background:
-    rgba(255,255,255,.94);
+  background:rgba(255,255,255,.94);
 
   backdrop-filter:blur(20px);
+
   -webkit-backdrop-filter:blur(20px);
 
   box-shadow:
     0 16px 50px rgba(0,0,0,.22);
 }
 
-.bottom-nav.visible{
-  display:grid;
-}
-
 .nav-item{
+
   display:flex;
 
   flex-direction:column;
 
   align-items:center;
+
   justify-content:center;
 
   min-height:68px;
@@ -1690,12 +1698,14 @@ textarea{
 }
 
 .nav-item.active{
+
   color:#087aa7;
 
   background:#eef8fb;
 }
 
 .nav-icon{
+
   font-size:25px;
 
   line-height:1;
@@ -1704,6 +1714,7 @@ textarea{
 }
 
 .nav-label{
+
   font-size:12px;
 
   font-weight:900;
@@ -1714,9 +1725,11 @@ textarea{
 ========================================================= */
 
 .loader{
+
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   padding:45px;
@@ -1727,20 +1740,19 @@ textarea{
 }
 
 .spinner{
+
   width:25px;
   height:25px;
 
   margin-right:10px;
 
-  border:
-    3px solid #dce9ee;
+  border:3px solid #dce9ee;
 
   border-top-color:#118ab6;
 
   border-radius:50%;
 
-  animation:
-    spin .7s linear infinite;
+  animation:spin .7s linear infinite;
 }
 
 @keyframes spin{
@@ -1748,7 +1760,6 @@ textarea{
   to{
     transform:rotate(360deg);
   }
-
 }
 
 /* =========================================================
@@ -1758,117 +1769,108 @@ textarea{
 @media(max-width:700px){
 
   .home-page{
-    padding:
-      20px 15px
-      105px;
+    padding-top:15px;
   }
 
-  .home-header{
-    margin-bottom:32px;
+  .home-brand{
+    padding-bottom:25px;
   }
 
   .home-train{
+
     width:62px;
     height:62px;
 
     border-radius:18px;
 
     font-size:34px;
-
-    margin-bottom:12px;
   }
 
   .home-title{
-    font-size:clamp(38px,11vw,58px);
+
+    font-size:clamp(39px,11vw,60px);
 
     letter-spacing:-2px;
   }
 
   .home-subtitle{
-    margin-top:15px;
 
-    font-size:15px;
+    font-size:16px;
+
+    margin-top:17px;
   }
 
   .home-line{
-    margin-top:18px;
-
-    width:75%;
+    width:65%;
+    margin-top:17px;
   }
 
   .welcome-card{
-    min-height:300px;
 
-    padding:
-      35px 20px
-      30px;
+    padding:30px 18px 28px;
 
     border-radius:27px;
   }
 
   .welcome-icon{
-    width:70px;
-    height:70px;
 
-    border-radius:20px;
+    width:67px;
+    height:67px;
 
-    font-size:36px;
+    margin-bottom:17px;
 
-    margin-bottom:16px;
+    border-radius:19px;
+
+    font-size:33px;
   }
 
   .welcome-card h2{
-    font-size:38px;
+    font-size:36px;
   }
 
   .welcome-card p{
-    margin:
-      15px 0
-      18px;
-
     font-size:15px;
+    margin:16px auto 20px;
   }
 
-  .choose-pill{
-    padding:
-      11px 16px;
-
+  .choose-label{
+    padding:10px 17px;
     font-size:13px;
   }
 
   .home-metiers{
+
     grid-template-columns:1fr;
 
     gap:14px;
   }
 
   .home-metier-card{
+
     min-height:125px;
 
-    padding:
-      18px 17px;
+    padding:18px;
 
-    border-radius:23px;
+    border-radius:24px;
+
+    gap:16px;
   }
 
   .home-metier-icon{
+
     width:68px;
     height:68px;
-
-    flex:0 0 68px;
-
-    margin-right:15px;
 
     border-radius:19px;
 
     font-size:35px;
   }
 
-  .home-metier-name{
-    font-size:27px;
+  .home-metier-content h3{
+    font-size:26px;
   }
 
-  .home-metier-description{
+  .home-metier-content p{
     font-size:13px;
   }
 
@@ -1881,6 +1883,7 @@ textarea{
   }
 
   .logo-train{
+
     width:49px;
     height:49px;
 
@@ -1898,12 +1901,14 @@ textarea{
   }
 
   .intro{
+
     padding:18px;
 
     border-radius:21px;
   }
 
   .exchange-card{
+
     padding:17px;
 
     border-radius:23px;
@@ -1912,6 +1917,7 @@ textarea{
   .service-grid,
   .locations,
   .form-grid{
+
     grid-template-columns:1fr;
   }
 
@@ -1928,18 +1934,18 @@ textarea{
   }
 
   .bottom-nav{
+
     bottom:8px;
 
     width:94%;
   }
 
   .metier-btn{
-    padding:
-      13px 16px;
+
+    padding:13px 16px;
 
     font-size:14px;
   }
-
 }
 
 @media(min-width:1100px){
@@ -1950,14 +1956,13 @@ textarea{
   }
 
   #liste{
+
     display:grid;
 
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
     align-items:start;
   }
-
 }
 
 @media(min-width:700px) and (orientation:landscape){
@@ -1969,161 +1974,133 @@ textarea{
   .bottom-nav{
     width:730px;
   }
-
-}
-
-/* =========================================================
-   PETITS ECRANS TRES ETROITS
-========================================================= */
-
-@media(max-width:390px){
-
-  .home-title{
-    font-size:35px;
-  }
-
-  .home-subtitle{
-    font-size:14px;
-  }
-
-  .welcome-card h2{
-    font-size:34px;
-  }
-
-  .home-metier-description{
-    font-size:12px;
-  }
-
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="bg"></div>
 
+<div class="app">
+
 <!-- =====================================================
-     ACCUEIL V4.4
+     PAGE D'ACCUEIL V4.4
 ====================================================== -->
 
 <section
   id="homePage"
   class="home-page">
 
-  <header class="home-header">
+  <div class="container">
 
-    <div class="home-train">
-      🚆
-    </div>
+    <!-- LOGO / TITRE -->
 
-    <h1 class="home-title">
-      <span>ÉCHANGE</span>
-      <span class="blue"> SERVICE</span>
-    </h1>
+    <div class="home-brand">
 
-    <p class="home-subtitle">
-      Échange de journées entre agents
-      <strong>• si congés refusés</strong>
-    </p>
-
-    <div class="home-line"></div>
-
-  </header>
-
-
-  <!-- =================================================
-       BIENVENUE
-  ================================================== -->
-
-  <section class="welcome-card">
-
-    <div class="welcome-icon">
-      🤝
-    </div>
-
-    <h2>
-      Bienvenue
-    </h2>
-
-    <p>
-      Proposez une journée de service et trouvez
-      un collègue intéressé pour un éventuel échange.
-    </p>
-
-    <div class="choose-pill">
-      🚆&nbsp; Choisissez votre métier pour commencer
-    </div>
-
-  </section>
-
-
-  <!-- =================================================
-       CHOIX METIERS
-       UNIQUEMENT ADC / ASCT
-  ================================================== -->
-
-  <div class="home-metiers">
-
-    <!-- ADC -->
-
-    <button
-      type="button"
-      class="home-metier-card adc"
-      onclick="ouvrirMetierDepuisAccueil('ADC')">
-
-      <div class="home-metier-icon">
+      <div class="home-train">
         🚆
       </div>
 
-      <div class="home-metier-content">
+      <h1 class="home-title">
+        <span>ÉCHANGE</span>
+        <span class="blue"> SERVICE</span>
+      </h1>
 
-        <div class="home-metier-name">
-          ADC
+      <p class="home-subtitle">
+        Échange de journées entre agents
+        <strong>• si congés refusés</strong>
+      </p>
+
+      <div class="home-line"></div>
+
+    </div>
+
+    <!-- BIENVENUE -->
+
+    <div class="welcome-card">
+
+      <div class="welcome-icon">
+        🤝
+      </div>
+
+      <h2>
+        Bienvenue
+      </h2>
+
+      <p>
+        Proposez une journée de service et trouvez
+        un collègue intéressé pour un éventuel échange.
+      </p>
+
+      <div class="choose-label">
+        🚆 Choisissez votre métier pour commencer
+      </div>
+
+    </div>
+
+    <!-- METIERS -->
+
+    <div class="home-metiers">
+
+      <!-- ADC -->
+
+      <button
+        class="home-metier-card adc"
+        onclick="ouvrirMetierDepuisAccueil('ADC')">
+
+        <div class="home-metier-icon">
+          🚆
         </div>
 
-        <div class="home-metier-description">
-          Conducteurs de train
+        <div class="home-metier-content">
+
+          <h3>
+            ADC
+          </h3>
+
+          <p>
+            Conducteurs de train
+          </p>
+
         </div>
 
-      </div>
-
-      <div class="home-metier-arrow">
-        ›
-      </div>
-
-    </button>
-
-
-    <!-- ASCT -->
-
-    <button
-      type="button"
-      class="home-metier-card asct"
-      onclick="ouvrirMetierDepuisAccueil('ASCT')">
-
-      <div class="home-metier-icon">
-        👨‍✈️
-      </div>
-
-      <div class="home-metier-content">
-
-        <div class="home-metier-name">
-          ASCT
+        <div class="home-metier-arrow">
+          ›
         </div>
 
-        <div class="home-metier-description">
-          Agents du Service Commercial Train
+      </button>
+
+      <!-- ASCT -->
+
+      <button
+        class="home-metier-card asct"
+        onclick="ouvrirMetierDepuisAccueil('ASCT')">
+
+        <div class="home-metier-icon">
+          👨‍✈️
         </div>
 
-      </div>
+        <div class="home-metier-content">
 
-      <div class="home-metier-arrow">
-        ›
-      </div>
+          <h3>
+            ASCT
+          </h3>
 
-    </button>
+          <p>
+            Agents du Service Commercial Train
+          </p>
+
+        </div>
+
+        <div class="home-metier-arrow">
+          ›
+        </div>
+
+      </button>
+
+    </div>
 
   </div>
 
@@ -2131,140 +2108,127 @@ textarea{
 
 
 <!-- =====================================================
-     APPLICATION ECHANGES
+     PAGE ECHANGES
 ====================================================== -->
 
-<div
+<section
   id="exchangePage"
   class="exchange-page">
 
-  <div class="app">
+  <!-- HEADER -->
 
-    <!-- =================================================
-         HEADER
-    ================================================== -->
+  <header class="header">
 
-    <header class="header">
+    <div class="header-inner">
 
-      <div class="header-inner">
+      <div class="logo-area">
 
-        <div class="logo-area">
-
-          <div class="logo-train">
-            🚆
-          </div>
-
-          <div class="title-block">
-
-            <h1>
-              ÉCHANGE SERVICE
-            </h1>
-
-            <p>
-              Échange de journées entre agents • si congés refusés
-            </p>
-
-          </div>
-
+        <div class="logo-train">
+          🚆
         </div>
 
-        <div class="status-pill">
+        <div class="title-block">
 
-          <span class="status-dot"></span>
+          <h1>
+            ÉCHANGE SERVICE
+          </h1>
 
-          Service actif
+          <p>
+            Échange de journées entre agents • si congés refusés
+          </p>
 
         </div>
 
       </div>
 
-    </header>
+      <div class="status-pill">
 
+        <span class="status-dot"></span>
 
-    <main class="container">
-
-      <!-- =================================================
-           INTRO
-      ================================================== -->
-
-      <section class="intro">
-
-        <h2>
-          🔄 Les journées disponibles
-        </h2>
-
-        <p>
-          Consulte les journées proposées par les agents et
-          propose un échange lorsque ton congé a été refusé.
-        </p>
-
-      </section>
-
-
-      <!-- =================================================
-           METIERS
-           UNIQUEMENT ASCT / ADC
-      ================================================== -->
-
-      <div class="metiers">
-
-        <button
-          class="metier-btn"
-          data-metier="ASCT"
-          onclick="choisirMetier('ASCT',this)">
-
-          🚆 ASCT
-
-        </button>
-
-        <button
-          class="metier-btn"
-          data-metier="ADC"
-          onclick="choisirMetier('ADC',this)">
-
-          🚄 ADC
-
-        </button>
+        Service actif
 
       </div>
 
+    </div>
 
-      <!-- =================================================
-           NOUVELLE DEMANDE
-      ================================================== -->
+  </header>
 
-      <div class="action-zone">
 
-        <button
-          class="new-btn"
-          onclick="ouvrirConfirmation()">
+  <main class="container">
 
-          ➕ PROPOSER UNE JOURNÉE
+    <!-- INTRO -->
 
-        </button>
+    <section class="intro">
+
+      <h2>
+        🔄 Les journées disponibles
+      </h2>
+
+      <p>
+        Consulte les journées proposées par les agents et
+        propose un échange lorsque ton congé a été refusé.
+      </p>
+
+    </section>
+
+
+    <!-- METIERS -->
+
+    <div class="metiers">
+
+      <button
+        class="metier-btn"
+        data-metier="ASCT"
+        onclick="choisirMetier('ASCT',this)">
+
+        🚆 ASCT
+
+      </button>
+
+      <button
+        class="metier-btn"
+        data-metier="ADC"
+        onclick="choisirMetier('ADC',this)">
+
+        🚄 ADC
+
+      </button>
+
+    </div>
+
+
+    <!-- NOUVELLE DEMANDE -->
+
+    <div class="action-zone">
+
+      <button
+        class="new-btn"
+        onclick="ouvrirConfirmation()">
+
+        ➕ PROPOSER UNE JOURNÉE
+
+      </button>
+
+    </div>
+
+
+    <!-- LISTE -->
+
+    <section id="liste">
+
+      <div class="loader">
+
+        <div class="spinner"></div>
+
+        Chargement des échanges…
 
       </div>
 
+    </section>
 
-      <!-- =================================================
-           LISTE
-      ================================================== -->
+  </main>
 
-      <section id="liste">
-
-        <div class="loader">
-
-          <div class="spinner"></div>
-
-          Chargement des échanges…
-
-        </div>
-
-      </section>
-
-    </main>
-
-  </div>
+</section>
 
 </div>
 
@@ -2275,7 +2239,8 @@ textarea{
 
 <nav
   id="bottomNav"
-  class="bottom-nav">
+  class="bottom-nav"
+  style="display:none;">
 
   <div
     class="nav-item"
@@ -2294,7 +2259,7 @@ textarea{
 
   <div
     class="nav-item active"
-    onclick="retourEchanges()">
+    onclick="retourAccueil()">
 
     <div class="nav-icon">
       🔎
@@ -2339,11 +2304,8 @@ textarea{
     </h2>
 
     <p class="modal-subtitle">
-
-      Avant de créer une demande d'échange,
-      merci de confirmer que ton congé n'a pas
-      pu être accepté.
-
+      Avant de créer une demande d'échange, merci de confirmer
+      que ton congé n'a pas pu être accepté.
     </p>
 
     <div class="confirm-box">
@@ -2356,8 +2318,8 @@ textarea{
 
       <br><br>
 
-      Je souhaite proposer ma journée à l'échange
-      avec un autre agent.
+      Je souhaite proposer ma journée à l'échange avec un autre
+      agent.
 
     </div>
 
@@ -2401,12 +2363,9 @@ textarea{
     </h2>
 
     <p class="modal-subtitle">
-
       Renseigne les informations de ta journée.
       Tu peux également proposer une deuxième journée.
-
     </p>
-
 
     <!-- METIER -->
 
@@ -2546,11 +2505,8 @@ textarea{
 
     </label>
 
-
     <div class="second-helper">
-
       Utile notamment en cas de RHR entre les deux journées.
-
     </div>
 
 
@@ -2702,10 +2658,8 @@ textarea{
     </h2>
 
     <p class="modal-subtitle">
-
-      Indique ton nom afin que l'agent puisse savoir
-      qui est intéressé par sa journée.
-
+      Indique ton nom afin que l'agent puisse savoir qui est
+      intéressé par sa journée.
     </p>
 
     <div class="form-group">
@@ -2782,15 +2736,13 @@ const supabaseClient =
    VARIABLES
 ========================================================= */
 
-let metierActuel = null;
+let metierActuel = "ASCT";
 
 let demandeInteretId = null;
 
 let demandesChargees = [];
 
 let confirmationCongeValidee = false;
-
-let toastTimer = null;
 
 
 /* =========================================================
@@ -2843,33 +2795,20 @@ function dateLocaleDepuisString(dateString){
     String(dateString).substring(0,10);
 
   const match =
-    texte.match(
-      /^(\d{4})-(\d{2})-(\d{2})$/
-    );
+    texte.match(/^(\d{4})-(\d{2})-(\d{2})$/);
 
   if(!match){
     return null;
   }
 
-  const annee =
-    Number(match[1]);
-
-  const mois =
-    Number(match[2]);
-
-  const jour =
-    Number(match[3]);
-
   const date =
     new Date(
-      annee,
-      mois - 1,
-      jour
+      Number(match[1]),
+      Number(match[2]) - 1,
+      Number(match[3])
     );
 
-  if(
-    isNaN(date.getTime())
-  ){
+  if(isNaN(date.getTime())){
     return null;
   }
 
@@ -2880,9 +2819,7 @@ function dateLocaleDepuisString(dateString){
 function formatDate(dateString){
 
   const date =
-    dateLocaleDepuisString(
-      dateString
-    );
+    dateLocaleDepuisString(dateString);
 
   if(!date){
     return "Date non renseignée";
@@ -2900,12 +2837,14 @@ function formatDate(dateString){
 }
 
 
+/* =========================================================
+   DATE COURTE
+========================================================= */
+
 function formatDateCourte(dateString){
 
   const date =
-    dateLocaleDepuisString(
-      dateString
-    );
+    dateLocaleDepuisString(dateString);
 
   if(!date){
     return "";
@@ -2936,21 +2875,16 @@ function formatTime(value){
     String(value);
 
   const match =
-    texte.match(
-      /^(\d{1,2}):(\d{2})/
-    );
+    texte.match(/^(\d{1,2}):(\d{2})/);
 
   if(!match){
     return texte;
   }
 
   return (
-    String(match[1])
-      .padStart(2,"0")
-    +
-    ":"
-    +
-    match[2]
+    String(match[1]).padStart(2,"0")
+    + ":"
+    + match[2]
   );
 }
 
@@ -2965,17 +2899,12 @@ function formatDatePublication(value){
     return null;
   }
 
-  let date;
+  const date =
+    value instanceof Date
+      ? value
+      : new Date(value);
 
-  if(value instanceof Date){
-    date = value;
-  }else{
-    date = new Date(value);
-  }
-
-  if(
-    isNaN(date.getTime())
-  ){
+  if(isNaN(date.getTime())){
     return null;
   }
 
@@ -3002,24 +2931,19 @@ function formatDatePublication(value){
 }
 
 
-function recupererDatePublication(
-  demande
-){
+function recupererDatePublication(demande){
 
   if(!demande){
     return null;
   }
 
-  const valeur =
+  return formatDatePublication(
     demande.date_demande ??
     demande.date_creation ??
     demande.dateCreated ??
     demande.date_publication ??
     demande.published_at ??
-    null;
-
-  return formatDatePublication(
-    valeur
+    null
   );
 }
 
@@ -3028,21 +2952,19 @@ function recupererDatePublication(
    TOAST
 ========================================================= */
 
+let toastTimer = null;
+
 function afficherToast(message){
 
   const toast =
-    document.getElementById(
-      "toast"
-    );
+    document.getElementById("toast");
 
   toast.textContent =
     message;
 
   toast.classList.add("show");
 
-  clearTimeout(
-    toastTimer
-  );
+  clearTimeout(toastTimer);
 
   toastTimer =
     setTimeout(
@@ -3058,9 +2980,7 @@ function afficherToast(message){
    OUVERTURE METIER DEPUIS ACCUEIL
 ========================================================= */
 
-function ouvrirMetierDepuisAccueil(
-  metier
-){
+function ouvrirMetierDepuisAccueil(metier){
 
   if(
     metier !== "ASCT" &&
@@ -3073,37 +2993,38 @@ function ouvrirMetierDepuisAccueil(
     metier;
 
   const home =
-    document.getElementById(
-      "homePage"
-    );
+    document.getElementById("homePage");
 
   const exchange =
-    document.getElementById(
-      "exchangePage"
-    );
+    document.getElementById("exchangePage");
 
-  const nav =
-    document.getElementById(
-      "bottomNav"
-    );
+  const bottomNav =
+    document.getElementById("bottomNav");
 
   home.style.display =
     "none";
 
-  exchange.classList.add(
-    "visible"
-  );
+  exchange.classList.add("show");
 
-  nav.classList.add(
-    "visible"
-  );
+  bottomNav.style.display =
+    "grid";
 
-  activerBoutonMetier();
+  document
+    .querySelectorAll(".metier-btn")
+    .forEach(btn=>{
+
+      btn.classList.remove("active");
+
+      if(
+        btn.dataset.metier === metier
+      ){
+        btn.classList.add("active");
+      }
+
+    });
 
   const selectMetier =
-    document.getElementById(
-      "metier"
-    );
+    document.getElementById("metier");
 
   if(selectMetier){
     selectMetier.value =
@@ -3120,33 +3041,38 @@ function ouvrirMetierDepuisAccueil(
 
 
 /* =========================================================
-   BOUTON METIER PAGE ECHANGES
+   RETOUR ACCUEIL
 ========================================================= */
 
-function activerBoutonMetier(){
+function retourAccueil(){
 
-  document
-    .querySelectorAll(
-      ".metier-btn"
-    )
-    .forEach(
-      btn=>{
-        btn.classList.remove(
-          "active"
-        );
+  const home =
+    document.getElementById("homePage");
 
-        if(
-          btn.dataset.metier ===
-          metierActuel
-        ){
-          btn.classList.add(
-            "active"
-          );
-        }
-      }
-    );
+  const exchange =
+    document.getElementById("exchangePage");
+
+  const bottomNav =
+    document.getElementById("bottomNav");
+
+  exchange.classList.remove("show");
+
+  home.style.display =
+    "block";
+
+  bottomNav.style.display =
+    "none";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
+
+/* =========================================================
+   METIER
+========================================================= */
 
 function choisirMetier(
   metier,
@@ -3164,27 +3090,17 @@ function choisirMetier(
     metier;
 
   document
-    .querySelectorAll(
-      ".metier-btn"
-    )
-    .forEach(
-      btn=>{
-        btn.classList.remove(
-          "active"
-        );
-      }
-    );
+    .querySelectorAll(".metier-btn")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
 
   if(bouton){
-    bouton.classList.add(
-      "active"
-    );
+    bouton.classList.add("active");
   }
 
   const selectMetier =
-    document.getElementById(
-      "metier"
-    );
+    document.getElementById("metier");
 
   if(selectMetier){
     selectMetier.value =
@@ -3192,37 +3108,6 @@ function choisirMetier(
   }
 
   afficherEchanges();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-
-/* =========================================================
-   RETOUR ECHANGES
-========================================================= */
-
-function retourEchanges(){
-
-  const exchange =
-    document.getElementById(
-      "exchangePage"
-    );
-
-  if(
-    !exchange.classList.contains(
-      "visible"
-    )
-  ){
-    return;
-  }
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
 }
 
 
@@ -3233,9 +3118,7 @@ function retourEchanges(){
 function ouvrirConfirmation(){
 
   document
-    .getElementById(
-      "confirmationModal"
-    )
+    .getElementById("confirmationModal")
     .classList.add("show");
 }
 
@@ -3243,9 +3126,7 @@ function ouvrirConfirmation(){
 function fermerConfirmation(){
 
   document
-    .getElementById(
-      "confirmationModal"
-    )
+    .getElementById("confirmationModal")
     .classList.remove("show");
 }
 
@@ -3258,25 +3139,15 @@ function confirmerEtOuvrirFormulaire(){
   fermerConfirmation();
 
   const selectMetier =
-    document.getElementById(
-      "metier"
-    );
+    document.getElementById("metier");
 
-  if(
-    selectMetier &&
-    (
-      metierActuel === "ASCT" ||
-      metierActuel === "ADC"
-    )
-  ){
+  if(selectMetier){
     selectMetier.value =
       metierActuel;
   }
 
   document
-    .getElementById(
-      "formModal"
-    )
+    .getElementById("formModal")
     .classList.add("show");
 }
 
@@ -3288,9 +3159,7 @@ function confirmerEtOuvrirFormulaire(){
 function fermerFormulaire(){
 
   document
-    .getElementById(
-      "formModal"
-    )
+    .getElementById("formModal")
     .classList.remove("show");
 
   confirmationCongeValidee =
@@ -3302,24 +3171,16 @@ function gererDeuxiemeJournee(){
 
   const coche =
     document
-      .getElementById(
-        "deuxiemeJournee"
-      )
+      .getElementById("deuxiemeJournee")
       .checked;
 
   const bloc =
-    document.getElementById(
-      "blocJournee2"
-    );
+    document.getElementById("blocJournee2");
 
   if(coche){
-    bloc.classList.add(
-      "show"
-    );
+    bloc.classList.add("show");
   }else{
-    bloc.classList.remove(
-      "show"
-    );
+    bloc.classList.remove("show");
   }
 }
 
@@ -3330,9 +3191,7 @@ function gererDeuxiemeJournee(){
 
 async function publier(){
 
-  if(
-    !confirmationCongeValidee
-  ){
+  if(!confirmationCongeValidee){
 
     afficherToast(
       "⚠️ Merci de confirmer que ton congé a été refusé."
@@ -3341,13 +3200,11 @@ async function publier(){
     return;
   }
 
-
   const metier =
     document
       .getElementById("metier")
       .value
       .trim();
-
 
   const nom =
     document
@@ -3355,24 +3212,20 @@ async function publier(){
       .value
       .trim();
 
-
   const date =
     document
       .getElementById("date")
       .value;
-
 
   const prise =
     document
       .getElementById("prise")
       .value;
 
-
   const fin =
     document
       .getElementById("fin")
       .value;
-
 
   const lieuPrise =
     document
@@ -3380,13 +3233,11 @@ async function publier(){
       .value
       .trim();
 
-
   const lieuFin =
     document
       .getElementById("lieuFin")
       .value
       .trim();
-
 
   const commentaire =
     document
@@ -3394,14 +3245,11 @@ async function publier(){
       .value
       .trim();
 
-
   const deuxieme =
     document
       .getElementById("deuxiemeJournee")
       .checked;
 
-
-  /* VALIDATION METIER */
 
   if(
     metier !== "ASCT" &&
@@ -3415,8 +3263,6 @@ async function publier(){
     return;
   }
 
-
-  /* VALIDATION JOURNEE 1 */
 
   if(!nom){
 
@@ -3438,10 +3284,7 @@ async function publier(){
   }
 
 
-  if(
-    !prise ||
-    !fin
-  ){
+  if(!prise || !fin){
 
     afficherToast(
       "⚠️ Merci d'indiquer les horaires."
@@ -3451,10 +3294,7 @@ async function publier(){
   }
 
 
-  if(
-    !lieuPrise ||
-    !lieuFin
-  ){
+  if(!lieuPrise || !lieuFin){
 
     afficherToast(
       "⚠️ Merci d'indiquer les lieux de prise et de fin."
@@ -3463,8 +3303,6 @@ async function publier(){
     return;
   }
 
-
-  /* JOURNEE 2 */
 
   let date2 = null;
   let prise2 = null;
@@ -3480,25 +3318,21 @@ async function publier(){
         .getElementById("date2")
         .value;
 
-
     prise2 =
       document
         .getElementById("prise2")
         .value;
-
 
     fin2 =
       document
         .getElementById("fin2")
         .value;
 
-
     lieuPrise2 =
       document
         .getElementById("lieuPrise2")
         .value
         .trim();
-
 
     lieuFin2 =
       document
@@ -3517,10 +3351,7 @@ async function publier(){
     }
 
 
-    if(
-      !prise2 ||
-      !fin2
-    ){
+    if(!prise2 || !fin2){
 
       afficherToast(
         "⚠️ Merci d'indiquer les horaires de la 2ᵉ journée."
@@ -3530,10 +3361,7 @@ async function publier(){
     }
 
 
-    if(
-      !lieuPrise2 ||
-      !lieuFin2
-    ){
+    if(!lieuPrise2 || !lieuFin2){
 
       afficherToast(
         "⚠️ Merci d'indiquer les lieux de la 2ᵉ journée."
@@ -3543,9 +3371,7 @@ async function publier(){
     }
 
 
-    if(
-      date2 === date
-    ){
+    if(date2 === date){
 
       afficherToast(
         "⚠️ Les deux journées doivent être à des dates différentes."
@@ -3557,34 +3383,23 @@ async function publier(){
   }
 
 
-  /* DATE PUBLICATION */
-
   const dateDemande =
     new Date().toISOString();
 
-
-  /* CONSTRUCTION */
 
   const demandes = [
 
     {
       metier:metier,
       nom:nom,
-
       date_service:date,
-
       prise_service:prise,
       fin_service:fin,
-
       lieu_prise_service:lieuPrise,
       lieu_fin_service:lieuFin,
-
       commentaire:commentaire,
-
       statut:"disponible",
-
       agent_interesse:null,
-
       date_demande:dateDemande
     }
 
@@ -3609,7 +3424,6 @@ async function publier(){
       commentaire:commentaire,
 
       statut:"disponible",
-
       agent_interesse:null,
 
       date_demande:dateDemande
@@ -3619,8 +3433,6 @@ async function publier(){
   }
 
 
-  /* INSERT SUPABASE */
-
   try{
 
     const {
@@ -3628,9 +3440,7 @@ async function publier(){
     } =
       await supabaseClient
         .from("echanges")
-        .insert(
-          demandes
-        );
+        .insert(demandes);
 
 
     if(error){
@@ -3642,8 +3452,7 @@ async function publier(){
 
       afficherToast(
         "❌ Erreur lors de la publication : "
-        +
-        error.message
+        + error.message
       );
 
       return;
@@ -3655,51 +3464,33 @@ async function publier(){
     );
 
 
-    /* RESET */
-
     document.getElementById("nom").value = "";
-
     document.getElementById("date").value = "";
-
     document.getElementById("prise").value = "";
-
     document.getElementById("fin").value = "";
-
     document.getElementById("lieuPrise").value = "";
-
     document.getElementById("lieuFin").value = "";
-
     document.getElementById("commentaire").value = "";
 
     document
-      .getElementById(
-        "deuxiemeJournee"
-      )
+      .getElementById("deuxiemeJournee")
       .checked = false;
 
     gererDeuxiemeJournee();
 
     document.getElementById("date2").value = "";
-
     document.getElementById("prise2").value = "";
-
     document.getElementById("fin2").value = "";
-
     document.getElementById("lieuPrise2").value = "";
-
     document.getElementById("lieuFin2").value = "";
-
 
     fermerFormulaire();
 
     await afficherEchanges();
 
-
   }catch(error){
 
-    console.error(
-      error
-    );
+    console.error(error);
 
     afficherToast(
       "❌ Une erreur est survenue."
@@ -3711,7 +3502,7 @@ async function publier(){
 
 
 /* =========================================================
-   GROUPEMENT
+   GROUPEMENT JOURNEES
 ========================================================= */
 
 function lendemain(
@@ -3720,29 +3511,19 @@ function lendemain(
 ){
 
   const d1 =
-    dateLocaleDepuisString(
-      date1
-    );
+    dateLocaleDepuisString(date1);
 
   const d2 =
-    dateLocaleDepuisString(
-      date2
-    );
+    dateLocaleDepuisString(date2);
 
-  if(
-    !d1 ||
-    !d2
-  ){
+  if(!d1 || !d2){
     return false;
   }
 
-  const difference =
-    d2.getTime()
-    -
-    d1.getTime();
-
-  return difference ===
-    86400000;
+  return (
+    d2.getTime() -
+    d1.getTime()
+  ) === 86400000;
 }
 
 
@@ -3751,31 +3532,23 @@ function peutRegrouper(
   b
 ){
 
-  if(
-    !a ||
-    !b
-  ){
+  if(!a || !b){
     return false;
   }
 
-
   if(
-    normaliserTexte(a.nom)
-    !==
+    normaliserTexte(a.nom) !==
     normaliserTexte(b.nom)
   ){
     return false;
   }
 
-
   if(
-    normaliserTexte(a.metier)
-    !==
+    normaliserTexte(a.metier) !==
     normaliserTexte(b.metier)
   ){
     return false;
   }
-
 
   if(
     !lendemain(
@@ -3786,64 +3559,42 @@ function peutRegrouper(
     return false;
   }
 
-
   if(
-    normaliserTexte(
-      a.lieu_fin_service
-    )
-    !==
-    normaliserTexte(
-      b.lieu_prise_service
-    )
+    normaliserTexte(a.lieu_fin_service) !==
+    normaliserTexte(b.lieu_prise_service)
   ){
     return false;
   }
-
 
   return true;
 }
 
 
-function construireGroupes(
-  data
-){
+function construireGroupes(data){
 
   const groupes = [];
 
   const utilises =
     new Set();
 
-
   const donneesTriees =
     [...data].sort(
       (a,b)=>{
 
         const dateCompare =
-          String(
-            a.date_service || ""
-          )
-          .localeCompare(
-            String(
-              b.date_service || ""
-            )
-          );
+          String(a.date_service || "")
+            .localeCompare(
+              String(b.date_service || "")
+            );
 
-
-        if(
-          dateCompare !== 0
-        ){
+        if(dateCompare !== 0){
           return dateCompare;
         }
 
-
-        return String(
-          a.nom || ""
-        )
-        .localeCompare(
-          String(
-            b.nom || ""
-          )
-        );
+        return String(a.nom || "")
+          .localeCompare(
+            String(b.nom || "")
+          );
 
       }
     );
@@ -3855,27 +3606,20 @@ function construireGroupes(
     i++
   ){
 
-    if(
-      utilises.has(i)
-    ){
+    if(utilises.has(i)){
       continue;
     }
-
 
     const premier =
       donneesTriees[i];
 
-
     const groupe =
       [premier];
 
-
     utilises.add(i);
-
 
     let dernier =
       premier;
-
 
     let trouve = true;
 
@@ -3884,23 +3628,18 @@ function construireGroupes(
 
       trouve = false;
 
-
       for(
         let j=0;
         j<donneesTriees.length;
         j++
       ){
 
-        if(
-          utilises.has(j)
-        ){
+        if(utilises.has(j)){
           continue;
         }
 
-
         const candidat =
           donneesTriees[j];
-
 
         if(
           peutRegrouper(
@@ -3909,9 +3648,7 @@ function construireGroupes(
           )
         ){
 
-          groupe.push(
-            candidat
-          );
+          groupe.push(candidat);
 
           utilises.add(j);
 
@@ -3921,7 +3658,6 @@ function construireGroupes(
           trouve = true;
 
           break;
-
         }
 
       }
@@ -3931,47 +3667,28 @@ function construireGroupes(
 
     groupe.sort(
       (a,b)=>
-        String(
-          a.date_service || ""
-        )
-        .localeCompare(
-          String(
-            b.date_service || ""
+        String(a.date_service || "")
+          .localeCompare(
+            String(b.date_service || "")
           )
-        )
     );
 
-
-    groupes.push(
-      groupe
-    );
+    groupes.push(groupe);
 
   }
-
 
   return groupes;
 }
 
 
 /* =========================================================
-   AFFICHAGE ECHANGES
+   AFFICHAGE
 ========================================================= */
 
 async function afficherEchanges(){
 
   const liste =
-    document.getElementById(
-      "liste"
-    );
-
-
-  if(
-    metierActuel !== "ASCT" &&
-    metierActuel !== "ADC"
-  ){
-    return;
-  }
-
+    document.getElementById("liste");
 
   liste.innerHTML = `
 
@@ -3988,18 +3705,15 @@ async function afficherEchanges(){
 
   try{
 
-    let requete =
-      supabaseClient
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
         .from("echanges")
         .select("*")
-        .eq(
-          "statut",
-          "disponible"
-        )
-        .eq(
-          "metier",
-          metierActuel
-        )
+        .eq("statut","disponible")
+        .eq("metier",metierActuel)
         .order(
           "date_service",
           {
@@ -4008,20 +3722,12 @@ async function afficherEchanges(){
         );
 
 
-    const {
-      data,
-      error
-    } =
-      await requete;
-
-
     if(error){
 
       console.error(
         "Erreur récupération :",
         error
       );
-
 
       liste.innerHTML = `
 
@@ -4036,9 +3742,7 @@ async function afficherEchanges(){
           </h3>
 
           <p>
-            ${echapperHTML(
-              error.message
-            )}
+            ${echapperHTML(error.message)}
           </p>
 
         </div>
@@ -4053,9 +3757,7 @@ async function afficherEchanges(){
       data || [];
 
 
-    if(
-      !demandesChargees.length
-    ){
+    if(!demandesChargees.length){
 
       liste.innerHTML = `
 
@@ -4072,9 +3774,7 @@ async function afficherEchanges(){
           <p>
             Aucune demande d'échange n'est actuellement
             disponible pour le métier
-            ${echapperHTML(
-              metierActuel
-            )}.
+            ${echapperHTML(metierActuel)}.
           </p>
 
         </div>
@@ -4105,10 +3805,7 @@ async function afficherEchanges(){
 
   }catch(error){
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     liste.innerHTML = `
 
@@ -4136,7 +3833,7 @@ async function afficherEchanges(){
 
 
 /* =========================================================
-   CARTE DEMANDE
+   CARTE
 ========================================================= */
 
 function construireCarte(
@@ -4146,7 +3843,6 @@ function construireCarte(
 
   const premier =
     groupe[0];
-
 
   const publication =
     recupererDatePublication(
@@ -4164,10 +3860,7 @@ function construireCarte(
           🕒 Demande publiée le
 
           <strong>
-            &nbsp;
-            ${echapperHTML(
-              publication
-            )}
+            &nbsp;${echapperHTML(publication)}
           </strong>
 
         </div>
@@ -4201,9 +3894,7 @@ function construireCarte(
   let interetHTML = "";
 
 
-  if(
-    premier.agent_interesse
-  ){
+  if(premier.agent_interesse){
 
     interetHTML = `
 
@@ -4212,11 +3903,9 @@ function construireCarte(
         🙋 Agent intéressé :
 
         <strong>
-
           ${echapperHTML(
             premier.agent_interesse
           )}
-
         </strong>
 
       </div>
@@ -4230,43 +3919,33 @@ function construireCarte(
 
     <article
       class="exchange-card"
-      data-id="${echapperHTML(
-        premier.id
-      )}">
+      data-id="${echapperHTML(premier.id)}">
 
       <div class="request-header">
 
         <h3 class="agent-name">
 
-          <span>
-            👤
-          </span>
+          <span>👤</span>
 
           ${echapperHTML(
-            premier.nom ||
-            "Agent"
+            premier.nom || "Agent"
           )}
 
         </h3>
 
-
         <div class="metier-tag">
 
           ${echapperHTML(
-            premier.metier ||
-            "Métier"
+            premier.metier || "Métier"
           )}
 
         </div>
 
       </div>
 
-
       ${publicationHTML}
 
-
       ${journeesHTML}
-
 
       ${
         premier.commentaire
@@ -4275,7 +3954,6 @@ function construireCarte(
             <div class="commentaire">
 
               💬
-
               ${echapperHTML(
                 premier.commentaire
               )}
@@ -4286,28 +3964,21 @@ function construireCarte(
           : ""
       }
 
-
       ${interetHTML}
-
 
       <div class="actions">
 
         <button
           class="btn btn-interest"
-          onclick="ouvrirInteret('${echapperHTML(
-            premier.id
-          )}')">
+          onclick="ouvrirInteret('${echapperHTML(premier.id)}')">
 
           🙋 JE SUIS INTÉRESSÉ
 
         </button>
 
-
         <button
           class="btn btn-delete"
-          onclick="supprimerDemande('${echapperHTML(
-            premier.id
-          )}')">
+          onclick="supprimerDemande('${echapperHTML(premier.id)}')">
 
           🗑️ SUPPRIMER
 
@@ -4318,7 +3989,6 @@ function construireCarte(
     </article>
 
   `;
-
 }
 
 
@@ -4339,15 +4009,11 @@ function construireJournee(
 
 
   const horaires =
-    formatTime(
-      jour.prise_service
-    )
+    formatTime(jour.prise_service)
     +
     " → "
     +
-    formatTime(
-      jour.fin_service
-    );
+    formatTime(jour.fin_service);
 
 
   let html = `
@@ -4371,13 +4037,11 @@ function construireJournee(
           📅
         </div>
 
-
         <div class="service-date-content">
 
           <div class="service-date-label">
             DATE DU SERVICE À ÉCHANGER
           </div>
-
 
           <div class="service-date-value">
 
@@ -4400,13 +4064,10 @@ function construireJournee(
             HORAIRES
           </div>
 
-
           <div class="info-value big">
 
             ⏰
-            ${echapperHTML(
-              horaires
-            )}
+            ${echapperHTML(horaires)}
 
           </div>
 
@@ -4418,7 +4079,6 @@ function construireJournee(
           <div class="info-label">
             DURÉE
           </div>
-
 
           <div class="info-value">
 
@@ -4442,7 +4102,6 @@ function construireJournee(
             📍 PRISE DE SERVICE
           </div>
 
-
           <div class="info-value">
 
             ${echapperHTML(
@@ -4460,7 +4119,6 @@ function construireJournee(
           <div class="info-label">
             📍 FIN DE SERVICE
           </div>
-
 
           <div class="info-value">
 
@@ -4480,9 +4138,7 @@ function construireJournee(
   `;
 
 
-  if(
-    numero < nombre
-  ){
+  if(numero < nombre){
 
     html += `
 
@@ -4510,25 +4166,15 @@ function calculerDuree(
   fin
 ){
 
-  if(
-    !debut ||
-    !fin
-  ){
+  if(!debut || !fin){
     return "—";
   }
 
-
   const d =
-    convertirMinutes(
-      debut
-    );
-
+    convertirMinutes(debut);
 
   const f =
-    convertirMinutes(
-      fin
-    );
-
+    convertirMinutes(fin);
 
   if(
     d === null ||
@@ -4537,59 +4183,36 @@ function calculerDuree(
     return "—";
   }
 
-
   let minutes =
     f - d;
 
-
-  if(
-    minutes < 0
-  ){
-    minutes +=
-      24 * 60;
+  if(minutes < 0){
+    minutes += 24 * 60;
   }
 
-
   const heures =
-    Math.floor(
-      minutes / 60
-    );
-
+    Math.floor(minutes / 60);
 
   const reste =
     minutes % 60;
 
-
   return (
     heures
-    +
-    "h"
-    +
-    String(
-      reste
-    ).padStart(
-      2,
-      "0"
-    )
+    + "h"
+    + String(reste).padStart(2,"0")
   );
 }
 
 
-function convertirMinutes(
-  value
-){
+function convertirMinutes(value){
 
   const match =
     String(value)
-      .match(
-        /^(\d{1,2}):(\d{2})/
-      );
-
+      .match(/^(\d{1,2}):(\d{2})/);
 
   if(!match){
     return null;
   }
-
 
   return (
     Number(match[1]) * 60
@@ -4603,20 +4226,16 @@ function convertirMinutes(
    SUPPRESSION
 ========================================================= */
 
-async function supprimerDemande(
-  id
-){
+async function supprimerDemande(id){
 
   if(!id){
     return;
   }
 
-
   const confirmation =
     window.confirm(
       "Voulez-vous vraiment supprimer cette demande ?"
     );
-
 
   if(!confirmation){
     return;
@@ -4631,23 +4250,16 @@ async function supprimerDemande(
       await supabaseClient
         .from("echanges")
         .delete()
-        .eq(
-          "id",
-          id
-        );
+        .eq("id",id);
 
 
     if(error){
 
-      console.error(
-        error
-      );
-
+      console.error(error);
 
       afficherToast(
         "❌ Impossible de supprimer la demande : "
-        +
-        error.message
+        + error.message
       );
 
       return;
@@ -4658,16 +4270,12 @@ async function supprimerDemande(
       "🗑️ Demande supprimée."
     );
 
-
     await afficherEchanges();
 
 
   }catch(error){
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     afficherToast(
       "❌ Une erreur est survenue."
@@ -4682,41 +4290,26 @@ async function supprimerDemande(
    INTERET
 ========================================================= */
 
-function ouvrirInteret(
-  id
-){
+function ouvrirInteret(id){
 
   demandeInteretId =
     id;
 
-
   document
-    .getElementById(
-      "interessantNom"
-    )
+    .getElementById("interessantNom")
     .value = "";
 
-
   document
-    .getElementById(
-      "interestModal"
-    )
-    .classList.add(
-      "show"
-    );
+    .getElementById("interestModal")
+    .classList.add("show");
 }
 
 
 function fermerInteret(){
 
   document
-    .getElementById(
-      "interestModal"
-    )
-    .classList.remove(
-      "show"
-    );
-
+    .getElementById("interestModal")
+    .classList.remove("show");
 
   demandeInteretId =
     null;
@@ -4727,9 +4320,7 @@ async function confirmerInteret(){
 
   const nom =
     document
-      .getElementById(
-        "interessantNom"
-      )
+      .getElementById("interessantNom")
       .value
       .trim();
 
@@ -4760,8 +4351,7 @@ async function confirmerInteret(){
       await supabaseClient
         .from("echanges")
         .update({
-          agent_interesse:
-            nom
+          agent_interesse:nom
         })
         .eq(
           "id",
@@ -4771,15 +4361,11 @@ async function confirmerInteret(){
 
     if(error){
 
-      console.error(
-        error
-      );
-
+      console.error(error);
 
       afficherToast(
         "❌ Impossible d'enregistrer ton intérêt : "
-        +
-        error.message
+        + error.message
       );
 
       return;
@@ -4788,21 +4374,16 @@ async function confirmerInteret(){
 
     fermerInteret();
 
-
     afficherToast(
       "🙋 Ton intérêt a bien été enregistré."
     );
-
 
     await afficherEchanges();
 
 
   }catch(error){
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     afficherToast(
       "❌ Une erreur est survenue."
@@ -4818,16 +4399,12 @@ async function confirmerInteret(){
 ========================================================= */
 
 document
-  .getElementById(
-    "confirmationModal"
-  )
+  .getElementById("confirmationModal")
   .addEventListener(
     "click",
     function(event){
 
-      if(
-        event.target === this
-      ){
+      if(event.target === this){
         fermerConfirmation();
       }
 
@@ -4836,16 +4413,12 @@ document
 
 
 document
-  .getElementById(
-    "formModal"
-  )
+  .getElementById("formModal")
   .addEventListener(
     "click",
     function(event){
 
-      if(
-        event.target === this
-      ){
+      if(event.target === this){
         fermerFormulaire();
       }
 
@@ -4854,16 +4427,12 @@ document
 
 
 document
-  .getElementById(
-    "interestModal"
-  )
+  .getElementById("interestModal")
   .addEventListener(
     "click",
     function(event){
 
-      if(
-        event.target === this
-      ){
+      if(event.target === this){
         fermerInteret();
       }
 
@@ -4881,11 +4450,11 @@ document.addEventListener(
 
     /*
       IMPORTANT :
-      L'application commence maintenant
-      sur le véritable accueil V4.4.
+      L'application démarre sur la vraie
+      page d'accueil V4.4.
 
-      Aucun métier n'est sélectionné
-      automatiquement.
+      Aucun métier n'est présélectionné
+      sur la page d'accueil.
 
       L'utilisateur choisit :
       - ADC
@@ -4893,39 +4462,21 @@ document.addEventListener(
     */
 
     metierActuel =
-      null;
+      "ASCT";
 
+    document
+      .getElementById("homePage")
+      .style.display =
+      "block";
 
-    const home =
-      document.getElementById(
-        "homePage"
-      );
+    document
+      .getElementById("exchangePage")
+      .classList.remove("show");
 
-
-    const exchange =
-      document.getElementById(
-        "exchangePage"
-      );
-
-
-    const nav =
-      document.getElementById(
-        "bottomNav"
-      );
-
-
-    home.style.display =
-      "flex";
-
-
-    exchange.classList.remove(
-      "visible"
-    );
-
-
-    nav.classList.remove(
-      "visible"
-    );
+    document
+      .getElementById("bottomNav")
+      .style.display =
+      "none";
 
   }
 );
