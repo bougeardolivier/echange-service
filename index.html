@@ -213,7 +213,7 @@ body{
 }
 
 /* =========================================================
-   TABS METIERS
+   METIERS
 ========================================================= */
 
 .metiers{
@@ -231,11 +231,11 @@ body{
 }
 
 .metier-btn{
-  flex:0 0 auto;
+  flex:1 1 0;
 
   border:none;
 
-  padding:12px 18px;
+  padding:14px 20px;
 
   border-radius:999px;
 
@@ -243,8 +243,8 @@ body{
 
   color:#416174;
 
-  font-size:14px;
-  font-weight:800;
+  font-size:15px;
+  font-weight:900;
 
   box-shadow:0 5px 18px rgba(3,30,50,.12);
 
@@ -484,7 +484,7 @@ body{
 }
 
 /* =========================================================
-   DATE DE SERVICE — BIEN VISIBLE
+   DATE DE SERVICE
 ========================================================= */
 
 .service-date{
@@ -713,7 +713,7 @@ body{
 }
 
 /* =========================================================
-   ÉTAT VIDE
+   ETAT VIDE
 ========================================================= */
 
 .empty{
@@ -1011,7 +1011,7 @@ textarea{
 }
 
 /* =========================================================
-   NOTIFICATION TOAST
+   TOAST
 ========================================================= */
 
 .toast{
@@ -1208,6 +1208,11 @@ textarea{
     bottom:8px;
     width:94%;
   }
+
+  .metier-btn{
+    padding:13px 16px;
+    font-size:14px;
+  }
 }
 
 @media(min-width:1100px){
@@ -1293,20 +1298,13 @@ textarea{
     </section>
 
     <!-- =================================================
-         METIERS
+         METIERS : UNIQUEMENT ASCT / ADC
     ================================================== -->
 
     <div class="metiers">
 
       <button
         class="metier-btn active"
-        data-metier="Tous"
-        onclick="choisirMetier('Tous',this)">
-        Tous
-      </button>
-
-      <button
-        class="metier-btn"
         data-metier="ASCT"
         onclick="choisirMetier('ASCT',this)">
         🚆 ASCT
@@ -1317,20 +1315,6 @@ textarea{
         data-metier="ADC"
         onclick="choisirMetier('ADC',this)">
         🚄 ADC
-      </button>
-
-      <button
-        class="metier-btn"
-        data-metier="Escales"
-        onclick="choisirMetier('Escales',this)">
-        🧑‍💼 Escales
-      </button>
-
-      <button
-        class="metier-btn"
-        data-metier="Autre"
-        onclick="choisirMetier('Autre',this)">
-        👷 Autre
       </button>
 
     </div>
@@ -1485,14 +1469,6 @@ textarea{
 
         <option value="ADC">
           🚄 ADC
-        </option>
-
-        <option value="Escales">
-          🧑‍💼 Escales
-        </option>
-
-        <option value="Autre">
-          👷 Autre
         </option>
 
       </select>
@@ -1810,11 +1786,17 @@ const supabaseClient =
    VARIABLES
 ========================================================= */
 
-let metierActuel = "Tous";
+let metierActuel = "ASCT";
 
 let demandeInteretId = null;
 
 let demandesChargees = [];
+
+/*
+  Permet de gérer correctement la fenêtre
+  « congé refusé » avant l'ouverture du formulaire.
+*/
+let confirmationCongeValidee = false;
 
 /* =========================================================
    OUTILS
@@ -1835,8 +1817,20 @@ function echapperHTML(value){
 }
 
 /* =========================================================
+   NORMALISATION TEXTE
+========================================================= */
+
+function normaliserTexte(value){
+
+  return String(value || "")
+    .trim()
+    .toUpperCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"");
+}
+
+/* =========================================================
    DATE SERVICE
-   Conversion robuste de YYYY-MM-DD
 ========================================================= */
 
 function dateLocaleDepuisString(dateString){
@@ -1845,7 +1839,8 @@ function dateLocaleDepuisString(dateString){
     return null;
   }
 
-  const texte = String(dateString).substring(0,10);
+  const texte =
+    String(dateString).substring(0,10);
 
   const match =
     texte.match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -1954,11 +1949,6 @@ function formatDatePublication(value){
 
   let date;
 
-  /*
-    Supabase renvoie normalement un timestamptz
-    sous forme ISO.
-  */
-
   if(value instanceof Date){
 
     date = value;
@@ -2002,14 +1992,6 @@ function recupererDatePublication(demande){
   if(!demande){
     return null;
   }
-
-  /*
-    La colonne utilisée par les nouvelles demandes
-    est date_demande.
-
-    Les autres noms sont uniquement des sécurités
-    pour d'anciennes versions éventuelles.
-  */
 
   const valeur =
     demande.date_demande ??
@@ -2058,6 +2040,17 @@ function choisirMetier(
   bouton
 ){
 
+  /*
+    Seuls ASCT et ADC sont autorisés.
+  */
+
+  if(
+    metier !== "ASCT" &&
+    metier !== "ADC"
+  ){
+    return;
+  }
+
   metierActuel =
     metier;
 
@@ -2071,11 +2064,23 @@ function choisirMetier(
     bouton.classList.add("active");
   }
 
+  /*
+    Le métier sélectionné sur l'accueil
+    est également repris dans le formulaire.
+  */
+  const selectMetier =
+    document.getElementById("metier");
+
+  if(selectMetier){
+    selectMetier.value =
+      metier;
+  }
+
   afficherEchanges();
 }
 
 /* =========================================================
-   CONFIRMATION
+   CONFIRMATION CONGE REFUSE
 ========================================================= */
 
 function ouvrirConfirmation(){
@@ -2094,7 +2099,25 @@ function fermerConfirmation(){
 
 function confirmerEtOuvrirFormulaire(){
 
+  confirmationCongeValidee =
+    true;
+
   fermerConfirmation();
+
+  /*
+    Le métier sélectionné sur l'accueil
+    est conservé dans le formulaire.
+  */
+
+  const selectMetier =
+    document.getElementById("metier");
+
+  if(selectMetier){
+
+    selectMetier.value =
+      metierActuel;
+
+  }
 
   document
     .getElementById("formModal")
@@ -2110,12 +2133,22 @@ function fermerFormulaire(){
   document
     .getElementById("formModal")
     .classList.remove("show");
+
+  /*
+    Une nouvelle demande nécessitera
+    une nouvelle confirmation.
+  */
+
+  confirmationCongeValidee =
+    false;
 }
 
 function gererDeuxiemeJournee(){
 
   const coche =
-    document.getElementById("deuxiemeJournee").checked;
+    document
+      .getElementById("deuxiemeJournee")
+      .checked;
 
   const bloc =
     document.getElementById("blocJournee2");
@@ -2132,6 +2165,21 @@ function gererDeuxiemeJournee(){
 ========================================================= */
 
 async function publier(){
+
+  /*
+    Sécurité supplémentaire :
+    impossible de publier sans avoir confirmé
+    le refus du congé.
+  */
+
+  if(!confirmationCongeValidee){
+
+    afficherToast(
+      "⚠️ Merci de confirmer que ton congé a été refusé."
+    );
+
+    return;
+  }
 
   const metier =
     document
@@ -2184,26 +2232,58 @@ async function publier(){
       .checked;
 
   /* =========================
+     VALIDATION METIER
+  ========================== */
+
+  if(
+    metier !== "ASCT" &&
+    metier !== "ADC"
+  ){
+
+    afficherToast(
+      "⚠️ Merci de sélectionner ASCT ou ADC."
+    );
+
+    return;
+  }
+
+  /* =========================
      VALIDATION JOURNEE 1
   ========================== */
 
   if(!nom){
-    afficherToast("⚠️ Merci d'indiquer ton nom.");
+
+    afficherToast(
+      "⚠️ Merci d'indiquer ton nom."
+    );
+
     return;
   }
 
   if(!date){
-    afficherToast("⚠️ Merci d'indiquer la date de la journée.");
+
+    afficherToast(
+      "⚠️ Merci d'indiquer la date de la journée."
+    );
+
     return;
   }
 
   if(!prise || !fin){
-    afficherToast("⚠️ Merci d'indiquer les horaires.");
+
+    afficherToast(
+      "⚠️ Merci d'indiquer les horaires."
+    );
+
     return;
   }
 
   if(!lieuPrise || !lieuFin){
-    afficherToast("⚠️ Merci d'indiquer les lieux de prise et de fin.");
+
+    afficherToast(
+      "⚠️ Merci d'indiquer les lieux de prise et de fin."
+    );
+
     return;
   }
 
@@ -2247,22 +2327,38 @@ async function publier(){
         .trim();
 
     if(!date2){
-      afficherToast("⚠️ Merci d'indiquer la date de la 2ᵉ journée.");
+
+      afficherToast(
+        "⚠️ Merci d'indiquer la date de la 2ᵉ journée."
+      );
+
       return;
     }
 
     if(!prise2 || !fin2){
-      afficherToast("⚠️ Merci d'indiquer les horaires de la 2ᵉ journée.");
+
+      afficherToast(
+        "⚠️ Merci d'indiquer les horaires de la 2ᵉ journée."
+      );
+
       return;
     }
 
     if(!lieuPrise2 || !lieuFin2){
-      afficherToast("⚠️ Merci d'indiquer les lieux de la 2ᵉ journée.");
+
+      afficherToast(
+        "⚠️ Merci d'indiquer les lieux de la 2ᵉ journée."
+      );
+
       return;
     }
 
     if(date2 === date){
-      afficherToast("⚠️ Les deux journées doivent être à des dates différentes.");
+
+      afficherToast(
+        "⚠️ Les deux journées doivent être à des dates différentes."
+      );
+
       return;
     }
 
@@ -2270,9 +2366,6 @@ async function publier(){
 
   /* =====================================================
      DATE DE PUBLICATION
-     
-     UNE SEULE date_demande pour les deux lignes.
-     On n'utilise PAS created_at.
   ====================================================== */
 
   const dateDemande =
@@ -2295,11 +2388,6 @@ async function publier(){
       commentaire:commentaire,
       statut:"disponible",
       agent_interesse:null,
-
-      /*
-        IMPORTANT :
-        date de publication de la demande
-      */
       date_demande:dateDemande
     }
 
@@ -2312,9 +2400,6 @@ async function publier(){
       metier:metier,
       nom:nom,
 
-      /*
-        Date du 2e service
-      */
       date_service:date2,
 
       prise_service:prise2,
@@ -2328,10 +2413,6 @@ async function publier(){
       statut:"disponible",
       agent_interesse:null,
 
-      /*
-        Même date de publication
-        que la journée 1
-      */
       date_demande:dateDemande
 
     });
@@ -2344,7 +2425,9 @@ async function publier(){
 
   try{
 
-    const { error } =
+    const {
+      error
+    } =
       await supabaseClient
         .from("echanges")
         .insert(demandes);
@@ -2444,14 +2527,10 @@ async function publier(){
    GROUPEMENT DES JOURNEES
 ========================================================= */
 
-function normaliserTexte(value){
-
-  return String(value || "")
-    .trim()
-    .toUpperCase();
-}
-
-function lendemain(date1,date2){
+function lendemain(
+  date1,
+  date2
+){
 
   const d1 =
     dateLocaleDepuisString(date1);
@@ -2469,7 +2548,10 @@ function lendemain(date1,date2){
   return difference === 86400000;
 }
 
-function peutRegrouper(a,b){
+function peutRegrouper(
+  a,
+  b
+){
 
   if(!a || !b){
     return false;
@@ -2515,9 +2597,40 @@ function construireGroupes(data){
   const utilises =
     new Set();
 
+  /*
+    On travaille sur une copie triée.
+    Le regroupement cherche le jour suivant
+    dans TOUT le tableau, pas seulement sur
+    la ligne immédiatement voisine.
+  */
+
+  const donneesTriees =
+    [...data].sort(
+      (a,b)=>{
+
+        const dateCompare =
+          String(a.date_service || "")
+            .localeCompare(
+              String(b.date_service || "")
+            );
+
+        if(dateCompare !== 0){
+          return dateCompare;
+        }
+
+        return (
+          String(a.nom || "")
+            .localeCompare(
+              String(b.nom || "")
+            )
+        );
+
+      }
+    );
+
   for(
     let i=0;
-    i<data.length;
+    i<donneesTriees.length;
     i++
   ){
 
@@ -2526,40 +2639,76 @@ function construireGroupes(data){
     }
 
     const premier =
-      data[i];
+      donneesTriees[i];
 
     const groupe =
       [premier];
 
     utilises.add(i);
 
-    for(
-      let j=i+1;
-      j<data.length;
-      j++
-    ){
+    let dernier =
+      premier;
 
-      if(utilises.has(j)){
-        continue;
-      }
+    /*
+      Recherche répétée du jour suivant
+      dans l'ensemble des lignes restantes.
+    */
 
-      const candidat =
-        data[j];
+    let trouve = true;
 
-      if(
-        peutRegrouper(
-          groupe[groupe.length - 1],
-          candidat
-        )
+    while(trouve){
+
+      trouve = false;
+
+      for(
+        let j=0;
+        j<donneesTriees.length;
+        j++
       ){
 
-        groupe.push(candidat);
+        if(utilises.has(j)){
+          continue;
+        }
 
-        utilises.add(j);
+        const candidat =
+          donneesTriees[j];
+
+        if(
+          peutRegrouper(
+            dernier,
+            candidat
+          )
+        ){
+
+          groupe.push(candidat);
+
+          utilises.add(j);
+
+          dernier =
+            candidat;
+
+          trouve = true;
+
+          break;
+
+        }
 
       }
 
     }
+
+    /*
+      Sécurité : les journées du groupe sont
+      affichées dans l'ordre chronologique.
+    */
+
+    groupe.sort(
+      (a,b)=>
+        String(a.date_service || "")
+          .localeCompare(
+            String(b.date_service || "")
+          )
+    );
 
     groupes.push(groupe);
 
@@ -2588,27 +2737,22 @@ async function afficherEchanges(){
 
   try{
 
+    /*
+      Uniquement ASCT ou ADC.
+    */
+
     let requete =
       supabaseClient
         .from("echanges")
         .select("*")
         .eq("statut","disponible")
+        .eq("metier",metierActuel)
         .order(
           "date_service",
           {
             ascending:true
           }
         );
-
-    if(metierActuel !== "Tous"){
-
-      requete =
-        requete.eq(
-          "metier",
-          metierActuel
-        );
-
-    }
 
     const {
       data,
@@ -2660,7 +2804,7 @@ async function afficherEchanges(){
 
           <p>
             Aucune demande d'échange n'est actuellement
-            disponible pour ce métier.
+            disponible pour le métier ${echapperHTML(metierActuel)}.
           </p>
 
         </div>
@@ -2671,20 +2815,12 @@ async function afficherEchanges(){
     }
 
     /*
-      On trie à nouveau côté navigateur afin de garantir
-      que les journées consécutives soient regroupées.
+      Regroupement des journées consécutives.
     */
 
     const groupes =
       construireGroupes(
-        [...demandesChargees]
-          .sort(
-            (a,b)=>
-              String(a.date_service || "")
-                .localeCompare(
-                  String(b.date_service || "")
-                )
-          )
+        demandesChargees
       );
 
     liste.innerHTML =
@@ -2735,11 +2871,6 @@ function construireCarte(
 
   const premier =
     groupe[0];
-
-  /*
-    Date de publication :
-    on cherche la date sur la première ligne.
-  */
 
   const publication =
     recupererDatePublication(
@@ -2891,8 +3022,6 @@ function construireJournee(
 
       </div>
 
-      <!-- DATE DU SERVICE -->
-
       <div class="service-date">
 
         <div class="service-date-icon">
@@ -2914,8 +3043,6 @@ function construireJournee(
         </div>
 
       </div>
-
-      <!-- HORAIRES -->
 
       <div class="service-grid">
 
@@ -2947,8 +3074,6 @@ function construireJournee(
         </div>
 
       </div>
-
-      <!-- LIEUX -->
 
       <div class="locations">
 
@@ -3091,10 +3216,6 @@ async function supprimerDemande(
 
   try{
 
-    /*
-      Suppression de la ligne sélectionnée.
-    */
-
     const {
       error
     } =
@@ -3234,7 +3355,7 @@ async function confirmerInteret(){
 }
 
 /* =========================================================
-   FERMETURE DES MODALES EN CLIQUANT À L'EXTÉRIEUR
+   FERMETURE DES MODALES EN CLIQUANT À L'EXTERIEUR
 ========================================================= */
 
 document
@@ -3289,6 +3410,35 @@ document
 document.addEventListener(
   "DOMContentLoaded",
   function(){
+
+    /*
+      Par défaut : ASCT.
+      Il n'y a volontairement aucun filtre "Tous".
+    */
+
+    metierActuel = "ASCT";
+
+    const boutonASCT =
+      document.querySelector(
+        '.metier-btn[data-metier="ASCT"]'
+      );
+
+    document
+      .querySelectorAll(".metier-btn")
+      .forEach(btn=>{
+        btn.classList.remove("active");
+      });
+
+    if(boutonASCT){
+      boutonASCT.classList.add("active");
+    }
+
+    const selectMetier =
+      document.getElementById("metier");
+
+    if(selectMetier){
+      selectMetier.value = "ASCT";
+    }
 
     afficherEchanges();
 
