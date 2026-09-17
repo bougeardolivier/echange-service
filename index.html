@@ -3095,7 +3095,39 @@ function choisirMetier(
 
   afficherEchanges();
 }
+/* =========================================================
+   RETOUR AU CHOIX DU METIER
+========================================================= */
 
+function changerMetier(){
+
+  metierActuel = "";
+
+  const bottomNav =
+    document.getElementById("bottomNav");
+
+  if(bottomNav){
+    bottomNav.style.display = "none";
+  }
+
+  document
+    .querySelectorAll("main section")
+    .forEach(section=>{
+      section.classList.add("hidden");
+    });
+
+  const exchangePage =
+    document.getElementById("exchangePage");
+
+  if(exchangePage){
+    exchangePage.classList.remove("hidden");
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
 /* =========================================================
    CONFIRMATION CONGE REFUSE
 ========================================================= */
