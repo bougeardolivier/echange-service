@@ -3701,7 +3701,7 @@ async function afficherEchanges(){
   try{
 
     /* =====================================================
-       SUPPRESSION DES DEMANDES DONT LA DATE EST PASSÉE
+       DATE DU JOUR
     ====================================================== */
 
     const maintenant =
@@ -3724,27 +3724,140 @@ async function afficherEchanges(){
       `${annee}-${mois}-${jour}`;
 
 
+    /* =====================================================
+       RECUPERATION DES ECHANGES
+       Les dates passées ne sont pas affichées
+    ====================================================== */
+
     const {
-      error: erreurSuppression
+      data,
+      error
     } =
       await supabaseClient
         .from("echanges")
-        .delete()
-        .lt(
+        .select("*")
+        .eq("statut","disponible")
+        .eq("metier",metierActuel)
+        .gte(
           "date_service",
           dateAujourdhui
+        )
+        .order(
+          "date_service",
+          {
+            ascending:true
+          }
         );
 
 
-    if(erreurSuppression){
+    if(error){
 
       console.error(
-        "Erreur suppression anciennes demandes :",
-        erreurSuppression
+        "Erreur récupération :",
+        error
       );
 
+      liste.innerHTML = `
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            ⚠️
+          </div>
+
+          <h3>
+            Impossible de charger les échanges
+          </h3>
+
+          <p>
+            ${echapperHTML(error.message)}
+          </p>
+
+        </div>
+
+      `;
+
+      return;
     }
 
+
+    demandesChargees =
+      data || [];
+
+
+    if(!demandesChargees.length){
+
+      liste.innerHTML = `
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            🚆
+          </div>
+
+          <h3>
+            Aucune journée disponible
+          </h3>
+
+          <p>
+            Aucune demande d'échange n'est actuellement
+            disponible pour le métier
+            ${echapperHTML(metierActuel)}.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+
+    const groupes =
+      construireGroupes(
+        demandesChargees
+      );
+
+
+    liste.innerHTML =
+      groupes
+        .map(
+          (groupe,index)=>
+            construireCarte(
+              groupe,
+              index
+            )
+        )
+        .join("");
+
+
+  }catch(error){
+
+    console.error(error);
+
+    liste.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          ⚠️
+        </div>
+
+        <h3>
+          Erreur
+        </h3>
+
+        <p>
+          Impossible de charger les demandes.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
 
     /* =====================================================
        RECUPERATION DES ECHANGES
