@@ -625,35 +625,42 @@ body::after{
 #formModal .form-group textarea{
   padding:8px !important;
 }
- /* =========================
+/* =========================
    CORRECTION CHAMPS FORMULAIRE
 ========================= */
 
 #formModal .form-group{
   width:100%;
+  max-width:100%;
   box-sizing:border-box;
 }
 
 #formModal .form-group input,
 #formModal .form-group select,
 #formModal .form-group textarea{
+  display:block;
   width:100%;
   max-width:100%;
-  box-sizing:border-box;
   min-width:0;
+  box-sizing:border-box;
 }
 
 #formModal .form-row{
+  display:grid;
   width:100%;
-  box-sizing:border-box;
+  max-width:100%;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:8px;
+  box-sizing:border-box;
 }
 
-#formModal .form-row > *{
+#formModal .form-row > .form-group{
   min-width:0;
   width:100%;
+  max-width:100%;
   box-sizing:border-box;
 }
+ 
 /* =========================
   RESPONSIVE
 ========================= */
