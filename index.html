@@ -626,13 +626,21 @@ body::after{
   padding:8px !important;
 }
 /* =========================
-   CORRECTION CHAMPS FORMULAIRE
+   FORMULAIRE - CHAMPS
 ========================= */
 
+#formModal .modal-box,
+#formModal .modal-box *{
+  box-sizing:border-box;
+}
+
 #formModal .form-group{
+  display:block;
   width:100%;
   max-width:100%;
-  box-sizing:border-box;
+  margin-left:0;
+  margin-right:0;
+  min-width:0;
 }
 
 #formModal .form-group input,
@@ -647,53 +655,15 @@ body::after{
 
 #formModal .form-row{
   display:grid;
-  width:100%;
-  max-width:100%;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:8px;
-  box-sizing:border-box;
-}
-
-#formModal .form-row > .form-group{
-  min-width:0;
   width:100%;
   max-width:100%;
-  box-sizing:border-box;
-}
-
-/* =========================
-   AJUSTEMENT FINAL FORMULAIRE
-========================= */
-
-#formModal .modal-box,
-#formModal .modal-box *{
-  box-sizing:border-box;
-}
-
-#formModal .form-group{
-  display:block;
-  width:100%;
-  margin-left:0;
-  margin-right:0;
-}
-
-#formModal .form-row{
-  display:flex;
-  width:100%;
-  gap:8px;
   margin:0;
+  box-sizing:border-box;
 }
 
 #formModal .form-row .form-group{
-  flex:1 1 0;
-  width:0;
-  min-width:0;
-}
-
-#formModal input,
-#formModal select,
-#formModal textarea{
-  display:block;
   width:100%;
   min-width:0;
   max-width:100%;
