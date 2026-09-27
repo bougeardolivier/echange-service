@@ -3700,6 +3700,56 @@ async function afficherEchanges(){
 
   try{
 
+    /* =====================================================
+       SUPPRESSION DES DEMANDES DONT LA DATE EST PASSÉE
+    ====================================================== */
+
+    const maintenant =
+      new Date();
+
+    const annee =
+      maintenant.getFullYear();
+
+    const mois =
+      String(
+        maintenant.getMonth() + 1
+      ).padStart(2,"0");
+
+    const jour =
+      String(
+        maintenant.getDate()
+      ).padStart(2,"0");
+
+    const dateAujourdhui =
+      `${annee}-${mois}-${jour}`;
+
+
+    const {
+      error: erreurSuppression
+    } =
+      await supabaseClient
+        .from("echanges")
+        .delete()
+        .lt(
+          "date_service",
+          dateAujourdhui
+        );
+
+
+    if(erreurSuppression){
+
+      console.error(
+        "Erreur suppression anciennes demandes :",
+        erreurSuppression
+      );
+
+    }
+
+
+    /* =====================================================
+       RECUPERATION DES ECHANGES
+    ====================================================== */
+
     const {
       data,
       error
@@ -3825,8 +3875,6 @@ async function afficherEchanges(){
   }
 
 }
-
-
 /* =========================================================
    CARTE
 ========================================================= */
